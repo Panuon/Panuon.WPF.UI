@@ -1,4 +1,4 @@
-[English](https://github.com/Panuon/PanuonUI.Silver-v2.2/readme.md)
+[English](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md)
 
 # PanuonUI.Silver v2.2
 
