@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ListBoxItemTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:StyleKeys.ListBoxItemStyle}"
+           TargetType="ListBoxItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsSelected"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.Icon"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.CornerRadius"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.RemoveButtonVisibility"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsRemoveButtonVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverBackground"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverForeground"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedBackground"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedBorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedForeground"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedBorderThickness"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SeparatorBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SeparatorThickness"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SeparatorMargin"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SeparatorVisibility"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

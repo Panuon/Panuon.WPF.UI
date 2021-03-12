@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/SpinnerTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type local:Spinner}">
+        <Setter Property="IsSpinning"
+                Value="True" />
+        <Setter Property="Thickness"
+                Value="{Binding ActualWidth, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=20, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="Foreground"
+                Value="#3E3E3E" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.SpinnerStandardTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="SpinnerStyle"
+                     Value="Wave">
+                <Setter Property="Thickness"
+                        Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=7,Mode=OneWay}" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.SpinnerWaveTemplate}}" />
+            </Trigger>
+            <Trigger Property="SpinnerStyle"
+                     Value="Ring">
+                <Setter Property="Percent"
+                        Value="0.25" />
+                <Setter Property="Thickness"
+                        Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=15, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.SpinnerRingTemplate}}" />
+            </Trigger>
+            <Trigger Property="SpinnerStyle"
+                     Value="Ring2">
+                <Setter Property="Thickness"
+                        Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=15, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.SpinnerRing2Template}}" />
+            </Trigger>
+            <Trigger Property="SpinnerStyle"
+                     Value="Classic">
+                <Setter Property="Thickness"
+                        Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=10, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.SpinnerClassicTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsSpinning"
+                     Value="False">
+                <Setter Property="Visibility"
+                        Value="Hidden" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ScrollableControlTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type i:ScrollableControl}}"
+           TargetType="RepeatButton"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.IconRepeatButtonStyle}}">
+        <Setter Property="Content"
+                Value="&#xe900;" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="Command"
+                Value="{x:Static ScrollBar.LineLeftCommand}" />
+        <Style.Triggers>
+            <Trigger Property="Tag"
+                     Value="Up">
+                <Setter Property="Content"
+                        Value="&#xe901;" />
+                <Setter Property="Command"
+                        Value="{x:Static ScrollBar.LineUpCommand}" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="Right">
+                <Setter Property="Content"
+                        Value="&#xe902;" />
+                <Setter Property="Command"
+                        Value="{x:Static ScrollBar.LineRightCommand}" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="Down">
+                <Setter Property="Content"
+                        Value="&#xe903;" />
+                <Setter Property="Command"
+                        Value="{x:Static ScrollBar.LineDownCommand}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="i:ScrollableControl">
+        <Setter Property="ScrollButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type i:ScrollableControl}}}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.ScrollableControlTemplate}}" />
+    </Style>
+</ResourceDictionary>

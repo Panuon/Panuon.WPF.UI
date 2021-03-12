@@ -1,0 +1,329 @@
+﻿<pu:WindowX x:Class="Samples.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Samples"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="MainWindow"
+            Height="450"
+            Width="800"
+            Loaded="Window_Loaded"
+            SnapsToDevicePixels="True"
+            pu:IconHelper.Width="30"
+            pu:IconHelper.Height="30"
+            pu:WindowXCaption.ShadowColor="{x:Null}"
+            pu:ShadowHelper.BlurRadius="20"
+            WindowStartupLocation="CenterScreen">
+    <Grid  Background="Transparent"
+           pu:WindowX.IsDragMoveArea="True">
+        <ScrollViewer pu:ScrollBarHelper.ScrollButtonVisibility="Visible">
+            <!--<TabControl Height="150"
+                    Margin="40">
+            <TabItem Header="Item 1" />
+            <TabItem Header="Item 2" />
+            <TabItem Header="Item 3" />
+            <TabItem Header="Item 3" />
+            <TabItem Header="Item 3" />
+            <TabItem Header="Item 3" />
+            <TabItem Header="Item 3" />
+        </TabControl>-->
+            <StackPanel Margin="20,0,20,200">
+                <pu:TransformControl AnimationDuration="0:0:0.5"
+                                     ScaleX="-1"
+                                     ScaleY="-1">
+                    <Button Content="Content"
+                            Height="30"
+                            Width="100" />
+                </pu:TransformControl>
+                <ComboBox Height="35"
+                          HorizontalAlignment="Center"
+                          BorderThickness="0"
+                          pu:DropDownHelper.ShadowColor="{x:Null}"
+                          pu:DropDownHelper.BorderThickness="1">
+                    <ComboBoxItem Content="Item 1"
+                                  IsSelected="True" />
+                    <ComboBoxItem Content="Item 2" />
+                    <ComboBoxItem Content="Item 3" />
+                    <ComboBoxItem Content="Item 4" />
+                </ComboBox>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,10,0,0">
+                    <Label Content="Label 1" />
+                    <Label Margin="5,0,0,0"
+                           Content="Label 2"
+                           Background="Orange"
+                           Foreground="White"
+                           pu:LabelHelper.CornerRadius="5" />
+                    <Label Margin="5,0,0,0"
+                           Content="Label 3"
+                           pu:LabelHelper.ShadowColor="Gray" />
+                    <Label Margin="5,0,0,0"
+                           Content="Label 4"
+                           pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                           pu:LabelHelper.Icon="&#xe930;" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <pu:Spinner Width="30"
+                                Height="30"
+                                Foreground="#6CBCEA" />
+                    <pu:Spinner Margin="10,0,0,0"
+                                SpinnerStyle="Ring"
+                                Width="30"
+                                Height="30"
+                                Foreground="#6CBCEA" />
+                    <pu:Spinner Margin="10,0,0,0"
+                                SpinnerStyle="Ring2"
+                                Width="30"
+                                Height="30"
+                                Foreground="#6CBCEA" />
+                    <pu:Spinner Margin="10,0,0,0"
+                                SpinnerStyle="Wave"
+                                Width="30"
+                                Height="30"
+                                Foreground="#6CBCEA" />
+                    <pu:Spinner Margin="10,0,0,0"
+                                SpinnerStyle="Classic"
+                                Width="30"
+                                Height="30"
+                                Foreground="#6CBCEA" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="HelloWorld"
+                              IsChecked="True"
+                              IsThreeState="True" />
+                    <CheckBox Margin="5,0,0,0"
+                              Content="HelloWorld"
+                              IsChecked="True" />
+                    <RadioButton Margin="5,0,0,0"
+                                 Content="HelloWorld"
+                                 IsChecked="{x:Null}"
+                                 IsThreeState="True" />
+                    <RadioButton Margin="5,0,0,0"
+                                 Content="HelloWorld"
+                                 IsChecked="{x:Null}"
+                                 IsThreeState="True" />
+                </StackPanel>
+                <Menu Height="35">
+                    <MenuItem Header="Item 1">
+                        <MenuItem Header="Item 1">
+                            <MenuItem Header="Item 1" />
+                            <MenuItem Header="Item 2" />
+                            <MenuItem Header="Item 3" />
+                        </MenuItem>
+                        <MenuItem Header="Item 2" />
+                        <MenuItem Header="Item 3" />
+                    </MenuItem>
+                    <MenuItem Header="Item 2" />
+                    <MenuItem Header="Item 3" />
+                </Menu>
+                <GroupBox Header="GroupBox"
+                          Margin="0,20,0,0"
+                          pu:GroupBoxHelper.CornerRadius="5"
+                          pu:GroupBoxHelper.ShadowColor="LightGray"
+                          pu:GroupBoxHelper.HeaderVerticalAlignment="Bottom"
+                          pu:GroupBoxHelper.HeaderHorizontalContentAlignment="Center"
+                          pu:GroupBoxHelper.HeaderHeight="50">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"
+                                       FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <StackPanel>
+                        <Button Height="40"
+                                Width="200"
+                                pu:ButtonHelper.IsPending="True"
+                                pu:ButtonHelper.HoverForeground="Blue"
+                                pu:ButtonHelper.ClickForeground="Green"
+                                pu:ButtonHelper.CornerRadius="5"
+                                pu:ButtonHelper.Icon="&#xe930;"
+                                pu:ButtonHelper.ClickEffect="Shake"
+                                pu:IconHelper.FontSize="16"
+                                pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                                Content="Button"
+                                Click="Button_Click"
+                                ToolTip="ToolTips">
+                            <Button.ContextMenu>
+                                <ContextMenu pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                                             pu:DropDownHelper.CornerRadius="5"
+                                             pu:ShadowHelper.ShadowDepth="0"
+                                             pu:ContextMenuHelper.ItemsSeparatorVisibility="Visible"
+                                             pu:ContextMenuHelper.ItemsIconWidth="30"
+                                             pu:ContextMenuHelper.ItemsPadding="0">
+                                    <MenuItem Header="Item 1"
+                                              Icon="&#xe900;">
+                                        <MenuItem Header="Item 2">
+                                            <MenuItem Header="Item 2" />
+                                            <MenuItem Header="Item 3" />
+                                            <MenuItem Header="Item 4" />
+                                        </MenuItem>
+                                        <MenuItem Header="Item 3" />
+                                        <MenuItem Header="Item 4" />
+                                    </MenuItem>
+                                    <MenuItem Header="Item 2" />
+                                    <MenuItem Header="Item 3" />
+                                    <MenuItem Header="Item 4" />
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                        <RepeatButton Margin="0,20,0,0"
+                                      Height="40"
+                                      Width="200"
+                                      pu:RepeatButtonHelper.HoverForeground="Blue"
+                                      pu:RepeatButtonHelper.ClickForeground="Green"
+                                      pu:RepeatButtonHelper.CornerRadius="5"
+                                      pu:RepeatButtonHelper.Icon="&#xe930;"
+                                      pu:IconHelper.FontSize="16"
+                                      pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                                      Content="RepeatButton" />
+                        <ToggleButton Margin="0,20,0,0"
+                                      Height="40"
+                                      Width="200"
+                                      pu:ToggleButtonHelper.HoverForeground="Blue"
+                                      pu:ToggleButtonHelper.CheckedForeground="Green"
+                                      pu:ToggleButtonHelper.CornerRadius="5"
+                                      pu:ToggleButtonHelper.Icon="&#xe930;"
+                                      pu:IconHelper.FontSize="16"
+                                      pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                                      Content="ToggleButton" />
+                    </StackPanel>
+                </GroupBox>
+                <TextBox Margin="0,20,0,0"
+                         Height="35"
+                         Width="200"
+                         Padding="3"
+                         pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                         pu:IconHelper.FontSize="16"
+                         pu:TextBoxHelper.Icon="&#xe937;"
+                         pu:TextBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
+                         pu:TextBoxHelper.CornerRadius="2"
+                         pu:TextBoxHelper.Watermark="TextBox"
+                         pu:TextBoxHelper.FocusedBorderBrush="#6CBCEA"
+                         pu:TextBoxHelper.FocusedShadowColor="#6CBCEA"
+                         pu:ShadowHelper.BlurRadius="10" />
+                <TextBox Margin="0,20,0,0"
+                         Height="35"
+                         Width="200"
+                         Padding="3"
+                         BorderBrush="Transparent"
+                         pu:TextBoxHelper.HoverBorderBrush="#6CBCEA"
+                         pu:TextBoxHelper.FocusedBorderBrush="#6CBCEA"
+                         pu:TextBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
+                         pu:TextBoxHelper.CornerRadius="2"
+                         pu:TextBoxHelper.Watermark="TextBox"
+                         pu:TextBoxHelper.HoverForeground="#6CBCEA"
+                         pu:TextBoxHelper.FocusedForeground="#6CBCEA" />
+                <PasswordBox Margin="0,20,0,0"
+                             Height="35"
+                             Width="200"
+                             Padding="3"
+                             pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                             pu:PasswordBoxHelper.Icon="&#xe937;"
+                             pu:IconHelper.FontSize="16"
+                             pu:PasswordBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
+                             pu:PasswordBoxHelper.CornerRadius="2"
+                             pu:PasswordBoxHelper.Watermark="PasswordBox"
+                             pu:PasswordBoxHelper.FocusedBorderBrush="#6CBCEA"
+                             pu:PasswordBoxHelper.FocusedShadowColor="#6CBCEA"
+                             pu:ShadowHelper.BlurRadius="10" />
+                <PasswordBox Margin="0,20,0,0"
+                             Height="35"
+                             Width="200"
+                             Padding="3"
+                             BorderBrush="Transparent"
+                             pu:PasswordBoxHelper.Watermark="PasswordBox"
+                             pu:PasswordBoxHelper.HoverBorderBrush="#6CBCEA"
+                             pu:PasswordBoxHelper.FocusedBorderBrush="#6CBCEA"
+                             pu:PasswordBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
+                             pu:PasswordBoxHelper.CornerRadius="2"
+                             pu:PasswordBoxHelper.HoverForeground="#6CBCEA"
+                             pu:PasswordBoxHelper.FocusedForeground="#6CBCEA" />
+                <ComboBox  x:Name="cmb"
+                           Margin="0,20,0,0"
+                           Height="35"
+                           Width="200"
+                           IsEditable="True"
+                           pu:ComboBoxHelper.StaysOpenOnEdit="True"
+                           pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                           pu:IconHelper.FontSize="16"
+                           pu:ComboBoxHelper.Icon="&#xe937;"
+                           pu:ShadowHelper.BlurRadius="20"
+                           pu:DropDownHelper.ShadowColor="#6CBCEA"
+                           pu:ComboBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
+                           pu:ComboBoxHelper.CornerRadius="2"
+                           pu:ComboBoxHelper.Watermark="ComboBox"
+                           pu:ComboBoxHelper.FocusedBorderBrush="#6CBCEA"
+                           pu:ComboBoxHelper.FocusedShadowColor="#6CBCEA"
+                           pu:ComboBoxHelper.ItemsSeparatorVisibility="Visible"
+                           pu:ComboBoxHelper.ItemsSeparatorMargin="15,0"
+                           pu:ComboBoxHelper.ItemsPadding="15,0"
+                           pu:ComboBoxHelper.SearchTextChanged="ComboBox_SearchTextChanged"
+                           pu:ComboBoxHelper.SearchText="1234567"
+                           pu:ComboBoxHelper.IsSearchTextBoxPinned="True"
+                           pu:ComboBoxHelper.SearchTextBoxVisibility="Visible"
+                           pu:DropDownHelper.BorderBrush="Transparent" />
+                <ComboBox  Margin="0,20,0,0"
+                           Height="35"
+                           Width="200"
+                           pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                           pu:IconHelper.FontSize="16"
+                           pu:ComboBoxHelper.Icon="&#xe937;"
+                           pu:ShadowHelper.BlurRadius="20"
+                           pu:ComboBoxHelper.ClearButtonVisibility="VisibleOnHoverAndNonnull"
+                           pu:ComboBoxHelper.CornerRadius="2"
+                           pu:ComboBoxHelper.Watermark="ComboBox"
+                           pu:ComboBoxHelper.ItemsSeparatorVisibility="Visible"
+                           pu:ComboBoxHelper.ItemsSeparatorMargin="15,0"
+                           pu:ComboBoxHelper.ItemsRemoveButtonVisibility="Visible">
+                    <ComboBoxItem Content="Item 1" />
+                    <ComboBoxItem Content="Item 2" />
+                    <ComboBoxItem Content="Item 3" />
+                    <ComboBoxItem Content="Item 4" />
+                    <ComboBoxItem Content="Item 5" />
+                </ComboBox>
+                <Border Margin="0,20,0,100"
+                        Width="600"
+                        Background="Orange">
+                    <DataGrid x:Name="dataGrid"
+                              Margin="20"
+                              Background="Transparent"
+                              GridLinesVisibility="Horizontal"
+                              pu:DataGridHelper.ColumnHeaderSeparatorVisibility="Collapsed"
+                              pu:DataGridHelper.RowHeaderBackground="Transparent"
+                              pu:DataGridHelper.ColumnHeaderBackground="Transparent"
+                              pu:DataGridHelper.ColumnHeaderHorizontalContentAlignment="Left">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow"
+                                   BasedOn="{StaticResource {x:Type DataGridRow}}">
+                                <Setter Property="pu:DataGridHelper.RowIndex"
+                                        Value="{Binding Row, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                </Border>
+                <ListBox Height="100"
+                         pu:ListBoxHelper.ItemsSelectedForeground="Red"
+                         pu:ListBoxHelper.ItemsHoverForeground="Blue"
+                         pu:ListBoxHelper.ItemsSeparatorVisibility="Visible">
+                    <ListBoxItem Content="Hello World 1" />
+                    <ListBoxItem Content="Hello World 2" />
+                    <ListBoxItem Content="Hello World 3" />
+                    <ListBoxItem Content="Hello World 4" />
+                    <ListBoxItem Content="Hello World 5" />
+                    <ListBoxItem Content="Hello World 6" />
+                </ListBox>
+                <TreeView Margin="0,20,0,0"
+                          Height="200"
+                          Foreground="Red"
+                          pu:TreeViewHelper.ItemsRulerLineVisiblity="Both"
+                          pu:TreeViewHelper.ItemsRulerLineDashArray="2,3">
+                    <TreeViewItem Header="Item 1" />
+                    <TreeViewItem Header="Item 2" />
+                </TreeView>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</pu:WindowX>

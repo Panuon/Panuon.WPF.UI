@@ -1,0 +1,200 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewItemTemplate}"
+                     TargetType="TreeViewItem">
+        <StackPanel>
+            <i:ContentControlX x:Name="CcMain"
+                               Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               CornerRadius="{Binding Path=(local:TreeViewItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Padding="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="{Binding Path=(local:TreeViewHelper.IconWidth), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="TgbToggle"
+                                  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                  Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToHiddenConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <i:IconPresenter x:Name="IpIcon"
+                                     Grid.Column="1"
+                                     Focusable="False"
+                                     Content="{Binding Path=(local:TreeViewItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <local:SeparatorX x:Name="SprtHorizontal"
+                                      Grid.Column="1"
+                                      Visibility="Collapsed"
+                                      Orientation="Horizontal"
+                                      VerticalAlignment="Center"
+                                      Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <local:SeparatorX.Margin>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}}">
+                                <Binding Path="Padding"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="ActualWidth"
+                                         ElementName="TgbToggle"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:SeparatorX.Margin>
+                    </local:SeparatorX>
+                    <ContentPresenter Grid.Column="2"
+                                      Content="{TemplateBinding Header}"
+                                      ContentStringFormat="{TemplateBinding HeaderStringFormat}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                </Grid>
+            </i:ContentControlX>
+            <local:SeparatorX x:Name="SprtSeparator"
+                              VerticalAlignment="Center"
+                              Stroke="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              StrokeThickness="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Grid x:Name="GrdItems"
+                  Visibility="Collapsed">
+                <ItemsPresenter x:Name="ItemsHost" />
+                <local:SeparatorX x:Name="SprtVertical"
+                                  Orientation="Vertical"
+                                  Visibility="Collapsed"
+                                  HorizontalAlignment="Left"
+                                  Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <local:SeparatorX.Margin>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemVerticalSeparatorMarginConverter}}">
+                            <Binding Path="(local:TreeViewItemHelper.InternalPadding)"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     ElementName="TgbToggle"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </local:SeparatorX.Margin>
+                </local:SeparatorX>
+            </Grid>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger SourceName="CcMain"
+                     Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="local:TreeViewItemHelper.IsMouseDirectlyOver"
+                        Value="True" />
+            </Trigger>
+            <Trigger Property="local:TreeViewItemHelper.RulerLineVisiblity"
+                     Value="Vertical">
+                <Setter TargetName="SprtVertical"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="local:TreeViewItemHelper.RulerLineVisiblity"
+                     Value="Both">
+                <Setter TargetName="SprtVertical"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.RulerLineVisiblity), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Horizontal" />
+                    <Condition Binding="{Binding HasItems, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding ., Converter={StaticResource {x:Static irs:ConverterKeys.IsTypeConverter}}, ConverterParameter=TreeViewItem, RelativeSource={RelativeSource AncestorType=ItemsControl}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="SprtHorizontal"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.RulerLineVisiblity), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Both" />
+                    <Condition Binding="{Binding HasItems, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding ., Converter={StaticResource {x:Static irs:ConverterKeys.IsTypeConverter}}, ConverterParameter=TreeViewItem, RelativeSource={RelativeSource AncestorType=ItemsControl}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="SprtHorizontal"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="HasItems"
+                               Value="True" />
+                    <Condition Property="IsExpanded"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="GrdItems"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:TreeViewItemHelper.SelectedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="Background"
+                        Value="{Binding Path=(local:TreeViewItemHelper.SelectedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:TreeViewItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:TreeViewItemHelper.SelectedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

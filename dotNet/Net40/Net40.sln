@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{66F6760B-6DAF-47FF-A6B0-78E97EC74EDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Core", "Panuon.UI.Core\Panuon.UI.Core.csproj", "{5FF892B2-53FC-4EF0-ADEC-E0F4B0C9DD36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{E5B6DF60-A8B6-48BE-88C6-1130949FC481}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Core", "..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.shproj", "{D52B3A17-B005-4393-9256-F7ED7FDB457F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{D8C1F070-38E3-494A-A8F7-14C66EE92503}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{3925A1D9-6E08-43A7-838F-E43CF7B208EE}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{3925a1d9-6e08-43a7-838f-e43cf7b208ee}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{5ff892b2-53fc-4ef0-adec-e0f4b0c9dd36}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{66f6760b-6daf-47ff-a6b0-78e97ec74edf}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{66f6760b-6daf-47ff-a6b0-78e97ec74edf}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{d52b3a17-b005-4393-9256-f7ed7fdb457f}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{d8c1f070-38e3-494a-a8f7-14c66ee92503}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66F6760B-6DAF-47FF-A6B0-78E97EC74EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F6760B-6DAF-47FF-A6B0-78E97EC74EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F6760B-6DAF-47FF-A6B0-78E97EC74EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F6760B-6DAF-47FF-A6B0-78E97EC74EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF892B2-53FC-4EF0-ADEC-E0F4B0C9DD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF892B2-53FC-4EF0-ADEC-E0F4B0C9DD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF892B2-53FC-4EF0-ADEC-E0F4B0C9DD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF892B2-53FC-4EF0-ADEC-E0F4B0C9DD36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D52B3A17-B005-4393-9256-F7ED7FDB457F} = {E5B6DF60-A8B6-48BE-88C6-1130949FC481}
+		{D8C1F070-38E3-494A-A8F7-14C66EE92503} = {E5B6DF60-A8B6-48BE-88C6-1130949FC481}
+		{3925A1D9-6E08-43A7-838F-E43CF7B208EE} = {E5B6DF60-A8B6-48BE-88C6-1130949FC481}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDF653B6-BE5A-426D-95AA-A006316FF8C8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,241 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.WindowXTemplate}"
+                     TargetType="local:WindowX">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid x:Name="GrdMain">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <AdornerDecorator Grid.Row="1">
+                        <ContentPresenter />
+                    </AdornerDecorator>
+                    <ContentControl x:Name="CcBackstage"
+                                    Focusable="False"
+                                    Visibility="Collapsed"
+                                    Grid.RowSpan="2"
+                                    Content="{TemplateBinding Backstage}" />
+                    <Grid Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.ColumnSpan="5"
+                                Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                            <Border.Effect>
+                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                    <Binding Path="(local:WindowXCaption.ShadowColor)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.Direction)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.Opacity)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                             RelativeSource="{RelativeSource AncestorType=local:WindowX}"
+                                             Mode="OneWay" />
+                                </MultiBinding>
+                            </Border.Effect>
+                        </Border>
+                        <ContentControl x:Name="CcHeader"
+                                        Focusable="False"
+                                        Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                        Content="{Binding DataContext, Converter={StaticResource {x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        ContentTemplate="{Binding Path=(local:WindowXCaption.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                        <ContentControl x:Name="CcExtendControl"
+                                        Grid.Column="1"
+                                        Focusable="False"
+                                        local:WindowX.IsDragMoveArea="False"
+                                        Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                        <Button x:Name="BtnMinimize"
+                                Grid.Column="2"
+                                Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                Command="{TemplateBinding MinimizeCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                local:WindowX.IsDragMoveArea="False" />
+                        <Button x:Name="BtnMaximize"
+                                Grid.Column="3"
+                                Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                Command="{TemplateBinding MaximizeCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                local:WindowX.IsDragMoveArea="False" />
+                        <Button x:Name="BtnClose"
+                                Grid.Column="4"
+                                Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                Command="{TemplateBinding CloseCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                IsEnabled="{TemplateBinding CanClose}"
+                                local:WindowX.IsDragMoveArea="False" />
+                    </Grid>
+                </Grid>
+                <Rectangle x:Name="RectMask"
+                           Fill="{TemplateBinding MaskBrush}"
+                           Opacity="0"
+                           Visibility="Collapsed" />
+                <ContentControl Content="{TemplateBinding Overlayer}"
+                                Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ResizeMode"
+                     Value="CanMinimize">
+                <Setter TargetName="BtnMaximize"
+                        Property="IsEnabled"
+                        Value="False" />
+            </Trigger>
+            <Trigger Property="ResizeMode"
+                     Value="NoResize">
+                <Setter TargetName="BtnMinimize"
+                        Property="IsEnabled"
+                        Value="False" />
+                <Setter TargetName="BtnMaximize"
+                        Property="IsEnabled"
+                        Value="False" />
+            </Trigger>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter TargetName="GrdMain"
+                        Property="Margin"
+                        Value="5" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.Buttons"
+                     Value="None">
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnClose"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.Buttons"
+                     Value="Close">
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.Buttons"
+                     Value="MaximizeClose">
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.Buttons"
+                     Value="MinimizeClose">
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="WindowStyle"
+                     Value="ToolWindow">
+                <Setter TargetName="BtnMinimize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMaximize"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.HeaderAlignment"
+                     Value="Stretch">
+                <Setter TargetName="CcHeader"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
+            </Trigger>
+            <Trigger Property="local:WindowXCaption.HeaderAlignment"
+                     Value="Center">
+                <Setter TargetName="CcHeader"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
+                <Setter TargetName="CcHeader"
+                        Property="Grid.HorizontalAlignment"
+                        Value="Center" />
+            </Trigger>
+            <Trigger Property="IsMaskVisible"
+                     Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RectMask"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0"
+                                                        Value="{x:Static Visibility.Visible}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <DoubleAnimation Storyboard.TargetName="RectMask"
+                                             Storyboard.TargetProperty="Opacity"
+                                             From="0"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RectMask"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                                        Value="{x:Static Visibility.Collapsed}" />
+                            </ObjectAnimationUsingKeyFrames>
+                            <DoubleAnimation Storyboard.TargetName="RectMask"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsBackstageVisible"
+                     Value="True">
+                <Setter TargetName="CcBackstage"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="CcHeader"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="CcExtendControl"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                <Setter TargetName="BtnClose"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+</ResourceDictionary>
