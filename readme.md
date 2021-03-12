@@ -2,4 +2,4 @@
 
 # PanuonUI.Silver v2.2
 
-### This project is still under development. Do not upgrade to this version rashly from the previous version, or use this version on emergency projects. 
+### This project is still under development. Do not upgrade to this version rashly from the previous version, or use this version on urgent projects. 
