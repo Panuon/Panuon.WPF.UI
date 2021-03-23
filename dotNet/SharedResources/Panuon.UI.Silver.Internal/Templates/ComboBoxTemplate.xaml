@@ -339,9 +339,8 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="TextBox">
-                                                <Border x:Name="PART_ContentHost"
-                                                        Focusable="False"
-                                                        Margin="{TemplateBinding Padding}" />
+                                                <ScrollViewer x:Name="PART_ContentHost"
+                                                        Focusable="False"/>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>

@@ -16,7 +16,18 @@
             pu:WindowXCaption.ShadowColor="{x:Null}"
             pu:ShadowHelper.BlurRadius="20"
             WindowStartupLocation="CenterScreen">
-    <Grid Background="Transparent">
+    <pu:WindowXCaption.ExtendControl>
+        <StackPanel>
+            
+        </StackPanel>
+    </pu:WindowXCaption.ExtendControl>
+    <Window.Resources>
+        <Style x:Key="RepeatButtonStyle"
+               TargetType="RepeatButton"
+               BasedOn="{StaticResource {x:Type RepeatButton}}">
+        </Style>
+    </Window.Resources>
+    <Grid  Background="Transparent">
         <ScrollViewer pu:ScrollBarHelper.ScrollButtonVisibility="Visible">
             <!--<TabControl Height="150"
                     Margin="40">
@@ -171,6 +182,7 @@
                         <RepeatButton Margin="0,20,0,0"
                                       Height="40"
                                       Width="200"
+                                      Style="{StaticResource RepeatButtonStyle}"
                                       pu:RepeatButtonHelper.HoverForeground="Blue"
                                       pu:RepeatButtonHelper.ClickForeground="Green"
                                       pu:RepeatButtonHelper.CornerRadius="5"
@@ -182,7 +194,6 @@
                                       Height="40"
                                       Width="200"
                                       pu:ToggleButtonHelper.HoverForeground="Blue"
-                                      pu:ToggleButtonHelper.CheckedForeground="Green"
                                       pu:ToggleButtonHelper.CornerRadius="5"
                                       pu:ToggleButtonHelper.Icon="&#xe930;"
                                       pu:IconHelper.FontSize="16"
@@ -208,6 +219,9 @@
                          Width="200"
                          Padding="3"
                          BorderBrush="Transparent"
+                         pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                         pu:IconHelper.FontSize="16"
+                         pu:TextBoxHelper.Icon="&#xe937;"
                          pu:TextBoxHelper.HoverBorderBrush="#6CBCEA"
                          pu:TextBoxHelper.FocusedBorderBrush="#6CBCEA"
                          pu:TextBoxHelper.ClearButtonVisibility="VisibleOnFocusedAndNonnull"
@@ -240,6 +254,28 @@
                              pu:PasswordBoxHelper.CornerRadius="2"
                              pu:PasswordBoxHelper.HoverForeground="#6CBCEA"
                              pu:PasswordBoxHelper.FocusedForeground="#6CBCEA" />
+                <Border Background="#3E3E3E"
+                        Margin="0,20,0,0">
+                    <ComboBox Margin="0,20"
+                              Height="35"
+                              Width="200"
+                              Background="Transparent"
+                              pu:ComboBoxHelper.ItemsIcon="&#xe937;"
+                              pu:ComboBoxHelper.ItemsSelectedForeground="Red"
+                              pu:ComboBoxHelper.ItemsBackground="#3E3E3E"
+                              pu:ComboBoxHelper.ItemsHoverBackground="#4E4E4E"
+                              pu:ComboBoxHelper.ItemsSelectedBackground="#5E5E5E"
+                              pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
+                              pu:IconHelper.FontSize="16"
+                              pu:ComboBoxHelper.Icon="&#xe937;"
+                              Foreground="#FFFFFF">
+                        <ComboBoxItem Content="Item 1"
+                                      pu:IconHelper.Foreground="Green" />
+                        <ComboBoxItem Content="Item 2" />
+                        <ComboBoxItem Content="Item 3" />
+                        <ComboBoxItem Content="Item 4" />
+                    </ComboBox>
+                </Border>
                 <ComboBox  x:Name="cmb"
                            Margin="0,20,0,0"
                            Height="35"
@@ -263,13 +299,17 @@
                            pu:ComboBoxHelper.SearchText="1234567"
                            pu:ComboBoxHelper.IsSearchTextBoxPinned="True"
                            pu:ComboBoxHelper.SearchTextBoxVisibility="Visible"
-                           pu:DropDownHelper.BorderBrush="Transparent" />
+                           pu:DropDownHelper.BorderBrush="Transparent">
+                    <ComboBoxItem Content="Item 12345678901234567890" />
+
+                </ComboBox>
                 <ComboBox  Margin="0,20,0,0"
                            Height="35"
                            Width="200"
                            pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
                            pu:IconHelper.FontSize="16"
                            pu:ComboBoxHelper.Icon="&#xe937;"
+                           pu:ComboBoxHelper.ItemsIcon="&#xe937;"
                            pu:ShadowHelper.BlurRadius="20"
                            pu:ComboBoxHelper.ClearButtonVisibility="VisibleOnHoverAndNonnull"
                            pu:ComboBoxHelper.CornerRadius="2"
@@ -284,10 +324,10 @@
                     <ComboBoxItem Content="Item 5" />
                 </ComboBox>
                 <Border Margin="0,20,0,100"
-                        Width="600"
-                        Background="Orange">
+                        Width="600">
                     <DataGrid x:Name="dataGrid"
                               Margin="20"
+                              MaxHeight="200"
                               Background="Transparent"
                               GridLinesVisibility="Horizontal"
                               pu:DataGridHelper.ColumnHeaderSeparatorVisibility="Collapsed"
@@ -304,6 +344,8 @@
                     </DataGrid>
                 </Border>
                 <ListBox Height="100"
+                         HorizontalContentAlignment="Right"
+                         pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
                          pu:ListBoxHelper.ItemsSelectedForeground="Red"
                          pu:ListBoxHelper.ItemsHoverForeground="Blue"
                          pu:ListBoxHelper.ItemsSeparatorVisibility="Visible">
@@ -316,12 +358,49 @@
                 </ListBox>
                 <TreeView Margin="0,20,0,0"
                           Height="200"
-                          Foreground="Red"
-                          pu:TreeViewHelper.ItemsRulerLineVisiblity="Both"
-                          pu:TreeViewHelper.ItemsRulerLineDashArray="2,3">
-                    <TreeViewItem Header="Item 1" />
-                    <TreeViewItem Header="Item 2" />
+                          Width="200"
+                          HorizontalContentAlignment="Stretch"
+                          pu:TreeViewHelper.ItemsPadding="15,0"
+                          pu:TreeViewHelper.ItemsRulerLineDashArray="2,2"
+                          pu:TreeViewHelper.ItemsRulerLineVisiblity="Both">
+                    <pu:TreeViewHelper.ToggleArrowToggleButtonStyle>
+                        <Style TargetType="ToggleButton"
+                               BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyle, TypeInTargetAssembly={x:Type pu:TreeViewHelper}}}">
+                            <Setter Property="Content"
+                                    Value="&#xe945;" />
+                            <Setter Property="pu:ToggleButtonHelper.CheckedContent"
+                                    Value="&#xe947;" />
+                        </Style>
+                    </pu:TreeViewHelper.ToggleArrowToggleButtonStyle>
+                    <TreeViewItem Header="Item 1">
+                        <TreeViewItem Header="Item 1-1">
+                            <TreeViewItem Header="Item 1-1" />
+                            <TreeViewItem Header="Item 1-2" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Item 1-2" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Item 2"/>
                 </TreeView>
+                <TabControl Margin="0,20,0,0"
+                            BorderBrush="lightgray"
+                            HorizontalAlignment="Center"
+                            pu:TabControlHelper.ItemsHeight="60"
+                            pu:TabControlHelper.ItemsWidth="60"
+                            pu:TabControlHelper.ItemsBackground="#446CBCEA"
+                            pu:TabControlHelper.ItemsHoverBackground="#886CBCEA"
+                            pu:TabControlHelper.ItemsSelectedBackground="#6CBCEA"
+                            pu:TabControlHelper.ItemsSelectedForeground="White">
+                    <TabItem Header="Item1" />
+                    <TabItem Header="Item2" />
+                    <TabItem Header="Item3" />
+                    <TabItem Header="Item4" />
+                    <TabItem Header="Item5" />
+                    <TabItem Header="Item6" />
+                    <TabItem Header="Item7" />
+                    <TabItem Header="Item8" />
+                    <TabItem Header="Item9" />
+                    <TabItem Header="Item10" />
+                </TabControl>
             </StackPanel>
         </ScrollViewer>
     </Grid>

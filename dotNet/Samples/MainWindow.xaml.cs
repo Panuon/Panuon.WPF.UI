@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -20,15 +21,13 @@ namespace Samples
         public MainWindow()
         {
             InitializeComponent();
-
+            DataContext = new ViewModel();
         }
-
-        public string Name { get; set; }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var items = new ObservableCollection<TestModel>();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 100; i++)
             {
                 items.Add(new TestModel() { DisplayName = i.ToString(), Value = i });
             }
@@ -49,7 +48,7 @@ namespace Samples
                 WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
             window.Owner = this;
-            window.ShowDialog();
+            window.Show();
         }
 
         private void Grid_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -57,6 +56,15 @@ namespace Samples
             
         }
 
+        private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+    }
+
+    public class ViewModel 
+    {
+        public Brush Brush { get; set; } = Brushes.Red;
     }
 
     public class TestModel : NotifyPropertyChangedBase
@@ -81,7 +89,6 @@ namespace Samples
         private string _selectedValue = "1";
         #endregion
 
-
         #region Values
         [ColumnIgnore]
         public IList<string> Values { get; } = new List<string>() { "1", "2", "3", "4" };
@@ -91,6 +98,9 @@ namespace Samples
         public int Value { get => _value; set => Set(ref _value, value); }
         private int _value;
         #endregion
+
+        public AnimationEase Ease { get => _ease; set => Set(ref _ease, value); }
+        private AnimationEase _ease;
 
         #region Value
         public bool IsEnabled { get => _isEnabled; set => Set(ref _isEnabled, value); }
