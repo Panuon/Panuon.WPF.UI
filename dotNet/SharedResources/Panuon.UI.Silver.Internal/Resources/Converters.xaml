@@ -39,8 +39,11 @@
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
     <icv:SpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.SpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
+    <icv:TabPanelMaxHeightConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}" />
+    <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}" />
     <icv:TreeViewInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}" />
     <icv:TreeViewItemHorizontalSeparatorMarginConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}" />
+    <icv:TreeViewItemHorizontalSeparatorWidthConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorWidthConverter}" />
     <icv:TreeViewItemVerticalSeparatorMarginConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemVerticalSeparatorMarginConverter}" />
     <icv:TreeViewItemInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemInternalPaddingConverter}" />
     <icv:TrueToCollapseConverter x:Key="{x:Static rs:ConverterKeys.TrueToCollapseConverter}" />

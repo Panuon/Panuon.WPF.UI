@@ -27,6 +27,84 @@
                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}"
+           TargetType="MenuItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Height"
+                Value="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.VerticalAlignment"
+                Value="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.HorizontalAlignment"
+                Value="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinWidth"
+                Value="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinHeight"
+                Value="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxWidth"
+                Value="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxHeight"
+                Value="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.CornerRadius"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.SeparatorBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.SeparatorThickness"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.SeparatorMargin"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.SeparatorVisibility"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.HoverBackground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.HoverForeground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.CheckedBackground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.CheckedBorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.CheckedForeground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.ClickBackground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsClickBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.ClickBorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.ClickForeground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsClickForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Icon"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuItemTemplate}}" />
+    </Style>
+
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"
         TargetType="{x:Type ContextMenu}">
         <Setter Property="local:IconHelper.FontFamily"
@@ -109,60 +187,8 @@
             </Trigger>
         </Style.Triggers>
         <Style.Resources>
-            <Style TargetType="MenuItem">
-                <Setter Property="i:VisualStateHelper.Regist"
-                        Value="True" />
-                <Setter Property="i:VisualStateHelper.IsHover"
-                        Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-                <Setter Property="local:IconHelper.Foreground"
-                        Value="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.CornerRadius"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.SeparatorBrush"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.SeparatorThickness"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.SeparatorMargin"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.SeparatorVisibility"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.HoverBackground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.HoverBorderBrush"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.HoverForeground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.CheckedBackground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.CheckedBorderBrush"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.CheckedForeground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsCheckedForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.ClickBackground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsClickBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.ClickBorderBrush"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="local:MenuItemHelper.ClickForeground"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsClickForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Padding"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Margin"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Icon"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Background"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="BorderBrush"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="BorderThickness"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Height"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Width"
-                        Value="{Binding Path=(local:ContextMenuHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuItemTemplate}}" />
-            </Style>
+            <Style TargetType="MenuItem"
+                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
         </Style.Resources>
     </Style>
 </ResourceDictionary>

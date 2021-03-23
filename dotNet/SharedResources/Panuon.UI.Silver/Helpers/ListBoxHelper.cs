@@ -47,21 +47,6 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
-        #region CornerRadius
-        public static CornerRadius GetCornerRadius(ListBox listBox)
-        {
-            return (CornerRadius)listBox.GetValue(CornerRadiusProperty);
-        }
-
-        public static void SetCornerRadius(ListBox listBox, CornerRadius value)
-        {
-            listBox.SetValue(CornerRadiusProperty, value);
-        }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ListBoxHelper));
-        #endregion
-
         #region RemoveButtonStyle
         public static Style GetRemoveButtonStyle(ListBox listBox)
         {

@@ -1,11 +1,23 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Effects;
+using System.Linq;
 
 namespace Panuon.UI.Silver.Internal
 {
+    [TemplatePart(Name = IconPresenterPartName, Type = typeof(IconPresenter))]
     class ContentControlX : ContentControl
     {
+        #region Fields
+        private const string IconPresenterPartName = "PART_Icon";
+
+        private IconPresenter _iconPresenter;
+        #endregion
+
         #region Ctor
         static ContentControlX()
         {
@@ -14,7 +26,30 @@ namespace Panuon.UI.Silver.Internal
         }
         #endregion
 
+        #region Overrides
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            _iconPresenter = GetTemplateChild(IconPresenterPartName) as IconPresenter;
+            if (IconForeground != null)
+            {
+                _iconPresenter.Foreground = IconForeground;
+            }
+        }
+        #endregion
+
         #region Properties
+
+        #region IsDependentBorderMode
+        public bool IsDependentBorderMode
+        {
+            get { return (bool)GetValue(IsDependentBorderModeProperty); }
+            set { SetValue(IsDependentBorderModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsDependentBorderModeProperty =
+            DependencyProperty.Register("IsDependentBorderMode", typeof(bool), typeof(ContentControlX));
+        #endregion
 
         #region CornerRadius
         public CornerRadius CornerRadius
@@ -49,6 +84,23 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.Register("Icon", typeof(object), typeof(ContentControlX));
         #endregion
 
+        #region IconForeground
+        public Brush IconForeground
+        {
+            get { return (Brush)GetValue(IconForegroundProperty); }
+            set { SetValue(IconForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty IconForegroundProperty =
+            DependencyProperty.Register("IconForeground", typeof(Brush), typeof(ContentControlX), new PropertyMetadata(OnIconForegroundChanged));
+
+        private static void OnIconForegroundChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var contentControl = (ContentControlX)d;
+            contentControl.OnIconForegroundChanged();
+        }
+        #endregion
+
         #region IconPlacement
         public IconPlacement IconPlacement
         {
@@ -80,8 +132,35 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly DependencyProperty SourceProperty =
             DependencyProperty.Register("Source", typeof(FrameworkElement), typeof(ContentControlX));
-        #endregion 
+        #endregion
 
+        #endregion
+
+        #region Functions
+        private void OnIconForegroundChanged()
+        {
+
+            if (_iconPresenter != null)
+            {
+                if (IconForeground != null)
+                {
+                    var bindingProperty = BindingOperations.GetBinding(Source, IconHelper.ForegroundProperty)?.Path?.PathParameters?.FirstOrDefault() as DependencyProperty;
+                    if(bindingProperty != null && bindingProperty.OwnerType == typeof(Internal.VisualStateHelper))
+                    {
+                        _iconPresenter.Foreground = IconForeground;
+                    }
+                }
+                else
+                {
+                    var bindingProperty = BindingOperations.GetBinding(Source, IconHelper.ForegroundProperty)?.Path?.PathParameters?.FirstOrDefault() as DependencyProperty;
+                    if (bindingProperty != null && bindingProperty.OwnerType == typeof(Internal.VisualStateHelper))
+                    {
+                        FrameworkElementUtil.BindingProperty(_iconPresenter, IconPresenter.ForegroundProperty, Source, IconHelper.ForegroundProperty);
+                    }
+                }
+            }
+
+        }
         #endregion
 
     }

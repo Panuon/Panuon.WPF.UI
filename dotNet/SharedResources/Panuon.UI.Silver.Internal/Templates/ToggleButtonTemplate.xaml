@@ -64,8 +64,9 @@
                     <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter Property="local:IconHelper.Foreground"
-                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="IconForeground"
+                        Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="CcMain"
                         Property="Foreground"
                         Value="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />

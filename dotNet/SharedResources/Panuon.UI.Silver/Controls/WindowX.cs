@@ -328,7 +328,7 @@ namespace Panuon.UI.Silver
         private static void OnIsDragMoveAreaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = d as UIElement;
-            if ((bool)e.NewValue)
+            if ((bool?)e.NewValue == true)
             {
                 WindowChromeUtil.SetIsHitTestVisibleInChrome(element, false);
                 element.PreviewMouseDown += Element_PreviewMouseDown;

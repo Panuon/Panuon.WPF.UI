@@ -64,8 +64,9 @@
                     <Condition Binding="{Binding Path=(local:RepeatButtonHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter Property="local:IconHelper.Foreground"
-                        Value="{Binding Path=(local:RepeatButtonHelper.ClickForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="IconForeground"
+                        Value="{Binding Path=(local:RepeatButtonHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="CcMain"
                         Property="Foreground"
                         Value="{Binding Path=(local:RepeatButtonHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />

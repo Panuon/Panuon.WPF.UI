@@ -17,6 +17,28 @@
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Height"
+                Value="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.VerticalAlignment"
+                Value="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.HorizontalAlignment"
+                Value="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinWidth"
+                Value="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinHeight"
+                Value="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxWidth"
+                Value="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxHeight"
+                Value="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
         <Style.Triggers>
             <Trigger Property="Role"
                      Value="TopLevelHeader">

@@ -105,6 +105,21 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("ToggleBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
+        #region RibbonLineBrush
+        public static Brush GetRibbonLineBrush(Control control)
+        {
+            return (Brush)control.GetValue(RibbonLineBrushProperty);
+        }
+
+        public static void SetRibbonLineBrush(Control control, Brush value)
+        {
+            control.SetValue(RibbonLineBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty RibbonLineBrushProperty =
+            DependencyProperty.RegisterAttached("RibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
         #region Effect
         public static DropShadowEffect GetEffect(DependencyObject obj)
         {
@@ -173,6 +188,11 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
+        #region HoverGlyphBrushProperty
+        public static readonly DependencyProperty HoverRibbonLineBrushProperty =
+            DependencyProperty.RegisterAttached("HoverRibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
         #region HoverBorderBrushLock
         public static bool GetHoverBorderBrushLock(DependencyObject obj)
         {
@@ -185,7 +205,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty HoverBorderBrushLockProperty =
-            DependencyProperty.RegisterAttached("HoverBorderBrushLock", typeof(bool), typeof(VisualStateHelper));
+            DependencyProperty.RegisterAttached("HoverBorderBrushLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
         #region HoverBackgroundLock
@@ -200,7 +220,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty HoverBackgroundLockProperty =
-            DependencyProperty.RegisterAttached("HoverBackgroundLock", typeof(bool), typeof(VisualStateHelper));
+            DependencyProperty.RegisterAttached("HoverBackgroundLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
         #region HoverForegroundLock
@@ -215,7 +235,8 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty HoverForegroundLockProperty =
-            DependencyProperty.RegisterAttached("HoverForegroundLock", typeof(bool), typeof(VisualStateHelper));
+            DependencyProperty.RegisterAttached("HoverForegroundLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
+
         #endregion
 
         #region IsHover
@@ -325,7 +346,7 @@ namespace Panuon.UI.Silver.Internal
             FrameworkElementUtil.BindingProperty(element, BackgroundProperty, element, Control.BackgroundProperty);
             if (element is TabItem)
             {
-                //FrameworkElementUtil.BindingProperty(element, ForegroundProperty, element, TabItemHelper.ForegroundProperty);
+                FrameworkElementUtil.BindingProperty(element, ForegroundProperty, element, TabItemHelper.ForegroundProperty);
             }
             else
             {
@@ -352,6 +373,15 @@ namespace Panuon.UI.Silver.Internal
             effectBinding.Bindings.Add(CreateBinding(ShadowHelper.OpacityProperty));
             effectBinding.Bindings.Add(CreateBinding(ShadowHelper.RenderingBiasProperty));
             element.SetBinding(EffectProperty, effectBinding);
+        }
+
+        private static void OnHoverLockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if (!(bool)e.NewValue)
+            {
+                Element_MouseLeave(element, null);
+            }
         }
 
         private static void OnIsHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -442,7 +472,10 @@ namespace Panuon.UI.Silver.Internal
                 {
                     propertyBrushes.Add(Control.ForegroundProperty, hoverForeground);
                 }
-                propertyBrushes.Add(ForegroundProperty, hoverForeground);
+                else
+                {
+                    propertyBrushes.Add(ForegroundProperty, hoverForeground);
+                }
             }
             if (!GetHoverBorderBrushLock((DependencyObject)sender) && element.GetValue(HoverBorderBrushProperty) is Brush hoverBorderBrush)
             {
@@ -455,6 +488,10 @@ namespace Panuon.UI.Silver.Internal
             if (element.GetValue(HoverToggleBrushProperty) is Brush hoverToggleBrush)
             {
                 propertyBrushes.Add(ToggleBrushProperty, hoverToggleBrush);
+            }
+            if(element.GetValue(HoverRibbonLineBrushProperty) is Brush hoverRibbonLineBrush)
+            {
+                propertyBrushes.Add(RibbonLineBrushProperty, hoverRibbonLineBrush);
             }
             if (propertyBrushes.Any())
             {
@@ -477,19 +514,26 @@ namespace Panuon.UI.Silver.Internal
                 {
                     properties.Add(Control.ForegroundProperty);
                 }
-                properties.Add(ForegroundProperty);
+                else
+                {
+                    properties.Add(ForegroundProperty);
+                }
             }
             if (!GetHoverBorderBrushLock((DependencyObject)sender) && element.GetValue(HoverBorderBrushProperty) != null)
             {
                 properties.Add(BorderBrushProperty);
             }
-            if (element.GetValue(HoverGlyphBrushProperty) is Brush hoverGlyphBrush)
+            if (element.GetValue(HoverGlyphBrushProperty) != null)
             {
                 properties.Add(GlyphBrushProperty);
             }
-            if (element.GetValue(HoverToggleBrushProperty) is Brush hoverToggleBrush)
+            if (element.GetValue(HoverToggleBrushProperty) != null)
             {
                 properties.Add(ToggleBrushProperty);
+            }
+            if (element.GetValue(HoverRibbonLineBrushProperty) != null)
+            {
+                properties.Add(RibbonLineBrushProperty);
             }
             if (properties.Any())
             {

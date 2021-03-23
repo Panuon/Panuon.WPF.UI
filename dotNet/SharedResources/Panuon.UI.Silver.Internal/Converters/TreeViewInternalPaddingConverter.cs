@@ -10,8 +10,7 @@ namespace Panuon.UI.Silver.Internal.Converters
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var padding = value as Thickness? ?? new Thickness(0);
-            padding.Left = -padding.Left;
-            return padding;
+            return new Thickness(-padding.Left / 2, -padding.Top / 2, -padding.Right / 2, -padding.Bottom / 2);
         }
     }
 }

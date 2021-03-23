@@ -131,23 +131,7 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region ArrangeOverride
-        protected override Size ArrangeOverride(Size finalSize)
-        {
-            var width = finalSize.Width;
-            var height = finalSize.Height;
-            if (_isVertical)
-            {
-                width = DesiredSize.Width;
-            }
-            else
-            {
-                height = DesiredSize.Height;
-            }
-
-            return new Size(width, height);
-        }
-        #endregion
+       
 
         #region OnRender
         protected override void OnRender(DrawingContext drawingContext)
@@ -158,7 +142,7 @@ namespace Panuon.UI.Silver
             }
             if (_isVertical)
             {
-                drawingContext.DrawLine(_pen, new Point(0, 0), new Point(0, RenderSize.Height));
+                drawingContext.DrawLine(_pen, new Point(StrokeThickness, 0), new Point(StrokeThickness, RenderSize.Height));
             }
             else
             {

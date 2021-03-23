@@ -45,6 +45,7 @@
                         <Border Margin="2,0,0,0">
                             <ContentControl x:Name="ContentSite"
                                             IsHitTestVisible="False"
+                                            Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                             Margin="{TemplateBinding Padding}"
                                             Content="{TemplateBinding SelectionBoxItem}"
                                             ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"

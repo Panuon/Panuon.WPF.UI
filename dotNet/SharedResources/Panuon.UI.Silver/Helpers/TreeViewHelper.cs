@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IconWidthProperty =
-            DependencyProperty.RegisterAttached("IconWidth", typeof(double), typeof(TreeViewHelper));
+            DependencyProperty.RegisterAttached("IconWidth", typeof(double), typeof(TreeViewHelper), new PropertyMetadata(double.NaN));
         #endregion 
 
         #region ToggleArrowToggleButtonStyle
@@ -36,6 +36,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ToggleArrowToggleButtonStyleProperty =
             DependencyProperty.RegisterAttached("ToggleArrowToggleButtonStyle", typeof(Style), typeof(TreeViewHelper));
+        #endregion
+
+        #region ToggleArrowPlacement
+        public static ToggleArrowPlacement GetToggleArrowPlacement(TreeView treeView)
+        {
+            return (ToggleArrowPlacement)treeView.GetValue(ToggleArrowPlacementProperty);
+        }
+
+        public static void SetToggleArrowPlacement(TreeView treeView, ToggleArrowPlacement value)
+        {
+            treeView.SetValue(ToggleArrowPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ToggleArrowPlacementProperty =
+            DependencyProperty.RegisterAttached("ToggleArrowPlacement", typeof(ToggleArrowPlacement), typeof(TreeViewHelper));
         #endregion
 
         #region ItemsProperty

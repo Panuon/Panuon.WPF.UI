@@ -13,6 +13,8 @@
     <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyle, TypeInTargetAssembly={x:Type local:TreeViewHelper}}"
            TargetType="ToggleButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ToggleButtonStyle}}">
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:TreeViewItemHelper.ToggleBrush), RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.HoverBackground"
                 Value="{x:Null}" />
         <Setter Property="local:ToggleButtonHelper.CheckedBackground"

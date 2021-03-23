@@ -43,7 +43,7 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </i:ContentControlX>
-            <local:SeparatorX x:Name="sprtSeparator"
+            <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
                               VerticalAlignment="Center"
                               Stroke="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -83,6 +83,9 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="Foreground"
+                        Value="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="IconForeground"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>

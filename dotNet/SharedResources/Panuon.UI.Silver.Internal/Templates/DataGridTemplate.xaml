@@ -11,7 +11,8 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DataGridCellTemplate}"
                      TargetType="DataGridCell">
-        <Grid x:Name="GrdMain">
+        <Grid x:Name="GrdMain"
+              Background="Transparent">
             <Border x:Name="BdrBack"
                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                     BorderThickness="1"
@@ -148,6 +149,25 @@
                         Property="Background"
                         Value="{Binding Path=(local:DataGridHelper.UnitHoverBackground),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding SelectionUnit, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="FullRow" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.UnitSelectedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.UnitHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="Background"
+                        Value="{Binding Path=(local:DataGridHelper.UnitHoverBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -176,8 +196,7 @@
                                   ContentSource="Content" />
                 <local:TransformControl x:Name="TcArrow"
                                         Grid.Column="1"
-                                        Style="{Binding Path=(local:DataGridHelper.SortArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
-                                        ContentTemplate="{Binding Path=(local:DataGridHelper.SortArrowIconTemplate), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                                        Style="{Binding Path=(local:DataGridHelper.SortArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
             </Grid>
             <Thumb x:Name="PART_LeftHeaderGripper"
                    HorizontalAlignment="Left"

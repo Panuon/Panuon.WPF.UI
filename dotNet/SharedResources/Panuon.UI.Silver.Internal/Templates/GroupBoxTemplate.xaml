@@ -40,7 +40,7 @@
                                       TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       TextElement.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
-                <local:SeparatorX x:Name="sprtSeparator"
+                <local:SeparatorX x:Name="SprtSeparator"
                                   Grid.Row="1"
                                   VerticalAlignment="Center"
                                   Stroke="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -59,7 +59,7 @@
                 <Setter TargetName="GrdHeader"
                         Property="Grid.Row"
                         Value="4" />
-                <Setter TargetName="sprtSeparator"
+                <Setter TargetName="SprtSeparator"
                         Property="Grid.Row"
                         Value="3" />
             </Trigger>

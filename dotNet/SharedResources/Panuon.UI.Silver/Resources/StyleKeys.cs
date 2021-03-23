@@ -23,6 +23,8 @@
         public const string RepeatButtonStyle = nameof(RepeatButtonStyle);
         public const string ScrollBarStyle = nameof(ScrollBarStyle);
         public const string ScrollViewerStyle = nameof(ScrollViewerStyle);
+        public const string TabControlStyle = nameof(TabControlStyle);
+        public const string TabItemStyle = nameof(TabItemStyle);
         public const string TextBoxStyle = nameof(TextBoxStyle);
         public const string ToolTipStyle = nameof(ToolTipStyle);
         public const string TreeViewStyle = nameof(TreeViewStyle);

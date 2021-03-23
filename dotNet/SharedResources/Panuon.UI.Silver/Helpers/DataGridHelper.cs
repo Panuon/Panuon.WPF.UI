@@ -48,21 +48,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SortArrowTransformControlStyle", typeof(Style), typeof(DataGridHelper));
         #endregion
 
-        #region SortArrowIconTemplate
-        public static DataTemplate GetSortArrowIconTemplate(DataGrid dataGrid)
-        {
-            return (DataTemplate)dataGrid.GetValue(SortArrowIconTemplateProperty);
-        }
-
-        public static void SetSortArrowIconTemplate(DataGrid dataGrid, DataTemplate value)
-        {
-            dataGrid.SetValue(SortArrowIconTemplateProperty, value);
-        }
-
-        public static readonly DependencyProperty SortArrowIconTemplateProperty =
-            DependencyProperty.RegisterAttached("SortArrowIconTemplate", typeof(DataTemplate), typeof(DataGridHelper));
-        #endregion
-
         #region SortArrowVisibility
         public static DataGridSortArrowVisibility GetSortArrowVisibility(DataGrid dataGrid)
         {
@@ -631,8 +616,22 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ColumnsSequenceProperty =
             DependencyProperty.RegisterAttached("ColumnsSequence", typeof(IList<string>), typeof(DataGridHelper));
-        #endregion 
+        #endregion
 
+        #endregion
+
+        #region Methods
+        public static void SortColumn(DataGrid dataGrid, string propertyName, ListSortDirection direction)
+        {
+            var dictionary = GetDataGridColumnDictionary(dataGrid);
+            if (dictionary.ContainsKey(propertyName))
+            {
+                var column = dictionary[propertyName];
+                column.SortDirection = direction;
+                return;
+            }
+            throw new Exception($"The column named {propertyName} could not be found in the auto-generated columns.");
+        }
         #endregion
 
         #region Internal Properties
@@ -695,7 +694,22 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty ColumnIndexProperty =
             DependencyProperty.RegisterAttached("ColumnIndex", typeof(int), typeof(DataGridHelper));
-        #endregion 
+        #endregion
+
+        #region DataGridColumnDictionary
+        internal static Dictionary<string, DataGridColumn> GetDataGridColumnDictionary(DependencyObject obj)
+        {
+            return (Dictionary<string, DataGridColumn>)obj.GetValue(DataGridColumnDictionaryProperty);
+        }
+
+        internal static void SetDataGridColumnDictionary(DependencyObject obj, Dictionary<string, DataGridColumn> value)
+        {
+            obj.SetValue(DataGridColumnDictionaryProperty, value);
+        }
+
+        internal static readonly DependencyProperty DataGridColumnDictionaryProperty =
+            DependencyProperty.RegisterAttached("DataGridColumnDictionary", typeof(Dictionary<string, DataGridColumn>), typeof(DataGridHelper));
+        #endregion
 
         #endregion
 
@@ -751,6 +765,13 @@ namespace Panuon.UI.Silver
         private static void DataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             var dataGrid = (DataGrid)sender;
+
+            var dictionary = GetDataGridColumnDictionary(dataGrid);
+            if(dictionary == null)
+            {
+                dictionary = new Dictionary<string, DataGridColumn>();
+                SetDataGridColumnDictionary(dataGrid, dictionary);
+            }
 
             var descriptor = (PropertyDescriptor)e.PropertyDescriptor;
             var propertyInfo = descriptor.ComponentType.GetProperty(descriptor.Name);
@@ -1098,6 +1119,15 @@ namespace Panuon.UI.Silver
             if (attributes.OfType<ColumnReorderAttribute>().FirstOrDefault() is ColumnReorderAttribute reorderAttribute)
             {
                 e.Column.CanUserReorder = reorderAttribute.CanUserReorder;
+            }
+
+            if (dictionary.ContainsKey(e.PropertyName))
+            {
+                dictionary[e.PropertyName] = e.Column;
+            }
+            else
+            {
+                dictionary.Add(e.PropertyName, e.Column);
             }
         }
         #endregion

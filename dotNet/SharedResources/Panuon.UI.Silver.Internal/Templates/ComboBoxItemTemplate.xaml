@@ -43,7 +43,7 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </i:ContentControlX>
-            <local:SeparatorX x:Name="sprtSeparator"
+            <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
                               VerticalAlignment="Center"
                               Stroke="{Binding Path=(local:ComboBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -61,7 +61,7 @@
                                  RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="sprtSeparator"
+                <Setter TargetName="SprtSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
             </DataTrigger>
@@ -96,6 +96,9 @@
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="IconForeground"
                         Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>

@@ -35,6 +35,10 @@
                 Value="10" />
         <Setter Property="Background"
                 Value="White" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.GroupBoxTemplate}}" />
     </Style>

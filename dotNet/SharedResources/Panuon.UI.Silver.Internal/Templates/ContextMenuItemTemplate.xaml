@@ -168,7 +168,7 @@
                     </Grid>
                 </i:CustomPopup>
             </Grid>
-            <local:SeparatorX x:Name="sprtSeparator"
+            <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
                               RenderOptions.EdgeMode="Unspecified"
                               VerticalAlignment="Center"
@@ -187,7 +187,7 @@
                                  RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="sprtSeparator"
+                <Setter TargetName="SprtSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
             </DataTrigger>

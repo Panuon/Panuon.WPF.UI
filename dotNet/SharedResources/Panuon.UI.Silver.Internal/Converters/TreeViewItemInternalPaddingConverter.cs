@@ -12,6 +12,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var parentPadding = values[0] as Thickness? ?? new Thickness(0);
             var padding = values[1] as Thickness? ?? new Thickness(0);
             padding.Left += parentPadding.Left;
+            padding.Right += parentPadding.Right;
             return padding;
         }
     }

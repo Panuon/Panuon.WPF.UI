@@ -22,7 +22,10 @@
         public const string LightenSolidColorBrushConverter = nameof(LightenSolidColorBrushConverter);
         public const string ScrollableControlScrollButtonVisibilityConverter = nameof(ScrollableControlScrollButtonVisibilityConverter);
         public const string SpinnerClassicRenderTransformOriginConverter = nameof(SpinnerClassicRenderTransformOriginConverter);
+        public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
+        public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
         public const string TreeViewInternalPaddingConverter = nameof(TreeViewInternalPaddingConverter);
+        public const string TreeViewItemHorizontalSeparatorWidthConverter = nameof(TreeViewItemHorizontalSeparatorWidthConverter);
         public const string TreeViewItemHorizontalSeparatorMarginConverter = nameof(TreeViewItemHorizontalSeparatorMarginConverter);
         public const string TreeViewItemVerticalSeparatorMarginConverter = nameof(TreeViewItemVerticalSeparatorMarginConverter);
         public const string TreeViewItemInternalPaddingConverter = nameof(TreeViewItemInternalPaddingConverter);

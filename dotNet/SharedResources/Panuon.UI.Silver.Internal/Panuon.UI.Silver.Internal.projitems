@@ -47,8 +47,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ScrollableControlScrollButtonVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SpinnerClassicRenderTransformOriginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToCollapseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxHeightConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxWidthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewInternalPaddingConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewItemInternalPaddingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewItemHorizontalSeparatorWidthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewItemHorizontalSeparatorMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TreeViewItemVerticalSeparatorMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToCollapseConverter.cs" />
@@ -82,6 +85,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\LabelStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TabControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TabItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +269,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\SpinnerTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\TabControlTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\TabItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

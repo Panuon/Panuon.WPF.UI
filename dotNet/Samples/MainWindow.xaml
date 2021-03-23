@@ -16,8 +16,7 @@
             pu:WindowXCaption.ShadowColor="{x:Null}"
             pu:ShadowHelper.BlurRadius="20"
             WindowStartupLocation="CenterScreen">
-    <Grid  Background="Transparent"
-           pu:WindowX.IsDragMoveArea="True">
+    <Grid Background="Transparent">
         <ScrollViewer pu:ScrollBarHelper.ScrollButtonVisibility="Visible">
             <!--<TabControl Height="150"
                     Margin="40">

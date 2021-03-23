@@ -6,19 +6,10 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TabControlStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxTemplate}"
-                     TargetType="ListBox">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
-            <ScrollViewer Margin="{TemplateBinding Padding}"
-                          Focusable="False">
-                <ItemsPresenter />
-            </ScrollViewer>
-        </Border>
-    </ControlTemplate>
+    <Style TargetType="TabControl"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TabControlStyle}}" />
 
 </ResourceDictionary>

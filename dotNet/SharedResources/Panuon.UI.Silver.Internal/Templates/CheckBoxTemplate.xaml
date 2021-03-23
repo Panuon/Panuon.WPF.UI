@@ -15,7 +15,7 @@
                     Background="Transparent"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <i:ContentControlX x:Name="ccBox"
+            <i:ContentControlX x:Name="CcBox"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -78,7 +78,7 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="Background"
                         Value="{Binding Path=(local:CheckBoxHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -89,7 +89,7 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:CheckBoxHelper.CheckedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -114,7 +114,7 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="Background"
                         Value="{Binding Path=(local:CheckBoxHelper.NullableBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -125,7 +125,7 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:CheckBoxHelper.NullableBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
