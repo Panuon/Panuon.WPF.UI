@@ -94,8 +94,6 @@
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}}" />
                         <local:TransformControl Grid.Column="2"
                                                 Style="{Binding Path=(local:ComboBoxHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                ContentTemplate="{Binding Path=(local:ComboBoxHelper.ToggleArrowIconTemplate), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                     </Grid>
@@ -355,8 +353,6 @@
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}}" />
                         <local:TransformControl Grid.Column="2"
                                                 Style="{Binding Path=(local:ComboBoxHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                ContentTemplate="{Binding Path=(local:ComboBoxHelper.ToggleArrowIconTemplate), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                                 TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                     </Grid>

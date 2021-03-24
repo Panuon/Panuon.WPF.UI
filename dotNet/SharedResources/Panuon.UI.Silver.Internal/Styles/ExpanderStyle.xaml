@@ -1,0 +1,164 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ExpanderTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ExpanderHelper}}"
+           TargetType="local:TransformControl">
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Content"
+                Value="&#xe903;" />
+        <Setter Property="Margin"
+                Value="2,0" />
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.15" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                         Value="Left">
+                <Setter Property="Content"
+                        Value="&#xe900;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                         Value="Up">
+                <Setter Property="Content"
+                        Value="&#xe901;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                         Value="Right">
+                <Setter Property="Content"
+                        Value="&#xe902;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                         Value="Down">
+                <Setter Property="Content"
+                        Value="&#xe903;" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                               Value="Left" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="ScaleX"
+                        Value="-1" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                               Value="Up" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="ScaleY"
+                        Value="-1" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                               Value="Right" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="ScaleX"
+                        Value="-1" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ExpandDirection, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                               Value="Down" />
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="ScaleY"
+                        Value="-1" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.ExpanderStyle}"
+           TargetType="Expander">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:ExpanderHelper.HeaderSeparatorBrush"
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:ExpanderHelper.HeaderSeparatorThickness"
+                Value="1" />
+        <Setter Property="local:ExpanderHelper.HeaderSeparatorVisibility"
+                Value="Visible" />
+        <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="local:ExpanderHelper.HeaderPadding"
+                Value="10,0" />
+        <Setter Property="local:ExpanderHelper.HeaderForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:ExpanderHelper.ToggleArrowTransformControlStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ExpanderHelper}}}" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="local:ExpanderHelper.HeaderPadding"
+                Value="8" />
+        <Setter Property="local:ExpanderHelper.HeaderBackground"
+                Value="Transparent" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Style.Triggers>
+            <Trigger Property="ExpandDirection"
+                     Value="Left">
+                <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderLeftRightTemplate}}" />
+            </Trigger>
+            <Trigger Property="ExpandDirection"
+                     Value="Up">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderUpDownTemplate}}" />
+            </Trigger>
+            <Trigger Property="ExpandDirection"
+                     Value="Right">
+                <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+                        Value="Center" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderLeftRightTemplate}}" />
+            </Trigger>
+            <Trigger Property="ExpandDirection"
+                     Value="Down">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderUpDownTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

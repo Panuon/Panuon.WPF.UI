@@ -123,21 +123,6 @@ namespace Panuon.UI.Silver
             VisualStateHelper.ShadowColorProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
-        #region ToggleArrowIconTemplate
-        public static DataTemplate GetToggleArrowIconTemplate(ComboBox comboBox)
-        {
-            return (DataTemplate)comboBox.GetValue(ToggleArrowIconTemplateProperty);
-        }
-
-        public static void SetToggleArrowIconTemplate(ComboBox comboBox, DataTemplate value)
-        {
-            comboBox.SetValue(ToggleArrowIconTemplateProperty, value);
-        }
-
-        public static readonly DependencyProperty ToggleArrowIconTemplateProperty =
-            DependencyProperty.RegisterAttached("ToggleArrowIconTemplate", typeof(DataTemplate), typeof(ComboBoxHelper));
-        #endregion
-
         #region ToggleArrowTransformControlStyle
         public static Style GetToggleArrowTransformControlStyle(ComboBox comboBox)
         {

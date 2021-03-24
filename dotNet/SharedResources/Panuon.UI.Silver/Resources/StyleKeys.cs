@@ -12,6 +12,7 @@
         public const string DataGridRowHeaderStyle = nameof(DataGridRowHeaderStyle);
         public const string DataGridRowStyle = nameof(DataGridRowStyle);
         public const string DataGridStyle = nameof(DataGridStyle);
+        public const string ExpanderStyle = nameof(ExpanderStyle);
         public const string GroupBoxStyle = nameof(GroupBoxStyle);
         public const string LabelStyle = nameof(LabelStyle);
         public const string ListBoxStyle = nameof(ListBoxStyle);

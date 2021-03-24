@@ -303,6 +303,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderPanelHorizontalAlignment", typeof(TabPanelHorizontalAlignment), typeof(TabControlHelper));
         #endregion
 
+        #region RemoveButtonStyle
+        public static Style GetRemoveButtonStyle(TabControl tabControl)
+        {
+            return (Style)tabControl.GetValue(RemoveButtonStyleProperty);
+        }
+
+        public static void SetRemoveButtonStyle(TabControl tabControl, Style value)
+        {
+            tabControl.SetValue(RemoveButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty RemoveButtonStyleProperty =
+            DependencyProperty.RegisterAttached("RemoveButtonStyle", typeof(Style), typeof(TabControlHelper));
+        #endregion
+
         #region RemovingAnimationDuration
         public static TimeSpan? GetRemovingAnimationDuration(TabControl tabControl)
         {
@@ -440,34 +455,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsVerticalHeaderAlignment
-        public static VerticalAlignment GetItemsVerticalHeaderAlignment(TabControl tabControl)
+        #region ItemsHeaderVerticalContentAlignment
+        public static VerticalAlignment GetItemsHeaderVerticalContentAlignment(TabControl tabControl)
         {
-            return (VerticalAlignment)tabControl.GetValue(ItemsVerticalHeaderAlignmentProperty);
+            return (VerticalAlignment)tabControl.GetValue(ItemsHeaderVerticalContentAlignmentProperty);
         }
 
-        public static void SetItemsVerticalHeaderAlignment(TabControl tabControl, VerticalAlignment value)
+        public static void SetItemsHeaderVerticalContentAlignment(TabControl tabControl, VerticalAlignment value)
         {
-            tabControl.SetValue(ItemsVerticalHeaderAlignmentProperty, value);
+            tabControl.SetValue(ItemsHeaderVerticalContentAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsVerticalHeaderAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsVerticalHeaderAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsHeaderVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsHorizontalHeaderAlignment
-        public static HorizontalAlignment GetItemsHorizontalHeaderAlignment(TabControl tabControl)
+        #region ItemsHeaderHorizontalContentAlignment
+        public static HorizontalAlignment GetItemsHeaderHorizontalContentAlignment(TabControl tabControl)
         {
-            return (HorizontalAlignment)tabControl.GetValue(ItemsHorizontalHeaderAlignmentProperty);
+            return (HorizontalAlignment)tabControl.GetValue(ItemsHeaderHorizontalContentAlignmentProperty);
         }
 
-        public static void SetItemsHorizontalHeaderAlignment(TabControl tabControl, HorizontalAlignment value)
+        public static void SetItemsHeaderHorizontalContentAlignment(TabControl tabControl, HorizontalAlignment value)
         {
-            tabControl.SetValue(ItemsHorizontalHeaderAlignmentProperty, value);
+            tabControl.SetValue(ItemsHeaderHorizontalContentAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsHorizontalHeaderAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsHorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsHeaderHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
         #endregion
 
         #region ItemsForeground
@@ -886,7 +901,7 @@ namespace Panuon.UI.Silver
             });
             if (animationDuration != null && ((TimeSpan)animationDuration).TotalMilliseconds > 0)
             {
-                AnimationUtil.BeginDoubleAnimation(tabItem, TabItem.HeightProperty, null, 0, animationDuration, null, animationEase, action);
+                AnimationUtil.BeginDoubleAnimation(tabItem, (tabItem.TabStripPlacement == Dock.Left || tabItem.TabStripPlacement == Dock.Right) ? TabItem.HeightProperty : TabItem.WidthProperty, null, 0, animationDuration, null, animationEase, action);
             }
             else
             {

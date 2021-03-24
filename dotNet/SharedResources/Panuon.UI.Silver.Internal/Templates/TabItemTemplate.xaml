@@ -29,20 +29,29 @@
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Icon="{Binding Path=(local:TabItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                IconPlacement="{Binding Path=(local:TabItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Padding="{TemplateBinding Padding}"
                                CornerRadius="{Binding Path=(local:TabItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               VerticalContentAlignment="{Binding Path=(local:TabControlHelper.ItemsVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
-                               HorizontalContentAlignment="{Binding Path=(local:TabControlHelper.ItemsHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
-                               Content="{TemplateBinding Header}"
-                               ContentTemplate="{TemplateBinding HeaderTemplate}"
-                               ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                               ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                      ContentSource="Header"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    <Button x:Name="BtnRemove"
+                            Grid.Column="1"
+                            Visibility="Hidden"
+                            Style="{Binding Path=(local:TabControlHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}"
+                            Command="{Binding Path=(local:TabControlHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </Grid>
+            </i:ContentControlX>
             <Rectangle x:Name="RectRibbon"
                        Fill="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Visibility="{Binding Path=(local:TabItemHelper.RibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <local:SeparatorX x:Name="SprtSeparator"
-                              VerticalAlignment="Center"
                               Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -59,7 +68,7 @@
                         Value="2" />
                 <Setter TargetName="SprtSeparator"
                         Property="Orientation"
-                        Value="Horizontal" />
+                        Value="Vertical" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Bottom">
@@ -71,7 +80,7 @@
                         Value="2" />
                 <Setter TargetName="SprtSeparator"
                         Property="Orientation"
-                        Value="Horizontal" />
+                        Value="Vertical" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Left">
@@ -83,7 +92,7 @@
                         Value="2" />
                 <Setter TargetName="SprtSeparator"
                         Property="Orientation"
-                        Value="Vertical" />
+                        Value="Horizontal" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Right">
@@ -95,7 +104,7 @@
                         Value="2" />
                 <Setter TargetName="SprtSeparator"
                         Property="Orientation"
-                        Value="Vertical" />
+                        Value="Horizontal" />
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Left">
@@ -155,7 +164,7 @@
                         Property="Background"
                         Value="{Binding Path=(local:TabItemHelper.SelectedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-         <MultiDataTrigger>
+            <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -202,7 +211,7 @@
                         Property="Fill"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-             <MultiDataTrigger>
+            <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -253,6 +262,53 @@
                 <Setter TargetName="RectRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="local:TabItemHelper.RemoveButtonVisibility"
+                     Value="Collapsed">
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="local:TabItemHelper.RemoveButtonVisibility"
+                     Value="Visible">
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="local:TabItemHelper.RemoveButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RemoveButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Header, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RemoveButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Header, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

@@ -57,21 +57,22 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
     </Style>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ToggleArrowIconTemplate, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}">
-        <TextBlock Margin="4,0,8,0"
-                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                   Text="&#xe903;">
-        </TextBlock>
-    </DataTemplate>
-
     <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Content"
+                Value="&#xe903;" />
+        <Setter Property="Padding"
+                Value="4,0,8,0" />
         <Setter Property="AnimationDuration"
                 Value="0:0:0.15" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
                          Value="True">
@@ -160,8 +161,6 @@
                 Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.RemoveButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
-        <Setter Property="local:ComboBoxHelper.ToggleArrowIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowIconTemplate, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.ToggleArrowTransformControlStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="MaxDropDownHeight"

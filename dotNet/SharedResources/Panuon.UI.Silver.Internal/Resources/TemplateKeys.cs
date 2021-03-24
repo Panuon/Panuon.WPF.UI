@@ -17,6 +17,8 @@
         public const string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
         public const string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
         public const string DataGridTemplate = nameof(DataGridTemplate);
+        public const string ExpanderUpDownTemplate = nameof(ExpanderUpDownTemplate);
+        public const string ExpanderLeftRightTemplate = nameof(ExpanderLeftRightTemplate);
         public const string GroupBoxTemplate = nameof(GroupBoxTemplate);
         public const string LabelTemplate = nameof(LabelTemplate);
         public const string ListBoxTemplate = nameof(ListBoxTemplate);

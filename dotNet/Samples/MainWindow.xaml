@@ -7,8 +7,8 @@
             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
             mc:Ignorable="d"
             Title="MainWindow"
-            Height="450"
-            Width="800"
+            Height="600"
+            Width="900"
             Loaded="Window_Loaded"
             SnapsToDevicePixels="True"
             pu:IconHelper.Width="30"
@@ -129,8 +129,22 @@
                     <MenuItem Header="Item 2" />
                     <MenuItem Header="Item 3" />
                 </Menu>
-                <GroupBox Header="GroupBox"
-                          Margin="0,20,0,0"
+
+                <Expander Margin="0,20,0,0"
+                          Header="Expander"
+                          ExpandDirection="Left"
+                          Height="100"
+                          HorizontalAlignment="Center"
+                          pu:ExpanderHelper.ExpandedBackground="#6CBCEA"
+                          pu:ExpanderHelper.ExpandedHeaderForeground="#FFFFFF"
+                          pu:ExpanderHelper.ToggleArrowPlacement="Right"
+                          pu:ExpanderHelper.ShadowColor="LightGray"
+                          pu:ExpanderHelper.CornerRadius="5">
+                    <Button Width="30"/>
+                </Expander>
+
+                <GroupBox Margin="0,20,0,0"
+                          Header="GroupBox"
                           pu:GroupBoxHelper.CornerRadius="5"
                           pu:GroupBoxHelper.ShadowColor="LightGray"
                           pu:GroupBoxHelper.HeaderVerticalAlignment="Bottom"
@@ -201,6 +215,7 @@
                                       Content="ToggleButton" />
                     </StackPanel>
                 </GroupBox>
+
                 <TextBox Margin="0,20,0,0"
                          Height="35"
                          Width="200"
@@ -384,8 +399,13 @@
                 <TabControl Margin="0,20,0,0"
                             BorderBrush="lightgray"
                             HorizontalAlignment="Center"
-                            pu:TabControlHelper.ItemsHeight="60"
-                            pu:TabControlHelper.ItemsWidth="60"
+                            pu:TabControlHelper.RemovingAnimationDuration="0:0:0.2"
+                            pu:TabControlHelper.RemovingAnimationEase="CubicOut"
+                            pu:TabControlHelper.ItemsRemoveButtonVisibility="Visible"
+                            pu:TabControlHelper.ItemsSeparatorVisibility="Visible"
+                            pu:TabControlHelper.ItemsSeparatorMargin="5,0"
+                            pu:TabControlHelper.ItemsHeight="35"
+                            pu:TabControlHelper.ItemsWidth="80"
                             pu:TabControlHelper.ItemsBackground="#446CBCEA"
                             pu:TabControlHelper.ItemsHoverBackground="#886CBCEA"
                             pu:TabControlHelper.ItemsSelectedBackground="#6CBCEA"

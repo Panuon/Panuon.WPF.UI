@@ -18,7 +18,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             
             if (togglePlacement == ToggleArrowPlacement.Left)
             {
-                return new Thickness(borderThickness.Left + internalPadding.Left - padding.Left / 2, 0, 0, 0);
+                return new Thickness(borderThickness.Left + internalPadding.Left - padding.Left / 2 + rulerThickness, 0, 0, 0);
             }
             else
             {

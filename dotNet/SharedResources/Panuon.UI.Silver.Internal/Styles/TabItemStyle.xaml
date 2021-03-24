@@ -103,6 +103,10 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:TabControlHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TabItemTemplate}}" />
         <Style.Triggers>

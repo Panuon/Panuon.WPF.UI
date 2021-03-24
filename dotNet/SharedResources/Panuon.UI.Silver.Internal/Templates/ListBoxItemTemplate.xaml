@@ -35,7 +35,7 @@
                     </Grid.ColumnDefinitions>
                     <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    <Button x:Name="btnRemove"
+                    <Button x:Name="BtnRemove"
                             Grid.Column="1"
                             Visibility="Hidden"
                             Style="{Binding Path=(local:ListBoxHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
@@ -101,13 +101,13 @@
             </MultiDataTrigger>
             <Trigger Property="local:ListBoxItemHelper.RemoveButtonVisibility"
                      Value="Collapsed">
-                <Setter TargetName="btnRemove"
+                <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Collapsed" />
             </Trigger>
             <Trigger Property="local:ListBoxItemHelper.RemoveButtonVisibility"
                      Value="Visible">
-                <Setter TargetName="btnRemove"
+                <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
@@ -118,7 +118,7 @@
                     <Condition Property="IsMouseOver"
                                Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="btnRemove"
+                <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Visible" />
             </MultiTrigger>
@@ -129,7 +129,7 @@
                     <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="btnRemove"
+                <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Visible" />
             </MultiDataTrigger>
@@ -142,7 +142,7 @@
                     <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="btnRemove"
+                <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Visible" />
             </MultiDataTrigger>

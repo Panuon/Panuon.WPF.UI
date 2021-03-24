@@ -6,8 +6,32 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/TabControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="local:ButtonHelper.HoverForeground"
+                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="{x:Null}" />
+        <Setter Property="local:ButtonHelper.ClickBackground"
+                Value="{x:Null}" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="0,0,0,0" />
+        <Setter Property="Content"
+                Value="&#xe92d;" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneWay}" />
+    </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.TabControlStyle}"
            TargetType="TabControl">
@@ -47,9 +71,9 @@
                 Value="1" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
                 Value="Collapsed" />
-        <Setter Property="local:TabControlHelper.ItemsVerticalHeaderAlignment"
+        <Setter Property="local:TabControlHelper.ItemsHeaderVerticalContentAlignment"
                 Value="Center" />
-        <Setter Property="local:TabControlHelper.ItemsHorizontalHeaderAlignment"
+        <Setter Property="local:TabControlHelper.ItemsHeaderHorizontalContentAlignment"
                 Value="Center" />
         <Setter Property="local:TabControlHelper.ItemsHeight"
                 Value="30" />
@@ -69,6 +93,14 @@
                 Value="#3E3E3E" />
         <Setter Property="local:TabControlHelper.ItemsRibbonLineVisibility"
                 Value="Collapsed" />
+        <Setter Property="local:TabControlHelper.ItemsSeparatorBrush"
+                Value="LightGray" />
+        <Setter Property="local:TabControlHelper.ItemsSeparatorThickness"
+                Value="1" />
+        <Setter Property="local:TabControlHelper.ItemsSeparatorVisibility"
+                Value="Collapsed" />
+        <Setter Property="local:TabControlHelper.RemoveButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
