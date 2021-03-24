@@ -485,6 +485,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsHeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
         #endregion
 
+        #region ItemsHeaderVerticalAlignment
+        public static VerticalAlignment GetItemsHeaderVerticalAlignment(TabControl tabControl)
+        {
+            return (VerticalAlignment)tabControl.GetValue(ItemsHeaderVerticalAlignmentProperty);
+        }
+
+        public static void SetItemsHeaderVerticalAlignment(TabControl tabControl, VerticalAlignment value)
+        {
+            tabControl.SetValue(ItemsHeaderVerticalAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHeaderVerticalAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHeaderVerticalAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsHeaderHorizontalAlignment
+        public static HorizontalAlignment GetItemsHeaderHorizontalAlignment(TabControl tabControl)
+        {
+            return (HorizontalAlignment)tabControl.GetValue(ItemsHeaderHorizontalAlignmentProperty);
+        }
+
+        public static void SetItemsHeaderHorizontalAlignment(TabControl tabControl, HorizontalAlignment value)
+        {
+            tabControl.SetValue(ItemsHeaderHorizontalAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHeaderHorizontalAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHeaderHorizontalAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        #endregion
+
         #region ItemsForeground
         public static Brush GetItemsForeground(TabControl tabControl)
         {
@@ -772,6 +802,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsSelectedRibbonLineThickness", typeof(double?), typeof(TabControlHelper));
         #endregion
 
+        #region ItemsSelectedWidth
+        public static double? GetItemsSelectedWidth(TabControl tabControl)
+        {
+            return (double?)tabControl.GetValue(ItemsSelectedWidthProperty);
+        }
+
+        public static void SetItemsSelectedWidth(TabControl tabControl, double? value)
+        {
+            tabControl.SetValue(ItemsSelectedWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedWidthProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedWidth", typeof(double?), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsSelectedHeight
+        public static double? GetItemsSelectedHeight(TabControl tabControl)
+        {
+            return (double?)tabControl.GetValue(ItemsSelectedHeightProperty);
+        }
+
+        public static void SetItemsSelectedHeight(TabControl tabControl, double? value)
+        {
+            tabControl.SetValue(ItemsSelectedHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedHeight", typeof(double?), typeof(TabControlHelper));
+        #endregion
+
         #region ItemsRemoveButtonVisibility
         public static AuxiliaryButtonVisibility GetItemsRemoveButtonVisibility(TabControl tabControl)
         {
@@ -901,7 +961,8 @@ namespace Panuon.UI.Silver
             });
             if (animationDuration != null && ((TimeSpan)animationDuration).TotalMilliseconds > 0)
             {
-                AnimationUtil.BeginDoubleAnimation(tabItem, (tabItem.TabStripPlacement == Dock.Left || tabItem.TabStripPlacement == Dock.Right) ? TabItem.HeightProperty : TabItem.WidthProperty, null, 0, animationDuration, null, animationEase, action);
+                var isLeftRight = tabItem.TabStripPlacement == Dock.Left || tabItem.TabStripPlacement == Dock.Right;
+                AnimationUtil.BeginDoubleAnimation(tabItem, isLeftRight ? TabItem.HeightProperty : TabItem.WidthProperty, isLeftRight ? tabItem.ActualHeight : tabItem.ActualWidth, 0, animationDuration, null, animationEase, action);
             }
             else
             {

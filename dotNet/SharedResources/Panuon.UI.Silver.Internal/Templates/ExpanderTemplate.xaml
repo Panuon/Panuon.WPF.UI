@@ -25,7 +25,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition x:Name="RdContent" 
+                    <RowDefinition x:Name="RdContent"
                                    Height="0" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -58,7 +58,7 @@
                         </Grid.ColumnDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="8,0,0,0"
-                                                Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"/>
+                                                Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
                         <ContentPresenter Grid.Column="1"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
@@ -164,8 +164,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition x:Name="RdContent"
-                                      Width="0" />
+                    <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <ToggleButton x:Name="TgbHeader"
@@ -204,12 +203,9 @@
                                           RecognizesAccessKey="True" />
                     </Grid>
                 </ToggleButton>
-                <Border x:Name="PART_ContentBorder"
-                        Grid.Column="1"
-                        BorderThickness="1,0,1,1"
-                        CornerRadius="0,0,2,2">
-                    <ContentPresenter Margin="{TemplateBinding Padding}" />
-                </Border>
+                <ContentPresenter Margin="{TemplateBinding Padding}"
+                                  Grid.Column="1"
+                                  Visibility="{Binding IsExpanded, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
         </i:ContentControlX>
         <ControlTemplate.Triggers>
@@ -277,12 +273,6 @@
                 <Setter TargetName="TcTransform"
                         Property="Margin"
                         Value="0,0,0,8" />
-            </Trigger>
-            <Trigger Property="IsExpanded"
-                     Value="True">
-                <Setter  TargetName="RdContent"
-                         Property="Width"
-                         Value="Auto" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

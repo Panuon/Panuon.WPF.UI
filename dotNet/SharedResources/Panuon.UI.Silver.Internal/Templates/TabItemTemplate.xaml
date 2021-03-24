@@ -11,7 +11,8 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabItemTemplate}"
                      TargetType="TabItem">
-        <Grid x:Name="GrdMain">
+        <Grid x:Name="GrdMain"
+              Margin="{Binding Path=(local:TabItemHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
@@ -38,8 +39,8 @@
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       ContentSource="Header"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                      VerticalAlignment="{Binding Path=(local:TabItemHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalAlignment="{Binding Path=(local:TabItemHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Button x:Name="BtnRemove"
                             Grid.Column="1"
                             Visibility="Hidden"

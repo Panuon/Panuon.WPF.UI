@@ -70,6 +70,51 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Margin
+        public static Thickness GetMargin(TabItem tabItem)
+        {
+            return (Thickness)tabItem.GetValue(MarginProperty);
+        }
+
+        public static void SetMargin(TabItem tabItem, Thickness value)
+        {
+            tabItem.SetValue(MarginProperty, value);
+        }
+
+        public static readonly DependencyProperty MarginProperty =
+            DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(TabItemHelper));
+        #endregion
+
+        #region SelectedWidth
+        public static double? GetSelectedWidth(TabItem tabItem)
+        {
+            return (double?)tabItem.GetValue(SelectedWidthProperty);
+        }
+
+        public static void SetSelectedWidth(TabItem tabItem, double? value)
+        {
+            tabItem.SetValue(SelectedWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedWidthProperty =
+            DependencyProperty.RegisterAttached("SelectedWidth", typeof(double?), typeof(TabItemHelper));
+        #endregion
+
+        #region SelectedHeight
+        public static double? GetSelectedHeight(TabItem tabItem)
+        {
+            return (double?)tabItem.GetValue(SelectedHeightProperty);
+        }
+
+        public static void SetSelectedHeight(TabItem tabItem, double? value)
+        {
+            tabItem.SetValue(SelectedHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedHeightProperty =
+            DependencyProperty.RegisterAttached("SelectedHeight", typeof(double?), typeof(TabItemHelper));
+        #endregion
+
         #region RibbonLineBrush
         public static Brush GetRibbonLineBrush(TabItem tabItem)
         {
@@ -293,6 +338,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty SelectedRibbonLineThicknessProperty =
             DependencyProperty.RegisterAttached("SelectedRibbonLineThickness", typeof(double?), typeof(TabItemHelper));
+        #endregion
+
+        #region HeaderVerticalContentAlignment
+        public static VerticalAlignment GetHeaderVerticalContentAlignment(TabItem tabItem)
+        {
+            return (VerticalAlignment)tabItem.GetValue(HeaderVerticalContentAlignmentProperty);
+        }
+
+        public static void SetHeaderVerticalContentAlignment(TabItem tabItem, VerticalAlignment value)
+        {
+            tabItem.SetValue(HeaderVerticalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(TabItemHelper));
+        #endregion
+
+        #region HeaderHorizontalContentAlignment
+        public static HorizontalAlignment GetHeaderHorizontalContentAlignment(TabItem tabItem)
+        {
+            return (HorizontalAlignment)tabItem.GetValue(HeaderHorizontalContentAlignmentProperty);
+        }
+
+        public static void SetHeaderHorizontalContentAlignment(TabItem tabItem, HorizontalAlignment value)
+        {
+            tabItem.SetValue(HeaderHorizontalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TabItemHelper));
         #endregion
 
         #region RemoveButtonVisibility
