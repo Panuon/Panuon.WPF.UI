@@ -326,6 +326,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ExpanderHelper));
         #endregion
 
+        #region ExtendControl
+        public static object GetExtendControl(Expander expander)
+        {
+            return (object)expander.GetValue(ExtendControlProperty);
+        }
+
+        public static void SetExtendControl(Expander expander, object value)
+        {
+            expander.SetValue(ExtendControlProperty, value);
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.RegisterAttached("ExtendControl", typeof(object), typeof(ExpanderHelper));
+        #endregion
+
         #endregion
     }
 }

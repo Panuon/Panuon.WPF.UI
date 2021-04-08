@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Panuon.UI.Silver
@@ -54,7 +55,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty WheelScrollingDirectionProperty =
-            DependencyProperty.RegisterAttached("WheelScrollingDirection", typeof(WheelScrollingDirection), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(WheelScrollingDirection.Vertical, FrameworkPropertyMetadataOptions.Inherits, OnWheelScrollingDirectionChanged));
+            DependencyProperty.RegisterAttached("WheelScrollingDirection", typeof(WheelScrollingDirection), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(WheelScrollingDirection.Vertical, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region HandleMouseWheel
@@ -70,21 +71,30 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HandleMouseWheelProperty =
             DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(false));
-        #endregion 
+        #endregion
 
         #endregion
 
-        #region Event Handlers
-        private static void OnWheelScrollingDirectionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        #region Internal Properties
+        internal static bool GetRegist(DependencyObject obj)
         {
-            if(d is ScrollViewer scrollViewer)
-            {
-                scrollViewer.PreviewMouseWheel -= ScrollViewer_PreviewMouseWheel;
-                if ((WheelScrollingDirection)e.NewValue != WheelScrollingDirection.Vertical)
-                {
-                    scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
-                }
-            }
+            return (bool)obj.GetValue(RegistProperty);
+        }
+
+        internal static void SetRegist(DependencyObject obj, bool value)
+        {
+            obj.SetValue(RegistProperty, value);
+        }
+
+        internal static readonly DependencyProperty RegistProperty =
+            DependencyProperty.RegisterAttached("Regist", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(OnRegistChanged));
+        #endregion
+
+        #region Event Handlers
+        private static void OnRegistChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var scrollViewer = (ScrollViewer)d;
+            scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
         }
 
         private static void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)

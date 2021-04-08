@@ -6,16 +6,10 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/RepeatButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ScrollViewerTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ProgressBarStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:StyleKeys.ScrollViewerStyle}"
-           TargetType="ScrollViewer">
-        <Setter Property="local:ScrollViewerHelper.Regist"
-                Value="True" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ScrollViewerTemplate}}" />
-    </Style>
+    <Style TargetType="ProgressBar"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ProgressBarStyle}}" />
 
 </ResourceDictionary>

@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HeightProperty =
-            DependencyProperty.RegisterAttached("Height", typeof(double), typeof(WindowXCaption), new PropertyMetadata(OnHeightChanged));
+            DependencyProperty.RegisterAttached("Height", typeof(double), typeof(WindowXCaption), new PropertyMetadata(double.NaN, OnHeightChanged));
         #endregion
 
         #region Foreground

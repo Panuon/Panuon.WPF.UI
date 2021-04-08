@@ -30,7 +30,26 @@
     <Grid  Background="Transparent">
         <ScrollViewer pu:ScrollBarHelper.ScrollButtonVisibility="Visible">
             <StackPanel Margin="20,0,20,200">
-                <pu:TransformControl AnimationDuration="0:0:0.5"
+                <ProgressBar x:Name="Pgb"
+                             Margin="0,20,0,0"
+                             Height="40"
+                             Width="250"
+                             Background="#FFFFFF"
+                             BorderBrush="#6CBCEA"
+                             Foreground="#6CBCEA"
+                             BorderThickness="1"
+                             pu:ProgressBarHelper.AnimationDuration="0:0:1"
+                             pu:ProgressBarHelper.CornerRadius="20"
+                             pu:ProgressBarHelper.IsPercentVisible="True"
+                             pu:ProgressBarHelper.ShadowColor="#6CBCEA"
+                             pu:ShadowHelper.BlurRadius="10"
+                             pu:ShadowHelper.Direction="240"
+                             pu:ShadowHelper.ShadowDepth="4"
+                             Value="50">
+                </ProgressBar>
+                
+                <pu:TransformControl Margin="0,20,0,0"
+                                     AnimationDuration="0:0:0.5"
                                      ScaleX="-1"
                                      ScaleY="-1">
                     <Button Content="Content"
@@ -128,8 +147,9 @@
                           pu:ExpanderHelper.ExpandedHeaderForeground="#FFFFFF"
                           pu:ExpanderHelper.ToggleArrowPlacement="Right"
                           pu:ExpanderHelper.ShadowColor="LightGray"
-                          pu:ExpanderHelper.CornerRadius="5">
-                    <Button Height="30"/>
+                          pu:ExpanderHelper.CornerRadius="10">
+                    <Button Height="100"
+                            Content="Button" />
                 </Expander>
 
                 <GroupBox Margin="0,20,0,0"
@@ -328,10 +348,12 @@
                     <ComboBoxItem Content="Item 5" />
                 </ComboBox>
                 <Border Margin="0,20,0,100"
-                        Width="600">
+                        Width="600"
+                        Background="#3E3E3E">
                     <DataGrid x:Name="dataGrid"
                               Margin="20"
                               MaxHeight="200"
+                              Foreground="White"
                               Background="Transparent"
                               GridLinesVisibility="Horizontal"
                               pu:DataGridHelper.ColumnHeaderSeparatorVisibility="Collapsed"
@@ -390,6 +412,7 @@
                             HorizontalAlignment="Center"
                             pu:IconHelper.FontFamily="{StaticResource PanuonIconFont}"
                             pu:TabControlHelper.ItemsIcon="&#xe900;"
+                            pu:TabControlHelper.ItemsHeaderVerticalAlignment="Bottom"
                             pu:TabControlHelper.RemovingAnimationDuration="0:0:0.2"
                             pu:TabControlHelper.RemovingAnimationEase="CubicOut"
                             pu:TabControlHelper.ItemsRemoveButtonVisibility="Visible"
@@ -400,7 +423,7 @@
                             pu:TabControlHelper.ItemsHoverBackground="#886CBCEA"
                             pu:TabControlHelper.ItemsSelectedBackground="#6CBCEA"
                             pu:TabControlHelper.ItemsSelectedForeground="White">
-                    <TabItem Header="Item1"/>
+                    <TabItem Header="Item1" />
                     <TabItem Header="Item2" />
                     <TabItem Header="Item3" />
                     <TabItem Header="Item4" />

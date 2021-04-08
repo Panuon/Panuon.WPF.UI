@@ -6,7 +6,6 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters">
 
     <icv:ArcConverter x:Key="{x:Static irs:ConverterKeys.ArcConverter}" />
-    <icv:BorderClipConverter x:Key="{x:Static irs:ConverterKeys.BorderClipConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
     <icv:ComboBoxDropDownHorizontalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}" />
     <icv:ComboBoxDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}" />
@@ -36,9 +35,12 @@
     <icv:LightenSolidColorBrushConverter x:Key="{x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NullToCollapseConverter}" />
     <icv:NonnullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NonnullToCollapseConverter}" />
+    <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
+    <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
     <icv:SpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.SpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
+    <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />
     <icv:TabPanelMaxHeightConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}" />
     <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}" />
     <icv:TreeViewInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}" />
@@ -47,6 +49,7 @@
     <icv:TreeViewItemVerticalSeparatorMarginConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemVerticalSeparatorMarginConverter}" />
     <icv:TreeViewItemInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemInternalPaddingConverter}" />
     <icv:TrueToCollapseConverter x:Key="{x:Static rs:ConverterKeys.TrueToCollapseConverter}" />
+    <icv:TrueToFalseConverter x:Key="{x:Static rs:ConverterKeys.TrueToFalseConverter}" />
     <icv:TrueToHiddenConverter x:Key="{x:Static rs:ConverterKeys.TrueToHiddenConverter}" />
     <icv:WindowXCaptionDataContextConverter x:Key="{x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}" />
 </ResourceDictionary>

@@ -435,7 +435,8 @@
                        Height="1"
                        VerticalAlignment="Bottom"
                        Fill="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
-            <Rectangle Width="1"
+            <Rectangle x:Name="RectVertical"
+                       Width="1"
                        HorizontalAlignment="Right"
                        Visibility="{Binding Path=(local:DataGridHelper.RowHeaderSeparatorVisibility), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                        Fill="{Binding Path=(local:DataGridHelper.RowHeaderSeparatorBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
@@ -512,6 +513,12 @@
                 <Setter TargetName="PART_ScrollContentPresenter"
                         Property="Grid.RowSpan"
                         Value="2" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RowHeaderWidth, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                         Value="0">
+                <Setter TargetName="RectVertical"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </DataTrigger>
             <DataTrigger Binding="{Binding GridLinesVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                          Value="Vertical">

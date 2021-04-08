@@ -22,6 +22,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(ListBoxItemHelper));
         #endregion
 
+        #region IconPlacement
+        public static IconPlacement GetIconPlacement(ListBoxItem listBoxItem)
+        {
+            return (IconPlacement)listBoxItem.GetValue(IconPlacementProperty);
+        }
+
+        public static void SetIconPlacement(ListBoxItem listBoxItem, IconPlacement value)
+        {
+            listBoxItem.SetValue(IconPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty IconPlacementProperty =
+            DependencyProperty.RegisterAttached("IconPlacement", typeof(IconPlacement), typeof(ListBoxItemHelper));
+        #endregion
+
         #region CornerRadius
         public static CornerRadius GetCornerRadius(ListBoxItem listBoxItem)
         {

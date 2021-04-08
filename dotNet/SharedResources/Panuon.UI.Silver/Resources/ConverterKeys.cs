@@ -16,7 +16,9 @@
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
         public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
         public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(StringNonnullAndNotEmptyToCollapseConverter);
+        public const string StringNullOrEmptyToCollapseConverter = nameof(StringNullOrEmptyToCollapseConverter);
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);
+        public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
         public const string TrueToHiddenConverter = nameof(TrueToHiddenConverter);
     }
 }

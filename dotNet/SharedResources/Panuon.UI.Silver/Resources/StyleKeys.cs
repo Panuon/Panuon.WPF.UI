@@ -20,6 +20,7 @@
         public const string MenuItemStyle = nameof(MenuItemStyle);
         public const string MenuStyle = nameof(MenuStyle);
         public const string PasswordBoxStyle = nameof(PasswordBoxStyle);
+        public const string ProgressBarStyle = nameof(ProgressBarStyle);
         public const string RadioButtonStyle = nameof(RadioButtonStyle);
         public const string RepeatButtonStyle = nameof(RepeatButtonStyle);
         public const string ScrollBarStyle = nameof(ScrollBarStyle);

@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    public class ArcConverter : MultiValueConverterBase
+    class ArcConverter : MultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

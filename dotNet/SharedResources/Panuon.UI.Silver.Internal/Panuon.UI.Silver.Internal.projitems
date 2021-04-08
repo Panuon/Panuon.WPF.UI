@@ -9,12 +9,12 @@
     <Import_RootNamespace>Panuon.UI.Silver.Internal</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentControlX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomPopup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\BorderClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxCheckPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownHorizontalOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ContextMenuDropDownMarginConverter.cs" />
@@ -27,6 +27,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownVerticalOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleDivideByConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMinWidthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarBorderClipConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarTextForegroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToFalseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GetTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsEnumContainsInSpecificValueConverter.cs" />
@@ -46,6 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ScrollableControlScrollButtonVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SpinnerClassicRenderTransformOriginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxHeightConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxWidthConverter.cs" />
@@ -63,12 +67,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\TemplateKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconPresenterContentTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\FrameworkElementUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowChromeUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ProgressBarStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\TreeViewItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\ProgressBarTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

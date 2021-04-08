@@ -109,6 +109,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsIcon", typeof(object), typeof(ListBoxHelper));
         #endregion
 
+        #region ItemsIconPlacement
+        public static IconPlacement GetItemsIconPlacement(ListBox listBox)
+        {
+            return (IconPlacement)listBox.GetValue(ItemsIconPlacementProperty);
+        }
+
+        public static void SetItemsIconPlacement(ListBox listBox, IconPlacement value)
+        {
+            listBox.SetValue(ItemsIconPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsIconPlacementProperty =
+            DependencyProperty.RegisterAttached("ItemsIconPlacement", typeof(IconPlacement), typeof(ListBoxHelper));
+        #endregion
+
         #region ItemsIconWidth
         public static double GetItemsIconWidth(ListBox listBox)
         {
@@ -152,6 +167,66 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsHeightProperty =
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(double.NaN));
+        #endregion
+
+        #region ItemsMinHeight
+        public static double GetItemsMinHeight(ListBox listBox)
+        {
+            return (double)listBox.GetValue(ItemsMinHeightProperty);
+        }
+
+        public static void SetItemsMinHeight(ListBox listBox, double value)
+        {
+            listBox.SetValue(ItemsMinHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsMinHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsMinHeight", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(0d));
+        #endregion
+
+        #region ItemsMaxHeight
+        public static double GetItemsMaxHeight(ListBox listBox)
+        {
+            return (double)listBox.GetValue(ItemsMaxHeightProperty);
+        }
+
+        public static void SetItemsMaxHeight(ListBox listBox, double value)
+        {
+            listBox.SetValue(ItemsMaxHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsMaxHeightProperty =
+            DependencyProperty.RegisterAttached("ItemsMaxHeight", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(double.PositiveInfinity));
+        #endregion
+
+        #region ItemsVerticalContentAlignment
+        public static VerticalAlignment GetItemsVerticalContentAlignment(ListBox listBox)
+        {
+            return (VerticalAlignment)listBox.GetValue(ItemsVerticalContentAlignmentProperty);
+        }
+
+        public static void SetItemsVerticalContentAlignment(ListBox listBox, VerticalAlignment value)
+        {
+            listBox.SetValue(ItemsVerticalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsVerticalContentAlignment", typeof(VerticalAlignment), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsHorizontalContentAlignment
+        public static HorizontalAlignment GetItemsHorizontalContentAlignment(ListBox listBox)
+        {
+            return (HorizontalAlignment)listBox.GetValue(ItemsHorizontalContentAlignmentProperty);
+        }
+
+        public static void SetItemsHorizontalContentAlignment(ListBox listBox, HorizontalAlignment value)
+        {
+            listBox.SetValue(ItemsHorizontalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ListBoxHelper));
         #endregion
 
         #region ItemsMargin
@@ -425,6 +500,7 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ItemsSeparatorVisibilityProperty =
             DependencyProperty.RegisterAttached("ItemsSeparatorVisibility", typeof(Visibility), typeof(ListBoxHelper));
         #endregion
+
 
         #endregion
 

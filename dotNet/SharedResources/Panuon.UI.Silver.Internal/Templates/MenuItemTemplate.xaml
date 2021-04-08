@@ -141,30 +141,21 @@
                                 </MultiBinding>
                             </Border.Effect>
                         </Border>
+                        <i:ClippingBorder SnapsToDevicePixels="True"
+                                          BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
+                            <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
+                                <StackPanel IsItemsHost="True"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            </ScrollViewer>
+                        </i:ClippingBorder>
                         <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
-                            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
-                                <Border.Clip>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.BorderClipConverter}}">
-                                        <Binding Path="ActualWidth"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                        <Binding Path="ActualHeight"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                        <Binding Path="CornerRadius"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                    </MultiBinding>
-                                </Border.Clip>
-                                <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                              HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                              Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
-                                    <StackPanel IsItemsHost="True"
-                                                KeyboardNavigation.DirectionalNavigation="Cycle" />
-                                </ScrollViewer>
-                            </Border>
-                        </Border>
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                IsHitTestVisible="False" />
                     </Grid>
                 </i:CustomPopup>
             </Grid>
@@ -440,30 +431,21 @@
                                 </MultiBinding>
                             </Border.Effect>
                         </Border>
+                        <i:ClippingBorder SnapsToDevicePixels="True"
+                                          BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
+                            <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
+                                <StackPanel IsItemsHost="True"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            </ScrollViewer>
+                        </i:ClippingBorder>
                         <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
-                            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
-                                <Border.Clip>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.BorderClipConverter}}">
-                                        <Binding Path="ActualWidth"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                        <Binding Path="ActualHeight"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                        <Binding Path="CornerRadius"
-                                                 RelativeSource="{RelativeSource Self}" />
-                                    </MultiBinding>
-                                </Border.Clip>
-                                <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                              HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                              Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
-                                    <StackPanel IsItemsHost="True"
-                                                KeyboardNavigation.DirectionalNavigation="Cycle" />
-                                </ScrollViewer>
-                            </Border>
-                        </Border>
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}"
+                                IsHitTestVisible="False" />
                     </Grid>
                 </i:CustomPopup>
             </Grid>

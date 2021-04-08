@@ -49,6 +49,8 @@
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.Icon"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.IconPlacement"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsIconPlacement), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.CornerRadius"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.RemoveButtonVisibility"
@@ -77,6 +79,10 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="MinHeight"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsMinHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="MaxHeight"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsMaxHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Width"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Margin"
@@ -89,6 +95,10 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxItemTemplate}}" />
         <Style.Triggers>

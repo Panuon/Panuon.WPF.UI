@@ -40,17 +40,6 @@ namespace Panuon.UI.Silver.Internal
 
         #region Properties
 
-        #region IsDependentBorderMode
-        public bool IsDependentBorderMode
-        {
-            get { return (bool)GetValue(IsDependentBorderModeProperty); }
-            set { SetValue(IsDependentBorderModeProperty, value); }
-        }
-
-        public static readonly DependencyProperty IsDependentBorderModeProperty =
-            DependencyProperty.Register("IsDependentBorderMode", typeof(bool), typeof(ContentControlX));
-        #endregion
-
         #region CornerRadius
         public CornerRadius CornerRadius
         {

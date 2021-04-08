@@ -22,7 +22,6 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <i:ContentControlX x:Name="CcMain"
-                               IsDependentBorderMode="True"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"

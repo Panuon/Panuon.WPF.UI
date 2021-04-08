@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal
 {
-    public class CustomPopup : Popup
+    class CustomPopup : Popup
     {
         #region Fields
         private Window _parentWindow;

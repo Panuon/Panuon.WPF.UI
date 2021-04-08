@@ -30,6 +30,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="5,0,0,0" />
         <Setter Property="local:ShadowHelper.BlurRadius"
                 Value="15" />
         <Setter Property="local:ShadowHelper.ShadowDepth"

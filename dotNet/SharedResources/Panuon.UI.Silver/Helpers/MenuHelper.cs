@@ -97,7 +97,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty TopLevelItemsIconWidthProperty =
-            DependencyProperty.RegisterAttached("TopLevelItemsIconWidth", typeof(double), typeof(MenuHelper));
+            DependencyProperty.RegisterAttached("TopLevelItemsIconWidth", typeof(double), typeof(MenuHelper),new PropertyMetadata(double.NaN));
         #endregion
 
         #region TopLevelItemsHeight
@@ -462,7 +462,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SubmenuItemsIconWidthProperty =
-            DependencyProperty.RegisterAttached("SubmenuItemsIconWidth", typeof(double), typeof(MenuHelper));
+            DependencyProperty.RegisterAttached("SubmenuItemsIconWidth", typeof(double), typeof(MenuHelper), new PropertyMetadata(double.NaN));
         #endregion
 
         #region SubmenuItemsHeight

@@ -26,7 +26,10 @@
                                CornerRadius="{Binding Path=(local:ListBoxItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Icon="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               IconPlacement="{Binding Path=(local:ListBoxItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                IconWidth="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                Padding="{TemplateBinding Padding}">
                 <Grid>
                     <Grid.ColumnDefinitions>

@@ -55,6 +55,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="8,0,0,0"
@@ -63,6 +64,8 @@
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
                                           RecognizesAccessKey="True" />
+                        <ContentControl Grid.Column="3"
+                                        Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
                 <Border x:Name="PART_ContentBorder"
@@ -166,6 +169,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <ToggleButton x:Name="TgbHeader"
                               Width="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -193,6 +197,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="0,8,0,0"
@@ -201,6 +206,8 @@
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
                                           RecognizesAccessKey="True" />
+                        <ContentControl Grid.Row="3"
+                                        Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
                 <ContentPresenter Margin="{TemplateBinding Padding}"

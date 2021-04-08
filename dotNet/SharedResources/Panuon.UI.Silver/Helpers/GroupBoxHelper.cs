@@ -67,6 +67,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderPadding", typeof(Thickness), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderFontSize
+        public static double GetHeaderFontSize(GroupBox groupBox)
+        {
+            return (double)groupBox.GetValue(HeaderFontSizeProperty);
+        }
+
+        public static void SetHeaderFontSize(GroupBox groupBox, double value)
+        {
+            groupBox.SetValue(HeaderFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(GroupBoxHelper));
+        #endregion
+
         #region HeaderForeground
         public static Brush GetHeaderForeground(GroupBox groupBox)
         {
@@ -217,6 +232,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderSeparatorMargin", typeof(Thickness), typeof(GroupBoxHelper));
         #endregion
 
+        #region ExtendControl
+        public static object GetExtendControl(GroupBox groupBox)
+        {
+            return (object)groupBox.GetValue(ExtendControlProperty);
+        }
+
+        public static void SetExtendControl(GroupBox groupBox, object value)
+        {
+            groupBox.SetValue(ExtendControlProperty, value);
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.RegisterAttached("ExtendControl", typeof(object), typeof(GroupBoxHelper));
+        #endregion
 
     }
 }

@@ -3,6 +3,7 @@
     static class TemplateKeys
     {
         public const string ButtonTemplate = nameof(ButtonTemplate);
+        public const string CardTemplate = nameof(CardTemplate);
         public const string CheckBoxTemplate = nameof(CheckBoxTemplate);
         public const string ComboBoxTemplate = nameof(ComboBoxTemplate);
         public const string ComboBoxWithFixedSearchBoxTemplate = nameof(ComboBoxWithFixedSearchBoxTemplate);
@@ -10,7 +11,6 @@
         public const string ContextMenuTemplate = nameof(ContextMenuTemplate);
         public const string ContextMenuItemTemplate = nameof(ContextMenuItemTemplate);
         public const string ContentControlXTemplate = nameof(ContentControlXTemplate);
-        public const string ContentControlXDependentBorderTemplate = nameof(ContentControlXDependentBorderTemplate);
         public const string DataGridColumnHeaderTemplate = nameof(DataGridColumnHeaderTemplate);
         public const string DataGridCellTemplate = nameof(DataGridCellTemplate);
         public const string DataGridRowTemplate = nameof(DataGridRowTemplate);
@@ -27,6 +27,7 @@
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
+        public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);

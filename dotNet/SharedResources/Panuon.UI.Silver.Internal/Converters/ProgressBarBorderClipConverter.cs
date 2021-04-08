@@ -1,0 +1,43 @@
+﻿using Panuon.UI.Core;
+using System;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Shapes;
+
+namespace Panuon.UI.Silver.Internal.Converters
+{
+    class ProgressBarBorderClipConverter : MultiValueConverterBase
+    {
+        public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            var width = (double)values[0];
+            var height = (double)values[1];
+            var min = (double)values[2];
+            var max = (double)values[3];
+            var value = (double)values[4];
+            var direction = (ProgressDirection)values[5];
+            var percent = (value - min) / (max - min);
+
+            var rect = new Rect();
+            switch (direction)
+            {
+                case ProgressDirection.LeftToRight:
+                    rect = new Rect(0, 0, width * percent, height);
+                    break;
+                case ProgressDirection.RightToLeft:
+                    rect = new Rect(width * (1 - percent), 0, width * percent, height);
+                    break;
+                case ProgressDirection.BottomToTop:
+                    rect = new Rect(0, height * (1 - percent), width, height * percent);
+                    break;
+                case ProgressDirection.TopToBottom:
+                    rect = new Rect(0, 0, width, height * percent);
+                    break;
+            }
+            var geometry = new RectangleGeometry(rect);
+            geometry.Freeze();
+            return geometry;
+        }
+    }
+}
