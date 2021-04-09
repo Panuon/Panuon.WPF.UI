@@ -14,6 +14,7 @@
     <icv:DataGridSelectionUnitIsNotFullRowConverter x:Key="{x:Static irs:ConverterKeys.DataGridSelectionUnitIsNotFullRowConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
+    <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />
     <icv:DoubleToGridLengthConverter x:Key="{x:Static rs:ConverterKeys.DoubleToGridLengthConverter}" />
     <icv:DoubleToThicknessConverter x:Key="{x:Static rs:ConverterKeys.DoubleToThicknessConverter}" />
     <icv:DoubleMinusConverter x:Key="{x:Static rs:ConverterKeys.DoubleMinusConverter}" />
@@ -41,6 +42,7 @@
     <icv:SpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.SpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
     <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />
+    <icv:SwitchToggleMarginConverter x:Key="{x:Static irs:ConverterKeys.SwitchToggleMarginConverter}" />
     <icv:TabPanelMaxHeightConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}" />
     <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}" />
     <icv:TreeViewInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}" />

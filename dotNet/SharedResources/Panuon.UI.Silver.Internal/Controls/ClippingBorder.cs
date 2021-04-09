@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal
 {
@@ -10,42 +9,61 @@ namespace Panuon.UI.Silver.Internal
         #region Ctor
         public ClippingBorder()
         {
-            OpacityMask = CreateOpacityMask();
+        }
+        #endregion
+
+        #region Properties
+
+        #region CornerRadius
+        public new CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public new static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ClippingBorder), new PropertyMetadata(OnCornerRadiusOrBorderThicknessChanged));
+        #endregion
+
+        #region BorderThickness
+        public new Thickness BorderThickness
+        {
+            get { return (Thickness)GetValue(BorderThicknessProperty); }
+            set { SetValue(BorderThicknessProperty, value); }
+        }
+
+        public new static readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.Register("BorderThickness", typeof(Thickness), typeof(ClippingBorder), new PropertyMetadata(OnCornerRadiusOrBorderThicknessChanged));
+        #endregion
+
+        #endregion
+
+        #region Overrides
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            UpdateClip();
+        }
+        #endregion
+
+        #region Event Handlers
+        private static void OnCornerRadiusOrBorderThicknessChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var clippingBorder = (ClippingBorder)d;
+            clippingBorder.OnCornerRadiusChanged();
         }
         #endregion
 
         #region Functions
-        private VisualBrush CreateOpacityMask()
+        private void OnCornerRadiusChanged()
         {
-            var clipBorder = new Border()
-            {
-                Background = Brushes.Black,
-            };
-            clipBorder.SetBinding(SnapsToDevicePixelsProperty, new Binding()
-            {
-                Path = new PropertyPath(SnapsToDevicePixelsProperty),
-                Source = this,
-            });
-            clipBorder.SetBinding(CornerRadiusProperty, new Binding()
-            {
-                Path = new PropertyPath(CornerRadiusProperty),
-                Source = this,
-            });
-            clipBorder.SetBinding(WidthProperty, new Binding()
-            {
-                Path = new PropertyPath(ActualWidthProperty),
-                Source = this,
-            });
-            clipBorder.SetBinding(HeightProperty, new Binding()
-            {
-                Path = new PropertyPath(ActualHeightProperty),
-                Source = this,
-            });
-            var visualBrush = new VisualBrush()
-            {
-                Visual = clipBorder,
-            };
-            return visualBrush;
+            base.CornerRadius = CornerRadius;
+            base.BorderThickness = BorderThickness;
+            UpdateClip();
+        }
+
+        private void UpdateClip()
+        {
+            Clip = GeometryUtil.GetRoundRectangle(new Rect(RenderSize), BorderThickness, CornerRadius);
         }
         #endregion
     }

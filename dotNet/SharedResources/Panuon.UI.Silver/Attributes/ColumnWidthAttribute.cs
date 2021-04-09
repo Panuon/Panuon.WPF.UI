@@ -14,6 +14,18 @@ namespace Panuon.UI.Silver
         {
             Width = width;
         }
+
+        public ColumnWidthAttribute(string width, double minWidth)
+            : this(width)
+        {
+            MinWidth = minWidth;
+        }
+
+        public ColumnWidthAttribute(string width, double minWidth, double maxWidth)
+            : this(width, minWidth)
+        {
+            MaxWidth = maxWidth;
+        }
         #endregion
 
         #region Properties

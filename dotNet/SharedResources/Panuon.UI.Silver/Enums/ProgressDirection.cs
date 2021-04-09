@@ -2,9 +2,7 @@
 {
     public enum ProgressDirection
     {
-        LeftToRight,
-        RightToLeft,
-        BottomToTop,
-        TopToBottom,
+        Normal,
+        Inverse
     }
 }

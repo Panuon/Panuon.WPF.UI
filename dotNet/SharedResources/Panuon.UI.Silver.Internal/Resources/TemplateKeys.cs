@@ -38,6 +38,7 @@
         public const string SpinnerRingTemplate = nameof(SpinnerRingTemplate);
         public const string SpinnerRing2Template = nameof(SpinnerRing2Template);
         public const string SpinnerClassicTemplate = nameof(SpinnerClassicTemplate);
+        public const string SwitchTemplate = nameof(SwitchTemplate);
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);
         public const string TabItemTemplate = nameof(TabItemTemplate);

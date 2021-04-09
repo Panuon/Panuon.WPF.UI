@@ -41,34 +41,35 @@
             </Border>
             <i:ClippingBorder x:Name="BdrTrack"
                               SnapsToDevicePixels="True"
-                              BorderBrush="{TemplateBinding BorderBrush}"
                               BorderThickness="{TemplateBinding BorderThickness}"
                               CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Border x:Name="BdrFilling"
-                        SnapsToDevicePixels="True"
-                        Background="{TemplateBinding Foreground}">
-                    <Border.Clip>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}}">
-                            <Binding Path="ActualWidth"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="ActualHeight"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="Minimum"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="Maximum"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(local:ProgressBarHelper.Value)"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                            <Binding Path="(local:ProgressBarHelper.Direction)"
-                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                        </MultiBinding>
-                    </Border.Clip>
-                </Border>
+                    <Border x:Name="BdrFilling"
+                            SnapsToDevicePixels="True"
+                            Background="{TemplateBinding Foreground}">
+                        <Border.Clip>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}}">
+                                <Binding Path="ActualWidth"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="ActualHeight"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Minimum"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Maximum"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="(local:ProgressBarHelper.Value)"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="(local:ProgressBarHelper.Direction)"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                                <Binding Path="Orientation"
+                                         RelativeSource="{RelativeSource TemplatedParent}" />
+                            </MultiBinding>
+                        </Border.Clip>
+                    </Border>
             </i:ClippingBorder>
             <TextBlock Visibility="{Binding Path=(local:ProgressBarHelper.IsPercentVisible), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Text="{Binding Path=(local:ProgressBarHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
                 <TextBlock.Foreground>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}}">
                         <Binding Path="ActualWidth"
@@ -86,6 +87,8 @@
                         <Binding Path="(local:ProgressBarHelper.Value)"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="(local:ProgressBarHelper.Direction)"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Orientation"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="Foreground"
                                  RelativeSource="{RelativeSource TemplatedParent}" />

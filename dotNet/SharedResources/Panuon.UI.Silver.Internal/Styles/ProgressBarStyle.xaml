@@ -15,18 +15,12 @@
                 Value="True" />
         <Setter Property="local:ProgressBarHelper.InverseForeground"
                 Value="#FFFFFF" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
-        <Setter Property="HorizontalContentAlignment"
-                Value="Center" />
         <Setter Property="Foreground"
                 Value="DimGray" />
         <Setter Property="Background"
                 Value="#EEEEEE" />
         <Setter Property="BorderThickness"
                 Value="0" />
-        <Setter Property="SnapsToDevicePixels"
-                Value="True" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ProgressBarTemplate}}" />
         <Style.Triggers>

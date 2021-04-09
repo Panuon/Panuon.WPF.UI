@@ -10,6 +10,7 @@
         public const string ContextMenuDropDownMarginConverter = nameof(ContextMenuDropDownMarginConverter);
         public const string DataGridSelectionUnitIsNotFullRowConverter = nameof(DataGridSelectionUnitIsNotFullRowConverter);
         public const string DoubleToCornerRadiusConverter = nameof(DoubleToCornerRadiusConverter);
+        public const string DoubleHalfToCornerRadiusConverter = nameof(DoubleHalfToCornerRadiusConverter);
         public const string DropDownMarginConverter = nameof(DropDownMarginConverter);
         public const string DropDownMinWidthConverter = nameof(DropDownMinWidthConverter);
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
@@ -23,6 +24,7 @@
         public const string ProgressBarTextForegroundConverter = nameof(ProgressBarTextForegroundConverter);
         public const string ScrollableControlScrollButtonVisibilityConverter = nameof(ScrollableControlScrollButtonVisibilityConverter);
         public const string SpinnerClassicRenderTransformOriginConverter = nameof(SpinnerClassicRenderTransformOriginConverter);
+        public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
         public const string TreeViewInternalPaddingConverter = nameof(TreeViewInternalPaddingConverter);

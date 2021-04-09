@@ -37,8 +37,6 @@ namespace Samples
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Pgb.Value = Pgb.Value == 100 ? 0 : 100;
-            return;
             var window = new WindowX()
             {
                 Width = 200,
@@ -76,7 +74,6 @@ namespace Samples
         #endregion 
 
         #region DisplayName
-        [ColumnWidth("*")]
         public string DisplayName { get => _displayName; set => Set(ref _displayName, value); }
         private string _displayName;
         #endregion

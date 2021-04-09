@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownHorizontalOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ContextMenuDropDownMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DataGridSelectionUnitIsNotFullRowConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleHalfToCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToGridLengthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToThicknessConverter.cs" />
@@ -29,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMinWidthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarBorderClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarTextForegroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SwitchToggleMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToFalseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GetTypeConverter.cs" />
@@ -61,6 +63,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\WindowXCaptionDataContextConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\SwitchCheckedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\SwitchCheckedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VisualStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\FrameworkElementUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\GeometryUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowChromeUtil.cs" />
   </ItemGroup>
@@ -98,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\ExpanderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SwitchStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\WindowXStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\SwitchTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

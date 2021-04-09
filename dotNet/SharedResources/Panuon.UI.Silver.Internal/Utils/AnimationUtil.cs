@@ -175,6 +175,29 @@ namespace Panuon.UI.Silver.Internal.Utils
         #endregion
 
         #region BeginColorAnimation
+        public static void BeginColorAnimation(UIElement element, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        {
+            var anima = new ColorAnimation()
+            {
+                From = from,
+                To = to,
+                Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                BeginTime = beginTime ?? TimeSpan.Zero,
+                EasingFunction = CreateEasingFunction(ease),
+            };
+
+            if (callback != null)
+            {
+                anima.Completed += delegate
+                {
+                    callback?.Invoke();
+                };
+            }
+
+            element.BeginAnimation(property, anima);
+        }
+
+
         public static void BeginColorAnimation(Animatable obj, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
         {
             var anima = new ColorAnimation()

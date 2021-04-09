@@ -30,22 +30,39 @@
     <Grid  Background="Transparent">
         <ScrollViewer pu:ScrollBarHelper.ScrollButtonVisibility="Visible">
             <StackPanel Margin="20,0,20,200">
+                <StackPanel Margin="0,20,0,0"
+                            Orientation="Horizontal">
+                    <pu:Switch Content="Switch"
+                               GroupName="Switch"
+                               CheckedToggleShadowColor="#6CBCEA"
+                               CheckedBorderBrush="#6CBCEA"
+                               CheckedBackground="#6CBCEA"/>
+                    <pu:Switch Content="Switch"
+                               GroupName="Switch"
+                               CheckedToggleShadowColor="#6CBCEA"
+                               CheckedBorderBrush="#6CBCEA"
+                               CheckedBackground="#6CBCEA" />
+                    <pu:Switch Content="Switch"
+                               GroupName="Switch"
+                               CheckedToggleShadowColor="#6CBCEA"
+                               CheckedBorderBrush="#6CBCEA"
+                               CheckedBackground="#6CBCEA" />
+                </StackPanel>
                 <ProgressBar x:Name="Pgb"
                              Margin="0,20,0,0"
-                             Height="40"
-                             Width="250"
+                             Height="35"
+                             Width="200"
                              Background="#FFFFFF"
                              BorderBrush="#6CBCEA"
                              Foreground="#6CBCEA"
-                             BorderThickness="1"
-                             pu:ProgressBarHelper.AnimationDuration="0:0:1"
+                             BorderThickness="0"
                              pu:ProgressBarHelper.CornerRadius="20"
                              pu:ProgressBarHelper.IsPercentVisible="True"
                              pu:ProgressBarHelper.ShadowColor="#6CBCEA"
                              pu:ShadowHelper.BlurRadius="10"
                              pu:ShadowHelper.Direction="240"
                              pu:ShadowHelper.ShadowDepth="4"
-                             Value="50">
+                             Value="45">
                 </ProgressBar>
                 
                 <pu:TransformControl Margin="0,20,0,0"
@@ -144,6 +161,7 @@
                           ExpandDirection="Down"
                           Width="300"
                           pu:ExpanderHelper.ExpandedBackground="#6CBCEA"
+                          pu:ExpanderHelper.ExpandedBorderBrush="#6CBCEA"
                           pu:ExpanderHelper.ExpandedHeaderForeground="#FFFFFF"
                           pu:ExpanderHelper.ToggleArrowPlacement="Right"
                           pu:ExpanderHelper.ShadowColor="LightGray"
@@ -356,10 +374,14 @@
                               Foreground="White"
                               Background="Transparent"
                               GridLinesVisibility="Horizontal"
+                              pu:DataGridHelper.ColumnHeaderHorizontalContentAlignment="Stretch"
+                              pu:DataGridHelper.ColumnHeaderHoverBackground="#22FFFFFF"
+                              pu:DataGridHelper.ColumnHeaderClickBackground="#44FFFFFF"
+                              pu:DataGridHelper.UnitHoverBackground="#22FFFFFF"
+                              pu:DataGridHelper.UnitSelectedBackground="#44FFFFFF"
                               pu:DataGridHelper.ColumnHeaderSeparatorVisibility="Collapsed"
                               pu:DataGridHelper.RowHeaderBackground="Transparent"
-                              pu:DataGridHelper.ColumnHeaderBackground="Transparent"
-                              pu:DataGridHelper.ColumnHeaderHorizontalContentAlignment="Left">
+                              pu:DataGridHelper.ColumnHeaderBackground="Transparent">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow"
                                    BasedOn="{StaticResource {x:Type DataGridRow}}">
