@@ -1,0 +1,289 @@
+﻿<pu:WindowX x:Class="Samples.Views.Examples.VisualStudio2019View"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Samples.Views.Examples"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="Visual Studio (SIM)"
+            Height="630"
+            Width="1058"
+            MinHeight="630"
+            MinWidth="1058"
+            Background="#252526"
+            BorderBrush="#3E3E45"
+            BorderThickness="1"
+            Foreground="#F1F1F1">
+    <pu:WindowX.Resources>
+        <Style x:Key="SearchComboBoxStyle"
+               TargetType="ComboBox"
+               BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="pu:ComboBoxHelper.HoverBorderBrush"
+                    Value="#007ACC" />
+            <Setter Property="pu:ComboBoxHelper.FocusedBorderBrush"
+                    Value="#007ACC" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="Width"
+                    Value="320" />
+            <Setter Property="Background"
+                    Value="#333337" />
+            <Setter Property="BorderBrush"
+                    Value="#3F3F46" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+        </Style>
+        
+        <Style x:Key="CardButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="pu:IconHelper.FontFamily"
+                    Value="{StaticResource PanuonIconFont}" />
+            <Setter Property="pu:IconHelper.FontSize"
+                    Value="30" />
+            <Setter Property="pu:IconHelper.VerticalAlignment"
+                    Value="Top" />
+            <Setter Property="pu:IconHelper.Margin"
+                    Value="7,2,17,0" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="#3F3F40" />
+            <Setter Property="pu:ButtonHelper.ClickBackground"
+                    Value="{x:Null}" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+            <Setter Property="Background"
+                    Value="#333337" />
+            <Setter Property="Padding"
+                    Value="10,5,10,10" />
+            <Setter Property="Height"
+                    Value="76" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+        </Style>
+
+        <Style x:Key="LinkButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="pu:IconHelper.FontFamily"
+                    Value="{StaticResource PanuonIconFont}" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="{x:Null}" />
+            <Setter Property="pu:ButtonHelper.ClickBackground"
+                    Value="{x:Null}" />
+            <Setter Property="Foreground"
+                    Value="#0097FB" />
+            <Setter Property="Background"
+                    Value="{x:Null}" />
+            <Setter Property="Cursor"
+                    Value="Hand" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="True">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" 
+                                           TextDecorations="Underline"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ProjectListBoxStyle"
+               TargetType="ListBox"
+               BasedOn="{StaticResource {x:Type ListBox}}">
+            <Setter Property="pu:IconHelper.FontFamily"
+                    Value="{StaticResource PanuonIconFont}" />
+            <Setter Property="pu:IconHelper.Width"
+                    Value="25" />
+            <Setter Property="pu:IconHelper.Height"
+                    Value="25" />
+            <Setter Property="pu:IconHelper.VerticalAlignment"
+                    Value="Top" />
+            <Setter Property="pu:IconHelper.Margin"
+                    Value="0,10,7,0" />
+            <Setter Property="pu:ListBoxHelper.ItemsHeight"
+                    Value="65" />
+            <Setter Property="pu:ListBoxHelper.ItemsPadding"
+                    Value="10,0,10,0" />
+            <Setter Property="pu:ListBoxHelper.ItemsHoverBackground"
+                    Value="#3F3F40" />
+            <Setter Property="pu:ListBoxHelper.ItemsSelectedBackground"
+                    Value="{x:Null}" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+        </Style>
+        
+    </pu:WindowX.Resources>
+    <pu:WindowXCaption.HeaderTemplate>
+        <DataTemplate></DataTemplate>
+    </pu:WindowXCaption.HeaderTemplate>
+    <Grid Margin="55,0,65,35">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Visual Studio 2019 (SIM)"
+                   FontSize="33"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="0.6*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0,30,0,0"
+                       Text="打开最近使用的内容(R)"
+                       FontSize="20" />
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ComboBox Margin="0,15,0,0"
+                          HorizontalAlignment="Left"
+                          IsEditable="True"
+                          Style="{StaticResource SearchComboBoxStyle}"
+                          pu:ComboBoxHelper.Watermark="搜索最近使用的项目" />
+                <ListBox Grid.Row="1"
+                         Margin="0,15,0,0"
+                         Style="{DynamicResource ProjectListBoxStyle}">
+                    <ListBoxItem pu:ListBoxItemHelper.Icon="/Samples;component/Resources/WebForms.png">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock FontSize="14"
+                                       FontWeight="Bold"
+                                       Text="项目A.sln" />
+                            <TextBlock VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Foreground="#C6C8D2"
+                                       Text="2021/4/12 12:00" />
+                            <TextBlock Grid.Row="1"
+                                       Margin="0,8,0,0"
+                                       Text="D:\项目A"
+                                       TextTrimming="CharacterEllipsis"
+                                       Foreground="#C6C8D2" />
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem pu:ListBoxItemHelper.Icon="/Samples;component/Resources/WebForms.png">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock FontSize="14"
+                                       FontWeight="Bold"
+                                       Text="项目B.sln" />
+                            <TextBlock VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Foreground="#C6C8D2"
+                                       Text="2021/4/12 12:00" />
+                            <TextBlock Grid.Row="1"
+                                       Margin="0,8,0,0"
+                                       Text="D:\项目B"
+                                       TextTrimming="CharacterEllipsis"
+                                       Foreground="#C6C8D2" />
+                        </Grid>
+                    </ListBoxItem>
+                </ListBox>
+            </Grid>
+            <TextBlock Grid.Column="2"
+                       Margin="0,30,0,0"
+                       Text="开始使用"
+                       FontSize="20" />
+            <StackPanel Grid.Column="2"
+                        Grid.Row="1"
+                        Margin="0,15,0,0">
+                <Button  Style="{StaticResource CardButtonStyle}"
+                         pu:ButtonHelper.Icon="&#xe941;">
+                    <StackPanel>
+                        <TextBlock FontSize="20"
+                                   Text="连接到CodeSpace"/>
+                        <TextBlock Margin="0,2,0,0"
+                                   Text="创建和管理云助力的开发环境"
+                                   Foreground="#C6C8D2"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="0,5,0,0"
+                        Style="{StaticResource CardButtonStyle}"
+                         pu:ButtonHelper.Icon="&#xe94d;">
+                    <StackPanel>
+                        <TextBlock FontSize="20"
+                                   Text="克隆储存库" />
+                        <TextBlock Margin="0,2,0,0"
+                                   Text="从 Github 或 Azure DevOps 等联机储存库获取代码"
+                                   TextWrapping="Wrap"
+                                   Foreground="#C6C8D2" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="0,5,0,0"
+                        Style="{StaticResource CardButtonStyle}"
+                        pu:ButtonHelper.Icon="&#xe951;">
+                    <StackPanel>
+                        <TextBlock FontSize="20"
+                                   Text="打开项目或解决方案" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Text="打开本地 Visual Studio 项目或 .sln 文件"
+                                   TextWrapping="Wrap"
+                                   Foreground="#C6C8D2" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="0,5,0,0"
+                        Style="{StaticResource CardButtonStyle}"
+                        pu:ButtonHelper.Icon="&#xe956;">
+                    <StackPanel>
+                        <TextBlock FontSize="20"
+                                   Text="打开本地文件夹" />
+                        <TextBlock Margin="0,2,0,0"
+                                   Text="导航和编辑任何文件夹中的代码"
+                                   TextWrapping="Wrap"
+                                   Foreground="#C6C8D2" />
+                    </StackPanel>
+                </Button>
+                <Button Margin="0,5,0,0"
+                        Style="{StaticResource CardButtonStyle}"
+                        pu:ButtonHelper.Icon="&#xe960;">
+                    <StackPanel>
+                        <TextBlock FontSize="20"
+                                   Text="创建新项目" />
+                        <TextBlock Margin="0,2,0,0"
+                                   Text="选择具有代码基架的项目模板以开始"
+                                   TextWrapping="Wrap"
+                                   Foreground="#C6C8D2" />
+                    </StackPanel>
+                </Button>
+                <StackPanel Margin="0,10,0,0"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Button Style="{StaticResource LinkButtonStyle}"
+                            Content="继续但无需代码" />
+                    <TextBlock Text="&#xe90e;"
+                               VerticalAlignment="Center"
+                               Foreground="#0097FB"
+                               FontFamily="{StaticResource PanuonIconFont}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</pu:WindowX>
