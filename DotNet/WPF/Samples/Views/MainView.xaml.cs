@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using Samples.Views.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,14 @@ namespace Samples.Views
             var button = sender as Button;
             var exampleItem = button.DataContext as ExampleItem;
             var window = (Window)Activator.CreateInstance(exampleItem.ViewType);
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.Owner = this;
+            window.ShowDialog();
+        }
+
+        private void BtnIconFont_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new IconFontView();
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.Owner = this;
             window.ShowDialog();

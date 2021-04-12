@@ -21,6 +21,16 @@
             </StackPanel>
         </DataTemplate>
     </pu:WindowXCaption.HeaderTemplate>
+    <pu:WindowXCaption.ExtendControl>
+        <StackPanel>
+            <Button x:Name="BtnIconFont"
+                    FontSize="18"
+                    ToolTip="Panuon IconFont Browser"
+                    Style="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}" 
+                    Content="&#xe99d;"
+                    Click="BtnIconFont_Click"/>
+        </StackPanel>
+    </pu:WindowXCaption.ExtendControl>
     <Grid Margin="20,10,20,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
