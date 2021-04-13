@@ -55,6 +55,10 @@
                 Value="1" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
                 Value="Collapsed" />
+        <Setter Property="local:TabControlHelper.ItemsHeaderVerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="local:TabControlHelper.ItemsHeaderHorizontalAlignment"
+                Value="Stretch" />
         <Setter Property="local:TabControlHelper.ItemsHeaderVerticalContentAlignment"
                 Value="Center" />
         <Setter Property="local:TabControlHelper.ItemsHeaderHorizontalContentAlignment"

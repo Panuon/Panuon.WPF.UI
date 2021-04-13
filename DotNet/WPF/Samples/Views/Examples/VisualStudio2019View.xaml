@@ -55,9 +55,9 @@
             <Setter Property="Background"
                     Value="#333337" />
             <Setter Property="Padding"
-                    Value="10,5,10,10" />
+                    Value="10,7,10,10" />
             <Setter Property="Height"
-                    Value="76" />
+                    Value="75" />
             <Setter Property="VerticalContentAlignment"
                     Value="Stretch" />
             <Setter Property="HorizontalContentAlignment"
@@ -121,6 +121,8 @@
                     Value="{x:Null}" />
             <Setter Property="Foreground"
                     Value="#F1F1F1" />
+            <Setter Property="Background"
+                    Value="Transparent" />
             <Setter Property="BorderThickness"
                     Value="0" />
             <Setter Property="VerticalContentAlignment"
@@ -151,7 +153,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Margin="0,30,0,0"
-                       Text="打开最近使用的内容(R)"
+                       Text="Open recent"
                        FontSize="20" />
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -162,10 +164,10 @@
                           HorizontalAlignment="Left"
                           IsEditable="True"
                           Style="{StaticResource SearchComboBoxStyle}"
-                          pu:ComboBoxHelper.Watermark="搜索最近使用的项目" />
+                          pu:ComboBoxHelper.Watermark="Search recent" />
                 <ListBox Grid.Row="1"
                          Margin="0,15,0,0"
-                         Style="{DynamicResource ProjectListBoxStyle}">
+                         Style="{StaticResource ProjectListBoxStyle}">
                     <ListBoxItem pu:ListBoxItemHelper.Icon="/Samples;component/Resources/WebForms.png">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -174,14 +176,14 @@
                             </Grid.RowDefinitions>
                             <TextBlock FontSize="14"
                                        FontWeight="Bold"
-                                       Text="项目A.sln" />
+                                       Text="ProjectA.sln" />
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
                                        Foreground="#C6C8D2"
                                        Text="2021/4/12 12:00" />
                             <TextBlock Grid.Row="1"
                                        Margin="0,8,0,0"
-                                       Text="D:\项目A"
+                                       Text="D:\ProjectA"
                                        TextTrimming="CharacterEllipsis"
                                        Foreground="#C6C8D2" />
                         </Grid>
@@ -194,14 +196,14 @@
                             </Grid.RowDefinitions>
                             <TextBlock FontSize="14"
                                        FontWeight="Bold"
-                                       Text="项目B.sln" />
+                                       Text="ProjectB.sln" />
                             <TextBlock VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
                                        Foreground="#C6C8D2"
                                        Text="2021/4/12 12:00" />
                             <TextBlock Grid.Row="1"
                                        Margin="0,8,0,0"
-                                       Text="D:\项目B"
+                                       Text="D:\ProjectB"
                                        TextTrimming="CharacterEllipsis"
                                        Foreground="#C6C8D2" />
                         </Grid>
@@ -210,7 +212,7 @@
             </Grid>
             <TextBlock Grid.Column="2"
                        Margin="0,30,0,0"
-                       Text="开始使用"
+                       Text="Get started"
                        FontSize="20" />
             <StackPanel Grid.Column="2"
                         Grid.Row="1"
@@ -218,10 +220,11 @@
                 <Button  Style="{StaticResource CardButtonStyle}"
                          pu:ButtonHelper.Icon="&#xe941;">
                     <StackPanel>
-                        <TextBlock FontSize="20"
-                                   Text="连接到CodeSpace"/>
-                        <TextBlock Margin="0,2,0,0"
-                                   Text="创建和管理云助力的开发环境"
+                        <TextBlock FontSize="18"
+                                   Text="Connect to a codespace"/>
+                        <TextBlock Margin="0,5,0,0"
+                                   Text="Create and manage cloud-powered development environments"
+                                   TextWrapping="Wrap"
                                    Foreground="#C6C8D2"/>
                     </StackPanel>
                 </Button>
@@ -229,10 +232,10 @@
                         Style="{StaticResource CardButtonStyle}"
                          pu:ButtonHelper.Icon="&#xe94d;">
                     <StackPanel>
-                        <TextBlock FontSize="20"
-                                   Text="克隆储存库" />
-                        <TextBlock Margin="0,2,0,0"
-                                   Text="从 Github 或 Azure DevOps 等联机储存库获取代码"
+                        <TextBlock FontSize="18"
+                                   Text="Clone a repository" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Text="Get code from an online repository like GitHub or Azure DevOps"
                                    TextWrapping="Wrap"
                                    Foreground="#C6C8D2" />
                     </StackPanel>
@@ -241,10 +244,10 @@
                         Style="{StaticResource CardButtonStyle}"
                         pu:ButtonHelper.Icon="&#xe951;">
                     <StackPanel>
-                        <TextBlock FontSize="20"
-                                   Text="打开项目或解决方案" />
+                        <TextBlock FontSize="18"
+                                   Text="Open a project or solution" />
                         <TextBlock Margin="0,5,0,0"
-                                   Text="打开本地 Visual Studio 项目或 .sln 文件"
+                                   Text="Open a local Visual Studio project or .sln file"
                                    TextWrapping="Wrap"
                                    Foreground="#C6C8D2" />
                     </StackPanel>
@@ -253,10 +256,10 @@
                         Style="{StaticResource CardButtonStyle}"
                         pu:ButtonHelper.Icon="&#xe956;">
                     <StackPanel>
-                        <TextBlock FontSize="20"
-                                   Text="打开本地文件夹" />
-                        <TextBlock Margin="0,2,0,0"
-                                   Text="导航和编辑任何文件夹中的代码"
+                        <TextBlock FontSize="18"
+                                   Text="Open a local folder" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Text="Navigate and edit code within any folder"
                                    TextWrapping="Wrap"
                                    Foreground="#C6C8D2" />
                     </StackPanel>
@@ -265,10 +268,10 @@
                         Style="{StaticResource CardButtonStyle}"
                         pu:ButtonHelper.Icon="&#xe960;">
                     <StackPanel>
-                        <TextBlock FontSize="20"
-                                   Text="创建新项目" />
-                        <TextBlock Margin="0,2,0,0"
-                                   Text="选择具有代码基架的项目模板以开始"
+                        <TextBlock FontSize="18"
+                                   Text="Create a new project" />
+                        <TextBlock Margin="0,5,0,0"
+                                   Text="Choose a project template with code scaffolding to get started"
                                    TextWrapping="Wrap"
                                    Foreground="#C6C8D2" />
                     </StackPanel>
@@ -277,7 +280,7 @@
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                     <Button Style="{StaticResource LinkButtonStyle}"
-                            Content="继续但无需代码" />
+                            Content="Continue without code" />
                     <TextBlock Text="&#xe90e;"
                                VerticalAlignment="Center"
                                Foreground="#0097FB"

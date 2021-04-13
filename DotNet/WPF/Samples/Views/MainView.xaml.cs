@@ -1,19 +1,10 @@
 ﻿using Panuon.UI.Silver;
 using Samples.Views.Tools;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Samples.Views
 {
@@ -22,32 +13,15 @@ namespace Samples.Views
     /// </summary>
     public partial class MainView : WindowX
     {
+        #region Ctor
         public MainView()
         {
             InitializeComponent();
             InitExampleItems();
         }
+        #endregion
 
-        private void InitExampleItems()
-        {
-            var items = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
-                .Select(x => 
-                {
-                    var viewAttribute = x.GetCustomAttribute<ExampleViewAttribute>();
-                    return new ExampleItem()
-                    {
-                        DisplayName = viewAttribute.DisplayName,
-                        ViewType = x,
-                        ViewPath = $"Samples/Views/Examples/{x.Name}",
-                        Screenshot = viewAttribute.Screenshot,
-                    };
-                })
-                .ToList();
-            LsbExamples.ItemsSource = items;
-        }
-
+        #region Event Handlers
         private void BtnExample_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -65,5 +39,68 @@ namespace Samples.Views
             window.Owner = this;
             window.ShowDialog();
         }
+        #endregion
+
+        #region Functions
+        private void InitExampleItems()
+        {
+            var items = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
+                .OrderBy(x => x.GetCustomAttribute<ExampleViewAttribute>().Index)
+                .Select(x =>
+                {
+                    var viewAttribute = x.GetCustomAttribute<ExampleViewAttribute>();
+                    var view = (WindowX)Activator.CreateInstance(x);
+                    var content = view.Content;
+                    view.Content = null;
+                    var previewView = GetPreviewView(view, content);
+                    return new ExampleItem()
+                    {
+                        DisplayName = viewAttribute.DisplayName,
+                        ViewType = x,
+                        ViewPath = $"Samples/Views/Examples/{x.Name}",
+                        PreviewView = previewView,
+                    };
+                });
+            LsbExamples.ItemsSource = items;
+        }
+
+        private UIElement GetPreviewView(WindowX view, object content)
+        {
+            var contentControl = new ContentControl()
+            {
+                Foreground = view.Foreground,
+                Content = content,
+            };
+            var grid = new Grid();
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(WindowXCaption.GetHeight(view)) });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            grid.Children.Add(new Border()
+            {
+                Background = WindowXCaption.GetBackground(view),
+                Child = new ContentControl()
+                {
+                    Content = view.DataContext is Window ? "" : view.DataContext,
+                    ContentTemplate = WindowXCaption.GetHeaderTemplate(view),
+                }
+            });
+            Grid.SetRow(contentControl, 1);
+            grid.Children.Add(contentControl);
+            var border = new Border()
+            {
+                Background = view.Background,
+                BorderBrush = view.BorderBrush,
+                BorderThickness = view.BorderThickness,
+                Width = view.Width,
+                Height = view.Height,
+                Child = grid,
+            };
+            return border;
+        }
+        #endregion
+
+       
+
     }
 }

@@ -58,6 +58,9 @@
     <Compile Include="Attrbiutes\ExampleViewAttribute.cs" />
     <Compile Include="Models\ExampleItem.cs" />
     <Compile Include="Models\FontItem.cs" />
+    <Compile Include="Views\Examples\NeteaseMusicView.xaml.cs">
+      <DependentUpon>NeteaseMusicView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Examples\VisualStudio2019View.xaml.cs">
       <DependentUpon>VisualStudio2019View.xaml</DependentUpon>
     </Compile>
@@ -71,6 +74,10 @@
     <Compile Include="Views\Tools\IconFontView.xaml.cs">
       <DependentUpon>IconFontView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Examples\NeteaseMusicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Examples\VisualStudio2019View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,9 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Screenshots\VisualStudio2019View.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

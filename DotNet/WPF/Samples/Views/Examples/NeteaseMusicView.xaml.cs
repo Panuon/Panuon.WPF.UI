@@ -5,10 +5,10 @@ namespace Samples.Views.Examples
     /// <summary>
     /// NeteaseMusicView.xaml 的交互逻辑
     /// </summary>
-    [ExampleView(Index = 0, DisplayName = "Visual Studio 2019")]
-    public partial class VisualStudio2019View : WindowX
+    [ExampleView(Index = 1, DisplayName = "Netease Music")]
+    public partial class NeteaseMusicView : WindowX
     {
-        public VisualStudio2019View()
+        public NeteaseMusicView()
         {
             InitializeComponent();
         }

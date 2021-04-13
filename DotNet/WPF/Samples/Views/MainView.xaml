@@ -9,7 +9,7 @@
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
-            Width="1200"
+            Width="1000"
             WindowStartupLocation="CenterScreen">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
@@ -36,7 +36,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Text="Samples"
+        <TextBlock Text="{Binding Now, Source={x:Static pu:Tools.DateTime}}"
                    FontSize="30" />
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"
@@ -67,9 +67,9 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Image Source="{Binding Screenshot}"
-                                       RenderOptions.BitmapScalingMode="HighQuality"
-                                       Stretch="Uniform"/>
+                                <Viewbox>
+                                    <ContentControl Content="{Binding PreviewView}"/>
+                                </Viewbox>
                                 <TextBlock Grid.Row="1"
                                            FontWeight="Bold"
                                            Text="{Binding DisplayName}"
