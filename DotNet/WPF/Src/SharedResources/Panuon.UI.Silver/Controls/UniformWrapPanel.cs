@@ -79,7 +79,7 @@ namespace Panuon.UI.Silver
                     : constraint.Width,
                 _isVertical
                     ? constraint.Height
-                    : (constraint.Height - (Groups - 1) * VerticalSpacing) / Height);
+                    : (constraint.Height - (Groups - 1) * VerticalSpacing) / Groups);
 
             var rowWidth = 0.0;
             var rowHeight = 0.0;
@@ -121,7 +121,7 @@ namespace Panuon.UI.Silver
             var top = 0.0;
 
             var childWidth = (finalSize.Width - (Groups - 1) * HorizontalSpacing) / Groups;
-            var childHeight = (finalSize.Height - (Groups - 1) * VerticalSpacing) / Height;
+            var childHeight = (finalSize.Height - (Groups - 1) * VerticalSpacing) / Groups;
             var rowWidth = 0.0;
             var rowHeight = 0.0;
 
@@ -129,8 +129,8 @@ namespace Panuon.UI.Silver
             {
                 if ((_isVertical && left >= finalSize.Width) || (!_isVertical && top >= finalSize.Height))
                 {
-                    left = _isVertical ? 0.0 : (left + rowWidth);
-                    top = _isVertical ? (top + rowHeight) : 0.0;
+                    left = _isVertical ? 0.0 : (left + rowWidth + HorizontalSpacing);
+                    top = _isVertical ? (top + rowHeight +VerticalSpacing) : 0.0;
                     rowHeight = 0;
                     rowWidth = 0;
                 }

@@ -13,8 +13,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentControlX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomPopup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalSpinner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringNullOrEmptyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringUnequalConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringEqualConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BrushOpacityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxCheckPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownHorizontalOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ContextMenuDropDownMarginConverter.cs" />
@@ -63,8 +68,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\WindowXCaptionDataContextConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\SwitchCheckedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\SwitchCheckedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupSizeDeterminedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupSizeDeterminedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VisualStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
@@ -79,6 +86,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\FormGroupStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SpinnerStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\SpinnerStyle.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Styles\InternalSpinnerStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,6 +222,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\WindowXStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\FromGroupTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\SliderTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,7 +317,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Templates\SpinnerTemplate.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Templates\InternalSpinnerTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -183,6 +183,11 @@
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
             </Trigger>
+            <Trigger Property="IsMaskVisible"
+                     Value="True">
+                <Setter Property="DisableDragMove"
+                        Value="True" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 

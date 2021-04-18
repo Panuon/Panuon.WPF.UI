@@ -69,6 +69,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsPending", typeof(bool), typeof(RepeatButtonHelper));
         #endregion
 
+        #region PendingSpinnerStyle
+        public static Style GetPendingSpinnerStyle(RepeatButton repeatButton)
+        {
+            return (Style)repeatButton.GetValue(PendingSpinnerStyleProperty);
+        }
+
+        public static void SetPendingSpinnerStyle(RepeatButton repeatButton, Style value)
+        {
+            repeatButton.SetValue(PendingSpinnerStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty PendingSpinnerStyleProperty =
+            DependencyProperty.RegisterAttached("PendingSpinnerStyle", typeof(Style), typeof(RepeatButtonHelper));
+        #endregion
+
         #region ShadowColor
         public static Color? GetShadowColor(RepeatButton repeatButton)
         {

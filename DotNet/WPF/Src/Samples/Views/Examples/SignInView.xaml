@@ -1,0 +1,188 @@
+﻿<pu:WindowX x:Class="Samples.Views.Examples.SignInView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Samples.Views.Examples"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="Sign In"
+            Height="420"
+            Width="380"
+            pu:WindowXCaption.Buttons="Close">
+    <Window.Resources>
+
+        <Style x:Key="SignInTextBoxStyle"
+               TargetType="TextBox"
+               BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="pu:TextBoxHelper.FocusedBorderBrush"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:TextBoxHelper.FocusedShadowColor"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:TextBoxHelper.CornerRadius"
+                    Value="2" />
+            <Setter Property="pu:TextBoxHelper.WatermarkBrush"
+                    Value="#4A4A4A" />
+            <Setter Property="pu:TextBoxHelper.FocusedWatermarkBrush"
+                    Value="#AAAAAA" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="Padding"
+                    Value="10,0" />
+        </Style>
+
+        <Style x:Key="SignInPasswordBoxStyle"
+               TargetType="PasswordBox"
+               BasedOn="{StaticResource {x:Type PasswordBox}}">
+            <Setter Property="pu:PasswordBoxHelper.FocusedBorderBrush"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:PasswordBoxHelper.FocusedShadowColor"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:PasswordBoxHelper.CornerRadius"
+                    Value="2" />
+            <Setter Property="pu:PasswordBoxHelper.WatermarkBrush"
+                    Value="#4A4A4A" />
+            <Setter Property="pu:PasswordBoxHelper.FocusedWatermarkBrush"
+                    Value="#AAAAAA" />
+            <Setter Property="pu:PasswordBoxHelper.ClearButtonVisibility"
+                    Value="VisibleOnHoverAndNonnull" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="Padding"
+                    Value="10,0" />
+        </Style>
+
+        <Style x:Key="SignInButtonStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="pu:ButtonHelper.CornerRadius"
+                    Value="2" />
+            <Setter Property="pu:ButtonHelper.ShadowColor"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:ShadowHelper.BlurRadius"
+                    Value="5" />
+            <Setter Property="pu:ShadowHelper.ShadowDepth"
+                    Value="4" />
+            <Setter Property="pu:ShadowHelper.Opacity"
+                    Value="0.8" />
+            <Setter Property="Background"
+                    Value="#6CBCEA" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="pu:ButtonHelper.PendingSpinnerStyle">
+                <Setter.Value>
+                    <Style TargetType="pu:Spinner"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
+                        <Setter Property="SpinnerStyle"
+                                Value="Ring2" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="pu:ButtonHelper.IsPending"
+                         Value="True">
+                    <Setter Property="pu:ButtonHelper.ClickEffect"
+                            Value="Shake" />
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="Click again ?"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="RememberMeSwitchStyle"
+               TargetType="pu:Switch">
+            <Setter Property="ContentPlacement"
+                    Value="Left" />
+            <Setter Property="BoxHeight"
+                    Value="16" />
+            <Setter Property="BoxWidth"
+                    Value="32" />
+            <Setter Property="CheckedBackground"
+                    Value="#6CBCEA" />
+            <Setter Property="Background"
+                    Value="#DEDEDE" />
+            <Setter Property="BorderBrush"
+                    Value="#DEDEDE" />
+            <Setter Property="Foreground"
+                    Value="DimGray" />
+            <Setter Property="ToggleSize"
+                    Value="10" />
+            <Setter Property="ToggleShadowColor"
+                    Value="{x:Null}" />
+            <Setter Property="CheckedBorderBrush"
+                    Value="#6CBCEA" />
+        </Style>
+
+        <Style x:Key="InputFormGroupStyle"
+               TargetType="pu:FormGroup">
+            <Setter Property="Width"
+                    Value="250" />
+        </Style>
+        
+    </Window.Resources>
+    <pu:WindowXCaption.CloseButtonStyle>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXCloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="pu:ButtonHelper.HoverForeground"
+                    Value="#C62F2F" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="{x:Null}" />
+        </Style>
+    </pu:WindowXCaption.CloseButtonStyle>
+
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Margin="0,-30,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Image Height="25"
+               HorizontalAlignment="Left"
+               Source="/Samples;component/Resources/Logo.png"
+               RenderOptions.BitmapScalingMode="HighQuality" />
+        <pu:FormGroup Grid.Row="1"
+                      Margin="0,50,0,0"
+                      Style="{StaticResource InputFormGroupStyle}">
+            <TextBox Style="{StaticResource SignInTextBoxStyle}"
+                     pu:TextBoxHelper.Watermark="UserName / Email / Phone" />
+        </pu:FormGroup>
+        <pu:FormGroup x:Name="FmgPassword"
+                      Grid.Row="2"
+                      Margin="0,20,0,0"
+                      HeaderPadding="0,4,0,0"
+                      Style="{StaticResource InputFormGroupStyle}"
+                      MinMessageHeight="22">
+            <PasswordBox x:Name="PwdPassword"
+                         Style="{StaticResource SignInPasswordBoxStyle}"
+                         pu:PasswordBoxHelper.Watermark="Password"
+                         PasswordChanged="PasswordBox_PasswordChanged" />
+        </pu:FormGroup>
+        <pu:Switch Grid.Row="3"
+                   HorizontalAlignment="Right"
+                   Margin="0,25,0,0"
+                   Style="{StaticResource RememberMeSwitchStyle}"
+                   Content="Remember Me" />
+        <Button x:Name="BtnLogin"
+                Grid.Row="4"
+                Margin="0,10,0,0"
+                Content="Sign In"
+                Style="{StaticResource SignInButtonStyle}"
+                Click="BtnLogin_Click" />
+    </Grid>
+</pu:WindowX>

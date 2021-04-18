@@ -69,6 +69,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsPending", typeof(bool), typeof(ToggleButtonHelper));
         #endregion
 
+        #region PendingSpinnerStyle
+        public static Style GetPendingSpinnerStyle(ToggleButton toggleButton)
+        {
+            return (Style)toggleButton.GetValue(PendingSpinnerStyleProperty);
+        }
+
+        public static void SetPendingSpinnerStyle(ToggleButton toggleButton, Style value)
+        {
+            toggleButton.SetValue(PendingSpinnerStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty PendingSpinnerStyleProperty =
+            DependencyProperty.RegisterAttached("PendingSpinnerStyle", typeof(Style), typeof(ToggleButtonHelper));
+        #endregion
+
         #region ShadowColor
         public static Color? GetShadowColor(ToggleButton toggleButton)
         {

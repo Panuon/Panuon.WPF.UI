@@ -11,12 +11,15 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.RadioButtonTemplate}"
                      TargetType="RadioButton">
-        <StackPanel SnapsToDevicePixels="False"
-                    Orientation="Horizontal"
-                    Background="Transparent"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <i:ContentControlX x:Name="ccBox"
+        <Grid Background="Transparent"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <i:ContentControlX x:Name="CcBox"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -37,14 +40,26 @@
                     </Ellipse.RenderTransform>
                 </Ellipse>
             </i:ContentControlX>
-            <ContentPresenter x:Name="cpContent"
+            <ContentPresenter x:Name="CpContent"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Margin="{TemplateBinding Padding}" />
-        </StackPanel>
+        </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="local:CheckBoxHelper.ContentPlacement"
+                     Value="Left">
+                <Setter TargetName="CcBox"
+                        Property="Grid.Column"
+                        Value="2" />
+            </Trigger>
+            <Trigger Property="local:CheckBoxHelper.ContentPlacement"
+                     Value="Right">
+                <Setter TargetName="CcBox"
+                        Property="Grid.Column"
+                        Value="0" />
+            </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -52,7 +67,7 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="Background"
                         Value="{Binding Path=(local:RadioButtonHelper.CheckedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -63,7 +78,7 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:RadioButtonHelper.CheckedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -74,10 +89,10 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:RadioButtonHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:RadioButtonHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -88,7 +103,7 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.NullableBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="Background"
                         Value="{Binding Path=(local:RadioButtonHelper.NullableBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -99,7 +114,7 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.NullableBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ccBox"
+                <Setter TargetName="CcBox"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:RadioButtonHelper.NullableBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -110,10 +125,10 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.NullableForeround), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:RadioButtonHelper.NullableForeround), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:RadioButtonHelper.NullableForeround), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

@@ -6,6 +6,7 @@
             xmlns:local="clr-namespace:Samples.Views"
             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
+            xmlns:pui="clr-namespace:Panuon.UI.Silver.Internal;assembly=Panuon.UI.Silver"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
@@ -26,28 +27,30 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}" 
+                    Style="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
                     Content="&#xe99d;"
-                    Click="BtnIconFont_Click"/>
+                    Click="BtnIconFont_Click" />
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid Margin="20,10,20,20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Now, Source={x:Static pu:Tools.DateTime}}"
+        <TextBlock Text="Samples"
                    FontSize="30" />
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled">
+                      VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Auto">
             <ItemsControl x:Name="LsbExamples"
                           VerticalContentAlignment="Stretch"
                           HorizontalAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <pu:UniformWrapPanel Groups="3"
+                        <pu:UniformWrapPanel Groups="2"
+                                             Orientation="Horizontal"
                                              HorizontalSpacing="10"
                                              VerticalSpacing="10" />
                     </ItemsPanelTemplate>
@@ -55,11 +58,11 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Background="#F1F1F1"
-                                Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"
+                                Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
                                 ToolTip="{Binding ViewPath}"
                                 VerticalContentAlignment="Stretch"
                                 HorizontalContentAlignment="Stretch"
-                                Padding="10"
+                                Padding="5"
                                 Click="BtnExample_Click">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -67,8 +70,9 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Viewbox>
-                                    <ContentControl Content="{Binding PreviewView}"/>
+                                <Viewbox HorizontalAlignment="Center">
+                                    <ContentControl Content="{Binding PreviewView}"
+                                                    IsHitTestVisible="False"/>
                                 </Viewbox>
                                 <TextBlock Grid.Row="1"
                                            FontWeight="Bold"
@@ -85,5 +89,14 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <TextBlock HorizontalAlignment="Right"
+                   TextWrapping="Wrap"
+                   Width="150">
+        </TextBlock>
+        <TextBlock Grid.Row="2"
+                   FontSize="14"
+                   Foreground="Gray"
+                   HorizontalAlignment="Right"
+                   Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
     </Grid>
 </pu:WindowX>

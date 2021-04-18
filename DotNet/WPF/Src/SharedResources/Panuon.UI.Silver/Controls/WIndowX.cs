@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shell;
 
 namespace Panuon.UI.Silver
 {
@@ -99,6 +100,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CanCloseProperty =
             DependencyProperty.Register("CanClose", typeof(bool), typeof(WindowX), new PropertyMetadata(true));
+        #endregion
+
+        #region DisableDragMove
+        public bool DisableDragMove
+        {
+            get { return (bool)GetValue(DisableDragMoveProperty); }
+            set { SetValue(DisableDragMoveProperty, value); }
+        }
+
+        public static readonly DependencyProperty DisableDragMoveProperty =
+            DependencyProperty.Register("DisableDragMove", typeof(bool), typeof(WindowX), new PropertyMetadata(OnDisableDragMoveChanged));
         #endregion
 
         #region IsMaskVisible
@@ -325,6 +337,12 @@ namespace Panuon.UI.Silver
             }
         }
 
+        private static void OnDisableDragMoveChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var window = (WindowX)d;
+            window.OnDisableDragMoveChanged();
+        }
+
         private static void OnIsDragMoveAreaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = d as UIElement;
@@ -405,6 +423,18 @@ namespace Panuon.UI.Silver
             windowX.Close();
         }
 
+        #endregion
+
+        #region Functions
+        private void OnIsMaskVisibleChanged()
+        {
+            WindowChromeUtil.SetCaptionHeight(this, IsMaskVisible ? 0 : (DisableDragMove ? 0 : WindowXCaption.GetHeight(this)));
+        }
+
+        private void OnDisableDragMoveChanged()
+        {
+            WindowChromeUtil.SetCaptionHeight(this, DisableDragMove ? 0 : WindowXCaption.GetHeight(this));
+        }
         #endregion
 
     }

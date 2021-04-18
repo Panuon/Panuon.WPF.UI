@@ -37,6 +37,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ToggleBrush", typeof(Brush), typeof(RadioButtonHelper), new PropertyMetadata(Brushes.Transparent));
         #endregion
 
+        #region ContentPlacement
+        public static ContentPlacement GetContentPlacement(RadioButton radioButton)
+        {
+            return (ContentPlacement)radioButton.GetValue(ContentPlacementProperty);
+        }
+
+        public static void SetContentPlacement(RadioButton radioButton, ContentPlacement value)
+        {
+            radioButton.SetValue(ContentPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentPlacementProperty =
+            DependencyProperty.RegisterAttached("ContentPlacement", typeof(ContentPlacement), typeof(RadioButtonHelper), new PropertyMetadata(ContentPlacement.Right));
+        #endregion
+
         #region ToggleRadius
         public static double GetToggleRadius(RadioButton radioButton)
         {

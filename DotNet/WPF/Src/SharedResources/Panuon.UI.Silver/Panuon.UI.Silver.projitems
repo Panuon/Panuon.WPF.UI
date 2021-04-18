@@ -20,14 +20,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnDisplayIndexAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnWidthAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Attributes\ColumnIgnoreAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configurations\DateTimeTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\GlobalSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RingProgressBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Switch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AnimationEase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ContentPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToggleArrowPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\RibbonLinePlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TabPanelAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ValidateResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\WindowXHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CaptionButtons.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DataGridSortArrowVisibility.cs" />
@@ -48,8 +52,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Spinner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UniformWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CheckBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ComboBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ComboBoxItemHelper.cs" />
@@ -78,6 +82,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IconHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ShadowHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TextBoxHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Tools.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToolTipHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewItemHelper.cs" />

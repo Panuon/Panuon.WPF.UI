@@ -1,5 +1,4 @@
-﻿using Panuon.UI.Silver.Internal;
-using Panuon.UI.Silver.Internal.Utils;
+﻿using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -29,8 +28,8 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Events
-        static event SwitchCheckedEventHandler SwitchChecked;
+        #region Internal Events
+        internal static event EventHandler SwitchChecked;
         #endregion
 
         #region Overrides
@@ -39,10 +38,7 @@ namespace Panuon.UI.Silver
         protected override void OnChecked(RoutedEventArgs e)
         {
             base.OnChecked(e);
-            if (!string.IsNullOrEmpty(GroupName))
-            {
-                SwitchChecked?.Invoke(this, new SwitchCheckedEventArgs(GroupName));
-            }
+            RaiseSwitchChecked();
             if (CheckedToggleShadowColor is Color checkedShadowColor)
             {
                 AnimationUtil.BeginColorAnimation(this, InternalToggleShadowColorProperty, null, checkedShadowColor, TimeSpan.FromSeconds(0.2));
@@ -73,7 +69,18 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty GroupNameProperty =
-            DependencyProperty.Register("GroupName", typeof(string), typeof(Switch));
+            DependencyProperty.Register("GroupName", typeof(string), typeof(Switch), new PropertyMetadata(OnGroupNameChanged));
+        #endregion
+
+        #region  ContentPlacement
+        public ContentPlacement ContentPlacement
+        {
+            get { return (ContentPlacement)GetValue(ContentPlacementProperty); }
+            set { SetValue(ContentPlacementProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentPlacementProperty =
+            DependencyProperty.Register("ContentPlacement", typeof(ContentPlacement), typeof(Switch), new PropertyMetadata(ContentPlacement.Right));
         #endregion
 
         #region CornerRadius
@@ -237,11 +244,17 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
-        private void Switch_SwitchChecked(object sender, SwitchCheckedEventArgs e)
+        private static void OnGroupNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var @switch = (Switch)d;
+            @switch.RaiseSwitchChecked();
+        }
+
+        private void Switch_SwitchChecked(object sender, EventArgs e)
         {
             try
             {
-                if (sender is Switch @switch && @switch != this && GroupName == e.GroupName && Window.GetWindow(@switch) == Window.GetWindow(this))
+                if (sender is Switch @switch && @switch != this && GroupName == @switch.GroupName && Window.GetWindow(@switch) == Window.GetWindow(this))
                 {
                     IsChecked = false;
                 }
@@ -252,7 +265,13 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Functions
-
+        private void RaiseSwitchChecked()
+        {
+            if (!string.IsNullOrEmpty(GroupName))
+            {
+                SwitchChecked?.Invoke(this, new EventArgs());
+            }
+        }
         #endregion
     }
 }

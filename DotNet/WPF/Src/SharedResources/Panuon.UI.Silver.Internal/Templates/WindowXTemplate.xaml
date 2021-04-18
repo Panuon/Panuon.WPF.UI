@@ -37,7 +37,9 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Border Grid.ColumnSpan="5"
-                                Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                                Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                BorderBrush="{Binding Path=(local:WindowXCaption.BorderBrush),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                BorderThickness="{Binding Path=(local:WindowXCaption.BorderThickness),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                             <Border.Effect>
                                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                     <Binding Path="(local:WindowXCaption.ShadowColor)"

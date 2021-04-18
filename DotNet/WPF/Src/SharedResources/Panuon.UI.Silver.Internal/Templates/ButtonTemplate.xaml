@@ -23,14 +23,35 @@
                            CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                           Content="{TemplateBinding Content}"
-                           ContentTemplate="{TemplateBinding ContentTemplate}"
-                           ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                           ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid Margin="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <local:Spinner x:Name="SprPending"
+                               Margin="0,0,5,0"
+                               Visibility="Collapsed"
+                               IsSpinning="False"
+                               Style="{Binding Path=(local:ButtonHelper.PendingSpinnerStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ContentPresenter Grid.Column="1"
+                                  Focusable="False"
+                                  RecognizesAccessKey="True"
+                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Grid>
+        </i:ContentControlX>
         <ControlTemplate.Triggers>
             <Trigger Property="local:ButtonHelper.IsPending"
                      Value="True">
+                <Setter TargetName="SprPending"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="SprPending"
+                        Property="IsSpinning"
+                        Value="True" />
                 <Setter TargetName="CcMain"
                         Property="Icon"
                         Value="{x:Null}" />

@@ -1,10 +1,12 @@
 ﻿using Panuon.UI.Silver;
 using Samples.Views.Tools;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace Samples.Views
 {
@@ -16,8 +18,12 @@ namespace Samples.Views
         #region Ctor
         public MainView()
         {
+           
             InitializeComponent();
-            InitExampleItems();
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
+            {
+                InitExampleItems();
+            }));
         }
         #endregion
 
@@ -98,9 +104,9 @@ namespace Samples.Views
             };
             return border;
         }
-        #endregion
 
-       
+
+        #endregion
 
     }
 }

@@ -137,6 +137,8 @@
                 Value="{Binding MaxDropDownHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
+        <Setter Property="local:ComboBoxHelper.WatermarkBrush"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsHeight"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsPadding"

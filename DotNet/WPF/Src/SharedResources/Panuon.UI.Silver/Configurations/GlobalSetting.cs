@@ -17,17 +17,6 @@ namespace Panuon.UI.Silver.Configurations
             DependencyProperty.Register("DisabledOpacity", typeof(double), typeof(GlobalSetting), new PropertyMetadata(0.4));
         #endregion
 
-        #region WatermarkOpacity
-        public double WatermarkOpacity
-        {
-            get { return (double)GetValue(WatermarkOpacityProperty); }
-            set { SetValue(WatermarkOpacityProperty, value); }
-        }
-
-        public static readonly DependencyProperty WatermarkOpacityProperty =
-            DependencyProperty.Register("WatermarkOpacity", typeof(double), typeof(GlobalSetting), new PropertyMetadata(0.5));
-        #endregion
-
         #region FontFamily
         public FontFamily FontFamily
         {

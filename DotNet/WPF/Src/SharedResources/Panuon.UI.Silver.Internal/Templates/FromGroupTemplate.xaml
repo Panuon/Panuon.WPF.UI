@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.FormGroupTemplate}"
+                     TargetType="local:FormGroup">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding InternalHeaderWidth, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding InternalHeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <RowDefinition />
+                <RowDefinition Height="{Binding MessageHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               MinHeight="{Binding MinMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Grid.RowDefinitions>
+            <ContentControl x:Name="PART_HeaderControl"
+                            Focusable="False"
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                            Foreground="{TemplateBinding HeaderForeground}"
+                            Margin="{TemplateBinding HeaderPadding}"
+                            VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
+            <ContentPresenter x:Name="CpContent"
+                              ContentSource="Content"
+                              Margin="{TemplateBinding Padding}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+            <ContentControl x:Name="CcMessage"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Focusable="False"
+                            Visibility="Collapsed"
+                            Margin="{TemplateBinding HeaderPadding}"
+                            Content="{TemplateBinding Message}"
+                            ContentTemplate="{TemplateBinding MessageTemplate}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter TargetName="CpContent"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="CpContent"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+            </Trigger>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter TargetName="CpContent"
+                        Property="Grid.Column"
+                        Value="1" />
+            </Trigger>
+            <DataTrigger Binding="{Binding Message, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcMessage"
+                        Property="Visibility"
+                        Value="Visible"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ValidateResult, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringUnequalConverter}}, ConverterParameter=None, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcMessage"
+                        Property="Visibility"
+                        Value="Visible" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

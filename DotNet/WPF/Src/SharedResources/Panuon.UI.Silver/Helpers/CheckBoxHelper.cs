@@ -52,6 +52,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("BoxWidth", typeof(double), typeof(CheckBoxHelper), new PropertyMetadata(16.0));
         #endregion
 
+        #region ContentPlacement
+        public static ContentPlacement GetContentPlacement(CheckBox checkBox)
+        {
+            return (ContentPlacement)checkBox.GetValue(ContentPlacementProperty);
+        }
+
+        public static void SetContentPlacement(CheckBox checkBox, ContentPlacement value)
+        {
+            checkBox.SetValue(ContentPlacementProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentPlacementProperty =
+            DependencyProperty.RegisterAttached("ContentPlacement", typeof(ContentPlacement), typeof(CheckBoxHelper), new PropertyMetadata(ContentPlacement.Right));
+        #endregion
+        
         #region GlyphBrush
         public static Brush GetGlyphBrush(CheckBox checkBox)
         {

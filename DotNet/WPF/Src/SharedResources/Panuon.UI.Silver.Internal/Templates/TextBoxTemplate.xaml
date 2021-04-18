@@ -31,9 +31,9 @@
                            TextWrapping="{TemplateBinding TextWrapping}"
                            Visibility="{Binding Text,Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                            Text="{Binding Path=(local:TextBoxHelper.Watermark),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Foreground="{Binding Path=(local:TextBoxHelper.WatermarkBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                           Opacity="0.5" />
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                 <ScrollViewer x:Name="PART_ContentHost"
                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
