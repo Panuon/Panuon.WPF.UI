@@ -3,6 +3,7 @@
     static class ConverterKeys
     {
         public const string ArcConverter = nameof(ArcConverter);
+        public const string BrushOpacityConverter = nameof(BrushOpacityConverter);
         public const string CheckBoxCheckPathConverter = nameof(CheckBoxCheckPathConverter);
         public const string ComboBoxDropDownHorizontalOffsetConverter = nameof(ComboBoxDropDownHorizontalOffsetConverter);
         public const string ComboBoxDropDownMarginConverter = nameof(ComboBoxDropDownMarginConverter);
@@ -23,7 +24,7 @@
         public const string ProgressBarBorderClipConverter = nameof(ProgressBarBorderClipConverter);
         public const string ProgressBarTextForegroundConverter = nameof(ProgressBarTextForegroundConverter);
         public const string ScrollableControlScrollButtonVisibilityConverter = nameof(ScrollableControlScrollButtonVisibilityConverter);
-        public const string SpinnerClassicRenderTransformOriginConverter = nameof(SpinnerClassicRenderTransformOriginConverter);
+        public const string InternalSpinnerClassicRenderTransformOriginConverter = nameof(InternalSpinnerClassicRenderTransformOriginConverter);
         public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);

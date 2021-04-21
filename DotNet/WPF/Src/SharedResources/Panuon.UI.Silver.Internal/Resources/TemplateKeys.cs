@@ -19,6 +19,7 @@
         public const string DataGridTemplate = nameof(DataGridTemplate);
         public const string ExpanderUpDownTemplate = nameof(ExpanderUpDownTemplate);
         public const string ExpanderLeftRightTemplate = nameof(ExpanderLeftRightTemplate);
+        public const string FormGroupTemplate = nameof(FormGroupTemplate);
         public const string GroupBoxTemplate = nameof(GroupBoxTemplate);
         public const string LabelTemplate = nameof(LabelTemplate);
         public const string ListBoxTemplate = nameof(ListBoxTemplate);
@@ -33,11 +34,12 @@
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
         public const string ScrollBarTemplate = nameof(ScrollBarTemplate);
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
-        public const string SpinnerStandardTemplate = nameof(SpinnerStandardTemplate);
-        public const string SpinnerWaveTemplate = nameof(SpinnerWaveTemplate);
-        public const string SpinnerRingTemplate = nameof(SpinnerRingTemplate);
-        public const string SpinnerRing2Template = nameof(SpinnerRing2Template);
-        public const string SpinnerClassicTemplate = nameof(SpinnerClassicTemplate);
+        public const string SliderTemplate = nameof(SliderTemplate);
+        public const string InternalSpinnerStandardTemplate = nameof(InternalSpinnerStandardTemplate);
+        public const string InternalSpinnerWaveTemplate = nameof(InternalSpinnerWaveTemplate);
+        public const string InternalSpinnerRingTemplate = nameof(InternalSpinnerRingTemplate);
+        public const string InternalSpinnerRing2Template = nameof(InternalSpinnerRing2Template);
+        public const string InternalSpinnerClassicTemplate = nameof(InternalSpinnerClassicTemplate);
         public const string SwitchTemplate = nameof(SwitchTemplate);
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);

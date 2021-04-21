@@ -17,7 +17,7 @@
         <Setter Property="local:ShadowHelper.ShadowDepth"
                 Value="1" />
         <Setter Property="Padding"
-                Value="5,0,0,0" />
+                Value="5,0" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="BorderThickness"

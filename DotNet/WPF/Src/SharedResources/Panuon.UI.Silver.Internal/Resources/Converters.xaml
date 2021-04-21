@@ -6,6 +6,7 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters">
 
     <icv:ArcConverter x:Key="{x:Static irs:ConverterKeys.ArcConverter}" />
+    <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
     <icv:ComboBoxDropDownHorizontalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}" />
     <icv:ComboBoxDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}" />
@@ -31,7 +32,10 @@
     <icv:IsItemSeparatorShallVisibleControlConverter x:Key="{x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}" />
     <icv:IsNonnullConverter x:Key="{x:Static rs:ConverterKeys.IsNonnullConverter}" />
     <icv:IsNullConverter x:Key="{x:Static rs:ConverterKeys.IsNullConverter}" />
+    <icv:IsStringEqualConverter x:Key="{x:Static rs:ConverterKeys.IsStringEqualConverter}" />
+    <icv:IsStringUnequalConverter x:Key="{x:Static rs:ConverterKeys.IsStringUnequalConverter}" />
     <icv:IsStringNonnullAndNotEmptyConverter x:Key="{x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}" />
+    <icv:IsStringNullOrEmptyConverter x:Key="{x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}" />
     <icv:IsTypeConverter x:Key="{x:Static irs:ConverterKeys.IsTypeConverter}" />
     <icv:LightenSolidColorBrushConverter x:Key="{x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NullToCollapseConverter}" />
@@ -39,7 +43,7 @@
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
-    <icv:SpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.SpinnerClassicRenderTransformOriginConverter}" />
+    <icv:InternalSpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.InternalSpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
     <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />
     <icv:SwitchToggleMarginConverter x:Key="{x:Static irs:ConverterKeys.SwitchToggleMarginConverter}" />

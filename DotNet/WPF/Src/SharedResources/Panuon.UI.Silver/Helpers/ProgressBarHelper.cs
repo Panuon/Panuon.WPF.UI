@@ -11,18 +11,18 @@ namespace Panuon.UI.Silver
         #region Events
 
         #region GeneratingPercentText
-        public static void AddGeneratingPercentTextHandler(UIElement element, GeneratingPercentTextEventHandler eventHandler)
+        public static void AddGeneratingPercentTextHandler(UIElement element, GeneratingPercentTextRoutedEventHandler eventHandler)
         {
             element.AddHandler(GeneratingPercentTextEvent, eventHandler);
         }
 
-        public static void RemoveGeneratingPercentTextHandler(UIElement element, GeneratingPercentTextEventHandler eventHandler)
+        public static void RemoveGeneratingPercentTextHandler(UIElement element, GeneratingPercentTextRoutedEventHandler eventHandler)
         {
             element.RemoveHandler(GeneratingPercentTextEvent, eventHandler);
         }
 
         public static readonly RoutedEvent GeneratingPercentTextEvent
-            = EventManager.RegisterRoutedEvent("GeneratingPercentText", RoutingStrategy.Bubble, typeof(GeneratingPercentTextEventHandler), typeof(ProgressBarHelper));
+            = EventManager.RegisterRoutedEvent("GeneratingPercentText", RoutingStrategy.Bubble, typeof(GeneratingPercentTextRoutedEventHandler), typeof(ProgressBarHelper));
         #endregion
 
         #endregion
@@ -220,7 +220,7 @@ namespace Panuon.UI.Silver
             var value = GetValue(progressBar);
             var percent = (value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
             var text = string.Format(stringFormat, percent);
-            var args = new GeneratingPercentTextEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
+            var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
             progressBar.RaiseEvent(args);
             SetText(progressBar, args.Text);
         }

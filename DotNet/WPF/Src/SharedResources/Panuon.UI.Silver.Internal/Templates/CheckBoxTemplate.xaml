@@ -11,10 +11,14 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CheckBoxTemplate}"
                      TargetType="CheckBox">
-        <StackPanel Orientation="Horizontal"
-                    Background="Transparent"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+        <Grid Background="Transparent"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <i:ContentControlX x:Name="CcBox"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -63,14 +67,26 @@
                             Height="{Binding Path=(local:CheckBoxHelper.BoxHeight), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </i:ContentControlX>
-            <ContentPresenter x:Name="cpContent"
+            <ContentPresenter x:Name="CpContent"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Margin="{TemplateBinding Padding}" />
-        </StackPanel>
+        </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="local:CheckBoxHelper.ContentPlacement"
+                     Value="Left">
+                <Setter TargetName="CcBox"
+                        Property="Grid.Column"
+                        Value="2" />
+            </Trigger>
+            <Trigger Property="local:CheckBoxHelper.ContentPlacement"
+                     Value="Right">
+                <Setter TargetName="CcBox"
+                        Property="Grid.Column"
+                        Value="0" />
+            </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -111,10 +127,10 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:CheckBoxHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:CheckBoxHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -147,10 +163,10 @@
                     <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableForeround), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:CheckBoxHelper.NullableForeround), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpContent"
+                <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:CheckBoxHelper.NullableForeround), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

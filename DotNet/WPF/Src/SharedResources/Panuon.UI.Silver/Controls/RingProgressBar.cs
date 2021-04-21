@@ -1,8 +1,8 @@
 ﻿using System.Windows.Controls.Primitives;
 
-namespace Panuon.UI.Silver.Controls
+namespace Panuon.UI.Silver
 {
-    public class RingProgressBar : RangeBase
+    class RingProgressBar : RangeBase
     {
 
     }

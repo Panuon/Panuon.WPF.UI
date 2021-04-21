@@ -141,6 +141,51 @@
         </Style>
 
     </pu:WindowX.Resources>
+    <pu:WindowXCaption.MinimizeButtonStyle>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#E8E8E8" />
+            <Setter Property="pu:ButtonHelper.HoverForeground"
+                    Value="#E1E1E1" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="{x:Null}" />
+        </Style>
+    </pu:WindowXCaption.MinimizeButtonStyle>
+    <pu:WindowXCaption.MaximizeButtonStyle>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXMaximizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#E8E8E8" />
+            <Setter Property="pu:ButtonHelper.HoverForeground"
+                    Value="#E1E1E1" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="{x:Null}" />
+        </Style>
+    </pu:WindowXCaption.MaximizeButtonStyle>
+    <pu:WindowXCaption.CloseButtonStyle>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXCloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#E8E8E8" />
+            <Setter Property="pu:ButtonHelper.HoverForeground"
+                    Value="#E1E1E1" />
+            <Setter Property="pu:ButtonHelper.HoverBackground"
+                    Value="{x:Null}" />
+        </Style>
+    </pu:WindowXCaption.CloseButtonStyle>
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <Grid>

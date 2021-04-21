@@ -94,6 +94,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ComboBoxHelper));
         #endregion
 
+        #region WatermarkBrush
+        public static Brush GetWatermarkBrush(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(WatermarkBrushProperty);
+        }
+
+        public static void SetWatermarkBrush(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(WatermarkBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty WatermarkBrushProperty =
+            VisualStateHelper.WatermarkBrushProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
         #region CornerRadius
         public static CornerRadius GetCornerRadius(ComboBox comboBox)
         {
@@ -240,6 +255,22 @@ namespace Panuon.UI.Silver
         }
         public static readonly DependencyProperty FocusedShadowColorProperty =
             VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
+        #region FocusedWatermarkBrush
+
+        public static Brush GetFocusedWatermarkBrush(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(FocusedWatermarkBrushProperty);
+        }
+
+        public static void SetFocusedWatermarkBrush(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(FocusedWatermarkBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
+            VisualStateHelper.FocusedWatermarkBrushProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
         #region ClearButtonStyle

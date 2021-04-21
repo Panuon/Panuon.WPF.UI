@@ -71,6 +71,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(PasswordBoxHelper));
         #endregion
 
+        #region WatermarkBrush
+        public static Brush GetWatermarkBrush(PasswordBox passwordBox)
+        {
+            return (Brush)passwordBox.GetValue(WatermarkBrushProperty);
+        }
+
+        public static void SetWatermarkBrush(PasswordBox passwordBox, Brush value)
+        {
+            passwordBox.SetValue(WatermarkBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty WatermarkBrushProperty =
+            VisualStateHelper.WatermarkBrushProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
         #region CornerRadius
         public static CornerRadius GetCornerRadius(PasswordBox passwordBox)
         {
@@ -202,6 +217,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
+        #region FocusedWatermarkBrush
+        public static Brush GetFocusedWatermarkBrush(PasswordBox passwordBox)
+        {
+            return (Brush)passwordBox.GetValue(FocusedWatermarkBrushProperty);
+        }
+
+        public static void SetFocusedWatermarkBrush(PasswordBox passwordBox, Brush value)
+        {
+            passwordBox.SetValue(FocusedWatermarkBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
+            VisualStateHelper.FocusedWatermarkBrushProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
         #region ClearButtonVisibility

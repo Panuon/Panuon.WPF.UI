@@ -53,6 +53,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(WindowXCaption));
         #endregion
 
+        #region BorderBrush
+        public static Brush GetBorderBrush(WindowX windowX)
+        {
+            return (Brush)windowX.GetValue(BorderBrushProperty);
+        }
+
+        public static void SetBorderBrush(WindowX windowX, Brush value)
+        {
+            windowX.SetValue(BorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty BorderBrushProperty =
+            DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(WindowXCaption));
+        #endregion
+
+        #region BorderThickness
+        public static Thickness GetBorderThickness(WindowX windowX)
+        {
+            return (Thickness)windowX.GetValue(BorderThicknessProperty);
+        }
+
+        public static void SetBorderThickness(WindowX windowX, Thickness value)
+        {
+            windowX.SetValue(BorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(WindowXCaption));
+        #endregion
+
         #region ShadowColor
         public static Color? GetShadowColor(WindowX windowX)
         {
@@ -97,7 +127,7 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty HeaderAlignmentProperty =
             DependencyProperty.RegisterAttached("HeaderAlignment", typeof(WindowXHeaderAlignment), typeof(WindowXCaption));
         #endregion
-        
+
         #region ExtendControl
         public static object GetExtendControl(WindowX windowX)
         {
@@ -225,9 +255,10 @@ namespace Panuon.UI.Silver
         {
             var windowX = d as WindowX;
             if (windowX == null)
+            {
                 return;
-
-            WindowChromeUtil.SetCaptionHeight(windowX, (double)e.NewValue);
+            }
+            WindowChromeUtil.SetCaptionHeight(windowX, windowX.IsMaskVisible ? 0 : (windowX.DisableDragMove ? 0 : WindowXCaption.GetHeight(windowX)));
         }
         #endregion
     }

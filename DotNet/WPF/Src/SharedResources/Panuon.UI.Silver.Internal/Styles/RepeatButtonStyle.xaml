@@ -9,23 +9,15 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/RepeatButtonTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=WaitingContentTemplate, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}">
-        <StackPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                    VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                    HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                    Orientation="Horizontal">
-            <local:Spinner Width="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                           Height="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                           Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:ContentControlX}, Mode=OneWay}"
-                           IsSpinning="True"
-                           VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                           HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}" />
-            <ContentControl Margin="5,0,0,0"
-                            Content="{Binding}"
-                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}"
-                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}" />
-        </StackPanel>
-    </DataTemplate>
+    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
+           TargetType="local:Spinner">
+        <Setter Property="GlyphBrush"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:ContentControlX}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=RepeatButton}, Mode=OneWay}" />
+    </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.RepeatButtonStyle}"
            TargetType="RepeatButton">
@@ -45,6 +37,8 @@
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:RepeatButtonHelper.ClickBackground"
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:RepeatButtonHelper.PendingSpinnerStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="Background"
@@ -58,11 +52,6 @@
                      Value="False">
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
-            </Trigger>
-            <Trigger Property="local:RepeatButtonHelper.IsPending"
-                     Value="True">
-                <Setter Property="ContentTemplate"
-                        Value="{StaticResource {ComponentResourceKey ResourceId=WaitingContentTemplate, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

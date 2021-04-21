@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Samples\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,10 +29,13 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Samples\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +64,9 @@
     <Compile Include="Views\Examples\NeteaseMusicView.xaml.cs">
       <DependentUpon>NeteaseMusicView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Examples\SignInView.xaml.cs">
+      <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Examples\VisualStudio2019View.xaml.cs">
       <DependentUpon>VisualStudio2019View.xaml</DependentUpon>
     </Compile>
@@ -75,6 +81,10 @@
       <DependentUpon>IconFontView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Examples\NeteaseMusicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Examples\SignInView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,17 +131,20 @@
     <Resource Include="Resources\WebForms.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Src\Net472\Panuon.UI.Core\Panuon.UI.Core.csproj">
+    <ProjectReference Include="..\Net472\Panuon.UI.Core\Panuon.UI.Core.csproj">
       <Project>{cac8f513-ad17-41f1-bff9-f0f351c5b53c}</Project>
       <Name>Panuon.UI.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Src\Net472\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
+    <ProjectReference Include="..\Net472\Panuon.UI.Silver\Panuon.UI.Silver.csproj">
       <Project>{3b9d14a9-ccd4-48f9-b4f2-183a11821d5a}</Project>
       <Name>Panuon.UI.Silver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

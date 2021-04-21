@@ -75,6 +75,21 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
+        #region WatermarkBrush
+        public static Brush GetWatermarkBrush(Control control)
+        {
+            return (Brush)control.GetValue(WatermarkBrushProperty);
+        }
+
+        public static void SetWatermarkBrush(Control control, Brush value)
+        {
+            control.SetValue(WatermarkBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty WatermarkBrushProperty =
+            DependencyProperty.RegisterAttached("WatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
         #region GlyphBrush
         public static Brush GetGlyphBrush(Control control)
         {
@@ -276,6 +291,11 @@ namespace Panuon.UI.Silver.Internal
         #region FocusedShadowColor
         public static readonly DependencyProperty FocusedShadowColorProperty =
             DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(VisualStateHelper));
+        #endregion
+
+        #region FocusedWatermarkBrush
+        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
+            DependencyProperty.RegisterAttached("FocusedWatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region IsFocused
@@ -562,6 +582,10 @@ namespace Panuon.UI.Silver.Internal
             {
                 propertyBrushes.Add(BorderBrushProperty, focusedBorderBrush);
             }
+            if (element.GetValue(FocusedWatermarkBrushProperty) is Brush watermarkBrush)
+            {
+                propertyBrushes.Add(WatermarkBrushProperty, watermarkBrush);
+            }
             if (propertyBrushes.Any())
             {
                 AnimationUtil.BeginBrushAnimationStoryboard(element, propertyBrushes);
@@ -611,6 +635,10 @@ namespace Panuon.UI.Silver.Internal
             if (element.GetValue(FocusedBorderBrushProperty) != null)
             {
                 properties.Add(BorderBrushProperty);
+            }
+            if (element.GetValue(FocusedWatermarkBrushProperty) != null)
+            {
+                properties.Add(WatermarkBrushProperty);
             }
             if (properties.Any())
             {

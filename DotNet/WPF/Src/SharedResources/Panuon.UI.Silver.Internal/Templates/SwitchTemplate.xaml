@@ -11,11 +11,16 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SwitchTemplate}"
                      TargetType="local:Switch">
-        <StackPanel Orientation="Horizontal"
-                    Background="Transparent"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <Grid Height="{TemplateBinding BoxHeight}"
+        <Grid Background="Transparent"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="GrdBox"
+                  Height="{TemplateBinding BoxHeight}"
                   Width="{TemplateBinding BoxWidth}">
                 <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                         CornerRadius="{TemplateBinding CornerRadius}"
@@ -89,8 +94,20 @@
                               TextElement.Foreground="{TemplateBinding Foreground}"
                               TextBlock.Foreground="{TemplateBinding Foreground}"
                               Margin="{TemplateBinding Padding}" />
-        </StackPanel>
+        </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="ContentPlacement"
+                     Value="Left">
+                <Setter TargetName="GrdBox"
+                        Property="Grid.Column"
+                        Value="2" />
+            </Trigger>
+            <Trigger Property="ContentPlacement"
+                     Value="Right">
+                <Setter TargetName="GrdBox"
+                        Property="Grid.Column"
+                        Value="0" />
+            </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"

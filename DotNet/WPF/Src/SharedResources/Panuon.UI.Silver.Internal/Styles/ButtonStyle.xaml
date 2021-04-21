@@ -9,24 +9,15 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ButtonTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=WaitingContentTemplate, TypeInTargetAssembly={x:Type local:ButtonHelper}}">
-        <StackPanel Margin="{Binding Padding, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                    VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                    HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                    Orientation="Horizontal">
-            <local:Spinner Width="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                           Height="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                           Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:ContentControlX}, Mode=OneWay}"
-                           IsSpinning="True"
-                           VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                           HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}" />
-            <ContentControl Margin="5,0,0,0"
-                            Focusable="False"
-                            Content="{Binding}"
-                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}"
-                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}" />
-        </StackPanel>
-    </DataTemplate>
+    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ButtonHelper}}"
+           TargetType="local:Spinner">
+        <Setter Property="GlyphBrush"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:ContentControlX}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=Button}, Mode=OneWay}" />
+    </Style>
     
     <Style x:Key="{x:Static rs:StyleKeys.ButtonStyle}"
            TargetType="Button">
@@ -46,6 +37,8 @@
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ButtonHelper.ClickBackground"
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.PendingSpinnerStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ButtonHelper}}}" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="Background"
@@ -59,11 +52,6 @@
                      Value="False">
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
-            </Trigger>
-            <Trigger Property="local:ButtonHelper.IsPending"
-                     Value="True">
-                <Setter Property="ContentTemplate"
-                        Value="{StaticResource {ComponentResourceKey ResourceId=WaitingContentTemplate, TypeInTargetAssembly={x:Type local:ButtonHelper}}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

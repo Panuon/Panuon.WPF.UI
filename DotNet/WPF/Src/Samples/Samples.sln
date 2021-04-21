@@ -7,26 +7,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples", "Samples.csproj",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Net472", "Net472", "{8B739AE7-34E6-4E15-874B-59147ED59BE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "..\Src\Net472\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{3B9D14A9-CCD4-48F9-B4F2-183A11821D5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Silver", "..\Net472\Panuon.UI.Silver\Panuon.UI.Silver.csproj", "{3B9D14A9-CCD4-48F9-B4F2-183A11821D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Core", "..\Src\Net472\Panuon.UI.Core\Panuon.UI.Core.csproj", "{CAC8F513-AD17-41F1-BFF9-F0F351C5B53C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panuon.UI.Core", "..\Net472\Panuon.UI.Core\Panuon.UI.Core.csproj", "{CAC8F513-AD17-41F1-BFF9-F0F351C5B53C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{425343E8-817C-45B0-9BC8-0AA4DD984790}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "..\Src\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{D8C1F070-38E3-494A-A8F7-14C66EE92503}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver", "..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.shproj", "{D8C1F070-38E3-494A-A8F7-14C66EE92503}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "..\Src\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{3925A1D9-6E08-43A7-838F-E43CF7B208EE}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Silver.Internal", "..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.shproj", "{3925A1D9-6E08-43A7-838F-E43CF7B208EE}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Core", "..\Src\SharedResources\Panuon.UI.Core\Panuon.UI.Core.shproj", "{D52B3A17-B005-4393-9256-F7ED7FDB457F}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.UI.Core", "..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.shproj", "{D52B3A17-B005-4393-9256-F7ED7FDB457F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\Src\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{3925a1d9-6e08-43a7-838f-e43cf7b208ee}*SharedItemsImports = 13
-		..\Src\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{3b9d14a9-ccd4-48f9-b4f2-183a11821d5a}*SharedItemsImports = 4
-		..\Src\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{3b9d14a9-ccd4-48f9-b4f2-183a11821d5a}*SharedItemsImports = 4
-		..\Src\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{cac8f513-ad17-41f1-bff9-f0f351c5b53c}*SharedItemsImports = 4
-		..\Src\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{d52b3a17-b005-4393-9256-f7ed7fdb457f}*SharedItemsImports = 13
-		..\Src\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{d8c1f070-38e3-494a-a8f7-14c66ee92503}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{3925a1d9-6e08-43a7-838f-e43cf7b208ee}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems*{3b9d14a9-ccd4-48f9-b4f2-183a11821d5a}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{3b9d14a9-ccd4-48f9-b4f2-183a11821d5a}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{cac8f513-ad17-41f1-bff9-f0f351c5b53c}*SharedItemsImports = 4
+		..\SharedResources\Panuon.UI.Core\Panuon.UI.Core.projitems*{d52b3a17-b005-4393-9256-f7ed7fdb457f}*SharedItemsImports = 13
+		..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems*{d8c1f070-38e3-494a-a8f7-14c66ee92503}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

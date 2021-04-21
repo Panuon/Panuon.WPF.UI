@@ -56,11 +56,10 @@
                         </Border>
                         <TextBlock x:Name="TxtWatermark"
                                    Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                    Text="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(local:ComboBoxHelper.WatermarkBrush),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                    Padding="2,0,0,0"
                                    Margin="{TemplateBinding Padding}"
-                                   Opacity="0.6"
                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         <TextBox x:Name="PART_EditableTextBox"
