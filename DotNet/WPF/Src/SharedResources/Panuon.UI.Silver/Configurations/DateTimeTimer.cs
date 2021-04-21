@@ -38,10 +38,10 @@ namespace Panuon.UI.Silver.Configurations
         {
             try
             {
-                Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(new Action(() =>
                 {
                     Now = DateTime.Now;
-                });
+                }));
             }
             catch { }
             _timer.Change(1000 - DateTime.Now.Millisecond, Timeout.Infinite);
