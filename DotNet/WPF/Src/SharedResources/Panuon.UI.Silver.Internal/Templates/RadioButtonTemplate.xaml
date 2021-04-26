@@ -27,7 +27,7 @@
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                CornerRadius="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Ellipse x:Name="ellToggle"
+                <Ellipse x:Name="EllToggle"
                          SnapsToDevicePixels="False"
                          Width="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                          Height="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -41,6 +41,7 @@
                 </Ellipse>
             </i:ContentControlX>
             <ContentPresenter x:Name="CpContent"
+                              Grid.Column="1"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -60,6 +61,17 @@
                         Property="Grid.Column"
                         Value="0" />
             </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:RadioButtonHelper.CheckedContent), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CpContent"
+                        Property="Content"
+                        Value="{Binding Path=(local:RadioButtonHelper.CheckedContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -139,10 +151,10 @@
                     <Condition Binding="{Binding Path=(local:RadioButtonHelper.NullableToggleBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="ellToggle"
+                <Setter TargetName="EllToggle"
                         Property="Fill"
                         Value="{Binding Path=(local:RadioButtonHelper.NullableToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ellToggle"
+                <Setter TargetName="EllToggle"
                         Property="RenderTransform"
                         Value="{x:Null}" />
             </MultiDataTrigger>

@@ -17,7 +17,6 @@
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Foreground="{TemplateBinding Foreground}"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Icon="{Binding Path=(local:GroupBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            CornerRadius="{Binding Path=(local:GroupBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="Stretch"
@@ -34,10 +33,15 @@
                       Height="{Binding Path=(local:GroupBoxHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                       Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter ContentSource="Header"
+                    <i:IconPresenter x:Name="IcIcon"
+                                     Content="{Binding Path=(local:GroupBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter Grid.Column="1"
+                                      ContentSource="Header"
                                       TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       TextElement.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       Margin="{Binding Path=(local:GroupBoxHelper.HeaderPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -45,7 +49,7 @@
                                       HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       TextElement.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <ContentControl Grid.Column="1"
+                    <ContentControl Grid.Column="2"
                                     Content="{Binding Path=(local:GroupBoxHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
                 </Grid>
                 <local:SeparatorX x:Name="SprtSeparator"

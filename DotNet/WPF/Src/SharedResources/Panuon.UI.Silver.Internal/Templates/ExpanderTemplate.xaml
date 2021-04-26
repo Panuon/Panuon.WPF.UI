@@ -53,6 +53,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto"/>
@@ -60,11 +61,15 @@
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="8,0,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <ContentPresenter Grid.Column="1"
+                        <i:IconPresenter x:Name="IcIcon"
+                                         Grid.Column="1"
+                                         Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <ContentPresenter Grid.Column="2"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
                                           RecognizesAccessKey="True" />
-                        <ContentControl Grid.Column="3"
+                        <ContentControl Grid.Column="4"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
@@ -137,7 +142,7 @@
                      Value="Right">
                 <Setter TargetName="TcTransform"
                         Property="Grid.Column"
-                        Value="2" />
+                        Value="3" />
                 <Setter TargetName="TcTransform"
                         Property="Margin"
                         Value="0,0,8,0" />
@@ -195,6 +200,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -202,11 +208,11 @@
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="0,8,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <ContentPresenter Grid.Column="1"
+                        <ContentPresenter Grid.Row="2"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
                                           RecognizesAccessKey="True" />
-                        <ContentControl Grid.Row="3"
+                        <ContentControl Grid.Row="4"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
@@ -276,7 +282,7 @@
                      Value="Right">
                 <Setter TargetName="TcTransform"
                         Property="Grid.Row"
-                        Value="2" />
+                        Value="3" />
                 <Setter TargetName="TcTransform"
                         Property="Margin"
                         Value="0,0,0,8" />
