@@ -58,8 +58,6 @@
                BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="pu:ButtonHelper.CornerRadius"
                     Value="2" />
-            <Setter Property="pu:ButtonHelper.ShadowColor"
-                    Value="#6CBCEA" />
             <Setter Property="pu:ShadowHelper.BlurRadius"
                     Value="5" />
             <Setter Property="pu:ShadowHelper.ShadowDepth"
@@ -89,7 +87,7 @@
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>
-                                <TextBlock Text="Click again ?"/>
+                                <TextBlock Text="Click again ?" />
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
@@ -126,7 +124,7 @@
             <Setter Property="Width"
                     Value="250" />
         </Style>
-        
+
     </Window.Resources>
     <pu:WindowXCaption.CloseButtonStyle>
         <Style TargetType="Button"
@@ -183,6 +181,7 @@
                 Margin="0,10,0,0"
                 Content="Sign In"
                 Style="{StaticResource SignInButtonStyle}"
-                Click="BtnLogin_Click" />
+                Click="BtnLogin_Click">
+        </Button>
     </Grid>
 </pu:WindowX>
