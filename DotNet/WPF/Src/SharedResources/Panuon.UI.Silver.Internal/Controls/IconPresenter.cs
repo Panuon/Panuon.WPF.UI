@@ -14,6 +14,9 @@ namespace Panuon.UI.Silver.Internal
         {
             FocusableProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(false));
             ContentTemplateSelectorProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(new IconPresenterContentTemplateSelector()));
+            VerticalAlignmentProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(VerticalAlignment.Stretch));
+            HorizontalAlignmentProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(HorizontalAlignment.Stretch));
+
         }
         #endregion
 
@@ -55,8 +58,8 @@ namespace Panuon.UI.Silver.Internal
             {
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, HeightProperty, Source, IconHelper.HeightProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, WidthProperty, Source, IconHelper.WidthProperty);
-                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VerticalAlignmentProperty, Source, IconHelper.VerticalAlignmentProperty);
-                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, HorizontalAlignmentProperty, Source, IconHelper.HorizontalAlignmentProperty);
+                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VerticalContentAlignmentProperty, Source, IconHelper.VerticalAlignmentProperty);
+                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, HorizontalContentAlignmentProperty, Source, IconHelper.HorizontalAlignmentProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, MinWidthProperty, Source, IconHelper.MinWidthProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, MinHeightProperty, Source, IconHelper.MinHeightProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, MaxWidthProperty, Source, IconHelper.MaxWidthProperty);

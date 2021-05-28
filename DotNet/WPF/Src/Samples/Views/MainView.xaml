@@ -11,7 +11,9 @@
             Title="MainView"
             Height="600"
             Width="1000"
-            WindowStartupLocation="CenterScreen">
+            WindowStartupLocation="CenterScreen"
+            MaskBrush="#AA000000"
+            AllowDrop="True">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -43,7 +45,8 @@
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
-                      HorizontalScrollBarVisibility="Auto">
+                      HorizontalScrollBarVisibility="Auto"
+                      pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
             <ItemsControl x:Name="LsbExamples"
                           VerticalContentAlignment="Stretch"
                           HorizontalAlignment="Stretch">
@@ -72,13 +75,15 @@
                                 </Grid.RowDefinitions>
                                 <Viewbox HorizontalAlignment="Center">
                                     <ContentControl Content="{Binding PreviewView}"
-                                                    IsHitTestVisible="False"/>
+                                                    IsHitTestVisible="False" />
                                 </Viewbox>
                                 <TextBlock Grid.Row="1"
+                                           Margin="0,5,0,0"
                                            FontWeight="Bold"
                                            Text="{Binding DisplayName}"
                                            VerticalAlignment="Center" />
                                 <TextBlock Grid.Row="2"
+                                           Margin="0,5,0,0"
                                            Foreground="DimGray"
                                            TextTrimming="CharacterEllipsis"
                                            Text="{Binding ViewPath}"

@@ -10,6 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/WindowXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+
     <Style x:Key="{ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowX}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">

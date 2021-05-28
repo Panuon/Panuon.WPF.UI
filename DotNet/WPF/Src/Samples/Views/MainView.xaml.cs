@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace Samples.Views
 {
@@ -24,12 +24,27 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
+            //Cdr.SpecialDays = new List<CalendarXSpecialDay>()
+            //{
+            //    new CalendarXSpecialDay("愚人", new DateTime(2021,4,1)),
+            //    new CalendarXSpecialDay("劳动", new DateTime(2021,5,1)),
+            //};
+
+            //sg.ItemsSource = new List<object>()
+            //{
+            //    new { Name = "123" },
+            //    new { Name = "12345" },
+            //    new { Name = "54321" },
+            //    new { Name = "321" },
+            //};
         }
         #endregion
 
         #region Event Handlers
         private void BtnExample_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxX.Show(this, "12312313", "321", MessageBoxIcon.Info); 
+
             var button = sender as Button;
             var exampleItem = button.DataContext as ExampleItem;
             var window = (Window)Activator.CreateInstance(exampleItem.ViewType);
@@ -108,5 +123,16 @@ namespace Samples.Views
 
         #endregion
 
+        private void Dwr_Closed(object sender, RoutedEventArgs e)
+        {
+            IsOverlayerVisible = false;
+            IsMaskVisible = false;
+        }
+
+        private void Dwr_Opened(object sender, RoutedEventArgs e)
+        {
+            IsOverlayerVisible = true;
+            IsMaskVisible = true;
+        }
     }
 }

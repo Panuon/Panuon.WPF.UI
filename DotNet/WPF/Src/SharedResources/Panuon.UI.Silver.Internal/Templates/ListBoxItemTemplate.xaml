@@ -151,4 +151,23 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxItemStylelessTemplate}"
+                     TargetType="ListBoxItem">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentPresenter />
+            <local:SeparatorX x:Name="SprtSeparator"
+                              Grid.Row="1"
+                              VerticalAlignment="Center"
+                              Stroke="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              StrokeThickness="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Margin="{Binding Path=(local:ListBoxItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        </Grid>
+    </ControlTemplate>
+
+    
 </ResourceDictionary>

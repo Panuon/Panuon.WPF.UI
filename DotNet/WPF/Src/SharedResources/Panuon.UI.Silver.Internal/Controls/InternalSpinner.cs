@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace Panuon.UI.Silver.Internal
 {
-    public class InternalSpinner : Control
+    class InternalSpinner : Control
     {
         #region Ctor
         static InternalSpinner()

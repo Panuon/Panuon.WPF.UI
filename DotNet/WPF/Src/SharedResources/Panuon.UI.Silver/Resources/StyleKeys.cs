@@ -19,6 +19,7 @@
         public const string ListBoxItemStyle = nameof(ListBoxItemStyle);
         public const string MenuItemStyle = nameof(MenuItemStyle);
         public const string MenuStyle = nameof(MenuStyle);
+        public const string MessageBoxXButtonStyle = nameof(MessageBoxXButtonStyle);
         public const string PasswordBoxStyle = nameof(PasswordBoxStyle);
         public const string ProgressBarStyle = nameof(ProgressBarStyle);
         public const string RadioButtonStyle = nameof(RadioButtonStyle);

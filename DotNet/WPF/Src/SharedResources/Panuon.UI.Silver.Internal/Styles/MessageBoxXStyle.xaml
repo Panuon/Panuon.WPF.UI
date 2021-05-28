@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="Height"
+                Value="35"/>
+        <Setter Property="Padding"
+                Value="15,0" />
+        <Style.Triggers>
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="Gray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <local:StateControl 
+                                    CurrentState="{Binding Icon}"
+                                    VerticalAlignment="Center">
+                    <local:StateItem State="Info">
+                        <TextBlock Margin="10,0,20,0"
+                                   FontSize="40"
+                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                   Text="&#xe92f;"/>
+                    </local:StateItem>
+                </local:StateControl>
+                <TextBlock Grid.Column="1"
+                           Text="{Binding Message}"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" />
+            </Grid>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <Button x:Name="PART_CancelButton" />
+                <Button x:Name="PART_NoButton" />
+                <Button x:Name="PART_YesButton" />
+                <Button x:Name="PART_OKButton" />
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="local:WindowX"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
+        <Setter Property="local:WindowXCaption.Buttons"
+                Value="Close" />
+        <Setter Property="MinWidth"
+                Value="400" />
+        <Setter Property="MinHeight"
+                Value="230" />
+        <Setter Property="Padding"
+                Value="15,0,15,15" />
+        <Setter Property="ShowInTaskbar"
+                Value="False" />
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
+        <Setter Property="InteropOwnersMask"
+                Value="True" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+    </Style>
+
+</ResourceDictionary>
