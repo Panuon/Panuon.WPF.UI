@@ -10,6 +10,7 @@
         public const string ComboBoxDropDownVerticalOffsetConverter = nameof(ComboBoxDropDownVerticalOffsetConverter);
         public const string ContextMenuDropDownMarginConverter = nameof(ContextMenuDropDownMarginConverter);
         public const string DataGridSelectionUnitIsNotFullRowConverter = nameof(DataGridSelectionUnitIsNotFullRowConverter);
+        public const string DisplayMemberPathPropertyValueConverter = nameof(DisplayMemberPathPropertyValueConverter);
         public const string DoubleToCornerRadiusConverter = nameof(DoubleToCornerRadiusConverter);
         public const string DoubleHalfToCornerRadiusConverter = nameof(DoubleHalfToCornerRadiusConverter);
         public const string DropDownMarginConverter = nameof(DropDownMarginConverter);

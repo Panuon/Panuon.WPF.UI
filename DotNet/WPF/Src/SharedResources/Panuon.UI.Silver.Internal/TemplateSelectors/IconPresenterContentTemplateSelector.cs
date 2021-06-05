@@ -34,6 +34,8 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
             var factory = new FrameworkElementFactory(typeof(Image));
             var imageSource = new Binding() { Source = item };
             factory.SetBinding(Image.SourceProperty, imageSource);
+            factory.SetBinding(Image.VerticalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.TemplatedParent), Path = new PropertyPath(ContentControl.VerticalContentAlignmentProperty) });
+            factory.SetBinding(Image.HorizontalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.TemplatedParent), Path = new PropertyPath(ContentControl.HorizontalContentAlignmentProperty) });
             factory.SetValue(Image.FocusableProperty, false);
             factory.SetValue(RenderOptions.BitmapScalingModeProperty, BitmapScalingMode.HighQuality);
             var dataTemplate = new DataTemplate
@@ -49,6 +51,8 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
             var factory = new FrameworkElementFactory(typeof(ContentControl));
             factory.SetBinding(ContentControl.ContentProperty, new Binding() { Source = item });
             factory.SetValue(ContentControl.FocusableProperty, false);
+            factory.SetBinding(ContentControl.VerticalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(IconPresenter), 1), Path = new PropertyPath(IconPresenter.VerticalContentAlignmentProperty) });
+            factory.SetBinding(ContentControl.HorizontalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(IconPresenter), 1), Path = new PropertyPath(IconPresenter.HorizontalContentAlignmentProperty) });
             var dataTemplate = new DataTemplate
             {
                 VisualTree = factory

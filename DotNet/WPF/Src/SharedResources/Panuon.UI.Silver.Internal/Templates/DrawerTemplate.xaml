@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DrawerTemplate}"
+                     TargetType="local:Drawer">
+        <Border ClipToBounds="True">
+            <i:ContentControlX x:Name="CcMain"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Padding="{TemplateBinding Padding}"
+                               CornerRadius="{TemplateBinding CornerRadius}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                               Content="{TemplateBinding Content}"
+                               ContentTemplate="{TemplateBinding ContentTemplate}"
+                               ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                               ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Placement"
+                     Value="Left">
+                <Setter TargetName="CcMain"
+                        Property="Margin"
+                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=right, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Placement"
+                     Value="Right">
+                <Setter TargetName="CcMain"
+                        Property="Margin"
+                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=left, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Placement"
+                     Value="Top">
+                <Setter TargetName="CcMain"
+                        Property="Margin"
+                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=bottom, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="Placement"
+                     Value="Bottom">
+                <Setter TargetName="CcMain"
+                        Property="Margin"
+                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=top, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

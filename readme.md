@@ -1,7 +1,8 @@
 [简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md)
 
 <a href="https://www.nuget.org/packages/Panuon.UI.Silver" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.UI.Silver-green"></a>
-![Nuget](https://camo.githubusercontent.com/8948ee9e753309fa3e978b3a0bdeda5a0c3f98ec/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2e6e65742d253345253344342e302d626c75652e737667)
+![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
+![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
 ![Nuget](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
 
 # Panuon.UI.Silver v2.2

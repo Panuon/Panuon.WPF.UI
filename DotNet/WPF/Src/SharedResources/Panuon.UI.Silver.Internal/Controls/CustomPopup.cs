@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal
@@ -9,7 +11,7 @@ namespace Panuon.UI.Silver.Internal
     class CustomPopup : Popup
     {
         #region Fields
-        private Window _parentWindow;
+        private WeakReference<Window> _parentWindow;
         #endregion
 
         #region Ctor
@@ -71,27 +73,52 @@ namespace Panuon.UI.Silver.Internal
         #region Overrides
         protected override void OnOpened(EventArgs e)
         {
-            _parentWindow = Window.GetWindow(this);
-            if (_parentWindow != null)
+            var hwnd = ((HwndSource)PresentationSource.FromVisual(Child)).Handle;
+
+            if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
             {
-                _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
-                _parentWindow.LocationChanged += ParentWindow_LocationChanged;
-                _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
-                _parentWindow.PreviewMouseDown += Window_PreviewMouseDown;
+                Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
+            }
+
+            var parentWindow = Window.GetWindow(this);
+            if (parentWindow != null)
+            {
+                _parentWindow = new WeakReference<Window>(parentWindow);
+                parentWindow.LocationChanged -= ParentWindow_LocationChanged;
+                parentWindow.LocationChanged += ParentWindow_LocationChanged;
+                parentWindow.SizeChanged -= ParentWindow_SizeChanged;
+                parentWindow.SizeChanged += ParentWindow_SizeChanged;
+                parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+                parentWindow.PreviewMouseDown += Window_PreviewMouseDown;
             }
             base.OnOpened(e);
             UpdateActualPlacement();
         }
 
+
         protected override void OnClosed(EventArgs e)
         {
-            if (_parentWindow != null)
+            if (_parentWindow != null && _parentWindow.TryGetTarget(out Window parentWindow))
             {
-                _parentWindow.LocationChanged -= ParentWindow_LocationChanged;
-                _parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+                parentWindow.LocationChanged -= ParentWindow_LocationChanged;
+                parentWindow.SizeChanged -= ParentWindow_SizeChanged;
+                parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
             }
             base.OnClosed(e);
         }
+        #endregion
+
+        #region Methods
+
+        #region Relocate
+        public void Relocate()
+        {
+            var offset = HorizontalOffset;
+            HorizontalOffset = offset + 1;
+            HorizontalOffset = offset;
+        }
+        #endregion
+
         #endregion
 
         #region Event Handlers
@@ -141,9 +168,13 @@ namespace Panuon.UI.Silver.Internal
 
         private void ParentWindow_LocationChanged(object sender, EventArgs e)
         {
-            var offset = HorizontalOffset;
-            HorizontalOffset = offset + 1;
-            HorizontalOffset = offset;
+            Relocate();
+        }
+
+
+        private void ParentWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Relocate();
         }
 
         private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
