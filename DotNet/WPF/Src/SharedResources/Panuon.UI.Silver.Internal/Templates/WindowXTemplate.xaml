@@ -21,7 +21,8 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <AdornerDecorator Grid.Row="1">
-                        <ContentPresenter />
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"/>
                     </AdornerDecorator>
                     <ContentControl x:Name="CcBackstage"
                                     Focusable="False"

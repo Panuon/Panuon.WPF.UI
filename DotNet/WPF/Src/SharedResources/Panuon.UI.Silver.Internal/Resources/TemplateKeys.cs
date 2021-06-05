@@ -28,6 +28,7 @@
         public const string LabelTemplate = nameof(LabelTemplate);
         public const string ListBoxTemplate = nameof(ListBoxTemplate);
         public const string ListBoxItemTemplate = nameof(ListBoxItemTemplate);
+        public const string ListBoxItemStylelessTemplate = nameof(ListBoxItemStylelessTemplate);
         public const string MenuTemplate = nameof(MenuTemplate);
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
@@ -45,6 +46,7 @@
         public const string InternalSpinnerRing2Template = nameof(InternalSpinnerRing2Template);
         public const string InternalSpinnerClassicTemplate = nameof(InternalSpinnerClassicTemplate);
         public const string SwitchTemplate = nameof(SwitchTemplate);
+        public const string StateControlTemplate = nameof(StateControlTemplate);
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);
         public const string TabItemTemplate = nameof(TabItemTemplate);

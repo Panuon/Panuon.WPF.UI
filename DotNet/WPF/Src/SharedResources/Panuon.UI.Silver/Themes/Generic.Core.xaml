@@ -12,9 +12,11 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/DrawerStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/DropDownStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/FormGroupStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ScrollableControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/InternalSpinnerStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/MessageBoxXStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ScrollableControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SpinnerStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/StateControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SwitchStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TransformControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />

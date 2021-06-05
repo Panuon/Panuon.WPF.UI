@@ -2,11 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Samples"
+             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
              StartupUri="Views/MainView.xaml"
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    
+                    <pu:MessageBoxXSettings x:Key="setting"
+                                            YesButtonContent="是"
+                                            NoButtonContent="否"
+                                            CancelButtonContent="取 消"
+                                            OKButtonContent="好">
+                        <pu:MessageBoxXSettings.ButtonStyle>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                <Setter Property="pu:ButtonHelper.CornerRadius"
+                                        Value="4" />
+                            </Style>
+                        </pu:MessageBoxXSettings.ButtonStyle>
+                    </pu:MessageBoxXSettings>
+                        
+                </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

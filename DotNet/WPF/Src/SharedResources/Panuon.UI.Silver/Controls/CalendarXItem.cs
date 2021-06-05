@@ -41,6 +41,17 @@ namespace Panuon.UI.Silver
             EventManager.RegisterRoutedEvent("Unselected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
         #endregion
 
+        #region Click
+        public event RoutedEventHandler Click
+        {
+            add { AddHandler(ClickEvent, value); }
+            remove { RemoveHandler(ClickEvent, value); }
+        }
+
+        public static readonly RoutedEvent ClickEvent =
+            EventManager.RegisterRoutedEvent("Click", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
+        #endregion
+
         #endregion
 
         #region Properties
@@ -86,7 +97,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsSelectedProperty =
-            DependencyProperty.Register("IsSelected", typeof(bool), typeof(CalendarXItem), new PropertyMetadata(OnIsSelectedChanged));
+            DependencyProperty.Register("IsSelected", typeof(bool), typeof(CalendarXItem), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsSelectedChanged));
         #endregion
 
         #region IsInSelectionRange
@@ -215,8 +226,9 @@ namespace Panuon.UI.Silver
         #region Overrides
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
-            IsSelected = !IsSelected;
+            SetCurrentValue(IsSelectedProperty, !IsSelected);
             base.OnMouseDown(e);
+            RaiseEvent(new RoutedEventArgs(ClickEvent));
         }
         #endregion
 

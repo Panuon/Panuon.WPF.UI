@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomPopup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalSpinner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DisplayMemberPathPropertyValueConverter.cs" />
@@ -217,6 +218,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\MessageBoxXStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\StateControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\ToolTipStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -374,6 +383,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\ToggleButtonTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\StateControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

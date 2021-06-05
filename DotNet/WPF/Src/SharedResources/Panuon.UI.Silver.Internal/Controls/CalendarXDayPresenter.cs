@@ -90,9 +90,7 @@ namespace Panuon.UI.Silver.Internal
             AddVisualChild(_grid);
             AddLogicalChild(_grid);
 
-            AddHandler(CalendarXItem.SelectedEvent, new RoutedEventHandler(OnCalendarXItemSelected));
-            AddHandler(CalendarXItem.UnselectedEvent, new RoutedEventHandler(OnCalendarXItemUnselected));
-
+            AddHandler(CalendarXItem.SelectedEvent, new RoutedEventHandler(OnCalendarXItemClicked));
         }
 
         #endregion
@@ -170,7 +168,7 @@ namespace Panuon.UI.Silver.Internal
                     DisplayName = cultureInfo.DateTimeFormat.GetShortestDayName((DayOfWeek)i),
                 });
             }
-            for(int i =0; i < (int)_calendar.FirstDayOfWeek; i++)
+            for (int i = 0; i < (int)_calendar.FirstDayOfWeek; i++)
             {
                 weekNames.Add(new CalendarXDayItem()
                 {
@@ -180,42 +178,81 @@ namespace Panuon.UI.Silver.Internal
             return weekNames;
         }
 
-        private void OnCalendarXItemSelected(object sender, RoutedEventArgs e)
+        private void OnCalendarXItemClicked(object sender, RoutedEventArgs e)
         {
-            if (_isInternalSet)
+            if(_calendar.SelectionMode == CalendarSelectionMode.None) 
             {
-                return;
+                return; 
             }
+
             var calendarXItem = e.OriginalSource as CalendarXItem;
             var dayItem = calendarXItem.DataContext as CalendarXDayItem;
 
-            var result = _calendar.AddSelectedDate(dayItem.CurrentDate);
-            if (result)
+            if (dayItem.IsSelected)
             {
-                if (dayItem.IsWeakenDisplay)
+                var result = _calendar.AddSelectedDate(dayItem.CurrentDate);
+                if (result)
                 {
-                    UpdateDayItems(dayItem.CurrentDate.Year, dayItem.CurrentDate.Month);
+                    if (dayItem.IsWeakenDisplay)
+                    {
+                        UpdateDayItems(dayItem.CurrentDate.Year, dayItem.CurrentDate.Month);
+                    }
+                    else
+                    {
+                        if (_calendar.SelectionMode == CalendarSelectionMode.SingleDate)
+                        {
+                            foreach (var item in _dayItems)
+                            {
+                                if (item.IsSelected && item != dayItem)
+                                {
+                                    item.IsSelected = false;
+                                }
+                            }
+                        }
+                    }
                 }
-            }
-            else
-            {
-                _isInternalSet = true;
-                calendarXItem.IsSelected = false;
-                _isInternalSet = false;
-            }
-        }
-
-        private void OnCalendarXItemUnselected(object sender, RoutedEventArgs e)
-        {
-            if (_isInternalSet)
-            {
-                return;
+                else
+                {
+                    _isInternalSet = true;
+                    calendarXItem.IsSelected = false;
+                    _isInternalSet = false;
+                }
             }
         }
 
         #endregion
 
         #region Functions
+        private void UpdateDayItems(int year, int month)
+        {
+            _displayYear = year;
+            _displayMonth = month;
+
+            var firstDayOfWeek = _calendar.FirstDayOfWeek;
+            var todayDate = DateTime.Now.Date;
+
+            var firstDayInMonth = new DateTime(_displayYear, _displayMonth, 1);
+            var firstDayOfWeekInMonth = firstDayInMonth.DayOfWeek;
+            var preDelta = firstDayOfWeekInMonth - firstDayOfWeek;
+            preDelta = preDelta <= 0 ? (preDelta + 7) : preDelta;
+
+            var loopDate = firstDayInMonth.AddDays(-preDelta);
+
+            foreach (var dayItem in _dayItems)
+            {
+                var specialDay = _specialDays.FirstOrDefault(x => x.Date.Equals(loopDate));
+
+                dayItem.DisplayName = specialDay == null
+                    ? loopDate.Day.ToString()
+                    : specialDay.DisplayName;
+                dayItem.CurrentDate = loopDate;
+                dayItem.IsSpecialDay = specialDay != null;
+                dayItem.IsToday = _calendar.IsTodayHighlighted ? loopDate.Date.Equals(todayDate) : false;
+                dayItem.IsWeakenDisplay = loopDate.Date.Year != _displayYear || loopDate.Date.Month != _displayMonth;
+                dayItem.IsSelected = _calendar.SelectedDates == null ? false : _calendar.SelectedDates.Any(x => x.Year == loopDate.Year && x.Month == loopDate.Month && x.Day == loopDate.Day);
+                loopDate = loopDate.AddDays(1);
+            }
+        }
 
         private static List<CalendarXDayItem> CreateDayItems()
         {
@@ -301,35 +338,6 @@ namespace Panuon.UI.Silver.Internal
             return itemPanelFactory;
         }
 
-        private void UpdateDayItems(int year, int month)
-        {
-            _displayYear = year;
-            _displayMonth = month;
-
-            var firstDayOfWeek = _calendar.FirstDayOfWeek;
-            var todayDate = DateTime.Now.Date;
-
-            var firstDayInMonth = new DateTime(_displayYear, _displayMonth, 1);
-            var firstDayOfWeekInMonth = firstDayInMonth.DayOfWeek;
-            var preDelta = firstDayOfWeekInMonth - firstDayOfWeek;
-            preDelta = preDelta < 0 ? (preDelta + 7) : preDelta;
-
-            var loopDate = firstDayInMonth.AddDays(-preDelta);
-
-            foreach (var dayItem in _dayItems)
-            {
-                var specialDay = _specialDays.FirstOrDefault(x => x.Date.Equals(loopDate));
-
-                dayItem.DisplayName = specialDay == null 
-                    ? loopDate.Day.ToString() 
-                    : specialDay.DisplayName;
-                dayItem.CurrentDate = loopDate;
-                dayItem.IsSpecialDay = specialDay != null;
-                dayItem.IsToday = _calendar.IsTodayHighlighted ? loopDate.Date.Equals(todayDate) : false;
-                dayItem.IsWeakenDisplay = loopDate.Date.Year != _displayYear || loopDate.Date.Month != _displayMonth;
-                loopDate = loopDate.AddDays(1);
-            }
-        }
         #endregion
     }
 }

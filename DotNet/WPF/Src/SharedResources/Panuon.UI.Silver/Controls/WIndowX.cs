@@ -5,15 +5,19 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shell;
 
 namespace Panuon.UI.Silver
 {
+    [TemplatePart(Name = ContentPresenterTemplateName, Type = typeof(ContentPresenter))]
     public class WindowX : Window, INotifyPropertyChanged
     {
         #region Fields
+        protected const string ContentPresenterTemplateName = "PART_ContentPresenter";
+
         private WindowState _lastWindowState;
         #endregion
 

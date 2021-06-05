@@ -12,6 +12,7 @@ namespace Panuon.UI.Silver
     public class CalendarX : Control
     {
         #region Fields
+        private bool _isInternalSet;
         #endregion
 
         #region Ctor
@@ -102,14 +103,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedDates
-        public IEnumerable<DateTime> SelectedDates
+        public SelectedDatesCollection SelectedDates
         {
-            get { return (IEnumerable<DateTime>)GetValue(SelectedDatesProperty); }
+            get { return (SelectedDatesCollection)GetValue(SelectedDatesProperty); }
             set { SetValue(SelectedDatesProperty, value); }
         }
 
         public static readonly DependencyProperty SelectedDatesProperty =
-            DependencyProperty.Register("SelectedDates", typeof(IEnumerable<DateTime>), typeof(CalendarX));
+            DependencyProperty.Register("SelectedDates", typeof(SelectedDatesCollection), typeof(CalendarX), new PropertyMetadata(OnSelectedDatesChanged));
         #endregion
 
         #region BlackoutDates
@@ -232,7 +233,23 @@ namespace Panuon.UI.Silver
         #region Methods
         public bool AddSelectedDate(DateTime currentDate)
         {
-            return false;
+            SetCurrentValue(SelectedDateProperty, currentDate);
+
+            _isInternalSet = true;
+            if (SelectedDates == null)
+            {
+                var selectedDates = new SelectedDatesCollection(this);
+                selectedDates.Add(currentDate);
+                SetCurrentValue(SelectedDatesProperty, selectedDates);
+            }
+            else
+            {
+                SelectedDates.Clear();
+                SelectedDates.Add(currentDate);
+            }
+            _isInternalSet = false;
+
+            return true;
         }
         #endregion
 
@@ -244,6 +261,13 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Functions
+        private void RefreshDayPresenter()
+        {
+            DayPresenter.Update(DisplayDate.Year, DisplayDate.Month, SelectedDates, BlackoutDates, SpecialDays);
+        }
+        #endregion
+
+        #region Event Handlers
         private static void OnSpecialDaysChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendarX = (CalendarX)d;
@@ -262,11 +286,9 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private void RefreshDayPresenter()
+        private static void OnSelectedDatesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            DayPresenter.Update(DisplayDate.Year, DisplayDate.Month, SelectedDates, BlackoutDates, SpecialDays);
         }
-
         #endregion
     }
 }

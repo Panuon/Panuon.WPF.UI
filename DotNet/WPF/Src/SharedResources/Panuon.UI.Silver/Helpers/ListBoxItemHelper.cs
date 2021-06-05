@@ -232,5 +232,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SeparatorVisibility", typeof(Visibility), typeof(ListBoxItemHelper));
         #endregion
 
+        #region IsStyleless
+        public static bool GetIsStyleless(ListBoxItem listBoxItem)
+        {
+            return (bool)listBoxItem.GetValue(IsStylelessProperty);
+        }
+
+        public static void SetIsStyleless(ListBoxItem listBoxItem, bool value)
+        {
+            listBoxItem.SetValue(IsStylelessProperty, value);
+        }
+
+        public static readonly DependencyProperty IsStylelessProperty =
+            DependencyProperty.RegisterAttached("IsStyleless", typeof(bool), typeof(ListBoxItemHelper));
+        
+        #endregion
     }
 }
