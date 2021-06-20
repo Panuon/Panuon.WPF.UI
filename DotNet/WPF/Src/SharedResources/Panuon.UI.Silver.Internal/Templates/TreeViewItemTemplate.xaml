@@ -29,10 +29,10 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <ToggleButton x:Name="TgbToggle"
-                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                      IsChecked="True"
                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                       Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
-                                      Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToHiddenConverter}},RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                      Visibility="Hidden" />
                         <i:IconPresenter x:Name="IpIcon"
                                          Grid.Column="1"
                                          Focusable="False"
@@ -272,6 +272,15 @@
                         Property="BorderThickness"
                         Value="{Binding Path=(local:TreeViewItemHelper.SelectedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <Trigger Property="HasItems"
+                     Value="True">
+                <Setter TargetName="TgbToggle"
+                        Property="IsChecked"
+                        Value="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
+                <Setter TargetName="TgbToggle"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

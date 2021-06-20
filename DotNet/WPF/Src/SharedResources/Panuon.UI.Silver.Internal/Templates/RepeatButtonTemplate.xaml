@@ -24,7 +24,7 @@
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <Grid Margin="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />

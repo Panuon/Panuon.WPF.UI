@@ -70,7 +70,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HandleMouseWheelProperty =
-            DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(false));
+            DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #endregion
@@ -140,7 +140,5 @@ namespace Panuon.UI.Silver
             }
         }
         #endregion
-
-
     }
 }

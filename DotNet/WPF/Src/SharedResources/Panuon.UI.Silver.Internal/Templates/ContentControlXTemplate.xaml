@@ -19,7 +19,9 @@
                     Effect="{TemplateBinding Effect}" />
             <i:ClippingBorder CornerRadius="{TemplateBinding CornerRadius}"
                               SnapsToDevicePixels="True">
-                <Grid Margin="{TemplateBinding Padding}">
+                <Grid Margin="{TemplateBinding Padding}"
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="cd1"
                                           Width="Auto" />

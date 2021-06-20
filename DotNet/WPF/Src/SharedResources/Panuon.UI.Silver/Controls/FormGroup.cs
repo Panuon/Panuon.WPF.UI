@@ -230,7 +230,7 @@ namespace Panuon.UI.Silver
         #region Overrides
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
+            
             
             _headerControl = GetTemplateChild(HeaderContentControlTemplateName) as ContentControl;
             _headerControl.SizeChanged += HeaderControl_SizeChanged;

@@ -1,11 +1,12 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
     static class FrameworkElementUtil
     {
-
         #region Methods
 
         #region BindingProperty
@@ -78,6 +79,42 @@ namespace Panuon.UI.Silver.Internal.Utils
                 UpdateSourceTrigger = trigger
             };
             element.SetBinding(targetProperty, binding);
+        }
+        #endregion
+
+        #region FindVisualChildren
+        public static IEnumerable<T> FindVisualChildren<T>(FrameworkElement obj, string name)
+            where T : FrameworkElement
+        {
+            if (obj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+                {
+                    var child = VisualTreeHelper.GetChild(obj, i) as FrameworkElement;
+                    if (child != null && child is T && (string.IsNullOrEmpty(name) || child.Name == name))
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child, name))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region FindVisualChild
+        public static T FindVisualChild<T>(FrameworkElement obj, string name)
+            where T : FrameworkElement
+        {
+            foreach (T child in FindVisualChildren<T>(obj, name))
+            {
+                return child;
+            }
+
+            return null;
         }
         #endregion
 

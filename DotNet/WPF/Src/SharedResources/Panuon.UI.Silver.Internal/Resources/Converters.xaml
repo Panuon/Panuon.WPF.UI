@@ -13,6 +13,7 @@
     <icv:ComboBoxDropDownVerticalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}" />
     <icv:ContextMenuDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}" />
     <icv:DataGridSelectionUnitIsNotFullRowConverter x:Key="{x:Static irs:ConverterKeys.DataGridSelectionUnitIsNotFullRowConverter}" />
+    <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
     <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />

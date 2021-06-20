@@ -23,6 +23,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Height", typeof(double), typeof(WindowXCaption), new PropertyMetadata(double.NaN, OnHeightChanged));
         #endregion
 
+        #region Padding
+        public static Thickness GetPadding(WindowX windowX)
+        {
+            return (Thickness)windowX.GetValue(PaddingProperty);
+        }
+
+        public static void SetPadding(WindowX windowX, Thickness value)
+        {
+            windowX.SetValue(PaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty PaddingProperty =
+            DependencyProperty.RegisterAttached("Padding", typeof(Thickness), typeof(WindowXCaption), new PropertyMetadata(new Thickness(0)));
+        #endregion
+
         #region Foreground
         public static Brush GetForeground(WindowX windowX)
         {

@@ -29,7 +29,7 @@ namespace Panuon.UI.Silver.Internal
         #region Overrides
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
+            
             _iconPresenter = GetTemplateChild(IconPresenterPartName) as IconPresenter;
             if (IconForeground != null)
             {

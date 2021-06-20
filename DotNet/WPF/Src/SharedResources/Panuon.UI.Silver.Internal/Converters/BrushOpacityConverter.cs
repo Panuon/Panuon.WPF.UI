@@ -15,7 +15,10 @@ namespace Panuon.UI.Silver.Internal.Converters
             {
                 newBrush.Opacity = opacity;
             }
-            newBrush.Freeze();
+            if (newBrush.CanFreeze)
+            {
+                newBrush.Freeze();
+            }
             return newBrush;
         }
     }

@@ -11,7 +11,9 @@
             Title="MainView"
             Height="600"
             Width="1000"
-            WindowStartupLocation="CenterScreen">
+            WindowStartupLocation="CenterScreen"
+            MaskBrush="#AA000000"
+            Closing="WindowX_Closing">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -24,6 +26,7 @@
     </pu:WindowXCaption.HeaderTemplate>
     <pu:WindowXCaption.ExtendControl>
         <StackPanel>
+
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
@@ -43,7 +46,8 @@
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
-                      HorizontalScrollBarVisibility="Auto">
+                      HorizontalScrollBarVisibility="Auto"
+                      pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
             <ItemsControl x:Name="LsbExamples"
                           VerticalContentAlignment="Stretch"
                           HorizontalAlignment="Stretch">
@@ -72,7 +76,7 @@
                                 </Grid.RowDefinitions>
                                 <Viewbox HorizontalAlignment="Center">
                                     <ContentControl Content="{Binding PreviewView}"
-                                                    IsHitTestVisible="False"/>
+                                                    IsHitTestVisible="False" />
                                 </Viewbox>
                                 <TextBlock Grid.Row="1"
                                            FontWeight="Bold"

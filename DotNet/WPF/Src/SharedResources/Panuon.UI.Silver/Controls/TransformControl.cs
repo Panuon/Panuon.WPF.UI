@@ -87,7 +87,7 @@ namespace Panuon.UI.Silver
         #region Overrides
         public override void OnApplyTemplate()
         {
-            base.OnApplyTemplate();
+            
             _contentPresenter = GetTemplateChild(ContentPresenterTemplatePartName) as ContentPresenter;
 
             var transformGroup = new TransformGroup();

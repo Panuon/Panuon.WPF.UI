@@ -11,6 +11,17 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             if (value != null && double.TryParse(value.ToString(), out double doubleValue))
             {
+                switch (parameter?.ToString()?.ToLower())
+                {
+                    case "left":
+                        return new Thickness(doubleValue, 0, 0, 0);
+                    case "top":
+                        return new Thickness(0, doubleValue, 0, 0);
+                    case "right":
+                        return new Thickness(0, 0, doubleValue, 0);
+                    case "bottom":
+                        return new Thickness(0, 0, 0, doubleValue);
+                }
                 return new Thickness(doubleValue);
             }
             return new Thickness();

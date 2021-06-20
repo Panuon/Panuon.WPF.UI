@@ -21,7 +21,8 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <AdornerDecorator Grid.Row="1">
-                        <ContentPresenter />
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Margin="{TemplateBinding Padding}" />
                     </AdornerDecorator>
                     <ContentControl x:Name="CcBackstage"
                                     Focusable="False"
@@ -29,15 +30,7 @@
                                     Grid.RowSpan="2"
                                     Content="{TemplateBinding Backstage}" />
                     <Grid Height="{Binding Path=(local:WindowXCaption.Height),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.ColumnSpan="5"
-                                Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                        <Border Background="{Binding Path=(local:WindowXCaption.Background),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 BorderBrush="{Binding Path=(local:WindowXCaption.BorderBrush),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 BorderThickness="{Binding Path=(local:WindowXCaption.BorderThickness),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                             <Border.Effect>
@@ -63,35 +56,44 @@
                                 </MultiBinding>
                             </Border.Effect>
                         </Border>
-                        <ContentControl x:Name="CcHeader"
-                                        Focusable="False"
-                                        Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                        Content="{Binding DataContext, Converter={StaticResource {x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        ContentTemplate="{Binding Path=(local:WindowXCaption.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                        <ContentControl x:Name="CcExtendControl"
-                                        Grid.Column="1"
-                                        Focusable="False"
-                                        local:WindowX.IsDragMoveArea="False"
-                                        Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                        <Button x:Name="BtnMinimize"
-                                Grid.Column="2"
-                                Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Command="{TemplateBinding MinimizeCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                local:WindowX.IsDragMoveArea="False" />
-                        <Button x:Name="BtnMaximize"
-                                Grid.Column="3"
-                                Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Command="{TemplateBinding MaximizeCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                local:WindowX.IsDragMoveArea="False" />
-                        <Button x:Name="BtnClose"
-                                Grid.Column="4"
-                                Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
-                                Command="{TemplateBinding CloseCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                IsEnabled="{TemplateBinding CanClose}"
-                                local:WindowX.IsDragMoveArea="False" />
+                        <Grid Margin="{Binding Path=(local:WindowXCaption.Padding),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ContentControl x:Name="CcHeader"
+                                            Focusable="False"
+                                            Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                            Content="{Binding DataContext, Converter={StaticResource {x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            ContentTemplate="{Binding Path=(local:WindowXCaption.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            <ContentControl x:Name="CcExtendControl"
+                                            Grid.Column="1"
+                                            Focusable="False"
+                                            local:WindowX.IsDragMoveArea="False"
+                                            Content="{Binding Path=(local:WindowXCaption.ExtendControl),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            <Button x:Name="BtnMinimize"
+                                    Grid.Column="2"
+                                    Style="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                    Command="{TemplateBinding MinimizeCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    local:WindowX.IsDragMoveArea="False" />
+                            <Button x:Name="BtnMaximize"
+                                    Grid.Column="3"
+                                    Style="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                    Command="{TemplateBinding MaximizeCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    local:WindowX.IsDragMoveArea="False" />
+                            <Button x:Name="BtnClose"
+                                    Grid.Column="4"
+                                    Style="{Binding Path=(local:WindowXCaption.CloseButtonStyle),RelativeSource={RelativeSource AncestorType=local:WindowX},Mode=OneWay}"
+                                    Command="{TemplateBinding CloseCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    IsEnabled="{TemplateBinding CanClose}"
+                                    local:WindowX.IsDragMoveArea="False" />
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Rectangle x:Name="RectMask"

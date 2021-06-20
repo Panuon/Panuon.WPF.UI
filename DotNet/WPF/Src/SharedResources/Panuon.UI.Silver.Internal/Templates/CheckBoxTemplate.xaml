@@ -15,7 +15,7 @@
               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>

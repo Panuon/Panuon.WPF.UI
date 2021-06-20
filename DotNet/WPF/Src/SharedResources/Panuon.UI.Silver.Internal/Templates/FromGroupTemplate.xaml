@@ -59,8 +59,11 @@
             <Trigger Property="Orientation"
                      Value="Vertical">
                 <Setter TargetName="CpContent"
-                        Property="Grid.Column"
+                        Property="Grid.Row"
                         Value="1" />
+                <Setter TargetName="CpContent"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
             </Trigger>
             <DataTrigger Binding="{Binding Message, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
