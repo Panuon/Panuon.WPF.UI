@@ -10,13 +10,15 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+    <Style x:Key="{ComponentResourceKey    ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
                 Value="35"/>
         <Setter Property="Padding"
                 Value="15,0" />
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
         <Style.Triggers>
             <Trigger Property="IsDefault"
                      Value="True">

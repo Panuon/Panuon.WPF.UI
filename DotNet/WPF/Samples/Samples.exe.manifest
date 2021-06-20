@@ -27,16 +27,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          UAC 清单选项
-          如果要更改 Windows 用户帐户控制级别，请用以下节点之一替换
-          requestedExecutionLevel 节点。
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-          如果要利用文件和注册表虚拟化提供
-          向后兼容性，请删除 requestedExecutionLevel 节点。
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -55,38 +55,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panuon.UI.Core.dll" size="12800">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panuon.UI.Core.dll" size="13312">
       <assemblyIdentity name="Panuon.UI.Core" version="2.2.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MLQH9rtl2DeKd42KXN/88r/P8ZTWJO9rSTlCPZ0VCUo=</dsig:DigestValue>
+        <dsig:DigestValue>k97U0w1oG1/EBkcXRCPpQJLETDTNKpqYhLo/Hx9QwYg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panuon.UI.Silver.dll" size="805888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Panuon.UI.Silver.dll" size="960000">
       <assemblyIdentity name="Panuon.UI.Silver" version="2.2.8.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PAYO0GbOaLAuVOCAjJYsnAdZgbA/mWJTP0VSJ+S6lR8=</dsig:DigestValue>
+        <dsig:DigestValue>w0+E6Du0poTI9A2d7Tll6ueWNb0zamURDIleo8n3Kkc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Samples.exe" size="65960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Samples.exe" size="75776">
       <assemblyIdentity name="Samples" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>U+eSCinodjSdUdgTe0Jl8Ybtu5WRso/vXJ7L0dlZUtE=</dsig:DigestValue>
+        <dsig:DigestValue>4ncoSn4BOIYQgeKtSUFD9zntCMnLOFROoV+WK3cdEA4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -43,6 +43,7 @@ namespace Samples.Views
         #region Event Handlers
         private void BtnExample_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxX.Show("123");
             var button = sender as Button;
             var exampleItem = button.DataContext as ExampleItem;
             var window = (Window)Activator.CreateInstance(exampleItem.ViewType);
