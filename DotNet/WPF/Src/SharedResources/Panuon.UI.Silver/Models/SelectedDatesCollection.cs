@@ -3,7 +3,7 @@ using Panuon.UI.Core;
 
 namespace Panuon.UI.Silver
 {
-    public class SelectedDatesCollection : ObservableCollectionX<DateTime>
+    class SelectedDatesCollection : ObservableCollectionX<DateTime>
     {
         #region Fields
         private CalendarX _calendarX;

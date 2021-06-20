@@ -12,7 +12,8 @@
             Height="600"
             Width="1000"
             WindowStartupLocation="CenterScreen"
-            MaskBrush="#AA000000">
+            MaskBrush="#AA000000"
+            Closing="WindowX_Closing">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -101,10 +102,5 @@
                    Foreground="Gray"
                    HorizontalAlignment="Right"
                    Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
-        <pu:CalendarX x:Name="Cdr"
-                      Width="300"
-                      Height="280"
-                      pu:ShadowHelper.ShadowDepth="5"
-                      Grid.Row="1" />
     </Grid>
 </pu:WindowX>

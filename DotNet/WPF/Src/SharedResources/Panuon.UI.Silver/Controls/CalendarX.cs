@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class CalendarX : Control
+    class CalendarX : Control
     {
         #region Fields
         private bool _isInternalSet;

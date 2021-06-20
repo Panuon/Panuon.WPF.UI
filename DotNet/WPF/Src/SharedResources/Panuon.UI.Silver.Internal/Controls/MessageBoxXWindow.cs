@@ -7,7 +7,6 @@ using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
-    [TemplatePart()]
     class MessageBoxXWindow : WindowX
     {
         #region Fields
@@ -18,6 +17,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         private const string YesButtonTemplateName = "PART_YesButton";
 
         private const string NoButtonTemplateName = "PART_NoButton";
+
+        private const string StackPanelTemplateName = "PART_ButtonContainer";
 
         private Button _okButton;
 
@@ -66,6 +67,9 @@ namespace Panuon.UI.Silver.Internal.Controls
 
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
+                var stackPanel = FrameworkElementUtil.FindVisualChild<StackPanel>(this, StackPanelTemplateName);
+                stackPanel.FlowDirection = _setting.InverseButtonsSequence ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
                 _okButton = FrameworkElementUtil.FindVisualChild<Button>(this, OKButtonTemplateName);
                 if (_okButton == null)
                 {

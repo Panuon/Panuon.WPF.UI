@@ -11,6 +11,20 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
+        #region InverseButtonsSequence
+        public bool InverseButtonsSequence
+        {
+            get
+            {
+                return Setting.InverseButtonsSequence;
+            }
+            set
+            {
+                Setting.InverseButtonsSequence = value;
+            }
+        }
+        #endregion
+
         #region ButtonStyle
         public Style ButtonStyle
         {
