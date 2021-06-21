@@ -83,7 +83,7 @@
                 <Trigger Property="pu:ButtonHelper.IsPending"
                          Value="True">
                     <Setter Property="pu:ButtonHelper.ClickEffect"
-                            Value="Sink" />
+                            Value="Shake" />
                     <Setter Property="ContentTemplate">
                         <Setter.Value>
                             <DataTemplate>

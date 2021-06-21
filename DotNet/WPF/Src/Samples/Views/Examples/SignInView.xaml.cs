@@ -21,14 +21,19 @@ namespace Samples.Views.Examples
     [ExampleView(Index = 2, DisplayName = "Sign In")]
     public partial class SignInView : WindowX
     {
+        #region Fields
         private bool _isProgressing;
+        #endregion
 
+        #region Ctor
         public SignInView()
         {
             InitializeComponent();
             ValidatePassword();
         }
+        #endregion
 
+        #region Event Handlers
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if (_isProgressing)
@@ -49,7 +54,9 @@ namespace Samples.Views.Examples
         {
             ValidatePassword();
         }
+        #endregion
 
+        #region Functions
         private bool ValidatePassword()
         {
             if (PwdPassword.Password == null || PwdPassword.Password == "")
@@ -77,5 +84,6 @@ namespace Samples.Views.Examples
                 return true;
             }
         }
+        #endregion
     }
 }
