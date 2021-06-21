@@ -15,6 +15,19 @@ namespace Panuon.UI.Silver.Configurations
 
         #region Properties
 
+        #region InverseButtonsSequence
+        public bool InverseButtonsSequence
+        {
+            get { return (bool)GetValue(InverseButtonsSequenceProperty); }
+            set { SetValue(InverseButtonsSequenceProperty, value); }
+        }
+
+        public static readonly DependencyProperty InverseButtonsSequenceProperty =
+            DependencyProperty.Register("InverseButtonsSequence", typeof(bool), typeof(MessageBoxXSetting));
+
+
+        #endregion
+
         #region ButtonStyle
         public Style ButtonStyle
         {

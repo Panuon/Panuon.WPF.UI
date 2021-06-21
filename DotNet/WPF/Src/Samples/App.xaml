@@ -10,16 +10,21 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     
-                    <pu:MessageBoxXSettings x:Key="setting"
-                                            YesButtonContent="是"
-                                            NoButtonContent="否"
-                                            CancelButtonContent="取 消"
-                                            OKButtonContent="好">
+                    <pu:MessageBoxXSettings x:Key="setting">
                         <pu:MessageBoxXSettings.ButtonStyle>
                             <Style TargetType="Button"
                                    BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
                                 <Setter Property="pu:ButtonHelper.CornerRadius"
                                         Value="4" />
+                                <Style.Triggers >
+                                    <Trigger Property="IsDefault"
+                                             Value="True">
+                                        <Setter Property="Foreground"
+                                                Value="#FFFFFF"/>
+                                        <Setter Property="Background"
+                                                Value="#80BEE8"/>
+                                    </Trigger>
+                                </Style.Triggers>
                             </Style>
                         </pu:MessageBoxXSettings.ButtonStyle>
                     </pu:MessageBoxXSettings>

@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class CalendarXItem : ContentControl
+    class CalendarXItem : ContentControl
     {
         #region Ctor
         static CalendarXItem()

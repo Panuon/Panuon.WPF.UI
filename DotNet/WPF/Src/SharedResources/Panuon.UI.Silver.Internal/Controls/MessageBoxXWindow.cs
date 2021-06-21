@@ -7,7 +7,6 @@ using System.Windows.Threading;
 
 namespace Panuon.UI.Silver.Internal.Controls
 {
-    [TemplatePart()]
     class MessageBoxXWindow : WindowX
     {
         #region Fields
@@ -18,6 +17,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         private const string YesButtonTemplateName = "PART_YesButton";
 
         private const string NoButtonTemplateName = "PART_NoButton";
+
+        private const string StackPanelTemplateName = "PART_ButtonContainer";
 
         private Button _okButton;
 
@@ -66,6 +67,9 @@ namespace Panuon.UI.Silver.Internal.Controls
 
             this.Dispatcher.BeginInvoke(new Action(() =>
             {
+                var stackPanel = FrameworkElementUtil.FindVisualChild<StackPanel>(this, StackPanelTemplateName);
+                stackPanel.FlowDirection = _setting.InverseButtonsSequence ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
                 _okButton = FrameworkElementUtil.FindVisualChild<Button>(this, OKButtonTemplateName);
                 if (_okButton == null)
                 {
@@ -89,10 +93,22 @@ namespace Panuon.UI.Silver.Internal.Controls
 
                 if (_setting.ButtonStyle != null)
                 {
-                    _okButton.Style = _setting.ButtonStyle;
+                    if (DependencyPropertyHelper.GetValueSource(_okButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
+                    {
+                        _okButton.Style = _setting.ButtonStyle;
+                    }
+                    if (DependencyPropertyHelper.GetValueSource(_cancelButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
+                    {
                     _cancelButton.Style = _setting.ButtonStyle;
-                    _yesButton.Style = _setting.ButtonStyle;
-                    _noButton.Style = _setting.ButtonStyle;
+                    }
+                    if (DependencyPropertyHelper.GetValueSource(_yesButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
+                    {
+                        _yesButton.Style = _setting.ButtonStyle;
+                    }
+                    if (DependencyPropertyHelper.GetValueSource(_noButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
+                    {
+                        _noButton.Style = _setting.ButtonStyle;
+                    }
                 }
 
                 _okButton.Content = _setting.OKButtonContent;
@@ -115,7 +131,37 @@ namespace Panuon.UI.Silver.Internal.Controls
                 _yesButton.DataContext = "Yes";
                 _noButton.DataContext = "No";
 
+                _okButton.Click += Button_Click;
+                _cancelButton.Click += Button_Click;
+                _yesButton.Click += Button_Click;
+                _noButton.Click += Button_Click;
+
             }), DispatcherPriority.DataBind);
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            switch (button.Name) 
+            {
+                case OKButtonTemplateName:
+                    Result = MessageBoxResult.OK;
+                    Close();
+                    return;
+                case CancelButtonTemplateName:
+                    Result = MessageBoxResult.Cancel;
+                    Close();
+                    return;
+                case YesButtonTemplateName:
+                    Result = MessageBoxResult.Yes;
+                    Close();
+                    return;
+                case NoButtonTemplateName:
+                    Result = MessageBoxResult.No;
+                    Close();
+                    return;
+            }
 
         }
 

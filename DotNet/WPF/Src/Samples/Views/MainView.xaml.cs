@@ -24,27 +24,12 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
-            //Cdr.SpecialDays = new List<CalendarXSpecialDay>()
-            //{
-            //    new CalendarXSpecialDay("愚人", new DateTime(2021,4,1)),
-            //    new CalendarXSpecialDay("劳动", new DateTime(2021,5,1)),
-            //};
-
-            //sg.ItemsSource = new List<object>()
-            //{
-            //    new { Name = "123" },
-            //    new { Name = "12345" },
-            //    new { Name = "54321" },
-            //    new { Name = "321" },
-            //};
         }
         #endregion
 
         #region Event Handlers
         private void BtnExample_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxX.Show(this, "12312313", "321", MessageBoxIcon.Info); 
-
             var button = sender as Button;
             var exampleItem = button.DataContext as ExampleItem;
             var window = (Window)Activator.CreateInstance(exampleItem.ViewType);
@@ -133,6 +118,14 @@ namespace Samples.Views
         {
             IsOverlayerVisible = true;
             IsMaskVisible = true;
+        }
+
+        private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBoxX.Show(this, "Exit ?", "Tips", MessageBoxButton.YesNo, MessageBoxIcon.Question, DefaultButton.YesOK) != MessageBoxResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -1,13 +1,9 @@
-﻿using Panuon.UI.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Collections.Specialized;
+﻿using System;
+using Panuon.UI.Core;
 
 namespace Panuon.UI.Silver
 {
-    public class SelectedDatesCollection : ObservableCollectionX<DateTime>
+    class SelectedDatesCollection : ObservableCollectionX<DateTime>
     {
         #region Fields
         private CalendarX _calendarX;
