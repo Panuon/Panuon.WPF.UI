@@ -65,13 +65,24 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="VerticalHeaderAlignment"
+                Value="Center" />
         <Setter Property="HeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MessageTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.FormGroupTemplate}}" />
+      
         <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.FormGroupVerticalTemplate}}" />
+            </Trigger>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.FormGroupHorizontalTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

@@ -31,7 +31,28 @@
                         
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
+                <ResourceDictionary>
+                    <pu:MessageBoxXSettings x:Key="setting">
+                        <pu:MessageBoxXSettings.ButtonStyle>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                <Setter Property="pu:ButtonHelper.CornerRadius"
+                                        Value="4" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsDefault"
+                                             Value="True">
+                                        <Setter Property="Foreground"
+                                                Value="#FFFFFF" />
+                                        <Setter Property="Background"
+                                                Value="#80BEE8" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </pu:MessageBoxXSettings.ButtonStyle>
+                    </pu:MessageBoxXSettings>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+

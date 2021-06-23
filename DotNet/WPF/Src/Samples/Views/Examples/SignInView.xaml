@@ -58,12 +58,6 @@
                BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="pu:ButtonHelper.CornerRadius"
                     Value="2" />
-            <Setter Property="pu:ShadowHelper.BlurRadius"
-                    Value="5" />
-            <Setter Property="pu:ShadowHelper.ShadowDepth"
-                    Value="4" />
-            <Setter Property="pu:ShadowHelper.Opacity"
-                    Value="0.8" />
             <Setter Property="Background"
                     Value="#6CBCEA" />
             <Setter Property="Foreground"
@@ -160,7 +154,7 @@
             <TextBox Style="{StaticResource SignInTextBoxStyle}"
                      pu:TextBoxHelper.Watermark="UserName / Email / Phone" />
         </pu:FormGroup>
-        <pu:FormGroup x:Name="FmgPassword"
+        <pu:FormGroup x:Name="FrmPassword"
                       Grid.Row="2"
                       Margin="0,20,0,0"
                       HeaderPadding="0,4,0,0"

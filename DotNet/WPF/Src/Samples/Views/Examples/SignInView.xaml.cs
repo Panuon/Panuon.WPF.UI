@@ -1,17 +1,5 @@
 ﻿using Panuon.UI.Silver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Samples.Views.Examples
 {
@@ -21,17 +9,22 @@ namespace Samples.Views.Examples
     [ExampleView(Index = 2, DisplayName = "Sign In")]
     public partial class SignInView : WindowX
     {
-        private bool _isProgressing;
+        #region Fields
+        private bool _isProcessing;
+        #endregion
 
+        #region Ctor
         public SignInView()
         {
             InitializeComponent();
             ValidatePassword();
         }
+        #endregion
 
+        #region Event Handlers
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (_isProgressing)
+            if (_isProcessing)
             {
                 return;
             }
@@ -39,43 +32,46 @@ namespace Samples.Views.Examples
             {
                 return;
             }
-            _isProgressing = true;
+            _isProcessing = true;
             ButtonHelper.SetIsPending(BtnLogin, true);
-            FmgPassword.ValidateResult = ValidateResult.None;
-            FmgPassword.Message = null;
+            FrmPassword.ValidateResult = ValidateResult.None;
+            FrmPassword.Message = null;
         }
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ValidatePassword();
         }
+        #endregion
 
+        #region Functions
         private bool ValidatePassword()
         {
             if (PwdPassword.Password == null || PwdPassword.Password == "")
             {
-                FmgPassword.ValidateResult = ValidateResult.Info;
-                FmgPassword.Message = "Try to input password";
+                FrmPassword.ValidateResult = ValidateResult.Info;
+                FrmPassword.Message = "Try to input password";
                 return false;
             }
             else if (PwdPassword.Password.Length < 6)
             {
-                FmgPassword.ValidateResult = ValidateResult.Error;
-                FmgPassword.Message = "At least 6 digits.";
+                FrmPassword.ValidateResult = ValidateResult.Error;
+                FrmPassword.Message = "At least 6 digits.";
                 return false;
             }
             else if (PwdPassword.Password != "123456")
             {
-                FmgPassword.ValidateResult = ValidateResult.Warning;
-                FmgPassword.Message = "Password should be 123456.";
+                FrmPassword.ValidateResult = ValidateResult.Warning;
+                FrmPassword.Message = "Password should be 123456.";
                 return false;
             }
             else
             {
-                FmgPassword.ValidateResult = ValidateResult.Success;
-                FmgPassword.Message = "Nice work.";
+                FrmPassword.ValidateResult = ValidateResult.Success;
+                FrmPassword.Message = "Nice work.";
                 return true;
             }
         }
+        #endregion
     }
 }

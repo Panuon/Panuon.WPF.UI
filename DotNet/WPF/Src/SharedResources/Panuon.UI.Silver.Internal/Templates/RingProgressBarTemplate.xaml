@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.RingProgressBarTemplate}"
+                     TargetType="local:RingProgressBar">
+        <Grid>
+            <Ellipse Fill="{TemplateBinding Background}"
+                     Stroke="{TemplateBinding BorderBrush}"
+                     StrokeThickness="{TemplateBinding BorderThickness}" />
+            <Path Stroke="{TemplateBinding Foreground}"
+                  StrokeThickness="{TemplateBinding BorderThickness}"
+                  RenderTransformOrigin="0.5,0.5"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round">
+                <Path.Effect>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <Binding Path="ShadowColor"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Direction)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Opacity)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </Path.Effect>
+                <Path.Data>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.Arc2Converter}}">
+                        <Binding Path="ActualWidth"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                        <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                        <Binding Path="Minimum"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                        <Binding Path="Maximum"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                        <Binding Path="InternalValue"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                        <Binding Path="BorderThickness"
+                                 RelativeSource="{RelativeSource TemplatedParent}"></Binding>
+                    </MultiBinding>
+                </Path.Data>
+            </Path>
+            <TextBlock Foreground="{TemplateBinding Foreground}"
+                       Visibility="{Binding IsPercentVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+        </Grid>
+    </ControlTemplate>
+    
+</ResourceDictionary>

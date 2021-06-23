@@ -91,7 +91,7 @@
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="Foreground"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
-                        <Binding Path="(local:ProgressBarHelper.InverseForeground)"
+                        <Binding Path="(local:ProgressBarHelper.InvertedForeground)"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </TextBlock.Foreground>

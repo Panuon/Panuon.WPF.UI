@@ -4,6 +4,7 @@
 ![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
 ![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
 ![Nuget](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
+![Nuget](https://img.shields.io/badge/Visual%20Studio-2019-813dbf)
 
 # Panuon.UI.Silver v2.2
 
