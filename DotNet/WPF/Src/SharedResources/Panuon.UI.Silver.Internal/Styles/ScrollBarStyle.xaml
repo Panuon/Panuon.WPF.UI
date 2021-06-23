@@ -24,15 +24,18 @@
                 Value="Transparent" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBackground), RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}" />
-        <Setter Property="Content"
-                Value="&#xe900;" />
-        <Setter Property="Command"
-                Value="{x:Static ScrollBar.LineLeftCommand}" />
-        <Setter Property="FontSize"
-                Value="{Binding ActualHeight, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
         <Style.Triggers>
+            <Trigger Property="Tag"
+                     Value="Left">
+                <Setter Property="Content"
+                        Value="&#xe900;" />
+                <Setter Property="Command"
+                        Value="{x:Static ScrollBar.LineLeftCommand}" />
+                <Setter Property="FontSize"
+                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
             <Trigger Property="Tag"
                      Value="Up">
                 <Setter Property="Content"

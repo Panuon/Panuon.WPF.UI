@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Pagination.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\RingProgressBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateItem.cs" />

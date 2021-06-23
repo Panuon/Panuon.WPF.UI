@@ -119,6 +119,34 @@
                     Value="True" />
         </Style>
 
+        <Style x:Key="StandardPaginationStyle"
+               TargetType="pu:Pagination">
+            <Setter Property="Foreground"
+                    Value="#FFFFFF"/>
+            <Setter Property="TurnPageButtonStyle">
+                <Setter.Value>
+                    <Style TargetType="RepeatButton"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
+                        <Setter Property="Background"
+                                Value="#6CBCEA" />
+                        <Setter Property="Foreground"
+                                Value="#FFFFFF" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="PageToggleStyle">
+                <Setter.Value>
+                    <Style TargetType="ToggleButton"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PageToggleStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
+                        <Setter Property="Background"
+                                Value="#6CBCEA" />
+                        <Setter Property="Foreground"
+                                Value="#FFFFFF" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </pu:WindowX.Resources>
 
     <Grid Margin="20,10">
@@ -126,6 +154,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -214,5 +243,7 @@
                 </DataTemplate>
             </DataGrid.RowHeaderTemplate>
         </DataGrid>
+        <pu:Pagination Grid.Row="3"
+                       Style="{StaticResource StandardPaginationStyle}"/>
     </Grid>
 </pu:WindowX>
