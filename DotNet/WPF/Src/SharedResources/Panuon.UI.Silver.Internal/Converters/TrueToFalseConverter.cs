@@ -10,5 +10,10 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             return (value is bool boolean && boolean) ? false : true;
         }
+
+        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (value is bool boolean && boolean) ? false : true;
+        }
     }
 }
