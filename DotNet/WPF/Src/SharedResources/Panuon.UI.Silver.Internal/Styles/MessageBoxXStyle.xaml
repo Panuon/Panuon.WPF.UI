@@ -14,7 +14,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
-                Value="30"/>
+                Value="35"/>
         <Setter Property="Padding"
                 Value="15,0" />
         <Setter Property="Margin"

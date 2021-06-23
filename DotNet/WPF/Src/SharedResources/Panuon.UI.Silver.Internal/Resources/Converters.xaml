@@ -6,6 +6,7 @@
                     xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters">
 
     <icv:ArcConverter x:Key="{x:Static irs:ConverterKeys.ArcConverter}" />
+    <icv:Arc2Converter x:Key="{x:Static irs:ConverterKeys.Arc2Converter}" />
     <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
     <icv:ComboBoxDropDownHorizontalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}" />

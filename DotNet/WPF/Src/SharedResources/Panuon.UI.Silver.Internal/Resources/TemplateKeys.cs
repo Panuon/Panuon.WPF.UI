@@ -23,7 +23,8 @@
         public const string DropDownTemplate = nameof(DropDownTemplate);
         public const string ExpanderUpDownTemplate = nameof(ExpanderUpDownTemplate);
         public const string ExpanderLeftRightTemplate = nameof(ExpanderLeftRightTemplate);
-        public const string FormGroupTemplate = nameof(FormGroupTemplate);
+        public const string FormGroupVerticalTemplate = nameof(FormGroupVerticalTemplate);
+        public const string FormGroupHorizontalTemplate = nameof(FormGroupHorizontalTemplate);
         public const string GroupBoxTemplate = nameof(GroupBoxTemplate);
         public const string LabelTemplate = nameof(LabelTemplate);
         public const string ListBoxTemplate = nameof(ListBoxTemplate);
@@ -36,6 +37,7 @@
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
+        public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
         public const string ScrollBarTemplate = nameof(ScrollBarTemplate);
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);

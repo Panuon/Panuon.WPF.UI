@@ -3,6 +3,7 @@
     static class ConverterKeys
     {
         public const string ArcConverter = nameof(ArcConverter);
+        public const string Arc2Converter = nameof(Arc2Converter);
         public const string BrushOpacityConverter = nameof(BrushOpacityConverter);
         public const string CheckBoxCheckPathConverter = nameof(CheckBoxCheckPathConverter);
         public const string ComboBoxDropDownHorizontalOffsetConverter = nameof(ComboBoxDropDownHorizontalOffsetConverter);

@@ -1,0 +1,218 @@
+﻿<pu:WindowX x:Class="Samples.Views.Examples.ReportView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:Samples.Views.Examples"
+            xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            mc:Ignorable="d"
+            Title="Report"
+            Height="550"
+            Width="800"
+            MinHeight="550"
+            MinWidth="800"
+            Background="#252526"
+            BorderBrush="#3E3E45"
+            BorderThickness="1"
+            Foreground="#F1F1F1">
+    <pu:WindowX.Resources>
+
+        <Style x:Key="RingStandardProgressBarStyle"
+               TargetType="pu:RingProgressBar">
+            <Setter Property="Minimum"
+                    Value="0" />
+            <Setter Property="Maximum"
+                    Value="100" />
+            <Setter Property="Width"
+                    Value="170" />
+            <Setter Property="Height"
+                    Value="170" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="BorderThickness"
+                    Value="18" />
+            <Setter Property="BorderBrush"
+                    Value="#22FFFFFF" />
+            <Setter Property="BorderBrush"
+                    Value="#226CBCEA" />
+            <Setter Property="Foreground"
+                    Value="#6CBCEA" />
+            <Setter Property="IsPercentVisible"
+                    Value="True" />
+            <Setter Property="ShadowColor"
+                    Value="#6CBCEA" />
+            <Setter Property="pu:ShadowHelper.ShadowDepth"
+                    Value="5" />
+            <Setter Property="pu:ShadowHelper.BlurRadius"
+                    Value="15" />
+        </Style>
+
+        <Style x:Key="ProgressBarFormGroupStyle"
+               TargetType="pu:FormGroup">
+            <Setter Property="HeaderPadding"
+                    Value="0,0,10,0" />
+            <Setter Property="Orientation"
+                    Value="Horizontal" />
+            <Setter Property="Margin"
+                    Value="0,15,0,0" />
+        </Style>
+
+        <Style x:Key="StandardProgressBarStyle"
+               TargetType="ProgressBar"
+               BasedOn="{StaticResource {x:Type ProgressBar}}">
+            <Setter Property="Minimum"
+                    Value="0" />
+            <Setter Property="Maximum"
+                    Value="100" />
+            <Setter Property="Height"
+                    Value="14" />
+            <Setter Property="pu:ProgressBarHelper.CornerRadius"
+                    Value="7" />
+            <Setter Property="pu:ProgressBarHelper.InvertedForeground"
+                    Value="#F1F1F1" />
+            <Setter Property="pu:ProgressBarHelper.IsPercentVisible"
+                    Value="True" />
+            <Setter Property="pu:ShadowHelper.ShadowDepth"
+                    Value="5" />
+            <Setter Property="pu:ShadowHelper.BlurRadius"
+                    Value="15" />
+        </Style>
+
+        <Style x:Key="StandardDataGridStyle"
+               TargetType="DataGrid"
+               BasedOn="{StaticResource {x:Type DataGrid}}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+            <Setter Property="HorizontalGridLinesBrush"
+                    Value="#8E8E8E" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="GridLinesVisibility"
+                    Value="Horizontal" />
+            <Setter Property="pu:ScrollViewerHelper.ScrollBarPosition"
+                    Value="Outside" />
+            <Setter Property="pu:DataGridHelper.ColumnHeaderBackground"
+                    Value="Transparent" />
+            <Setter Property="pu:DataGridHelper.RowHeaderBackground"
+                    Value="Transparent" />
+            <Setter Property="pu:DataGridHelper.ColumnHeaderHoverBackground"
+                    Value="#22FFFFFF" />
+            <Setter Property="pu:DataGridHelper.ColumnHeaderClickBackground"
+                    Value="#44FFFFFF" />
+            <Setter Property="pu:DataGridHelper.UnitHoverBackground"
+                    Value="#22FFFFFF" />
+            <Setter Property="pu:DataGridHelper.UnitSelectedBackground"
+                    Value="#44FFFFFF" />
+            <Setter Property="pu:DataGridHelper.ColumnHeaderSeparatorVisibility"
+                    Value="Collapsed" />
+            <Setter Property="pu:DataGridHelper.RowHeaderSeparatorVisibility"
+                    Value="Collapsed" />
+            <Setter Property="pu:DataGridHelper.RowHeaderHoverBackground"
+                    Value="#22FFFFFF" />
+            <Setter Property="pu:DataGridHelper.RowHeaderClickBackground"
+                    Value="#44FFFFFF" />
+            <Setter Property="RowHeaderWidth"
+                    Value="40" />
+            <Setter Property="IsReadOnly"
+                    Value="True" />
+        </Style>
+
+    </pu:WindowX.Resources>
+
+    <Grid Margin="20,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Machines"
+                       FontSize="20" />
+            <pu:RingProgressBar Grid.Row="1"
+                                Margin="0,20,0,0"
+                                Style="{StaticResource RingStandardProgressBarStyle}"
+                                Value="70"
+                                GeneratingPercentText="RingProgressBar_GeneratingPercentText" />
+            <TextBlock Grid.Column="1"
+                       Text="Status"
+                       FontSize="20" />
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="20,0,20,0"
+                        VerticalAlignment="Center">
+                <pu:FormGroup Header="Working : "
+                              GroupName="MyProgressBarGroup"
+                              Style="{StaticResource ProgressBarFormGroupStyle}">
+                    <ProgressBar Style="{StaticResource StandardProgressBarStyle}"
+                                 Background="#224A4AFF"
+                                 Foreground="#4A4AFF"
+                                 pu:ProgressBarHelper.ShadowColor="#4A4AFF"
+                                 Value="90" />
+                </pu:FormGroup>
+                <pu:FormGroup Header="Reparing : "
+                              GroupName="MyProgressBarGroup"
+                              Style="{StaticResource ProgressBarFormGroupStyle}">
+                    <ProgressBar Style="{StaticResource StandardProgressBarStyle}"
+                                 Background="#226C6EEA"
+                                 Foreground="#6C6EEA"
+                                 pu:ProgressBarHelper.ShadowColor="#6C6EEA"
+                                 Value="80" />
+                </pu:FormGroup>
+                <pu:FormGroup Header="Overload  : "
+                              GroupName="MyProgressBarGroup"
+                              Style="{StaticResource ProgressBarFormGroupStyle}">
+                    <ProgressBar Style="{StaticResource StandardProgressBarStyle}"
+                                 Background="#229A6CEA"
+                                 Foreground="#9A6CEA"
+                                 pu:ProgressBarHelper.ShadowColor="#9A6CEA"
+                                 Value="70" />
+                </pu:FormGroup>
+                <pu:FormGroup Header="Outaged : "
+                              GroupName="MyProgressBarGroup"
+                              Style="{StaticResource ProgressBarFormGroupStyle}">
+                    <ProgressBar Style="{StaticResource StandardProgressBarStyle}"
+                                 Background="#22C56CEB"
+                                 Foreground="#C56CEB"
+                                 pu:ProgressBarHelper.ShadowColor="#C56CEB"
+                                 Value="60" />
+                </pu:FormGroup>
+                <pu:FormGroup Header="Obsoleted : "
+                              GroupName="MyProgressBarGroup"
+                              Style="{StaticResource ProgressBarFormGroupStyle}">
+                    <ProgressBar Style="{StaticResource StandardProgressBarStyle}"
+                                 Background="#22EB6CE6"
+                                 Foreground="#EB6CE6"
+                                 pu:ProgressBarHelper.ShadowColor="#EB6CE6"
+                                 Value="50" />
+                </pu:FormGroup>
+            </StackPanel>
+        </Grid>
+        <TextBlock Grid.Row="1"
+                   Margin="0,20,0,0"
+                   Text="Details"
+                   FontSize="20" />
+        <DataGrid x:Name="dataGrid"
+                  Grid.Row="2"
+                  Margin="0,20,0,0"
+                  Style="{StaticResource StandardDataGridStyle}">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <Border>
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="{Binding (pu:DataGridHelper.RowIndex), RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}" />
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+        </DataGrid>
+    </Grid>
+</pu:WindowX>

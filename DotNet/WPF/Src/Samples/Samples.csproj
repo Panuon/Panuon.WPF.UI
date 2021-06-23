@@ -97,8 +97,14 @@
     <Compile Include="Attrbiutes\ExampleViewAttribute.cs" />
     <Compile Include="Models\ExampleItem.cs" />
     <Compile Include="Models\FontItem.cs" />
+    <Compile Include="Views\Examples\FormView.xaml.cs">
+      <DependentUpon>FormView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Examples\NeteaseMusicView.xaml.cs">
       <DependentUpon>NeteaseMusicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Examples\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Examples\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
@@ -116,7 +122,15 @@
     <Compile Include="Views\Tools\IconFontView.xaml.cs">
       <DependentUpon>IconFontView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Examples\FormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Examples\NeteaseMusicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Examples\ReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

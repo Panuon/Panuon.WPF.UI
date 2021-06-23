@@ -90,19 +90,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("PercentStringFormat", typeof(string), typeof(ProgressBarHelper), new PropertyMetadata("{0:P0}"));
         #endregion
 
-        #region InverseForeground
-        public static Brush GetInverseForeground(ProgressBar progressBar)
+        #region InvertedForeground
+        public static Brush GetInvertedForeground(ProgressBar progressBar)
         {
-            return (Brush)progressBar.GetValue(InverseForegroundProperty);
+            return (Brush)progressBar.GetValue(InvertedForegroundProperty);
         }
 
-        public static void SetInverseForeground(ProgressBar progressBar, Brush value)
+        public static void SetInvertedForeground(ProgressBar progressBar, Brush value)
         {
-            progressBar.SetValue(InverseForegroundProperty, value);
+            progressBar.SetValue(InvertedForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty InverseForegroundProperty =
-            DependencyProperty.RegisterAttached("InverseForeground", typeof(Brush), typeof(ProgressBarHelper));
+        public static readonly DependencyProperty InvertedForegroundProperty =
+            DependencyProperty.RegisterAttached("InvertedForeground", typeof(Brush), typeof(ProgressBarHelper));
         #endregion
 
         #region AnimationEase
@@ -219,7 +219,7 @@ namespace Panuon.UI.Silver
             var stringFormat = GetPercentStringFormat(progressBar);
             var value = GetValue(progressBar);
             var percent = (value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
-            var text = string.Format(stringFormat, percent);
+            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : string.Format(stringFormat, percent);
             var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
             progressBar.RaiseEvent(args);
             SetText(progressBar, args.Text);

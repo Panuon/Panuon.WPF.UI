@@ -6,7 +6,6 @@
             xmlns:local="clr-namespace:Samples.Views"
             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
             xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
-            xmlns:pui="clr-namespace:Panuon.UI.Silver.Internal;assembly=Panuon.UI.Silver"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
@@ -26,7 +25,6 @@
     </pu:WindowXCaption.HeaderTemplate>
     <pu:WindowXCaption.ExtendControl>
         <StackPanel>
-
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
@@ -47,6 +45,7 @@
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
+                      pu:ScrollViewerHelper.ScrollBarPosition="Outside"
                       pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
             <ItemsControl x:Name="LsbExamples"
                           VerticalContentAlignment="Stretch"
@@ -79,10 +78,12 @@
                                                     IsHitTestVisible="False" />
                                 </Viewbox>
                                 <TextBlock Grid.Row="1"
+                                           Margin="0,5,0,0"
                                            FontWeight="Bold"
                                            Text="{Binding DisplayName}"
                                            VerticalAlignment="Center" />
                                 <TextBlock Grid.Row="2"
+                                           Margin="0,5,0,0"
                                            Foreground="DimGray"
                                            TextTrimming="CharacterEllipsis"
                                            Text="{Binding ViewPath}"
@@ -93,10 +94,11 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
         <TextBlock HorizontalAlignment="Right"
                    TextWrapping="Wrap"
-                   Width="150">
-        </TextBlock>
+                   Width="150" />
+
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

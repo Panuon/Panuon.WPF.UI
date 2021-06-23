@@ -130,7 +130,7 @@ namespace Panuon.UI.Silver
                 if ((_isVertical && left >= finalSize.Width) || (!_isVertical && top >= finalSize.Height))
                 {
                     left = _isVertical ? 0.0 : (left + rowWidth + HorizontalSpacing);
-                    top = _isVertical ? (top + rowHeight +VerticalSpacing) : 0.0;
+                    top = _isVertical ? (top + rowHeight + VerticalSpacing) : 0.0;
                     rowHeight = 0;
                     rowWidth = 0;
                 }
