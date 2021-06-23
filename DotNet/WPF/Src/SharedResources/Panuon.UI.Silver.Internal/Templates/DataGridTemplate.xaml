@@ -358,13 +358,18 @@
                        HorizontalAlignment="Right"
                        Visibility="{TemplateBinding SeparatorVisibility}"
                        Fill="{TemplateBinding SeparatorBrush}" />
-            <StackPanel Orientation="Horizontal">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <ContentPresenter VerticalAlignment="Center"
                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                <Control SnapsToDevicePixels="false"
+                <Control Grid.Column="1"
+                         SnapsToDevicePixels="false"
                          Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
                          Visibility="{Binding (Validation.HasError), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
-            </StackPanel>
+            </Grid>
             <Thumb x:Name="PART_TopHeaderGripper"
                    Style="{StaticResource RowHeaderGripperStyle}"
                    VerticalAlignment="Top" />

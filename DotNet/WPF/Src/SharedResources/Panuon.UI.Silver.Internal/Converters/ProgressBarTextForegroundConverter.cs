@@ -18,7 +18,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             var direction = (ProgressDirection)values[7];
             var orientation = (Orientation)values[8];
             var foreground = values[9] as Brush;
-            var inverseForeground = values[10] as Brush;
+            var invertedForeground = values[10] as Brush;
             var actualWidth = (orientation == Orientation.Horizontal ? values[0] : values[1]) as double? ?? 0;
             var textWidth = (orientation == Orientation.Horizontal ? values[2] : values[3]) as double? ?? 0;
 
@@ -36,7 +36,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             }
             else if (innerWidth >= textWidth)
             {
-                return inverseForeground;
+                return invertedForeground;
             }
 
             var innerPercent = innerWidth / textWidth;
@@ -45,9 +45,9 @@ namespace Panuon.UI.Silver.Internal.Converters
                 switch (direction)
                 {
                     case ProgressDirection.Normal:
-                        return BrushUtil.GetStackedVisualBrush(inverseForeground, foreground, Orientation.Horizontal, innerPercent);
+                        return BrushUtil.GetStackedVisualBrush(invertedForeground, foreground, Orientation.Horizontal, innerPercent);
                     case ProgressDirection.Inverse:
-                        return BrushUtil.GetStackedVisualBrush(foreground, inverseForeground, Orientation.Horizontal, 1 - innerPercent);
+                        return BrushUtil.GetStackedVisualBrush(foreground, invertedForeground, Orientation.Horizontal, 1 - innerPercent);
                 }
             }
             else
@@ -55,9 +55,9 @@ namespace Panuon.UI.Silver.Internal.Converters
                 switch (direction)
                 {
                     case ProgressDirection.Normal:
-                        return BrushUtil.GetStackedVisualBrush(foreground, inverseForeground, Orientation.Vertical, 1 - innerPercent);
+                        return BrushUtil.GetStackedVisualBrush(foreground, invertedForeground, Orientation.Vertical, 1 - innerPercent);
                     case ProgressDirection.Inverse:
-                        return BrushUtil.GetStackedVisualBrush(inverseForeground, foreground, Orientation.Vertical, innerPercent);
+                        return BrushUtil.GetStackedVisualBrush(invertedForeground, foreground, Orientation.Vertical, innerPercent);
                 }
             }
             return null;

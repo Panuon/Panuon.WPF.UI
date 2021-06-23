@@ -2,12 +2,11 @@
 using System;
 using System.Globalization;
 using System.Text;
-using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    class ArcConverter : MultiValueConverterBase
+    class Arc2Converter : MultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
@@ -17,8 +16,11 @@ namespace Panuon.UI.Silver.Internal.Converters
             {
                 return null;
             }
-            var percent = values[2] as double? ?? 0;
-            var thickness = values[3] as double? ?? 0;
+            var minimuim = values[2] as double? ?? 0;
+            var maximuim = values[3] as double? ?? 0;
+            var value = values[4] as double? ?? 0;
+            var percent = (value - minimuim) / (maximuim - minimuim);
+            var thickness = values[5] as double? ?? 0;
 
             var centerX = actualWidth / 2;
             var centerY = actualHeight / 2;

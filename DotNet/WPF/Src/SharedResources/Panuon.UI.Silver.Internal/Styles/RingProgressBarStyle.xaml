@@ -6,23 +6,16 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ProgressBarTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/RingProgressBarTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:StyleKeys.ProgressBarStyle}"
-           TargetType="ProgressBar">
-        <Setter Property="local:ProgressBarHelper.Hook"
-                Value="True" />
-        <Setter Property="local:ProgressBarHelper.InvertedForeground"
-                Value="#FFFFFF" />
-        <Setter Property="Foreground"
-                Value="DimGray" />
-        <Setter Property="Background"
-                Value="#EEEEEE" />
+    <Style TargetType="local:RingProgressBar">
         <Setter Property="BorderThickness"
-                Value="0" />
+                Value="8" />
+        <Setter Property="BorderBrush"
+                Value="LightGray" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ProgressBarTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.RingProgressBarTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -30,6 +23,7 @@
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
             </Trigger>
         </Style.Triggers>
+
     </Style>
 
 </ResourceDictionary>

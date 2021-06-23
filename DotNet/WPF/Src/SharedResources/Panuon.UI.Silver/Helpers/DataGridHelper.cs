@@ -1051,7 +1051,7 @@ namespace Panuon.UI.Silver
                 {
                     var headerStyle = new Style(typeof(DataGridColumnHeader))
                     {
-                        BasedOn = e.Column.HeaderStyle
+                        BasedOn = e.Column.HeaderStyle ?? (Style)dataGrid.FindResource(Resources.StyleKeys.DataGridColumnHeaderStyle)
                     };
                     if(columnHeaderAttribute.VerticalHeaderAlignment != null)
                     {

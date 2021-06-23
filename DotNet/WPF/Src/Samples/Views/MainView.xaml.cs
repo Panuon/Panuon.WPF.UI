@@ -18,8 +18,8 @@ namespace Samples.Views
         #region Ctor
         public MainView()
         {
-           
             InitializeComponent();
+
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
             {
                 InitExampleItems();
