@@ -19,6 +19,8 @@ namespace Panuon.UI.Silver
         protected const string ContentPresenterTemplateName = "PART_ContentPresenter";
 
         private WindowState _lastWindowState;
+
+        private bool _isLoaded;
         #endregion
 
         #region Ctor
@@ -51,7 +53,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region OnClosing
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (!CanClose)
             {
@@ -335,9 +337,13 @@ namespace Panuon.UI.Silver
         #region Event Handlers
         private void WindowX_Loaded(object sender, RoutedEventArgs e)
         {
-            if (InteropOwnersMask && Owner is WindowX owner)
+            if (!_isLoaded)
             {
-                owner.IsMaskVisible = true;
+                if (InteropOwnersMask && Owner is WindowX owner)
+                {
+                    owner.IsMaskVisible = true;
+                }
+                _isLoaded = true;
             }
         }
 

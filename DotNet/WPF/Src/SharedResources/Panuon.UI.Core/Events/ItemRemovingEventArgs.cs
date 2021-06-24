@@ -2,7 +2,7 @@
 
 namespace Panuon.UI.Core
 {
-    public class ItemRemovingEventArgs : CancelRoutedEventArgs
+    public class ItemRemovingEventArgs : CancelEventArgs
     {
         #region Ctor
         public ItemRemovingEventArgs(RoutedEvent routedEvent, object item)

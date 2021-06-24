@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationTemplate}"
+                     TargetType="local:Pagination">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <RepeatButton Tag="Up"
+                              Style="{TemplateBinding TurnPageButtonStyle}" />
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{TemplateBinding PageList}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <local:PaginationItem x:Name="PgniPage"
+                                                      GroupName="GROUP_PAGINATION"
+                                                      Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, Mode=OneWay}"
+                                                      Style="{Binding PaginationItemStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                      Content="{Binding}" />
+                                <TextBlock Style="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                           Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NonnullToCollapseConverter}}, Mode=OneWay}" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Value="True">
+                                    <DataTrigger.Binding>
+                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
+                                            <Binding Path="." />
+                                            <Binding Path="CurrentPage"
+                                                     RelativeSource="{RelativeSource AncestorType=local:Pagination}"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </DataTrigger.Binding>
+                                    <Setter TargetName="PgniPage"
+                                            Property="IsChecked"
+                                            Value="True" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <RepeatButton Grid.Column="2"
+                              Tag="Down"
+                              Style="{TemplateBinding TurnPageButtonStyle}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+</ResourceDictionary>

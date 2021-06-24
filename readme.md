@@ -13,6 +13,12 @@
 # Samples  
 `These pages were included in the Samples project. Download this repository to get the source code.`  
   
+## Report
+Samples/Views/Examples/ReportView.xaml  
+`261 code lines` to implement this page in Panuon.UI.Silver.  
+  
+![Report](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Report.png)  
+
 ## Visual Studio 2019 (SIM)  
 Samples/Views/Examples/VisualStudio2019View.xaml  
 `293 code lines` to implement this page in Panuon.UI.Silver.  

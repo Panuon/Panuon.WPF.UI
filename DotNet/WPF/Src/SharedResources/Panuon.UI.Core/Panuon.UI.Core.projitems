@@ -15,11 +15,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand`.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\CancelRoutedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\CancelEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovingEventArgs.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Events\CancelRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\CancelEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\SelectedValueChangedEventHandler`.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\SelectedValueChangedEventArgs`.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\SearchTextChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovingEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\SearchTextChangedEventArgs.cs" />
