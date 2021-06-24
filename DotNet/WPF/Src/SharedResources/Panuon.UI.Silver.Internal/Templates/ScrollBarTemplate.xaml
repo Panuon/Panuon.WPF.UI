@@ -27,7 +27,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <RepeatButton x:Name="rptBack"
+                <RepeatButton x:Name="RptBack"
                               Style="{Binding Path=(local:ScrollBarHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Visibility="{Binding Path=(local:ScrollBarHelper.ScrollButtonVisibility),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}" />
                 <Track x:Name="PART_Track"
@@ -95,7 +95,7 @@
                         </Thumb>
                     </Track.Thumb>
                 </Track>
-                <RepeatButton x:Name="rptFore"
+                <RepeatButton x:Name="RptFore"
                               Style="{Binding Path=(local:ScrollBarHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Visibility="{Binding Path=(local:ScrollBarHelper.ScrollButtonVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
@@ -106,43 +106,43 @@
                 <Setter TargetName="PART_Track"
                         Property="IsDirectionReversed"
                         Value="True" />
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Tag"
                         Value="Up" />
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Grid.Row"
                         Value="0" />
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Grid.Column"
                         Value="1" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Tag"
                         Value="Down" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Grid.Row"
                         Value="2" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Grid.Column"
                         Value="1" />
             </Trigger>
             <Trigger Property="Orientation"
                      Value="Horizontal">
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Tag"
                         Value="Left" />
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="rptBack"
+                <Setter TargetName="RptBack"
                         Property="Grid.Column"
                         Value="0" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Tag"
                         Value="Right" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="rptFore"
+                <Setter TargetName="RptFore"
                         Property="Grid.Column"
                         Value="2" />
             </Trigger>

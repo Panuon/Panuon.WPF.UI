@@ -8,8 +8,7 @@ namespace Panuon.UI.Silver.Internal.Converters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var text = value as string;
-            return !string.IsNullOrEmpty(text);
+            return value is string stringValue && !string.IsNullOrEmpty(stringValue);
         }
     }
 }

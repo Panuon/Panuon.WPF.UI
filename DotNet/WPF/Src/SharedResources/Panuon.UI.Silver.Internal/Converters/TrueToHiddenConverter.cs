@@ -11,5 +11,10 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             return (value is bool boolean && boolean) ? Visibility.Hidden : Visibility.Visible;
         }
+
+        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value is Visibility visibility && visibility == Visibility.Hidden;
+        }
     }
 }

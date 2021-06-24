@@ -3,6 +3,7 @@
     public static class ConverterKeys
     {
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
+        public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
         public const string DoubleMultiplyByConverter = nameof(DoubleMultiplyByConverter);
         public const string DoublePlusConverter = nameof(DoublePlusConverter);

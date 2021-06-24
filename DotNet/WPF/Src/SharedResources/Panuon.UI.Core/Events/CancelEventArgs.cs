@@ -2,10 +2,10 @@
 
 namespace Panuon.UI.Core
 {
-    public class CancelRoutedEventArgs : RoutedEventArgs
+    public class CancelEventArgs : RoutedEventArgs
     {
         #region Ctor
-        public CancelRoutedEventArgs(RoutedEvent routedEvent)
+        public CancelEventArgs(RoutedEvent routedEvent)
             : base(routedEvent)
         {
 
