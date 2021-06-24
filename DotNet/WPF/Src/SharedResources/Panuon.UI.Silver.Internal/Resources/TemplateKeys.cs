@@ -34,6 +34,7 @@
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
         public const string PaginationTemplate = nameof(PaginationTemplate);
+        public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);

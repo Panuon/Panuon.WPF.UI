@@ -9,15 +9,25 @@ namespace Panuon.UI.Silver.Internal.Converters
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var lastValue = double.Parse(values[0].ToString());
+            double? lastValue = null;
+
             foreach(var value in values)
             {
-                var doubleValue = double.Parse(value.ToString());
-                if(lastValue != doubleValue)
+                if(double.TryParse(value?.ToString(), out double newValue))
+                {
+                    if(lastValue != null)
+                    {
+                        if(lastValue != newValue)
+                        {
+                            return false;
+                        }
+                    }
+                    lastValue = newValue;
+                }
+                else
                 {
                     return false;
                 }
-                lastValue = doubleValue;
             }
             return true;
         }

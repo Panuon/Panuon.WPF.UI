@@ -15,6 +15,12 @@
 # 示例 
 `这些界面已包含在"Samples"项目中。下载本仓库即可获得这些页面的源码。`  
   
+## 报告
+Samples/Views/Examples/ReportView.xaml  
+使用Panuon.UI.Silver，你需要`261行代码`来实现该页面。  
+  
+![Report](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Report.png)  
+
 ## Visual Studio 2019 (模拟)  
 Samples/Views/Examples/VisualStudio2019View.xaml  
 使用Panuon.UI.Silver，你需要`293行代码`来实现该页面。  

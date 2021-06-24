@@ -52,10 +52,7 @@
                           HorizontalAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <pu:UniformWrapPanel Groups="2"
-                                             Orientation="Horizontal"
-                                             HorizontalSpacing="10"
-                                             VerticalSpacing="10" />
+                        <UniformGrid Rows="2"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>

@@ -30,6 +30,18 @@ namespace Samples.Views.Examples
         {
             e.Text = $"{Math.Floor(e.Value * 0.2)} pcs";
         }
+
+        private void Pagination_CurrentPageChanged(object sender, SelectedValueChangedEventArgs<int> e)
+        {
+            dataGrid.ItemsSource = new List<Machine>()
+            {
+                new Machine("M00000" + e.NewValue * 5, "Working", "N/A"),
+                new Machine("M00000" + (e.NewValue * 5 + 1), "Working", "N/A"),
+                new Machine("M00000" + (e.NewValue * 5 + 2), "Working", "N/A"),
+                new Machine("M00000" + (e.NewValue * 5 + 3), "Repairing", "N/A"),
+                new Machine("M00000" + (e.NewValue * 5 + 4), "Repairing", "N/A"),
+            };
+        }
     }
     public class Machine : NotifyPropertyChangedBase
     {

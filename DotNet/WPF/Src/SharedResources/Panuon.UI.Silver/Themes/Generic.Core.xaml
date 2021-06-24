@@ -15,6 +15,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/InternalSpinnerStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/MessageBoxXStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/PaginationStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/PaginationItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/RingProgressBarStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ScrollableControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SpinnerStyle.xaml" />

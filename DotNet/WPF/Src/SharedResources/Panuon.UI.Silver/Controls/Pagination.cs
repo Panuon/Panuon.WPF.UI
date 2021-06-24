@@ -28,9 +28,8 @@ namespace Panuon.UI.Silver
 
         public Pagination()
         {
-            AddHandler(ToggleButton.MouseDownEvent, new RoutedEventHandler(OnToggleButtonPreviewMouseDown));
+            AddHandler(PaginationItem.ClickEvent, new RoutedEventHandler(OnPaginationItemClick));
         }
-
         #endregion
 
         #region Commands
@@ -49,7 +48,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly RoutedEvent CurrentPageChangedEvent =
-            EventManager.RegisterRoutedEvent("CurrentPageChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Pagination));
+            EventManager.RegisterRoutedEvent("CurrentPageChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedEventHandler<int>), typeof(Pagination));
         #endregion
 
         #endregion
@@ -90,17 +89,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CurrentPage", typeof(int), typeof(Pagination), new PropertyMetadata(1, OnCurrentPageChanged, OnCurrentPageCoerceValue));
         #endregion
 
-        #region OmittingTextBlockStyle
-        public Style OmittingTextBlockStyle
-        {
-            get { return (Style)GetValue(OmittingTextBlockStyleProperty); }
-            set { SetValue(OmittingTextBlockStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty OmittingTextBlockStyleProperty =
-            DependencyProperty.Register("OmittingTextBlockStyle", typeof(Style), typeof(Pagination));
-        #endregion
-
         #region TurnPageButtonStyle
         public Style TurnPageButtonStyle
         {
@@ -112,15 +100,26 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("TurnPageButtonStyle", typeof(Style), typeof(Pagination));
         #endregion
 
-        #region PageToggleStyle
-        public Style PageToggleStyle
+        #region PaginationItemStyle
+        public Style PaginationItemStyle
         {
-            get { return (Style)GetValue(PageToggleStyleProperty); }
-            set { SetValue(PageToggleStyleProperty, value); }
+            get { return (Style)GetValue(PaginationItemStyleProperty); }
+            set { SetValue(PaginationItemStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty PageToggleStyleProperty =
-            DependencyProperty.Register("PageToggleStyle", typeof(Style), typeof(Pagination));
+        public static readonly DependencyProperty PaginationItemStyleProperty =
+            DependencyProperty.Register("PaginationItemStyle", typeof(Style), typeof(Pagination));
+        #endregion
+
+        #region OmittingTextBlockStyle
+        public Style OmittingTextBlockStyle
+        {
+            get { return (Style)GetValue(OmittingTextBlockStyleProperty); }
+            set { SetValue(OmittingTextBlockStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty OmittingTextBlockStyleProperty =
+            DependencyProperty.Register("OmittingTextBlockStyle", typeof(Style), typeof(Pagination));
         #endregion
 
         #endregion
@@ -149,8 +148,15 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
-        private void OnToggleButtonPreviewMouseDown(object sender, RoutedEventArgs e)
+        private void OnPaginationItemClick(object sender, RoutedEventArgs e)
         {
+            if(e.OriginalSource is PaginationItem paginationItem)
+            {
+                if(paginationItem.DataContext is int page)
+                {
+                    SetCurrentValue(CurrentPageProperty, page);
+                }
+            }
         }
 
         private static void OnCurrentPageChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -163,11 +169,11 @@ namespace Panuon.UI.Silver
         {
             var pagination = (Pagination)d;
             var currentPage = (int)baseValue;
-            if(currentPage > pagination.MaxPage)
+            if (currentPage > pagination.MaxPage)
             {
                 return pagination.MaxPage;
             }
-            else if(currentPage < pagination.MinPage)
+            else if (currentPage < pagination.MinPage)
             {
                 return pagination.MinPage;
             }
@@ -179,7 +185,7 @@ namespace Panuon.UI.Silver
             var pagination = (Pagination)d;
             pagination.OnEffectivePageValueChanged();
         }
-   
+
         private static void OnPageUpExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             var pagination = (Pagination)sender;
@@ -201,7 +207,7 @@ namespace Panuon.UI.Silver
         private static void OnCanPageDownExecuted(object sender, CanExecuteRoutedEventArgs e)
         {
             var pagination = (Pagination)sender;
-            e.CanExecute = pagination.CurrentPage < pagination.MinPage;
+            e.CanExecute = pagination.CurrentPage < pagination.MaxPage;
         }
         #endregion
 
@@ -230,62 +236,69 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
-            var pageList = new List<int?>();
+            if(PageList == null)
+            {
+                PageList = new ObservableCollection<int?>();
+            }
+            else
+            {
+                PageList.Clear();
+            }
 
             var delta = MaxPage - MinPage;
-            if(delta >= 0)
+            if (delta >= 0)
             {
                 if (MaxPage <= 7)
                 {
-                    for(var i = MinPage; i <= MaxPage; i++)
+                    for (var i = MinPage; i <= MaxPage; i++)
                     {
-                        pageList.Add(i);
+                        PageList.Add(i);
                     }
                 }
                 else
                 {
-                    pageList.Add(MinPage);
-                    pageList.Add(MinPage + 1);
+                    PageList.Add(MinPage);
+                    PageList.Add(MinPage + 1);
 
-                    if(CurrentPage >= MinPage && CurrentPage <= MinPage + 3)
+                    if (CurrentPage >= MinPage && CurrentPage <= MinPage + 3)
                     {
-                        pageList.Add(MinPage + 2);
-                        pageList.Add(MinPage + 3);
-                        pageList.Add(MinPage + 4);
+                        PageList.Add(MinPage + 2);
+                        PageList.Add(MinPage + 3);
+                        PageList.Add(MinPage + 4);
                     }
-                    pageList.Add(null);
+                    PageList.Add(null);
 
-                    if(CurrentPage >= MaxPage - 3)
+                    if (CurrentPage >= MaxPage - 3)
                     {
-                        pageList.Add(null);
+                        PageList.Add(null);
 
-                        for(var i = MaxPage - 4; i <= MaxPage; i++)
+                        for (var i = MaxPage - 4; i <= MaxPage; i++)
                         {
-                            pageList.Add(i);
+                            PageList.Add(i);
                         }
                         return;
                     }
-                    if(!(CurrentPage >= MinPage && CurrentPage <= MinPage + 3))
+                    if (!(CurrentPage >= MinPage && CurrentPage <= MinPage + 3))
                     {
-                        for(var i = CurrentPage - 1; i <= CurrentPage + 1; i++)
+                        for (var i = CurrentPage - 1; i <= CurrentPage + 1; i++)
                         {
-                            pageList.Add(i);
+                            PageList.Add(i);
                         }
                     }
-                    pageList.Add(null);
-                    for(var i = MaxPage - 1;i <= MaxPage; i++)
+                    PageList.Add(null);
+                    for (var i = MaxPage - 1; i <= MaxPage; i++)
                     {
-                        pageList.Add(i);
+                        PageList.Add(i);
                     }
                 }
             }
-            
 
-            PageList = new ObservableCollection<int?>(pageList);
+
         }
 
         private void OnCurrentPageChanged(int oldPage, int newPage)
         {
+            OnEffectivePageValueChanged();
             RaiseEvent(new SelectedValueChangedEventArgs<int>(CurrentPageChangedEvent, oldPage, newPage));
         }
         #endregion

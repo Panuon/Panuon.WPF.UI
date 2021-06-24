@@ -128,17 +128,25 @@
                     <Style TargetType="RepeatButton"
                            BasedOn="{StaticResource {ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
                         <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="pu:RepeatButtonHelper.HoverForeground"
                                 Value="#6CBCEA" />
+                        <Setter Property="pu:RepeatButtonHelper.CornerRadius"
+                                Value="12" />
                         <Setter Property="Foreground"
                                 Value="#FFFFFF" />
                     </Style>
                 </Setter.Value>
             </Setter>
-            <Setter Property="PageToggleStyle">
+            <Setter Property="PaginationItemStyle">
                 <Setter.Value>
-                    <Style TargetType="ToggleButton"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PageToggleStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
+                    <Style TargetType="pu:PaginationItem"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PaginationItemStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
                         <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="CornerRadius"
+                                Value="12" />
+                        <Setter Property="CheckedBackground"
                                 Value="#6CBCEA" />
                         <Setter Property="Foreground"
                                 Value="#FFFFFF" />
@@ -244,6 +252,10 @@
             </DataGrid.RowHeaderTemplate>
         </DataGrid>
         <pu:Pagination Grid.Row="3"
-                       Style="{StaticResource StandardPaginationStyle}"/>
+                       HorizontalAlignment="Left"
+                       Margin="0,10,0,0"
+                       MaxPage="10"
+                       Style="{StaticResource StandardPaginationStyle}"
+                       CurrentPageChanged="Pagination_CurrentPageChanged"/>
     </Grid>
 </pu:WindowX>

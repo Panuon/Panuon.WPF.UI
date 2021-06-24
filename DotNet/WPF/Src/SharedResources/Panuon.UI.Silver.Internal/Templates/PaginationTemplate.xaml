@@ -32,22 +32,29 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <ToggleButton Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, Mode=OneWay}"
-                                              Style="{Binding PageToggleStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
-                                              Content="{Binding}">
-                                    <ToggleButton.IsChecked>
-                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
-                                            <Binding Path="."
-                                                     Mode="OneWay" />
-                                            <Binding Path="CurrentPage" 
-                                                     RelativeSource="{RelativeSource AncestorType=local:Pagination}"
-                                                     Mode="OneWay"/>
-                                        </MultiBinding>
-                                    </ToggleButton.IsChecked>
-                                </ToggleButton>
+                                <local:PaginationItem x:Name="PgniPage"
+                                                      GroupName="GROUP_PAGINATION"
+                                                      Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, Mode=OneWay}"
+                                                      Style="{Binding PaginationItemStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                      Content="{Binding}" />
                                 <TextBlock Style="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
                                            Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NonnullToCollapseConverter}}, Mode=OneWay}" />
                             </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Value="True">
+                                    <DataTrigger.Binding>
+                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
+                                            <Binding Path="." />
+                                            <Binding Path="CurrentPage"
+                                                     RelativeSource="{RelativeSource AncestorType=local:Pagination}"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </DataTrigger.Binding>
+                                    <Setter TargetName="PgniPage"
+                                            Property="IsChecked"
+                                            Value="True" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
