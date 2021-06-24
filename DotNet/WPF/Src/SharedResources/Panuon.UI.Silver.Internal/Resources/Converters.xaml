@@ -16,6 +16,7 @@
     <icv:DataGridSelectionUnitIsNotFullRowConverter x:Key="{x:Static irs:ConverterKeys.DataGridSelectionUnitIsNotFullRowConverter}" />
     <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
+    <icv:DoubleEqualsConverter x:Key="{x:Static rs:ConverterKeys.DoubleEqualsConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
     <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />
     <icv:DoubleToGridLengthConverter x:Key="{x:Static rs:ConverterKeys.DoubleToGridLengthConverter}" />

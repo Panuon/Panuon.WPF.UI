@@ -33,10 +33,10 @@ namespace Panuon.UI.Silver.Utils
             }
             else
             {
-                windowX.Loaded += delegate
+                windowX.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     action();
-                };
+                }), System.Windows.Threading.DispatcherPriority.Loaded);
             }
 
         }
