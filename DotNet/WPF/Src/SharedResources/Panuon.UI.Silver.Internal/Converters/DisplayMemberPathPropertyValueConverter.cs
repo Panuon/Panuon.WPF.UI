@@ -21,7 +21,7 @@ namespace Panuon.UI.Silver.Internal.Converters
             {
                 throw new Exception($"Can not find property names {propertyInfo.Name} in {type}");
             }
-            return propertyInfo.GetValue(value);
+            return propertyInfo.GetValue(value, null);
         }
     }
 }
