@@ -11,7 +11,7 @@ namespace Panuon.UI.Silver.Internal
     class CustomPopup : Popup
     {
         #region Fields
-        private WeakReference<Window> _parentWindow;
+        private WeakReference _parentWindow;
         #endregion
 
         #region Ctor
@@ -83,7 +83,7 @@ namespace Panuon.UI.Silver.Internal
             var parentWindow = Window.GetWindow(this);
             if (parentWindow != null)
             {
-                _parentWindow = new WeakReference<Window>(parentWindow);
+                _parentWindow = new WeakReference(parentWindow);
                 parentWindow.LocationChanged -= ParentWindow_LocationChanged;
                 parentWindow.LocationChanged += ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;
@@ -98,7 +98,7 @@ namespace Panuon.UI.Silver.Internal
 
         protected override void OnClosed(EventArgs e)
         {
-            if (_parentWindow != null && _parentWindow.TryGetTarget(out Window parentWindow))
+            if (_parentWindow != null && _parentWindow.IsAlive && _parentWindow.Target is Window parentWindow)
             {
                 parentWindow.LocationChanged -= ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;

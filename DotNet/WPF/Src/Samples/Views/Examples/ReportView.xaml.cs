@@ -18,11 +18,11 @@ namespace Samples.Views.Examples
             InitializeComponent();
             dataGrid.ItemsSource = new List<Machine>()
             {
+                new Machine("M000000", "Working", "N/A"),
                 new Machine("M000001", "Working", "N/A"),
                 new Machine("M000002", "Working", "N/A"),
-                new Machine("M000003", "Working", "N/A"),
+                new Machine("M000003", "Repairing", "N/A"),
                 new Machine("M000004", "Repairing", "N/A"),
-                new Machine("M000005", "Repairing", "N/A"),
             };
         }
 
@@ -35,11 +35,11 @@ namespace Samples.Views.Examples
         {
             dataGrid.ItemsSource = new List<Machine>()
             {
-                new Machine("M00000" + e.NewValue * 5, "Working", "N/A"),
-                new Machine("M00000" + (e.NewValue * 5 + 1), "Working", "N/A"),
-                new Machine("M00000" + (e.NewValue * 5 + 2), "Working", "N/A"),
-                new Machine("M00000" + (e.NewValue * 5 + 3), "Repairing", "N/A"),
-                new Machine("M00000" + (e.NewValue * 5 + 4), "Repairing", "N/A"),
+                new Machine("M00000" + (e.NewValue - 1) * 5, "Working", "N/A"),
+                new Machine("M00000" + ((e.NewValue - 1) * 5 + 1), "Working", "N/A"),
+                new Machine("M00000" + ((e.NewValue - 1) * 5 + 2), "Working", "N/A"),
+                new Machine("M00000" + ((e.NewValue - 1) * 5 + 3), "Repairing", "N/A"),
+                new Machine("M00000" + ((e.NewValue - 1) * 5 + 4), "Repairing", "N/A"),
             };
         }
     }
