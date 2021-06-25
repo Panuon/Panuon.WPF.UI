@@ -51,10 +51,10 @@ namespace Panuon.UI.Silver.Internal.Controls
             {
                 Message = message,
                 Caption = caption,
-                Icon = icon,
+                MessageBoxIcon = icon,
             };
 
-        Style = setting.WindowXStyle;
+            Style = setting.WindowXStyle;
             Content = MessageBoxContent;
             ContentTemplate = setting.ContentTemplate;
         }
@@ -218,15 +218,15 @@ namespace Panuon.UI.Silver.Internal.Controls
             DependencyProperty.Register("Caption", typeof(string), typeof(MessageBoxContent));
         #endregion
 
-        #region Icon
-        public MessageBoxIcon Icon
+        #region MessageBoxIcon
+        public MessageBoxIcon MessageBoxIcon
         {
-            get { return (MessageBoxIcon)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
+            get { return (MessageBoxIcon)GetValue(MessageBoxIconProperty); }
+            set { SetValue(MessageBoxIconProperty, value); }
         }
 
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register("Icon", typeof(MessageBoxIcon), typeof(MessageBoxXWindow));
+        public static readonly DependencyProperty MessageBoxIconProperty =
+            DependencyProperty.Register("MessageBoxIcon", typeof(MessageBoxIcon), typeof(MessageBoxXWindow));
         #endregion
 
     }

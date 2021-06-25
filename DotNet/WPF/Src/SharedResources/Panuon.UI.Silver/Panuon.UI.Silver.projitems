@@ -62,7 +62,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeparatorX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Spinner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\UniformWrapPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventHandler.cs" />

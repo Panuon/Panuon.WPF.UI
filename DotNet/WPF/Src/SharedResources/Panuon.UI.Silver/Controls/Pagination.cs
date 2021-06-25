@@ -1,6 +1,5 @@
 ﻿using Panuon.UI.Core;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +11,7 @@ namespace Panuon.UI.Silver
     public class Pagination : Control
     {
         #region Fields
+        private object _pageListLock = new object();
         #endregion
 
         #region Ctor
@@ -86,7 +86,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty CurrentPageProperty =
-            DependencyProperty.Register("CurrentPage", typeof(int), typeof(Pagination), new PropertyMetadata(1, OnCurrentPageChanged, OnCurrentPageCoerceValue));
+            DependencyProperty.Register("CurrentPage", typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCurrentPageChanged, OnCurrentPageCoerceValue));
         #endregion
 
         #region TurnPageButtonStyle
@@ -236,70 +236,124 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
-            if(PageList == null)
+            lock (_pageListLock)
             {
-                PageList = new ObservableCollection<int?>();
-            }
-            else
-            {
-                PageList.Clear();
-            }
-
-            var delta = MaxPage - MinPage;
-            if (delta >= 0)
-            {
-                if (MaxPage <= 7)
+                if (PageList == null)
                 {
-                    for (var i = MinPage; i <= MaxPage; i++)
-                    {
-                        PageList.Add(i);
-                    }
+                    PageList = new ObservableCollection<int?>();
                 }
                 else
                 {
-                    PageList.Add(MinPage);
-                    PageList.Add(MinPage + 1);
+                    PageList.Clear();
+                }
 
-                    if (CurrentPage >= MinPage && CurrentPage <= MinPage + 3)
+                var delta = MaxPage - MinPage;
+                if (delta >= 0)
+                {
+                    if (MaxPage <= 7)
                     {
-                        PageList.Add(MinPage + 2);
-                        PageList.Add(MinPage + 3);
-                        PageList.Add(MinPage + 4);
+                        for (var i = MinPage; i <= MaxPage; i++)
+                        {
+                            PageList.Add(i);
+                        }
                     }
-                    PageList.Add(null);
-
-                    if (CurrentPage >= MaxPage - 3)
+                    else
                     {
+                        PageList.Add(MinPage);
+                        PageList.Add(MinPage + 1);
+
+                        if (CurrentPage >= MinPage && CurrentPage <= MinPage + 3)
+                        {
+                            PageList.Add(MinPage + 2);
+                            PageList.Add(MinPage + 3);
+                            PageList.Add(MinPage + 4);
+                        }
                         PageList.Add(null);
 
-                        for (var i = MaxPage - 4; i <= MaxPage; i++)
+                        if (CurrentPage >= MaxPage - 3)
+                        {
+                            PageList.Add(null);
+
+                            for (var i = MaxPage - 4; i <= MaxPage; i++)
+                            {
+                                PageList.Add(i);
+                            }
+                            return;
+                        }
+                        if (!(CurrentPage >= MinPage && CurrentPage <= MinPage + 3))
+                        {
+                            for (var i = CurrentPage - 1; i <= CurrentPage + 1; i++)
+                            {
+                                PageList.Add(i);
+                            }
+                        }
+                        PageList.Add(null);
+                        for (var i = MaxPage - 1; i <= MaxPage; i++)
                         {
                             PageList.Add(i);
                         }
-                        return;
-                    }
-                    if (!(CurrentPage >= MinPage && CurrentPage <= MinPage + 3))
-                    {
-                        for (var i = CurrentPage - 1; i <= CurrentPage + 1; i++)
-                        {
-                            PageList.Add(i);
-                        }
-                    }
-                    PageList.Add(null);
-                    for (var i = MaxPage - 1; i <= MaxPage; i++)
-                    {
-                        PageList.Add(i);
                     }
                 }
             }
-
-
         }
 
         private void OnCurrentPageChanged(int oldPage, int newPage)
         {
-            OnEffectivePageValueChanged();
+
+            lock (_pageListLock)
+            {
+                var index = 0;
+                var delta = MaxPage - MinPage;
+                if (delta >= 0)
+                {
+                    if (MaxPage <= 7)
+                    {
+                        for (var i = MinPage; i <= MaxPage; i++)
+                        {
+                            PageList[index++] = i;
+                        }
+                    }
+                    else
+                    {
+                        PageList[index++] = MinPage;
+                        PageList[index++] = MinPage + 1;
+
+                        if (CurrentPage >= MinPage && CurrentPage <= MinPage + 3)
+                        {
+                            PageList[index++] = MinPage + 2;
+                            PageList[index++] = MinPage + 3;
+                            PageList[index++] = MinPage + 4;
+                        }
+                        PageList[index++] = null;
+
+                        if (CurrentPage >= MaxPage - 3)
+                        {
+                            PageList[index++] = null;
+
+                            for (var i = MaxPage - 4; i <= MaxPage; i++)
+                            {
+                                PageList[index++] = i;
+                            }
+                            RaiseEvent(new SelectedValueChangedEventArgs<int>(CurrentPageChangedEvent, oldPage, newPage));
+                            return;
+                        }
+                        if (!(CurrentPage >= MinPage && CurrentPage <= MinPage + 3))
+                        {
+                            for (var i = CurrentPage - 1; i <= CurrentPage + 1; i++)
+                            {
+                                PageList[index++] = i;
+                            }
+                        }
+                        PageList[index++] = null;
+                        for (var i = MaxPage - 1; i <= MaxPage; i++)
+                        {
+                            PageList[index++] = i;
+                        }
+                    }
+                }
+            }
             RaiseEvent(new SelectedValueChangedEventArgs<int>(CurrentPageChangedEvent, oldPage, newPage));
+
         }
         #endregion
     }
