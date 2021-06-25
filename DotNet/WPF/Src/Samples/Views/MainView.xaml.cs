@@ -60,7 +60,7 @@ namespace Samples.Views
                     var view = (WindowX)Activator.CreateInstance(x);
                     var content = view.Content;
                     view.Content = null;
-                    var previewView = GetPreviewView(view, content);
+                    var previewView = CreatePreviewView(view, content);
                     return new ExampleItem()
                     {
                         DisplayName = viewAttribute.DisplayName,
@@ -72,7 +72,7 @@ namespace Samples.Views
             LsbExamples.ItemsSource = items;
         }
 
-        private UIElement GetPreviewView(WindowX view, object content)
+        private UIElement CreatePreviewView(WindowX view, object content)
         {
             var contentControl = new ContentControl()
             {

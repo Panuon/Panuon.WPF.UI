@@ -113,7 +113,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style x:Key="{x:Static rs:StyleKeys.DataGridCellStyle}"
            TargetType="DataGridCell">
         <Setter Property="SnapsToDevicePixels"

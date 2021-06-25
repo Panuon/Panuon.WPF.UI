@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <local:StateControl CurrentState="{Binding Icon}"
+                <local:StateControl CurrentState="{Binding MessageBoxIcon}"
                                     VerticalAlignment="Center">
                     <local:StateItem State="Info">
                         <TextBlock Margin="10,0,20,0"

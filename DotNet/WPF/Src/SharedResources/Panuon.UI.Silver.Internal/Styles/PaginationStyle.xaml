@@ -76,3 +76,4 @@
                 Value="{StaticResource {x:Static irs:TemplateKeys.PaginationTemplate}}" />
     </Style>
 </ResourceDictionary>
+
