@@ -19,6 +19,7 @@ namespace Panuon.UI.Core
         #region Functions
         private void SetSource(Uri sourceUri)
         {
+            _sourceUri = sourceUri;
             if (_sharedDictionaries.ContainsKey(sourceUri))
             {
                 MergedDictionaries.Add(_sharedDictionaries[sourceUri]);

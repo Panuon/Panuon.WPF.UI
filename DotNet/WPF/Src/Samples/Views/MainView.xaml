@@ -57,7 +57,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Background="#F1F1F1"
+                        <Button Margin="0,0,10,10" 
+                                Background="#F1F1F1"
                                 Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
                                 ToolTip="{Binding ViewPath}"
                                 VerticalContentAlignment="Stretch"
