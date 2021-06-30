@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CardTemplate}"
+                     TargetType="local:Card">
+        <i:ContentControlX x:Name="CcMain"
+                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           BorderThickness="{TemplateBinding BorderThickness}"
+                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                           Padding="{TemplateBinding Padding}"
+                           CornerRadius="{TemplateBinding CornerRadius}"
+                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <ContentPresenter Focusable="False"
+                              VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        </i:ContentControlX>
+        <ControlTemplate.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClickEffect"
+                               Value="Sink" />
+                    <Condition Property="IsPressed"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="Margin"
+                        Value="0,1,0,-1" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClickEffect"
+                               Value="Shake" />
+                    <Condition Property="IsPressed"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimation Storyboard.TargetName="CcMain"
+                                                Storyboard.TargetProperty="Margin"
+                                                To="3,0,-3,0"
+                                                Duration="0:0:0.1">
+                                <ThicknessAnimation.EasingFunction>
+                                    <CircleEase EasingMode="EaseIn" />
+                                </ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                            <ThicknessAnimation Storyboard.TargetName="CcMain"
+                                                Storyboard.TargetProperty="Margin"
+                                                To="-3,0,3,0"
+                                                BeginTime="0:0:0.1"
+                                                Duration="0:0:0.1" />
+                            <ThicknessAnimation Storyboard.TargetName="CcMain"
+                                                Storyboard.TargetProperty="Margin"
+                                                To="0"
+                                                BeginTime="0:0:0.2"
+                                                Duration="0:0:0.1">
+                                <ThicknessAnimation.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+            </MultiTrigger>
+        </ControlTemplate.Triggers>
+
+    </ControlTemplate>
+
+</ResourceDictionary>
