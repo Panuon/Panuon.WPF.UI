@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\MessageBoxXSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
