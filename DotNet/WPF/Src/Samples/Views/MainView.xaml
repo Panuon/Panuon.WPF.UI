@@ -93,9 +93,11 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <TextBlock HorizontalAlignment="Right"
-                   TextWrapping="Wrap"
-                   Width="150" />
+        <ComboBox Height="35"
+                   Width="150" 
+                  Grid.Row="1"
+                  IsEditable="True"
+                  pu:ComboBoxHelper.StaysOpenOnEdit="True"/>
 
         <TextBlock Grid.Row="2"
                    FontSize="14"

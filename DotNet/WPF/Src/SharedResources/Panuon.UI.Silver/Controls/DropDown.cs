@@ -1,14 +1,19 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
 
 namespace Panuon.UI.Silver
 {
+    [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
     [ContentProperty(nameof(Child))]
     public class DropDown : ContentControl
     {
         #region Fields
-        internal const string ToggleButtonTemplateName = "PART_ToggleButton";
+        private const string PopupTemplateName = "PART_Popup";
+
+        private Popup _popup; 
         #endregion
 
         #region Ctor
@@ -16,6 +21,12 @@ namespace Panuon.UI.Silver
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(DropDown), new FrameworkPropertyMetadata(typeof(DropDown)));
         }
+        #endregion
+
+        #region Events
+        public event EventHandler Closed;
+
+        public event EventHandler Opened;
         #endregion
 
         #region Properties
@@ -42,17 +53,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(DropDown));
         #endregion
 
-        #region ToggleButtonStyle
-        public Style ToggleButtonStyle
-        {
-            get { return (Style)GetValue(ToggleButtonStyleProperty); }
-            set { SetValue(ToggleButtonStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty ToggleButtonStyleProperty =
-            DependencyProperty.Register("ToggleButtonStyle", typeof(Style), typeof(DropDown));
-        #endregion
-
         #region Child
         public object Child
         {
@@ -64,6 +64,28 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Child", typeof(object), typeof(DropDown));
         #endregion
 
+        #endregion
+
+        #region Overrides
+
+        public override void OnApplyTemplate()
+        {
+            _popup = GetTemplateChild(PopupTemplateName) as Popup;
+            _popup.Opened += Popup_Opened;
+            _popup.Closed += Popup_Closed;
+        }
+        #endregion
+
+        #region Functions
+        private void Popup_Closed(object sender, EventArgs e)
+        {
+            Closed?.Invoke(this, e);
+        }
+
+        private void Popup_Opened(object sender, EventArgs e)
+        {
+            Opened?.Invoke(this, e);
+        }
         #endregion
     }
 }

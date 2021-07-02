@@ -10,11 +10,6 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ToggleButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleButtonStyle, TypeInTargetAssembly={x:Type local:DropDown}}"
-           TargetType="ToggleButton"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.ToggleButtonStyle}}">
-    </Style>
-
     <Style TargetType="local:DropDown">
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
@@ -22,14 +17,18 @@
                 Value="White" />
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="LightGray" />
-        <Setter Property="ToggleButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleButtonStyle, TypeInTargetAssembly={x:Type local:DropDown}}}" />
+        <Setter Property="local:DropDownHelper.Width"
+                Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Content">
             <Setter.Value>
                 <TextBlock Text="&#xe903;"
                            FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DropDownTemplate}}" />
         <Style.Triggers>
