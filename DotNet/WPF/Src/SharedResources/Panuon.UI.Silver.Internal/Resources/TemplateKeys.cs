@@ -54,6 +54,7 @@
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);
         public const string TabItemTemplate = nameof(TabItemTemplate);
+        public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);

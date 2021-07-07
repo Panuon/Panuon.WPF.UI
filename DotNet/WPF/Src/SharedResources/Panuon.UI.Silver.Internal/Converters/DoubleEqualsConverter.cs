@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    public class DoubleEqualsConverter : MultiValueConverterBase
+    class DoubleEqualsConverter : MultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

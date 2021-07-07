@@ -15,15 +15,12 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
             <Grid >
-                <ToggleButton x:Name="PART_ToggleButton"
-                              IsChecked="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              Style="{TemplateBinding ToggleButtonStyle}"
-                              Content="{TemplateBinding Content}"
-                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                              ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                              ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+                <ContentPresenter x:Name="CpContent"
+                              Margin="{TemplateBinding Padding}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                 <i:CustomPopup x:Name="PART_Popup"
-                               PlacementTarget="{Binding ElementName=PART_ToggleButton, Mode=OneWay}"
+                               PlacementTarget="{Binding ElementName=CpContent, Mode=OneWay}"
                                Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
                                IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                                AllowsTransparency="True"
@@ -109,7 +106,8 @@
                                              Mode="OneWay" />
                                 </MultiBinding>
                             </i:ContentControlX.Effect>
-                            <ContentControl Content="{TemplateBinding Child}" />
+                            <ContentControl Content="{TemplateBinding Child}"
+                                            Margin="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}" />
                         </i:ContentControlX>
                     </Grid>
                 </i:CustomPopup>
