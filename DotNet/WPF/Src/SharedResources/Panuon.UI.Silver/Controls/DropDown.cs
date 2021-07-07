@@ -39,7 +39,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(DropDown));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(DropDown), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         #endregion
 
         #region StaysOpen
