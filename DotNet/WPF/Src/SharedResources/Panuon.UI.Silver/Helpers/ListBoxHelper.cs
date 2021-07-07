@@ -92,6 +92,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("RemovingAnimationEase", typeof(AnimationEase), typeof(ListBoxHelper));
         #endregion
 
+        #region AutoScrollIntoView
+        public static bool GetAutoScrollIntoView(ListBox listBox)
+        {
+            return (bool)listBox.GetValue(AutoScrollIntoViewProperty);
+        }
+
+        public static void SetAutoScrollIntoView(ListBox listBox, bool value)
+        {
+            listBox.SetValue(AutoScrollIntoViewProperty, value);
+        }
+
+        public static readonly DependencyProperty AutoScrollIntoViewProperty =
+            DependencyProperty.RegisterAttached("AutoScrollIntoView", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(false, OnAutoScrollIntoViewChanged));
+        #endregion
+
         #region Items Properties
 
         #region ItemsIcon
@@ -534,6 +549,24 @@ namespace Panuon.UI.Silver
             }
         }
 
+        private static void OnAutoScrollIntoViewChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var listBox = (ListBox)d;
+            listBox.SelectionChanged -= ListBox_SelectionChanged;
+            if((bool)e.NewValue)
+            {
+                listBox.SelectionChanged += ListBox_SelectionChanged;
+            }
+        }
+
+        private static void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listBox = (ListBox)sender;
+            if(listBox.SelectedItem is object selectedItem)
+            {
+                listBox.ScrollIntoView(selectedItem);
+            }
+        }
         #endregion
     }
 }
