@@ -313,7 +313,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabItemTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabItemStylelessTemplate}"
                      TargetType="TabItem">
         <Grid x:Name="GrdMain"
               Margin="{Binding Path=(local:TabItemHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
