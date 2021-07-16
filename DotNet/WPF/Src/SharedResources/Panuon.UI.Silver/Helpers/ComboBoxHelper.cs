@@ -889,21 +889,30 @@ namespace Panuon.UI.Silver
             comboBox.StaysOpenOnEdit = (bool)e.NewValue;
 
             comboBox.RemoveHandler(TextBox.GotFocusEvent, (RoutedEventHandler)OnTextBoxGotFocus);
-            comboBox.RemoveHandler(ComboBox.MouseLeftButtonDownEvent, (RoutedEventHandler)OnComboBoxPreviewMouseLeftButtonDown);
+            comboBox.RemoveHandler(TextBox.TextChangedEvent, (RoutedEventHandler)OnTextBoxTextChangedEvent);
 
             if ((bool)e.NewValue)
             {
                 comboBox.AddHandler(TextBox.GotFocusEvent, (RoutedEventHandler)OnTextBoxGotFocus);
-                comboBox.AddHandler(ComboBox.MouseLeftButtonDownEvent, (RoutedEventHandler)OnComboBoxPreviewMouseLeftButtonDown);
+                comboBox.AddHandler(TextBox.TextChangedEvent, (RoutedEventHandler)OnTextBoxTextChangedEvent);
             }
         }
 
-        private static void OnComboBoxPreviewMouseLeftButtonDown(object sender, RoutedEventArgs e)
+        private static void OnTextBoxTextChangedEvent(object sender, RoutedEventArgs e)
         {
             var comboBox = sender as ComboBox;
-            if (comboBox.IsEditable && comboBox.IsKeyboardFocusWithin && !comboBox.IsDropDownOpen)
+            if (comboBox.IsEditable && comboBox.IsKeyboardFocusWithin && !comboBox.IsDropDownOpen && !string.IsNullOrEmpty(comboBox.Text))
             {
                 comboBox.IsDropDownOpen = true;
+                if(e.OriginalSource is TextBox textBox)
+                {
+                    textBox.Focus();
+                    var comboText = comboBox.Text;
+                    if (!string.IsNullOrEmpty(comboText))
+                    {
+                        textBox.CaretIndex = comboText.Length;
+                    }
+                }
             }
         }
 
@@ -913,6 +922,15 @@ namespace Panuon.UI.Silver
             if (comboBox.IsEditable && !comboBox.IsDropDownOpen && e.OriginalSource is TextBox)
             {
                 comboBox.IsDropDownOpen = true;
+                if (e.OriginalSource is TextBox textBox)
+                {
+                    textBox.Focus();
+                    var comboText = comboBox.Text;
+                    if (!string.IsNullOrEmpty(comboText))
+                    {
+                        textBox.CaretIndex = comboText.Length;
+                    }
+                }
             }
         }
 

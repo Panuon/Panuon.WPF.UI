@@ -7,6 +7,7 @@
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
         public const string DoubleMultiplyByConverter = nameof(DoubleMultiplyByConverter);
         public const string DoublePlusConverter = nameof(DoublePlusConverter);
+        public const string DoublePowConverter = nameof(DoublePowConverter);
         public const string DoubleToGridLengthConverter = nameof(DoubleToGridLengthConverter);
         public const string DoubleToThicknessConverter = nameof(DoubleToThicknessConverter);
         public const string FalseToCollapseConverter = nameof(FalseToCollapseConverter);

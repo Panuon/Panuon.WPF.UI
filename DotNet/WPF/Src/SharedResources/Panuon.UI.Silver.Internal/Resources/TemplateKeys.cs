@@ -43,7 +43,8 @@
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
         public const string ScrollBarTemplate = nameof(ScrollBarTemplate);
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
-        public const string SliderTemplate = nameof(SliderTemplate);
+        public const string SliderHorizontalTemplate = nameof(SliderHorizontalTemplate);
+        public const string SliderVerticalTemplate = nameof(SliderVerticalTemplate);
         public const string InternalSpinnerStandardTemplate = nameof(InternalSpinnerStandardTemplate);
         public const string InternalSpinnerWaveTemplate = nameof(InternalSpinnerWaveTemplate);
         public const string InternalSpinnerRingTemplate = nameof(InternalSpinnerRingTemplate);
@@ -54,6 +55,7 @@
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);
         public const string TabItemTemplate = nameof(TabItemTemplate);
+        public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);

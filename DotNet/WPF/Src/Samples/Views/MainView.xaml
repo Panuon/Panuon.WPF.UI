@@ -52,12 +52,12 @@
                           HorizontalAlignment="Stretch">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Rows="2"/>
+                        <UniformGrid Rows="2" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Margin="0,0,10,10" 
+                        <Button Margin="0,0,10,10"
                                 Background="#F1F1F1"
                                 Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
                                 ToolTip="{Binding ViewPath}"
@@ -92,11 +92,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
-        <TextBlock HorizontalAlignment="Right"
-                   TextWrapping="Wrap"
-                   Width="150" />
-
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

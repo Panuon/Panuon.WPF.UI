@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\MessageBoxXSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuItemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SliderHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TabControlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RadioButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollBarHelper.cs" />
@@ -109,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

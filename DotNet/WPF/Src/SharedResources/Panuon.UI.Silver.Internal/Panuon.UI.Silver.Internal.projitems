@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DisplayMemberPathPropertyValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleEqualsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoublePowConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringUnequalConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringEqualConverter.cs" />
@@ -38,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownVerticalOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleDivideByConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownMinWidthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderBorderClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarBorderClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarTextForegroundConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SwitchToggleMarginConverter.cs" />
@@ -104,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\CardStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\FormGroupStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\RingProgressBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SliderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +275,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\WindowXStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\CardTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -133,6 +133,27 @@
                     Value="{x:Null}" />
         </Style>
     </pu:WindowXCaption.CloseButtonStyle>
+    <pu:WindowXCaption.ExtendControl>
+        <pu:DropDown pu:ShadowHelper.BlurRadius="10"
+                     pu:ShadowHelper.ShadowDepth="3"
+                     pu:DropDownHelper.Placement="BottomLeft"
+                     pu:DropDownHelper.ClipDockSideShadow="False"
+                     StaysOpen="False">
+            <pu:DropDown.Content>
+                <ToggleButton IsChecked="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=pu:DropDown}}"
+                              Content="&#xe9e5;"
+                              Background="Transparent"
+                              FontSize="16"
+                              FontFamily="{StaticResource PanuonIconFont}"/>
+            </pu:DropDown.Content>
+            <StackPanel Height="100"
+                        Width="150">
+                <TextBlock Text="Put You Text Here"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </pu:DropDown>
+    </pu:WindowXCaption.ExtendControl>
 
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center"

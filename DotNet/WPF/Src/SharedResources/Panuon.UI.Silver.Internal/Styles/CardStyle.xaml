@@ -6,29 +6,26 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/DropDownTemplate.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ToggleButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/CardTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:DropDown">
-        <Setter Property="local:DropDownHelper.Placement"
-                Value="BottomRight" />
-        <Setter Property="local:DropDownHelper.Background"
-                Value="White" />
-        <Setter Property="local:DropDownHelper.ShadowColor"
-                Value="LightGray" />
-        <Setter Property="Content">
-            <Setter.Value>
-                <TextBlock Text="&#xe903;"
-                           FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
-            </Setter.Value>
-        </Setter>
+    <Style TargetType="local:Card">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.DropDownTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.CardTemplate}}" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="Gray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -37,5 +34,4 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

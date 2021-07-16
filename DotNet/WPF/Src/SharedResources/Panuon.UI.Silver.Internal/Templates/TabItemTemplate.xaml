@@ -313,4 +313,79 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabItemStylelessTemplate}"
+                     TargetType="TabItem">
+        <Grid x:Name="GrdMain"
+              Margin="{Binding Path=(local:TabItemHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ContentPresenter x:Name="CcMain"
+                              Margin="{TemplateBinding Padding}"
+                              ContentSource="Header"
+                              VerticalAlignment="{Binding Path=(local:TabItemHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalAlignment="{Binding Path=(local:TabItemHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <local:SeparatorX x:Name="SprtSeparator"
+                              Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Visibility="{Binding Path=(local:TabItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TabStripPlacement"
+                     Value="Top">
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Orientation"
+                        Value="Vertical" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Bottom">
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Orientation"
+                        Value="Vertical" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Left">
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Orientation"
+                        Value="Horizontal" />
+            </Trigger>
+            <Trigger Property="TabStripPlacement"
+                     Value="Right">
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Orientation"
+                        Value="Horizontal" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 </ResourceDictionary>

@@ -195,7 +195,8 @@
                                          Text="{Binding Path=(local:ComboBoxHelper.SearchText), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          Style="{Binding Path=(local:ComboBoxHelper.SearchTextBoxStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                          Visibility="{Binding Path=(local:ComboBoxHelper.SearchTextBoxVisibility), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
-                                <ItemsPresenter Grid.Row="1" />
+                                <ItemsPresenter Grid.Row="1"
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />
                             </Grid>
                         </ScrollViewer>
                     </i:ContentControlX>
@@ -455,7 +456,7 @@
                                      Visibility="{Binding Path=(local:ComboBoxHelper.SearchTextBoxVisibility), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                             <ScrollViewer Grid.Row="1"
                                           Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
-                                <ItemsPresenter />
+                                <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
                             </ScrollViewer>
                         </Grid>
                     </i:ContentControlX>

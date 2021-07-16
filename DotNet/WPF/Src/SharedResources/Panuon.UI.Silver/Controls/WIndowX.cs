@@ -400,10 +400,10 @@ namespace Panuon.UI.Silver
                     {
                         SetLastPosition(element, null);
                     }
+                    var window = GetWindow(element);
+                    window.DragMove();
+                    e.Handled = true;
                 }
-                var window = GetWindow(element);
-                window.DragMove();
-                e.Handled = true;
             }
         }
 

@@ -1,10 +1,8 @@
 ﻿using Panuon.UI.Silver;
 using Samples.Views.Tools;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +17,6 @@ namespace Samples.Views
         public MainView()
         {
             InitializeComponent();
-
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
             {
                 InitExampleItems();
@@ -108,18 +105,6 @@ namespace Samples.Views
 
         #endregion
 
-        private void Dwr_Closed(object sender, RoutedEventArgs e)
-        {
-            IsOverlayerVisible = false;
-            IsMaskVisible = false;
-        }
-
-        private void Dwr_Opened(object sender, RoutedEventArgs e)
-        {
-            IsOverlayerVisible = true;
-            IsMaskVisible = true;
-        }
-
         private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (MessageBoxX.Show(this, "Exit ?", "Tips", MessageBoxButton.YesNo, MessageBoxIcon.Question, DefaultButton.YesOK) != MessageBoxResult.Yes)
@@ -128,4 +113,5 @@ namespace Samples.Views
             }
         }
     }
+
 }

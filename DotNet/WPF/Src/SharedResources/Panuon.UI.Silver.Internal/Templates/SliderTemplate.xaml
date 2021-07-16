@@ -9,8 +9,270 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SliderTemplate}"
+    <Style x:Key="{x:Static irs:StyleKeys.SliderRepeatButtonStyle}"
+           TargetType="{x:Type RepeatButton}">
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="True" />
+        <Setter Property="IsTabStop"
+                Value="False" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static irs:StyleKeys.SliderThumbStyle}"
+           TargetType="{x:Type Thumb}">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="OverridesDefaultStyle"
+                Value="True" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:SliderHelper.ThumbHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:SliderHelper.ThumbWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:SliderHelper.ThumbBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:SliderHelper.ThumbBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:SliderHelper.ThumbBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="local:SliderHelper.ShadowColor"
+                Value="{Binding Path=(local:SliderHelper.ThumbShadowColor), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <i:ContentControlX x:Name="CcMain"
+                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                       Padding="{TemplateBinding Padding}"
+                                       CornerRadius="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                       Content=" "
+                                       ContentTemplate="{Binding Path=(local:SliderHelper.ThumbTemplate), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SliderHorizontalTemplate}"
                      TargetType="Slider">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TickBar  x:Name="TkbTop"
+                      SnapsToDevicePixels="True"
+                      Placement="Top"
+                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Visibility="Collapsed" />
+            <Border Grid.Row="1"
+                    SnapsToDevicePixels="True"
+                    VerticalAlignment="Center"
+                    Height="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}" />
+            <Border Grid.Row="1"
+                    SnapsToDevicePixels="True"
+                    VerticalAlignment="Center"
+                    Height="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border.Clip>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderBorderClipConverter}}">
+                        <Binding Path="ActualWidth"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualWidth"
+                                 ElementName="RptDec" />
+                        <Binding Path="ActualHeight"
+                                 ElementName="RptDec" />
+                        <Binding Path="Orientation"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualWidth"
+                                 ElementName="ThbToggle" />
+                        <Binding Path="ActualHeight"
+                                 ElementName="ThbToggle" />
+                    </MultiBinding>
+                </Border.Clip>
+
+            </Border>
+            <Track x:Name="PART_Track"
+                   Grid.Row="1">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton x:Name="RptDec"
+                                  Command="Slider.DecreaseLarge">
+                        <RepeatButton.Style>
+                            <Style TargetType="RepeatButton"
+                                   BasedOn="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}">
+                                <Setter Property="Background"
+                                        Value="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb x:Name="ThbToggle"
+                           Style="{StaticResource {x:Static irs:StyleKeys.SliderThumbStyle}}" />
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}"
+                                  Command="Slider.IncreaseLarge" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar  x:Name="TkbBottom"
+                      Grid.Row="2"
+                      SnapsToDevicePixels="True"
+                      Placement="Bottom"
+                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement"
+                     Value="TopLeft">
+                <Setter TargetName="TkbTop"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="TickPlacement"
+                     Value="BottomRight">
+                <Setter TargetName="TkbBottom"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="TickPlacement"
+                     Value="Both">
+                <Setter TargetName="TkbTop"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="TkbBottom"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SliderVerticalTemplate}"
+                     TargetType="Slider">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TickBar  x:Name="TkbLeft"
+                      SnapsToDevicePixels="True"
+                      Placement="Left"
+                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Visibility="Collapsed" />
+            <Border Grid.Column="1"
+                    SnapsToDevicePixels="True"
+                    HorizontalAlignment="Center"
+                    Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}" />
+            <Border Grid.Column="1"
+                    SnapsToDevicePixels="True"
+                    HorizontalAlignment="Center"
+                    Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border.Clip>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderBorderClipConverter}}">
+                        <Binding Path="ActualWidth"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualWidth"
+                                 ElementName="RptDec" />
+                        <Binding Path="ActualHeight"
+                                 ElementName="RptDec" />
+                        <Binding Path="Orientation"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="ActualWidth"
+                                 ElementName="ThbToggle" />
+                        <Binding Path="ActualHeight"
+                                 ElementName="ThbToggle" />
+                    </MultiBinding>
+                </Border.Clip>
+
+            </Border>
+            <Track x:Name="PART_Track"
+                   Grid.Column="1">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton x:Name="RptDec"
+                                  Command="Slider.DecreaseLarge">
+                        <RepeatButton.Style>
+                            <Style TargetType="RepeatButton"
+                                   BasedOn="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}">
+                                <Setter Property="Background"
+                                        Value="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                            </Style>
+                        </RepeatButton.Style>
+                    </RepeatButton>
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb x:Name="ThbToggle"
+                           Style="{StaticResource {x:Static irs:StyleKeys.SliderThumbStyle}}" />
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}"
+                                  Command="Slider.IncreaseLarge" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+            <TickBar  x:Name="TkbRight"
+                      Grid.Column="2"
+                      SnapsToDevicePixels="True"
+                      Placement="Right"
+                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Visibility="Collapsed" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="TickPlacement"
+                     Value="TopLeft">
+                <Setter TargetName="TkbLeft"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="TickPlacement"
+                     Value="BottomRight">
+                <Setter TargetName="TkbRight"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="TickPlacement"
+                     Value="Both">
+                <Setter TargetName="TkbLeft"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="TkbRight"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
 
     </ControlTemplate>
+
 </ResourceDictionary>

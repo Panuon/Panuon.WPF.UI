@@ -269,6 +269,11 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("IsHover", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsHoverChanged));
         #endregion
 
+        #region HoverShadowColor
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            DependencyProperty.RegisterAttached("HoverShadowColor", typeof(Color?), typeof(VisualStateHelper));
+        #endregion
+
         #endregion
 
         #region Focused Properties
@@ -517,6 +522,30 @@ namespace Panuon.UI.Silver.Internal
             {
                 AnimationUtil.BeginBrushAnimationStoryboard(element, propertyBrushes);
             }
+            if (element.GetValue(HoverShadowColorProperty) is Color hoverShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = hoverShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, hoverShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+
         }
 
         private static void Element_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -559,6 +588,24 @@ namespace Panuon.UI.Silver.Internal
             {
                 AnimationUtil.BeginBrushAnimationStoryboard(element, properties);
             }
+            if (element.GetValue(HoverShadowColorProperty) is Color)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+
         }
 
         private static void Element_GotFocus(object sender, RoutedEventArgs e)

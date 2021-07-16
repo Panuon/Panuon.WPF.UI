@@ -35,17 +35,6 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.Register("Placement", typeof(PopupXPlacement), typeof(CustomPopup), new PropertyMetadata(PopupXPlacement.Bottom));
         #endregion
 
-        #region StaysOpen 
-        public new bool StaysOpen
-        {
-            get { return (bool)GetValue(StaysOpenProperty); }
-            set { SetValue(StaysOpenProperty, value); }
-        }
-
-        public new static readonly DependencyProperty StaysOpenProperty =
-            DependencyProperty.Register("StaysOpen", typeof(bool), typeof(CustomPopup), new PropertyMetadata(true));
-        #endregion
-
         #region ActualPlacement 
         public PopupXPlacement ActualPlacement
         {
