@@ -83,6 +83,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuItemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SliderHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TabControlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RadioButtonHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ScrollBarHelper.cs" />
@@ -110,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Slider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
