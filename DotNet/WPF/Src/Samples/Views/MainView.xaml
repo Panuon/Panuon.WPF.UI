@@ -92,7 +92,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

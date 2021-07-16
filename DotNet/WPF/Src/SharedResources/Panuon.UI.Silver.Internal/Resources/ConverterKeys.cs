@@ -19,6 +19,7 @@
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
         public const string FontSizeMinusConverter = nameof(FontSizeMinusConverter);
         public const string GetTypeConverter = nameof(GetTypeConverter);
+        public const string InternalSpinnerClassicRenderTransformOriginConverter = nameof(InternalSpinnerClassicRenderTransformOriginConverter);
         public const string IsEnumContainsInSpecificValueConverter = nameof(IsEnumContainsInSpecificValueConverter);
         public const string IsItemSeparatorShallVisibleControlConverter = nameof(IsItemSeparatorShallVisibleControlConverter);
         public const string IsTypeConverter = nameof(IsTypeConverter);
@@ -26,7 +27,7 @@
         public const string ProgressBarBorderClipConverter = nameof(ProgressBarBorderClipConverter);
         public const string ProgressBarTextForegroundConverter = nameof(ProgressBarTextForegroundConverter);
         public const string ScrollableControlScrollButtonVisibilityConverter = nameof(ScrollableControlScrollButtonVisibilityConverter);
-        public const string InternalSpinnerClassicRenderTransformOriginConverter = nameof(InternalSpinnerClassicRenderTransformOriginConverter);
+        public const string SliderBorderClipConverter = nameof(SliderBorderClipConverter);
         public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);

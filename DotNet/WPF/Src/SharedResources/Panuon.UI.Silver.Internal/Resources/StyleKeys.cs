@@ -8,5 +8,7 @@
         public const string SpinnerStyle = nameof(SpinnerStyle);
         public const string WindowXButtonStyle = nameof(WindowXButtonStyle);
         public const string WindowXStyle = nameof(WindowXStyle);
+        public const string SliderRepeatButtonStyle = nameof(SliderRepeatButtonStyle);
+        public const string SliderThumbStyle = nameof(SliderThumbStyle);
     }
 }

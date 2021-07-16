@@ -17,8 +17,6 @@
                 Value="White" />
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="LightGray" />
-        <Setter Property="local:DropDownHelper.Width"
-                Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" />
         <Setter Property="Content">
             <Setter.Value>
                 <TextBlock Text="&#xe903;"
