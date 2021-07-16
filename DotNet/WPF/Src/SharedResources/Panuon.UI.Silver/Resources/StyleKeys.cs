@@ -24,6 +24,7 @@
         public const string ProgressBarStyle = nameof(ProgressBarStyle);
         public const string RadioButtonStyle = nameof(RadioButtonStyle);
         public const string RepeatButtonStyle = nameof(RepeatButtonStyle);
+        public const string SliderStyle = nameof(SliderStyle);
         public const string ScrollBarStyle = nameof(ScrollBarStyle);
         public const string ScrollViewerStyle = nameof(ScrollViewerStyle);
         public const string TabControlStyle = nameof(TabControlStyle);

@@ -24,6 +24,7 @@
     <icv:DoubleMinusConverter x:Key="{x:Static rs:ConverterKeys.DoubleMinusConverter}" />
     <icv:DoubleMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.DoubleMultiplyByConverter}" />
     <icv:DoublePlusConverter x:Key="{x:Static rs:ConverterKeys.DoublePlusConverter}" />
+    <icv:DoublePowConverter x:Key="{x:Static rs:ConverterKeys.DoublePowConverter}" />
     <icv:DropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.DropDownMarginConverter}" />
     <icv:DropDownMinWidthConverter x:Key="{x:Static irs:ConverterKeys.DropDownMinWidthConverter}" />
     <icv:DropShadowEffectWithDepthConverter x:Key="{x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}" />
@@ -46,6 +47,7 @@
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
+    <icv:SliderBorderClipConverter x:Key="{x:Static irs:ConverterKeys.SliderBorderClipConverter}" />
     <icv:InternalSpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.InternalSpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
     <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />

@@ -307,7 +307,13 @@ namespace Panuon.UI.Silver
 
             if ((bool)e.NewValue)
             {
+                var newPassword = GetPassword(passwordBox);
+                if (newPassword != passwordBox.Password)
+                {
+                    passwordBox.Password = newPassword;
+                }
                 passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
+                
             }
         }
 

@@ -5,6 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Samples.Views.Examples"
             xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+            xmlns:purs="clr-namespace:Panuon.UI.Silver.Resources;assembly=Panuon.UI.Silver"
             mc:Ignorable="d"
             Title="Form"
             SizeToContent="Height"
@@ -161,6 +162,76 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="SliderStyle"
+               TargetType="Slider"
+               BasedOn="{StaticResource {x:Type Slider}}">
+            <Setter Property="pu:SliderHelper.ThumbWidth"
+                    Value="NaN" />
+            <Setter Property="pu:SliderHelper.ThumbHeight"
+                    Value="NaN" />
+            <Setter Property="pu:SliderHelper.ThumbBackground"
+                    Value="Transparent" />
+            <Setter Property="pu:SliderHelper.TrackThickness"
+                    Value="2" />
+            <Setter Property="pu:SliderHelper.CoveredBackground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,0">
+                        <GradientStop Color="HotPink"
+                                      Offset="0" />
+                        <GradientStop Color="CornflowerBlue"
+                                      Offset="0.25" />
+                        <GradientStop Color="LawnGreen"
+                                      Offset="0.5" />
+                        <GradientStop Color="LightCoral"
+                                      Offset="0.75" />
+                        <GradientStop Color="OrangeRed"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush Opacity="0.15"
+                                         StartPoint="0,0"
+                                         EndPoint="1,0">
+                        <GradientStop Color="HotPink"
+                                      Offset="0" />
+                        <GradientStop Color="CornflowerBlue"
+                                      Offset="0.25" />
+                        <GradientStop Color="LawnGreen"
+                                      Offset="0.5" />
+                        <GradientStop Color="LightCoral"
+                                      Offset="0.75" />
+                        <GradientStop Color="OrangeRed"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="pu:SliderHelper.ThumbTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <RotateTransform Angle="{Binding Value, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePowConverter}}, ConverterParameter=1.3, RelativeSource={RelativeSource AncestorType=Slider}}" />
+                            </Grid.RenderTransform>
+                            <TextBlock Text="&#xe958;"
+                                       FontSize="20"
+                                       Foreground="White"
+                                       FontFamily="{StaticResource PanuonIconFont}">
+                            </TextBlock>
+                            <TextBlock Text="&#xe956;"
+                                       FontSize="20"
+                                       Foreground="HotPink"
+                                       FontFamily="{StaticResource PanuonIconFont}">
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </pu:WindowX.Resources>
 
     <StackPanel Margin="20,10">
@@ -172,6 +243,27 @@
                               GroupName="MyFormGroup">
                     <TextBox x:Name="TbName"
                              Style="{StaticResource InputTextBoxStyle}" />
+                </pu:FormGroup>
+                <pu:FormGroup Style="{StaticResource  RequiredInputFormGroupStyle}"
+                              Header="Age : "
+                              GroupName="MyFormGroup">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <Slider x:Name="SlrAge"
+                                VerticalAlignment="Center"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="1"
+                                Minimum="0"
+                                Maximum="100"
+                                Style="{StaticResource SliderStyle}" />
+                        <TextBlock Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right"
+                                   Text="{Binding Value, ElementName=SlrAge}" />
+                    </Grid>
                 </pu:FormGroup>
                 <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
                               Header="Email : "
@@ -207,7 +299,7 @@
             <Button x:Name="BtnCancel"
                     Style="{StaticResource CancelButtonStyle}"
                     Content="Cancel"
-                    Click="BtnCancel_Click"/>
+                    Click="BtnCancel_Click" />
             <Button x:Name="BtnContinue"
                     Margin="5,0,0,0"
                     Style="{StaticResource OKButtonStyle}"
