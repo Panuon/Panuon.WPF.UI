@@ -9,7 +9,11 @@
 # Panuon.UI.Silver v2.2
 
 ### This project is still under development. Do not upgrade to this version rashly from the previous version, or use this version on urgent projects.   
-  
+   
+# Contributors
+<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>
+<img width="40" height="40" src="https://avatars.githubusercontent.com/u/45651732?v=4"></img>
+
 # Samples  
 `These pages were included in the Samples project. Download this repository to get the source code.`  
   
