@@ -64,14 +64,14 @@
                      TargetType="local:FormGroup">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition  />
+                <RowDefinition />
                 <RowDefinition Height="{Binding MessageHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MinHeight="{Binding MinMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

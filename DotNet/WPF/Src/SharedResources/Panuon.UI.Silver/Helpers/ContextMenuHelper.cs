@@ -117,51 +117,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region CornerRadius
-        public static CornerRadius GetCornerRadius(ContextMenu contextMenu)
-        {
-            return (CornerRadius)contextMenu.GetValue(CornerRadiusProperty);
-        }
-
-        public static void SetCornerRadius(ContextMenu contextMenu, CornerRadius value)
-        {
-            contextMenu.SetValue(CornerRadiusProperty, value);
-        }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ContextMenuHelper));
-        #endregion
-
-        #region ShadowColor
-        public static Color? GetShadowColor(ContextMenu contextMenu)
-        {
-            return (Color?)contextMenu.GetValue(ShadowColorProperty);
-        }
-
-        public static void SetShadowColor(ContextMenu contextMenu, Color? value)
-        {
-            contextMenu.SetValue(ShadowColorProperty, value);
-        }
-
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(ContextMenuHelper), new PropertyMetadata(Colors.LightGray));
-        #endregion
-
-        #region Placement
-        public static PopupXPlacement GetPlacement(ContextMenu contextMenu)
-        {
-            return (PopupXPlacement)contextMenu.GetValue(PlacementProperty);
-        }
-
-        public static void SetPlacement(ContextMenu contextMenu, PopupXPlacement value)
-        {
-            contextMenu.SetValue(PlacementProperty, value);
-        }
-
-        public static readonly DependencyProperty PlacementProperty =
-            DependencyProperty.RegisterAttached("Placement", typeof(PopupXPlacement), typeof(ContextMenuHelper), new PropertyMetadata(PopupXPlacement.BottomRight));
-        #endregion
-
         #region Items
 
         #region ItemsIcon

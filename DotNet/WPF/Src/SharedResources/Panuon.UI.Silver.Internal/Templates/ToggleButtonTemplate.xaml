@@ -36,7 +36,7 @@
                                Style="{Binding Path=(local:ToggleButtonHelper.PendingSpinnerStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter Grid.Row="1"
+                <ContentPresenter Grid.Column="1"
                                   Focusable="False"
                                   RecognizesAccessKey="True"
                                   VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -103,7 +103,7 @@
                         Property="Content"
                         Value="{Binding Path=(local:ToggleButtonHelper.CheckedContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            
+
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
