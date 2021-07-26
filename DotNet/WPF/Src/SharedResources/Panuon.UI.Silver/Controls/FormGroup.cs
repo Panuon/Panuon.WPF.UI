@@ -230,8 +230,8 @@ namespace Panuon.UI.Silver
         #region Overrides
         public override void OnApplyTemplate()
         {
-            
-            
+
+
             _headerControl = GetTemplateChild(HeaderContentControlTemplateName) as ContentControl;
             _headerControl.SizeChanged += HeaderControl_SizeChanged;
         }
@@ -295,12 +295,12 @@ namespace Panuon.UI.Silver
                 {
                     if (e.Orientation == Orientation.Horizontal)
                     {
-                        var width = GetComputedWidth();
+                        var width = GetComputedWidth(false);
                         e.Maximuim = Math.Max(e.Maximuim, width);
                     }
                     else
                     {
-                        var height = GetComputedHeight();
+                        var height = GetComputedHeight(false);
                         e.Maximuim = Math.Max(e.Maximuim, height);
                     }
                 }
@@ -328,20 +328,36 @@ namespace Panuon.UI.Silver
         #region Functions
         private void DeteminingSize()
         {
-            if(_headerControl == null)
+            if (_headerControl == null)
             {
                 return;
             }
             var size = 0d;
             if (Orientation == Orientation.Horizontal)
             {
-                size = GetComputedWidth();
-                InternalHeaderHeight = GetComputedHeight();
+                size = GetComputedWidth(false);
+                var internalHeight = GetComputedHeight(true);
+                if (double.IsNaN(internalHeight))
+                {
+                    FrameworkElementUtil.BindingProperty(this, InternalHeaderHeightProperty, this, ActualHeightProperty);
+                }
+                else
+                {
+                    InternalHeaderHeight = internalHeight;
+                }
             }
             else
             {
-                size = GetComputedHeight();
-                InternalHeaderWidth = GetComputedWidth();
+                size = GetComputedHeight(false);
+                var internalWidth = GetComputedWidth(true);
+                if (double.IsNaN(internalWidth))
+                {
+                    FrameworkElementUtil.BindingProperty(this, InternalHeaderWidthProperty, this, ActualWidthProperty);
+                }
+                else
+                {
+                    InternalHeaderWidth = internalWidth;
+                }
             }
             var collectSizeEventArgs = new FormGroupCollectSizeEventArgs(Orientation, size);
             if (!string.IsNullOrEmpty(GroupName))
@@ -350,7 +366,7 @@ namespace Panuon.UI.Silver
             }
             if (Orientation == Orientation.Horizontal)
             {
-                if(collectSizeEventArgs.Maximuim == InternalHeaderWidth)
+                if (collectSizeEventArgs.Maximuim == InternalHeaderWidth)
                 {
                     return;
                 }
@@ -371,23 +387,24 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private double GetComputedWidth()
+        private double GetComputedWidth(bool allowNaN)
         {
             var size = GridLengthUtil.ComputeValue(RenderSize.Width, HeaderWidth);
-            if (double.IsNaN(size))
+            if (double.IsNaN(size) && !allowNaN)
             {
                 _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                size = _headerControl.DesiredSize.Width;
+                return _headerControl.DesiredSize.Width;
             }
             return size;
         }
 
-        private double GetComputedHeight()
+        private double GetComputedHeight(bool allowNaN)
         {
             var size = GridLengthUtil.ComputeValue(RenderSize.Height, HeaderHeight);
-            if (double.IsNaN(size))
+            if (double.IsNaN(size) && !allowNaN)
             {
-                size = _headerControl.DesiredSize.Height;
+                _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                return _headerControl.DesiredSize.Height;
             }
             return size;
         }

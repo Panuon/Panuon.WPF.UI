@@ -30,7 +30,8 @@
                     ToolTip="Panuon IconFont Browser"
                     Style="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
                     Content="&#xe99d;"
-                    Click="BtnIconFont_Click" />
+                    Click="BtnIconFont_Click">
+            </Button>
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid Margin="20,10,20,20">

@@ -107,6 +107,10 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"
         TargetType="{x:Type ContextMenu}">
+        <Style.Resources>
+            <Style TargetType="MenuItem"
+                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
+        </Style.Resources>
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -140,13 +144,21 @@
         <Setter Property="Padding"
                 Value="{Binding (local:ContextMenuHelper.Padding), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ContextMenuHelper.ItemsPadding"
-                Value="10,0" />
+                Value="5,0" />
         <Setter Property="local:ContextMenuHelper.ItemsHeight"
                 Value="30" />
-        <Setter Property="local:ContextMenuHelper.ItemsIconWidth"
-                Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ContextMenuHelper.ItemsWidth"
-                Value="NaN" />
+        <Setter Property="local:ContextMenuHelper.ItemsWidth">
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropDownMinWidthConverter}}">
+                    <Binding Path="ActualWidth"
+                             RelativeSource="{RelativeSource Self}"
+                             Mode="OneWay" />
+                    <Binding Path="(local:ShadowHelper.BlurRadius)"
+                             RelativeSource="{RelativeSource Self}"
+                             Mode="OneWay" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
         <Setter Property="local:ContextMenuHelper.ItemsSeparatorBrush"
                 Value="#E6E6E6" />
         <Setter Property="local:ContextMenuHelper.ItemsSeparatorThickness"
@@ -157,14 +169,14 @@
                 Value="Transparent" />
         <Setter Property="local:ContextMenuHelper.ItemsHoverBackground"
                 Value="#F1F1F1" />
-        <Setter Property="local:ContextMenuHelper.Placement"
+        <Setter Property="local:ContextMenuHelper.ItemsIconWidth"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Placement"
                 Value="RightBottom" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderThickness"
                 Value="1" />
-        <Setter Property="Width"
-                Value="150" />
         <Setter Property="VerticalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HorizontalOffset"
@@ -177,6 +189,8 @@
                 Value="0" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
+        <Setter Property="Width"
+                Value="200" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuTemplate}}" />
         <Style.Triggers>
@@ -186,9 +200,5 @@
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
             </Trigger>
         </Style.Triggers>
-        <Style.Resources>
-            <Style TargetType="MenuItem"
-                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
-        </Style.Resources>
     </Style>
 </ResourceDictionary>
