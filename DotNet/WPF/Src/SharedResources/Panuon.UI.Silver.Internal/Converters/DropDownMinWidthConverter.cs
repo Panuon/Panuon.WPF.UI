@@ -10,7 +10,7 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             var actualWidth = (double)values[0];
             var blurRadius = (double)values[1];
-            return actualWidth + blurRadius * 2;
+            return actualWidth - blurRadius * 2;
         }
     }
 }

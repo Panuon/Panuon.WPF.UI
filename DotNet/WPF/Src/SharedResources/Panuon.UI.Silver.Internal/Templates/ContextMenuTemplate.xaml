@@ -17,11 +17,11 @@
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Padding="{TemplateBinding Padding}"
-                           CornerRadius="{Binding Path=(local:ContextMenuHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <i:ContentControlX.Effect>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                    <Binding Path="(local:ContextMenuHelper.ShadowColor)"
+                    <Binding Path="(local:DropDownHelper.ShadowColor)"
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                     <Binding Path="(local:ShadowHelper.BlurRadius)"
