@@ -96,7 +96,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="local:ButtonHelper.HoverBackground"
-                Value="#CCCCCC" />
+                Value="#D64343" />
         <Setter Property="local:ButtonHelper.HoverForeground"
                 Value="White" />
         <Setter Property="VerticalAlignment"
@@ -121,8 +121,6 @@
                 Value="&#xe92d;" />
         <Setter Property="Padding"
                 Value="0" />
-        <Setter Property="local:ButtonHelper.HoverBackground"
-                Value="#D64343" />
     </Style>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=WindowXHeaderTemplate, TypeInTargetAssembly={x:Type local:WindowX}}">

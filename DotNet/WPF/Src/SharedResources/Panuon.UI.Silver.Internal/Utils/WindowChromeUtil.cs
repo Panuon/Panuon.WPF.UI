@@ -17,7 +17,7 @@ namespace Panuon.UI.Silver.Utils
 
         internal static void SetCaptionHeight(WindowX windowX, double height)
         {
-            var action = new Action(() =>
+            windowX.Dispatcher.BeginInvoke(new Action(() =>
             {
                 var chrome = WindowChrome.GetWindowChrome(windowX);
                 if (chrome == null)
@@ -25,20 +25,7 @@ namespace Panuon.UI.Silver.Utils
                     return;
                 }
                 chrome.CaptionHeight = height;
-            });
-
-            if (windowX.IsLoaded)
-            {
-                action();
-            }
-            else
-            {
-                windowX.Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    action();
-                }), System.Windows.Threading.DispatcherPriority.Loaded);
-            }
-
+            }), System.Windows.Threading.DispatcherPriority.Loaded);
         }
 
     }

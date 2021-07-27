@@ -30,6 +30,10 @@
         public const string ListBoxTemplate = nameof(ListBoxTemplate);
         public const string ListBoxItemTemplate = nameof(ListBoxItemTemplate);
         public const string ListBoxItemStylelessTemplate = nameof(ListBoxItemStylelessTemplate);
+        public const string ListViewColumnHeaderTemplate = nameof(ListViewColumnHeaderTemplate);
+        public const string ListViewScrollViewerTemplate = nameof(ListViewScrollViewerTemplate);
+        public const string ListViewTemplate = nameof(ListViewTemplate);
+        public const string ListViewItemTemplate = nameof(ListViewItemTemplate);
         public const string MenuTemplate = nameof(MenuTemplate);
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);

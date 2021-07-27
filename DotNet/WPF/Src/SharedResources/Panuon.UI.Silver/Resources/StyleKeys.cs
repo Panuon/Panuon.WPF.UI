@@ -17,6 +17,8 @@
         public const string LabelStyle = nameof(LabelStyle);
         public const string ListBoxStyle = nameof(ListBoxStyle);
         public const string ListBoxItemStyle = nameof(ListBoxItemStyle);
+        public const string ListViewStyle = nameof(ListViewStyle);
+        public const string ListViewItemStyle = nameof(ListViewItemStyle);
         public const string MenuItemStyle = nameof(MenuItemStyle);
         public const string MenuStyle = nameof(MenuStyle);
         public const string MessageBoxXButtonStyle = nameof(MessageBoxXButtonStyle);

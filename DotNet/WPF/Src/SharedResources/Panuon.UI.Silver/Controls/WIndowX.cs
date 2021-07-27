@@ -8,7 +8,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+#if NET40
+using Microsoft.Windows.Shell;
+#else
 using System.Windows.Shell;
+#endif
 
 namespace Panuon.UI.Silver
 {
@@ -27,6 +31,7 @@ namespace Panuon.UI.Silver
         static WindowX()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(typeof(WindowX)));
+            WindowChrome.WindowChromeProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(null, OnWindowChromeChanged));
         }
 
         public WindowX()
@@ -232,7 +237,7 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty LastPositionProperty =
             DependencyProperty.RegisterAttached("LastPosition", typeof(Point?), typeof(WindowX));
-        #endregion 
+        #endregion
 
         #endregion
 
@@ -433,6 +438,11 @@ namespace Panuon.UI.Silver
             windowX.Close();
         }
 
+        private static void OnWindowChromeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var windowX = (WindowX)d;
+            WindowChromeUtil.SetCaptionHeight(windowX, WindowXCaption.GetHeight(windowX));
+        }
         #endregion
 
         #region Functions

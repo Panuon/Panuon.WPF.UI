@@ -1,0 +1,197 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListViewColumnHeaderTemplate}"
+                     TargetType="GridViewColumnHeader">
+        <Grid>
+            <Border x:Name="BdrBack"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}" />
+            <Rectangle x:Name="RectRight"
+                       Width="1"
+                       Margin="-0.5,0,0,0"
+                       HorizontalAlignment="Right"
+                       Visibility="{Binding Path=(local:ListViewHelper.ColumnHeaderSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                       Fill="{Binding Path=(local:ListViewHelper.ColumnHeaderSeparatorBrush), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            <ContentPresenter x:Name="CpContent"
+                              RecognizesAccessKey="True"
+                              Margin="{TemplateBinding Padding}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            <Thumb x:Name="PART_HeaderGripper"
+                   HorizontalAlignment="Right"
+                   Cursor="SizeWE"
+                   Width="{Binding Path=(local:ListViewHelper.ResizeThumbThickness), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}">
+                <Thumb.Style>
+                    <Style TargetType="Thumb">
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Thumb">
+                                    <Rectangle Fill="{TemplateBinding Background}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Thumb.Style>
+            </Thumb>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="Background"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CpContent"
+                        Property="TextElement.Foreground"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                <Setter TargetName="CpContent"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="Background"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CpContent"
+                        Property="TextElement.Foreground"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                <Setter TargetName="CpContent"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="Role"
+                     Value="Padding">
+                <Setter TargetName="RectRight"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_HeaderGripper"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListViewScrollViewerTemplate}"
+                     TargetType="ScrollViewer">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Hidden"
+                              Focusable="False">
+                    <GridViewHeaderRowPresenter Margin="2,0,2,0"
+                                                Columns="{Binding Path=TemplatedParent.View.Columns, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ColumnHeaderContainerStyle="{Binding Path=TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ColumnHeaderTemplate="{Binding Path=TemplatedParent.View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ColumnHeaderTemplateSelector="{Binding Path=TemplatedParent.View.ColumnHeaderTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                                AllowsColumnReorder="{Binding Path=TemplatedParent.View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ColumnHeaderContextMenu="{Binding Path=TemplatedParent.View.ColumnHeaderContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                ColumnHeaderToolTip="{Binding Path=TemplatedParent.View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </ScrollViewer>
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="1"
+                           Height="1"
+                           Visibility="{Binding Path=(local:ListViewHelper.ColumnHeaderPanelSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                           Fill="{Binding Path=(local:ListViewHelper.ColumnHeaderPanelSeparatorBrush), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                <ScrollContentPresenter Grid.Row="2"
+                                        x:Name="PART_ScrollContentPresenter"
+                                        KeyboardNavigation.DirectionalNavigation="Local"
+                                        CanContentScroll="True"
+                                        CanHorizontallyScroll="False"
+                                        CanVerticallyScroll="False" />
+            </Grid>
+            <ScrollBar x:Name="PART_VerticalScrollBar"
+                       Grid.Column="1"
+                       Orientation="Vertical"
+                       ViewportSize="{TemplateBinding ViewportHeight}"
+                       Maximum="{TemplateBinding ScrollableHeight}"
+                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                       Value="{Binding VerticalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <ScrollBar x:Name="PART_HorizontalScrollBar"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       Orientation="Horizontal"
+                       ViewportSize="{TemplateBinding ViewportWidth}"
+                       Maximum="{TemplateBinding ScrollableWidth}"
+                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                       Value="{Binding HorizontalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        </Grid>
+
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListViewTemplate}"
+                     TargetType="{x:Type ListView}">
+        <Border x:Name="BdrMain"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <ScrollViewer Focusable="False">
+                <ScrollViewer.Style>
+                    <Style TargetType="ScrollViewer">
+                        <Setter Property="Template"
+                                Value="{StaticResource {x:Static irs:TemplateKeys.ListViewScrollViewerTemplate}}" />
+                    </Style>
+                </ScrollViewer.Style>
+                <ItemsPresenter />
+            </ScrollViewer>
+        </Border>
+    </ControlTemplate>
+
+</ResourceDictionary>
