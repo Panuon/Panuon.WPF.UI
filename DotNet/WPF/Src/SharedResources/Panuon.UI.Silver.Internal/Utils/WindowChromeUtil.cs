@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver.Utils
             windowX.Dispatcher.BeginInvoke(new Action(() =>
             {
                 var chrome = WindowChrome.GetWindowChrome(windowX);
-                if (chrome == null)
+                if (chrome == null || double.IsNaN(height) || double.IsInfinity(height))
                 {
                     return;
                 }
