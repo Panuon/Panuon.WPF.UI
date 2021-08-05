@@ -30,10 +30,12 @@ namespace Panuon.UI.Silver
         #region Ctor
         static WindowX()
         {
+            BackgroundProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(Brushes.White, null, OnBackgroundCoerceValue));
             DefaultStyleKeyProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(typeof(WindowX)));
             WindowChrome.WindowChromeProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(null, OnWindowChromeChanged));
+            WindowChrome.GlassFrameThicknessProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(new Thickness(), null, OnGlassFrameThicknessCoerceValue));
+            WindowXCaption.BackgroundProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(Brushes.White, null, OnCaptionBackgroundCoerceValue));
         }
-
         public WindowX()
         {
             Loaded += WindowX_Loaded;
@@ -201,6 +203,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("InteropOwnersMask", typeof(bool), typeof(WindowX), new PropertyMetadata(true));
         #endregion
 
+        #region  WindowXEffect
+        public new WindowXEffect Effect
+        {
+            get { return (WindowXEffect)GetValue(EffectProperty); }
+            set { SetValue(EffectProperty, value); }
+        }
+
+        public new static readonly DependencyProperty EffectProperty =
+            DependencyProperty.Register("Effect", typeof(WindowXEffect), typeof(WindowX), new PropertyMetadata(null, OnWindowXEffectChanged));
+        #endregion
+
         #endregion
 
         #region Attached Properties
@@ -340,6 +353,61 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
+        private static void OnWindowXEffectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var windowX = (WindowX)d;
+
+            if (e.OldValue is WindowXEffect oldEffect)
+            {
+                oldEffect.Disable();
+                windowX.CoerceValue(BackgroundProperty);
+                windowX.CoerceValue(WindowChrome.GlassFrameThicknessProperty);
+            }
+            if (e.NewValue is WindowXEffect newEffect)
+            {
+                newEffect.Enable(windowX);
+                windowX.CoerceValue(BackgroundProperty);
+                windowX.CoerceValue(WindowChrome.GlassFrameThicknessProperty);
+            }
+        }
+
+        private static object OnBackgroundCoerceValue(DependencyObject d, object baseValue)
+        {
+            var windowX = (WindowX)d;
+            if(windowX.Effect is AcrylicWindowXEffect)
+            {
+                return Brushes.Transparent;
+            }
+            if (windowX.Effect is AeroWindowXEffect aeroEffect)
+            {
+                return aeroEffect.Background;
+            }
+            return baseValue;
+        }
+
+        private static object OnCaptionBackgroundCoerceValue(DependencyObject d, object baseValue)
+        {
+            var windowX = (WindowX)d;
+            if (windowX.Effect is AcrylicWindowXEffect
+                || windowX.Effect is AeroWindowXEffect aeroEffect)
+            {
+                return Brushes.Transparent;
+            }
+            return baseValue;
+        }
+
+
+        private static object OnGlassFrameThicknessCoerceValue(DependencyObject d, object baseValue)
+        {
+            var windowX = (WindowX)d;
+            if (windowX.Effect is AcrylicWindowXEffect)
+            {
+                return new Thickness(0, 1, 0, 0);
+            }
+            return baseValue;
+        }
+
+
         private void WindowX_Loaded(object sender, RoutedEventArgs e)
         {
             if (!_isLoaded)
@@ -441,7 +509,7 @@ namespace Panuon.UI.Silver
         private static void OnWindowChromeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var windowX = (WindowX)d;
-            WindowChromeUtil.SetCaptionHeight(windowX, WindowXCaption.GetHeight(windowX));
+            WindowChromeUtil.SetCaptionHeight(windowX, windowX.DisableDragMove ? 0 : WindowXCaption.GetHeight(windowX));
         }
         #endregion
 

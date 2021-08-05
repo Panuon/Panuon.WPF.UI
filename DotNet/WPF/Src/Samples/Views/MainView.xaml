@@ -13,6 +13,9 @@
             WindowStartupLocation="CenterScreen"
             MaskBrush="#AA000000"
             Closing="WindowX_Closing">
+    <pu:WindowX.Effect>
+        <pu:AeroWindowXEffect Background="#88FFFFFF" />
+    </pu:WindowX.Effect>
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -59,7 +62,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Margin="0,0,10,10"
-                                Background="#F1F1F1"
+                                Background="Transparent"
                                 Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
                                 ToolTip="{Binding ViewPath}"
                                 VerticalContentAlignment="Stretch"
