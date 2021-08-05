@@ -16,15 +16,15 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
-        #region Color
-        public Color BlurColor
+        #region AccentColor
+        public Color AccentColor
         {
-            get { return (Color)GetValue(BlurColorProperty); }
-            set { SetValue(BlurColorProperty, value); }
+            get { return (Color)GetValue(AccentColorProperty); }
+            set { SetValue(AccentColorProperty, value); }
         }
 
-        public static readonly DependencyProperty BlurColorProperty =
-            DependencyProperty.Register("BlurColor", typeof(Color), typeof(AcrylicWindowXEffect), new PropertyMetadata(Colors.White, OnBlurColorChanged));
+        public static readonly DependencyProperty AccentColorProperty =
+            DependencyProperty.Register("AccentColor", typeof(Color), typeof(AcrylicWindowXEffect), new PropertyMetadata(Colors.White, OnAccentColorChanged));
         #endregion
 
         #endregion
@@ -50,7 +50,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
-        private static void OnBlurColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnAccentColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var effect = (AcrylicWindowXEffect)d;
             effect.ResetWindowEffect(true);
@@ -67,14 +67,14 @@ namespace Panuon.UI.Silver
 
             try
             {
-                var blurColor = BlurColor.R << 0 | BlurColor.G << 8 | BlurColor.B << 16 | BlurColor.A << 24;
+                var accentColor = AccentColor.R << 0 | AccentColor.G << 8 | AccentColor.B << 16 | AccentColor.A << 24;
                 var handle = new WindowInteropHelper(_windowX).EnsureHandle();
 
                 var accentPolicy = new AccentPolicy();
                 if (enable)
                 {
                     accentPolicy.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND;
-                    accentPolicy.GradientColor = blurColor;
+                    accentPolicy.GradientColor = accentColor;
                 }
                 else
                 {
