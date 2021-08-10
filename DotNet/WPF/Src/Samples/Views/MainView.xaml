@@ -14,7 +14,7 @@
             MaskBrush="#AA000000"
             Closing="WindowX_Closing">
     <pu:WindowX.Effect>
-        <pu:AeroWindowXEffect Background="#88FFFFFF" />
+        <pu:AcrylicWindowXEffect AccentColor="#66FFFFFF" />
     </pu:WindowX.Effect>
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
@@ -31,7 +31,7 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=WindowXMinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
+                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click">
             </Button>
@@ -46,6 +46,7 @@
         <TextBlock Text="Samples"
                    FontSize="30" />
         <ScrollViewer Grid.Row="1"
+                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
