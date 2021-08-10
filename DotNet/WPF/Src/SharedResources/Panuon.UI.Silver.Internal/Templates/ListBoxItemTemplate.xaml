@@ -36,7 +36,8 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter  />
+                    <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                     <Button x:Name="BtnRemove"
                             Grid.Column="1"
                             Visibility="Hidden"

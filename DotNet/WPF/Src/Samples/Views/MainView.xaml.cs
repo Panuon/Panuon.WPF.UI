@@ -77,7 +77,7 @@ namespace Samples.Views
                 Content = content,
             };
             var grid = new Grid();
-            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(WindowXCaption.GetHeight(view)) });
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(view.DisableDragMove ? 0 : WindowXCaption.GetHeight(view)) });
             grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
             grid.Children.Add(new Border()
             {

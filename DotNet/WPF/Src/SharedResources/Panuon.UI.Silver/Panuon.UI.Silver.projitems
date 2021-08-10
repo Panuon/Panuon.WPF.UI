@@ -74,6 +74,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DefaultButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DropDownHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ExpanderHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewItemHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ListViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxXSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\LabelHelper.cs" />
@@ -104,6 +106,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewItemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowXCaption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXSpecialDay.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AeroWindowXEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AcrylicWindowXEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\WindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SelectedDatesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
@@ -111,6 +116,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
