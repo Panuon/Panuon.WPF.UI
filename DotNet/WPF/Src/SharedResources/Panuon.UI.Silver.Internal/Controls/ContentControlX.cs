@@ -123,6 +123,17 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.Register("Source", typeof(FrameworkElement), typeof(ContentControlX));
         #endregion
 
+        #region ExtendControl
+        public object ExtendControl
+        {
+            get { return (object)GetValue(ExtendControlProperty); }
+            set { SetValue(ExtendControlProperty, value); }
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.Register("ExtendControl", typeof(object), typeof(ContentControlX));
+        #endregion
+
         #endregion
 
         #region Functions

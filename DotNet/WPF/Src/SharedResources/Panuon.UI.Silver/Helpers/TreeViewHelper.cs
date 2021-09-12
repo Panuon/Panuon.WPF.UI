@@ -8,21 +8,6 @@ namespace Panuon.UI.Silver
     {
         #region Properties
 
-        #region IconWidth
-        public static double GetIconWidth(TreeView treeView)
-        {
-            return (double)treeView.GetValue(IconWidthProperty);
-        }
-
-        public static void SetIconWidth(TreeView treeView, double value)
-        {
-            treeView.SetValue(IconWidthProperty, value);
-        }
-
-        public static readonly DependencyProperty IconWidthProperty =
-            DependencyProperty.RegisterAttached("IconWidth", typeof(double), typeof(TreeViewHelper), new PropertyMetadata(double.NaN));
-        #endregion 
-
         #region ToggleArrowToggleButtonStyle
         public static Style GetToggleArrowToggleButtonStyle(TreeView treeView)
         {

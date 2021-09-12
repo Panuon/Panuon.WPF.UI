@@ -10,6 +10,7 @@ namespace Panuon.UI.Silver.Configurations
             WindowXStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "WindowXStyle"));
             ContentTemplate = (DataTemplate)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "ContentTemplate"));
             ButtonStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "ButtonStyle"));
+            TextBoxStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "TextBoxStyle"));
         }
         #endregion
 
@@ -48,6 +49,17 @@ namespace Panuon.UI.Silver.Configurations
 
         public static readonly DependencyProperty WindowXStyleProperty =
             DependencyProperty.Register("WindowXStyle", typeof(Style), typeof(MessageBoxXSetting));
+        #endregion
+
+        #region TextBoxStyle
+        public Style TextBoxStyle
+        {
+            get { return (Style)GetValue(TextBoxStyleProperty); }
+            set { SetValue(TextBoxStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextBoxStyleProperty =
+            DependencyProperty.Register("TextBoxStyle", typeof(Style), typeof(MessageBoxXSetting));
         #endregion
 
         #region ContentTemplate

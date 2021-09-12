@@ -46,7 +46,6 @@
         <TextBlock Text="Samples"
                    FontSize="30" />
         <ScrollViewer Grid.Row="1"
-                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"

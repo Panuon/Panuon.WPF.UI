@@ -33,7 +33,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid Width="{Binding Path=(local:ContextMenuHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
-                            <i:IconPresenter x:Name="icIcon"
+                            <i:IconPresenter x:Name="IpIcon"
                                              Content="{TemplateBinding Icon}"
                                              Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ContentControl x:Name="ccChecked"
@@ -181,7 +181,7 @@
                 <Setter TargetName="ccChecked"
                         Property="Visibility"
                         Value="Visible" />
-                <Setter TargetName="icIcon"
+                <Setter TargetName="IpIcon"
                         Property="Visibility"
                         Value="Collapsed" />
             </MultiTrigger>
@@ -204,7 +204,7 @@
                 <Setter TargetName="ccChecked"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="icIcon"
+                <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -260,7 +260,7 @@
                 <Setter TargetName="ccChecked"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="icIcon"
+                <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

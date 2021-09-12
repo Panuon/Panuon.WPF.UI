@@ -17,6 +17,12 @@
                 Value="{Binding Path=(local:TreeViewItemHelper.IsMouseDirectlyOver), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsSelected"
                 Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"

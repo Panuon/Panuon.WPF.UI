@@ -39,6 +39,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
         <Setter Property="local:ListBoxHelper.ItemsPadding"
