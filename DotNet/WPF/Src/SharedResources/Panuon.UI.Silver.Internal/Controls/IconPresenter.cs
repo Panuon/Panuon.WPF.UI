@@ -4,6 +4,7 @@ using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal
 {
@@ -16,7 +17,6 @@ namespace Panuon.UI.Silver.Internal
             ContentTemplateSelectorProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(new IconPresenterContentTemplateSelector()));
             VerticalAlignmentProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(VerticalAlignment.Stretch));
             HorizontalAlignmentProperty.OverrideMetadata(typeof(IconPresenter), new FrameworkPropertyMetadata(HorizontalAlignment.Stretch));
-
         }
         #endregion
 

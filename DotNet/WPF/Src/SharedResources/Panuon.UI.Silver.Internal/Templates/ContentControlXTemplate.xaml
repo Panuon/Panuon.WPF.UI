@@ -23,29 +23,36 @@
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="cd1"
-                                          Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
-                        <ColumnDefinition x:Name="cd2"
-                                          Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <i:IconPresenter x:Name="PART_Icon"
-                                     Grid.Row="1"
-                                     Focusable="False"
-                                     Content="{TemplateBinding Icon}"
-                                     Source="{TemplateBinding Source}" />
-                    <ContentPresenter x:Name="cpContent"
-                                      Grid.Row="1"
-                                      Grid.Column="1"
-                                      Focusable="False"
-                                      RecognizesAccessKey="True"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    <ContentControl Content="{TemplateBinding ExtendControl}" />
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="cd1"
+                                              Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition x:Name="cd2"
+                                              Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <i:IconPresenter x:Name="PART_Icon"
+                                         Grid.Row="1"
+                                         Focusable="False"
+                                         Content="{TemplateBinding Icon}"
+                                         Source="{TemplateBinding Source}" />
+                        <ContentPresenter x:Name="cpContent"
+                                          Grid.Row="1"
+                                          Grid.Column="1"
+                                          Focusable="False"
+                                          RecognizesAccessKey="True"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </Grid>
                 </Grid>
             </i:ClippingBorder>
             <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"

@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Configurations;
+using Panuon.UI.Silver.Internal.Utils;
 using System.Windows;
 
 namespace Panuon.UI.Silver
@@ -6,7 +7,13 @@ namespace Panuon.UI.Silver
     public class MessageBoxXSettings
     {
         #region Static Properties
-        public static MessageBoxXSetting Setting { get; } = new MessageBoxXSetting();
+        public static MessageBoxXSetting Setting { get; } = new MessageBoxXSetting()
+        {
+            YesButtonContent = LocalizationUtil.Yes,
+            NoButtonContent = LocalizationUtil.No,
+            CancelButtonContent = LocalizationUtil.Cancel,
+            OKButtonContent = LocalizationUtil.OK,
+        };
         #endregion
 
         #region Properties
@@ -49,6 +56,21 @@ namespace Panuon.UI.Silver
             set
             {
                 Setting.WindowXStyle = value;
+            }
+        }
+
+        #endregion
+
+        #region TextBoxStyle
+        public Style TextBoxStyle
+        {
+            get
+            {
+                return Setting.TextBoxStyle;
+            }
+            set
+            {
+                Setting.TextBoxStyle = value;
             }
         }
 
@@ -125,6 +147,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #endregion
+
     }
 
 }

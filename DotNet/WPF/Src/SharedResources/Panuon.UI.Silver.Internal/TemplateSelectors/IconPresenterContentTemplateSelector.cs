@@ -25,7 +25,7 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
                 }
             }
 
-            return CreateContentDataTemplate(item);
+            return CreateContentDataTemplate(item, container);
         }
 
         #region Function
@@ -46,7 +46,7 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
             return dataTemplate;
         }
 
-        private DataTemplate CreateContentDataTemplate(object item)
+        private DataTemplate CreateContentDataTemplate(object item, DependencyObject container)
         {
             var factory = new FrameworkElementFactory(typeof(ContentControl));
             factory.SetBinding(ContentControl.ContentProperty, new Binding() { Source = item });

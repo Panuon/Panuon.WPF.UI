@@ -20,6 +20,8 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         private const string StackPanelTemplateName = "PART_ButtonContainer";
 
+        private const string TextBoxTemplateName = "PART_TextBox";
+
         private Button _okButton;
 
         private Button _cancelButton;
@@ -27,6 +29,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         private Button _yesButton;
 
         private Button _noButton;
+
+        private TextBox _textBox;
 
         private MessageBoxButton _messageBoxButton;
 
@@ -90,6 +94,11 @@ namespace Panuon.UI.Silver.Internal.Controls
                 {
                     throw new Exception($"MessageBoxXSetting : Can not find Button named {NoButtonTemplateName} in ContentTemplate property.");
                 }
+                _textBox = FrameworkElementUtil.FindVisualChild<TextBox>(this, TextBoxTemplateName);
+                if (_textBox == null)
+                {
+                    throw new Exception($"MessageBoxXSetting : Can not find TextBox named {TextBoxTemplateName} in ContentTemplate property.");
+                }
 
                 if (_setting.ButtonStyle != null)
                 {
@@ -108,6 +117,13 @@ namespace Panuon.UI.Silver.Internal.Controls
                     if (DependencyPropertyHelper.GetValueSource(_noButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
                     {
                         _noButton.Style = _setting.ButtonStyle;
+                    }
+                }
+                if(_setting.TextBoxStyle != null)
+                {
+                    if (DependencyPropertyHelper.GetValueSource(_textBox, TextBox.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
+                    {
+                        _textBox.Style = _setting.TextBoxStyle;
                     }
                 }
 

@@ -7,6 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TextBoxStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -14,11 +15,11 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
-                Value="35"/>
+                Value="35" />
         <Setter Property="Padding"
                 Value="15,0" />
         <Setter Property="Margin"
-                Value="0,0,5,0" />
+                Value="5,0,0,0" />
         <Style.Triggers>
             <Trigger Property="IsDefault"
                      Value="True">
@@ -28,15 +29,36 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="TextBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
+        <Setter Property="Margin"
+                Value="0,10,0,10" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="IsReadOnly"
+                Value="True" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property=" local:ScrollViewerHelper.ScrollBarPosition"
+                Value="Outside" />
+    </Style>
+
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <local:StateControl CurrentState="{Binding MessageBoxIcon}"
@@ -46,41 +68,41 @@
                                    FontSize="40"
                                    Foreground="#80BEE8"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe92f;"/>
+                                   Text="&#xe92f;" />
                     </local:StateItem>
                     <local:StateItem State="Question">
                         <TextBlock Margin="10,0,20,0"
                                    FontSize="40"
                                    Foreground="#80BEE8"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe937;"/>
+                                   Text="&#xe937;" />
                     </local:StateItem>
                     <local:StateItem State="Warning">
                         <TextBlock Margin="10,0,20,0"
                                    FontSize="40"
                                    Foreground="#F9D01A"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe931;"/>
+                                   Text="&#xe931;" />
                     </local:StateItem>
                     <local:StateItem State="Error">
                         <TextBlock Margin="10,0,20,0"
                                    FontSize="40"
                                    Foreground="#FF5656"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe933;"/>
+                                   Text="&#xe933;" />
                     </local:StateItem>
                     <local:StateItem State="Success">
                         <TextBlock Margin="10,0,20,0"
                                    FontSize="40"
                                    Foreground="#75CD43"
                                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe935;"/>
+                                   Text="&#xe935;" />
                     </local:StateItem>
                 </local:StateControl>
-                <TextBlock Grid.Column="1"
-                           Text="{Binding Message}"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Center" />
+                <TextBox x:Name="PART_TextBox"
+                         Grid.Column="1"
+                         Text="{Binding Message}">
+                </TextBox>
             </Grid>
             <StackPanel x:Name="PART_ButtonContainer"
                         Grid.Row="1"
@@ -99,16 +121,14 @@
            BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
         <Setter Property="local:WindowXCaption.Buttons"
                 Value="Close" />
-        <Setter Property="MinWidth"
+        <Setter Property="Width"
                 Value="350" />
-        <Setter Property="MinHeight"
+        <Setter Property="Height"
                 Value="200" />
         <Setter Property="Padding"
-                Value="15,0,15,15" />
+                Value="10,0,10,10" />
         <Setter Property="ShowInTaskbar"
                 Value="False" />
-        <Setter Property="SizeToContent"
-                Value="WidthAndHeight" />
         <Setter Property="InteropOwnersMask"
                 Value="True" />
         <Setter Property="ResizeMode"

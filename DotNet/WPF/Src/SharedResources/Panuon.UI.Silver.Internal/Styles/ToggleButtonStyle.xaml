@@ -12,11 +12,11 @@
     <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}"
            TargetType="local:Spinner">
         <Setter Property="GlyphBrush"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:ContentControlX}, Mode=OneWay}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.ToggleButtonStyle}"
