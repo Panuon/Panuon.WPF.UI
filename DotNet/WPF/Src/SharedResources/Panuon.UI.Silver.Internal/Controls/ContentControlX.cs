@@ -134,6 +134,17 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.Register("ExtendControl", typeof(object), typeof(ContentControlX));
         #endregion
 
+        #region ExtendControlPlaceRight
+        public bool ExtendControlPlaceRight
+        {
+            get { return (bool)GetValue(ExtendControlPlaceRightProperty); }
+            set { SetValue(ExtendControlPlaceRightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ExtendControlPlaceRightProperty =
+            DependencyProperty.Register("ExtendControlPlaceRight", typeof(bool), typeof(ContentControlX));
+        #endregion
+
         #endregion
 
         #region Functions
