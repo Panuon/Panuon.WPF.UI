@@ -144,9 +144,9 @@
             </Trigger>
             <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ToggleArrowPlacement), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                          Value="Right">
-                <Setter TargetName="TgbToggle"
-                        Property="Grid.Column"
-                        Value="3" />
+                <Setter TargetName="CcMain"
+                        Property="ExtendControlPlaceRight"
+                        Value="True" />
             </DataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

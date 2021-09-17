@@ -73,6 +73,8 @@
                 Value="{Binding Path=(local:ListViewHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListViewHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding Path=(local:ListViewHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="MinHeight"
                 Value="{Binding Path=(local:ListViewHelper.ItemsMinHeight), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="MaxHeight"

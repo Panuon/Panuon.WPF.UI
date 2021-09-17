@@ -9,6 +9,10 @@ namespace Panuon.UI.Silver
 {
     public class RingProgressBar : RangeBase
     {
+        #region Fields
+        private bool _initializeHandler = true;
+        #endregion
+
         #region Ctor
         static RingProgressBar()
         {
@@ -110,6 +114,15 @@ namespace Panuon.UI.Silver
                 InternalValue = newValue;
             }
         }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            if (_initializeHandler)
+            {
+                OnInternalValueChanged();
+            }
+        }
         #endregion
 
         #region Internal Properties
@@ -149,6 +162,8 @@ namespace Panuon.UI.Silver
         #region Functions
         private void OnInternalValueChanged()
         {
+            _initializeHandler = false;
+
             var percent = (InternalValue - Minimum) / (Maximum - Minimum);
             var text = string.IsNullOrEmpty(PercentStringFormat) ? percent.ToString("P0") : string.Format(PercentStringFormat, percent);
             var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, InternalValue, percent, text);
