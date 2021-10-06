@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Samples.Views
 {
@@ -41,6 +42,14 @@ namespace Samples.Views
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.Owner = this;
             window.ShowDialog();
+        }
+
+        private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBoxX.Show(this, "Exit ?", "Tips", MessageBoxButton.YesNo, MessageBoxIcon.Question, DefaultButton.YesOK) != MessageBoxResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
         #endregion
 
@@ -104,14 +113,7 @@ namespace Samples.Views
 
 
         #endregion
-
-        private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBoxX.Show(this, "Exit ?", "Tips", MessageBoxButton.YesNo, MessageBoxIcon.Question, DefaultButton.YesOK) != MessageBoxResult.Yes)
-            {
-                e.Cancel = true;
-            }
-        }
+     
     }
 
 }
