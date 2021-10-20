@@ -5,6 +5,8 @@ namespace Panuon.UI.Silver.Internal.Utils
 {
     static class Win32Util
     {
+        #region Structs
+
         [StructLayout(LayoutKind.Sequential)]
         internal struct RECT
         {
@@ -13,13 +15,6 @@ namespace Panuon.UI.Silver.Internal.Utils
             public int Right;
             public int Bottom;
         }
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
-
-        [DllImport("user32", EntryPoint = "SetWindowPos")]
-        internal static extern int SetWindowPos(IntPtr hWnd, int hwndInsertAfter, int x, int y, int cx, int cy, int wFlags);
 
         internal enum AccentState
         {
@@ -52,9 +47,28 @@ namespace Panuon.UI.Silver.Internal.Utils
         {
             WCA_ACCENT_POLICY = 19,
         }
+        #endregion
+
+        #region Methods
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [DllImport("user32", EntryPoint = "SetWindowPos")]
+        internal static extern int SetWindowPos(IntPtr hWnd, int hwndInsertAfter, int x, int y, int cx, int cy, int wFlags);
+
+        [DllImport("user32.dll")]
+        public static extern int GetWindowLong(IntPtr hwnd, int index);
+
+        [DllImport("user32.dll")]
+        public static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
+
 
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+
+        #endregion
 
     }
 }

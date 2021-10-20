@@ -3,6 +3,7 @@ using Samples.Views.Tools;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -22,6 +23,7 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
+
         }
         #endregion
 
@@ -110,10 +112,14 @@ namespace Samples.Views
             };
             return border;
         }
-
-
         #endregion
-     
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var handler = NoticeBox.Show("ShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowSShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowSShowShowShowShowShowShowhowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowhowShowShowShowShowSShowShowShowShowShowShowhowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShow", "Title", MessageBoxIcon.Error);
+            await Task.Delay(400);
+            handler.Close();
+        }
     }
 
 }

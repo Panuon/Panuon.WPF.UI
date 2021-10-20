@@ -4,18 +4,12 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Linq;
 
 namespace Panuon.UI.Silver
 {
     public class AnimationStackPanel : StackPanel
     {
-        #region Ctor
-        public AnimationStackPanel()
-        {
-            FrameworkElementUtil.BindingPropertyIfUndefault(this, AnimationDurationProperty, GlobalSettings.Setting, GlobalSetting.AnimationDurationProperty);
-        }
-        #endregion
-
         #region Properties
 
         #region AnimationEase
@@ -37,41 +31,63 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(AnimationStackPanel));
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(AnimationStackPanel), new PropertyMetadata(TimeSpan.FromSeconds(0.5)));
+        #endregion
+
+        #region Spacing
+        public double Spacing
+        {
+            get { return (double)GetValue(SpacingProperty); }
+            set { SetValue(SpacingProperty, value); }
+        }
+
+        public static readonly DependencyProperty SpacingProperty =
+            DependencyProperty.Register("Spacing", typeof(double), typeof(AnimationStackPanel), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsArrange));
+        #endregion
+
+        #region ArrangeDirection
+        public ArrangeDirection ArrangeDirection
+        {
+            get { return (ArrangeDirection)GetValue(ArrangeDirectionProperty); }
+            set { SetValue(ArrangeDirectionProperty, value); }
+        }
+
+        public static readonly DependencyProperty ArrangeDirectionProperty =
+            DependencyProperty.Register("ArrangeDirection", typeof(ArrangeDirection), typeof(AnimationStackPanel), new FrameworkPropertyMetadata(ArrangeDirection.Normal, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
         #endregion
 
         #region Internal Properties
 
-        #region AnimateIn
-        internal static double GetAnimateIn(DependencyObject obj)
+        #region MultiplierX
+        internal static double GetMultiplierX(DependencyObject obj)
         {
-            return (double)obj.GetValue(AnimateInProperty);
+            return (double)obj.GetValue(MultiplierXProperty);
         }
 
-        internal static void SetAnimateIn(DependencyObject obj, double value)
+        internal static void SetMultiplierX(DependencyObject obj, double value)
         {
-            obj.SetValue(AnimateInProperty, value);
+            obj.SetValue(MultiplierXProperty, value);
         }
 
-        internal static readonly DependencyProperty AnimateInProperty =
-            DependencyProperty.RegisterAttached("AnimateIn", typeof(double), typeof(AnimationStackPanel), new PropertyMetadata(0d, OnAnimateInChanged));
+        internal static readonly DependencyProperty MultiplierXProperty =
+            DependencyProperty.RegisterAttached("MultiplierX", typeof(double), typeof(AnimationStackPanel), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsParentArrange));
         #endregion
 
-        #region AnimateOut
-        internal static double GetAnimateOut(DependencyObject obj)
+        #region MultiplierY
+        internal static double GetMultiplierY(DependencyObject obj)
         {
-            return (double)obj.GetValue(AnimateOutProperty);
+            return (double)obj.GetValue(MultiplierYProperty);
         }
 
-        internal static void SetAnimateOut(DependencyObject obj, double value)
+        internal static void SetMultiplierY(DependencyObject obj, double value)
         {
-            obj.SetValue(AnimateOutProperty, value);
+            obj.SetValue(MultiplierYProperty, value);
         }
 
-        internal static readonly DependencyProperty AnimateOutProperty =
-            DependencyProperty.RegisterAttached("AnimateOut", typeof(double), typeof(AnimationStackPanel), new PropertyMetadata(0d, OnAnimateInChanged));
+        internal static readonly DependencyProperty MultiplierYProperty =
+            DependencyProperty.RegisterAttached("MultiplierY", typeof(double), typeof(AnimationStackPanel), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsParentArrange));
         #endregion
 
         #endregion
@@ -84,25 +100,41 @@ namespace Panuon.UI.Silver
             var isVertical = Orientation == Orientation.Vertical;
             if (visualAdded is UIElement elementAdded)
             {
-                SetAnimateIn(elementAdded, 1);
-                AnimationUtil.BeginDoubleAnimation(elementAdded, AnimateInProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                if (isVertical)
+                {
+                    SetMultiplierX(elementAdded, 1);
+                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                }
+                else
+                {
+                    SetMultiplierY(elementAdded, -1);
+                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                }
             }
             if (visualRemoved is UIElement elementRemoved)
             {
                 var flag = false;
-                var size = 0d;
                 foreach (UIElement child in InternalChildren)
                 {
                     if (flag)
                     {
-                        SetAnimateOut(child, size);
-                        child.BeginAnimation(AnimateOutProperty, null);
-                        AnimationUtil.BeginDoubleAnimation(child, AnimateOutProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                        if (isVertical)
+                        {
+                            SetMultiplierY(child, 1);
+                            child.BeginAnimation(MultiplierYProperty, null);
+                            AnimationUtil.BeginDoubleAnimation(child, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                        }
+                        else
+                        {
+                            SetMultiplierX(child, 1);
+                            child.BeginAnimation(MultiplierXProperty, null);
+                            AnimationUtil.BeginDoubleAnimation(child, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                        }
+                        
                     }
                     if (child == null)
                     {
                         flag = true;
-                        size = isVertical ? elementRemoved.RenderSize.Height : elementRemoved.RenderSize.Width;
                     }
                 }
             }
@@ -110,27 +142,29 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region OnVisualChildrenChanged
+        #region ArrangeOverride
         protected override Size ArrangeOverride(Size finalSize)
         {
             var isVertical = Orientation == Orientation.Vertical;
+            var reverse = ArrangeDirection == ArrangeDirection.Reverse;
 
             var offset = 0d;
 
             foreach (UIElement child in InternalChildren)
             {
-                var animateIn = GetAnimateIn(child);
-                var animateOut = GetAnimateOut(child);
-                if (animateOut != 0)
+                var multiplierX = GetMultiplierX(child);
+                var multiplierY = GetMultiplierY(child);
+
+                if (!reverse)
                 {
                     if (isVertical)
                     {
-                        child.Arrange(new Rect(0, offset + animateOut, finalSize.Width, child.DesiredSize.Height));
+                        child.Arrange(new Rect(multiplierX * finalSize.Width, offset + multiplierY * child.DesiredSize.Height, finalSize.Width, child.DesiredSize.Height));
                         offset += child.DesiredSize.Height;
                     }
                     else
                     {
-                        child.Arrange(new Rect(offset + animateOut, 0, child.DesiredSize.Width, finalSize.Height));
+                        child.Arrange(new Rect(offset + multiplierX * child.DesiredSize.Width, multiplierY * finalSize.Height, child.DesiredSize.Width, finalSize.Height));
                         offset += child.DesiredSize.Width;
                     }
                 }
@@ -138,30 +172,22 @@ namespace Panuon.UI.Silver
                 {
                     if (isVertical)
                     {
-                        child.Arrange(new Rect(0, offset, finalSize.Width, (1 - animateIn) * child.DesiredSize.Height));
-                        offset += (1 - animateIn) * child.DesiredSize.Height;
+                        offset += child.DesiredSize.Height;
+                        child.Arrange(new Rect(multiplierX * finalSize.Width, finalSize.Height - offset - multiplierY * child.DesiredSize.Height, finalSize.Width, child.DesiredSize.Height));
                     }
                     else
                     {
-                        child.Arrange(new Rect(offset, 0, (1 - animateIn) * child.DesiredSize.Width, finalSize.Height));
-                        offset += (1 - animateIn) * child.DesiredSize.Width;
+                        offset += child.DesiredSize.Width;
+                        child.Arrange(new Rect(finalSize.Width - offset - multiplierX * child.DesiredSize.Width, multiplierY * finalSize.Height, child.DesiredSize.Width, finalSize.Height));
                     }
                 }
+                
+                offset += Spacing;
             }
             return finalSize;
         }
         #endregion
 
-        #endregion
-
-        #region Event Handlers
-        private static void OnAnimateInChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (VisualTreeHelper.GetParent(d) is AnimationStackPanel stackPanel)
-            {
-                stackPanel.InvalidateArrange();
-            }
-        }
         #endregion
     }
 }

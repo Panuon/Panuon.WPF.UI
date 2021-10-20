@@ -131,8 +131,6 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-       
-
         #region OnRender
         protected override void OnRender(DrawingContext drawingContext)
         {

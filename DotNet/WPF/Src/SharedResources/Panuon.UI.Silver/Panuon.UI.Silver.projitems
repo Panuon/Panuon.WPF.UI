@@ -23,6 +23,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\DateTimeTimer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\GlobalSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\MessageBoxXSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configurations\NoticeBoxSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Contracts\INoticeHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\NoticeBoxSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXItem.cs" />
@@ -37,6 +41,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Switch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AnimationEase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ArrangeDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CalendarXItemMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ContentPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DrawerPlacement.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MenuItemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\MessageBoxX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\NoticeBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ProgressBarHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\SliderHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TabControlHelper.cs" />
@@ -240,8 +246,5 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Contracts\" />
   </ItemGroup>
 </Project>

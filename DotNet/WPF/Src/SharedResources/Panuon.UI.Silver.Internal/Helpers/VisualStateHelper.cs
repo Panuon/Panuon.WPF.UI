@@ -11,157 +11,157 @@ using System.Windows.Media.Effects;
 
 namespace Panuon.UI.Silver.Internal
 {
-    static class VisualStateHelper
+    internal static class VisualStateHelper
     {
         #region Properties
 
         #region Regist
-        public static bool GetRegist(DependencyObject obj)
+        internal static bool GetRegist(DependencyObject obj)
         {
             return (bool)obj.GetValue(RegistProperty);
         }
 
-        public static void SetRegist(DependencyObject obj, bool value)
+        internal static void SetRegist(DependencyObject obj, bool value)
         {
             obj.SetValue(RegistProperty, value);
         }
 
-        public static readonly DependencyProperty RegistProperty =
+        internal static readonly DependencyProperty RegistProperty =
             DependencyProperty.RegisterAttached("Regist", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnRegistChanged));
         #endregion 
 
         #region Background
-        public static Brush GetBackground(Control control)
+        internal static Brush GetBackground(Control control)
         {
             return (Brush)control.GetValue(BackgroundProperty);
         }
 
-        public static void SetBackground(Control obj, Brush value)
+        internal static void SetBackground(Control obj, Brush value)
         {
             obj.SetValue(BackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty BackgroundProperty =
+        internal static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region Foreground
-        public static Brush GetForeground(Control control)
+        internal static Brush GetForeground(Control control)
         {
             return (Brush)control.GetValue(ForegroundProperty);
         }
 
-        public static void SetForeground(Control control, Brush value)
+        internal static void SetForeground(Control control, Brush value)
         {
             control.SetValue(ForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty ForegroundProperty =
+        internal static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region BorderBrush
-        public static Brush GetBorderBrush(Control control)
+        internal static Brush GetBorderBrush(Control control)
         {
             return (Brush)control.GetValue(BorderBrushProperty);
         }
 
-        public static void SetBorderBrush(Control control, Brush value)
+        internal static void SetBorderBrush(Control control, Brush value)
         {
             control.SetValue(BorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty BorderBrushProperty =
+        internal static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region WatermarkBrush
-        public static Brush GetWatermarkBrush(Control control)
+        internal static Brush GetWatermarkBrush(Control control)
         {
             return (Brush)control.GetValue(WatermarkBrushProperty);
         }
 
-        public static void SetWatermarkBrush(Control control, Brush value)
+        internal static void SetWatermarkBrush(Control control, Brush value)
         {
             control.SetValue(WatermarkBrushProperty, value);
         }
 
-        public static readonly DependencyProperty WatermarkBrushProperty =
+        internal static readonly DependencyProperty WatermarkBrushProperty =
             DependencyProperty.RegisterAttached("WatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region GlyphBrush
-        public static Brush GetGlyphBrush(Control control)
+        internal static Brush GetGlyphBrush(Control control)
         {
             return (Brush)control.GetValue(GlyphBrushProperty);
         }
 
-        public static void SetGlyphBrush(Control control, Brush value)
+        internal static void SetGlyphBrush(Control control, Brush value)
         {
             control.SetValue(GlyphBrushProperty, value);
         }
 
-        public static readonly DependencyProperty GlyphBrushProperty =
+        internal static readonly DependencyProperty GlyphBrushProperty =
             DependencyProperty.RegisterAttached("GlyphBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region ToggleBrush
-        public static Brush GetToggleBrush(Control control)
+        internal static Brush GetToggleBrush(Control control)
         {
             return (Brush)control.GetValue(ToggleBrushProperty);
         }
 
-        public static void SetToggleBrush(Control control, Brush value)
+        internal static void SetToggleBrush(Control control, Brush value)
         {
             control.SetValue(ToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty ToggleBrushProperty =
+        internal static readonly DependencyProperty ToggleBrushProperty =
             DependencyProperty.RegisterAttached("ToggleBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region RibbonLineBrush
-        public static Brush GetRibbonLineBrush(Control control)
+        internal static Brush GetRibbonLineBrush(Control control)
         {
             return (Brush)control.GetValue(RibbonLineBrushProperty);
         }
 
-        public static void SetRibbonLineBrush(Control control, Brush value)
+        internal static void SetRibbonLineBrush(Control control, Brush value)
         {
             control.SetValue(RibbonLineBrushProperty, value);
         }
 
-        public static readonly DependencyProperty RibbonLineBrushProperty =
+        internal static readonly DependencyProperty RibbonLineBrushProperty =
             DependencyProperty.RegisterAttached("RibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region Effect
-        public static DropShadowEffect GetEffect(DependencyObject obj)
+        internal static DropShadowEffect GetEffect(DependencyObject obj)
         {
             return (DropShadowEffect)obj.GetValue(EffectProperty);
         }
 
-        public static void SetEffect(DependencyObject obj, DropShadowEffect value)
+        internal static void SetEffect(DependencyObject obj, DropShadowEffect value)
         {
             obj.SetValue(EffectProperty, value);
         }
 
-        public static readonly DependencyProperty EffectProperty =
+        internal static readonly DependencyProperty EffectProperty =
             DependencyProperty.RegisterAttached("Effect", typeof(DropShadowEffect), typeof(VisualStateHelper));
         #endregion
 
         #region Percent
-        public static double GetPercent(DependencyObject obj)
+        internal static double GetPercent(DependencyObject obj)
         {
             return (double)obj.GetValue(PercentProperty);
         }
 
-        public static void SetPercent(DependencyObject obj, double value)
+        internal static void SetPercent(DependencyObject obj, double value)
         {
             obj.SetValue(PercentProperty, value);
         }
 
-        public static readonly DependencyProperty PercentProperty =
+        internal static readonly DependencyProperty PercentProperty =
             DependencyProperty.RegisterAttached("Percent", typeof(double), typeof(VisualStateHelper));
         #endregion 
 
@@ -170,7 +170,7 @@ namespace Panuon.UI.Silver.Internal
         #region ShadowColor Properties
 
         #region ShadowColor
-        public static readonly DependencyProperty ShadowColorProperty =
+        internal static readonly DependencyProperty ShadowColorProperty =
             DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
@@ -179,98 +179,98 @@ namespace Panuon.UI.Silver.Internal
         #region Hover Properties
 
         #region HoverBorderBrushProperty
-        public static readonly DependencyProperty HoverBorderBrushProperty =
+        internal static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverBackgroundProperty
-        public static readonly DependencyProperty HoverBackgroundProperty =
+        internal static readonly DependencyProperty HoverBackgroundProperty =
             DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverForegroundProperty
-        public static readonly DependencyProperty HoverForegroundProperty =
+        internal static readonly DependencyProperty HoverForegroundProperty =
             DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverGlyphBrushProperty
-        public static readonly DependencyProperty HoverGlyphBrushProperty =
+        internal static readonly DependencyProperty HoverGlyphBrushProperty =
             DependencyProperty.RegisterAttached("HoverGlyphBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverGlyphBrushProperty
-        public static readonly DependencyProperty HoverToggleBrushProperty =
+        internal static readonly DependencyProperty HoverToggleBrushProperty =
             DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverGlyphBrushProperty
-        public static readonly DependencyProperty HoverRibbonLineBrushProperty =
+        internal static readonly DependencyProperty HoverRibbonLineBrushProperty =
             DependencyProperty.RegisterAttached("HoverRibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region HoverBorderBrushLock
-        public static bool GetHoverBorderBrushLock(DependencyObject obj)
+        internal static bool GetHoverBorderBrushLock(DependencyObject obj)
         {
             return (bool)obj.GetValue(HoverBorderBrushLockProperty);
         }
 
-        public static void SetHoverBorderBrushLock(DependencyObject obj, bool value)
+        internal static void SetHoverBorderBrushLock(DependencyObject obj, bool value)
         {
             obj.SetValue(HoverBorderBrushLockProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBorderBrushLockProperty =
+        internal static readonly DependencyProperty HoverBorderBrushLockProperty =
             DependencyProperty.RegisterAttached("HoverBorderBrushLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
         #region HoverBackgroundLock
-        public static bool GetHoverBackgroundLock(DependencyObject obj)
+        internal static bool GetHoverBackgroundLock(DependencyObject obj)
         {
             return (bool)obj.GetValue(HoverBackgroundLockProperty);
         }
 
-        public static void SetHoverBackgroundLock(DependencyObject obj, bool value)
+        internal static void SetHoverBackgroundLock(DependencyObject obj, bool value)
         {
             obj.SetValue(HoverBackgroundLockProperty, value);
         }
 
-        public static readonly DependencyProperty HoverBackgroundLockProperty =
+        internal static readonly DependencyProperty HoverBackgroundLockProperty =
             DependencyProperty.RegisterAttached("HoverBackgroundLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
         #region HoverForegroundLock
-        public static bool GetHoverForegroundLock(DependencyObject obj)
+        internal static bool GetHoverForegroundLock(DependencyObject obj)
         {
             return (bool)obj.GetValue(HoverForegroundLockProperty);
         }
 
-        public static void SetHoverForegroundLock(DependencyObject obj, bool value)
+        internal static void SetHoverForegroundLock(DependencyObject obj, bool value)
         {
             obj.SetValue(HoverForegroundLockProperty, value);
         }
 
-        public static readonly DependencyProperty HoverForegroundLockProperty =
+        internal static readonly DependencyProperty HoverForegroundLockProperty =
             DependencyProperty.RegisterAttached("HoverForegroundLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
 
         #endregion
 
         #region IsHover
-        public static bool GetIsHover(DependencyObject obj)
+        internal static bool GetIsHover(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsHoverProperty);
         }
 
-        public static void SetIsHover(DependencyObject obj, bool value)
+        internal static void SetIsHover(DependencyObject obj, bool value)
         {
             obj.SetValue(IsHoverProperty, value);
         }
 
-        public static readonly DependencyProperty IsHoverProperty =
+        internal static readonly DependencyProperty IsHoverProperty =
             DependencyProperty.RegisterAttached("IsHover", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsHoverChanged));
         #endregion
 
         #region HoverShadowColor
-        public static readonly DependencyProperty HoverShadowColorProperty =
+        internal static readonly DependencyProperty HoverShadowColorProperty =
             DependencyProperty.RegisterAttached("HoverShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
@@ -279,42 +279,42 @@ namespace Panuon.UI.Silver.Internal
         #region Focused Properties
 
         #region FocusedBorderBrush
-        public static readonly DependencyProperty FocusedBorderBrushProperty =
+        internal static readonly DependencyProperty FocusedBorderBrushProperty =
             DependencyProperty.RegisterAttached("FocusedBorderBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region FocusedBackground
-        public static readonly DependencyProperty FocusedBackgroundProperty =
+        internal static readonly DependencyProperty FocusedBackgroundProperty =
             DependencyProperty.RegisterAttached("FocusedBackground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region FocusedForeground
-        public static readonly DependencyProperty FocusedForegroundProperty =
+        internal static readonly DependencyProperty FocusedForegroundProperty =
             DependencyProperty.RegisterAttached("FocusedForeground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region FocusedShadowColor
-        public static readonly DependencyProperty FocusedShadowColorProperty =
+        internal static readonly DependencyProperty FocusedShadowColorProperty =
             DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
         #region FocusedWatermarkBrush
-        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
+        internal static readonly DependencyProperty FocusedWatermarkBrushProperty =
             DependencyProperty.RegisterAttached("FocusedWatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region IsFocused
-        public static bool GetIsFocused(DependencyObject obj)
+        internal static bool GetIsFocused(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsFocusedProperty);
         }
 
-        public static void SetIsFocused(DependencyObject obj, bool value)
+        internal static void SetIsFocused(DependencyObject obj, bool value)
         {
             obj.SetValue(IsFocusedProperty, value);
         }
 
-        public static readonly DependencyProperty IsFocusedProperty =
+        internal static readonly DependencyProperty IsFocusedProperty =
             DependencyProperty.RegisterAttached("IsFocused", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsFocusedChanged));
         #endregion
 
@@ -323,22 +323,22 @@ namespace Panuon.UI.Silver.Internal
         #region Selected Properties
 
         #region SelectedShadowColor
-        public static readonly DependencyProperty SelectedShadowColorProperty =
+        internal static readonly DependencyProperty SelectedShadowColorProperty =
             DependencyProperty.RegisterAttached("SelectedShadowColor", typeof(Color?), typeof(VisualStateHelper), new PropertyMetadata(OnSelectedShadowColorChanged));
         #endregion
 
         #region IsSelected
-        public static bool GetIsSelected(DependencyObject obj)
+        internal static bool GetIsSelected(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsSelectedProperty);
         }
 
-        public static void SetIsSelected(DependencyObject obj, bool value)
+        internal static void SetIsSelected(DependencyObject obj, bool value)
         {
             obj.SetValue(IsSelectedProperty, value);
         }
 
-        public static readonly DependencyProperty IsSelectedProperty =
+        internal static readonly DependencyProperty IsSelectedProperty =
             DependencyProperty.RegisterAttached("IsSelected", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsSelectedChanged));
         #endregion
 
@@ -347,17 +347,17 @@ namespace Panuon.UI.Silver.Internal
         #region CheckedProperty
 
         #region IsChecked
-        public static bool? GetIsChecked(DependencyObject obj)
+        internal static bool? GetIsChecked(DependencyObject obj)
         {
             return (bool?)obj.GetValue(IsCheckedProperty);
         }
 
-        public static void SetIsChecked(DependencyObject obj, bool? value)
+        internal static void SetIsChecked(DependencyObject obj, bool? value)
         {
             obj.SetValue(IsCheckedProperty, value);
         }
 
-        public static readonly DependencyProperty IsCheckedProperty =
+        internal static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.RegisterAttached("IsChecked", typeof(bool?), typeof(VisualStateHelper), new PropertyMetadata(OnIsCheckedChanged));
         #endregion
 

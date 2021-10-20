@@ -86,10 +86,14 @@
                         Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button x:Name="PART_CancelButton" />
-                <Button x:Name="PART_NoButton" />
-                <Button x:Name="PART_YesButton" />
-                <Button x:Name="PART_OKButton" />
+                <Button x:Name="PART_CancelButton" 
+                        Style="{Binding ButtonStyle}"/>
+                <Button x:Name="PART_NoButton"
+                        Style="{Binding ButtonStyle}" />
+                <Button x:Name="PART_YesButton"
+                        Style="{Binding ButtonStyle}" />
+                <Button x:Name="PART_OKButton"
+                        Style="{Binding ButtonStyle}" />
             </StackPanel>
         </Grid>
     </DataTemplate>
