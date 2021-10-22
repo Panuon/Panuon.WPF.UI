@@ -20,8 +20,6 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         private const string StackPanelTemplateName = "PART_ButtonContainer";
 
-        private const string TextBoxTemplateName = "PART_TextBox";
-
         private Button _okButton;
 
         private Button _cancelButton;
@@ -29,8 +27,6 @@ namespace Panuon.UI.Silver.Internal.Controls
         private Button _yesButton;
 
         private Button _noButton;
-
-        private TextBox _textBox;
 
         private MessageBoxButton _messageBoxButton;
 
@@ -56,6 +52,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 Message = message,
                 Caption = caption,
                 MessageBoxIcon = icon,
+                ButtonStyle = setting.ButtonStyle,
             };
 
             Style = setting.WindowXStyle;
@@ -94,38 +91,6 @@ namespace Panuon.UI.Silver.Internal.Controls
                 {
                     throw new Exception($"MessageBoxXSetting : Can not find Button named {NoButtonTemplateName} in ContentTemplate property.");
                 }
-                _textBox = FrameworkElementUtil.FindVisualChild<TextBox>(this, TextBoxTemplateName);
-                if (_textBox == null)
-                {
-                    throw new Exception($"MessageBoxXSetting : Can not find TextBox named {TextBoxTemplateName} in ContentTemplate property.");
-                }
-
-                if (_setting.ButtonStyle != null)
-                {
-                    if (DependencyPropertyHelper.GetValueSource(_okButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
-                    {
-                        _okButton.Style = _setting.ButtonStyle;
-                    }
-                    if (DependencyPropertyHelper.GetValueSource(_cancelButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
-                    {
-                    _cancelButton.Style = _setting.ButtonStyle;
-                    }
-                    if (DependencyPropertyHelper.GetValueSource(_yesButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
-                    {
-                        _yesButton.Style = _setting.ButtonStyle;
-                    }
-                    if (DependencyPropertyHelper.GetValueSource(_noButton, Button.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
-                    {
-                        _noButton.Style = _setting.ButtonStyle;
-                    }
-                }
-                if(_setting.TextBoxStyle != null)
-                {
-                    if (DependencyPropertyHelper.GetValueSource(_textBox, TextBox.StyleProperty).BaseValueSource == BaseValueSource.ImplicitStyleReference)
-                    {
-                        _textBox.Style = _setting.TextBoxStyle;
-                    }
-                }
 
                 _okButton.Content = _setting.OKButtonContent;
                 _cancelButton.Content = _setting.CancelButtonContent;
@@ -142,10 +107,10 @@ namespace Panuon.UI.Silver.Internal.Controls
                 _yesButton.IsDefault = (_defaultButton == DefaultButton.YesOK);
                 _noButton.IsDefault = (_defaultButton == DefaultButton.NoCancel) || (_defaultButton == DefaultButton.CancelNo && (_messageBoxButton == MessageBoxButton.YesNoCancel || _messageBoxButton == MessageBoxButton.OKCancel));
 
-                _okButton.DataContext = "OK";
-                _cancelButton.DataContext = "Cancel";
-                _yesButton.DataContext = "Yes";
-                _noButton.DataContext = "No";
+                _okButton.Tag = "OK";
+                _cancelButton.Tag = "Cancel";
+                _yesButton.Tag = "Yes";
+                _noButton.Tag = "No";
 
                 _okButton.Click += Button_Click;
                 _cancelButton.Click += Button_Click;
@@ -159,7 +124,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            switch (button.Name) 
+            switch (button.Name)
             {
                 case OKButtonTemplateName:
                     Result = MessageBoxResult.OK;
@@ -245,5 +210,15 @@ namespace Panuon.UI.Silver.Internal.Controls
             DependencyProperty.Register("MessageBoxIcon", typeof(MessageBoxIcon), typeof(MessageBoxXWindow));
         #endregion
 
+        #region ButtonStyle
+        public Style ButtonStyle
+        {
+            get { return (Style)GetValue(ButtonStyleProperty); }
+            set { SetValue(ButtonStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty ButtonStyleProperty =
+            DependencyProperty.Register("ButtonStyle", typeof(Style), typeof(MessageBoxContent));
+        #endregion
     }
 }

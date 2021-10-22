@@ -65,7 +65,7 @@ namespace Panuon.UI.Silver
         /// <param name="caption">The title of message box.</param>
         public static MessageBoxResult Show(Window owner, string message, string caption, MessageBoxXSetting setting)
         {
-            return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting);
+            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting);
         }
 
         /// <summary>
@@ -210,6 +210,19 @@ namespace Panuon.UI.Silver
         public static MessageBoxResult Show(string message, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton)
         {
             return CallMessageBoxXWindow(null, message, caption, button, icon, defaultButton, null);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="message">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
+        public static MessageBoxResult Show(Window owner, string message, string caption, MessageBoxIcon icon, DefaultButton defaultButton)
+        {
+            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, icon, defaultButton, null);
         }
 
         /// <summary>

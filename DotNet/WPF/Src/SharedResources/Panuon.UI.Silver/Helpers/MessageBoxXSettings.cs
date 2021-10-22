@@ -61,21 +61,6 @@ namespace Panuon.UI.Silver
 
         #endregion
 
-        #region TextBoxStyle
-        public Style TextBoxStyle
-        {
-            get
-            {
-                return Setting.TextBoxStyle;
-            }
-            set
-            {
-                Setting.TextBoxStyle = value;
-            }
-        }
-
-        #endregion
-
         #region ContentTemplate
         public DataTemplate ContentTemplate
         {

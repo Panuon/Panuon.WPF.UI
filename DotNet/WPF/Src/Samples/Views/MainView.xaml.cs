@@ -42,6 +42,17 @@ namespace Samples.Views
             window.Owner = this;
             window.ShowDialog();
         }
+
+        private void BtnTestMessageBoxX_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK);
+        }
+
+        private void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
+        {
+            var handler = NoticeBox.Show("NoticeBox style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, 3000);
+            //handler.Click += ...
+        }
         #endregion
 
         #region Functions
@@ -105,13 +116,6 @@ namespace Samples.Views
 
         #endregion
 
-        private void WindowX_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBoxX.Show(this, "Exit ?", "Tips", MessageBoxButton.YesNo, MessageBoxIcon.Question, DefaultButton.YesOK) != MessageBoxResult.Yes)
-            {
-                e.Cancel = true;
-            }
-        }
     }
 
 }
