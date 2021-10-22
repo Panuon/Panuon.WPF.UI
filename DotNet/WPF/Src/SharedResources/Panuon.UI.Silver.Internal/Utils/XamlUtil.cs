@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace Panuon.UI.Silver.Internal.Utils
 {
-    internal static class ResourceUtil
+    internal static class XamlUtil
     {
         public static T CloneXamlObject<T>(T obj)
         {

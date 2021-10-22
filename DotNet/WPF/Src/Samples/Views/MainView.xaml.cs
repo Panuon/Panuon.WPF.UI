@@ -117,8 +117,10 @@ namespace Samples.Views
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var handler = NoticeBox.Show("ShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowSShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowSShowShowShowShowShowShowhowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowhowShowShowShowShowSShowShowShowShowShowShowhowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShowShow", "Title", MessageBoxIcon.Error);
-            await Task.Delay(400);
-            handler.Close();
+            handler.Clicked += delegate
+            {
+                handler.Close();
+            };
         }
     }
 

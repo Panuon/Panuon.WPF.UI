@@ -78,13 +78,13 @@ namespace Panuon.UI.Silver.Internal.Controls
         #endregion
 
         #region Methods
-        public INoticeHandler AddItem(string message, string caption, MessageBoxIcon icon, ImageSource imageIcon, int? duration, bool canClose, TimeSpan animationDuration, Style noticeBoxItemStyle)
+        public INoticeHandler AddItem(string message, string caption, MessageBoxIcon icon, ImageSource imageIcon, int? duration, bool canClose, TimeSpan animationDuration, string noticeBoxItemStyle)
         {
             return Dispatcher.Invoke(() =>
             {
                 var noticeBoxItem = new NoticeBoxItem(animationDuration, duration)
                 {
-                    Style = noticeBoxItemStyle,
+                    Style = XamlUtil.FromXaml<Style>(noticeBoxItemStyle),
                     Caption = caption,
                     Message = message,
                     Icon = icon,
@@ -108,7 +108,15 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         private void NoticeBoxItem_Closed(object sender, EventArgs e)
         {
-            _noticeHandler.TriggerClosed(sender as NoticeBoxItem);
+            var noticeBoxItem = sender as NoticeBoxItem;
+            Dispatcher.Invoke(() =>
+            {
+                if (_astkItems.Children.Contains(noticeBoxItem))
+                {
+                    _astkItems.Children.Remove(noticeBoxItem);
+                }
+            });
+            _noticeHandler.TriggerClosed(noticeBoxItem);
         }
         #endregion
     }

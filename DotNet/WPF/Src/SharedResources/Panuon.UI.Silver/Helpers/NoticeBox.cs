@@ -86,7 +86,7 @@ namespace Panuon.UI.Silver
             var setting = NoticeBoxSettings.Setting;
             var animationEase = setting.AnimationEase;
             var animationDuration = setting.AnimationDuration;
-            var cardStyle = setting.NoticeBoxItemStyle;
+            var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
 
             if (_noticeWindow == null)
             {
@@ -115,7 +115,7 @@ namespace Panuon.UI.Silver
                     _noticeWindow.Show();
                 }
             }
-           var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, duration, canClose, animationDuration, cardStyle);
+           var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, duration, canClose, animationDuration, noticeBoxItemStyle);
             return handler;
         }
         #endregion

@@ -3,69 +3,72 @@ using Panuon.UI.Silver.Configurations;
 using System;
 using System.Windows;
 
-public class NoticeBoxSettings
+namespace Panuon.UI.Silver
 {
-    #region Static Properties
-    public static NoticeBoxSetting Setting { get; } = new NoticeBoxSetting();
-    #endregion
-
-    #region Properties
-
-    #region CreateOnNewThread
-    public bool CreateOnNewThread
+    public class NoticeBoxSettings
     {
-        get
-        {
-            return Setting.CreateOnNewThread;
-        }
-        set
-        {
-            Setting.CreateOnNewThread = value;
-        }
-    }
-    #endregion
+        #region Static Properties
+        public static NoticeBoxSetting Setting { get; } = new NoticeBoxSetting();
+        #endregion
 
-    #region NoticeBoxItemStyle
-    public Style NoticeBoxItemStyle
-    {
-        get
-        {
-            return Setting.NoticeBoxItemStyle;
-        }
-        set
-        {
-            Setting.NoticeBoxItemStyle = value;
-        }
-    }
-    #endregion
+        #region Properties
 
-    #region AnimationDuration
-    public TimeSpan AnimationDuration
-    {
-        get
+        #region CreateOnNewThread
+        public bool CreateOnNewThread
         {
-            return Setting.AnimationDuration;
+            get
+            {
+                return Setting.CreateOnNewThread;
+            }
+            set
+            {
+                Setting.CreateOnNewThread = value;
+            }
         }
-        set
-        {
-            Setting.AnimationDuration = value;
-        }
-    }
-    #endregion
+        #endregion
 
-    #region AnimationEase
-    public AnimationEase AnimationEase
-    {
-        get
+        #region NoticeBoxItemStyle
+        public Style NoticeBoxItemStyle
         {
-            return Setting.AnimationEase;
+            get
+            {
+                return Setting.NoticeBoxItemStyle;
+            }
+            set
+            {
+                Setting.NoticeBoxItemStyle = value;
+            }
         }
-        set
-        {
-            Setting.AnimationEase = value;
-        }
-    }
-    #endregion
+        #endregion
 
-    #endregion
+        #region AnimationDuration
+        public TimeSpan AnimationDuration
+        {
+            get
+            {
+                return Setting.AnimationDuration;
+            }
+            set
+            {
+                Setting.AnimationDuration = value;
+            }
+        }
+        #endregion
+
+        #region AnimationEase
+        public AnimationEase AnimationEase
+        {
+            get
+            {
+                return Setting.AnimationEase;
+            }
+            set
+            {
+                Setting.AnimationEase = value;
+            }
+        }
+        #endregion
+
+        #endregion
+    }
 }

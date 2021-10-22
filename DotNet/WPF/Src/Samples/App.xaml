@@ -9,7 +9,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    
                     <pu:MessageBoxXSettings x:Key="setting">
                         <pu:MessageBoxXSettings.ButtonStyle>
                             <Style TargetType="Button"
@@ -28,6 +27,19 @@
                             </Style>
                         </pu:MessageBoxXSettings.ButtonStyle>
                     </pu:MessageBoxXSettings>
+                    
+                    <pu:NoticeBoxSettings x:Key="noticeSetting">
+                        <pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                            <Style TargetType="pu:NoticeBoxItem"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type pu:NoticeBox}}}">
+                                <Setter Property="Background"
+                                        Value="#1E1E1E" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                            </Style>
+                        </pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                    </pu:NoticeBoxSettings>
+                    
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />
             </ResourceDictionary.MergedDictionaries>
