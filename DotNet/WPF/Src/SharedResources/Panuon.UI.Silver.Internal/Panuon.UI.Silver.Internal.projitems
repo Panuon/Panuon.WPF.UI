@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXDayPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentControlX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomPopup.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VisualStateHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Implements\NoticeHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXDayItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Win32Util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowChromeUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\XamlUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
@@ -128,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\ListViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\NoticeBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\NoticeBoxItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,6 +339,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\RingProgressBarTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\NoticeBoxItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

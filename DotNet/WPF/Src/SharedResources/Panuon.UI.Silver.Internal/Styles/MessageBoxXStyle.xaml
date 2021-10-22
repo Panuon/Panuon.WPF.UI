@@ -7,7 +7,6 @@
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TextBoxStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -19,7 +18,7 @@
         <Setter Property="Padding"
                 Value="15,0" />
         <Setter Property="Margin"
-                Value="5,0,0,0" />
+                Value="0,0,5,0" />
         <Style.Triggers>
             <Trigger Property="IsDefault"
                      Value="True">
@@ -27,27 +26,6 @@
                         Value="#D1D1D1" />
             </Trigger>
         </Style.Triggers>
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
-           TargetType="TextBox"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
-        <Setter Property="Margin"
-                Value="0,10,0,10" />
-        <Setter Property="BorderThickness"
-                Value="0" />
-        <Setter Property="IsReadOnly"
-                Value="True" />
-        <Setter Property="Padding"
-                Value="0" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
-        <Setter Property="TextWrapping"
-                Value="Wrap" />
-        <Setter Property="VerticalScrollBarVisibility"
-                Value="Auto" />
-        <Setter Property=" local:ScrollViewerHelper.ScrollBarPosition"
-                Value="Outside" />
     </Style>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
@@ -99,19 +77,23 @@
                                    Text="&#xe935;" />
                     </local:StateItem>
                 </local:StateControl>
-                <TextBox x:Name="PART_TextBox"
-                         Grid.Column="1"
-                         Text="{Binding Message}">
-                </TextBox>
+                <TextBlock Grid.Column="1"
+                           Text="{Binding Message}"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Center" />
             </Grid>
             <StackPanel x:Name="PART_ButtonContainer"
                         Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right">
-                <Button x:Name="PART_CancelButton" />
-                <Button x:Name="PART_NoButton" />
-                <Button x:Name="PART_YesButton" />
-                <Button x:Name="PART_OKButton" />
+                <Button x:Name="PART_CancelButton"
+                        Style="{Binding ButtonStyle}" />
+                <Button x:Name="PART_NoButton"
+                        Style="{Binding ButtonStyle}" />
+                <Button x:Name="PART_YesButton"
+                        Style="{Binding ButtonStyle}" />
+                <Button x:Name="PART_OKButton"
+                        Style="{Binding ButtonStyle}" />
             </StackPanel>
         </Grid>
     </DataTemplate>
@@ -121,14 +103,16 @@
            BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
         <Setter Property="local:WindowXCaption.Buttons"
                 Value="Close" />
-        <Setter Property="Width"
+        <Setter Property="MinWidth"
                 Value="350" />
-        <Setter Property="Height"
+        <Setter Property="MinHeight"
                 Value="200" />
         <Setter Property="Padding"
-                Value="10,0,10,10" />
+                Value="15,0,15,15" />
         <Setter Property="ShowInTaskbar"
                 Value="False" />
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
         <Setter Property="InteropOwnersMask"
                 Value="True" />
         <Setter Property="ResizeMode"
