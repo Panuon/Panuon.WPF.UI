@@ -620,6 +620,21 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region Routed Events
+        public static void AddRowDoubleClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.AddHandler(RowDoubleClickEvent, handler);
+        }
+
+        public static void RemoveRowDoubleClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.RemoveHandler(RowDoubleClickEvent, handler);
+        }
+
+        public static readonly RoutedEvent RowDoubleClickEvent
+            = EventManager.RegisterRoutedEvent("RowDoubleClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(DataGridHelper));
+        #endregion
+
         #region Methods
         public static void SortColumn(DataGrid dataGrid, string propertyName, ListSortDirection direction)
         {
@@ -709,6 +724,21 @@ namespace Panuon.UI.Silver
 
         internal static readonly DependencyProperty DataGridColumnDictionaryProperty =
             DependencyProperty.RegisterAttached("DataGridColumnDictionary", typeof(Dictionary<string, DataGridColumn>), typeof(DataGridHelper));
+        #endregion
+
+        #region RowHook
+        internal static bool GetRowHook(DataGridRow dataGridRow)
+        {
+            return (bool)dataGridRow.GetValue(RowHookProperty);
+        }
+
+        internal static void SetRowHook(DataGridRow dataGridRow, bool value)
+        {
+            dataGridRow.SetValue(RowHookProperty, value);
+        }
+
+        internal static readonly DependencyProperty RowHookProperty =
+            DependencyProperty.RegisterAttached("RowHook", typeof(bool), typeof(DataGridHelper), new PropertyMetadata(OnRowHookChanged));
         #endregion
 
         #endregion
@@ -1130,6 +1160,27 @@ namespace Panuon.UI.Silver
                 dictionary.Add(e.PropertyName, e.Column);
             }
         }
+
+        private static void OnRowHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var row = (DataGridRow)d;
+            row.MouseDoubleClick -= DataGridRow_MouseDoubleClick;
+            if ((bool)e.NewValue)
+            {
+                row.MouseDoubleClick += DataGridRow_MouseDoubleClick;
+            }
+        }
+
+        private static void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var row = sender as DataGridRow;
+            var dataGrid = FrameworkElementUtil.FindVisualParent<DataGrid>(row);
+            if (dataGrid != null)
+            {
+                row.RaiseEvent(new RoutedEventArgs(RowDoubleClickEvent));
+            }
+        }
+
         #endregion
 
         #region Functions

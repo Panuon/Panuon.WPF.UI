@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Panuon.UI.Silver.Internal.TemplateSelectors
 {
@@ -16,16 +18,27 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
                 {
                     return CreateImageDataTemplate(item);
                 }
-                else if (item is string iconString)
+                else if (item is string stringItem)
                 {
-                    if (Uri.IsWellFormedUriString(iconString, UriKind.RelativeOrAbsolute))
+                    try
                     {
+                        new ResourceDictionary()
+                        {
+                            Source = new Uri(stringItem, UriKind.RelativeOrAbsolute),
+                        };
                         return CreateImageDataTemplate(item);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (!(ex is FileNotFoundException || ex is IOException))
+                        {
+                            return CreateImageDataTemplate(item);
+                        }
                     }
                 }
             }
 
-            return CreateContentDataTemplate(item, container);
+            return CreateContentDataTemplate(item);
         }
 
         #region Function
@@ -46,7 +59,7 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
             return dataTemplate;
         }
 
-        private DataTemplate CreateContentDataTemplate(object item, DependencyObject container)
+        private DataTemplate CreateContentDataTemplate(object item)
         {
             var factory = new FrameworkElementFactory(typeof(ContentControl));
             factory.SetBinding(ContentControl.ContentProperty, new Binding() { Source = item });

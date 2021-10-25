@@ -273,6 +273,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ListViewHelper), new PropertyMetadata(double.NaN));
         #endregion
 
+        #region ItemsPadding
+        public static Thickness GetItemsPadding(ListView listView)
+        {
+            return (Thickness)listView.GetValue(ItemsPaddingProperty);
+        }
+
+        public static void SetItemsPadding(ListView listView, Thickness value)
+        {
+            listView.SetValue(ItemsPaddingProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsPaddingProperty =
+            DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(ListViewHelper));
+        #endregion
+
         #region ItemsMargin
         public static Thickness GetItemsMargin(ListView listView)
         {

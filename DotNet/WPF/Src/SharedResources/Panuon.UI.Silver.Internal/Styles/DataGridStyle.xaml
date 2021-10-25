@@ -144,8 +144,10 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DataGridRowStyle}"
            TargetType="DataGridRow">
+        <Setter Property="local:DataGridHelper.RowHook"
+                Value="True" />
         <Setter Property="Background"
-                Value="Transparent" />
+                Value="{Binding RowBackground, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="MaxHeight"

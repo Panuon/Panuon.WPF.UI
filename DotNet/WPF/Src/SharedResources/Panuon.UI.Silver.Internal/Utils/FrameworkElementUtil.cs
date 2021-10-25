@@ -118,6 +118,18 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
         #endregion
 
+        #region FindVisualParent
+        public static T FindVisualParent<T>(DependencyObject obj)
+            where T : DependencyObject
+        {
+            while (obj != null && !(obj is T))
+            {
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+            return obj as T;
+        }
+        #endregion
+
         #endregion
 
     }
