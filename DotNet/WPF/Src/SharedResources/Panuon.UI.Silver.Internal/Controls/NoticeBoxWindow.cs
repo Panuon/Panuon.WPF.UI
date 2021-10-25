@@ -80,7 +80,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         #region Methods
         public INoticeHandler AddItem(string message, string caption, MessageBoxIcon icon, ImageSource imageIcon, int? duration, bool canClose, TimeSpan animationDuration, string noticeBoxItemStyle)
         {
-            return Dispatcher.Invoke(() =>
+            return (INoticeHandler)Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
                 var noticeBoxItem = new NoticeBoxItem(animationDuration, duration)
                 {
@@ -96,7 +96,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 _noticeHandler = new NoticeHandlerImpl(noticeBoxItem);
                 _astkItems.Children.Add(noticeBoxItem);
                 return _noticeHandler;
-            });
+            }));
         }
         #endregion
 
@@ -109,13 +109,13 @@ namespace Panuon.UI.Silver.Internal.Controls
         private void NoticeBoxItem_Closed(object sender, EventArgs e)
         {
             var noticeBoxItem = sender as NoticeBoxItem;
-            Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(new Action(() =>
             {
                 if (_astkItems.Children.Contains(noticeBoxItem))
                 {
                     _astkItems.Children.Remove(noticeBoxItem);
                 }
-            });
+            }));
             _noticeHandler.TriggerClosed(noticeBoxItem);
         }
         #endregion

@@ -214,7 +214,7 @@ namespace Panuon.UI.Silver
         #region Methods
         internal void Close()
         {
-            Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(new Action(() =>
             {
 
                 if (_closed)
@@ -227,7 +227,7 @@ namespace Panuon.UI.Silver
                 {
                     Closed?.Invoke(this, new EventArgs());
                 });
-            });
+            }));
         }
         #endregion
 
