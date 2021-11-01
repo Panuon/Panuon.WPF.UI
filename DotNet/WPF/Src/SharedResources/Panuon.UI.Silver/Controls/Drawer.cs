@@ -12,6 +12,10 @@ namespace Panuon.UI.Silver
 {
     public class Drawer : ContentControl
     {
+        #region Fields
+        private bool _isBound;
+        #endregion
+
         #region Ctor
         static Drawer()
         {
@@ -134,8 +138,10 @@ namespace Panuon.UI.Silver
         #region Overrides
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
+            _isBound = true;
             OpenOrClose();
         }
+
         #endregion
 
         #region Event Handlers
@@ -163,6 +169,11 @@ namespace Panuon.UI.Silver
         #region Functions
         private void OpenOrClose()
         {
+            if (!_isBound)
+            {
+                return;
+            }
+
             if (IsOpen)
             {
                 if (!StaysOpen)
@@ -176,7 +187,7 @@ namespace Panuon.UI.Silver
                 case DrawerPlacement.Right:
                     if (double.IsPositiveInfinity(MaxWidth))
                     {
-                        throw new Exception("Drawer.MaxWidth must have a ensured value.");
+                        return;
                     }
                     AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, IsOpen ? (MaxWidth - ShadowHelper.GetBlurRadius(this)) : MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
                     break;

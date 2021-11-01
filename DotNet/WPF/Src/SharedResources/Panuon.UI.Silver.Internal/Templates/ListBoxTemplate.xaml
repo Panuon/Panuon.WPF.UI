@@ -21,4 +21,13 @@
         </Border>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxNonScrollableTemplate}"
+                     TargetType="ListBox">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <ItemsPresenter />
+        </Border>
+    </ControlTemplate>
+
 </ResourceDictionary>

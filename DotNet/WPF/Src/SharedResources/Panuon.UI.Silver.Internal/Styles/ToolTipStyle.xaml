@@ -21,6 +21,8 @@
                 Value="{Binding Path=(local:ToolTipHelper.BorderBrush), RelativeSource={RelativeSource Self}}" />
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:ToolTipHelper.BorderThickness), RelativeSource={RelativeSource Self}}" />
+        <Setter Property="FontSize"
+                Value="{Binding Path=(local:ToolTipHelper.FontSize), RelativeSource={RelativeSource Self}}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:ToolTipHelper.Padding), RelativeSource={RelativeSource Self}}" />
         <Setter Property="VerticalOffset"

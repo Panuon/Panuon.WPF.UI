@@ -13,7 +13,7 @@
                      TargetType="TreeViewItem">
         <StackPanel>
             <i:ContentControlX x:Name="CcMain"
-                               Source="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

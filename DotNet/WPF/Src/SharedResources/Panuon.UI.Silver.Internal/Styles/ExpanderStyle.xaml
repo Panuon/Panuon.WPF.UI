@@ -92,6 +92,10 @@
            TargetType="Expander">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="8,0,0,0" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -101,7 +105,7 @@
         <Setter Property="local:ExpanderHelper.HeaderSeparatorThickness"
                 Value="1" />
         <Setter Property="local:ExpanderHelper.HeaderSeparatorVisibility"
-                Value="Visible" />
+                Value="Collapsed" />
         <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
                 Value="Center" />
         <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"

@@ -85,6 +85,7 @@
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Row="1"
+                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent" />
             </Grid>
         </Border>
@@ -246,6 +247,7 @@
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Column="1"
+                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent" />
             </Grid>
         </Border>
@@ -293,7 +295,7 @@
                         Value="Auto" />
                 <Setter TargetName="RdEndBlank"
                         Property="Height"
-                        Value="Auto" />
+                        Value="*" />
             </Trigger>
             <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
                      Value="Stretch">

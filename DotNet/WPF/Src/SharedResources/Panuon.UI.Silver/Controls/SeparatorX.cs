@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,7 +19,6 @@ namespace Panuon.UI.Silver
         {
             IsHitTestVisibleProperty.OverrideMetadata(typeof(SeparatorX), new FrameworkPropertyMetadata(false));
             FocusableProperty.OverrideMetadata(typeof(SeparatorX), new FrameworkPropertyMetadata(false));
-            RenderOptions.EdgeModeProperty.OverrideMetadata(typeof(SeparatorX), new FrameworkPropertyMetadata(EdgeMode.Aliased));
         }
 
         public SeparatorX()
@@ -131,8 +131,6 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-       
-
         #region OnRender
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -142,13 +140,14 @@ namespace Panuon.UI.Silver
             }
             if (_isVertical)
             {
-                drawingContext.DrawLine(_pen, new Point(StrokeThickness, 0), new Point(StrokeThickness, RenderSize.Height));
+                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(0, 0), new Point(0, RenderSize.Height));
             }
             else
             {
-                drawingContext.DrawLine(_pen, new Point(0, StrokeThickness), new Point(RenderSize.Width, StrokeThickness));
+                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(0, 0), new Point(RenderSize.Width, 0));
             }
         }
+
         #endregion
 
         #endregion
