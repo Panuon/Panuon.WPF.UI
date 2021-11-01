@@ -15,6 +15,7 @@ namespace Panuon.UI.Silver
         static Spinner()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Spinner), new FrameworkPropertyMetadata(typeof(Spinner)));
+            FocusableProperty.OverrideMetadata(typeof(Spinner), new FrameworkPropertyMetadata(false));
         }
 
         public Spinner()

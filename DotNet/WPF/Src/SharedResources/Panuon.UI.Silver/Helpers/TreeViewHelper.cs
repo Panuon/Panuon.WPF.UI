@@ -38,6 +38,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ToggleArrowPlacement", typeof(ToggleArrowPlacement), typeof(TreeViewHelper));
         #endregion
 
+        #region Scrollable
+        public static bool GetScrollable(TreeView treeView)
+        {
+            return (bool)treeView.GetValue(ScrollableProperty);
+        }
+
+        public static void SetScrollable(TreeView treeView, bool value)
+        {
+            treeView.SetValue(ScrollableProperty, value);
+        }
+
+        public static readonly DependencyProperty ScrollableProperty =
+            DependencyProperty.RegisterAttached("Scrollable", typeof(bool), typeof(TreeViewHelper), new PropertyMetadata(true));
+        #endregion
+
         #region ItemsProperty
 
         #region ItemsIcon

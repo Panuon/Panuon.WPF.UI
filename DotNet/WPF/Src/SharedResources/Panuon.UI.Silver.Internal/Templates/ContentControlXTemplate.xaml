@@ -28,6 +28,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <ContentControl x:Name="CcExtendControl"
+                                    Focusable="False"
                                     Content="{TemplateBinding ExtendControl}" />
                     <Grid Grid.Column="1">
                         <Grid.ColumnDefinitions>

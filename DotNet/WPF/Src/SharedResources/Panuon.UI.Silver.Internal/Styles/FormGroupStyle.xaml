@@ -69,6 +69,8 @@
                 Value="Center" />
         <Setter Property="HeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="MessageForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MessageTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
         <Style.Triggers>

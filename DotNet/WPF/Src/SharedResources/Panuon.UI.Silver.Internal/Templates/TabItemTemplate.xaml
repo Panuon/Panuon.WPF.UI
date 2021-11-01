@@ -26,7 +26,7 @@
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Icon="{Binding Path=(local:TabItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                IconPlacement="{Binding Path=(local:TabItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                CornerRadius="{Binding Path=(local:TabItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

@@ -17,7 +17,6 @@
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Foreground="{TemplateBinding Foreground}"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="Stretch"
@@ -25,8 +24,9 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition x:Name="RdContent"
-                                   Height="0" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <ToggleButton x:Name="TgbHeader"
@@ -73,10 +73,16 @@
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
+                <local:SeparatorX x:Name="SprtSeparator"
+                                  Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Stroke="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  StrokeThickness="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Visibility="Collapsed" />
                 <Border x:Name="PART_ContentBorder"
-                        Grid.Row="1"
-                        BorderThickness="1,0,1,1"
-                        CornerRadius="0,0,2,2">
+                        Grid.Row="2"
+                        Visibility="Collapsed">
                     <ContentPresenter Margin="{TemplateBinding Padding}" />
                 </Border>
             </Grid>
@@ -87,12 +93,18 @@
                 <Setter TargetName="TgbHeader"
                         Property="Grid.Row"
                         Value="0" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Row"
+                        Value="1" />
             </Trigger>
             <Trigger Property="ExpandDirection"
                      Value="Up">
                 <Setter TargetName="TgbHeader"
                         Property="Grid.Row"
-                        Value="2" />
+                        Value="4" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Row"
+                        Value="3" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -137,6 +149,9 @@
                 <Setter TargetName="TgbHeader"
                         Property="Foreground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IcIcon"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="local:ExpanderHelper.ToggleArrowPlacement"
                      Value="Right">
@@ -149,9 +164,12 @@
             </Trigger>
             <Trigger Property="IsExpanded"
                      Value="True">
-                <Setter  TargetName="RdContent"
-                         Property="Height"
-                         Value="Auto" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter  TargetName="PART_ContentBorder"
+                         Property="Visibility"
+                         Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -164,7 +182,6 @@
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Foreground="{TemplateBinding Foreground}"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="Stretch"
@@ -172,7 +189,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
@@ -208,6 +226,10 @@
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="0,8,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
+                        <i:IconPresenter x:Name="IcIcon"
+                                         Grid.Column="1"
+                                         Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         <ContentPresenter Grid.Row="2"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
@@ -216,9 +238,19 @@
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
-                <ContentPresenter Margin="{TemplateBinding Padding}"
+                <local:SeparatorX x:Name="SprtSeparator"
                                   Grid.Column="1"
-                                  Visibility="{Binding IsExpanded, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                  Orientation="Vertical"
+                                  HorizontalAlignment="Center"
+                                  Stroke="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  StrokeThickness="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Visibility="Collapsed" />
+                <Border x:Name="PART_ContentBorder"
+                        Grid.Column="2"
+                        Visibility="Collapsed">
+                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                </Border>
             </Grid>
         </i:ContentControlX>
         <ControlTemplate.Triggers>
@@ -227,12 +259,18 @@
                 <Setter TargetName="TgbHeader"
                         Property="Grid.Column"
                         Value="0" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Column"
+                        Value="1" />
             </Trigger>
             <Trigger Property="ExpandDirection"
                      Value="Left">
                 <Setter TargetName="TgbHeader"
                         Property="Grid.Column"
-                        Value="2" />
+                        Value="4" />
+                <Setter TargetName="SprtSeparator"
+                        Property="Grid.Column"
+                        Value="3" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -277,6 +315,9 @@
                 <Setter TargetName="TgbHeader"
                         Property="Foreground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IcIcon"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="local:ExpanderHelper.ToggleArrowPlacement"
                      Value="Right">
@@ -286,6 +327,15 @@
                 <Setter TargetName="TcTransform"
                         Property="Margin"
                         Value="0,0,0,8" />
+            </Trigger>
+            <Trigger Property="IsExpanded"
+                     Value="True">
+                <Setter TargetName="SprtSeparator"
+                        Property="Visibility"
+                        Value="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter  TargetName="PART_ContentBorder"
+                         Property="Visibility"
+                         Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

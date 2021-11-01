@@ -28,6 +28,7 @@
         public const string GroupBoxTemplate = nameof(GroupBoxTemplate);
         public const string LabelTemplate = nameof(LabelTemplate);
         public const string ListBoxTemplate = nameof(ListBoxTemplate);
+        public const string ListBoxNonScrollableTemplate = nameof(ListBoxNonScrollableTemplate);
         public const string ListBoxItemTemplate = nameof(ListBoxItemTemplate);
         public const string ListBoxItemStylelessTemplate = nameof(ListBoxItemStylelessTemplate);
         public const string ListViewColumnHeaderTemplate = nameof(ListViewColumnHeaderTemplate);
@@ -66,6 +67,7 @@
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);
         public const string TreeViewTemplate = nameof(TreeViewTemplate);
+        public const string TreeViewNonScrollableTemplate = nameof(TreeViewNonScrollableTemplate);
         public const string TreeViewItemTemplate = nameof(TreeViewItemTemplate);
         public const string WindowXTemplate = nameof(WindowXTemplate);
 

@@ -94,6 +94,11 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:ListBoxHelper.Scrollable"
+                     Value="False">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewNonScrollableTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

@@ -89,6 +89,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconPresenterContentTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\DrawingContextUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\FrameworkElementUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GeometryUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />

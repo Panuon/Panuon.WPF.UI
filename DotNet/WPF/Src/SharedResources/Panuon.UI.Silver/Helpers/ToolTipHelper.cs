@@ -70,6 +70,22 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region FontSize
+        public static double GetFontSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(FontSizeProperty);
+        }
+
+        public static void SetFontSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(FontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty FontSizeProperty =
+            DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(12d, FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
+
         #region Padding
         public static Thickness GetPadding(DependencyObject obj)
         {

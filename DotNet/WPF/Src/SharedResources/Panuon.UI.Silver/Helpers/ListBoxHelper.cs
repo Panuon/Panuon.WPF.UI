@@ -107,6 +107,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("AutoScrollIntoView", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(false, OnAutoScrollIntoViewChanged));
         #endregion
 
+        #region Scrollable
+        public static bool GetScrollable(ListBox listBox)
+        {
+            return (bool)listBox.GetValue(ScrollableProperty);
+        }
+
+        public static void SetScrollable(ListBox listBox, bool value)
+        {
+            listBox.SetValue(ScrollableProperty, value);
+        }
+
+        public static readonly DependencyProperty ScrollableProperty =
+            DependencyProperty.RegisterAttached("Scrollable", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(true));
+        #endregion
+
         #region Items Properties
 
         #region ItemsIcon

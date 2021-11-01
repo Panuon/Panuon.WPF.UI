@@ -40,7 +40,8 @@
                             Grid.Row="2"
                             Focusable="False"
                             Visibility="Collapsed"
-                            Margin="{TemplateBinding HeaderPadding}"
+                            Foreground="{TemplateBinding MessageForeground}"
+                            Margin="{TemplateBinding MessagePadding}"
                             Content="{TemplateBinding Message}"
                             ContentTemplate="{TemplateBinding MessageTemplate}" />
         </Grid>

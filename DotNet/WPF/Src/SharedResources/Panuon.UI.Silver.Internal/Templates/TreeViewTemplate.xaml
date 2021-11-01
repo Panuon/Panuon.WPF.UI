@@ -21,4 +21,13 @@
         </i:ContentControlX>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewNonScrollableTemplate}"
+                     TargetType="TreeView">
+        <i:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
+                           Background="{TemplateBinding Background}"
+                           BorderThickness="{TemplateBinding BorderThickness}">
+            <ItemsPresenter />
+        </i:ContentControlX>
+    </ControlTemplate>
+
 </ResourceDictionary>

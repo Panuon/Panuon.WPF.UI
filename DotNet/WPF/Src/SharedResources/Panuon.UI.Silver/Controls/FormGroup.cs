@@ -148,6 +148,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("MaxMessageHeight", typeof(double), typeof(FormGroup), new PropertyMetadata(double.PositiveInfinity));
         #endregion
 
+        #region MessageForeground
+        public Brush MessageForeground
+        {
+            get { return (Brush)GetValue(MessageForegroundProperty); }
+            set { SetValue(MessageForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty MessageForegroundProperty =
+            DependencyProperty.Register("MessageForeground", typeof(Brush), typeof(FormGroup));
+        #endregion
+
         #region MessagePadding
         public Thickness MessagePadding
         {
