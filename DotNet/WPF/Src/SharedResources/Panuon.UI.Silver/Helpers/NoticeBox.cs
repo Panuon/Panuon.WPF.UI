@@ -91,13 +91,13 @@ namespace Panuon.UI.Silver
             TimeSpan animationDuration = default;
             string noticeBoxItemStyle = default;
             bool createOnNewThread = false;
-            setting.Dispatcher.Invoke(() =>
+            setting.Dispatcher.Invoke(new Action(() =>
             {
                 animationEase = setting.AnimationEase;
                 animationDuration = setting.AnimationDuration;
                 noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
                 createOnNewThread = setting.CreateOnNewThread;
-            });
+            }));
 
             if (_noticeWindow == null)
             {
