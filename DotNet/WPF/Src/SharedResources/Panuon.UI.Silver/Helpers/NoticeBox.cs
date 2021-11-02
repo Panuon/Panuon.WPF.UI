@@ -87,13 +87,21 @@ namespace Panuon.UI.Silver
         private static INoticeHandler Show(string message, string caption, bool canClose, MessageBoxIcon icon, ImageSource imageIcon, int? duration)
         {
             var setting = NoticeBoxSettings.Setting;
-            var animationEase = setting.AnimationEase;
-            var animationDuration = setting.AnimationDuration;
-            var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
+            AnimationEase animationEase = default;
+            TimeSpan animationDuration = default;
+            string noticeBoxItemStyle = default;
+            bool createOnNewThread = false;
+            setting.Dispatcher.Invoke(() =>
+            {
+                animationEase = setting.AnimationEase;
+                animationDuration = setting.AnimationDuration;
+                noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
+                createOnNewThread = setting.CreateOnNewThread;
+            });
 
             if (_noticeWindow == null)
             {
-                if (setting.CreateOnNewThread)
+                if (createOnNewThread)
                 {
                     var autoReset = new AutoResetEvent(false);
                     _thread = new Thread(() =>
