@@ -3,8 +3,11 @@ using Samples.Views.Tools;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Samples.Views
 {
@@ -48,7 +51,7 @@ namespace Samples.Views
             MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK);
         }
 
-        private void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
+        private async void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
         {
             var handler = NoticeBox.Show("NoticeBox style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, 3000);
             //handler.Click += ...
@@ -104,8 +107,8 @@ namespace Samples.Views
             var border = new Border()
             {
                 Background = view.Background,
-                BorderBrush = view.BorderBrush,
-                BorderThickness = view.BorderThickness,
+                BorderBrush = view.BorderBrush ?? Brushes.Gray,
+                BorderThickness = view.BorderThickness.Left == 0 ? new Thickness(1) : view.BorderThickness,
                 Width = view.Width,
                 Height = view.Height,
                 Child = grid,

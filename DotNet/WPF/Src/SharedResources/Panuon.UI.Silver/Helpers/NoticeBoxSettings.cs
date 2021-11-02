@@ -7,8 +7,18 @@ namespace Panuon.UI.Silver
 {
     public class NoticeBoxSettings
     {
+        #region Ctor
+        static NoticeBoxSettings()
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Setting = new NoticeBoxSetting();
+            });
+        }
+        #endregion
+
         #region Static Properties
-        public static NoticeBoxSetting Setting { get; } = new NoticeBoxSetting();
+        public static NoticeBoxSetting Setting { get; private set; }
         #endregion
 
         #region Properties
