@@ -142,34 +142,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderVerticalAlignment", typeof(GroupBoxHeaderVerticalAlignment), typeof(GroupBoxHelper));
         #endregion
 
-        #region HeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetHeaderHorizontalContentAlignment(GroupBox groupBox)
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(GroupBox groupBox)
         {
-            return (HorizontalAlignment)groupBox.GetValue(HeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)groupBox.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderHorizontalContentAlignment(GroupBox groupBox, HorizontalAlignment value)
+        public static void SetHorizontalHeaderAlignment(GroupBox groupBox, HorizontalAlignment value)
         {
-            groupBox.SetValue(HeaderHorizontalContentAlignmentProperty, value);
+            groupBox.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(GroupBoxHelper));
         #endregion
 
-        #region HeaderVerticalContentAlignment
-        public static VerticalAlignment GetHeaderVerticalContentAlignment(GroupBox groupBox)
+        #region VerticalHeaderAlignment
+        public static VerticalAlignment GetVerticalHeaderAlignment(GroupBox groupBox)
         {
-            return (VerticalAlignment)groupBox.GetValue(HeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)groupBox.GetValue(VerticalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderVerticalContentAlignment(GroupBox groupBox, VerticalAlignment value)
+        public static void SetVerticalHeaderAlignment(GroupBox groupBox, VerticalAlignment value)
         {
-            groupBox.SetValue(HeaderVerticalContentAlignmentProperty, value);
+            groupBox.SetValue(VerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty VerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("VerticalHeaderAlignment", typeof(VerticalAlignment), typeof(GroupBoxHelper));
         #endregion
 
         #region HeaderSeparatorVisibility

@@ -177,9 +177,9 @@
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="VerticalContentAlignment"
-                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                Value="{Binding Path=(local:DataGridHelper.ColumnVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="HorizontalContentAlignment"
-                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                Value="{Binding Path=(local:DataGridHelper.ColumnHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:DataGridHelper.ColumnHeaderForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Background"
@@ -214,9 +214,9 @@
                 Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:DataGridHelper.ColumnHeaderVerticalContentAlignment"
+        <Setter Property="local:DataGridHelper.ColumnVerticalHeaderAlignment"
                 Value="Center" />
-        <Setter Property="local:DataGridHelper.ColumnHeaderHorizontalContentAlignment"
+        <Setter Property="local:DataGridHelper.ColumnHorizontalHeaderAlignment"
                 Value="Stretch" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPadding"
                 Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />

@@ -577,6 +577,22 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region ItemsForeground
+        public static Brush GetItemsForeground(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(ItemsForegroundProperty);
+        }
+
+        public static void SetItemsForeground(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(ItemsForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsForegroundProperty =
+            DependencyProperty.RegisterAttached("ItemsForeground", typeof(Brush), typeof(ComboBoxHelper));
+
+        #endregion
+
         #region ItemsBorderThickness
         public static Thickness GetItemsBorderThickness(ComboBox comboBox)
         {

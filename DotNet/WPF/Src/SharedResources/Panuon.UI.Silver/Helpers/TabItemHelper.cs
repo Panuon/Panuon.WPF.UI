@@ -54,6 +54,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(TabItemHelper));
         #endregion
 
+        #region FontFamily
+        public static FontFamily GetFontFamily(TabItem tabItem)
+        {
+            return (FontFamily)tabItem.GetValue(FontFamilyProperty);
+        }
+
+        public static void SetFontFamily(TabItem tabItem, FontFamily value)
+        {
+            tabItem.SetValue(FontFamilyProperty, value);
+        }
+
+        public static readonly DependencyProperty FontFamilyProperty =
+            DependencyProperty.RegisterAttached("FontFamily", typeof(FontFamily), typeof(TabItemHelper));
+
+        #endregion
+
         #region Foreground
         public static Brush GetForeground(TabItem tabItem)
         {
@@ -67,6 +83,22 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(TabItemHelper));
+
+        #endregion
+
+        #region FontSize
+        public static double GetFontSize(TabItem tabItem)
+        {
+            return (double)tabItem.GetValue(FontSizeProperty);
+        }
+
+        public static void SetFontSize(TabItem tabItem, double value)
+        {
+            tabItem.SetValue(FontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty FontSizeProperty =
+            DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(TabItemHelper));
 
         #endregion
 
@@ -143,6 +175,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty RibbonLineThicknessProperty =
             DependencyProperty.RegisterAttached("RibbonLineThickness", typeof(double), typeof(TabItemHelper));
+        #endregion
+
+        #region RibbonLineMargin
+        public static Thickness GetRibbonLineMargin(TabItem tabItem)
+        {
+            return (Thickness)tabItem.GetValue(RibbonLineMarginProperty);
+        }
+
+        public static void SetRibbonLineMargin(TabItem tabItem, Thickness value)
+        {
+            tabItem.SetValue(RibbonLineMarginProperty, value);
+        }
+
+        public static readonly DependencyProperty RibbonLineMarginProperty =
+            DependencyProperty.RegisterAttached("RibbonLineMargin", typeof(Thickness), typeof(TabItemHelper));
         #endregion
 
         #region RibbonLinePlacement
@@ -295,6 +342,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SelectedBorderThickness", typeof(Thickness?), typeof(TabItemHelper));
         #endregion
 
+        #region SelectedFontSize
+        public static double? GetSelectedFontSize(TabItem tabItem)
+        {
+            return (double?)tabItem.GetValue(SelectedFontSizeProperty);
+        }
+
+        public static void SetSelectedFontSize(TabItem tabItem, double? value)
+        {
+            tabItem.SetValue(SelectedFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedFontSizeProperty =
+            DependencyProperty.RegisterAttached("SelectedFontSize", typeof(double?), typeof(TabItemHelper));
+
+        #endregion
+
         #region SelectedCornerRadius
         public static CornerRadius? GetSelectedCornerRadius(TabItem tabItem)
         {
@@ -340,34 +403,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SelectedRibbonLineThickness", typeof(double?), typeof(TabItemHelper));
         #endregion
 
-        #region HeaderVerticalContentAlignment
-        public static VerticalAlignment GetHeaderVerticalContentAlignment(TabItem tabItem)
+        #region VerticalHeaderAlignment
+        public static VerticalAlignment GetVerticalHeaderAlignment(TabItem tabItem)
         {
-            return (VerticalAlignment)tabItem.GetValue(HeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)tabItem.GetValue(VerticalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderVerticalContentAlignment(TabItem tabItem, VerticalAlignment value)
+        public static void SetVerticalHeaderAlignment(TabItem tabItem, VerticalAlignment value)
         {
-            tabItem.SetValue(HeaderVerticalContentAlignmentProperty, value);
+            tabItem.SetValue(VerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(TabItemHelper));
+        public static readonly DependencyProperty VerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("VerticalHeaderAlignment", typeof(VerticalAlignment), typeof(TabItemHelper));
         #endregion
 
-        #region HeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetHeaderHorizontalContentAlignment(TabItem tabItem)
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(TabItem tabItem)
         {
-            return (HorizontalAlignment)tabItem.GetValue(HeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)tabItem.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderHorizontalContentAlignment(TabItem tabItem, HorizontalAlignment value)
+        public static void SetHorizontalHeaderAlignment(TabItem tabItem, HorizontalAlignment value)
         {
-            tabItem.SetValue(HeaderHorizontalContentAlignmentProperty, value);
+            tabItem.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TabItemHelper));
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(TabItemHelper));
         #endregion
 
         #region RemoveButtonVisibility

@@ -106,9 +106,9 @@
                 Value="1" />
         <Setter Property="local:ExpanderHelper.HeaderSeparatorVisibility"
                 Value="Collapsed" />
-        <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+        <Setter Property="local:ExpanderHelper.VerticalHeaderAlignment"
                 Value="Center" />
-        <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+        <Setter Property="local:ExpanderHelper.HorizontalHeaderAlignment"
                 Value="Stretch" />
         <Setter Property="local:ExpanderHelper.HeaderPadding"
                 Value="10,0" />
@@ -131,9 +131,9 @@
         <Style.Triggers>
             <Trigger Property="ExpandDirection"
                      Value="Left">
-                <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+                <Setter Property="local:ExpanderHelper.VerticalHeaderAlignment"
                         Value="Stretch" />
-                <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+                <Setter Property="local:ExpanderHelper.HorizontalHeaderAlignment"
                         Value="Center" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderLeftRightTemplate}}" />
@@ -145,9 +145,9 @@
             </Trigger>
             <Trigger Property="ExpandDirection"
                      Value="Right">
-                <Setter Property="local:ExpanderHelper.HeaderVerticalContentAlignment"
+                <Setter Property="local:ExpanderHelper.VerticalHeaderAlignment"
                         Value="Stretch" />
-                <Setter Property="local:ExpanderHelper.HeaderHorizontalContentAlignment"
+                <Setter Property="local:ExpanderHelper.HorizontalHeaderAlignment"
                         Value="Center" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.ExpanderLeftRightTemplate}}" />

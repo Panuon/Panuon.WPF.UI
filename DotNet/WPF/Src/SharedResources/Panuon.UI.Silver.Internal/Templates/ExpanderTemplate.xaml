@@ -31,17 +31,21 @@
                 </Grid.RowDefinitions>
                 <ToggleButton x:Name="TgbHeader"
                               Height="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              BorderBrush="{Binding Path=(local:ExpanderHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              BorderThickness="{Binding Path=(local:ExpanderHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ToggleButton.Style>
                         <Style TargetType="ToggleButton">
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ToggleButton">
-                                        <Border Background="{TemplateBinding Background}">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Background="{TemplateBinding Background}">
                                             <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                                         </Border>
@@ -153,6 +157,28 @@
                         Property="Foreground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="TgbHeader"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="TgbHeader"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
             <Trigger Property="local:ExpanderHelper.ToggleArrowPlacement"
                      Value="Right">
                 <Setter TargetName="TcTransform"
@@ -199,8 +225,8 @@
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ToggleButton.Style>
                         <Style TargetType="ToggleButton">
                             <Setter Property="Template">

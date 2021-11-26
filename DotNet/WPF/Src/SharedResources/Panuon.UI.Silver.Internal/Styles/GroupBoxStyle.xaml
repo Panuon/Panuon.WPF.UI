@@ -25,7 +25,7 @@
                 Value="1" />
         <Setter Property="local:GroupBoxHelper.HeaderSeparatorVisibility"
                 Value="Visible" />
-        <Setter Property="local:GroupBoxHelper.HeaderVerticalContentAlignment"
+        <Setter Property="local:GroupBoxHelper.VerticalHeaderAlignment"
                 Value="Center" />
         <Setter Property="local:GroupBoxHelper.HeaderPadding"
                 Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />

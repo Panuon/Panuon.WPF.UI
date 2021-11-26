@@ -20,9 +20,9 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHeight),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="HorizontalContentAlignment"
-                Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                Value="{Binding Path=(local:ListViewHelper.ColumnHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="VerticalContentAlignment"
-                Value="{Binding Path=(local:ListViewHelper.ColumnHeaderVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                Value="{Binding Path=(local:ListViewHelper.ColumnVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ListViewColumnHeaderTemplate}}" />
     </Style>
@@ -31,9 +31,9 @@
            TargetType="ListView">
         <Setter Property="local:ListViewHelper.Hook"
                 Value="True" />
-        <Setter Property="local:ListViewHelper.ColumnHeaderHorizontalContentAlignment"
+        <Setter Property="local:ListViewHelper.ColumnHorizontalHeaderAlignment"
                 Value="Left" />
-        <Setter Property="local:ListViewHelper.ColumnHeaderVerticalContentAlignment"
+        <Setter Property="local:ListViewHelper.ColumnVerticalHeaderAlignment"
                 Value="Center" />
         <Setter Property="local:ListViewHelper.ColumnHeaderPadding"
                 Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />

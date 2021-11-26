@@ -294,34 +294,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ColumnHeaderPanelSeparatorVisibility", typeof(Visibility), typeof(DataGridHelper));
         #endregion
 
-        #region ColumnHeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetColumnHeaderHorizontalContentAlignment(DataGrid dataGrid)
+        #region ColumnHorizontalHeaderAlignment
+        public static HorizontalAlignment GetColumnHorizontalHeaderAlignment(DataGrid dataGrid)
         {
-            return (HorizontalAlignment)dataGrid.GetValue(ColumnHeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)dataGrid.GetValue(ColumnHorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetColumnHeaderHorizontalContentAlignment(DataGrid dataGrid, HorizontalAlignment value)
+        public static void SetColumnHorizontalHeaderAlignment(DataGrid dataGrid, HorizontalAlignment value)
         {
-            dataGrid.SetValue(ColumnHeaderHorizontalContentAlignmentProperty, value);
+            dataGrid.SetValue(ColumnHorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ColumnHeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ColumnHeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(DataGridHelper));
+        public static readonly DependencyProperty ColumnHorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ColumnHorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(DataGridHelper));
         #endregion
 
-        #region ColumnHeaderVerticalContentAlignment
-        public static VerticalAlignment GetColumnHeaderVerticalContentAlignment(DataGrid dataGrid)
+        #region ColumnVerticalHeaderAlignment
+        public static VerticalAlignment GetColumnVerticalHeaderAlignment(DataGrid dataGrid)
         {
-            return (VerticalAlignment)dataGrid.GetValue(ColumnHeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)dataGrid.GetValue(ColumnVerticalHeaderAlignmentProperty);
         }
 
-        public static void SetColumnHeaderVerticalContentAlignment(DataGrid dataGrid, VerticalAlignment value)
+        public static void SetColumnVerticalHeaderAlignment(DataGrid dataGrid, VerticalAlignment value)
         {
-            dataGrid.SetValue(ColumnHeaderVerticalContentAlignmentProperty, value);
+            dataGrid.SetValue(ColumnVerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ColumnHeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ColumnHeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(DataGridHelper));
+        public static readonly DependencyProperty ColumnVerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ColumnVerticalHeaderAlignment", typeof(VerticalAlignment), typeof(DataGridHelper));
         #endregion
 
         #region UnitHoverBackground

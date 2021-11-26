@@ -131,6 +131,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(ExpanderHelper));
         #endregion
 
+        #region HeaderBorderBrush
+        public static Brush GetHeaderBorderBrush(Expander expander)
+        {
+            return (Brush)expander.GetValue(HeaderBorderBrushProperty);
+        }
+
+        public static void SetHeaderBorderBrush(Expander expander, Brush value)
+        {
+            expander.SetValue(HeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderBrush", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region HeaderBorderThickness
+        public static Thickness GetHeaderBorderThickness(Expander expander)
+        {
+            return (Thickness)expander.GetValue(HeaderBorderThicknessProperty);
+        }
+
+        public static void SetHeaderBorderThickness(Expander expander, Thickness value)
+        {
+            expander.SetValue(HeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderHelper));
+        #endregion
+
         #region HeaderHeight
         public static double GetHeaderHeight(Expander expander)
         {
@@ -146,34 +176,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(ExpanderHelper), new PropertyMetadata(double.NaN));
         #endregion
 
-        #region HeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetHeaderHorizontalContentAlignment(Expander expander)
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(Expander expander)
         {
-            return (HorizontalAlignment)expander.GetValue(HeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)expander.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderHorizontalContentAlignment(Expander expander, HorizontalAlignment value)
+        public static void SetHorizontalHeaderAlignment(Expander expander, HorizontalAlignment value)
         {
-            expander.SetValue(HeaderHorizontalContentAlignmentProperty, value);
+            expander.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ExpanderHelper));
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(ExpanderHelper));
         #endregion
 
-        #region HeaderVerticalContentAlignment
-        public static VerticalAlignment GetHeaderVerticalContentAlignment(Expander expander)
+        #region VerticalHeaderAlignment
+        public static VerticalAlignment GetVerticalHeaderAlignment(Expander expander)
         {
-            return (VerticalAlignment)expander.GetValue(HeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)expander.GetValue(VerticalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderVerticalContentAlignment(Expander expander, VerticalAlignment value)
+        public static void SetVerticalHeaderAlignment(Expander expander, VerticalAlignment value)
         {
-            expander.SetValue(HeaderVerticalContentAlignmentProperty, value);
+            expander.SetValue(VerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(ExpanderHelper));
+        public static readonly DependencyProperty VerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("VerticalHeaderAlignment", typeof(VerticalAlignment), typeof(ExpanderHelper));
         #endregion
 
         #region ExpandedHeaderForeground
@@ -204,6 +234,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ExpandedHeaderBackgroundProperty =
             DependencyProperty.RegisterAttached("ExpandedHeaderBackground", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedHeaderBorderBrush
+        public static Brush GetExpandedHeaderBorderBrush(Expander expander)
+        {
+            return (Brush)expander.GetValue(ExpandedHeaderBorderBrushProperty);
+        }
+
+        public static void SetExpandedHeaderBorderBrush(Expander expander, Brush value)
+        {
+            expander.SetValue(ExpandedHeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderBorderBrush", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedHeaderBorderThickness
+        public static Thickness? GetExpandedHeaderBorderThickness(Expander expander)
+        {
+            return (Thickness?)expander.GetValue(ExpandedHeaderBorderThicknessProperty);
+        }
+
+        public static void SetExpandedHeaderBorderThickness(Expander expander, Thickness? value)
+        {
+            expander.SetValue(ExpandedHeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderBorderThickness", typeof(Thickness?), typeof(ExpanderHelper));
         #endregion
 
         #region ExpandedBackground

@@ -55,18 +55,22 @@
                 Value="1" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineVisibility"
                 Value="Collapsed" />
-        <Setter Property="local:TabControlHelper.ItemsHeaderVerticalAlignment"
+        <Setter Property="local:TabControlHelper.ItemsVerticalAlignment"
                 Value="Stretch" />
-        <Setter Property="local:TabControlHelper.ItemsHeaderHorizontalAlignment"
+        <Setter Property="local:TabControlHelper.ItemsHorizontalAlignment"
                 Value="Stretch" />
-        <Setter Property="local:TabControlHelper.ItemsHeaderVerticalContentAlignment"
+        <Setter Property="local:TabControlHelper.ItemsVerticalHeaderAlignment"
                 Value="Center" />
-        <Setter Property="local:TabControlHelper.ItemsHeaderHorizontalContentAlignment"
+        <Setter Property="local:TabControlHelper.ItemsHorizontalHeaderAlignment"
                 Value="Center" />
         <Setter Property="local:TabControlHelper.ItemsHeight"
                 Value="30" />
         <Setter Property="local:TabControlHelper.ItemsPadding"
                 Value="5,0" />
+        <Setter Property="local:TabControlHelper.ItemsFontSize"
+                Value="{Binding FontSize ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:TabControlHelper.ItemsFontFamily"
+                Value="{Binding FontFamily ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemsForeground"
                 Value="{Binding Foreground ,RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.ItemsBackground"
