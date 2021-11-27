@@ -229,18 +229,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HeaderPanelPadding
-        public static TabPanelHorizontalAlignment GetHeaderPanelPadding(TabControl tabControl)
+        public static Thickness GetHeaderPanelPadding(TabControl tabControl)
         {
-            return (TabPanelHorizontalAlignment)tabControl.GetValue(HeaderPanelPaddingProperty);
+            return (Thickness)tabControl.GetValue(HeaderPanelPaddingProperty);
         }
 
-        public static void SetHeaderPanelPadding(TabControl tabControl, TabPanelHorizontalAlignment value)
+        public static void SetHeaderPanelPadding(TabControl tabControl, Thickness value)
         {
             tabControl.SetValue(HeaderPanelPaddingProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPanelPaddingProperty =
-            DependencyProperty.RegisterAttached("HeaderPanelPadding", typeof(TabPanelHorizontalAlignment), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("HeaderPanelPadding", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
         #region HeaderPanelRibbonLineVisibility
@@ -440,6 +440,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
+        #region ItemsFontSize
+        public static double GetItemsFontSize(TabControl tabControl)
+        {
+            return (double)tabControl.GetValue(ItemsFontSizeProperty);
+        }
+
+        public static void SetItemsFontSize(TabControl tabControl, double value)
+        {
+            tabControl.SetValue(ItemsFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsFontSizeProperty =
+            DependencyProperty.RegisterAttached("ItemsFontSize", typeof(double), typeof(TabControlHelper));
+        #endregion
+
         #region ItemsCornerRadius
         public static CornerRadius GetItemsCornerRadius(TabControl tabControl)
         {
@@ -455,64 +470,79 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsHeaderVerticalContentAlignment
-        public static VerticalAlignment GetItemsHeaderVerticalContentAlignment(TabControl tabControl)
+        #region ItemsVerticalHeaderAlignment
+        public static VerticalAlignment GetItemsVerticalHeaderAlignment(TabControl tabControl)
         {
-            return (VerticalAlignment)tabControl.GetValue(ItemsHeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)tabControl.GetValue(ItemsVerticalHeaderAlignmentProperty);
         }
 
-        public static void SetItemsHeaderVerticalContentAlignment(TabControl tabControl, VerticalAlignment value)
+        public static void SetItemsVerticalHeaderAlignment(TabControl tabControl, VerticalAlignment value)
         {
-            tabControl.SetValue(ItemsHeaderVerticalContentAlignmentProperty, value);
+            tabControl.SetValue(ItemsVerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsHeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsHeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsVerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsVerticalHeaderAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsHeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetItemsHeaderHorizontalContentAlignment(TabControl tabControl)
+        #region ItemsHorizontalHeaderAlignment
+        public static HorizontalAlignment GetItemsHorizontalHeaderAlignment(TabControl tabControl)
         {
-            return (HorizontalAlignment)tabControl.GetValue(ItemsHeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)tabControl.GetValue(ItemsHorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetItemsHeaderHorizontalContentAlignment(TabControl tabControl, HorizontalAlignment value)
+        public static void SetItemsHorizontalHeaderAlignment(TabControl tabControl, HorizontalAlignment value)
         {
-            tabControl.SetValue(ItemsHeaderHorizontalContentAlignmentProperty, value);
+            tabControl.SetValue(ItemsHorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsHeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsHeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsHorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsHeaderVerticalAlignment
-        public static VerticalAlignment GetItemsHeaderVerticalAlignment(TabControl tabControl)
+        #region ItemsVerticalAlignment
+        public static VerticalAlignment GetItemsVerticalAlignment(TabControl tabControl)
         {
-            return (VerticalAlignment)tabControl.GetValue(ItemsHeaderVerticalAlignmentProperty);
+            return (VerticalAlignment)tabControl.GetValue(ItemsVerticalAlignmentProperty);
         }
 
-        public static void SetItemsHeaderVerticalAlignment(TabControl tabControl, VerticalAlignment value)
+        public static void SetItemsVerticalAlignment(TabControl tabControl, VerticalAlignment value)
         {
-            tabControl.SetValue(ItemsHeaderVerticalAlignmentProperty, value);
+            tabControl.SetValue(ItemsVerticalAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsHeaderVerticalAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsHeaderVerticalAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsVerticalAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsVerticalAlignment", typeof(VerticalAlignment), typeof(TabControlHelper));
         #endregion
 
-        #region ItemsHeaderHorizontalAlignment
-        public static HorizontalAlignment GetItemsHeaderHorizontalAlignment(TabControl tabControl)
+        #region ItemsHorizontalAlignment
+        public static HorizontalAlignment GetItemsHorizontalAlignment(TabControl tabControl)
         {
-            return (HorizontalAlignment)tabControl.GetValue(ItemsHeaderHorizontalAlignmentProperty);
+            return (HorizontalAlignment)tabControl.GetValue(ItemsHorizontalAlignmentProperty);
         }
 
-        public static void SetItemsHeaderHorizontalAlignment(TabControl tabControl, HorizontalAlignment value)
+        public static void SetItemsHorizontalAlignment(TabControl tabControl, HorizontalAlignment value)
         {
-            tabControl.SetValue(ItemsHeaderHorizontalAlignmentProperty, value);
+            tabControl.SetValue(ItemsHorizontalAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsHeaderHorizontalAlignmentProperty =
-            DependencyProperty.RegisterAttached("ItemsHeaderHorizontalAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty ItemsHorizontalAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHorizontalAlignment", typeof(HorizontalAlignment), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsFontFamily
+        public static FontFamily GetItemsFontFamily(TabControl tabControl)
+        {
+            return (FontFamily)tabControl.GetValue(ItemsFontFamilyProperty);
+        }
+
+        public static void SetItemsFontFamily(TabControl tabControl, FontFamily value)
+        {
+            tabControl.SetValue(ItemsFontFamilyProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsFontFamilyProperty =
+            DependencyProperty.RegisterAttached("ItemsFontFamily", typeof(FontFamily), typeof(TabControlHelper));
         #endregion
 
         #region ItemsForeground
@@ -620,6 +650,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsRibbonLinePlacementProperty =
             DependencyProperty.RegisterAttached("ItemsRibbonLinePlacement", typeof(RibbonLinePlacement), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsRibbonLineMargin
+        public static Thickness GetItemsRibbonLineMargin(TabControl tabControl)
+        {
+            return (Thickness)tabControl.GetValue(ItemsRibbonLineMarginProperty);
+        }
+
+        public static void SetItemsRibbonLineMargin(TabControl tabControl, Thickness value)
+        {
+            tabControl.SetValue(ItemsRibbonLineMarginProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRibbonLineMarginProperty =
+            DependencyProperty.RegisterAttached("ItemsRibbonLineMargin", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
         #region ItemsBorderThickness
@@ -770,6 +815,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsSelectedCornerRadiusProperty =
             DependencyProperty.RegisterAttached("ItemsSelectedCornerRadius", typeof(CornerRadius?), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsSelectedFontSize
+        public static double? GetItemsSelectedFontSize(TabControl tabControl)
+        {
+            return (double?)tabControl.GetValue(ItemsSelectedFontSizeProperty);
+        }
+
+        public static void SetItemsSelectedFontSize(TabControl tabControl, double? value)
+        {
+            tabControl.SetValue(ItemsSelectedFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedFontSizeProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedFontSize", typeof(double?), typeof(TabControlHelper));
         #endregion
 
         #region ItemsSelectedRibbonLineBrush

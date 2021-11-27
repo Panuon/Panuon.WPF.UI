@@ -15,6 +15,8 @@ namespace Panuon.UI.Silver
         private ContentPresenter _contentPresenter;
 
         private ScaleTransform _scaleTransform;
+
+        private RotateTransform _rotateTransform;
         #endregion
 
         #region Ctor
@@ -60,6 +62,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ScaleY", typeof(int), typeof(TransformControl), new PropertyMetadata(1, OnScaleYChanged));
         #endregion
 
+        #region RotateAngle
+        public double RotateAngle
+        {
+            get { return (double)GetValue(RotateAngleProperty); }
+            set { SetValue(RotateAngleProperty, value); }
+        }
+
+        public static readonly DependencyProperty RotateAngleProperty =
+            DependencyProperty.Register("RotateAngle", typeof(double), typeof(TransformControl), new PropertyMetadata(0d, OnRotateAngleChanged));
+        #endregion
+
         #region AnimationDuration
         public TimeSpan AnimationDuration
         {
@@ -92,7 +105,9 @@ namespace Panuon.UI.Silver
 
             var transformGroup = new TransformGroup();
             _scaleTransform = new ScaleTransform(ScaleX, ScaleY);
+            _rotateTransform = new RotateTransform(RotateAngle);
             transformGroup.Children.Add(_scaleTransform);
+            transformGroup.Children.Add(_rotateTransform);
 
             _contentPresenter.RenderTransform = transformGroup;
         }
@@ -109,6 +124,12 @@ namespace Panuon.UI.Silver
         {
             var control = (TransformControl)d;
             control.OnScaleYChanged();
+        }
+
+        private static void OnRotateAngleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (TransformControl)d;
+            control.OnRotateAngleChanged();
         }
         #endregion
 
@@ -129,6 +150,15 @@ namespace Panuon.UI.Silver
                 return;
             }
             AnimationUtil.BeginDoubleAnimation(_scaleTransform, ScaleTransform.ScaleYProperty, null, ScaleY, AnimationDuration, null, AnimationEase);
+        }
+
+        private void OnRotateAngleChanged()
+        {
+            if (_rotateTransform == null || _rotateTransform.Angle == RotateAngle)
+            {
+                return;
+            }
+            AnimationUtil.BeginDoubleAnimation(_rotateTransform, RotateTransform.AngleProperty, null, RotateAngle, AnimationDuration, null, AnimationEase);
         }
         #endregion
     }

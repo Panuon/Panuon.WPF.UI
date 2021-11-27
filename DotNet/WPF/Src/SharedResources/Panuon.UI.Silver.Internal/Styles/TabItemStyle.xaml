@@ -41,6 +41,8 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.FontFamily"
+                Value="{Binding Path=(local:TabControlHelper.ItemsFontFamily), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.Foreground"
                 Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.Icon"
@@ -55,6 +57,8 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLineThickness"
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineMargin"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLineVisibility"
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineVisibility), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLinePlacement"
@@ -73,6 +77,8 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedForeground"
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedFontSize"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedFontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedRibbonLineBrush"
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedBorderThickness"
@@ -89,10 +95,10 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SeparatorVisibility"
                 Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabItemHelper.HeaderVerticalContentAlignment"
-                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
-        <Setter Property="local:TabItemHelper.HeaderHorizontalContentAlignment"
-                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.VerticalHeaderAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HorizontalHeaderAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.Margin"
                 Value="{Binding Path=(local:TabControlHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedWidth"
@@ -103,6 +109,8 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Width"
                 Value="{Binding Path=(local:TabControlHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.FontSize"
+                Value="{Binding Path=(local:TabControlHelper.ItemsFontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:TabControlHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Background"
@@ -112,9 +120,9 @@
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:TabControlHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="VerticalAlignment"
-                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderVerticalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsVerticalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="HorizontalAlignment"
-                Value="{Binding Path=(local:TabControlHelper.ItemsHeaderHorizontalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TabControlHelper.ItemsHorizontalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TabItemTemplate}}" />
         <Style.Triggers>

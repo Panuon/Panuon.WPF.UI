@@ -51,10 +51,16 @@ namespace Samples.Views
             MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK);
         }
 
-        private async void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
+        private void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
         {
             var handler = NoticeBox.Show("NoticeBox style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, 3000);
             //handler.Click += ...
+        }
+
+        private void BtnTestPendingBox_Click(object sender, RoutedEventArgs e)
+        {
+            var handler = PendingBox.Show(this, "PendingBox style configuration is placed in App.xaml.", "Caption", true);
+            //handler.Cancelling += ...
         }
         #endregion
 
@@ -115,8 +121,6 @@ namespace Samples.Views
             };
             return border;
         }
-
-
         #endregion
 
     }

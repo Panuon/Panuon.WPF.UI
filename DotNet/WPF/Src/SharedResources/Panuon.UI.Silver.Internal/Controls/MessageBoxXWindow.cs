@@ -72,50 +72,41 @@ namespace Panuon.UI.Silver.Internal.Controls
                 stackPanel.FlowDirection = _setting.InverseButtonsSequence ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 
                 _okButton = FrameworkElementUtil.FindVisualChild<Button>(this, OKButtonTemplateName);
-                if (_okButton == null)
+                if (_okButton != null)
                 {
-                    throw new Exception($"MessageBoxXSetting : Can not find Button named {OKButtonTemplateName} in ContentTemplate property.");
+                    _okButton.Content = _setting.OKButtonContent;
+                    _okButton.Visibility = (_messageBoxButton == MessageBoxButton.OK || _messageBoxButton == MessageBoxButton.OKCancel) ? Visibility.Visible : Visibility.Collapsed;
+                    _okButton.IsDefault = (_defaultButton == DefaultButton.YesOK && _messageBoxButton == MessageBoxButton.OK);
+                    _okButton.Tag = "OK";
+                    _okButton.Click += Button_Click;
                 }
                 _cancelButton = FrameworkElementUtil.FindVisualChild<Button>(this, CancelButtonTemplateName);
-                if (_cancelButton == null)
+                if (_cancelButton != null)
                 {
-                    throw new Exception($"MessageBoxXSetting : Can not find Button named {CancelButtonTemplateName} in ContentTemplate property.");
+                    _cancelButton.Content = _setting.CancelButtonContent;
+                    _cancelButton.Visibility = (_messageBoxButton == MessageBoxButton.OKCancel || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
+                    _cancelButton.IsDefault = (_defaultButton == DefaultButton.CancelNo) || (_defaultButton == DefaultButton.NoCancel && _messageBoxButton == MessageBoxButton.OKCancel);
+                    _cancelButton.Tag = "Cancel";
+                    _cancelButton.Click += Button_Click;
                 }
                 _yesButton = FrameworkElementUtil.FindVisualChild<Button>(this, YesButtonTemplateName);
-                if (_yesButton == null)
+                if (_yesButton != null)
                 {
-                    throw new Exception($"MessageBoxXSetting : Can not find Button named {YesButtonTemplateName} in ContentTemplate property.");
+                    _yesButton.Content = _setting.YesButtonContent;
+                    _yesButton.Visibility = (_messageBoxButton == MessageBoxButton.YesNo || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
+                    _yesButton.IsDefault = (_defaultButton == DefaultButton.YesOK);
+                    _yesButton.Tag = "Yes";
+                    _yesButton.Click += Button_Click;
                 }
                 _noButton = FrameworkElementUtil.FindVisualChild<Button>(this, NoButtonTemplateName);
-                if (_noButton == null)
+                if (_noButton != null)
                 {
-                    throw new Exception($"MessageBoxXSetting : Can not find Button named {NoButtonTemplateName} in ContentTemplate property.");
+                    _noButton.Content = _setting.NoButtonContent;
+                    _noButton.Visibility = (_messageBoxButton == MessageBoxButton.YesNo || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
+                    _noButton.IsDefault = (_defaultButton == DefaultButton.NoCancel) || (_defaultButton == DefaultButton.CancelNo && (_messageBoxButton == MessageBoxButton.YesNoCancel || _messageBoxButton == MessageBoxButton.OKCancel));
+                    _noButton.Tag = "No";
+                    _noButton.Click += Button_Click;
                 }
-
-                _okButton.Content = _setting.OKButtonContent;
-                _cancelButton.Content = _setting.CancelButtonContent;
-                _yesButton.Content = _setting.YesButtonContent;
-                _noButton.Content = _setting.NoButtonContent;
-
-                _okButton.Visibility = (_messageBoxButton == MessageBoxButton.OK || _messageBoxButton == MessageBoxButton.OKCancel) ? Visibility.Visible : Visibility.Collapsed;
-                _cancelButton.Visibility = (_messageBoxButton == MessageBoxButton.OKCancel || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
-                _yesButton.Visibility = (_messageBoxButton == MessageBoxButton.YesNo || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
-                _noButton.Visibility = (_messageBoxButton == MessageBoxButton.YesNo || _messageBoxButton == MessageBoxButton.YesNoCancel) ? Visibility.Visible : Visibility.Collapsed;
-
-                _okButton.IsDefault = (_defaultButton == DefaultButton.YesOK && _messageBoxButton == MessageBoxButton.OK);
-                _cancelButton.IsDefault = (_defaultButton == DefaultButton.CancelNo) || (_defaultButton == DefaultButton.NoCancel && _messageBoxButton == MessageBoxButton.OKCancel);
-                _yesButton.IsDefault = (_defaultButton == DefaultButton.YesOK);
-                _noButton.IsDefault = (_defaultButton == DefaultButton.NoCancel) || (_defaultButton == DefaultButton.CancelNo && (_messageBoxButton == MessageBoxButton.YesNoCancel || _messageBoxButton == MessageBoxButton.OKCancel));
-
-                _okButton.Tag = "OK";
-                _cancelButton.Tag = "Cancel";
-                _yesButton.Tag = "Yes";
-                _noButton.Tag = "No";
-
-                _okButton.Click += Button_Click;
-                _cancelButton.Click += Button_Click;
-                _yesButton.Click += Button_Click;
-                _noButton.Click += Button_Click;
 
             }), DispatcherPriority.DataBind);
 
