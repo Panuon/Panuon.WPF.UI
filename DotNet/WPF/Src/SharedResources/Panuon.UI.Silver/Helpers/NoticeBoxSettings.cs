@@ -10,15 +10,12 @@ namespace Panuon.UI.Silver
         #region Ctor
         static NoticeBoxSettings()
         {
-            Application.Current.Dispatcher.Invoke(new Action(() =>
-            {
-                Setting = new NoticeBoxSetting();
-            }));
+            Setting = new NoticeBoxSetting();
         }
         #endregion
 
         #region Static Properties
-        public static NoticeBoxSetting Setting { get; private set; }
+        public static NoticeBoxSetting Setting { get; }
         #endregion
 
         #region Properties
