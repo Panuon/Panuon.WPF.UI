@@ -176,34 +176,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(ExpanderHelper), new PropertyMetadata(double.NaN));
         #endregion
 
-        #region HeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetHeaderHorizontalContentAlignment(Expander expander)
+        #region HorizontalHeaderAlignment
+        public static HorizontalAlignment GetHorizontalHeaderAlignment(Expander expander)
         {
-            return (HorizontalAlignment)expander.GetValue(HeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)expander.GetValue(HorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderHorizontalContentAlignment(Expander expander, HorizontalAlignment value)
+        public static void SetHorizontalHeaderAlignment(Expander expander, HorizontalAlignment value)
         {
-            expander.SetValue(HeaderHorizontalContentAlignmentProperty, value);
+            expander.SetValue(HorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ExpanderHelper));
+        public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("HorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(ExpanderHelper));
         #endregion
 
-        #region HeaderVerticalContentAlignment
-        public static VerticalAlignment GetHeaderVerticalContentAlignment(Expander expander)
+        #region VerticalHeaderAlignment
+        public static VerticalAlignment GetVerticalHeaderAlignment(Expander expander)
         {
-            return (VerticalAlignment)expander.GetValue(HeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)expander.GetValue(VerticalHeaderAlignmentProperty);
         }
 
-        public static void SetHeaderVerticalContentAlignment(Expander expander, VerticalAlignment value)
+        public static void SetVerticalHeaderAlignment(Expander expander, VerticalAlignment value)
         {
-            expander.SetValue(HeaderVerticalContentAlignmentProperty, value);
+            expander.SetValue(VerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(ExpanderHelper));
+        public static readonly DependencyProperty VerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("VerticalHeaderAlignment", typeof(VerticalAlignment), typeof(ExpanderHelper));
         #endregion
 
         #region ExpandedHeaderForeground

@@ -211,34 +211,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ColumnHeaderPanelSeparatorVisibility", typeof(Visibility), typeof(ListViewHelper));
         #endregion
 
-        #region ColumnHeaderHorizontalContentAlignment
-        public static HorizontalAlignment GetColumnHeaderHorizontalContentAlignment(ListView listView)
+        #region ColumnHorizontalHeaderAlignment
+        public static HorizontalAlignment GetColumnHorizontalHeaderAlignment(ListView listView)
         {
-            return (HorizontalAlignment)listView.GetValue(ColumnHeaderHorizontalContentAlignmentProperty);
+            return (HorizontalAlignment)listView.GetValue(ColumnHorizontalHeaderAlignmentProperty);
         }
 
-        public static void SetColumnHeaderHorizontalContentAlignment(ListView listView, HorizontalAlignment value)
+        public static void SetColumnHorizontalHeaderAlignment(ListView listView, HorizontalAlignment value)
         {
-            listView.SetValue(ColumnHeaderHorizontalContentAlignmentProperty, value);
+            listView.SetValue(ColumnHorizontalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ColumnHeaderHorizontalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ColumnHeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ListViewHelper));
+        public static readonly DependencyProperty ColumnHorizontalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ColumnHorizontalHeaderAlignment", typeof(HorizontalAlignment), typeof(ListViewHelper));
         #endregion
 
-        #region ColumnHeaderVerticalContentAlignment
-        public static VerticalAlignment GetColumnHeaderVerticalContentAlignment(ListView listView)
+        #region ColumnVerticalHeaderAlignment
+        public static VerticalAlignment GetColumnVerticalHeaderAlignment(ListView listView)
         {
-            return (VerticalAlignment)listView.GetValue(ColumnHeaderVerticalContentAlignmentProperty);
+            return (VerticalAlignment)listView.GetValue(ColumnVerticalHeaderAlignmentProperty);
         }
 
-        public static void SetColumnHeaderVerticalContentAlignment(ListView listView, VerticalAlignment value)
+        public static void SetColumnVerticalHeaderAlignment(ListView listView, VerticalAlignment value)
         {
-            listView.SetValue(ColumnHeaderVerticalContentAlignmentProperty, value);
+            listView.SetValue(ColumnVerticalHeaderAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty ColumnHeaderVerticalContentAlignmentProperty =
-            DependencyProperty.RegisterAttached("ColumnHeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(ListViewHelper));
+        public static readonly DependencyProperty ColumnVerticalHeaderAlignmentProperty =
+            DependencyProperty.RegisterAttached("ColumnVerticalHeaderAlignment", typeof(VerticalAlignment), typeof(ListViewHelper));
         #endregion
 
         #region SelectedItems
