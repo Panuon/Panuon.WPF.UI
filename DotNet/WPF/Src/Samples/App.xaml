@@ -9,26 +9,55 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-                    
-                    <pu:MessageBoxXSettings x:Key="setting">
+
+                    <pu:MessageBoxXSettings x:Key="messageSetting">
                         <pu:MessageBoxXSettings.ButtonStyle>
                             <Style TargetType="Button"
                                    BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
                                 <Setter Property="pu:ButtonHelper.CornerRadius"
                                         Value="4" />
-                                <Style.Triggers >
+                                <Style.Triggers>
                                     <Trigger Property="IsDefault"
                                              Value="True">
                                         <Setter Property="Foreground"
-                                                Value="#FFFFFF"/>
+                                                Value="#FFFFFF" />
                                         <Setter Property="Background"
-                                                Value="#80BEE8"/>
+                                                Value="#80BEE8" />
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </pu:MessageBoxXSettings.ButtonStyle>
                     </pu:MessageBoxXSettings>
 
+
+                    <pu:PendingBoxSettings x:Key="pendingSetting">
+                        <pu:PendingBoxSettings.SpinnerStyle>
+                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=SpinnerStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
+                                   TargetType="pu:Spinner">
+                                <Setter Property="SpinnerStyle"
+                                        Value="Ring2" />
+                                <Setter Property="GlyphBrush"
+                                        Value="#6CBCEA" />
+                            </Style>
+                        </pu:PendingBoxSettings.SpinnerStyle>
+                        <pu:PendingBoxSettings.CancelButtonStyle>
+                            <!--Attention : CancelButtonStyle in PendingBox does not support Helpers in PanuonUI-->
+                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
+                                   TargetType="Button">
+                                <Setter Property="Background"
+                                        Value="#6CBCEA" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed"
+                                             Value="True">
+                                        <Setter Property="Background"
+                                                Value="#6CABEA" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </pu:PendingBoxSettings.CancelButtonStyle>
+                    </pu:PendingBoxSettings>
 
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />

@@ -48,6 +48,9 @@
             <Button Margin="10,0,0,0"
                     Content="NoticeBox"
                     Click="BtnTestNoticeBox_Click"/>
+            <Button Margin="10,0,0,0"
+                Content="PendingBox"
+                    Click="BtnTestPendingBox_Click"/>
         </StackPanel>
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"

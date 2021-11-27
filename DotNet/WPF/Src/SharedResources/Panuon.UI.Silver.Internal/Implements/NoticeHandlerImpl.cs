@@ -27,12 +27,12 @@ namespace Panuon.UI.Silver.Internal.Implements
             _noticeBoxItem.Close();
         }
 
-        public void TriggerClicked(NoticeBoxItem noticeBoxItem)
+        internal void TriggerClicked(NoticeBoxItem noticeBoxItem)
         {
             Click?.Invoke(noticeBoxItem, new EventArgs());
         }
 
-        public void TriggerClosed(NoticeBoxItem noticeBoxItem)
+        internal void TriggerClosed(NoticeBoxItem noticeBoxItem)
         {
             Closed?.Invoke(noticeBoxItem, new EventArgs());
         }
