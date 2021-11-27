@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -86,48 +87,45 @@ namespace Panuon.UI.Silver
         #region Functions
         private static INoticeHandler Show(string message, string caption, bool canClose, MessageBoxIcon icon, ImageSource imageIcon, int? duration)
         {
-            var setting = NoticeBoxSettings.Setting;
-            AnimationEase animationEase = default;
-            TimeSpan animationDuration = default;
-            string noticeBoxItemStyle = default;
-            bool createOnNewThread = false;
-            setting.Dispatcher.Invoke(new Action(() =>
+            return Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
-                animationEase = setting.AnimationEase;
-                animationDuration = setting.AnimationDuration;
-                noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
-                createOnNewThread = setting.CreateOnNewThread;
-            }));
+                var setting = NoticeBoxSettings.Setting;
+                var animationEase = setting.AnimationEase;
+                var animationDuration = setting.AnimationDuration;
+                var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
+                var createOnNewThread = setting.CreateOnNewThread;
 
-            if (_noticeWindow == null)
-            {
-                if (createOnNewThread)
+                if (_noticeWindow == null)
                 {
-                    var autoReset = new AutoResetEvent(false);
-                    _thread = new Thread(() =>
+                    if (createOnNewThread)
+                    {
+                        var autoReset = new AutoResetEvent(false);
+                        _thread = new Thread(() =>
+                        {
+                            _noticeWindow = new NoticeBoxWindow(animationEase, animationDuration);
+                            _noticeWindow.Closed += delegate
+                            {
+                                _noticeWindow.Dispatcher.InvokeShutdown();
+                            };
+                            _noticeWindow.Show();
+                            autoReset.Set();
+                            Dispatcher.Run();
+                        });
+                        _thread.SetApartmentState(ApartmentState.STA);
+                        _thread.IsBackground = true;
+                        _thread.Start();
+                        autoReset.WaitOne();
+                    }
+                    else
                     {
                         _noticeWindow = new NoticeBoxWindow(animationEase, animationDuration);
-                        _noticeWindow.Closed += delegate
-                        {
-                            _noticeWindow.Dispatcher.InvokeShutdown();
-                        };
                         _noticeWindow.Show();
-                        autoReset.Set();
-                        Dispatcher.Run();
-                    });
-                    _thread.SetApartmentState(ApartmentState.STA);
-                    _thread.IsBackground = true;
-                    _thread.Start();
-                    autoReset.WaitOne();
+                    }
                 }
-                else
-                {
-                    _noticeWindow = new NoticeBoxWindow(animationEase, animationDuration);
-                    _noticeWindow.Show();
-                }
-            }
-            var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, duration, canClose, animationDuration, noticeBoxItemStyle);
-            return handler;
+                var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, duration, canClose, animationDuration, noticeBoxItemStyle);
+                return handler;
+
+            }));
         }
 
         #endregion

@@ -37,7 +37,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HighlightRuleProperty =
-            DependencyProperty.RegisterAttached("HighlightRule", typeof(HighlightRule), typeof(TextBlockHelper), new PropertyMetadata(HighlightRule.All));
+            DependencyProperty.RegisterAttached("HighlightRule", typeof(HighlightRule), typeof(TextBlockHelper), new PropertyMetadata(HighlightRule.All, OnHighlightTextChanged));
         #endregion
 
         #region HighlightForeground
@@ -52,7 +52,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HighlightForegroundProperty =
-            DependencyProperty.RegisterAttached("HighlightForeground", typeof(Brush), typeof(TextBlockHelper), new PropertyMetadata(Brushes.Red));
+            DependencyProperty.RegisterAttached("HighlightForeground", typeof(Brush), typeof(TextBlockHelper), new PropertyMetadata(Brushes.Red, OnHighlightTextChanged));
         #endregion
 
         #region HighlightBackground
@@ -67,7 +67,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty HighlightBackgroundProperty =
-            DependencyProperty.RegisterAttached("HighlightBackground", typeof(Brush), typeof(TextBlockHelper), new PropertyMetadata(null));
+            DependencyProperty.RegisterAttached("HighlightBackground", typeof(Brush), typeof(TextBlockHelper), new PropertyMetadata(null, OnHighlightTextChanged));
 
         #endregion
 

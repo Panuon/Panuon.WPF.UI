@@ -264,6 +264,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(PasswordBoxHelper));
         #endregion
 
+        #region PlainButtonVisibility
+        public static AuxiliaryButtonVisibility GetPlainButtonVisibility(PasswordBox passwordBox)
+        {
+            return (AuxiliaryButtonVisibility)passwordBox.GetValue(PlainButtonVisibilityProperty);
+        }
+
+        public static void SetPlainButtonVisibility(PasswordBox passwordBox, AuxiliaryButtonVisibility value)
+        {
+            passwordBox.SetValue(PlainButtonVisibilityProperty, value);
+        }
+
+        public static readonly DependencyProperty PlainButtonVisibilityProperty =
+            DependencyProperty.RegisterAttached("PlainButtonVisibility", typeof(AuxiliaryButtonVisibility), typeof(PasswordBoxHelper));
+        #endregion
+
+        #region PlainButtonStyle
+        public static Style GetPlainButtonStyle(PasswordBox passwordBox)
+        {
+            return (Style)passwordBox.GetValue(PlainButtonStyleProperty);
+        }
+
+        public static void SetPlainButtonStyle(PasswordBox passwordBox, Style value)
+        {
+            passwordBox.SetValue(PlainButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty PlainButtonStyleProperty =
+            DependencyProperty.RegisterAttached("PlainButtonStyle", typeof(Style), typeof(PasswordBoxHelper));
+        #endregion
+
         #endregion
 
         #region Commands
