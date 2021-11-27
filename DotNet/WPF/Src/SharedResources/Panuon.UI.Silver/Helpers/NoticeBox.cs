@@ -82,7 +82,7 @@ namespace Panuon.UI.Silver
         #region Functions
         private static INoticeHandler Show(string message, string caption, bool canClose, MessageBoxIcon icon, ImageSource imageIcon, int? duration)
         {
-            return Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
+            return (INoticeHandler)Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
                 var setting = NoticeBoxSettings.Setting;
                 var animationEase = setting.AnimationEase;

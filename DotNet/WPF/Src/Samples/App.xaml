@@ -29,6 +29,19 @@
                         </pu:MessageBoxXSettings.ButtonStyle>
                     </pu:MessageBoxXSettings>
 
+                    <pu:NoticeBoxSettings x:Key="noticeSetting">
+                        <pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                            <Style TargetType="pu:NoticeBoxItem"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type pu:NoticeBox}}}">
+                                <Setter Property="Background"
+                                        Value="#1E1E1E" />
+                                <Setter Property="BorderBrush"
+                                        Value="#4E4E4E" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                            </Style>
+                        </pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                    </pu:NoticeBoxSettings>
 
                     <pu:PendingBoxSettings x:Key="pendingSetting">
                         <pu:PendingBoxSettings.SpinnerStyle>

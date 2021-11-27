@@ -65,8 +65,8 @@ namespace Panuon.UI.Silver.Internal.Controls
             _cancelButtonStyle = XamlUtil.FromXaml<Style>(cancelButtonStyle);
             _spinnerStyle = XamlUtil.FromXaml<Style>(spinnerStyle);
 
-            WindowStartupLocation = (ownerRect != null || owner == null) 
-                ? WindowStartupLocation.Manual 
+            WindowStartupLocation = owner == null
+                ? (ownerRect == null ? WindowStartupLocation.CenterScreen : WindowStartupLocation.Manual)
                 : WindowStartupLocation.CenterOwner;
 
             if (ownerRect == null)
@@ -76,6 +76,7 @@ namespace Panuon.UI.Silver.Internal.Controls
             else
             {
                 _ownerRect = ownerRect;
+                Topmost = true;
             }
             if (owner is WindowX ownerX && interopOwnersMask)
             {

@@ -56,7 +56,7 @@ namespace Panuon.UI.Silver
         #region Functions
         private static IPendingHandler CallPendingBox(Window owner, string message, string caption, bool canCancel)
         {
-            return Application.Current.Dispatcher.Invoke(new Func<IPendingHandler>(() =>
+            return (IPendingHandler)Application.Current.Dispatcher.Invoke(new Func<IPendingHandler>(() =>
             {
                 var setting = PendingBoxSettings.Setting;
                 var windowStyle = XamlUtil.ToXaml(setting.WindowStyle);
@@ -98,12 +98,11 @@ namespace Panuon.UI.Silver
             }));
         }
 
-        private static Rect GetOwnerRect(Window owner)
+        private static Rect? GetOwnerRect(Window owner)
         {
-            var rect = new Rect();
             if (owner != null)
             {
-               return owner.Dispatcher.Invoke(new Func<Rect>(() =>
+               return (Rect)owner.Dispatcher.Invoke(new Func<Rect>(() =>
                 {
                     var handle = new WindowInteropHelper(owner).Handle;
                     Win32Util.GetWindowRect(handle, out Win32Util.RECT windowRect);
@@ -116,7 +115,7 @@ namespace Panuon.UI.Silver
                     };
                 }));
             }
-            return rect;
+            return null;
         }
         #endregion
     }
