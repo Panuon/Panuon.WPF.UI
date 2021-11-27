@@ -14,7 +14,7 @@ namespace Panuon.UI.Silver.Configurations
 
         #region Properties
 
-        #region CardStyle
+        #region NoticeBoxItemStyle
         public Style NoticeBoxItemStyle
         {
             get { return (Style)GetValue(NoticeBoxItemStyleProperty); }

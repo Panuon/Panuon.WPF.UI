@@ -21,11 +21,6 @@ namespace Panuon.UI.Silver
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Drawer), new FrameworkPropertyMetadata(typeof(Drawer)));
         }
-
-        public Drawer()
-        {
-            Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, new MouseButtonEventHandler(OnLostMouseCapture));
-        }
         #endregion
 
         #region Events
@@ -161,6 +156,7 @@ namespace Panuon.UI.Silver
 
         private void OnLostMouseCapture(object sender, MouseButtonEventArgs e)
         {
+            Mouse.RemovePreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
             ReleaseMouseCapture();
             SetCurrentValue(IsOpenProperty, false);
         }
@@ -178,6 +174,7 @@ namespace Panuon.UI.Silver
             {
                 if (!StaysOpen)
                 {
+                    Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
                     Mouse.Capture(this, CaptureMode.SubTree);
                 }
             }

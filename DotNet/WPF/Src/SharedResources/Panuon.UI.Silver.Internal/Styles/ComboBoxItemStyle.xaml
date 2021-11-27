@@ -77,6 +77,8 @@
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="BorderBrush"
