@@ -131,6 +131,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(ExpanderHelper));
         #endregion
 
+        #region HeaderBorderBrush
+        public static Brush GetHeaderBorderBrush(Expander expander)
+        {
+            return (Brush)expander.GetValue(HeaderBorderBrushProperty);
+        }
+
+        public static void SetHeaderBorderBrush(Expander expander, Brush value)
+        {
+            expander.SetValue(HeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderBrush", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region HeaderBorderThickness
+        public static Thickness GetHeaderBorderThickness(Expander expander)
+        {
+            return (Thickness)expander.GetValue(HeaderBorderThicknessProperty);
+        }
+
+        public static void SetHeaderBorderThickness(Expander expander, Thickness value)
+        {
+            expander.SetValue(HeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderHelper));
+        #endregion
+
         #region HeaderHeight
         public static double GetHeaderHeight(Expander expander)
         {
@@ -204,6 +234,36 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ExpandedHeaderBackgroundProperty =
             DependencyProperty.RegisterAttached("ExpandedHeaderBackground", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedHeaderBorderBrush
+        public static Brush GetExpandedHeaderBorderBrush(Expander expander)
+        {
+            return (Brush)expander.GetValue(ExpandedHeaderBorderBrushProperty);
+        }
+
+        public static void SetExpandedHeaderBorderBrush(Expander expander, Brush value)
+        {
+            expander.SetValue(ExpandedHeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderBorderBrush", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedHeaderBorderThickness
+        public static Thickness? GetExpandedHeaderBorderThickness(Expander expander)
+        {
+            return (Thickness?)expander.GetValue(ExpandedHeaderBorderThicknessProperty);
+        }
+
+        public static void SetExpandedHeaderBorderThickness(Expander expander, Thickness? value)
+        {
+            expander.SetValue(ExpandedHeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderBorderThickness", typeof(Thickness?), typeof(ExpanderHelper));
         #endregion
 
         #region ExpandedBackground

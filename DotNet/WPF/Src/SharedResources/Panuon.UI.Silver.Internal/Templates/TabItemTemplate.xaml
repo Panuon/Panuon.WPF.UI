@@ -26,11 +26,15 @@
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               FontSize="{Binding Path=(local:TabItemHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               FontFamily="{Binding Path=(local:TabItemHelper.FontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Icon="{Binding Path=(local:TabItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                IconPlacement="{Binding Path=(local:TabItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                CornerRadius="{Binding Path=(local:TabItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               HorizontalContentAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -38,8 +42,8 @@
                     </Grid.ColumnDefinitions>
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       ContentSource="Header"
-                                      VerticalAlignment="{Binding Path=(local:TabItemHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                      HorizontalAlignment="{Binding Path=(local:TabItemHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                      VerticalAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Button x:Name="BtnRemove"
                             Grid.Column="1"
                             Visibility="Hidden"
@@ -50,6 +54,7 @@
             </i:ContentControlX>
             <Rectangle x:Name="RectRibbon"
                        Fill="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:TabItemHelper.RibbonLineMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Visibility="{Binding Path=(local:TabItemHelper.RibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <local:SeparatorX x:Name="SprtSeparator"
                               Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -177,6 +182,17 @@
                 <Setter TargetName="CcMain"
                         Property="IconForeground"
                         Value="{Binding Path=(local:TabItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.SelectedFontSize), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="FontSize"
+                        Value="{Binding Path=(local:TabItemHelper.SelectedFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -328,8 +344,8 @@
             <ContentPresenter x:Name="CcMain"
                               Margin="{TemplateBinding Padding}"
                               ContentSource="Header"
-                              VerticalAlignment="{Binding Path=(local:TabItemHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalAlignment="{Binding Path=(local:TabItemHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                              VerticalAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <local:SeparatorX x:Name="SprtSeparator"
                               Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
