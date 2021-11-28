@@ -144,6 +144,20 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ToggleButtonHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(ToggleButton toggleButton)
+        {
+            return (Color?)toggleButton.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(ToggleButton toggleButton, Color? value)
+        {
+            toggleButton.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ToggleButtonHelper));
+        #endregion
+
         #region CheckedBackground
         public static Brush GetCheckedBackground(ToggleButton toggleButton)
         {

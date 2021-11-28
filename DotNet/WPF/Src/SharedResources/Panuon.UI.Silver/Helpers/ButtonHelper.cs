@@ -7,6 +7,10 @@ namespace Panuon.UI.Silver
 {
     public static class ButtonHelper
     {
+        #region ResourceKeys
+        public static ComponentResourceKey PendingSpinnerStyle = new ComponentResourceKey(typeof(ButtonHelper), nameof(PendingSpinnerStyle));
+        #endregion
+
         #region Properties
 
         #region Icon
@@ -157,6 +161,20 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HoverBorderBrushProperty =
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ButtonHelper));
+        #endregion
+
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(Button button)
+        {
+            return (Color?)button.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(Button button, Color? value)
+        {
+            button.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region ClickBackground

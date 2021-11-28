@@ -32,6 +32,7 @@
         public const string TabControlStyle = nameof(TabControlStyle);
         public const string TabItemStyle = nameof(TabItemStyle);
         public const string TextBoxStyle = nameof(TextBoxStyle);
+        public const string ThumbStyle = nameof(ThumbStyle);
         public const string ToolTipStyle = nameof(ToolTipStyle);
         public const string TreeViewStyle = nameof(TreeViewStyle);
         public const string TreeViewItemStyle = nameof(TreeViewItemStyle);

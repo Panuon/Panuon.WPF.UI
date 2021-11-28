@@ -231,13 +231,13 @@ namespace Panuon.UI.Silver
         #region Internal Properties
 
         #region InternalToggleShadowColor
-        public Color? InternalToggleShadowColor
+        internal Color? InternalToggleShadowColor
         {
             get { return (Color?)GetValue(InternalToggleShadowColorProperty); }
             set { SetValue(InternalToggleShadowColorProperty, value); }
         }
 
-        public static readonly DependencyProperty InternalToggleShadowColorProperty =
+        internal static readonly DependencyProperty InternalToggleShadowColorProperty =
             DependencyProperty.Register("InternalToggleShadowColor", typeof(Color?), typeof(Switch));
         #endregion
 

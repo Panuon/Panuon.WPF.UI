@@ -63,6 +63,8 @@
         public const string TabItemTemplate = nameof(TabItemTemplate);
         public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
+        public const string ThumbTemplate = nameof(ThumbTemplate);
+        public const string ThumbFenceTemplate = nameof(ThumbFenceTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);

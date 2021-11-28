@@ -24,12 +24,6 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
-
-            var thread = new Thread(() =>
-            {
-                NoticeBox.Show("123", "123");
-            });
-            thread.Start();
         }
         #endregion
 
