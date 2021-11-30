@@ -9,6 +9,5 @@
         public const string WindowXButtonStyle = nameof(WindowXButtonStyle);
         public const string WindowXStyle = nameof(WindowXStyle);
         public const string SliderRepeatButtonStyle = nameof(SliderRepeatButtonStyle);
-        public const string SliderThumbStyle = nameof(SliderThumbStyle);
     }
 }

@@ -2,6 +2,8 @@
 {
     public static class ConverterKeys
     {
+        public const string BrushToColorConverter = nameof(BrushToColorConverter);
+        public const string ColorToBrushConverter = nameof(ColorToBrushConverter);
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
         public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
@@ -20,6 +22,7 @@
         public const string IsStringNullOrEmptyConverter = nameof(IsStringNullOrEmptyConverter);
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
         public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
+        public const string OppositeColorConverter = nameof(OppositeColorConverter);
         public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(StringNonnullAndNotEmptyToCollapseConverter);
         public const string StringNullOrEmptyToCollapseConverter = nameof(StringNullOrEmptyToCollapseConverter);
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);

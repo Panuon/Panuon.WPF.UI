@@ -162,18 +162,15 @@ namespace Panuon.UI.Silver.Internal.Controls
         {
             if (_ownerRect is Rect ownerRect)
             {
-                var hwnd = new WindowInteropHelper(this).Handle;
+                var source = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice;
 
-                var dpi = Win32Util.GetDpiForWindow(hwnd);
-                var scaleRatio = dpi / 96d;
-
-                var width = (int)(sizeInfo.NewSize.Width * scaleRatio);
-                var height = (int)(sizeInfo.NewSize.Height * scaleRatio);
+                var width = (int)(sizeInfo.NewSize.Width * source.M11);
+                var height = (int)(sizeInfo.NewSize.Height * source.M22);
                 var left = ownerRect.X + (ownerRect.Width - width) / 2;
                 var top = ownerRect.Y + (ownerRect.Height - height) / 2;
 
-                Left = left / scaleRatio;
-                Top = top / scaleRatio;
+                Left = left / source.M11;
+                Top = top / source.M22;
             }
             base.OnRenderSizeChanged(sizeInfo);
         }

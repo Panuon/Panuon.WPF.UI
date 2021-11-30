@@ -42,17 +42,20 @@
         <TextBlock Text="Samples"
                    FontSize="30" />
         <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Height="30">
             <Button Content="MessageBoxX"
-                    Click="BtnTestMessageBoxX_Click"/>
+                    Click="BtnTestMessageBoxX_Click" />
             <Button Margin="10,0,0,0"
                     Content="NoticeBox"
-                    Click="BtnTestNoticeBox_Click"/>
+                    Click="BtnTestNoticeBox_Click" />
             <Button Margin="10,0,0,0"
-                Content="PendingBox"
-                    Click="BtnTestPendingBox_Click"/>
+                    Content="PendingBox"
+                    Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
+                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -103,6 +106,26 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <pu:ColorSelector Grid.Row="1"
+                          SelectedColor="Green"
+                          HorizontalAlignment="Center"
+                          Height="300"
+                          ColorChannels="Argb"
+                          Background="#35303d"
+                          CornerRadius="4"
+                          Foreground="White">
+            <pu:ColorSelector.InputTextBoxStyle>
+                <Style TargetType="TextBox"
+                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type pu:ColorSelector}}}">
+                    <Setter Property="Background"
+                            Value="#4A4650" />
+                    <Setter Property="BorderThickness"
+                            Value="0" />
+                    <Setter Property="Foreground"
+                            Value="White" />
+                </Style>
+            </pu:ColorSelector.InputTextBoxStyle>
+        </pu:ColorSelector>
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

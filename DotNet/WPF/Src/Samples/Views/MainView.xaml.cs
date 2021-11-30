@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Silver;
 using Samples.Views.Tools;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -16,7 +17,19 @@ namespace Samples.Views
     /// </summary>
     public partial class MainView : WindowX
     {
+        #region Fields
+        private static readonly List<Type> _viewTypes;
+        #endregion
+
         #region Ctor
+        static MainView()
+        {
+            _viewTypes = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
+                .OrderBy(x => x.GetCustomAttribute<ExampleViewAttribute>().Index)
+                .ToList();
+        }
         public MainView()
         {
             InitializeComponent();
@@ -67,10 +80,7 @@ namespace Samples.Views
         #region Functions
         private void InitExampleItems()
         {
-            var items = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
-                .OrderBy(x => x.GetCustomAttribute<ExampleViewAttribute>().Index)
+            var items = _viewTypes
                 .Select(x =>
                 {
                     var viewAttribute = x.GetCustomAttribute<ExampleViewAttribute>();

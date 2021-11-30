@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,8 +22,6 @@ namespace Panuon.UI.Silver
         private Canvas _canvas;
 
         private Thumb _thumb;
-
-        private bool _isCoerceEffects;
         #endregion
 
         #region Ctor
@@ -34,22 +33,42 @@ namespace Panuon.UI.Silver
 
         #region Routed Events
 
+        #region PositionChanged
+        public event PositionChangedEventHandler ThumbPositionChanged
+        {
+            add { AddHandler(ThumbPositionChangedEvent, value); }
+            remove { RemoveHandler(ThumbPositionChangedEvent, value); }
+        }
 
+        public static readonly RoutedEvent ThumbPositionChangedEvent =
+            EventManager.RegisterRoutedEvent("ThumbPositionChanged", RoutingStrategy.Bubble, typeof(PositionChangedEventHandler), typeof(ThumbFence));
+        #endregion
 
         #endregion
 
         #region Properties
 
-        #region CenterPosition
-        public Point CenterPosition
+        #region ThumbPosition
+        public Point ThumbPosition
         {
-            get { return (Point)GetValue(CenterPositionProperty); }
-            set { SetValue(CenterPositionProperty, value); }
+            get { return (Point)GetValue(ThumbPositionProperty); }
+            set { SetValue(ThumbPositionProperty, value); }
         }
 
-        public static readonly DependencyProperty CenterPositionProperty =
-            DependencyProperty.Register("CenterPosition", typeof(Point), typeof(ThumbFence), new PropertyMetadata(new Point(), OnCenterPositionChanged, OnCenterPositionCoerceValue));
+        public static readonly DependencyProperty ThumbPositionProperty =
+            DependencyProperty.Register("ThumbPosition", typeof(Point), typeof(ThumbFence), new PropertyMetadata(new Point(), OnPositionChanged, OnPositionCoerceValue));
 
+        #endregion
+
+        #region CornerRadius
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ThumbFence));
         #endregion
 
         #region ThumbStyle
@@ -63,26 +82,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ThumbStyle", typeof(Style), typeof(ThumbFence), new PropertyMetadata(OnEffectivePropertyChanged));
         #endregion
 
-        #region Strategy
-        public FenceStrategy Strategy
+        #region AllowCross
+        public bool AllowCross
         {
-            get { return (FenceStrategy)GetValue(StrategyProperty); }
-            set { SetValue(StrategyProperty, value); }
+            get { return (bool)GetValue(AllowCrossProperty); }
+            set { SetValue(AllowCrossProperty, value); }
         }
 
-        public static readonly DependencyProperty StrategyProperty =
-            DependencyProperty.Register("Strategy", typeof(FenceStrategy), typeof(ThumbFence), new PropertyMetadata(OnEffectivePropertyChanged));
-        #endregion
-
-        #region ClickToPosition
-        public bool ClickToPosition
-        {
-            get { return (bool)GetValue(ClickToPositionProperty); }
-            set { SetValue(ClickToPositionProperty, value); }
-        }
-
-        public static readonly DependencyProperty ClickToPositionProperty =
-            DependencyProperty.Register("ClickToPosition", typeof(bool), typeof(ThumbFence), new PropertyMetadata(true));
+        public static readonly DependencyProperty AllowCrossProperty =
+            DependencyProperty.Register("AllowCross", typeof(bool), typeof(ThumbFence), new PropertyMetadata(OnEffectivePropertyChanged));
         #endregion
 
         #endregion
@@ -96,12 +104,6 @@ namespace Panuon.UI.Silver
 
             _thumb = GetTemplateChild(ThumbTemplateName) as Thumb;
             _thumb.DragDelta += Thumb_DragDelta;
-            
-            CoerceValue(CenterPositionProperty);
-            if (!_isCoerceEffects)
-            {
-                Relocation();
-            }
         }
         #endregion
 
@@ -110,117 +112,98 @@ namespace Panuon.UI.Silver
         {
             base.OnPreviewMouseLeftButtonDown(e);
 
-            if (ClickToPosition)
+            var renderWidth = _canvas.RenderSize.Width;
+            var renderHeight = _canvas.RenderSize.Height;
+            if (renderWidth == 0 || renderHeight == 0)
             {
-                var centerPosition = e.GetPosition(_canvas);
-                SetCurrentValue(CenterPositionProperty, centerPosition);
-
-                Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
-                {
-                    _thumb.RaiseEvent(e);
-                }));
+                return;
             }
+            var mousePosition = e.GetPosition(_canvas);
+            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
+
+            SetCurrentValue(ThumbPositionProperty, position);
+
+            Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+            {
+                _thumb.RaiseEvent(e);
+            }));
+        }
+        #endregion
+
+        #region OnRenderSizeChanged
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            Relocation();
         }
         #endregion
 
         #endregion
 
         #region Event Handlers
-        private static object OnCenterPositionCoerceValue(DependencyObject d, object baseValue)
+        private static object OnPositionCoerceValue(DependencyObject d, object baseValue)
         {
-            var fence = (ThumbFence)d;
-            var centerPosition = (Point)baseValue;
-            fence.EnsureLocation(ref centerPosition);
-            return centerPosition;
+            var position = (Point)baseValue;
+            position.X = Math.Max(0, Math.Min(1, position.X));
+            position.Y = Math.Max(0, Math.Min(1, position.Y));
+            return position;
         }
 
-        private static void OnCenterPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnPositionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var fence = (ThumbFence)d;
             fence.Relocation();
+            fence.RaiseEvent(new PositionChangedEventArgs(ThumbPositionChangedEvent, (Point)e.NewValue));
         }
 
         private static void OnEffectivePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var fence = (ThumbFence)d;
-            fence.CoerceValue(CenterPositionProperty);
+            fence.Relocation();
         }
 
         private void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            var centerPosition = CenterPosition;
-            centerPosition.X += e.HorizontalChange;
-            centerPosition.Y += e.VerticalChange;
-            SetCurrentValue(CenterPositionProperty, centerPosition);
+            var renderWidth = _canvas.RenderSize.Width;
+            var renderHeight = _canvas.RenderSize.Height;
+            if (renderWidth == 0 || renderHeight == 0)
+            {
+                return;
+            }
+            var offsetX = ThumbPosition.X * renderWidth + e.HorizontalChange;
+            var offsetY = ThumbPosition.Y * renderHeight + e.VerticalChange;
+            var position = new Point(offsetX / renderWidth, offsetY / renderHeight);
+            SetCurrentValue(ThumbPositionProperty, position);
         }
         #endregion
 
         #region Functions
         private void Relocation()
         {
-            if (_thumb == null || _canvas == null)
+            if (_thumb == null || _canvas == null
+                || _canvas.RenderSize.Width == 0 || _canvas.RenderSize.Height == 0)
             {
                 return;
             }
-            _isCoerceEffects = true;
 
-            Canvas.SetLeft(_thumb, CenterPosition.X - _thumb.RenderSize.Width / 2);
-            Canvas.SetTop(_thumb, CenterPosition.Y - _thumb.RenderSize.Height / 2);
+            var thumbWidth = _thumb.RenderSize.Width;
+            var thumbHeight = _thumb.RenderSize.Width;
+            var halfThumbWidth = thumbWidth / 2;
+            var halfThumbHeight = thumbHeight / 2;
+            var renderWidth = _canvas.RenderSize.Width;
+            var renderHeight = _canvas.RenderSize.Height;
 
-        }
-
-        private void EnsureLocation(ref Point centerPosition)
-        {
-            if(_thumb == null || _canvas == null)
-            {
-                return;
-            }
-            var halfThumbWidth = _thumb.RenderSize.Width / 2;
-            var halfThumbHeight = _thumb.RenderSize.Width / 2;
-            var canvasWidth = _canvas.RenderSize.Width;
-            var canvasHeight = _canvas.RenderSize.Height;
-
-            switch (Strategy)
-            {
-                case FenceStrategy.AllowCross:
-                    if (centerPosition.X < 0)
-                    {
-                        centerPosition.X = 0;
-                    }
-                    else if (centerPosition.X > canvasWidth)
-                    {
-                        centerPosition.X = canvasWidth;
-                    }
-                    if (centerPosition.Y < 0)
-                    {
-                        centerPosition.Y = 0;
-                    }
-                    else if (centerPosition.Y > canvasHeight)
-                    {
-                        centerPosition.Y = canvasHeight;
-                    }
-                    break;
-                case FenceStrategy.Entire:
-                    if (centerPosition.X < halfThumbWidth)
-                    {
-                        centerPosition.X = halfThumbWidth;
-                    }
-                    else if (centerPosition.X > canvasWidth - halfThumbWidth)
-                    {
-                        centerPosition.X = canvasWidth - halfThumbWidth;
-                    }
-                    if (centerPosition.Y < halfThumbHeight)
-                    {
-                        centerPosition.Y = halfThumbHeight;
-                    }
-                    else if (centerPosition.Y > canvasHeight - halfThumbHeight)
-                    {
-                        centerPosition.Y = canvasHeight - halfThumbHeight;
-                    }
-                    break;
-            }
+            var left = AllowCross
+                 ? ThumbPosition.X * renderWidth - halfThumbWidth
+                 : ThumbPosition.X * (renderWidth - thumbWidth) + halfThumbWidth;
+            var top = AllowCross
+                    ? ThumbPosition.Y * renderHeight - halfThumbHeight
+                    : ThumbPosition.Y * (renderHeight - thumbHeight) + halfThumbHeight;
+            Canvas.SetLeft(_thumb, left);
+            Canvas.SetTop(_thumb, top);
 
         }
+
         #endregion
 
     }

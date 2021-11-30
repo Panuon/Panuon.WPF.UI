@@ -72,6 +72,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\PanuonIcon.ttf" />
     <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
