@@ -21,6 +21,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TransparentColorToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorOpacitySliderBackgroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorThumbFenceBackgroundConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BrushToColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DisplayMemberPathPropertyValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleEqualsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoublePowConverter.cs" />
@@ -102,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ColorSelectorStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +324,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\CardTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\ColorSelectorTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

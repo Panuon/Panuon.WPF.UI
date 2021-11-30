@@ -166,12 +166,6 @@
         <Style x:Key="SliderStyle"
                TargetType="Slider"
                BasedOn="{StaticResource {x:Type Slider}}">
-            <Setter Property="pu:SliderHelper.ThumbWidth"
-                    Value="NaN" />
-            <Setter Property="pu:SliderHelper.ThumbHeight"
-                    Value="NaN" />
-            <Setter Property="pu:SliderHelper.ThumbBackground"
-                    Value="Transparent" />
             <Setter Property="pu:SliderHelper.TrackThickness"
                     Value="2" />
             <Setter Property="pu:SliderHelper.CoveredBackground">
@@ -209,25 +203,40 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-            <Setter Property="pu:SliderHelper.ThumbTemplate">
+            <Setter Property="pu:SliderHelper.ThumbStyle">
                 <Setter.Value>
-                    <DataTemplate>
-                        <Grid RenderTransformOrigin="0.5,0.5">
-                            <Grid.RenderTransform>
-                                <RotateTransform Angle="{Binding Value, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePowConverter}}, ConverterParameter=1.3, RelativeSource={RelativeSource AncestorType=Slider}}" />
-                            </Grid.RenderTransform>
-                            <TextBlock Text="&#xe958;"
-                                       FontSize="20"
-                                       Foreground="White"
-                                       FontFamily="{StaticResource PanuonIconFont}">
-                            </TextBlock>
-                            <TextBlock Text="&#xe956;"
-                                       FontSize="20"
-                                       Foreground="HotPink"
-                                       FontFamily="{StaticResource PanuonIconFont}">
-                            </TextBlock>
-                        </Grid>
-                    </DataTemplate>
+                    <Style TargetType="Thumb"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type pu:SliderHelper}}}">
+                        <Setter Property="Width"
+                                Value="NaN" />
+                        <Setter Property="Height"
+                                Value="NaN" />
+                        <Setter Property="Background"
+                                Value="Transparent" />
+                        <Setter Property="pu:ThumbHelper.Content"
+                                Value=" " />
+                        <Setter Property="pu:ThumbHelper.ContentTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <Grid RenderTransformOrigin="0.5,0.5">
+                                        <Grid.RenderTransform>
+                                            <RotateTransform Angle="{Binding Value, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePowConverter}}, ConverterParameter=1.3, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                        </Grid.RenderTransform>
+                                        <TextBlock Text="&#xe958;"
+                                                   FontSize="20"
+                                                   Foreground="White"
+                                                   FontFamily="{StaticResource PanuonIconFont}">
+                                        </TextBlock>
+                                        <TextBlock Text="&#xe956;"
+                                                   FontSize="20"
+                                                   Foreground="HotPink"
+                                                   FontFamily="{StaticResource PanuonIconFont}">
+                                        </TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                 </Setter.Value>
             </Setter>
         </Style>

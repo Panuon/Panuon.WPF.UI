@@ -11,6 +11,17 @@
                 <ResourceDictionary>
 
                     <pu:MessageBoxXSettings x:Key="messageSetting">
+                        <pu:MessageBoxXSettings.WindowXStyle>
+                            <Style TargetType="pu:WindowX"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                <Setter Property="SizeToContent"
+                                        Value="Manual" />
+                                <Setter Property="Width"
+                                        Value="400" />
+                                <Setter Property="Height"
+                                        Value="200" />
+                            </Style>
+                        </pu:MessageBoxXSettings.WindowXStyle>
                         <pu:MessageBoxXSettings.ButtonStyle>
                             <Style TargetType="Button"
                                    BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">

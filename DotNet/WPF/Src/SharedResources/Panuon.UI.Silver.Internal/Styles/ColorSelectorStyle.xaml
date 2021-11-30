@@ -1,0 +1,177 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ColorSelectorTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TextBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SliderStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=DropperButtonStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Content"
+                Value="&#xe960;" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+        <Setter Property="Foreground"
+                Value="{Binding SelectedColor, Converter={StaticResource {x:Static rs:ConverterKeys.OppositeColorConverter}}, ConverterParameter=Brush, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="Slider"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
+        <Setter Property="local:SliderHelper.TrackThickness"
+                Value="23" />
+        <Setter Property="local:SliderHelper.ThumbStyle">
+            <Setter.Value>
+                <Style TargetType="Thumb"
+                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}">
+                    <Setter Property="local:ThumbHelper.CornerRadius"
+                            Value="2" />
+                    <Setter Property="local:ThumbHelper.ShadowColor"
+                            Value="LightGray" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                     Value="AccentColor">
+                            <Setter Property="Width"
+                                    Value="15" />
+                            <Setter Property="Height"
+                                    Value="27" />
+                            <Setter Property="BorderBrush"
+                                    Value="White" />
+                            <Setter Property="BorderThickness"
+                                    Value="2" />
+                            <Setter Property="Background"
+                                    Value="{Binding AccentColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
+                                     Value="Opacity">
+                            <Setter Property="SnapsToDevicePixels"
+                                    Value="True" />
+                            <Setter Property="Height"
+                                    Value="23" />
+                            <Setter Property="Width"
+                                    Value="27" />
+                            <Setter Property="BorderBrush"
+                                    Value="White" />
+                            <Setter Property="BorderThickness"
+                                    Value="2" />
+                            <Setter Property="Background" 
+                                    Value="Transparent"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="AccentColor">
+                <Setter Property="Margin"
+                        Value="0,-2,0,0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="Opacity">
+                <Setter Property="Margin"
+                        Value="0,0,0,2" />
+            </DataTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="local:ThumbFence">
+        <Setter Property="MinHeight"
+                Value="30" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+        <Setter Property="ThumbStyle">
+            <Setter.Value>
+                <Style TargetType="Thumb"
+                       BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
+                    <Setter Property="Width"
+                            Value="20" />
+                    <Setter Property="Height"
+                            Value="20" />
+                    <Setter Property="BorderBrush"
+                            Value="White" />
+                    <Setter Property="Background"
+                            Value="{Binding SelectedOpaqueColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+                    <Setter Property="BorderThickness"
+                            Value="2" />
+                    <Setter Property="local:ThumbHelper.CornerRadius"
+                            Value="10" />
+                    <Setter Property="local:ThumbHelper.ShadowColor"
+                            Value="LightGray" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="TextBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="MinWidth"
+                Value="40" />
+        <Setter Property="Margin"
+                Value="2,0" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="local:TextBoxHelper.CornerRadius"
+                Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+        <Style.Triggers>
+            <Trigger Property="Tag"
+                     Value="HEX">
+                <Setter Property="MinWidth"
+                        Value="95" />
+                <Setter Property="Margin"
+                        Value="10,0,15,0" />
+                <Setter Property="local:TextBoxHelper.Icon"
+                        Value="#" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="local:ColorSelector">
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="Gray" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Padding"
+                Value="15" />
+        <Setter Property="DropperButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=DropperButtonStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="ThumbFenceStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="InputTextBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="SliderStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.ColorSelectorTemplate}}" />
+    </Style>
+
+</ResourceDictionary>

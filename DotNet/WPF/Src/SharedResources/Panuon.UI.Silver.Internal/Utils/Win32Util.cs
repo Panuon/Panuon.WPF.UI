@@ -65,9 +65,6 @@ namespace Panuon.UI.Silver.Internal.Utils
         internal static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
 
         [DllImport("user32.dll")]
-        internal static extern int GetDpiForWindow(IntPtr hwnd);
-
-        [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
         #endregion

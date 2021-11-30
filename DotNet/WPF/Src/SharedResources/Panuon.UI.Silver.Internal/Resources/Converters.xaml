@@ -9,6 +9,11 @@
     <icv:Arc2Converter x:Key="{x:Static irs:ConverterKeys.Arc2Converter}" />
     <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
+    <icv:BrushToColorConverter x:Key="{x:Static rs:ConverterKeys.BrushToColorConverter}" />
+    <icv:ColorSelectorThumbFenceBackgroundConverter x:Key="{x:Static irs:ConverterKeys.ColorSelectorThumbFenceBackgroundConverter}" />
+    <icv:ColorSelectorOpacitySliderBackgroundConverter x:Key="{x:Static irs:ConverterKeys.ColorSelectorOpacitySliderBackgroundConverter}" />
+    <icv:TransparentColorToBrushConverter x:Key="{x:Static irs:ConverterKeys.TransparentColorToBrushConverter}" />
+    <icv:ColorToBrushConverter x:Key="{x:Static rs:ConverterKeys.ColorToBrushConverter}" />
     <icv:ComboBoxDropDownHorizontalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}" />
     <icv:ComboBoxDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}" />
     <icv:ComboBoxDropDownVerticalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}" />
@@ -44,6 +49,7 @@
     <icv:LightenSolidColorBrushConverter x:Key="{x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NullToCollapseConverter}" />
     <icv:NonnullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NonnullToCollapseConverter}" />
+    <icv:OppositeColorConverter x:Key="{x:Static rs:ConverterKeys.OppositeColorConverter}" />
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />

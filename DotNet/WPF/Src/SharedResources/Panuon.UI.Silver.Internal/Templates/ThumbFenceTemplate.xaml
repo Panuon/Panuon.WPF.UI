@@ -14,11 +14,15 @@
         <Border BorderBrush="{TemplateBinding BorderBrush}"
                 Background="{TemplateBinding Background}"
                 BorderThickness="{TemplateBinding BorderThickness}">
-            <Canvas x:Name="PART_Canvas"
-                    ClipToBounds="True">
-                <Thumb x:Name="PART_Thumb"
-                       Style="{TemplateBinding ThumbStyle}" />
-            </Canvas>
+            <i:ClippingBorder CornerRadius="{TemplateBinding CornerRadius}"
+                              SnapsToDevicePixels="True">
+                <Canvas x:Name="PART_Canvas"
+                        ClipToBounds="True"
+                        Margin="{TemplateBinding Padding}">
+                    <Thumb x:Name="PART_Thumb"
+                           Style="{TemplateBinding ThumbStyle}" />
+                </Canvas>
+            </i:ClippingBorder>
         </Border>
     </ControlTemplate>
 

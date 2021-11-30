@@ -12,8 +12,9 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ContentControlXTemplate}"
                      TargetType="i:ContentControlX">
         <Grid>
-            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+            <Border SnapsToDevicePixels="True"
                     Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{TemplateBinding CornerRadius}"
                     Effect="{TemplateBinding Effect}" />
@@ -58,11 +59,6 @@
                     </Grid>
                 </Grid>
             </i:ClippingBorder>
-            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="{TemplateBinding CornerRadius}"
-                    IsHitTestVisible="False" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IconPlacement"
