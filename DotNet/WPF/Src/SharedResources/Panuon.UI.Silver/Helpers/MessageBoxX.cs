@@ -258,8 +258,18 @@ namespace Panuon.UI.Silver
         private static MessageBoxResult CallMessageBoxXWindow(Window owner, string message, string caption, MessageBoxButton button, MessageBoxIcon icon, DefaultButton defaultButton, MessageBoxXSetting setting)
         {
             var window = new MessageBoxXWindow(message, caption, button, icon, defaultButton, owner, setting ?? MessageBoxXSettings.Setting);
-            window.ShowDialog();
-            return window.Result;
+            var dialogResult = window.ShowDialog();
+            switch (dialogResult)
+            {
+                case true:
+                    return (button == MessageBoxButton.YesNo || button == MessageBoxButton.YesNoCancel)
+                        ? MessageBoxResult.Yes
+                        : MessageBoxResult.OK;
+                case false:
+                    return MessageBoxResult.No;
+                default:
+                    return MessageBoxResult.Cancel;
+            }
         }
         #endregion
     }

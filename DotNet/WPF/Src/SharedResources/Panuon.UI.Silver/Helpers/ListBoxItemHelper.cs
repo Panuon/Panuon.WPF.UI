@@ -245,7 +245,7 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IsStylelessProperty =
             DependencyProperty.RegisterAttached("IsStyleless", typeof(bool), typeof(ListBoxItemHelper));
-        
+
         #endregion
     }
 }

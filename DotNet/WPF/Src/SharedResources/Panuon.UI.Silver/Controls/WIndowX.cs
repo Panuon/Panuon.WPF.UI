@@ -17,10 +17,22 @@ using System.Windows.Shell;
 namespace Panuon.UI.Silver
 {
     [TemplatePart(Name = ContentPresenterTemplateName, Type = typeof(ContentPresenter))]
+    [TemplatePart(Name = CancelButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = NoButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = YesButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = OKButtonTemplateName, Type = typeof(Button))]
     public class WindowX : Window, INotifyPropertyChanged
     {
         #region Fields
-        protected const string ContentPresenterTemplateName = "PART_ContentPresenter";
+        private const string ContentPresenterTemplateName = "PART_ContentPresenter";
+
+        private const string CancelButtonTemplateName = "PART_CancelButton";
+
+        private const string NoButtonTemplateName = "PART_NoButton";
+
+        private const string YesButtonTemplateName = "PART_YesButton";
+
+        private const string OKButtonTemplateName = "PART_OKButton";
 
         private WindowState _lastWindowState;
 
@@ -47,6 +59,25 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Overrides
+
+        #region OnApplyTemplate
+        public override void OnApplyTemplate()
+        {
+            var cancelButton = GetTemplateChild(CancelButtonTemplateName) as Button;
+            cancelButton.Click += ModalButton_Click;
+
+            var okButton = GetTemplateChild(OKButtonTemplateName) as Button;
+            okButton.Click += ModalButton_Click;
+
+            var yesButton = GetTemplateChild(YesButtonTemplateName) as Button;
+            yesButton.Click += ModalButton_Click;
+
+            var noButton = GetTemplateChild(NoButtonTemplateName) as Button;
+            noButton.Click += ModalButton_Click;
+
+        }
+
+        #endregion
 
         #region OnPreviewKeyUp
         protected override void OnPreviewKeyUp(KeyEventArgs e)
@@ -396,7 +427,6 @@ namespace Panuon.UI.Silver
             return baseValue;
         }
 
-
         private static object OnGlassFrameThicknessCoerceValue(DependencyObject d, object baseValue)
         {
             var windowX = (WindowX)d;
@@ -406,7 +436,6 @@ namespace Panuon.UI.Silver
             }
             return baseValue;
         }
-
 
         private void WindowX_Loaded(object sender, RoutedEventArgs e)
         {
@@ -510,6 +539,25 @@ namespace Panuon.UI.Silver
         {
             var windowX = (WindowX)d;
             WindowChromeUtil.SetCaptionHeight(windowX, windowX.DisableDragMove ? 0 : WindowXCaption.GetHeight(windowX));
+        }
+
+
+        private void ModalButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            switch (button.Tag)
+            {
+                case "Cancel":
+                    DialogResult = null;
+                    break;
+                case "Yes":
+                case "OK":
+                    DialogResult = true;
+                    break;
+                case "No":
+                    DialogResult = false;
+                    break;
+            }
         }
         #endregion
 

@@ -14,7 +14,7 @@
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
-                Value="35" />
+                Value="30" />
         <Setter Property="Padding"
                 Value="15,0" />
         <Setter Property="Margin"
@@ -30,71 +30,52 @@
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid> 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <local:StateControl CurrentState="{Binding MessageBoxIcon}"
-                                    VerticalAlignment="Center">
-                    <local:StateItem State="Info">
-                        <TextBlock Margin="10,0,20,0"
-                                   FontSize="40"
-                                   Foreground="#80BEE8"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe92f;" />
-                    </local:StateItem>
-                    <local:StateItem State="Question">
-                        <TextBlock Margin="10,0,20,0"
-                                   FontSize="40"
-                                   Foreground="#80BEE8"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe937;" />
-                    </local:StateItem>
-                    <local:StateItem State="Warning">
-                        <TextBlock Margin="10,0,20,0"
-                                   FontSize="40"
-                                   Foreground="#F9D01A"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe931;" />
-                    </local:StateItem>
-                    <local:StateItem State="Error">
-                        <TextBlock Margin="10,0,20,0"
-                                   FontSize="40"
-                                   Foreground="#FF5656"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe933;" />
-                    </local:StateItem>
-                    <local:StateItem State="Success">
-                        <TextBlock Margin="10,0,20,0"
-                                   FontSize="40"
-                                   Foreground="#75CD43"
-                                   FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
-                                   Text="&#xe935;" />
-                    </local:StateItem>
-                </local:StateControl>
-                <TextBlock Grid.Column="1"
-                           Text="{Binding Message}"
-                           TextWrapping="Wrap"
-                           VerticalAlignment="Center" />
-            </Grid>
-            <StackPanel x:Name="PART_ButtonContainer"
-                        Grid.Row="1"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <Button x:Name="PART_CancelButton"
-                        Style="{Binding ButtonStyle}" />
-                <Button x:Name="PART_NoButton"
-                        Style="{Binding ButtonStyle}" />
-                <Button x:Name="PART_YesButton"
-                        Style="{Binding ButtonStyle}" />
-                <Button x:Name="PART_OKButton"
-                        Style="{Binding ButtonStyle}" />
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <local:StateControl CurrentState="{Binding MessageBoxIcon}"
+                                VerticalAlignment="Center">
+                <local:StateItem State="Info">
+                    <TextBlock Margin="10,0,20,0"
+                               FontSize="40"
+                               Foreground="#80BEE8"
+                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                               Text="&#xe92f;" />
+                </local:StateItem>
+                <local:StateItem State="Question">
+                    <TextBlock Margin="10,0,20,0"
+                               FontSize="40"
+                               Foreground="#80BEE8"
+                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                               Text="&#xe937;" />
+                </local:StateItem>
+                <local:StateItem State="Warning">
+                    <TextBlock Margin="10,0,20,0"
+                               FontSize="40"
+                               Foreground="#F9D01A"
+                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                               Text="&#xe931;" />
+                </local:StateItem>
+                <local:StateItem State="Error">
+                    <TextBlock Margin="10,0,20,0"
+                               FontSize="40"
+                               Foreground="#FF5656"
+                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                               Text="&#xe933;" />
+                </local:StateItem>
+                <local:StateItem State="Success">
+                    <TextBlock Margin="10,0,20,0"
+                               FontSize="40"
+                               Foreground="#75CD43"
+                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                               Text="&#xe935;" />
+                </local:StateItem>
+            </local:StateControl>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Message}"
+                       TextWrapping="Wrap"
+                       VerticalAlignment="Center" />
         </Grid>
     </DataTemplate>
 

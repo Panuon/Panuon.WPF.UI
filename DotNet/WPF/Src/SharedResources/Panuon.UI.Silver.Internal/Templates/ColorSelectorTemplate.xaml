@@ -136,14 +136,12 @@
                             <TextBox x:Name="PART_ATextBox"
                                      Grid.Column="1"
                                      Tag="A"
-                                     Style="{TemplateBinding InputTextBoxStyle}"
-                                     Visibility="{Binding AllowTransparency, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
                             <TextBlock x:Name="TxtA"
                                        Grid.Column="1"
                                        Grid.Row="2"
                                        Text="A"
-                                       HorizontalAlignment="Center"
-                                       Visibility="{Binding AllowTransparency, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                       HorizontalAlignment="Center" />
                             <TextBox x:Name="PART_RTextBox"
                                      Grid.Column="2"
                                      Tag="R"

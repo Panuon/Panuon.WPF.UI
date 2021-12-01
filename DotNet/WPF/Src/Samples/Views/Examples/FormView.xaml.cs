@@ -36,10 +36,6 @@ namespace Samples.Views.Examples
             ButtonHelper.SetIsPending(BtnContinue, true);
         }
 
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
         #endregion
 
         #region Functions

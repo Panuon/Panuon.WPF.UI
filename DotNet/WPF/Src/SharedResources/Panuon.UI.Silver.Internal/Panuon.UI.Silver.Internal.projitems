@@ -91,6 +91,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implements\NoticeHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXDayItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\TemplateKeys.cs" />

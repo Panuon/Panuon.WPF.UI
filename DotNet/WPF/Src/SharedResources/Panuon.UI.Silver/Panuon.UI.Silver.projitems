@@ -120,6 +120,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\TreeViewItemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowXCaption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowXModal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarXSpecialDay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AeroWindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AcrylicWindowXEffect.cs" />
