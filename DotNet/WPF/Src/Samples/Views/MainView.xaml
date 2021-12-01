@@ -15,10 +15,10 @@
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
-                        Margin="10,0,0,0">
+                        Margin="5,0,0,0">
                 <Image Source="/Samples;component/Resources/Logo.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
-                       Height="20" />
+                       Height="25" />
             </StackPanel>
         </DataTemplate>
     </pu:WindowXCaption.HeaderTemplate>
@@ -27,7 +27,7 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
+                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click">
             </Button>
@@ -55,7 +55,6 @@
                     Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
-                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -106,7 +105,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <pu:ColorSelector Grid.Row="1"
+        <!--<pu:ColorSelector Grid.Row="1"
                           SelectedColor="Green"
                           HorizontalAlignment="Center"
                           Height="300"
@@ -125,7 +124,7 @@
                             Value="White" />
                 </Style>
             </pu:ColorSelector.InputTextBoxStyle>
-        </pu:ColorSelector>
+        </pu:ColorSelector>-->
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

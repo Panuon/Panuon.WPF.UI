@@ -143,7 +143,7 @@
     </pu:WindowX.Resources>
     <pu:WindowXCaption.MinimizeButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"
@@ -158,7 +158,7 @@
     </pu:WindowXCaption.MinimizeButtonStyle>
     <pu:WindowXCaption.MaximizeButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"
@@ -173,7 +173,7 @@
     </pu:WindowXCaption.MaximizeButtonStyle>
     <pu:WindowXCaption.CloseButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}">
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"

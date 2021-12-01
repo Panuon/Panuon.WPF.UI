@@ -28,7 +28,13 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
                         };
                         return CreateImageDataTemplate(item);
                     }
-                    catch (Exception ex) { }
+                    catch (Exception ex)
+                    {
+                        if (!(ex is FileNotFoundException || ex is IOException || ex is FormatException))
+                        {
+                            return CreateImageDataTemplate(item);
+                        }
+                    }
                 }
             }
 
