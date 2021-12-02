@@ -12,12 +12,12 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SliderStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=DropperButtonStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
-           TargetType="Button"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+    <Style x:Key="{ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="Thumb"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Content"
+        <Setter Property="local:ThumbHelper.Content"
                 Value="&#xe960;" />
         <Setter Property="Padding"
                 Value="0" />
@@ -67,7 +67,7 @@
                             <Setter Property="SnapsToDevicePixels"
                                     Value="True" />
                             <Setter Property="Height"
-                                    Value="23" />
+                                    Value="25" />
                             <Setter Property="Width"
                                     Value="27" />
                             <Setter Property="BorderBrush"
@@ -144,7 +144,7 @@
             <Trigger Property="Tag"
                      Value="HEX">
                 <Setter Property="MinWidth"
-                        Value="95" />
+                        Value="100" />
                 <Setter Property="Margin"
                         Value="10,0,15,0" />
                 <Setter Property="local:TextBoxHelper.Icon"
@@ -152,7 +152,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
     <Style TargetType="local:ColorSelector">
         <Setter Property="Background"
                 Value="White" />
@@ -161,9 +161,11 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="Padding"
-                Value="15" />
-        <Setter Property="DropperButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=DropperButtonStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="5" />
+        <Setter Property="Height"
+                Value="300" />
+        <Setter Property="DropperThumbStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="ThumbFenceStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="InputTextBoxStyle"

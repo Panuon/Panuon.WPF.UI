@@ -31,7 +31,7 @@
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
@@ -54,7 +54,7 @@
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"

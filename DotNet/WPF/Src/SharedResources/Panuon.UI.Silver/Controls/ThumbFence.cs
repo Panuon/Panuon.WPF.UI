@@ -1,6 +1,7 @@
 ﻿using Panuon.UI.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace Panuon.UI.Silver
 
         private Canvas _canvas;
 
-        private Thumb _thumb;
+        internal Thumb _thumb;
         #endregion
 
         #region Ctor
@@ -42,6 +43,17 @@ namespace Panuon.UI.Silver
 
         public static readonly RoutedEvent ThumbPositionChangedEvent =
             EventManager.RegisterRoutedEvent("ThumbPositionChanged", RoutingStrategy.Bubble, typeof(PositionChangedEventHandler), typeof(ThumbFence));
+        #endregion
+
+        #region PositionChanging
+        public event PositionChangingEventHandler ThumbPositionChanging
+        {
+            add { AddHandler(ThumbPositionChangingEvent, value); }
+            remove { RemoveHandler(ThumbPositionChangingEvent, value); }
+        }
+
+        public static readonly RoutedEvent ThumbPositionChangingEvent =
+            EventManager.RegisterRoutedEvent("ThumbPositionChanging", RoutingStrategy.Bubble, typeof(PositionChangingEventHandler), typeof(ThumbFence));
         #endregion
 
         #endregion
@@ -110,8 +122,6 @@ namespace Panuon.UI.Silver
         #region OnPreviewMouseLeftButtonDown
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            base.OnPreviewMouseLeftButtonDown(e);
-
             var renderWidth = _canvas.RenderSize.Width;
             var renderHeight = _canvas.RenderSize.Height;
             if (renderWidth == 0 || renderHeight == 0)
@@ -121,12 +131,27 @@ namespace Panuon.UI.Silver
             var mousePosition = e.GetPosition(_canvas);
             var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
 
-            SetCurrentValue(ThumbPositionProperty, position);
-
-            Dispatcher.BeginInvoke(DispatcherPriority.Input, new Action(() =>
+            var args = new PositionChangingEventArgs(ThumbPositionChangingEvent, position);
+            RaiseEvent(args);
+            if (!args.Cancel)
             {
-                _thumb.RaiseEvent(e);
-            }));
+                SetCurrentValue(ThumbPositionProperty, args.NewPosition);
+            }
+
+            _thumb.RaiseEvent(e);
+
+            e.Handled = true;
+            base.OnMouseLeftButtonDown(e);
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnMouseUp(e);
+        }
+
+        protected override void OnPreviewMouseUp(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseUp(e);
         }
         #endregion
 
@@ -170,10 +195,16 @@ namespace Panuon.UI.Silver
             {
                 return;
             }
-            var offsetX = ThumbPosition.X * renderWidth + e.HorizontalChange;
-            var offsetY = ThumbPosition.Y * renderHeight + e.VerticalChange;
-            var position = new Point(offsetX / renderWidth, offsetY / renderHeight);
-            SetCurrentValue(ThumbPositionProperty, position);
+            var mousePosition = Mouse.GetPosition(this);
+            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
+
+            var args = new PositionChangingEventArgs(ThumbPositionChangingEvent, position);
+            RaiseEvent(args);
+            if (!args.Cancel)
+            {
+                SetCurrentValue(ThumbPositionProperty, args.NewPosition);
+            }
+
         }
         #endregion
 

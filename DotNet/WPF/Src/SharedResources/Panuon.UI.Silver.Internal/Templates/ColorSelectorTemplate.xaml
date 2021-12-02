@@ -107,11 +107,14 @@
                                     <Binding Path="SelectedColor" 
                                             RelativeSource="{RelativeSource AncestorType=local:ColorSelector}"
                                              Mode="OneWay"/>
+                                    <Binding Path="BorderBrush"
+                                             RelativeSource="{RelativeSource AncestorType=local:ColorSelector}"
+                                             Mode="OneWay" />
                                 </MultiBinding>
                             </Border.Background>
                         </Border>
-                        <Button x:Name="PART_DropperButton"
-                                Style="{TemplateBinding DropperButtonStyle}" />
+                        <Thumb x:Name="PART_DropperThumb"
+                                Style="{TemplateBinding DropperThumbStyle}" />
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />

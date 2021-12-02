@@ -67,6 +67,14 @@ namespace Panuon.UI.Silver.Internal.Utils
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
+        [DllImport("user32.dll")]
+        internal static extern IntPtr GetDC(IntPtr hwnd);
+
+        [DllImport("user32.dll")]
+        internal static extern Int32 ReleaseDC(IntPtr hwnd, IntPtr hdc);
+
+        [DllImport("gdi32.dll")]
+        internal static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
         #endregion
 
     }

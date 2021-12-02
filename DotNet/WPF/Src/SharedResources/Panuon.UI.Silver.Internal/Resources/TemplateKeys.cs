@@ -7,6 +7,7 @@
         public const string CalendarXItemTemplate = nameof(CalendarXItemTemplate);
         public const string CardTemplate = nameof(CardTemplate);
         public const string CheckBoxTemplate = nameof(CheckBoxTemplate);
+        public const string ColorPickerTemplate = nameof(ColorPickerTemplate);
         public const string ColorSelectorTemplate = nameof(ColorSelectorTemplate);
         public const string ComboBoxTemplate = nameof(ComboBoxTemplate);
         public const string ComboBoxWithFixedSearchBoxTemplate = nameof(ComboBoxWithFixedSearchBoxTemplate);

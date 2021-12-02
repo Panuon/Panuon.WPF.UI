@@ -77,13 +77,12 @@ namespace Panuon.UI.Silver.Internal
                 parentWindow.LocationChanged += ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;
                 parentWindow.SizeChanged += ParentWindow_SizeChanged;
-                parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
-                parentWindow.PreviewMouseDown += Window_PreviewMouseDown;
+                parentWindow.MouseDown -= Window_MouseDown;
+                parentWindow.MouseDown += Window_MouseDown;
             }
             base.OnOpened(e);
             UpdateActualPlacement();
         }
-
 
         protected override void OnClosed(EventArgs e)
         {
@@ -91,7 +90,7 @@ namespace Panuon.UI.Silver.Internal
             {
                 parentWindow.LocationChanged -= ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;
-                parentWindow.PreviewMouseDown -= Window_PreviewMouseDown;
+                parentWindow.MouseDown -= Window_MouseDown;
             }
             base.OnClosed(e);
         }
@@ -103,8 +102,8 @@ namespace Panuon.UI.Silver.Internal
         public void Relocate()
         {
             var offset = HorizontalOffset;
-            HorizontalOffset = offset + 1;
-            HorizontalOffset = offset;
+            SetCurrentValue(HorizontalOffsetProperty, offset + 1);
+            SetCurrentValue(HorizontalOffsetProperty, offset);
         }
         #endregion
 
@@ -160,15 +159,16 @@ namespace Panuon.UI.Silver.Internal
             Relocate();
         }
 
-
         private void ParentWindow_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Relocate();
         }
 
-        private void Window_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsMouseOver && !StaysOpen && (PlacementTarget == null || !PlacementTarget.IsMouseOver))
+            if (!IsMouseOver 
+                && !StaysOpen 
+                && (PlacementTarget == null || !PlacementTarget.IsMouseOver))
             {
                 SetCurrentValue(IsOpenProperty, false);
             }
@@ -185,46 +185,46 @@ namespace Panuon.UI.Silver.Internal
             var location = Child.TranslatePoint(new Point(0, 0), target);
             if (RelativePosition.X != location.X || RelativePosition.Y != location.Y)
             {
-                RelativePosition = location;
+                SetCurrentValue(RelativePositionProperty,  location);
             }
 
             switch (Placement)
             {
                 case PopupXPlacement.LeftBottom:
-                    ActualPlacement = location.X < 0 ? PopupXPlacement.LeftBottom : PopupXPlacement.RightBottom;
+                    SetCurrentValue(ActualPlacementProperty, location.X < 0 ? PopupXPlacement.LeftBottom : PopupXPlacement.RightBottom);
                     break;
                 case PopupXPlacement.Left:
-                    ActualPlacement = location.X < 0 ? PopupXPlacement.Left : PopupXPlacement.Right;
+                    SetCurrentValue(ActualPlacementProperty, location.X < 0 ? PopupXPlacement.Left : PopupXPlacement.Right);
                     break;
                 case PopupXPlacement.LeftTop:
-                    ActualPlacement = location.X < 0 ? PopupXPlacement.LeftTop : PopupXPlacement.RightTop;
+                    SetCurrentValue(ActualPlacementProperty, location.X < 0 ? PopupXPlacement.LeftTop : PopupXPlacement.RightTop);
                     break;
                 case PopupXPlacement.RightBottom:
-                    ActualPlacement = location.X > 0 ? PopupXPlacement.RightBottom : PopupXPlacement.LeftBottom;
+                    SetCurrentValue(ActualPlacementProperty, location.X > 0 ? PopupXPlacement.RightBottom : PopupXPlacement.LeftBottom);
                     break;
                 case PopupXPlacement.Right:
-                    ActualPlacement = location.X > 0 ? PopupXPlacement.Right : PopupXPlacement.Left;
+                    SetCurrentValue(ActualPlacementProperty, location.X > 0 ? PopupXPlacement.Right : PopupXPlacement.Left);
                     break;
                 case PopupXPlacement.RightTop:
-                    ActualPlacement = location.X > 0 ? PopupXPlacement.RightTop : PopupXPlacement.RightBottom;
+                    SetCurrentValue(ActualPlacementProperty, location.X > 0 ? PopupXPlacement.RightTop : PopupXPlacement.RightBottom);
                     break;
                 case PopupXPlacement.TopLeft:
-                    ActualPlacement = location.Y < 0 ? PopupXPlacement.TopLeft : PopupXPlacement.BottomRight;
+                    SetCurrentValue(ActualPlacementProperty, location.Y < 0 ? PopupXPlacement.TopLeft : PopupXPlacement.BottomRight);
                     break;
                 case PopupXPlacement.Top:
-                    ActualPlacement = location.Y < 0 ? PopupXPlacement.Top : PopupXPlacement.Bottom;
+                    SetCurrentValue(ActualPlacementProperty, location.Y < 0 ? PopupXPlacement.Top : PopupXPlacement.Bottom);
                     break;
                 case PopupXPlacement.TopRight:
-                    ActualPlacement = location.Y < 0 ? PopupXPlacement.TopRight : PopupXPlacement.BottomRight;
+                    SetCurrentValue(ActualPlacementProperty, location.Y < 0 ? PopupXPlacement.TopRight : PopupXPlacement.BottomRight);
                     break;
                 case PopupXPlacement.BottomLeft:
-                    ActualPlacement = location.Y > 0 ? PopupXPlacement.BottomLeft : PopupXPlacement.TopLeft;
+                    SetCurrentValue(ActualPlacementProperty, location.Y > 0 ? PopupXPlacement.BottomLeft : PopupXPlacement.TopLeft);
                     break;
                 case PopupXPlacement.Bottom:
-                    ActualPlacement = location.Y > 0 ? PopupXPlacement.Bottom : PopupXPlacement.Top;
+                    SetCurrentValue(ActualPlacementProperty, location.Y > 0 ? PopupXPlacement.Bottom : PopupXPlacement.Top);
                     break;
                 default:
-                    ActualPlacement = location.Y > 0 ? PopupXPlacement.BottomRight : PopupXPlacement.TopRight;
+                    SetCurrentValue(ActualPlacementProperty, location.Y > 0 ? PopupXPlacement.BottomRight : PopupXPlacement.TopRight);
                     break;
             }
         }
