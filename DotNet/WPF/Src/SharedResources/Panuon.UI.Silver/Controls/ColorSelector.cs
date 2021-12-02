@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Panuon.UI.Core;
+using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     [TemplatePart(Name = ThumbFenceTemplateName, Type = typeof(ThumbFence))]
-    [TemplatePart(Name = DropperButtonTemplateName, Type = typeof(Button))]
+    [TemplatePart(Name = DropperThumbTemplateName, Type = typeof(Thumb))]
     [TemplatePart(Name = AccentColorSliderTemplateName, Type = typeof(Slider))]
     [TemplatePart(Name = OpacitySliderTemplateName, Type = typeof(Slider))]
     [TemplatePart(Name = HEXTextBoxTemplateName, Type = typeof(TextBox))]
@@ -22,7 +26,7 @@ namespace Panuon.UI.Silver
         #region Fields
         private const string ThumbFenceTemplateName = "PART_ThumbFence";
 
-        private const string DropperButtonTemplateName = "PART_DropperButton";
+        private const string DropperThumbTemplateName = "PART_DropperThumb";
 
         private const string AccentColorSliderTemplateName = "PART_AccentColorSlider";
 
@@ -38,9 +42,9 @@ namespace Panuon.UI.Silver
 
         private const string BTextBoxTemplateName = "PART_BTextBox";
 
-        private ThumbFence _thumbFence;
+        internal ThumbFence _thumbFence;
 
-        private Button _dropperButton;
+        private Thumb _dropperThumb;
 
         private Slider _accentColorSlider;
 
@@ -90,6 +94,21 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region Events
+
+        #region SelectedColorChanged
+        public event SelectedValueChangedEventHandler<Color> SelectedColorChanged
+        {
+            add { AddHandler(SelectedColorChangedEvent, value); }
+            remove { RemoveHandler(SelectedColorChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent SelectedColorChangedEvent =
+            EventManager.RegisterRoutedEvent("SelectedColorChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedEventHandler<Color>), typeof(ColorSelector));
+        #endregion
+
+        #endregion
+
         #region Properties
 
         #region CornerRadius
@@ -103,7 +122,7 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ColorSelector));
         #endregion
 
-        #region ColorMode
+        #region ColorChannels
         public ColorChannels ColorChannels
         {
             get { return (ColorChannels)GetValue(ColorChannelsProperty); }
@@ -111,7 +130,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ColorChannelsProperty =
-            DependencyProperty.Register("ColorChannels", typeof(ColorChannels), typeof(ColorSelector), new PropertyMetadata(ColorChannels.Argb, OnColorChannelsChanged));
+            DependencyProperty.Register("ColorChannels", typeof(ColorChannels), typeof(ColorSelector), new PropertyMetadata(ColorChannels.ARGB, OnColorChannelsChanged));
 
         #endregion
 
@@ -141,28 +160,27 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region SelectedOpaqueColor
-        
+        internal Color SelectedOpaqueColor
+        {
+            get { return (Color)GetValue(SelectedOpaqueColorProperty); }
+        }
+
         internal static readonly DependencyPropertyKey SelectedOpaqueColorPropertyKey =
             DependencyProperty.RegisterReadOnly("SelectedOpaqueColor", typeof(Color), typeof(ColorSelector), new PropertyMetadata(Colors.White));
 
         public static readonly DependencyProperty SelectedOpaqueColorProperty =
             SelectedOpaqueColorPropertyKey.DependencyProperty;
-
-        internal Color SelectedOpaqueColor
-        {
-            get { return (Color)GetValue(SelectedOpaqueColorProperty); }
-        }
         #endregion
 
-        #region DropperButtonStyle
-        public Style DropperButtonStyle
+        #region DropperThumbStyle
+        public Style DropperThumbStyle
         {
-            get { return (Style)GetValue(DropperButtonStyleProperty); }
-            set { SetValue(DropperButtonStyleProperty, value); }
+            get { return (Style)GetValue(DropperThumbStyleProperty); }
+            set { SetValue(DropperThumbStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty DropperButtonStyleProperty =
-            DependencyProperty.Register("DropperButtonStyle", typeof(Style), typeof(ColorSelector));
+        public static readonly DependencyProperty DropperThumbStyleProperty =
+            DependencyProperty.Register("DropperThumbStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
         #region ThumbFenceStyle
@@ -206,9 +224,15 @@ namespace Panuon.UI.Silver
         public override void OnApplyTemplate()
         {
             _thumbFence = GetTemplateChild(ThumbFenceTemplateName) as ThumbFence;
+            _thumbFence.ThumbPositionChanging += ThumbFence_ThumbPositionChanging;
             _thumbFence.ThumbPositionChanged += ThumbFence_PositionChanged;
 
-            _dropperButton = GetTemplateChild(DropperButtonTemplateName) as Button;
+            _dropperThumb = GetTemplateChild(DropperThumbTemplateName) as Thumb;
+            _dropperThumb.PreviewMouseDown += DropperThumb_PreviewMouseDown;
+            _dropperThumb.PreviewMouseUp += DropperThumb_PreviewMouseUp;
+            _dropperThumb.DragDelta += DropperThumb_DragDelta;
+            _dropperThumb.DragStarted += DropperThumb_DragStarted;
+            _dropperThumb.DragCompleted += _dropperThumb_DragCompleted;
 
             _accentColorSlider = GetTemplateChild(AccentColorSliderTemplateName) as Slider;
             _accentColorSlider.ValueChanged += AccentColorSlider_ValueChanged;
@@ -235,7 +259,28 @@ namespace Panuon.UI.Silver
             UpdateHEXTextBoxText();
             UpdateARGBTextBoxText();
             UpdateFenchPositionAndAccentColorSliderValue();
+            UpdateOpacitySlider();
             UpdateAccentColor();
+        }
+
+        private void DropperThumb_DragStarted(object sender, DragStartedEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void _dropperThumb_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void DropperThumb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+
+        private void DropperThumb_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
         }
         #endregion
 
@@ -248,12 +293,21 @@ namespace Panuon.UI.Silver
             selector.UpdateSelectedOpaqueColor();
             selector.UpdateHEXTextBoxText();
             selector.UpdateARGBTextBoxText();
+            selector.UpdateFenchPositionAndAccentColorSliderValue();
+            selector.UpdateOpacitySlider();
+            selector.UpdateAccentColor();
+            selector.RaiseEvent(new SelectedValueChangedEventArgs<Color>(SelectedColorChangedEvent, (Color)e.OldValue, (Color)e.NewValue));
         }
 
         private static void OnColorChannelsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var selector = (ColorSelector)d;
             selector.UpdateHEXTextBoxText();
+        }
+
+        private void ThumbFence_ThumbPositionChanging(object sender, PositionChangingEventArgs e)
+        {
+
         }
 
         private void ThumbFence_PositionChanged(object sender, Core.PositionChangedEventArgs e)
@@ -302,20 +356,16 @@ namespace Panuon.UI.Silver
                 if (!_isInternalSetHEXTextBox)
                 {
                     _isInternalSetHEXTextBox = true;
-                    try
+
+                    if (ColorUtil.FromHEXString(textBox.Text) is Color newColor)
                     {
-                        var text = textBox.Text;
-                        if (!text.StartsWith("#"))
+                        if (ColorChannels == ColorChannels.RGB)
                         {
-                            text = "#" + text;
+                            newColor.A = 255;
                         }
-                        selectedColor = (Color)ColorConverter.ConvertFromString(text);
-                        if (ColorChannels == ColorChannels.Rgb)
-                        {
-                            selectedColor.A = 255;
-                        }
+                        selectedColor = newColor;
                     }
-                    catch { }
+
                     SetCurrentValue(SelectedColorProperty, selectedColor);
 
                     _isInternalSetHEXTextBox = false;
@@ -339,9 +389,6 @@ namespace Panuon.UI.Silver
                                 {
                                     var byteA = (byte)Math.Min(255, Math.Max(0, a));
                                     selectedColor.A = byteA;
-                                    _isInternalSetOpacitySlider = true;
-                                    _opacitySlider.Value = 100 - (int)(byteA * 100 / 255d);
-                                    _isInternalSetOpacitySlider = false;
                                 }
                             }
                             break;
@@ -372,6 +419,13 @@ namespace Panuon.UI.Silver
                     _isInternalSetARGBTextBox = false;
                 }
             }
+        }
+
+        private void DropperThumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            var point = PointToScreen(Mouse.GetPosition(this));
+            var color = ColorUtil.GetScreenColor(point.X, point.Y);
+            SetCurrentValue(SelectedColorProperty, color);
         }
         #endregion
 
@@ -432,9 +486,7 @@ namespace Panuon.UI.Silver
 
             var selectedColor = SelectedColor;
 
-            _hexTextBox.Text = ColorChannels == ColorChannels.Argb
-                ? string.Format("{0:X2}{1:X2}{2:X2}{3:X2}", selectedColor.A, selectedColor.R, selectedColor.G, selectedColor.B)
-                : string.Format("{0:X2}{1:X2}{2:X2}", selectedColor.R, selectedColor.G, selectedColor.B);
+            _hexTextBox.Text = ColorUtil.ToHEXString(selectedColor, ColorChannels == ColorChannels.ARGB, false);
 
             _isInternalSetHEXTextBox = false;
         }
@@ -587,6 +639,21 @@ namespace Panuon.UI.Silver
             _thumbFence.ThumbPosition = new Point(pointX, pointY);
 
             _isInternalUpdateSelector = false;
+        }
+
+        private void UpdateOpacitySlider()
+        {
+            if (_opacitySlider == null
+                || _isInternalSetOpacitySlider)
+            {
+                return;
+            }
+            _isInternalSetOpacitySlider = true;
+
+            var selectorColor = SelectedColor;
+            _opacitySlider.Value = 100 - (int)(selectorColor.A * 100 / 255d);
+
+            _isInternalSetOpacitySlider = false;
         }
         #endregion
     }

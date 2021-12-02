@@ -105,26 +105,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <!--<pu:ColorSelector Grid.Row="1"
-                          SelectedColor="Green"
-                          HorizontalAlignment="Center"
-                          Height="300"
-                          ColorChannels="Argb"
-                          Background="#35303d"
-                          CornerRadius="4"
-                          Foreground="White">
-            <pu:ColorSelector.InputTextBoxStyle>
-                <Style TargetType="TextBox"
-                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type pu:ColorSelector}}}">
-                    <Setter Property="Background"
-                            Value="#4A4650" />
-                    <Setter Property="BorderThickness"
-                            Value="0" />
-                    <Setter Property="Foreground"
-                            Value="White" />
-                </Style>
-            </pu:ColorSelector.InputTextBoxStyle>
-        </pu:ColorSelector>-->
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

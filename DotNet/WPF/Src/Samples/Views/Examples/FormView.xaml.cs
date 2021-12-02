@@ -22,6 +22,11 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Event Handlers
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
         private void BtnContinue_Click(object sender, RoutedEventArgs e)
         {
             if (_isProcessing)
@@ -43,21 +48,21 @@ namespace Samples.Views.Examples
         {
             if (string.IsNullOrEmpty(TbName.Text))
             {
-                FrmName.ValidateResult = ValidateResult.Error;
-                FrmName.Message = "Input your name.";
+                FmgrpName.ValidateResult = ValidateResult.Error;
+                FmgrpName.Message = "Input your name.";
                 return false;
             }
-            FrmName.ValidateResult = ValidateResult.None;
-            FrmName.Message = null;
+            FmgrpName.ValidateResult = ValidateResult.None;
+            FmgrpName.Message = null;
 
             if (ChbAgreement.IsChecked != true)
             {
-                FrmOptions.ValidateResult = ValidateResult.Error;
-                FrmOptions.Message = "Check option(s).";
+                FmgrpOptions.ValidateResult = ValidateResult.Error;
+                FmgrpOptions.Message = "Check option(s).";
                 return false;
             }
-            FrmOptions.ValidateResult = ValidateResult.None;
-            FrmOptions.Message = null;
+            FmgrpOptions.ValidateResult = ValidateResult.None;
+            FmgrpOptions.Message = null;
             return true;
         }
         #endregion

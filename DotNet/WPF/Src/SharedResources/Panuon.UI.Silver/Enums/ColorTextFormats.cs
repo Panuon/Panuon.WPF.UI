@@ -1,8 +1,8 @@
 ﻿namespace Panuon.UI.Silver
 {
-    public enum ColorChannels
+    public enum ColorTextFormats
     {
+        HEX,
         ARGB,
-        RGB,
     }
 }

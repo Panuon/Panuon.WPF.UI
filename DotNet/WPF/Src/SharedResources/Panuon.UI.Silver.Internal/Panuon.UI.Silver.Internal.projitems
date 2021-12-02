@@ -95,6 +95,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\TemplateKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ColorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\IconPresenterContentTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\AnimationUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtil.cs" />
@@ -109,6 +110,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ColorPickerStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -325,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\CardTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\ColorPickerTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

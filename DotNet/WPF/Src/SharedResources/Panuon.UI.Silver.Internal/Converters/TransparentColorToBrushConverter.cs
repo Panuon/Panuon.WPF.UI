@@ -54,8 +54,26 @@ namespace Panuon.UI.Silver.Internal.Converters
         {
             var width = (double)values[0];
             var height = (double)values[1];
-            var backgroundColor = (Color)values[2];
-            var background = new SolidColorBrush(backgroundColor);
+            var backgroundColor = values[2] as Color?;
+            var borderBrush = values[3] as Brush;
+
+            if(backgroundColor == null)
+            {
+                var nullBrush = new DrawingBrush()
+                {
+                    Drawing = new DrawingGroup()
+                    {
+                        Children = new DrawingCollection()
+                        {
+                            new GeometryDrawing(null, new Pen(borderBrush, 1.5), new LineGeometry(new Point(0, 0), new Point(width, height))),
+                            new GeometryDrawing(null, new Pen(borderBrush, 1.5), new LineGeometry(new Point(0, height), new Point(width, 0))),
+                        }
+                    }
+                };
+                nullBrush.Freeze();
+                return nullBrush;
+            }
+            var background = new SolidColorBrush((Color)backgroundColor);
             background.Freeze();
 
             var drawingBrush = new DrawingBrush()
