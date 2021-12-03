@@ -7,6 +7,8 @@
         public const string CalendarXItemTemplate = nameof(CalendarXItemTemplate);
         public const string CardTemplate = nameof(CardTemplate);
         public const string CheckBoxTemplate = nameof(CheckBoxTemplate);
+        public const string ColorPickerTemplate = nameof(ColorPickerTemplate);
+        public const string ColorSelectorTemplate = nameof(ColorSelectorTemplate);
         public const string ComboBoxTemplate = nameof(ComboBoxTemplate);
         public const string ComboBoxWithFixedSearchBoxTemplate = nameof(ComboBoxWithFixedSearchBoxTemplate);
         public const string ComboBoxItemTemplate = nameof(ComboBoxItemTemplate);
@@ -63,6 +65,8 @@
         public const string TabItemTemplate = nameof(TabItemTemplate);
         public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
+        public const string ThumbTemplate = nameof(ThumbTemplate);
+        public const string ThumbFenceTemplate = nameof(ThumbFenceTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);

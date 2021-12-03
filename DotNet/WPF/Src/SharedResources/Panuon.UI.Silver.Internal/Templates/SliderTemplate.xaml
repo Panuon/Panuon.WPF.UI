@@ -28,48 +28,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static irs:StyleKeys.SliderThumbStyle}"
-           TargetType="{x:Type Thumb}">
-        <Setter Property="i:VisualStateHelper.Regist"
-                Value="True" />
-        <Setter Property="SnapsToDevicePixels"
-                Value="True" />
-        <Setter Property="OverridesDefaultStyle"
-                Value="True" />
-        <Setter Property="Height"
-                Value="{Binding Path=(local:SliderHelper.ThumbHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding Path=(local:SliderHelper.ThumbWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Background"
-                Value="{Binding Path=(local:SliderHelper.ThumbBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="BorderBrush"
-                Value="{Binding Path=(local:SliderHelper.ThumbBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="BorderThickness"
-                Value="{Binding Path=(local:SliderHelper.ThumbBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="local:SliderHelper.ShadowColor"
-                Value="{Binding Path=(local:SliderHelper.ThumbShadowColor), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Thumb}">
-                    <i:ContentControlX x:Name="CcMain"
-                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderThickness="{TemplateBinding BorderThickness}"
-                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                       Padding="{TemplateBinding Padding}"
-                                       CornerRadius="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                       Content=" "
-                                       ContentTemplate="{Binding Path=(local:SliderHelper.ThumbTemplate), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SliderHorizontalTemplate}"
                      TargetType="Slider">
         <Grid>
@@ -132,7 +90,7 @@
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb x:Name="ThbToggle"
-                           Style="{StaticResource {x:Static irs:StyleKeys.SliderThumbStyle}}" />
+                           Style="{Binding Path=(local:SliderHelper.ThumbStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}"
@@ -234,7 +192,7 @@
                 </Track.DecreaseRepeatButton>
                 <Track.Thumb>
                     <Thumb x:Name="ThbToggle"
-                           Style="{StaticResource {x:Static irs:StyleKeys.SliderThumbStyle}}" />
+                           Style="{Binding Path=(local:SliderHelper.ThumbStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Track.Thumb>
                 <Track.IncreaseRepeatButton>
                     <RepeatButton Style="{StaticResource {x:Static irs:StyleKeys.SliderRepeatButtonStyle}}"

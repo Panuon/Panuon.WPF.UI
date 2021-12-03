@@ -9,6 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/CardStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/CalendarXStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/CalendarXItemStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ColorPickerStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ColorSelectorStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ContentControlXStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/DrawerStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/DropDownStyle.xaml" />
@@ -25,6 +27,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SpinnerStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/StateControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/SwitchStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ThumbFenceStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TransformControlStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>

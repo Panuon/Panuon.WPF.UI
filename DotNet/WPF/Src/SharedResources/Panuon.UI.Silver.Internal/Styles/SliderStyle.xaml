@@ -7,20 +7,34 @@
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/SliderTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ThumbStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}"
+           TargetType="Thumb"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
+        <Setter Property="Width"
+                Value="20" />
+        <Setter Property="Height"
+                Value="20" />
+        <Setter Property="Background"
+                Value="#FFFFFF" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="local:ThumbHelper.CornerRadius"
+                Value="10" />
+        <Setter Property="local:ThumbHelper.ShadowColor"
+                Value="LightGray" />
+    </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.SliderStyle}"
            TargetType="Slider">
         <Setter Property="Background"
                 Value="#EAEAEA" />
-        <Setter Property="local:SliderHelper.ThumbBackground"
-                Value="#FFFFFF" />
-        <Setter Property="local:SliderHelper.ThumbCornerRadius"
-                Value="10" />
-        <Setter Property="local:SliderHelper.ThumbShadowColor"
-                Value="LightGray" />
         <Setter Property="local:SliderHelper.CoveredBackground"
                 Value="Gray" />
+        <Setter Property="local:SliderHelper.ThumbStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}"/>
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Horizontal">

@@ -130,6 +130,20 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(TextBox textBox)
+        {
+            return (Color?)textBox.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(TextBox textBox, Color? value)
+        {
+            textBox.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(TextBoxHelper));
+        #endregion
+
         #region FocusedShadowColor
         public static Color? GetFocusedShadowColor(TextBox textBox)
         {

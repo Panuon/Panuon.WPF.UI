@@ -1,0 +1,193 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ColorSelectorTemplate}"
+                     TargetType="local:ColorSelector">
+        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+            <i:ClippingBorder CornerRadius="{TemplateBinding CornerRadius}"
+                              SnapsToDevicePixels="True">
+                <Grid Margin="{TemplateBinding Padding}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <local:ThumbFence x:Name="PART_ThumbFence"
+                                      Style="{TemplateBinding ThumbFenceStyle}"
+                                      AllowCross="True"
+                                      Background="{Binding AccentColor, Converter={StaticResource {x:Static irs:ConverterKeys.ColorSelectorThumbFenceBackgroundConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <Slider x:Name="PART_AccentColorSlider"
+                            Grid.Row="1"
+                            Style="{TemplateBinding SliderStyle}"
+                            Orientation="Horizontal"
+                            Tag="AccentColor"
+                            TickFrequency="1"
+                            Minimum="0"
+                            Maximum="100"
+                            local:SliderHelper.CoveredBackground="Transparent">
+                        <Slider.Background>
+                            <LinearGradientBrush StartPoint="1,0"
+                                                 EndPoint="0,0">
+                                <GradientStop Color="#ff0000" />
+                                <GradientStop Color="#ff00ff"
+                                              Offset="0.835" />
+                                <GradientStop Color="#0000ff"
+                                              Offset="0.668" />
+                                <GradientStop Color="#00ffff"
+                                              Offset="0.501" />
+                                <GradientStop Color="#00ff00"
+                                              Offset="0.334" />
+                                <GradientStop Color="#ffff00"
+                                              Offset="0.167" />
+                                <GradientStop Color="#ff0000"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </Slider.Background>
+                    </Slider>
+                    <Slider x:Name="PART_OpacitySlider"
+                            Grid.Column="1"
+                            Grid.RowSpan="2"
+                            Style="{TemplateBinding SliderStyle}"
+                            Orientation="Vertical"
+                            Tag="Opacity"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="1"
+                            Minimum="0"
+                            Maximum="100"
+                            local:SliderHelper.CoveredBackground="Transparent">
+                        <Slider.Background>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ColorSelectorOpacitySliderBackgroundConverter}}">
+                                <Binding Path="ActualWidth"
+                                         RelativeSource="{RelativeSource Self}"
+                                         Mode="OneWay" />
+                                <Binding Path="ActualHeight"
+                                         RelativeSource="{RelativeSource Self}"
+                                         Mode="OneWay" />
+                                <Binding Path="SelectedOpaqueColor"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </Slider.Background>
+                    </Slider>
+                    <Grid Grid.Row="3"
+                          Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border Margin="5"
+                                SnapsToDevicePixels="True"
+                                Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                CornerRadius="{TemplateBinding CornerRadius}">
+                            <Border.Background>
+                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TransparentColorToBrushConverter}}">
+                                    <Binding Path="ActualWidth"
+                                             RelativeSource="{RelativeSource Self}"
+                                             Mode="OneWay" />
+                                    <Binding Path="ActualHeight"
+                                             RelativeSource="{RelativeSource Self}"
+                                             Mode="OneWay" />
+                                    <Binding Path="SelectedColor" 
+                                            RelativeSource="{RelativeSource AncestorType=local:ColorSelector}"
+                                             Mode="OneWay"/>
+                                    <Binding Path="BorderBrush"
+                                             RelativeSource="{RelativeSource AncestorType=local:ColorSelector}"
+                                             Mode="OneWay" />
+                                </MultiBinding>
+                            </Border.Background>
+                        </Border>
+                        <Thumb x:Name="PART_DropperThumb"
+                                Style="{TemplateBinding DropperThumbStyle}" />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="3" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="PART_HEXTextBox"
+                                     Grid.Column="0"
+                                     Tag="HEX"
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="2"
+                                       Text="HEX"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="PART_ATextBox"
+                                     Grid.Column="1"
+                                     Tag="A"
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                            <TextBlock x:Name="TxtA"
+                                       Grid.Column="1"
+                                       Grid.Row="2"
+                                       Text="A"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="PART_RTextBox"
+                                     Grid.Column="2"
+                                     Tag="R"
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                            <TextBlock Grid.Column="2"
+                                       Grid.Row="2"
+                                       Text="R"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="PART_GTextBox"
+                                     Grid.Column="3"
+                                     Tag="G"
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                            <TextBlock Grid.Column="3"
+                                       Grid.Row="2"
+                                       Text="G"
+                                       HorizontalAlignment="Center" />
+                            <TextBox x:Name="PART_BTextBox"
+                                     Grid.Column="4"
+                                     Tag="B"
+                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                            <TextBlock Grid.Column="4"
+                                       Grid.Row="2"
+                                       HorizontalAlignment="Center"
+                                       Text="B" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </i:ClippingBorder>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="ColorChannels"
+                     Value="Rgb">
+                <Setter TargetName="PART_ATextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtA"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_OpacitySlider"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -24,8 +24,6 @@ namespace Panuon.UI.Silver.Configurations
 
         public static readonly DependencyProperty InverseButtonsSequenceProperty =
             DependencyProperty.Register("InverseButtonsSequence", typeof(bool), typeof(MessageBoxXSetting));
-
-
         #endregion
 
         #region ButtonStyle

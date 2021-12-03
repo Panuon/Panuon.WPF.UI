@@ -45,6 +45,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         private Style _spinnerStyle;
 
         private Rect? _ownerRect;
+
+        private bool _isClosed;
         #endregion
 
         #region Ctor
@@ -153,6 +155,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 }));
             }
             base.OnClosed(e);
+            _isClosed = true;
             _handler.TriggerClosed();
         }
         #endregion
@@ -162,18 +165,15 @@ namespace Panuon.UI.Silver.Internal.Controls
         {
             if (_ownerRect is Rect ownerRect)
             {
-                var hwnd = new WindowInteropHelper(this).Handle;
+                var source = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice;
 
-                var dpi = Win32Util.GetDpiForWindow(hwnd);
-                var scaleRatio = dpi / 96d;
-
-                var width = (int)(sizeInfo.NewSize.Width * scaleRatio);
-                var height = (int)(sizeInfo.NewSize.Height * scaleRatio);
+                var width = (int)(sizeInfo.NewSize.Width * source.M11);
+                var height = (int)(sizeInfo.NewSize.Height * source.M22);
                 var left = ownerRect.X + (ownerRect.Width - width) / 2;
                 var top = ownerRect.Y + (ownerRect.Height - height) / 2;
 
-                Left = left / scaleRatio;
-                Top = top / scaleRatio;
+                Left = left / source.M11;
+                Top = top / source.M22;
             }
             base.OnRenderSizeChanged(sizeInfo);
         }
@@ -184,12 +184,22 @@ namespace Panuon.UI.Silver.Internal.Controls
         #region Methods
         public new void Close()
         {
+            if (_isClosed)
+            {
+                return;
+            }
+
             _canClose = true;
             base.Close();
         }
 
         public void UpdateMessage(string message)
         {
+            if (_isClosed)
+            {
+                return;
+            }
+
             Dispatcher.Invoke(new Action(() =>
             {
                 _messageTextBlock.Text = message;

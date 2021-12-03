@@ -34,6 +34,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TabControl.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TabItem.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TextBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/Thumb.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ToggleButton.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ToolTip.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TreeView.xaml" />

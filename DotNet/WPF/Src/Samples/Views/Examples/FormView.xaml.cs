@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,23 +23,28 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Event Handlers
-        private void BtnContinue_Click(object sender, RoutedEventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
-            if (_isProcessing)
+            //Press Continue Button
+            if (DialogResult == true)
             {
-                return;
+                if (_isProcessing)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                if (!ValidateForm())
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                _isProcessing = true;
+                var okButton = WindowXModalDialog.GetOKButton(this);
+                ButtonHelper.SetIsPending(okButton, true);
+                e.Cancel = true;
             }
-            if (!ValidateForm())
-            {
-                return;
-            }
-            _isProcessing = true;
-            ButtonHelper.SetIsPending(BtnContinue, true);
-        }
 
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
+            base.OnClosing(e);
         }
         #endregion
 
@@ -47,21 +53,21 @@ namespace Samples.Views.Examples
         {
             if (string.IsNullOrEmpty(TbName.Text))
             {
-                FrmName.ValidateResult = ValidateResult.Error;
-                FrmName.Message = "Input your name.";
+                FmgrpName.ValidateResult = ValidateResult.Error;
+                FmgrpName.Message = "Input your name.";
                 return false;
             }
-            FrmName.ValidateResult = ValidateResult.None;
-            FrmName.Message = null;
+            FmgrpName.ValidateResult = ValidateResult.None;
+            FmgrpName.Message = null;
 
             if (ChbAgreement.IsChecked != true)
             {
-                FrmOptions.ValidateResult = ValidateResult.Error;
-                FrmOptions.Message = "Check option(s).";
+                FmgrpOptions.ValidateResult = ValidateResult.Error;
+                FmgrpOptions.Message = "Check option(s).";
                 return false;
             }
-            FrmOptions.ValidateResult = ValidateResult.None;
-            FrmOptions.Message = null;
+            FmgrpOptions.ValidateResult = ValidateResult.None;
+            FmgrpOptions.Message = null;
             return true;
         }
         #endregion

@@ -27,7 +27,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Outputs\Release\Net45\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -66,6 +66,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\PanuonIcon.ttf" />
     <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,9 @@
       <Project>{87a0e532-de0a-4e4e-8a4d-9d8bf418027a}</Project>
       <Name>Panuon.UI.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dropper.cur" />
   </ItemGroup>
   <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
   <Import Project="..\..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems" Label="Shared" />

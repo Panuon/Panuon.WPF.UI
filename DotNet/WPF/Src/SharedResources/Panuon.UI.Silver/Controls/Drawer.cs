@@ -23,7 +23,7 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Events
+        #region Routed Events
 
         #region Opened
         public event RoutedEventHandler Opened

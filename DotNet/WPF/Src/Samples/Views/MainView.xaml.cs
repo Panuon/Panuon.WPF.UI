@@ -1,13 +1,17 @@
 ﻿using Panuon.UI.Silver;
 using Samples.Views.Tools;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace Samples.Views
 {
@@ -16,7 +20,19 @@ namespace Samples.Views
     /// </summary>
     public partial class MainView : WindowX
     {
+        #region Fields
+        private static readonly List<Type> _viewTypes;
+        #endregion
+
         #region Ctor
+        static MainView()
+        {
+            _viewTypes = Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
+                .OrderBy(x => x.GetCustomAttribute<ExampleViewAttribute>().Index)
+                .ToList();
+        }
         public MainView()
         {
             InitializeComponent();
@@ -24,12 +40,6 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
-
-            var thread = new Thread(() =>
-            {
-                NoticeBox.Show("123", "123");
-            });
-            thread.Start();
         }
         #endregion
 
@@ -73,10 +83,7 @@ namespace Samples.Views
         #region Functions
         private void InitExampleItems()
         {
-            var items = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(x => x.IsPublic && typeof(Window).IsAssignableFrom(x) && x.GetCustomAttribute<ExampleViewAttribute>() != null)
-                .OrderBy(x => x.GetCustomAttribute<ExampleViewAttribute>().Index)
+            var items = _viewTypes
                 .Select(x =>
                 {
                     var viewAttribute = x.GetCustomAttribute<ExampleViewAttribute>();
@@ -128,6 +135,7 @@ namespace Samples.Views
             return border;
         }
         #endregion
+
     }
 
 }

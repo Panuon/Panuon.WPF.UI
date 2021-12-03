@@ -15,6 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand`.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangingEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangingEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\CancelEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovingEventArgs.cs" />

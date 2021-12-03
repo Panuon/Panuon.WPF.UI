@@ -159,6 +159,20 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(Button button)
+        {
+            return (Color?)button.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(Button button, Color? value)
+        {
+            button.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ButtonHelper));
+        #endregion
+
         #region ClickBackground
         public static Brush GetClickBackground(Button button)
         {

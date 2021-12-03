@@ -198,6 +198,20 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(ComboBox comboBox)
+        {
+            return (Color?)comboBox.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(ComboBox comboBox, Color? value)
+        {
+            comboBox.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
         #region FocusedBackground
         public static Brush GetFocusedBackground(ComboBox comboBox)
         {

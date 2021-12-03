@@ -15,10 +15,10 @@
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
-                        Margin="10,0,0,0">
+                        Margin="5,0,0,0">
                 <Image Source="/Samples;component/Resources/Logo.png"
                        RenderOptions.BitmapScalingMode="HighQuality"
-                       Height="20" />
+                       Height="25" />
             </StackPanel>
         </DataTemplate>
     </pu:WindowXCaption.HeaderTemplate>
@@ -27,7 +27,7 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowX}}}"
+                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click">
             </Button>
@@ -42,15 +42,17 @@
         <TextBlock Text="Samples"
                    FontSize="30" />
         <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Height="30">
             <Button Content="MessageBoxX"
-                    Click="BtnTestMessageBoxX_Click"/>
+                    Click="BtnTestMessageBoxX_Click" />
             <Button Margin="10,0,0,0"
                     Content="NoticeBox"
-                    Click="BtnTestNoticeBox_Click"/>
+                    Click="BtnTestNoticeBox_Click" />
             <Button Margin="10,0,0,0"
-                Content="PendingBox"
-                    Click="BtnTestPendingBox_Click"/>
+                    Content="PendingBox"
+                    Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
                       Margin="0,15,0,0"

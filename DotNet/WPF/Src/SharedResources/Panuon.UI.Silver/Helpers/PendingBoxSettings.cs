@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Configurations;
+using Panuon.UI.Silver.Internal.Utils;
 using System.Windows;
 
 namespace Panuon.UI.Silver
@@ -6,7 +7,10 @@ namespace Panuon.UI.Silver
     public class PendingBoxSettings
     {
         #region Static Properties
-        public static PendingBoxSetting Setting { get; } = new PendingBoxSetting();
+        public static PendingBoxSetting Setting { get; } = new PendingBoxSetting()
+        {
+            CancelButtonContent = LocalizationUtil.Cancel,
+        };
         #endregion
 
         #region Properties

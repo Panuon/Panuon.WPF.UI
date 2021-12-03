@@ -6,6 +6,8 @@
         public const string Arc2Converter = nameof(Arc2Converter);
         public const string BrushOpacityConverter = nameof(BrushOpacityConverter);
         public const string CheckBoxCheckPathConverter = nameof(CheckBoxCheckPathConverter);
+        public const string ColorSelectorOpacitySliderBackgroundConverter = nameof(ColorSelectorOpacitySliderBackgroundConverter);
+        public const string ColorSelectorThumbFenceBackgroundConverter = nameof(ColorSelectorThumbFenceBackgroundConverter);
         public const string ComboBoxDropDownHorizontalOffsetConverter = nameof(ComboBoxDropDownHorizontalOffsetConverter);
         public const string ComboBoxDropDownMarginConverter = nameof(ComboBoxDropDownMarginConverter);
         public const string ComboBoxDropDownVerticalOffsetConverter = nameof(ComboBoxDropDownVerticalOffsetConverter);
@@ -31,6 +33,7 @@
         public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
+        public const string TransparentColorToBrushConverter = nameof(TransparentColorToBrushConverter);
         public const string TreeViewInternalPaddingConverter = nameof(TreeViewInternalPaddingConverter);
         public const string TreeViewItemHorizontalSeparatorWidthConverter = nameof(TreeViewItemHorizontalSeparatorWidthConverter);
         public const string TreeViewItemHorizontalSeparatorMarginConverter = nameof(TreeViewItemHorizontalSeparatorMarginConverter);

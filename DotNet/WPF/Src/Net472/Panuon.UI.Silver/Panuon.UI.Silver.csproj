@@ -72,6 +72,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\PanuonIcon.ttf" />
     <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +80,9 @@
       <Project>{cac8f513-ad17-41f1-bff9-f0f351c5b53c}</Project>
       <Name>Panuon.UI.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dropper.cur" />
   </ItemGroup>
   <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
   <Import Project="..\..\SharedResources\Panuon.UI.Silver.Internal\Panuon.UI.Silver.Internal.projitems" Label="Shared" />

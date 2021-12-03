@@ -160,6 +160,20 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(PasswordBox passwordBox)
+        {
+            return (Color?)passwordBox.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(PasswordBox passwordBox, Color? value)
+        {
+            passwordBox.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
         #region FocusedShadowColor
         public static Color? GetFocusedShadowColor(PasswordBox passwordBox)
         {

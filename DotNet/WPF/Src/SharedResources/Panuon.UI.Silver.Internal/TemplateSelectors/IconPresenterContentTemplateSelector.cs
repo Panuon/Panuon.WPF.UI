@@ -1,15 +1,19 @@
-﻿using System;
-using System.IO;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace Panuon.UI.Silver.Internal.TemplateSelectors
 {
     class IconPresenterContentTemplateSelector : DataTemplateSelector
     {
+        private static List<string> _imageFileFormats = new List<string>()
+        {
+            ".bmp", ".jpg", ".jpe", ".jpeg", ".gif", ".tif", ".ico"
+        };
+
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (item != null)
@@ -20,20 +24,9 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
                 }
                 else if (item is string stringItem)
                 {
-                    try
+                    if(_imageFileFormats.Any(x => stringItem.EndsWith(x)))
                     {
-                        new ResourceDictionary()
-                        {
-                            Source = new Uri(stringItem, UriKind.RelativeOrAbsolute),
-                        };
                         return CreateImageDataTemplate(item);
-                    }
-                    catch (Exception ex)
-                    {
-                        if (!(ex is FileNotFoundException || ex is IOException))
-                        {
-                            return CreateImageDataTemplate(item);
-                        }
                     }
                 }
             }
