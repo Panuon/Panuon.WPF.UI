@@ -31,28 +31,28 @@
                                         Grid.Row="1"
                                         Orientation="Horizontal"
                                         Visibility="Collapsed"
-                                        Margin="{Binding Path=(local:WindowXModal.ButtonPanelMargin), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                                        HorizontalAlignment="{Binding Path=(local:WindowXModal.ButtonPanelHorizontalAlignment), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}">
+                                        Margin="{Binding Path=(local:WindowXModalDialog.ButtonPanelMargin), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                                        HorizontalAlignment="{Binding Path=(local:WindowXModalDialog.ButtonPanelHorizontalAlignment), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}">
                                 <Button x:Name="PART_CancelButton"
                                         Tag="Cancel"
                                         Visibility="Collapsed"
-                                        Style="{Binding Path=(local:WindowXModal.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                                        Content="{Binding Path=(local:WindowXModal.CancelButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                        Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                                        Content="{Binding Path=(local:WindowXModalDialog.CancelButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_NoButton"
                                         Tag="No"
                                         Visibility="Collapsed"
-                                        Style="{Binding Path=(local:WindowXModal.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                                        Content="{Binding Path=(local:WindowXModal.NoButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                        Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                                        Content="{Binding Path=(local:WindowXModalDialog.NoButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_YesButton"
                                         Tag="Yes"
                                         Visibility="Collapsed"
-                                        Style="{Binding Path=(local:WindowXModal.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                                        Content="{Binding Path=(local:WindowXModal.YesButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                        Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                                        Content="{Binding Path=(local:WindowXModalDialog.YesButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_OKButton"
                                         Tag="OK"
                                         Visibility="Collapsed"
-                                        Style="{Binding Path=(local:WindowXModal.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                                        Content="{Binding Path=(local:WindowXModal.OKButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                        Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                                        Content="{Binding Path=(local:WindowXModalDialog.OKButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                             </StackPanel>
                         </Grid>
                     </AdornerDecorator>
@@ -270,13 +270,13 @@
                         Property="Style"
                         Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </Trigger>
-            <Trigger Property="local:WindowXModal.InverseButtonsSequence"
+            <Trigger Property="local:WindowXModalDialog.InverseButtonsSequence"
                      Value="True">
                 <Setter TargetName="StkModalButtons"
                         Property="FlowDirection"
                         Value="RightToLeft" />
             </Trigger>
-            <Trigger Property="local:WindowXModal.Buttons"
+            <Trigger Property="local:WindowXModalDialog.Buttons"
                      Value="OK">
                 <Setter TargetName="StkModalButtons"
                         Property="Visibility"
@@ -285,7 +285,7 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
-            <Trigger Property="local:WindowXModal.Buttons"
+            <Trigger Property="local:WindowXModalDialog.Buttons"
                      Value="OKCancel">
                 <Setter TargetName="StkModalButtons"
                         Property="Visibility"
@@ -297,7 +297,7 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
-            <Trigger Property="local:WindowXModal.Buttons"
+            <Trigger Property="local:WindowXModalDialog.Buttons"
                      Value="YesNoCancel">
                 <Setter TargetName="StkModalButtons"
                         Property="Visibility"
@@ -312,7 +312,7 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
-            <Trigger Property="local:WindowXModal.Buttons"
+            <Trigger Property="local:WindowXModalDialog.Buttons"
                      Value="YesNo">
                 <Setter TargetName="StkModalButtons"
                         Property="Visibility"
@@ -326,9 +326,9 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="YesOK" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="YesNoCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_YesButton"
@@ -337,9 +337,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="YesOK" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="YesNo" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_YesButton"
@@ -348,9 +348,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="YesOK" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="OK" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_OKButton"
@@ -359,9 +359,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="YesOK" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="OKCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_OKButton"
@@ -370,9 +370,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="NoCancel" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="YesNoCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_NoButton"
@@ -381,9 +381,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="NoCancel" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="YesNo" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_NoButton"
@@ -392,9 +392,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="NoCancel" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="OKCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_CancelButton"
@@ -403,9 +403,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="CancelNo" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="YesNoCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_CancelButton"
@@ -414,9 +414,9 @@
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="local:WindowXModal.DefaultButton"
+                    <Condition Property="local:WindowXModalDialog.DefaultButton"
                                Value="CancelNo" />
-                    <Condition Property="local:WindowXModal.Buttons"
+                    <Condition Property="local:WindowXModalDialog.Buttons"
                                Value="OKCancel" />
                 </MultiTrigger.Conditions>
                 <Setter TargetName="PART_CancelButton"

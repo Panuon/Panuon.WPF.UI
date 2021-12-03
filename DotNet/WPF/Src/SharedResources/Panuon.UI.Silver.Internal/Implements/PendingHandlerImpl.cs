@@ -1,15 +1,13 @@
 ﻿using Panuon.UI.Silver.Internal.Controls;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace Panuon.UI.Silver.Internal.Implements
 {
     class PendingHandlerImpl : IPendingHandler
     {
         #region Fields
-        private PendingBoxWindow _window;
+        private WeakReference _window;
         #endregion
 
         #region Ctor
@@ -27,17 +25,21 @@ namespace Panuon.UI.Silver.Internal.Implements
         #region Methods
         public void Close()
         {
-            _window.Dispatcher.Invoke(new Action(() =>
+            
+            if(_window.IsAlive && _window.Target is PendingBoxWindow window)
             {
-                _window.Close();
-            }));
+                window.Dispatcher.Invoke(new Action(() =>
+                {
+                    window.Close();
+                }));
+            }
         }
         #endregion
 
         #region Internal Methods
         internal void SetWindow(PendingBoxWindow window)
         {
-            _window = window;
+            _window = new WeakReference(window);
         }
 
         internal bool TriggerCancel()
@@ -54,10 +56,13 @@ namespace Panuon.UI.Silver.Internal.Implements
 
         public void UpdateMessage(string message)
         {
-            _window.Dispatcher.Invoke(new Action(() =>
+            if (_window.IsAlive && _window.Target is PendingBoxWindow window)
             {
-                _window.UpdateMessage(message);
-            }));
+                window.Dispatcher.Invoke(new Action(() =>
+                {
+                    window.UpdateMessage(message);
+                }));
+            }
         }
         #endregion
     }

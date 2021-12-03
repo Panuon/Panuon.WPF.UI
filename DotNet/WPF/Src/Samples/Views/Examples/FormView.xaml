@@ -14,7 +14,73 @@
             BorderBrush="#3E3E45"
             BorderThickness="1"
             Foreground="#F1F1F1"
-            pu:WindowXCaption.Buttons="Close">
+            pu:WindowXCaption.Buttons="Close"
+            pu:WindowXModalDialog.Buttons="OKCancel"
+            pu:WindowXModalDialog.CancelButtonContent="Cancel"
+            pu:WindowXModalDialog.OKButtonContent="Continue"
+            pu:WindowXModalDialog.ButtonPanelMargin="0,30,10,10">
+    <pu:WindowXModalDialog.ButtonStyle>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXModalDialog}}}">
+            <Setter Property="pu:ButtonHelper.PendingSpinnerStyle">
+                <Setter.Value>
+                    <Style TargetType="pu:Spinner"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
+                        <Setter Property="SpinnerStyle"
+                                Value="Ring2" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="pu:ButtonHelper.IsPending"
+                         Value="True">
+                    <Setter Property="pu:ButtonHelper.ClickEffect"
+                            Value="Shake" />
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="Processing..." />
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="Tag"
+                         Value="OK">
+                    <Setter Property="pu:ButtonHelper.CornerRadius"
+                            Value="4" />
+                    <Setter Property="Background"
+                            Value="#6CBCEA" />
+                    <Setter Property="Foreground"
+                            Value="White" />
+                    <Setter Property="Padding"
+                            Value="20,0" />
+                    <Setter Property="Height"
+                            Value="35" />
+                </Trigger>
+                <Trigger Property="Tag"
+                         Value="Cancel">
+                    <Setter Property="pu:ButtonHelper.CornerRadius"
+                            Value="4" />
+                    <Setter Property="Background"
+                            Value="{x:Null}" />
+                    <Setter Property="Foreground"
+                            Value="Gray" />
+                    <Setter Property="Cursor"
+                            Value="Hand" />
+                    <Setter Property="Padding"
+                            Value="10,0" />
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"
+                                           TextDecorations="Underline" />
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </pu:WindowXModalDialog.ButtonStyle>
     <pu:WindowX.Resources>
 
         <Style x:Key="InputTextBoxStyle"
@@ -102,65 +168,6 @@
                     Value="0" />
             <Setter Property="pu:CheckBoxHelper.CheckedGlyphBrush"
                     Value="#FFFFFF" />
-        </Style>
-
-        <Style x:Key="OKButtonStyle"
-               TargetType="Button"
-               BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="pu:ButtonHelper.CornerRadius"
-                    Value="4" />
-            <Setter Property="Background"
-                    Value="#6CBCEA" />
-            <Setter Property="Foreground"
-                    Value="White" />
-            <Setter Property="Padding"
-                    Value="20,0" />
-            <Setter Property="Height"
-                    Value="35" />
-            <Setter Property="pu:ButtonHelper.PendingSpinnerStyle">
-                <Setter.Value>
-                    <Style TargetType="pu:Spinner"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
-                        <Setter Property="SpinnerStyle"
-                                Value="Ring2" />
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="pu:ButtonHelper.IsPending"
-                         Value="True">
-                    <Setter Property="pu:ButtonHelper.ClickEffect"
-                            Value="Shake" />
-                    <Setter Property="ContentTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <TextBlock Text="Processing..." />
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="CancelButtonStyle"
-               TargetType="Button"
-               BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="pu:ButtonHelper.CornerRadius"
-                    Value="4" />
-            <Setter Property="Background"
-                    Value="{x:Null}" />
-            <Setter Property="Foreground"
-                    Value="Gray" />
-            <Setter Property="Cursor"
-                    Value="Hand" />
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}"
-                                   TextDecorations="Underline" />
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
         </Style>
 
         <Style x:Key="SliderStyle"
@@ -270,8 +277,8 @@
                         <Setter Property="Foreground"
                                 Value="White" />
                         <Setter Property="Background"
-                                Value="#35303D"/>
-                        <Setter Property="CornerRadius" 
+                                Value="#35303D" />
+                        <Setter Property="CornerRadius"
                                 Value="4" />
                         <Setter Property="InputTextBoxStyle">
                             <Setter.Value>
@@ -293,90 +300,75 @@
 
     </pu:WindowX.Resources>
 
-    <StackPanel Margin="20,10">
-        <ScrollViewer>
-            <StackPanel>
-                <pu:FormGroup x:Name="FmgrpName"
-                              Style="{StaticResource  RequiredInputFormGroupStyle}"
-                              Header="Name : "
-                              GroupName="MyFormGroup">
-                    <TextBox x:Name="TbName"
-                             Style="{StaticResource InputTextBoxStyle}" />
-                </pu:FormGroup>
-                <pu:FormGroup Style="{StaticResource  RequiredInputFormGroupStyle}"
-                              Header="Age : "
-                              GroupName="MyFormGroup">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="30" />
-                        </Grid.ColumnDefinitions>
-                        <Slider x:Name="SlrAge"
-                                VerticalAlignment="Center"
-                                IsSnapToTickEnabled="True"
-                                TickFrequency="1"
-                                Minimum="0"
-                                Maximum="100"
-                                Style="{StaticResource SliderStyle}" />
-                        <TextBlock Grid.Column="1"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Right"
-                                   Text="{Binding Value, ElementName=SlrAge}" />
-                    </Grid>
-                </pu:FormGroup>
-                <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
-                              Header="Email : "
-                              GroupName="MyFormGroup">
-                    <TextBox x:Name="TbAge"
-                             Style="{StaticResource InputTextBoxStyle}" />
-                </pu:FormGroup>
-                <pu:FormGroup Style="{StaticResource InputFormGroupStyle}"
-                              Header="Color:"
-                              GroupName="MyFormGroup">
-                    <pu:ColorPicker x:Name="ClpColor"
-                                    Style="{StaticResource ColorPickerStyle}"
-                                    Watermark="选择一个颜色"
-                                    IsEditable="True"
-                                    ColorChannels="ARGB"
-                                    ColorTextFormats="ARGB"
-                                    SelectedColor="White"
-                                    DefaultColor="{x:Null}"
-                                    ClearButtonVisibility="VisibleOnHoverAndNonnull" />
-                </pu:FormGroup>
-                <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
-                              Header="Address : "
-                              GroupName="MyFormGroup">
-                    <TextBox Style="{StaticResource MultilineInputTextBoxStyle}" />
-                </pu:FormGroup>
-                <pu:FormGroup x:Name="FmgrpOptions"
-                              Style="{StaticResource RequiredInputFormGroupStyle}"
-                              Header="Options : "
-                              GroupName="MyFormGroup">
-                    <StackPanel Orientation="Horizontal">
-                        <CheckBox x:Name="ChbAgreement"
-                                  Style="{StaticResource OptionalCheckBoxStyle}"
-                                  Content="Accepts " />
-                        <TextBlock VerticalAlignment="Center"
-                                   Text="User License Agreement"
-                                   TextDecorations="Underline"
-                                   Foreground="#6CBCEA"
-                                   Cursor="Hand" />
-                    </StackPanel>
-                </pu:FormGroup>
-            </StackPanel>
-        </ScrollViewer>
-        <StackPanel Margin="0,30,0,10"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right">
-            <Button x:Name="BtnCancel"
-                    Style="{StaticResource CancelButtonStyle}"
-                    Content="Cancel"
-                    Click="BtnCancel_Click" />
-            <Button x:Name="BtnContinue"
-                    Margin="5,0,0,0"
-                    Style="{StaticResource OKButtonStyle}"
-                    Content="Continue"
-                    Click="BtnContinue_Click" />
+    <ScrollViewer Margin="20,10">
+        <StackPanel>
+            <pu:FormGroup x:Name="FmgrpName"
+                          Style="{StaticResource  RequiredInputFormGroupStyle}"
+                          Header="Name : "
+                          GroupName="MyFormGroup">
+                <TextBox x:Name="TbName"
+                         Style="{StaticResource InputTextBoxStyle}" />
+            </pu:FormGroup>
+            <pu:FormGroup Style="{StaticResource  RequiredInputFormGroupStyle}"
+                          Header="Age : "
+                          GroupName="MyFormGroup">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <Slider x:Name="SlrAge"
+                            VerticalAlignment="Center"
+                            IsSnapToTickEnabled="True"
+                            TickFrequency="1"
+                            Minimum="0"
+                            Maximum="100"
+                            Style="{StaticResource SliderStyle}" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right"
+                               Text="{Binding Value, ElementName=SlrAge}" />
+                </Grid>
+            </pu:FormGroup>
+            <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
+                          Header="Email : "
+                          GroupName="MyFormGroup">
+                <TextBox x:Name="TbAge"
+                         Style="{StaticResource InputTextBoxStyle}" />
+            </pu:FormGroup>
+            <pu:FormGroup Style="{StaticResource InputFormGroupStyle}"
+                          Header="Color:"
+                          GroupName="MyFormGroup">
+                <pu:ColorPicker x:Name="ClpColor"
+                                Style="{StaticResource ColorPickerStyle}"
+                                Watermark="选择一个颜色"
+                                IsEditable="True"
+                                ColorChannels="ARGB"
+                                ColorTextFormats="ARGB"
+                                SelectedColor="White"
+                                DefaultColor="{x:Null}"
+                                ClearButtonVisibility="VisibleOnHoverAndNonnull" />
+            </pu:FormGroup>
+            <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
+                          Header="Address : "
+                          GroupName="MyFormGroup">
+                <TextBox Style="{StaticResource MultilineInputTextBoxStyle}" />
+            </pu:FormGroup>
+            <pu:FormGroup x:Name="FmgrpOptions"
+                          Style="{StaticResource RequiredInputFormGroupStyle}"
+                          Header="Options : "
+                          GroupName="MyFormGroup">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox x:Name="ChbAgreement"
+                              Style="{StaticResource OptionalCheckBoxStyle}"
+                              Content="Accepts " />
+                    <TextBlock VerticalAlignment="Center"
+                               Text="User License Agreement"
+                               TextDecorations="Underline"
+                               Foreground="#6CBCEA"
+                               Cursor="Hand" />
+                </StackPanel>
+            </pu:FormGroup>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </pu:WindowX>

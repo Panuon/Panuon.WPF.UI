@@ -20,7 +20,9 @@
   <Import Project="..\..\SharedResources\Panuon.UI.Silver\Panuon.UI.Silver.projitems" Label="Shared" />
 
   <ItemGroup>
+    <None Remove="Resources\dropper.cur" />
     <None Remove="Resources\Fonts\PanuonIcon.ttf" />
+    <None Remove="Resources\PanuonIcon.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\dropper.cur" />
     <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
+    <Resource Include="Resources\PanuonIcon.ttf" />
   </ItemGroup>
 
 </Project>

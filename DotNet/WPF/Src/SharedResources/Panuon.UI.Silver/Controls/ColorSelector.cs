@@ -265,7 +265,7 @@ namespace Panuon.UI.Silver
 
         private void DropperThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-            Cursor = Cursors.Hand;
+            Cursor = CursorUtil.DropperCursor;
         }
 
         private void _dropperThumb_DragCompleted(object sender, DragCompletedEventArgs e)
@@ -275,7 +275,7 @@ namespace Panuon.UI.Silver
 
         private void DropperThumb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Cursor = Cursors.Hand;
+            Cursor = CursorUtil.DropperCursor;
         }
 
         private void DropperThumb_PreviewMouseUp(object sender, MouseButtonEventArgs e)

@@ -34,6 +34,14 @@ namespace Panuon.UI.Silver
 
         private const string OKButtonTemplateName = "PART_OKButton";
 
+        private Button _okButton;
+
+        private Button _cancelButton;
+
+        private Button _noButton;
+
+        private Button _yesButton;
+
         private WindowState _lastWindowState;
 
         private bool _isLoaded;
@@ -63,18 +71,17 @@ namespace Panuon.UI.Silver
         #region OnApplyTemplate
         public override void OnApplyTemplate()
         {
-            var cancelButton = GetTemplateChild(CancelButtonTemplateName) as Button;
-            cancelButton.Click += ModalButton_Click;
+            _cancelButton = GetTemplateChild(CancelButtonTemplateName) as Button;
+            _cancelButton.Click += ModalButton_Click;
 
-            var okButton = GetTemplateChild(OKButtonTemplateName) as Button;
-            okButton.Click += ModalButton_Click;
+            _okButton = GetTemplateChild(OKButtonTemplateName) as Button;
+            _okButton.Click += ModalButton_Click;
 
-            var yesButton = GetTemplateChild(YesButtonTemplateName) as Button;
-            yesButton.Click += ModalButton_Click;
+            _yesButton = GetTemplateChild(YesButtonTemplateName) as Button;
+            _yesButton.Click += ModalButton_Click;
 
-            var noButton = GetTemplateChild(NoButtonTemplateName) as Button;
-            noButton.Click += ModalButton_Click;
-
+            _noButton = GetTemplateChild(NoButtonTemplateName) as Button;
+            _noButton.Click += ModalButton_Click;
         }
 
         #endregion
@@ -109,6 +116,8 @@ namespace Panuon.UI.Silver
                 owner.IsMaskVisible = false;
             }
             base.OnClosed(e);
+
+            IsClosed = true;
         }
         #endregion
 
@@ -245,6 +254,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Effect", typeof(WindowXEffect), typeof(WindowX), new PropertyMetadata(null, OnWindowXEffectChanged));
         #endregion
 
+        #region IsClosed
+        public bool IsClosed { get; private set; }
+        #endregion
+
+        #endregion
+
+        #region Internal Properties
+
+        internal Button ModalOKButton => _okButton;
+
+        internal Button ModalYesButton => _yesButton;
+
+        internal Button ModalNoButton => _noButton;
+
+        internal Button ModalCancelButton => _cancelButton;
+         
         #endregion
 
         #region Attached Properties
@@ -548,7 +573,7 @@ namespace Panuon.UI.Silver
             switch (button.Tag)
             {
                 case "Cancel":
-                    DialogResult = null;
+                    Close();
                     break;
                 case "Yes":
                 case "OK":

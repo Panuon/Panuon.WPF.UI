@@ -45,6 +45,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         private Style _spinnerStyle;
 
         private Rect? _ownerRect;
+
+        private bool _isClosed;
         #endregion
 
         #region Ctor
@@ -153,6 +155,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 }));
             }
             base.OnClosed(e);
+            _isClosed = true;
             _handler.TriggerClosed();
         }
         #endregion
@@ -181,12 +184,22 @@ namespace Panuon.UI.Silver.Internal.Controls
         #region Methods
         public new void Close()
         {
+            if (_isClosed)
+            {
+                return;
+            }
+
             _canClose = true;
             base.Close();
         }
 
         public void UpdateMessage(string message)
         {
+            if (_isClosed)
+            {
+                return;
+            }
+
             Dispatcher.Invoke(new Action(() =>
             {
                 _messageTextBlock.Text = message;

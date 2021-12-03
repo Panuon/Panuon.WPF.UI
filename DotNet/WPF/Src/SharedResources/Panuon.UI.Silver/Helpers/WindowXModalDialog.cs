@@ -1,13 +1,13 @@
 ﻿using Panuon.UI.Silver.Internal.Utils;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Panuon.UI.Silver
 {
-    public static class WindowXModal
+    public static class WindowXModalDialog
     {
+        #region Properties
+
         #region Buttons
         public static MessageBoxButton? GetButtons(WindowX windowX)
         {
@@ -20,7 +20,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ButtonsProperty =
-            DependencyProperty.RegisterAttached("Buttons", typeof(MessageBoxButton?), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("Buttons", typeof(MessageBoxButton?), typeof(WindowXModalDialog));
         #endregion
 
         #region ButtonStyle
@@ -35,7 +35,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ButtonStyleProperty =
-            DependencyProperty.RegisterAttached("ButtonStyle", typeof(Style), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("ButtonStyle", typeof(Style), typeof(WindowXModalDialog));
         #endregion
 
         #region DefaultButton
@@ -50,7 +50,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty DefaultButtonProperty =
-            DependencyProperty.RegisterAttached("DefaultButton", typeof(DefaultButton), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("DefaultButton", typeof(DefaultButton), typeof(WindowXModalDialog));
         #endregion
 
         #region InverseButtonsSequence
@@ -65,7 +65,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty InverseButtonsSequenceProperty =
-            DependencyProperty.RegisterAttached("InverseButtonsSequence", typeof(bool), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("InverseButtonsSequence", typeof(bool), typeof(WindowXModalDialog));
         #endregion
 
         #region ButtonPanelMargin
@@ -80,7 +80,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ButtonPanelMarginProperty =
-            DependencyProperty.RegisterAttached("ButtonPanelMargin", typeof(Thickness), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("ButtonPanelMargin", typeof(Thickness), typeof(WindowXModalDialog));
         #endregion
 
         #region ButtonPanelHorizontalAlignment
@@ -95,7 +95,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ButtonPanelHorizontalAlignmentProperty =
-            DependencyProperty.RegisterAttached("ButtonPanelHorizontalAlignment", typeof(HorizontalAlignment), typeof(WindowXModal));
+            DependencyProperty.RegisterAttached("ButtonPanelHorizontalAlignment", typeof(HorizontalAlignment), typeof(WindowXModalDialog));
         #endregion
 
         #region OKButtonContent
@@ -110,7 +110,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty OKButtonContentProperty =
-            DependencyProperty.RegisterAttached("OKButtonContent", typeof(object), typeof(WindowXModal), new PropertyMetadata(LocalizationUtil.OK));
+            DependencyProperty.RegisterAttached("OKButtonContent", typeof(object), typeof(WindowXModalDialog), new PropertyMetadata(LocalizationUtil.OK));
         #endregion
 
         #region YesButtonContent
@@ -125,7 +125,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty YesButtonContentProperty =
-            DependencyProperty.RegisterAttached("YesButtonContent", typeof(object), typeof(WindowXModal), new PropertyMetadata(LocalizationUtil.Yes));
+            DependencyProperty.RegisterAttached("YesButtonContent", typeof(object), typeof(WindowXModalDialog), new PropertyMetadata(LocalizationUtil.Yes));
         #endregion
 
         #region NoButtonContent
@@ -140,7 +140,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty NoButtonContentProperty =
-            DependencyProperty.RegisterAttached("NoButtonContent", typeof(object), typeof(WindowXModal), new PropertyMetadata(LocalizationUtil.No));
+            DependencyProperty.RegisterAttached("NoButtonContent", typeof(object), typeof(WindowXModalDialog), new PropertyMetadata(LocalizationUtil.No));
         #endregion
 
         #region CancelButtonContent
@@ -155,7 +155,31 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty CancelButtonContentProperty =
-            DependencyProperty.RegisterAttached("CancelButtonContent", typeof(object), typeof(WindowXModal), new PropertyMetadata(LocalizationUtil.Cancel));
+            DependencyProperty.RegisterAttached("CancelButtonContent", typeof(object), typeof(WindowXModalDialog), new PropertyMetadata(LocalizationUtil.Cancel));
+        #endregion
+
+        #endregion
+
+        #region Methods
+        public static Button GetOKButton(WindowX windowX)
+        {
+            return windowX.ModalOKButton;
+        }
+
+        public static Button GetCancelButton(WindowX windowX)
+        {
+            return windowX.ModalCancelButton;
+        }
+
+        public static Button GetYesButton(WindowX windowX)
+        {
+            return windowX.ModalYesButton;
+        }
+
+        public static Button GetNoButton(WindowX windowX)
+        {
+            return windowX.ModalNoButton;
+        }
         #endregion
 
     }

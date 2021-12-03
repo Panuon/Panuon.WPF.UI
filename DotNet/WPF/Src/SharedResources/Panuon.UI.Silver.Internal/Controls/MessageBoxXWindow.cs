@@ -16,14 +16,14 @@ namespace Panuon.UI.Silver.Internal.Controls
         {
             _setting = setting;
 
-            WindowXModal.SetButtons(this, button);
-            WindowXModal.SetDefaultButton(this, defaultButton);
-            WindowXModal.SetOKButtonContent(this, setting.OKButtonContent);
-            WindowXModal.SetCancelButtonContent(this, setting.CancelButtonContent);
-            WindowXModal.SetYesButtonContent(this, setting.YesButtonContent);
-            WindowXModal.SetNoButtonContent(this, setting.NoButtonContent);
-            WindowXModal.SetButtonStyle(this, setting.ButtonStyle);
-            WindowXModal.SetInverseButtonsSequence(this, setting.InverseButtonsSequence);
+            WindowXModalDialog.SetButtons(this, button);
+            WindowXModalDialog.SetDefaultButton(this, defaultButton);
+            WindowXModalDialog.SetOKButtonContent(this, setting.OKButtonContent);
+            WindowXModalDialog.SetCancelButtonContent(this, setting.CancelButtonContent);
+            WindowXModalDialog.SetYesButtonContent(this, setting.YesButtonContent);
+            WindowXModalDialog.SetNoButtonContent(this, setting.NoButtonContent);
+            WindowXModalDialog.SetButtonStyle(this, setting.ButtonStyle);
+            WindowXModalDialog.SetInverseButtonsSequence(this, setting.InverseButtonsSequence);
 
             Owner = owner;
             Title = caption ?? "";

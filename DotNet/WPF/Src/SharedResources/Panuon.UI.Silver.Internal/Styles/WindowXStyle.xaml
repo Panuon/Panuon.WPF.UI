@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/WindowXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModal}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
@@ -183,9 +183,9 @@
                 Value="{Binding Path=(local:WindowXCaption.CloseButtonStyle), RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:WindowXCaption.Background"
                 Value="{Binding Background, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:WindowXModal.ButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModal}}}"/>
-        <Setter Property="local:WindowXModal.ButtonPanelHorizontalAlignment"
+        <Setter Property="local:WindowXModalDialog.ButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}"/>
+        <Setter Property="local:WindowXModalDialog.ButtonPanelHorizontalAlignment"
                 Value="Right" />
         <Setter Property="FontFamily"
                 Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />

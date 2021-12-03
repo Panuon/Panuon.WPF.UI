@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,25 +23,29 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Event Handlers
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
-            Close();
-        }
-
-        private void BtnContinue_Click(object sender, RoutedEventArgs e)
-        {
-            if (_isProcessing)
+            //Press Continue Button
+            if (DialogResult == true)
             {
-                return;
+                if (_isProcessing)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                if (!ValidateForm())
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                _isProcessing = true;
+                var okButton = WindowXModalDialog.GetOKButton(this);
+                ButtonHelper.SetIsPending(okButton, true);
+                e.Cancel = true;
             }
-            if (!ValidateForm())
-            {
-                return;
-            }
-            _isProcessing = true;
-            ButtonHelper.SetIsPending(BtnContinue, true);
-        }
 
+            base.OnClosing(e);
+        }
         #endregion
 
         #region Functions
