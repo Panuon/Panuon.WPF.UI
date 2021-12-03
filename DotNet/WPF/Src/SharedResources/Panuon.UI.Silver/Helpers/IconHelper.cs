@@ -187,6 +187,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(IconHelper), new PropertyMetadata(Brushes.Black));
         #endregion
 
+        #region ToolTip
+        public static object GetToolTip(DependencyObject obj)
+        {
+            return (object)obj.GetValue(ToolTipProperty);
+        }
+
+        public static void SetToolTip(DependencyObject obj, object value)
+        {
+            obj.SetValue(ToolTipProperty, value);
+        }
+
+        public static readonly DependencyProperty ToolTipProperty =
+            DependencyProperty.RegisterAttached("ToolTip", typeof(object), typeof(IconHelper), new PropertyMetadata(null));
+        #endregion
+
+
         #endregion
     }
 

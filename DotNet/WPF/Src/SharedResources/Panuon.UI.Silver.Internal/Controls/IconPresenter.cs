@@ -68,6 +68,7 @@ namespace Panuon.UI.Silver.Internal
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, FontFamilyProperty, Source, IconHelper.FontFamilyProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, ForegroundProperty, Source, IconHelper.ForegroundProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, FontSizeProperty, Source, IconHelper.FontSizeProperty);
+                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, ToolTipProperty, Source, IconHelper.ToolTipProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VisibilityProperty, this, ContentProperty, new NullToCollapseConverter());
             }
         }
