@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.MenuTemplate}"
                      TargetType="Menu">
-        <i:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+        <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
@@ -19,7 +19,7 @@
             <ScrollViewer Padding="{TemplateBinding Padding}">
                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
             </ScrollViewer>
-        </i:ContentControlX>
+        </local:ContentControlX>
     </ControlTemplate>
 
 </ResourceDictionary>

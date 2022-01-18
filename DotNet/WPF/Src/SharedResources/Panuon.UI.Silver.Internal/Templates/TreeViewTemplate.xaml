@@ -11,23 +11,23 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewTemplate}"
                      TargetType="TreeView">
-        <i:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
+        <local:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
                            Background="{TemplateBinding Background}"
                            BorderThickness="{TemplateBinding BorderThickness}">
             <ScrollViewer Margin="{TemplateBinding Padding}"
                           Focusable="False">
                 <ItemsPresenter />
             </ScrollViewer>
-        </i:ContentControlX>
+        </local:ContentControlX>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewNonScrollableTemplate}"
                      TargetType="TreeView">
-        <i:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
+        <local:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
                            Background="{TemplateBinding Background}"
                            BorderThickness="{TemplateBinding BorderThickness}">
             <ItemsPresenter />
-        </i:ContentControlX>
+        </local:ContentControlX>
     </ControlTemplate>
 
 </ResourceDictionary>

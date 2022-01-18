@@ -501,6 +501,7 @@ namespace Panuon.UI.Silver
             var colorPicker = (ColorPicker)d;
             colorPicker.UpdateColorSelectorSelectedColor();
             colorPicker.UpdateText();
+            colorPicker.RaiseEvent(new SelectedValueChangedEventArgs<Color?>(SelectedColorChangedEvent, (Color?)e.OldValue, (Color?)e.NewValue));
         }
 
         private void EditableTextBox_TextChanged(object sender, TextChangedEventArgs e)

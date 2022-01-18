@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ThumbTemplate}"
                      TargetType="Thumb">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderThickness="{TemplateBinding BorderThickness}"

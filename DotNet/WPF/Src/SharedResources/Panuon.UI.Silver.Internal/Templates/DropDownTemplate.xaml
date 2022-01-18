@@ -14,20 +14,20 @@
         <Border BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
-            <Grid >
+            <Grid>
                 <ContentPresenter x:Name="CpContent"
-                              Margin="{TemplateBinding Padding}"
+                                  Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
-                <i:CustomPopup x:Name="PART_Popup"
-                               PlacementTarget="{Binding ElementName=CpContent, Mode=OneWay}"
-                               Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
-                               IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                               AllowsTransparency="True"
-                               StaysOpen="{TemplateBinding StaysOpen}"
-                               Focusable="False"
-                               PopupAnimation="Fade">
-                    <i:CustomPopup.HorizontalOffset>
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                <local:PopupX x:Name="PART_Popup"
+                              PlacementTarget="{Binding ElementName=CpContent, Mode=OneWay}"
+                              Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
+                              IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                              AllowsTransparency="True"
+                              StaysOpen="{TemplateBinding StaysOpen}"
+                              Focusable="False"
+                              PopupAnimation="Fade">
+                    <local:PopupX.HorizontalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=local:DropDown}"
@@ -42,8 +42,8 @@
                                      RelativeSource="{RelativeSource AncestorType=local:DropDown}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </i:CustomPopup.HorizontalOffset>
-                    <i:CustomPopup.VerticalOffset>
+                    </local:PopupX.HorizontalOffset>
+                    <local:PopupX.VerticalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=local:DropDown}"
@@ -58,7 +58,7 @@
                                      RelativeSource="{RelativeSource AncestorType=local:DropDown}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </i:CustomPopup.VerticalOffset>
+                    </local:PopupX.VerticalOffset>
                     <Grid x:Name="GrdDropDown"
                           Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
                           Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
@@ -79,12 +79,12 @@
                                          Mode="OneWay" />
                             </MultiBinding>
                         </Grid.Margin>
-                        <i:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                        <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                            Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
                                            BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:DropDown},Mode=OneWay}"
                                            BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
                                            CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}">
-                            <i:ContentControlX.Effect>
+                            <local:ContentControlX.Effect>
                                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                     <Binding Path="(local:DropDownHelper.ShadowColor)"
                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}"
@@ -105,12 +105,12 @@
                                              RelativeSource="{RelativeSource AncestorType=local:DropDown}"
                                              Mode="OneWay" />
                                 </MultiBinding>
-                            </i:ContentControlX.Effect>
+                            </local:ContentControlX.Effect>
                             <ContentControl Content="{TemplateBinding Child}"
                                             Margin="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}" />
-                        </i:ContentControlX>
+                        </local:ContentControlX>
                     </Grid>
-                </i:CustomPopup>
+                </local:PopupX>
             </Grid>
 
         </Border>

@@ -11,23 +11,37 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxTemplate}"
                      TargetType="ListBox">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+        <local:ContentControlX x:Name="CcMain"
+                           Background="{TemplateBinding Background}"
+                           BorderBrush="{TemplateBinding BorderBrush}"
+                           BorderThickness="{TemplateBinding BorderThickness}"
+                           Foreground="{TemplateBinding Foreground}"
+                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                           CornerRadius="{Binding Path=(local:ListBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalContentAlignment="Stretch"
+                           HorizontalContentAlignment="Stretch">
             <ScrollViewer Margin="{TemplateBinding Padding}"
                           Focusable="False">
                 <ItemsPresenter />
             </ScrollViewer>
-        </Border>
+        </local:ContentControlX>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxNonScrollableTemplate}"
                      TargetType="ListBox">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+        <local:ContentControlX x:Name="CcMain"
+                           Background="{TemplateBinding Background}"
+                           BorderBrush="{TemplateBinding BorderBrush}"
+                           BorderThickness="{TemplateBinding BorderThickness}"
+                           Foreground="{TemplateBinding Foreground}"
+                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                           CornerRadius="{Binding Path=(local:ListBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalContentAlignment="Stretch"
+                           HorizontalContentAlignment="Stretch">
             <ItemsPresenter />
-        </Border>
+        </local:ContentControlX>
     </ControlTemplate>
 
 </ResourceDictionary>

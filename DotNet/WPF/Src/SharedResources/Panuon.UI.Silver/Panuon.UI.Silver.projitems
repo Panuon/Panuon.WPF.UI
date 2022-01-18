@@ -33,6 +33,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentControlX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PopupX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Drawer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\DropDown.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FormGroup.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\WindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SelectedDatesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ComponentKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
   </ItemGroup>

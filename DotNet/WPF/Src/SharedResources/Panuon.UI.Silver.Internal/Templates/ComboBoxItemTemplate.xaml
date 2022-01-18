@@ -16,7 +16,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                Grid.Column="1"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -42,7 +42,7 @@
                             Command="{Binding Path=(local:ComboBoxHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
-            </i:ContentControlX>
+            </local:ContentControlX>
             <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
                               VerticalAlignment="Center"

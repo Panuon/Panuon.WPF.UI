@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/ContentControlXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="i:ContentControlX">
+    <Style TargetType="local:ContentControlX">
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"

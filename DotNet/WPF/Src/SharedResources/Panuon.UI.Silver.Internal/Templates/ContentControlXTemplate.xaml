@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ContentControlXTemplate}"
-                     TargetType="i:ContentControlX">
+                     TargetType="local:ContentControlX">
         <Grid>
             <Border SnapsToDevicePixels="True"
                     Background="{TemplateBinding Background}"

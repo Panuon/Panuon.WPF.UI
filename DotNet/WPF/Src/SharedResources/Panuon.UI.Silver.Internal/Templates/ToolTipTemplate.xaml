@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ToolTipTemplate}"
                      TargetType="ToolTip">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
@@ -26,7 +26,7 @@
                            ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                            ContentStringFormat="{TemplateBinding ContentStringFormat}"
                            Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <i:ContentControlX.Effect>
+            <local:ContentControlX.Effect>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                     <Binding Path="(local:ToolTipHelper.ShadowColor)"
                              RelativeSource="{RelativeSource TemplatedParent}"
@@ -47,8 +47,8 @@
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                 </MultiBinding>
-            </i:ContentControlX.Effect>
-        </i:ContentControlX>
+            </local:ContentControlX.Effect>
+        </local:ContentControlX>
     </ControlTemplate>
     
 </ResourceDictionary>

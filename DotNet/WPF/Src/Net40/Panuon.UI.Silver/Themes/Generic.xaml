@@ -15,7 +15,7 @@
         <Setter Property="shell:WindowChrome.WindowChrome">
                 <Setter.Value>
                 <shell:WindowChrome  ResizeBorderThickness="3"
-                                     GlassFrameThickness="3"
+                                     GlassFrameThickness="0,1,0,0"
                                      CornerRadius="0" />
             </Setter.Value>
         </Setter>

@@ -82,7 +82,7 @@ namespace Panuon.UI.Silver.Internal.Converters
                 {
                     Children = new DrawingCollection()
                     {
-                          new GeometryDrawing(_stackBrush, null, new RectangleGeometry(new Rect(1, 1, width - 2, height - 2))),
+                          new GeometryDrawing(_stackBrush, null, new RectangleGeometry(new Rect(1, 1, Math.Max(0, width - 2), Math.Max(0, height - 2)))),
                           new GeometryDrawing(background, null, new RectangleGeometry(new Rect(0, 0, width, height))),
                      }
                 }

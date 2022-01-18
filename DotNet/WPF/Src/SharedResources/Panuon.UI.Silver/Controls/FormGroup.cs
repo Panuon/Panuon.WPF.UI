@@ -236,6 +236,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("GroupName", typeof(string), typeof(FormGroup), new PropertyMetadata(OnGroupNameChanged));
         #endregion
 
+        #region ExtendControl
+        public object ExtendControl
+        {
+            get { return (object)GetValue(ExtendControlProperty); }
+            set { SetValue(ExtendControlProperty, value); }
+        }
+
+        public static readonly DependencyProperty ExtendControlProperty =
+            DependencyProperty.Register("ExtendControl", typeof(object), typeof(FormGroup));
+        #endregion
+
         #endregion
 
         #region Overrides

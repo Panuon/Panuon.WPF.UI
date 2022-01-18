@@ -19,6 +19,10 @@
                 Value="40" />
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.ThumbFenceThumbStyle}"
+           TargetType="Thumb"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:ThumbFence}}}" />
+
     <Style TargetType="local:ThumbFence">
         <Setter Property="Background"
                 Value="#FFFFFF" />

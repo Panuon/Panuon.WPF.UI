@@ -51,7 +51,7 @@
         <Setter Property="local:MenuHelper.TopLevelItemsHoverBackground"
                 Value="#F1F1F1" />
         <Setter Property="local:MenuHelper.TopLevelItemsForeground"
-                Value="#3E3E3E" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuItemsIconWidth"
                 Value="{Binding Path=(local:MenuHelper.SubmenuItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuItemsHeight"
@@ -63,25 +63,29 @@
         <Setter Property="local:MenuHelper.SubmenuItemsHoverBackground"
                 Value="#F1F1F1" />
         <Setter Property="local:MenuHelper.SubmenuItemsForeground"
-                Value="#3E3E3E" />
-        <Setter Property="local:DropDownHelper.Width"
-                Value="150" />
-        <Setter Property="local:DropDownHelper.Background"
-                Value="White" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Background"
                 Value="White" />
         <Setter Property="local:DropDownHelper.BorderBrush"
                 Value="LightGray" />
         <Setter Property="local:DropDownHelper.BorderThickness"
                 Value="1" />
-        <Setter Property="local:MenuHelper.TopLevelDropDownPlacement"
+        <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
+        <Setter Property="local:DropDownHelper.VerticalOffset"
+                Value="0" />
+        <Setter Property="local:MenuHelper.TopLevelDropDownPlacement"
+                Value="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.TopLevelDropDownVerticalOffset"
-                Value="0" />
+                Value="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:MenuHelper.TopLevelDropDownHorizontalOffset"
+                Value="{Binding Path=(local:DropDownHelper.HorizontalOffset), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuDropDownPlacement"
-                Value="RightBottom" />
+                Value="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuDropDownVerticalOffset"
-                Value="0" />
+                Value="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:MenuHelper.SubmenuDropDownHorizontalOffset"
+                Value="{Binding Path=(local:DropDownHelper.HorizontalOffset), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="#E6E6E6" />
         <Setter Property="local:MenuHelper.TopLevelItemsSeparatorBrush"
@@ -94,10 +98,12 @@
                 Value="1" />
         <Setter Property="BorderThickness"
                 Value="1" />
-        <Setter Property="Background"
-                Value="Transparent" />
         <Setter Property="Padding"
                 Value="0" />
+        <Setter Property="FontFamily"
+                Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:MenuHelper.SubmenuArrowIconTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SubemnuArrowIconTemplate, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
         <Setter Property="local:MenuHelper.CheckedIconTemplate"

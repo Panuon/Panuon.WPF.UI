@@ -232,19 +232,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("NullableBackground", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableForeround
-        public static Brush GetNullableForeround(RadioButton radioButton)
+        #region NullableForeground
+        public static Brush GetNullableForeground(RadioButton radioButton)
         {
-            return (Brush)radioButton.GetValue(NullableForeroundProperty);
+            return (Brush)radioButton.GetValue(NullableForegroundProperty);
         }
 
-        public static void SetNullableForeround(RadioButton radioButton, Brush value)
+        public static void SetNullableForeground(RadioButton radioButton, Brush value)
         {
-            radioButton.SetValue(NullableForeroundProperty, value);
+            radioButton.SetValue(NullableForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableForeroundProperty =
-            DependencyProperty.RegisterAttached("NullableForeround", typeof(Brush), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullableForegroundProperty =
+            DependencyProperty.RegisterAttached("NullableForeground", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
 
         #region NullableBorderBrush
@@ -263,18 +263,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region NullableBorderThickness
-        public static Thickness GetNullableBorderThickness(RadioButton radioButton)
+        public static Thickness? GetNullableBorderThickness(RadioButton radioButton)
         {
-            return (Thickness)radioButton.GetValue(NullableBorderThicknessProperty);
+            return (Thickness?)radioButton.GetValue(NullableBorderThicknessProperty);
         }
 
-        public static void SetNullableBorderThickness(RadioButton radioButton, Thickness value)
+        public static void SetNullableBorderThickness(RadioButton radioButton, Thickness? value)
         {
             radioButton.SetValue(NullableBorderThicknessProperty, value);
         }
 
         public static readonly DependencyProperty NullableBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness), typeof(RadioButtonHelper));
+            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness?), typeof(RadioButtonHelper));
         #endregion
 
         #region NullableToggleBrush

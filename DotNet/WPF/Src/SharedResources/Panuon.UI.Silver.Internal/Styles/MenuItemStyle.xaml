@@ -70,6 +70,12 @@
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="local:MenuItemHelper.ClickForeground"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsClickForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBackground"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedBackground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBorderBrush"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedForeground"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsPadding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Margin"
@@ -121,6 +127,12 @@
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="local:MenuItemHelper.ClickForeground"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsClickForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBackground"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedBackground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBorderBrush"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedForeground"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsOpenedForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsPadding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Margin"
@@ -172,6 +184,12 @@
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="local:MenuItemHelper.ClickForeground"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsClickForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBackground"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedBackground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBorderBrush"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedForeground"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsPadding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Margin"
@@ -223,6 +241,12 @@
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="local:MenuItemHelper.ClickForeground"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsClickForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBackground"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedBackground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedBorderBrush"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="local:MenuItemHelper.OpenedForeground"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsOpenedForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Padding"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsPadding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Margin"
@@ -231,6 +255,8 @@
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsIcon), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Background"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsBackground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsForeground), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="BorderBrush"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsBorderBrush), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="BorderThickness"

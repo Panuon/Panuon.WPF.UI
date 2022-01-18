@@ -11,11 +11,11 @@
 
     <ControlTemplate  x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
                       TargetType="local:CalendarX">
-        <i:ContentControlX Background="{TemplateBinding Background}"
+        <local:ContentControlX Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
                            CornerRadius="{TemplateBinding CornerRadius}">
-            <i:ContentControlX.Effect>
+            <local:ContentControlX.Effect>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                     <Binding Path="ShadowColor"
                              RelativeSource="{RelativeSource TemplatedParent}"
@@ -36,7 +36,7 @@
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                 </MultiBinding>
-            </i:ContentControlX.Effect>
+            </local:ContentControlX.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -50,7 +50,7 @@
                 </Grid>
             </Grid>
 
-        </i:ContentControlX>
+        </local:ContentControlX>
     </ControlTemplate>
 
 </ResourceDictionary>

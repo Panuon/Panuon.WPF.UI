@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Core;
+using Panuon.UI.Silver.Internal;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.ComponentModel;
@@ -46,6 +47,36 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Properties
+
+        #region CornerRadius
+        public static CornerRadius GetCornerRadius(ListBox listBox)
+        {
+            return (CornerRadius)listBox.GetValue(CornerRadiusProperty);
+        }
+
+        public static void SetCornerRadius(ListBox listBox, CornerRadius value)
+        {
+            listBox.SetValue(CornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ListBoxHelper));
+        #endregion
+
+        #region ShadowColor
+        public static Color? GetShadowColor(ListBox listBox)
+        {
+            return (Color?)listBox.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(ListBox listBox, Color? value)
+        {
+            listBox.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(ListBoxHelper));
+        #endregion
 
         #region RemoveButtonStyle
         public static Style GetRemoveButtonStyle(ListBox listBox)
@@ -259,6 +290,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(ListBoxHelper));
         #endregion
 
+        #region ItemsShadowColor
+        public static Color? GetItemsShadowColor(ListBox listBox)
+        {
+            return (Color?)listBox.GetValue(ItemsShadowColorProperty);
+        }
+
+        public static void SetItemsShadowColor(ListBox listBox, Color? value)
+        {
+            listBox.SetValue(ItemsShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsShadowColorProperty =
+            DependencyProperty.RegisterAttached("ItemsShadowColor", typeof(Color?), typeof(ListBoxHelper));
+        #endregion
+
         #region ItemsCornerRadius
         public static CornerRadius GetItemsCornerRadius(ListBox listBox)
         {
@@ -366,6 +412,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
+        #region ItemsHoverShadowColor
+        public static Color? GetItemsHoverShadowColor(ListBox listBox)
+        {
+            return (Color?)listBox.GetValue(ItemsHoverShadowColorProperty);
+        }
+
+        public static void SetItemsHoverShadowColor(ListBox listBox, Color? value)
+        {
+            listBox.SetValue(ItemsHoverShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverShadowColorProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverShadowColor", typeof(Color?), typeof(ListBoxHelper));
+        #endregion
+
         #region ItemsSelectedBackground
         public static Brush GetItemsSelectedBackground(ListBox listBox)
         {
@@ -409,6 +470,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsSelectedBorderBrushProperty =
             DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsSelectedShadowColor
+        public static Color? GetItemsSelectedShadowColor(ListBox listBox)
+        {
+            return (Color?)listBox.GetValue(ItemsSelectedShadowColorProperty);
+        }
+
+        public static void SetItemsSelectedShadowColor(ListBox listBox, Color? value)
+        {
+            listBox.SetValue(ItemsSelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedShadowColorProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedShadowColor", typeof(Color?), typeof(ListBoxHelper));
         #endregion
 
         #region ItemsSelectedBorderThickness
