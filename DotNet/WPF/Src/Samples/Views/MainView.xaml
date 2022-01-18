@@ -55,7 +55,6 @@
                     Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
-                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -106,11 +105,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Button Grid.Row="1"
-                Height="50"
-                Width="200"
-                pu:ButtonHelper.Icon="/Samples;component/Resources/Logo.png"
-                Content="Go"/>
         <Grid Grid.Row="1">
 
         </Grid>
