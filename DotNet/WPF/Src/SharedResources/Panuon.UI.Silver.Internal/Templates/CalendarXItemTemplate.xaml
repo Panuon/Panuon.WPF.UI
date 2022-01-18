@@ -11,14 +11,14 @@
 
     <ControlTemplate  x:Key="{x:Static irs:TemplateKeys.CalendarXItemTemplate}"
                       TargetType="local:CalendarXItem">
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                CornerRadius="{TemplateBinding CornerRadius}"
                                >
-                <i:ContentControlX.Effect>
+                <local:ContentControlX.Effect>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                         <Binding Path="ShadowColor"
                                  RelativeSource="{RelativeSource TemplatedParent}"
@@ -39,7 +39,7 @@
                                  RelativeSource="{RelativeSource TemplatedParent}"
                                  Mode="OneWay" />
                     </MultiBinding>
-                </i:ContentControlX.Effect>
+                </local:ContentControlX.Effect>
             <Grid>
                 <ContentPresenter x:Name="CpContent"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -48,7 +48,7 @@
                                 Visibility="{Binding IsSpecialDay, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 ContentTemplate="{TemplateBinding HighlightGlyphTemplate}" />
             </Grid>
-        </i:ContentControlX>
+        </local:ContentControlX>
          
         <ControlTemplate.Triggers>
             <MultiDataTrigger>

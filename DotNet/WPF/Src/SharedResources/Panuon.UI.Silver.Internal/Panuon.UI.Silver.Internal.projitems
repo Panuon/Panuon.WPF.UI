@@ -12,8 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXDayPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentControlX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomPopup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalSpinner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxXWindow.cs" />
@@ -127,14 +125,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\ThumbStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\CalendarXItemStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\CalendarXStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

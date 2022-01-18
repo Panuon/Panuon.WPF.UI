@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonTemplate}"
                      TargetType="Button">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderThickness="{TemplateBinding BorderThickness}"
@@ -42,7 +42,7 @@
                                   VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
-        </i:ContentControlX>
+        </local:ContentControlX>
         <ControlTemplate.Triggers>
             <Trigger Property="local:ButtonHelper.IsPending"
                      Value="True">

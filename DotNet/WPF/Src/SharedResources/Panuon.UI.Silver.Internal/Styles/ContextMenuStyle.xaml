@@ -85,6 +85,12 @@
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsClickBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
         <Setter Property="local:MenuItemHelper.ClickForeground"
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsClickForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.OpenedBackground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsOpenedBackground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.OpenedBorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsOpenedBorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+        <Setter Property="local:MenuItemHelper.OpenedForeground"
+                Value="{Binding Path=(local:ContextMenuHelper.ItemsOpenedForeground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
         <Setter Property="Margin"
@@ -104,6 +110,10 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuItemTemplate}}" />
     </Style>
+
+    <Style x:Key="{x:Static rs:ComponentKeys.ContextMenuHelperMenuItemStyle}"
+           TargetType="MenuItem"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
 
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"
         TargetType="{x:Type ContextMenu}">

@@ -262,19 +262,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("NullableBackground", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableForeround
-        public static Brush GetNullableForeround(CheckBox checkBox)
+        #region NullableForeground
+        public static Brush GetNullableForeground(CheckBox checkBox)
         {
-            return (Brush)checkBox.GetValue(NullableForeroundProperty);
+            return (Brush)checkBox.GetValue(NullableForegroundProperty);
         }
 
-        public static void SetNullableForeround(CheckBox checkBox, Brush value)
+        public static void SetNullableForeground(CheckBox checkBox, Brush value)
         {
-            checkBox.SetValue(NullableForeroundProperty, value);
+            checkBox.SetValue(NullableForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableForeroundProperty =
-            DependencyProperty.RegisterAttached("NullableForeround", typeof(Brush), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullableForegroundProperty =
+            DependencyProperty.RegisterAttached("NullableForeground", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
         #region NullableBorderBrush
@@ -293,18 +293,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region NullableBorderThickness
-        public static Thickness GetNullableBorderThickness(CheckBox checkBox)
+        public static Thickness? GetNullableBorderThickness(CheckBox checkBox)
         {
             return (Thickness)checkBox.GetValue(NullableBorderThicknessProperty);
         }
 
-        public static void SetNullableBorderThickness(CheckBox checkBox, Thickness value)
+        public static void SetNullableBorderThickness(CheckBox checkBox, Thickness? value)
         {
             checkBox.SetValue(NullableBorderThicknessProperty, value);
         }
 
         public static readonly DependencyProperty NullableBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness), typeof(CheckBoxHelper));
+            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness?), typeof(CheckBoxHelper));
         #endregion
 
         #region NullableGlyphBrush

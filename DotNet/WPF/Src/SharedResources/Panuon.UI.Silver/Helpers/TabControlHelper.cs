@@ -452,7 +452,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsFontSizeProperty =
-            DependencyProperty.RegisterAttached("ItemsFontSize", typeof(double), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("ItemsFontSize", typeof(double), typeof(TabControlHelper), new PropertyMetadata(12d));
         #endregion
 
         #region ItemsCornerRadius
@@ -542,7 +542,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ItemsFontFamilyProperty =
-            DependencyProperty.RegisterAttached("ItemsFontFamily", typeof(FontFamily), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("ItemsFontFamily", typeof(FontFamily), typeof(TabControlHelper), new PropertyMetadata(SystemFonts.MessageFontFamily));
         #endregion
 
         #region ItemsForeground

@@ -33,6 +33,10 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerClearButtonStyle}"
+           TargetType="Button"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
+
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=PreviewTemplate, TypeInTargetAssembly={x:Type local:ColorPicker}}">
         <Border Background="{Binding}"
                 BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
@@ -66,9 +70,17 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerToggleArrowTransformControlStyle}"
+           TargetType="local:TransformControl"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
+
     <Style x:Key="{ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}"
            TargetType="local:ColorSelector">
     </Style>
+
+    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerColorSelectorStyle}"
+           TargetType="local:ColorSelector"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
 
     <Style TargetType="local:ColorPicker">
         <Setter Property="i:VisualStateHelper.Regist"

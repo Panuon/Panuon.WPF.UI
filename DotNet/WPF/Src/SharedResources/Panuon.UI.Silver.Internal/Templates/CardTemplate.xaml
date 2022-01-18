@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CardTemplate}"
                      TargetType="local:Card">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderThickness="{TemplateBinding BorderThickness}"
@@ -25,7 +25,7 @@
             <ContentPresenter Focusable="False"
                               VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        </i:ContentControlX>
+        </local:ContentControlX>
         <ControlTemplate.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>

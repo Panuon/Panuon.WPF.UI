@@ -73,6 +73,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HandleMouseWheel", typeof(bool), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
+        #region ContentSpacing
+        public static double GetContentSpacing(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ContentSpacingProperty);
+        }
+
+        public static void SetContentSpacing(DependencyObject obj, double value)
+        {
+            obj.SetValue(ContentSpacingProperty, value);
+        }
+
+        public static readonly DependencyProperty ContentSpacingProperty =
+            DependencyProperty.RegisterAttached("ContentSpacing", typeof(double), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
         #endregion
 
         #region Internal Properties

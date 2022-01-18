@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.LabelTemplate}"
                      TargetType="Label">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"

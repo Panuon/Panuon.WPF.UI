@@ -67,9 +67,12 @@ namespace Panuon.UI.Silver.Internal.Controls
             _cancelButtonStyle = XamlUtil.FromXaml<Style>(cancelButtonStyle);
             _spinnerStyle = XamlUtil.FromXaml<Style>(spinnerStyle);
 
-            WindowStartupLocation = owner == null
-                ? (ownerRect == null ? WindowStartupLocation.CenterScreen : WindowStartupLocation.Manual)
-                : WindowStartupLocation.CenterOwner;
+            if(ownerRect == null)
+            {
+                WindowStartupLocation = owner == null
+                  ? WindowStartupLocation.CenterScreen
+                  : WindowStartupLocation.CenterOwner;
+            }
 
             if (ownerRect == null)
             {
@@ -88,6 +91,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 }));
                 _owner = ownerX;
             }
+            Loaded += PendingBoxWindow_Loaded;
         }
 
         #endregion
@@ -113,9 +117,16 @@ namespace Panuon.UI.Silver.Internal.Controls
                     _cancelButton.Visibility = _canCancel ? Visibility.Visible : Visibility.Collapsed;
                     _cancelButton.Click += CancelButton_Click;
                 }
-                if(captionTextBlock != null)
+                if (captionTextBlock != null)
                 {
-                    captionTextBlock.Text = _captionText;
+                    if (_captionText == null)
+                    {
+                        captionTextBlock.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        captionTextBlock.Text = _captionText;
+                    }
                 }
                 if (_messageTextBlock != null)
                 {
@@ -160,23 +171,8 @@ namespace Panuon.UI.Silver.Internal.Controls
         }
         #endregion
 
-        #region 
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
-        {
-            if (_ownerRect is Rect ownerRect)
-            {
-                var source = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice;
+        #region OnRenderSizeChanged
 
-                var width = (int)(sizeInfo.NewSize.Width * source.M11);
-                var height = (int)(sizeInfo.NewSize.Height * source.M22);
-                var left = ownerRect.X + (ownerRect.Width - width) / 2;
-                var top = ownerRect.Y + (ownerRect.Height - height) / 2;
-
-                Left = left / source.M11;
-                Top = top / source.M22;
-            }
-            base.OnRenderSizeChanged(sizeInfo);
-        }
         #endregion
 
         #endregion
@@ -208,6 +204,23 @@ namespace Panuon.UI.Silver.Internal.Controls
         #endregion
 
         #region Event Handlers
+        private void PendingBoxWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_ownerRect is Rect ownerRect)
+            {
+                var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+                var source = hwndSource.CompositionTarget.TransformToDevice;
+
+                var width = (int)(ActualWidth * source.M11);
+                var height = (int)(ActualHeight * source.M22);
+                var left = ownerRect.X + (ownerRect.Width - width) / 2;
+                var top = ownerRect.Y + (ownerRect.Height - height) / 2;
+
+                Left = left / source.M11;
+                Top = top / source.M22;
+            }
+        }
+
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (_handler.TriggerCancel())

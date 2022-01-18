@@ -65,7 +65,11 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style x:Key="{x:Static rs:ComponentKeys.ScrollBarHelperScrollButtonStyle}"
+           TargetType="RepeatButton"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}}" />
+
     <Style x:Key="{x:Static rs:StyleKeys.ScrollBarStyle}"
            TargetType="ScrollBar">   
         <Setter Property="local:ScrollBarHelper.InternalThumbBackground"

@@ -25,15 +25,12 @@ namespace Panuon.UI.Silver.Internal.Implements
         #region Methods
         public void Close()
         {
-            if(_window.IsAlive && _window.Target is PendingBoxWindow window)
+            if (_window.IsAlive && _window.Target is PendingBoxWindow window)
             {
-                if (window.Dispatcher.CheckAccess())
+                window.Dispatcher.Invoke(new Action(() =>
                 {
-                    window.Dispatcher.Invoke(new Action(() =>
-                    {
-                        window.Close();
-                    }));
-                }
+                    window.Close();
+                }));
             }
         }
         #endregion
@@ -60,13 +57,10 @@ namespace Panuon.UI.Silver.Internal.Implements
         {
             if (_window.IsAlive && _window.Target is PendingBoxWindow window)
             {
-                if (window.Dispatcher.CheckAccess())
+                window.Dispatcher.Invoke(new Action(() =>
                 {
-                    window.Dispatcher.Invoke(new Action(() =>
-                    {
-                        window.UpdateMessage(message);
-                    }));
-                }
+                    window.UpdateMessage(message);
+                }));
             }
         }
         #endregion

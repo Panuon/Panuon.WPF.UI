@@ -66,8 +66,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty FontFamilyProperty =
-            DependencyProperty.RegisterAttached("FontFamily", typeof(FontFamily), typeof(TabItemHelper));
-
+            DependencyProperty.RegisterAttached("FontFamily", typeof(FontFamily), typeof(TabItemHelper), new PropertyMetadata(SystemFonts.MessageFontFamily));
         #endregion
 
         #region Foreground
@@ -98,7 +97,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty FontSizeProperty =
-            DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(TabItemHelper));
+            DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(TabItemHelper), new PropertyMetadata(12d));
 
         #endregion
 

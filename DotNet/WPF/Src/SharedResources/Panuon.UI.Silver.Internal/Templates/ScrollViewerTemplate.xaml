@@ -14,10 +14,14 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
+                <RowDefinition x:Name="RdSpacing"
+                               Height="0" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
+                <ColumnDefinition x:Name="CdSpacing"
+                                  Width="0" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <ScrollContentPresenter x:Name="scpContent"
@@ -26,7 +30,7 @@
                                     CanContentScroll="{TemplateBinding CanContentScroll}"
                                     Margin="{TemplateBinding Padding}" />
             <ScrollBar x:Name="PART_VerticalScrollBar"
-                       Grid.Column="1"
+                       Grid.Column="2"
                        MinWidth="0"
                        Width="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Value="{TemplateBinding VerticalOffset}"
@@ -34,7 +38,7 @@
                        ViewportSize="{TemplateBinding ViewportHeight}"
                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
             <ScrollBar x:Name="PART_HorizontalScrollBar"
-                       Grid.Row="1"
+                       Grid.Row="2"
                        Orientation="Horizontal"
                        MinHeight="0"
                        Height="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -44,26 +48,38 @@
                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="ComputedVerticalScrollBarVisibility"
+                     Value="Visible">
+                <Setter TargetName="CdSpacing"
+                        Property="Width"
+                        Value="{Binding Path=(local:ScrollViewerHelper.ContentSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ComputedHorizontalScrollBarVisibility"
+                     Value="Visible">
+                <Setter TargetName="RdSpacing"
+                        Property="Height"
+                        Value="{Binding Path=(local:ScrollViewerHelper.ContentSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Trigger>
             <Trigger Property="local:ScrollViewerHelper.ScrollBarPosition"
                      Value="Inside">
                 <Setter TargetName="scpContent"
                         Property="Grid.ColumnSpan"
-                        Value="2" />
+                        Value="3" />
                 <Setter TargetName="scpContent"
                         Property="Grid.RowSpan"
-                        Value="2" />
+                        Value="3" />
             </Trigger>
             <Trigger Property="local:ScrollViewerHelper.ScrollBarPosition"
                      Value="VerticalInside">
                 <Setter TargetName="scpContent"
                         Property="Grid.ColumnSpan"
-                        Value="2" />
+                        Value="3" />
             </Trigger>
             <Trigger Property="local:ScrollViewerHelper.ScrollBarPosition"
                      Value="HorizontalInside">
                 <Setter TargetName="scpContent"
                         Property="Grid.RowSpan"
-                        Value="2" />
+                        Value="3" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

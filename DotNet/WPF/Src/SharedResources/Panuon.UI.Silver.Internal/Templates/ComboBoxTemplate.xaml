@@ -12,7 +12,7 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ComboBoxTemplate}"
                      TargetType="ComboBox">
         <Grid>
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
@@ -54,14 +54,16 @@
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Border>
-                        <TextBlock x:Name="TxtWatermark"
-                                   Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                   Text="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                   Foreground="{Binding Path=(local:ComboBoxHelper.WatermarkBrush),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                   Padding="2,0,0,0"
-                                   Margin="{TemplateBinding Padding}"
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        <Border IsHitTestVisible="False"
+                                Focusable="False"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
+                            <ContentControl Content="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                            Foreground="{Binding Path=(local:ComboBoxHelper.WatermarkBrush),RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                            Margin="2,0,0,0" />
+                        </Border>
                         <TextBox x:Name="PART_EditableTextBox"
                                  Focusable="True"
                                  Padding="{TemplateBinding Padding}"
@@ -97,8 +99,8 @@
                                                 TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
-            </i:ContentControlX>
-            <i:CustomPopup x:Name="PART_Popup"
+            </local:ContentControlX>
+            <local:PopupX x:Name="PART_Popup"
                            Focusable="False"
                            AllowsTransparency="True"
                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}"
@@ -106,7 +108,7 @@
                            Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                            PopupAnimation="Fade"
                            StaysOpen="False">
-                <i:CustomPopup.HorizontalOffset>
+                <local:PopupX.HorizontalOffset>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -121,8 +123,8 @@
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
                     </MultiBinding>
-                </i:CustomPopup.HorizontalOffset>
-                <i:CustomPopup.VerticalOffset>
+                </local:PopupX.HorizontalOffset>
+                <local:PopupX.VerticalOffset>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -137,7 +139,7 @@
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
                     </MultiBinding>
-                </i:CustomPopup.VerticalOffset>
+                </local:PopupX.VerticalOffset>
                 <Grid x:Name="GrdDropDown"
                       Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                       Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
@@ -158,12 +160,12 @@
                                      Mode="OneWay" />
                         </MultiBinding>
                     </Grid.Margin>
-                    <i:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                    <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                        Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                        BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
-                        <i:ContentControlX.Effect>
+                        <local:ContentControlX.Effect>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -184,7 +186,7 @@
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </i:ContentControlX.Effect>
+                        </local:ContentControlX.Effect>
                         <ScrollViewer Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}">
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -199,9 +201,9 @@
                                                 KeyboardNavigation.DirectionalNavigation="Contained" />
                             </Grid>
                         </ScrollViewer>
-                    </i:ContentControlX>
+                    </local:ContentControlX>
                 </Grid>
-            </i:CustomPopup>
+            </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger  Property="local:ComboBoxHelper.ClearButtonVisibility"
@@ -275,7 +277,7 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ComboBoxWithFixedSearchBoxTemplate}"
                      TargetType="ComboBox">
         <Grid>
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
@@ -314,10 +316,9 @@
                                         ContentStringFormat="{TemplateBinding ItemStringFormat}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                        <TextBlock x:Name="TxtWatermark"
-                                   Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                        <ContentControl Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                    Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                   Text="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Content="{Binding Path=(local:ComboBoxHelper.Watermark), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                    Padding="2,0,0,0"
                                    Margin="{TemplateBinding Padding}"
                                    Opacity="0.6"
@@ -357,8 +358,8 @@
                                                 TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
-            </i:ContentControlX>
-            <i:CustomPopup x:Name="PART_Popup"
+            </local:ContentControlX>
+            <local:PopupX x:Name="PART_Popup"
                            Focusable="False"
                            AllowsTransparency="True"
                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}"
@@ -366,7 +367,7 @@
                            Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                            PopupAnimation="Fade"
                            StaysOpen="False">
-                <i:CustomPopup.HorizontalOffset>
+                <local:PopupX.HorizontalOffset>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -381,8 +382,8 @@
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
                     </MultiBinding>
-                </i:CustomPopup.HorizontalOffset>
-                <i:CustomPopup.VerticalOffset>
+                </local:PopupX.HorizontalOffset>
+                <local:PopupX.VerticalOffset>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -397,7 +398,7 @@
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
                     </MultiBinding>
-                </i:CustomPopup.VerticalOffset>
+                </local:PopupX.VerticalOffset>
                 <Grid x:Name="GrdDropDown"
                       Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                       Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
@@ -418,12 +419,12 @@
                                      Mode="OneWay" />
                         </MultiBinding>
                     </Grid.Margin>
-                    <i:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                    <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                        Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
                                        BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
-                        <i:ContentControlX.Effect>
+                        <local:ContentControlX.Effect>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
@@ -444,7 +445,7 @@
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </i:ContentControlX.Effect>
+                        </local:ContentControlX.Effect>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -459,9 +460,9 @@
                                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
                             </ScrollViewer>
                         </Grid>
-                    </i:ContentControlX>
+                    </local:ContentControlX>
                 </Grid>
-            </i:CustomPopup>
+            </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger  Property="local:ComboBoxHelper.ClearButtonVisibility"

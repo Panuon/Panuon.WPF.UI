@@ -52,6 +52,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ListBoxItemHelper));
         #endregion
 
+        #region ShadowColor
+        public static Color? GetShadowColor(ListBoxItem listBoxItem)
+        {
+            return (Color?)listBoxItem.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(ListBoxItem listBoxItem, Color? value)
+        {
+            listBoxItem.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(ListBoxItemHelper));
+        #endregion
+
         #region RemoveButtonVisibility
         public static AuxiliaryButtonVisibility GetRemoveButtonVisibility(ListBoxItem listBoxItem)
         {
@@ -112,6 +127,21 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ListBoxItemHelper));
         #endregion
 
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(ListBoxItem listBoxItem)
+        {
+            return (Color?)listBoxItem.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(ListBoxItem listBoxItem, Color? value)
+        {
+            listBoxItem.SetValue(HoverShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ListBoxItemHelper));
+        #endregion
+
         #region SelectedBackground
         public static Brush GetSelectedBackground(ListBoxItem listBoxItem)
         {
@@ -155,6 +185,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty SelectedBorderBrushProperty =
             DependencyProperty.RegisterAttached("SelectedBorderBrush", typeof(Brush), typeof(ListBoxItemHelper));
+        #endregion
+
+        #region SelectedShadowColor
+        public static Color? GetSelectedShadowColor(ListBoxItem listBoxItem)
+        {
+            return (Color?)listBoxItem.GetValue(SelectedShadowColorProperty);
+        }
+
+        public static void SetSelectedShadowColor(ListBoxItem listBoxItem, Color? value)
+        {
+            listBoxItem.SetValue(SelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedShadowColorProperty =
+            VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(ListBoxItemHelper));
         #endregion
 
         #region SelectedBorderThickness

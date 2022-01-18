@@ -80,18 +80,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Watermark
-        public static string GetWatermark(ComboBox comboBox)
+        public static object GetWatermark(ComboBox comboBox)
         {
-            return (string)comboBox.GetValue(WatermarkProperty);
+            return (object)comboBox.GetValue(WatermarkProperty);
         }
 
-        public static void SetWatermark(ComboBox comboBox, string value)
+        public static void SetWatermark(ComboBox comboBox, object value)
         {
             comboBox.SetValue(WatermarkProperty, value);
         }
 
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(ComboBoxHelper));
         #endregion
 
         #region WatermarkBrush

@@ -44,6 +44,8 @@ namespace Panuon.UI.Silver
 
         private WindowState _lastWindowState;
 
+        private WindowStyle _lastWindowStyle;
+
         private bool _isLoaded;
         #endregion
 
@@ -64,6 +66,8 @@ namespace Panuon.UI.Silver
 
         #region Events
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public event EventHandler FullScreenChanged;
         #endregion
 
         #region Overrides
@@ -89,9 +93,13 @@ namespace Panuon.UI.Silver
         #region OnPreviewKeyUp
         protected override void OnPreviewKeyUp(KeyEventArgs e)
         {
-            if (e.Key == Key.Escape && IsEscEnabled)
+            if (IsEscEnabled && e.Key == Key.Escape)
             {
                 Close();
+            }
+            else if(IsF11Enabled && e.Key == Key.F11)
+            {
+                SetCurrentValue(IsFullScreenProperty, !IsFullScreen);
             }
             base.OnPreviewKeyUp(e);
         }
@@ -142,6 +150,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty IsEscEnabledProperty =
             DependencyProperty.Register("IsEscEnabled", typeof(bool), typeof(WindowX));
+        #endregion
+
+        #region IsF11Enabled
+        public bool IsF11Enabled
+        {
+            get { return (bool)GetValue(IsF11EnabledProperty); }
+            set { SetValue(IsF11EnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsF11EnabledProperty =
+            DependencyProperty.Register("IsF11Enabled", typeof(bool), typeof(WindowX));
         #endregion
 
         #region CanClose
@@ -254,6 +273,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("Effect", typeof(WindowXEffect), typeof(WindowX), new PropertyMetadata(null, OnWindowXEffectChanged));
         #endregion
 
+        #region IsFullScreen
+        public bool IsFullScreen
+        {
+            get { return (bool)GetValue(IsFullScreenProperty); }
+            set { SetValue(IsFullScreenProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsFullScreenProperty =
+            DependencyProperty.Register("IsFullScreen", typeof(bool), typeof(WindowX), new PropertyMetadata(false, OnIsFullScreenChanged));
+        #endregion
+
         #region IsClosed
         public bool IsClosed { get; private set; }
         #endregion
@@ -315,7 +345,7 @@ namespace Panuon.UI.Silver
         #region Close
         public new void Close()
         {
-            CanClose = true;
+            SetCurrentValue(CanCloseProperty, true);
             base.Close();
         }
         #endregion
@@ -324,7 +354,7 @@ namespace Panuon.UI.Silver
         public void Minimize()
         {
             _lastWindowState = WindowState;
-            WindowState = WindowState.Minimized;
+            SetCurrentValue(WindowStateProperty, WindowState.Minimized);
         }
         #endregion
 
@@ -332,7 +362,7 @@ namespace Panuon.UI.Silver
         public void Maximize()
         {
             _lastWindowState = WindowState;
-            WindowState = WindowState.Maximized;
+            SetCurrentValue(WindowStateProperty, WindowState.Maximized);
         }
         #endregion
 
@@ -340,7 +370,7 @@ namespace Panuon.UI.Silver
         public void Normalmize()
         {
             _lastWindowState = WindowState;
-            WindowState = WindowState.Normal;
+            SetCurrentValue(WindowStateProperty, WindowState.Normal);
         }
         #endregion
 
@@ -350,7 +380,7 @@ namespace Panuon.UI.Silver
             _lastWindowState = WindowState;
             if (WindowState == WindowState.Maximized)
             {
-                WindowState = _lastWindowState;
+                SetCurrentValue(WindowStateProperty, _lastWindowState);
             }
             else
             {
@@ -365,7 +395,7 @@ namespace Panuon.UI.Silver
             _lastWindowState = WindowState;
             if (WindowState == WindowState.Minimized)
             {
-                WindowState = _lastWindowState;
+                SetCurrentValue(WindowStateProperty, _lastWindowState);
             }
             else
             {
@@ -409,6 +439,29 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
+        private static void OnIsFullScreenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var windowX = (WindowX)d;
+            windowX.OnFullScreenChanged();
+        }
+
+        private void OnFullScreenChanged()
+        {
+            if (IsFullScreen)
+            {
+                _lastWindowState = WindowState;
+                _lastWindowStyle = WindowStyle;
+                SetCurrentValue(WindowStyleProperty, WindowStyle.None);
+                SetCurrentValue(WindowStateProperty, WindowState.Maximized);
+            }
+            else
+            {
+                SetCurrentValue(WindowStyleProperty, _lastWindowStyle);
+                SetCurrentValue(WindowStateProperty, _lastWindowState);
+            }
+            FullScreenChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         private static void OnWindowXEffectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var windowX = (WindowX)d;

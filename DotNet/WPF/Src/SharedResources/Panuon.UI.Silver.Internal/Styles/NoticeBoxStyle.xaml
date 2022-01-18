@@ -9,6 +9,14 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type local:NoticeBox}}"
            TargetType="local:NoticeBoxItem">
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FontFamily"
+                Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Width"
                 Value="350" />
         <Setter Property="Height"
@@ -20,5 +28,10 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
     </Style>
+
+    <Style x:Key="{x:Static rs:ComponentKeys.NoticeBoxNoticeBoxItemStyle}"
+           TargetType="local:NoticeBoxItem"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type local:NoticeBox}}}" />
+
 
 </ResourceDictionary>

@@ -33,6 +33,10 @@
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}" />
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.TextBoxHelperClearButtonStyle}"
+           TargetType="Button"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
+
     <Style x:Key="{x:Static rs:StyleKeys.TextBoxStyle}"
            TargetType="TextBox">
         <Setter Property="i:VisualStateHelper.Regist"

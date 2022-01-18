@@ -6,16 +6,16 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 
-namespace Panuon.UI.Silver.Internal
+namespace Panuon.UI.Silver
 {
-    class CustomPopup : Popup
+   public class PopupX : Popup
     {
         #region Fields
         private WeakReference _parentWindow;
         #endregion
 
         #region Ctor
-        public CustomPopup()
+        public PopupX()
         {
             base.Placement = PlacementMode.Custom;
             CustomPopupPlacementCallback = PopupPlacementCallback;
@@ -32,7 +32,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public new static readonly DependencyProperty PlacementProperty =
-            DependencyProperty.Register("Placement", typeof(PopupXPlacement), typeof(CustomPopup), new PropertyMetadata(PopupXPlacement.Bottom));
+            DependencyProperty.Register("Placement", typeof(PopupXPlacement), typeof(PopupX), new PropertyMetadata(PopupXPlacement.Bottom));
         #endregion
 
         #region ActualPlacement 
@@ -43,7 +43,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty ActualPlacementProperty =
-            DependencyProperty.Register("ActualPlacement", typeof(PopupXPlacement), typeof(CustomPopup));
+            DependencyProperty.Register("ActualPlacement", typeof(PopupXPlacement), typeof(PopupX));
         #endregion
 
         #region RelativePosition
@@ -54,7 +54,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty RelativePositionProperty =
-            DependencyProperty.Register("RelativePosition", typeof(Point), typeof(CustomPopup));
+            DependencyProperty.Register("RelativePosition", typeof(Point), typeof(PopupX));
         #endregion
 
         #endregion
@@ -64,10 +64,10 @@ namespace Panuon.UI.Silver.Internal
         {
             var hwnd = ((HwndSource)PresentationSource.FromVisual(Child)).Handle;
 
-            if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
-            {
-                Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
-            }
+            //if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
+            //{
+            //    Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
+            //}
 
             var parentWindow = Window.GetWindow(this);
             if (parentWindow != null)
@@ -80,8 +80,8 @@ namespace Panuon.UI.Silver.Internal
                 parentWindow.MouseDown -= Window_MouseDown;
                 parentWindow.MouseDown += Window_MouseDown;
             }
-            base.OnOpened(e);
             UpdateActualPlacement();
+            base.OnOpened(e);
         }
 
         protected override void OnClosed(EventArgs e)

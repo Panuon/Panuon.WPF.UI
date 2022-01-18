@@ -11,7 +11,7 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
     {
         private static List<string> _imageFileFormats = new List<string>()
         {
-            ".bmp", ".jpg", ".jpe", ".jpeg", ".gif", ".tif", ".ico"
+            ".bmp", ".jpg", ".jpe", ".png", ".jpeg", ".gif", ".tif", ".ico"
         };
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)

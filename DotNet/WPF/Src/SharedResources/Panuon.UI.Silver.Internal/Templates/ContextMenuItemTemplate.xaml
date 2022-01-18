@@ -17,7 +17,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid>
-                <i:ContentControlX x:Name="CcMain"
+                <local:ContentControlX x:Name="CcMain"
                                    Grid.Column="1"
                                    Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -54,8 +54,8 @@
                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                                         ContentTemplate="{Binding Path=(local:ContextMenuHelper.ArrowIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                     </Grid>
-                </i:ContentControlX>
-                <i:CustomPopup x:Name="popDropDown"
+                </local:ContentControlX>
+                <local:PopupX x:Name="popDropDown"
                                Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                IsOpen="{Binding IsSubmenuOpen,  RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                                PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
@@ -68,7 +68,7 @@
                                AllowsTransparency="True"
                                Focusable="False"
                                PopupAnimation="Fade">
-                    <i:CustomPopup.HorizontalOffset>
+                    <local:PopupX.HorizontalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=ContextMenu}"
@@ -83,8 +83,8 @@
                                      RelativeSource="{RelativeSource AncestorType=ContextMenu}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </i:CustomPopup.HorizontalOffset>
-                    <i:CustomPopup.VerticalOffset>
+                    </local:PopupX.HorizontalOffset>
+                    <local:PopupX.VerticalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=ContextMenu}"
@@ -99,12 +99,12 @@
                                      RelativeSource="{RelativeSource AncestorType=ContextMenu}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </i:CustomPopup.VerticalOffset>
-                    <i:ContentControlX Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                    </local:PopupX.VerticalOffset>
+                    <local:ContentControlX Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                        BorderBrush="{TemplateBinding BorderBrush}"
                                        BorderThickness="{TemplateBinding BorderThickness}"
                                        CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
-                        <i:ContentControlX.Margin>
+                        <local:ContentControlX.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
@@ -116,8 +116,8 @@
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </i:ContentControlX.Margin>
-                        <i:ContentControlX.Effect>
+                        </local:ContentControlX.Margin>
+                        <local:ContentControlX.Effect>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
@@ -138,15 +138,15 @@
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </i:ContentControlX.Effect>
+                        </local:ContentControlX.Effect>
                         <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                       HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                       Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
                             <StackPanel IsItemsHost="True"
                                         KeyboardNavigation.DirectionalNavigation="Cycle" />
                         </ScrollViewer>
-                    </i:ContentControlX>
-                </i:CustomPopup>
+                    </local:ContentControlX>
+                </local:PopupX>
             </Grid>
             <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
@@ -285,6 +285,51 @@
                 <Setter TargetName="CcMain"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:MenuItemHelper.ClickBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="cpHeader"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="cpHeader"
+                        Property="TextElement.Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="ccChecked"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="ccChecked"
+                        Property="TextElement.Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IpIcon"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="Background"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

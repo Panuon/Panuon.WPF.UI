@@ -11,17 +11,17 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ContextMenuTemplate}"
                      TargetType="ContextMenu">
-        <i:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="CcMain"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Padding="{TemplateBinding Padding}"
-                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           CornerRadius="{Binding Path=(local:ContextMenuHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <i:ContentControlX.Effect>
+            <local:ContentControlX.Effect>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                    <Binding Path="(local:DropDownHelper.ShadowColor)"
+                    <Binding Path="(local:ContextMenuHelper.ShadowColor)"
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                     <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -40,11 +40,11 @@
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                 </MultiBinding>
-            </i:ContentControlX.Effect>
+            </local:ContentControlX.Effect>
             <ScrollViewer>
                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
             </ScrollViewer>
-        </i:ContentControlX>
+        </local:ContentControlX>
     </ControlTemplate>
 
 

@@ -12,7 +12,7 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewItemTemplate}"
                      TargetType="TreeViewItem">
         <StackPanel>
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -24,13 +24,13 @@
                                CornerRadius="{Binding Path=(local:TreeViewItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Padding="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <i:ContentControlX.ExtendControl>
+                <local:ContentControlX.ExtendControl>
                     <ToggleButton x:Name="TgbToggle"
                                   IsChecked="True"
                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                   Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                   Visibility="Hidden" />
-                </i:ContentControlX.ExtendControl>
+                </local:ContentControlX.ExtendControl>
                 <Grid>
                     <ContentPresenter x:Name="CpHeader"
                                       ContentSource="Header"
@@ -81,7 +81,7 @@
                         </local:SeparatorX.Margin>
                     </local:SeparatorX>
                 </Grid>
-            </i:ContentControlX>
+            </local:ContentControlX>
             <local:SeparatorX x:Name="SprtSeparator"
                               VerticalAlignment="Center"
                               Stroke="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

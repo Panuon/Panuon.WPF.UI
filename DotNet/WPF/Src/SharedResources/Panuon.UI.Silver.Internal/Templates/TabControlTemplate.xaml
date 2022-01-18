@@ -21,7 +21,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid x:Name="GrdHeader">
-                    <i:ContentControlX x:Name="CcHeader"
+                    <local:ContentControlX x:Name="CcHeader"
                                        Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -81,7 +81,7 @@
                                               StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                               Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
-                    </i:ContentControlX>
+                    </local:ContentControlX>
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Row="1"
@@ -184,7 +184,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid x:Name="GrdHeader">
-                    <i:ContentControlX x:Name="CcHeader"
+                    <local:ContentControlX x:Name="CcHeader"
                                        Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -243,7 +243,7 @@
                                               StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                               Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
-                    </i:ContentControlX>
+                    </local:ContentControlX>
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Column="1"

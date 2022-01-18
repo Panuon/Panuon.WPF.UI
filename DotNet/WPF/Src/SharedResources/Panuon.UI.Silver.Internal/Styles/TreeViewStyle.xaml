@@ -51,6 +51,10 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.TreeViewHelperToggleArrowToggleButtonStyle}"
+           TargetType="ToggleButton"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyle, TypeInTargetAssembly={x:Type local:TreeViewHelper}}}" />
+
     <Style x:Key="{x:Static rs:StyleKeys.TreeViewStyle}"
            TargetType="TreeView">
         <Setter Property="local:IconHelper.FontFamily"

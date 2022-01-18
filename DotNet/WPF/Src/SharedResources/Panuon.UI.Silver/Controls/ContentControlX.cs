@@ -1,16 +1,16 @@
-﻿using Panuon.UI.Silver.Internal.Utils;
-using System;
+﻿using Panuon.UI.Silver.Internal;
+using Panuon.UI.Silver.Internal.Utils;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Linq;
 
-namespace Panuon.UI.Silver.Internal
+namespace Panuon.UI.Silver
 {
     [TemplatePart(Name = IconPresenterPartName, Type = typeof(IconPresenter))]
-    class ContentControlX : ContentControl
+    public class ContentControlX : ContentControl
     {
         #region Fields
         private const string IconPresenterPartName = "PART_Icon";

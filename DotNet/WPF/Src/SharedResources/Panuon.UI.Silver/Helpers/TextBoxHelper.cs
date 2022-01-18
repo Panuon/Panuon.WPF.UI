@@ -27,18 +27,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Watermark
-        public static string GetWatermark(TextBox textBox)
+        public static object GetWatermark(TextBox textBox)
         {
-            return (string)textBox.GetValue(WatermarkProperty);
+            return (object)textBox.GetValue(WatermarkProperty);
         }
 
-        public static void SetWatermark(TextBox textBox, string value)
+        public static void SetWatermark(TextBox textBox, object value)
         {
             textBox.SetValue(WatermarkProperty, value);
         }
 
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(TextBoxHelper));
+            DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(TextBoxHelper));
         #endregion
 
         #region WatermarkBrush

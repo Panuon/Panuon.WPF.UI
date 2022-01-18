@@ -28,6 +28,10 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{x:Static rs:ComponentKeys.MessageBoxXButtonStyle}"
+           TargetType="Button"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}}" />
+
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -99,5 +103,10 @@
         <Setter Property="ResizeMode"
                 Value="NoResize" />
     </Style>
+
+    <Style x:Key="{x:Static rs:ComponentKeys.MessageBoxXWindowXStyle}"
+           TargetType="local:WindowX"
+           BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}}" />
+
 
 </ResourceDictionary>

@@ -21,7 +21,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <i:ContentControlX x:Name="CcMain"
+            <local:ContentControlX x:Name="CcMain"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
@@ -51,7 +51,7 @@
                             Command="{Binding Path=(local:TabControlHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
-            </i:ContentControlX>
+            </local:ContentControlX>
             <Rectangle x:Name="RectRibbon"
                        Fill="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Margin="{Binding Path=(local:TabItemHelper.RibbonLineMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

@@ -127,6 +127,51 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ClickBorderBrush", typeof(Brush), typeof(MenuItemHelper));
         #endregion
 
+        #region OpenedBackground
+        public static Brush GetOpenedBackground(MenuItem menuItem)
+        {
+            return (Brush)menuItem.GetValue(OpenedBackgroundProperty);
+        }
+
+        public static void SetOpenedBackground(MenuItem menuItem, Brush value)
+        {
+            menuItem.SetValue(OpenedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBackgroundProperty =
+            DependencyProperty.RegisterAttached("OpenedBackground", typeof(Brush), typeof(MenuItemHelper));
+        #endregion
+
+        #region OpenedForeground
+        public static Brush GetOpenedForeground(MenuItem menuItem)
+        {
+            return (Brush)menuItem.GetValue(OpenedForegroundProperty);
+        }
+
+        public static void SetOpenedForeground(MenuItem menuItem, Brush value)
+        {
+            menuItem.SetValue(OpenedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedForegroundProperty =
+            DependencyProperty.RegisterAttached("OpenedForeground", typeof(Brush), typeof(MenuItemHelper));
+        #endregion
+
+        #region OpenedBorderBrush
+        public static Brush GetOpenedBorderBrush(MenuItem menuItem)
+        {
+            return (Brush)menuItem.GetValue(OpenedBorderBrushProperty);
+        }
+
+        public static void SetOpenedBorderBrush(MenuItem menuItem, Brush value)
+        {
+            menuItem.SetValue(OpenedBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("OpenedBorderBrush", typeof(Brush), typeof(MenuItemHelper));
+        #endregion
+
         #region CheckedBackground
         public static Brush GetCheckedBackground(MenuItem menuItem)
         {
