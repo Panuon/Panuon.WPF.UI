@@ -9,7 +9,11 @@
 # Panuon.UI.Silver v2.2
 
 ### This project is still under development. Do not upgrade to this version rashly from the previous version, or use this version on urgent projects.   
-   
+      
+# 还在为UI设计头痛吗？
+预热中。欢迎前来关注正在开发的Panuon Workshop，一款低代码化的前端设计平台（商业软件）。
+https://github.com/PanuonInc/PanuonWorkshop
+
 # Contributors
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)  
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/45651732?v=4"></img>](https://github.com/GodLeaveMe)  
