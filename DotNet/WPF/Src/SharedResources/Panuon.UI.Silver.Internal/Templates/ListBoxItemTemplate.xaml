@@ -154,7 +154,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxItemStylelessTemplate}"
                      TargetType="ListBoxItem">
-        <Grid>
+        <Grid IsHitTestVisible="False">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />

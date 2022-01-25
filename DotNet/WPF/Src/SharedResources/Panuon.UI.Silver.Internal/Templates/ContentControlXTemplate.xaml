@@ -18,7 +18,8 @@
                     BorderThickness="{TemplateBinding BorderThickness}"
                     CornerRadius="{TemplateBinding CornerRadius}"
                     Effect="{TemplateBinding Effect}" />
-            <i:ClippingBorder CornerRadius="{TemplateBinding CornerRadius}"
+            <i:ClippingBorder BorderThickness="{TemplateBinding BorderThickness}"
+                              CornerRadius="{TemplateBinding CornerRadius}"
                               SnapsToDevicePixels="True">
                 <Grid Margin="{TemplateBinding Padding}"
                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

@@ -6,25 +6,16 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/RepeatButtonTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/CalendarXItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
-           TargetType="local:Spinner">
-        <Setter Property="GlyphBrush"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-    </Style>
-  
-    <Style x:Key="{x:Static rs:StyleKeys.RepeatButtonStyle}"
-           TargetType="RepeatButton">
+    <Style TargetType="local:CalendarXItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsChecked"
+                Value="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -33,20 +24,22 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RepeatButtonHelper.HoverBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RepeatButtonHelper.ClickBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RepeatButtonHelper.PendingSpinnerStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
+        <Setter Property="HoverBackground"
+                Value="#F1F1F1" />
+        <Setter Property="CheckedBackground"
+                Value="#EAEAEA" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="Background"
-                Value="#EAEAEA" />
+                Value="Transparent" />
         <Setter Property="BorderThickness"
                 Value="0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.RepeatButtonTemplate}}"/>
+                Value="{StaticResource {x:Static irs:TemplateKeys.CalendarXItemTemplate}}"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">

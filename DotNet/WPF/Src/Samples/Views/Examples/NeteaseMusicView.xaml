@@ -56,30 +56,100 @@
             <Setter Property="pu:ButtonHelper.HoverForeground"
                     Value="#E1E1E1" />
         </Style>
-        
-        <Style x:Key="SearchTextBoxStyle"
-               TargetType="TextBox"
-               BasedOn="{StaticResource {x:Type TextBox}}">
-            <Setter Property="pu:TextBoxHelper.CornerRadius"
-                    Value="13" />
-            <Setter Property="pu:TextBoxHelper.FocusedShadowColor"
+
+        <Style x:Key="SearchBoxStyle"
+               TargetType="pu:SearchBox">
+            <Setter Property="pu:ShadowHelper.Opacity"
+                    Value="0.5" />
+            <Setter Property="pu:ShadowHelper.BlurRadius"
+                    Value="25" />
+            <Setter Property="pu:DropDownHelper.ShadowColor"
                     Value="#C62F2F" />
-            <Setter Property="Height"
-                    Value="26" />
-            <Setter Property="Width"
-                    Value="220" />
-            <Setter Property="FontSize"
-                    Value="12" />
-            <Setter Property="Background"
-                    Value="#B12323" />
-            <Setter Property="BorderThickness"
-                    Value="0" />
-            <Setter Property="Foreground"
-                    Value="#F1F1F1" />
-            <Setter Property="CaretBrush"
-                    Value="#F1F1F1" />
-            <Setter Property="Padding"
-                    Value="10,0,30,0" />
+            <Setter Property="pu:DropDownHelper.BorderBrush"
+                    Value="#C62F2F" />
+            <Setter Property="pu:DropDownHelper.CornerRadius"
+                    Value="4" />
+            <Setter Property="pu:WindowX.IsDragMoveArea"
+                    Value="False" />
+            <Setter Property="pu:SearchBox.TextBoxStyle">
+                <Setter.Value>
+                    <Style TargetType="TextBox"
+                           BasedOn="{StaticResource {x:Type TextBox}}">
+                        <Setter Property="pu:TextBoxHelper.CornerRadius"
+                                Value="13" />
+                        <Setter Property="pu:TextBoxHelper.FocusedShadowColor"
+                                Value="#C62F2F" />
+                        <Setter Property="Height"
+                                Value="26" />
+                        <Setter Property="Width"
+                                Value="220" />
+                        <Setter Property="FontSize"
+                                Value="12" />
+                        <Setter Property="Background"
+                                Value="#B12323" />
+                        <Setter Property="BorderThickness"
+                                Value="0" />
+                        <Setter Property="Foreground"
+                                Value="#F1F1F1" />
+                        <Setter Property="CaretBrush"
+                                Value="#F1F1F1" />
+                        <Setter Property="Padding"
+                                Value="10,0,30,0" />
+                        <Setter Property="pu:TextBoxHelper.Watermark"
+                                Value="Search musics, vedios, radios" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="pu:SearchBox.ListBoxStyle">
+                <Setter.Value>
+                    <Style TargetType="ListBox"
+                           BasedOn="{StaticResource {x:Static pu:SearchBox.ListBoxStyle}}">
+                        <Setter Property="BorderBrush"
+                                Value="#C62F2F" />
+                        <Setter Property="pu:ListBoxHelper.CornerRadius"
+                                Value="4" />
+                        <Setter Property="pu:ListBoxHelper.ItemsHeight"
+                                Value="35" />
+                        <Setter Property="pu:ListBoxHelper.ItemsHoverBackground"
+                                Value="{x:Null}" />
+                        <Setter Property="pu:ListBoxHelper.ItemsHoverForeground"
+                                Value="#C62F2F" />
+                        <Setter Property="pu:ListBoxHelper.ItemsSelectedBackground"
+                                Value="{x:Null}" />
+                        <Setter Property="pu:ListBoxHelper.ItemsSelectedForeground"
+                                Value="#C62F2F" />
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="ListBoxItem"
+                                       BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="pu:SearchBox.ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontSize="14"
+                                       Text="&#xe96d;"
+                                       FontFamily="{StaticResource PanuonIconFont}"
+                                       VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1"
+                                       Margin="5,0,0,0"
+                                       Text="{Binding}"
+                                       VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="MainMenuTreeViewStyle"
@@ -130,6 +200,10 @@
                     Value="3" />
             <Setter Property="pu:TabControlHelper.ItemsRibbonLineBrush"
                     Value="Transparent" />
+            <Setter Property="pu:TabControlHelper.ItemsHoverRibbonLineThickness"
+                    Value="1" />
+            <Setter Property="pu:TabControlHelper.ItemsHoverRibbonLineBrush"
+                    Value="#C62F2F" />
             <Setter Property="pu:TabControlHelper.ItemsSelectedRibbonLineBrush"
                     Value="#C62F2F" />
             <Setter Property="pu:TabControlHelper.ItemsSelectedBackground"
@@ -213,9 +287,13 @@
                 </StackPanel>
                 <Grid Grid.Column="2"
                       Margin="10,0,0,0">
-                    <TextBox pu:WindowX.IsDragMoveArea="False"
-                             Style="{StaticResource SearchTextBoxStyle}"
-                             pu:TextBoxHelper.Watermark="Search musics, vedios, radios" />
+                    <pu:SearchBox x:Name="SchBox"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource SearchBoxStyle}"
+                                  SearchTextChanged="SchBox_SearchTextChanged"
+                                  SelectionChanged="SchBox_SelectionChanged"
+                                  Opened="SchBox_Opened">
+                    </pu:SearchBox>
                     <Button pu:WindowX.IsDragMoveArea="False"
                             Style="{StaticResource HeaderLinkIconButtonStyle}"
                             HorizontalAlignment="Right"
@@ -231,15 +309,12 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid Background="#F5F5F5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <TextBlock Margin="10,10,0,0"
-                       Text="Menu"/>
             <TreeView Grid.Row="1"
-                      Margin="0,10,0,0"
                       Style="{StaticResource MainMenuTreeViewStyle}">
+                <TreeViewItem Margin="0,10,0,10"
+                              Padding="10,0,0,0"
+                              pu:TreeViewItemHelper.IsStyleless="True"
+                              Header="Normal" />
                 <TreeViewItem pu:TreeViewItemHelper.Icon="&#xe96d;"
                               Header="Music"
                               IsSelected="True" />
@@ -249,13 +324,19 @@
                               Header="Vedios" />
                 <TreeViewItem pu:TreeViewItemHelper.Icon="&#xe93b;"
                               Header="Friends" />
-                <TreeViewItem Margin="0,15,0,0"
-                              pu:TreeViewItemHelper.Icon="&#xe991;"
+                <TreeViewItem Margin="0,10,0,10"
+                              Padding="10,0,0,0"
+                              pu:TreeViewItemHelper.IsStyleless="True"
+                              Header="Storage" />
+                <TreeViewItem pu:TreeViewItemHelper.Icon="&#xe991;"
                               Header="Local" />
                 <TreeViewItem pu:TreeViewItemHelper.Icon="&#xe90f;"
                               Header="Downloads" />
-                <TreeViewItem Margin="0,15,0,0"
-                              pu:TreeViewItemHelper.Icon="&#xe952;"
+                <TreeViewItem Margin="0,10,0,10"
+                              Padding="10,0,0,0"
+                              pu:TreeViewItemHelper.IsStyleless="True"
+                              Header="My" />
+                <TreeViewItem pu:TreeViewItemHelper.Icon="&#xe952;"
                               Header="Favorites" />
             </TreeView>
         </Grid>

@@ -71,6 +71,8 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.HoverRibbonLineBrush"
                 Value="{Binding Path=(local:TabControlHelper.ItemsHoverRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverRibbonLineThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedBackground"
                 Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.SelectedBorderBrush"

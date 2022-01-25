@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver.Internal.Utils
@@ -127,6 +128,15 @@ namespace Panuon.UI.Silver.Internal.Utils
                 obj = VisualTreeHelper.GetParent(obj);
             }
             return obj as T;
+        }
+        #endregion
+
+        #region MoveFocus
+        public static void RemoveFocus(FrameworkElement element)
+        {
+            DependencyObject scope = FocusManager.GetFocusScope(element);
+            var window = Window.GetWindow(element);
+            FocusManager.SetFocusedElement(scope, window as IInputElement);
         }
         #endregion
 

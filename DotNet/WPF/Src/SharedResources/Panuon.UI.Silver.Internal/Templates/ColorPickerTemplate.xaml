@@ -14,6 +14,7 @@
         <Grid>
             <local:ContentControlX x:Name="CcMain"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Padding="{TemplateBinding Padding}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
@@ -66,7 +67,6 @@
                             <TextBlock IsHitTestVisible="False"
                                             Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                             Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                            Margin="{TemplateBinding Padding}"
                                             Text="{Binding SelectedColor, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
@@ -83,7 +83,6 @@
                         <TextBox x:Name="PART_EditableTextBox"
                                  Grid.Column="1"
                                  Focusable="True"
-                                 Padding="{TemplateBinding Padding}"
                                  CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                  Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

@@ -265,6 +265,17 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey MinimizeButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MinimizeButtonStyle));
+
+        public static ComponentResourceKey MaximizeButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MaximizeButtonStyle));
+
+        public static ComponentResourceKey CloseButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(CloseButtonStyle));
+        #endregion
+
         #region Event Handlers
         private static void OnHeightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

@@ -9,98 +9,60 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate  x:Key="{x:Static irs:TemplateKeys.CalendarXItemTemplate}"
-                      TargetType="local:CalendarXItem">
-            <local:ContentControlX x:Name="CcMain"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CalendarXItemTemplate}"
+                     TargetType="local:CalendarXItem">
+        <local:ContentControlX x:Name="CcMain"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Padding="{TemplateBinding Padding}"
                                CornerRadius="{TemplateBinding CornerRadius}"
-                               >
-                <local:ContentControlX.Effect>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                        <Binding Path="ShadowColor"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="(local:ShadowHelper.Direction)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="(local:ShadowHelper.Opacity)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                    </MultiBinding>
-                </local:ContentControlX.Effect>
-            <Grid>
-                <ContentPresenter x:Name="CpContent"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                <ContentControl Content=""
-                                Visibility="{Binding IsSpecialDay, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                ContentTemplate="{TemplateBinding HighlightGlyphTemplate}" />
-            </Grid>
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+            <ContentPresenter Focusable="False"
+                              RecognizesAccessKey="True" />
         </local:ContentControlX>
-         
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding SelectedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CheckedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="Background"
-                        Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding CheckedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding SelectedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CheckedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="BorderBrush"
-                        Value="{Binding SelectedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding CheckedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding SelectedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CheckedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="IconForeground"
-                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="CcMain"
                         Property="Foreground"
-                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <Trigger Property="IsWeakenDisplay"
-                     Value="True">
-                <Setter TargetName="CpContent"
-                        Property="Opacity"
-                        Value="0.4" />
-            </Trigger>
-            <Trigger Property="IsInSelectionRange"
-                     Value="True">
-                <Setter TargetName="CcMain"
-                        Property="Background"
-                        Value="{Binding Path=(i:VisualStateHelper.Background), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.7, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
 </ResourceDictionary>
-

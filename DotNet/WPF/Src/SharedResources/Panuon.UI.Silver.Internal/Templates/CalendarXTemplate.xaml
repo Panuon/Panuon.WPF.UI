@@ -9,47 +9,36 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate  x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
-                      TargetType="local:CalendarX">
-        <local:ContentControlX Background="{TemplateBinding Background}"
-                           BorderBrush="{TemplateBinding BorderBrush}"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
+                     TargetType="local:CalendarX">
+        <local:ContentControlX x:Name="CcMain"
+                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            BorderThickness="{TemplateBinding BorderThickness}"
-                           CornerRadius="{TemplateBinding CornerRadius}">
-            <local:ContentControlX.Effect>
-                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                    <Binding Path="ShadowColor"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.BlurRadius)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Direction)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Opacity)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.RenderingBias)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                </MultiBinding>
-            </local:ContentControlX.Effect>
+                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                           Padding="{TemplateBinding Padding}"
+                           CornerRadius="{TemplateBinding CornerRadius}"
+                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border Height="{TemplateBinding HeaderHeight}">
-
-                </Border>
                 <Grid Grid.Row="1">
-                    <ContentControl Content="{TemplateBinding DayPresenter}"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="6*" />
+                    </Grid.RowDefinitions>
+                    <i:CalendarXItemPresenter x:Name="PART_CalendarXDayPresenter"
+                                              Grid.Row="1" />
                 </Grid>
-            </Grid>
+                <i:CalendarXItemPresenter x:Name="PART_CalendarXMonthPresenter"
+                                          Grid.Row="1" />
+                <i:CalendarXItemPresenter x:Name="PART_CalendarXYearPresenter"
+                                          Grid.Row="1" />
 
+            </Grid>
         </local:ContentControlX>
     </ControlTemplate>
 

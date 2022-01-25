@@ -19,10 +19,6 @@
                 Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ToggleButtonHelperPendingSpinnerStyle}"
-           TargetType="Thumb"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.ToggleButtonStyle}"
            TargetType="ToggleButton">
         <Setter Property="i:VisualStateHelper.Regist"
@@ -40,7 +36,7 @@
         <Setter Property="local:ToggleButtonHelper.HoverBackground"
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.CheckedBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=1.2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.PendingSpinnerStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}}" />
         <Setter Property="Padding"

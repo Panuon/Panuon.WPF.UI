@@ -149,6 +149,58 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Left" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectRibbon"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Top" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectRibbon"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Right" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectRibbon"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="Bottom" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectRibbon"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.SelectedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -332,21 +384,19 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabItemStylelessTemplate}"
                      TargetType="TabItem">
         <Grid x:Name="GrdMain"
+              IsHitTestVisible="False"
               Margin="{Binding Path=(local:TabItemHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
             <ContentPresenter x:Name="CcMain"
                               Margin="{TemplateBinding Padding}"
                               ContentSource="Header"
                               VerticalAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <local:SeparatorX x:Name="SprtSeparator"
+                              Grid.Row="1"
                               Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

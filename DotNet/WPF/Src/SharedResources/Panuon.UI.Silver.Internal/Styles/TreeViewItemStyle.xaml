@@ -121,6 +121,11 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewItemTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:TreeViewItemHelper.IsStyleless"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewItemStylelessTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

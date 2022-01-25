@@ -742,6 +742,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsHoverRibbonLineBrush", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region ItemsHoverRibbonLineThickness
+        public static double? GetItemsHoverRibbonLineThickness(TabControl tabControl)
+        {
+            return (double?)tabControl.GetValue(ItemsHoverRibbonLineThicknessProperty);
+        }
+
+        public static void SetItemsHoverRibbonLineThickness(TabControl tabControl, double? value)
+        {
+            tabControl.SetValue(ItemsHoverRibbonLineThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverRibbonLineThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverRibbonLineThickness", typeof(double?), typeof(TabControlHelper));
+        #endregion
+
         #region ItemsSelectedBackground
         public static Brush GetItemsSelectedBackground(TabControl tabControl)
         {

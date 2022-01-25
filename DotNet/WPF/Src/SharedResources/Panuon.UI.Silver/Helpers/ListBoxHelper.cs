@@ -44,6 +44,21 @@ namespace Panuon.UI.Silver
             = EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(ItemRemovedEventHandler), typeof(ListBoxHelper));
         #endregion
 
+        #region ItemClick
+        public static void AddItemClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.AddHandler(ItemClickEvent, handler);
+        }
+
+        public static void RemoveItemClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.RemoveHandler(ItemClickEvent, handler);
+        }
+
+        public static readonly RoutedEvent ItemClickEvent
+            = EventManager.RegisterRoutedEvent("ItemClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ListBoxHelper));
+        #endregion
+
         #endregion
 
         #region Properties

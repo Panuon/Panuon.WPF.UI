@@ -6,7 +6,6 @@ namespace Panuon.UI.Silver.Resources
 {
     public static class ComponentKeys
     {
-        public const string ButtonHelperPendingSpinnerStyle = nameof(ButtonHelperPendingSpinnerStyle);
         public const string ColorPickerClearButtonStyle = nameof(ColorPickerClearButtonStyle);
         public const string ColorPickerToggleArrowTransformControlStyle = nameof(ColorPickerToggleArrowTransformControlStyle);
         public const string ColorPickerColorSelectorStyle = nameof(ColorPickerColorSelectorStyle);
@@ -37,17 +36,12 @@ namespace Panuon.UI.Silver.Resources
         public const string PendingBoxCancelButtonStyle = nameof(PendingBoxCancelButtonStyle);
         public const string PendingBoxSpinnerStyle = nameof(PendingBoxSpinnerStyle);
         public const string PendingBoxWindowStyle = nameof(PendingBoxWindowStyle);
-        public const string RepeatButtonHelperPendingSpinnerStyle = nameof(RepeatButtonHelperPendingSpinnerStyle);
         public const string ScrollBarHelperScrollButtonStyle = nameof(ScrollBarHelperScrollButtonStyle);
         public const string SliderHelperThumbStyle = nameof(SliderHelperThumbStyle);
         public const string TabControlHelperRemoveButtonStyle = nameof(TabControlHelperRemoveButtonStyle);
         public const string TextBoxHelperClearButtonStyle = nameof(TextBoxHelperClearButtonStyle);
         public const string ThumbFenceThumbStyle = nameof(ThumbFenceThumbStyle);
-        public const string ToggleButtonHelperPendingSpinnerStyle = nameof(ToggleButtonHelperPendingSpinnerStyle);
         public const string TreeViewHelperToggleArrowToggleButtonStyle = nameof(TreeViewHelperToggleArrowToggleButtonStyle);
-        public const string WindowXCaptionMinimizeButtonStyle = nameof(WindowXCaptionMinimizeButtonStyle);
-        public const string WindowXCaptionMaximizeButtonStyle = nameof(WindowXCaptionMaximizeButtonStyle);
-        public const string WindowXCaptionCloseButtonStyle = nameof(WindowXCaptionCloseButtonStyle);
         public const string WindowXModalButtonStyle = nameof(WindowXModalButtonStyle);
     }
 }

@@ -19,10 +19,6 @@
                 Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ButtonHelperPendingSpinnerStyle}"
-           TargetType="local:Spinner"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ButtonHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.ButtonStyle}"
            TargetType="Button">
         <Setter Property="i:VisualStateHelper.Regist"

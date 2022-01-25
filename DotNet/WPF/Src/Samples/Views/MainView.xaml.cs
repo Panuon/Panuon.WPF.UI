@@ -36,7 +36,7 @@ namespace Samples.Views
         public MainView()
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {
                 InitExampleItems();
             }));
@@ -135,7 +135,5 @@ namespace Samples.Views
             return border;
         }
         #endregion
-
     }
-
 }

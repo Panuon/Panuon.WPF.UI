@@ -48,6 +48,7 @@
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
         public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);
+        public const string SearchBoxTemplate = nameof(SearchBoxTemplate);
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
         public const string ScrollBarTemplate = nameof(ScrollBarTemplate);
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
@@ -73,6 +74,7 @@
         public const string TreeViewTemplate = nameof(TreeViewTemplate);
         public const string TreeViewNonScrollableTemplate = nameof(TreeViewNonScrollableTemplate);
         public const string TreeViewItemTemplate = nameof(TreeViewItemTemplate);
+        public const string TreeViewItemStylelessTemplate = nameof(TreeViewItemStylelessTemplate);
         public const string WindowXTemplate = nameof(WindowXTemplate);
 
     }
