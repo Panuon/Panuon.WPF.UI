@@ -5,7 +5,7 @@ using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {
-    public class CarouselPanel 
+    class CarouselPanel 
         : Panel
     {
         #region Ctor
