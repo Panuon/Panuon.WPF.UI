@@ -44,8 +44,6 @@ namespace Panuon.UI.Silver
 
         private WindowState _lastWindowState;
 
-        private WindowStyle _lastWindowStyle;
-
         private bool _isLoaded;
         #endregion
 
@@ -299,7 +297,6 @@ namespace Panuon.UI.Silver
         internal Button ModalNoButton => _noButton;
 
         internal Button ModalCancelButton => _cancelButton;
-         
         #endregion
 
         #region Attached Properties
@@ -492,13 +489,10 @@ namespace Panuon.UI.Silver
             if (IsFullScreen)
             {
                 _lastWindowState = WindowState;
-                _lastWindowStyle = WindowStyle;
-                SetCurrentValue(WindowStyleProperty, WindowStyle.None);
                 SetCurrentValue(WindowStateProperty, WindowState.Maximized);
             }
             else
             {
-                SetCurrentValue(WindowStyleProperty, _lastWindowStyle);
                 SetCurrentValue(WindowStateProperty, _lastWindowState);
             }
             FullScreenChanged?.Invoke(this, EventArgs.Empty);

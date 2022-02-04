@@ -21,6 +21,22 @@ namespace Panuon.UI.Silver.Internal.Converters
                 }
                 return new GridLength(doubleValue, GridUnitType.Pixel);
             }
+            else if (value is string stringValue && !string.IsNullOrEmpty(stringValue))
+            {
+                stringValue = stringValue.Trim();
+                if (stringValue.EndsWith("*"))
+                {
+                    stringValue = stringValue.Remove(stringValue.Length - 1);
+                    if (string.IsNullOrEmpty(stringValue))
+                    {
+                        return new GridLength(1, GridUnitType.Star);
+                    }
+                    else if (int.TryParse(stringValue, out int starsResult))
+                    {
+                        return new GridLength(starsResult, GridUnitType.Star);
+                    }
+                }
+            }
             return new GridLength(1, GridUnitType.Auto);
         }
     }

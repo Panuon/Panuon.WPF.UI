@@ -94,6 +94,21 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey DropperThumbStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(DropperThumbStyle));
+
+        public static ComponentResourceKey ThumbFenceStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(ThumbFenceStyle));
+
+        public static ComponentResourceKey SliderStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(SliderStyle));
+
+        public static ComponentResourceKey InputTextBoxStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(InputTextBoxStyle));
+        #endregion
+
+
         #region Events
 
         #region SelectedColorChanged
@@ -173,47 +188,63 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region DropperThumbStyle
-        public Style DropperThumbStyle
+        public static Style GetDropperThumbStyle(Button button)
         {
-            get { return (Style)GetValue(DropperThumbStyleProperty); }
-            set { SetValue(DropperThumbStyleProperty, value); }
+            return (Style)button.GetValue(DropperThumbStyleProperty);
+        }
+
+        public static void SetDropperThumbStyle(Button button, Style value)
+        {
+            button.SetValue(DropperThumbStyleProperty, value);
         }
 
         public static readonly DependencyProperty DropperThumbStyleProperty =
-            DependencyProperty.Register("DropperThumbStyle", typeof(Style), typeof(ColorSelector));
+            DependencyProperty.RegisterAttached("DropperThumbStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
         #region ThumbFenceStyle
-        public Style ThumbFenceStyle
+        public static Style GetThumbFenceStyle(Button button)
         {
-            get { return (Style)GetValue(ThumbFenceStyleProperty); }
-            set { SetValue(ThumbFenceStyleProperty, value); }
+            return (Style)button.GetValue(ThumbFenceStyleProperty);
+        }
+
+        public static void SetThumbFenceStyle(Button button, Style value)
+        {
+            button.SetValue(ThumbFenceStyleProperty, value);
         }
 
         public static readonly DependencyProperty ThumbFenceStyleProperty =
-            DependencyProperty.Register("ThumbFenceStyle", typeof(Style), typeof(ColorSelector));
+            DependencyProperty.RegisterAttached("ThumbFenceStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
         #region SliderStyle
-        public Style SliderStyle
+        public static Style GetSliderStyle(Button button)
         {
-            get { return (Style)GetValue(SliderStyleProperty); }
-            set { SetValue(SliderStyleProperty, value); }
+            return (Style)button.GetValue(SliderStyleProperty);
+        }
+
+        public static void SetSliderStyle(Button button, Style value)
+        {
+            button.SetValue(SliderStyleProperty, value);
         }
 
         public static readonly DependencyProperty SliderStyleProperty =
-            DependencyProperty.Register("SliderStyle", typeof(Style), typeof(ColorSelector));
+            DependencyProperty.RegisterAttached("SliderStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
-        #region TextBoxStyle
-        public Style InputTextBoxStyle
+        #region InputTextBoxStyle
+        public static Style GetInputTextBoxStyle(Button button)
         {
-            get { return (Style)GetValue(InputTextBoxStyleProperty); }
-            set { SetValue(InputTextBoxStyleProperty, value); }
+            return (Style)button.GetValue(InputTextBoxStyleProperty);
+        }
+
+        public static void SetInputTextBoxStyle(Button button, Style value)
+        {
+            button.SetValue(InputTextBoxStyleProperty, value);
         }
 
         public static readonly DependencyProperty InputTextBoxStyleProperty =
-            DependencyProperty.Register("InputTextBoxStyle", typeof(Style), typeof(ColorSelector));
+            DependencyProperty.RegisterAttached("InputTextBoxStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
         #endregion

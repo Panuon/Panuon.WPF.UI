@@ -11,6 +11,8 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ButtonHelper}}"
            TargetType="local:Spinner">
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
         <Setter Property="GlyphBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
@@ -46,7 +48,7 @@
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ButtonTemplate}}"/>
+                Value="{StaticResource {x:Static irs:TemplateKeys.ButtonTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">

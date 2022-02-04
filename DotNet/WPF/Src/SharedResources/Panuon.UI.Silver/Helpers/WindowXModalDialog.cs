@@ -6,6 +6,11 @@ namespace Panuon.UI.Silver
 {
     public static class WindowXModalDialog
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXModalDialog), nameof(ButtonStyle));
+        #endregion
+
         #region Properties
 
         #region Buttons

@@ -11,6 +11,8 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}"
            TargetType="local:Spinner">
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
         <Setter Property="GlyphBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
@@ -34,9 +36,9 @@
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.HoverBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.CheckedBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=1.2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.PendingSpinnerStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}}" />
         <Setter Property="Padding"

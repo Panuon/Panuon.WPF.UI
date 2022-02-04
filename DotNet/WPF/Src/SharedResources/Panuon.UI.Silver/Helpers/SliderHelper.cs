@@ -8,6 +8,11 @@ namespace Panuon.UI.Silver
 {
     public class SliderHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ThumbStyle { get; } =
+            new ComponentResourceKey(typeof(SliderHelper), nameof(ThumbStyle));
+        #endregion
+
         #region Properties
 
         #region TickBarThickness

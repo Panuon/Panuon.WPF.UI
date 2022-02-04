@@ -208,6 +208,20 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(ToggleButtonHelper));
         #endregion
 
+        #region CheckedShadowColor
+        public static Color? GetCheckedShadowColor(ToggleButton toggleButton)
+        {
+            return (Color?)toggleButton.GetValue(CheckedShadowColorProperty);
+        }
+
+        public static void SetCheckedShadowColor(ToggleButton toggleButton, Color? value)
+        {
+            toggleButton.SetValue(CheckedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(ToggleButtonHelper));
+        #endregion
+
         #region CheckedContent
         public static object GetCheckedContent(ToggleButton toggleButton)
         {

@@ -20,7 +20,25 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region Ctor
-        
+        public CalendarXItemPresenter()
+        {
+            AddHandler(CalendarXItem.SelectedEvent, new RoutedEventHandler(OnCalendarXItemSelected));
+        }
+        #endregion
+
+        #region Routed Events
+
+        #region Selected
+        public event RoutedEventHandler Selected
+        {
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
+        }
+
+        public static readonly RoutedEvent SelectedEvent =
+            EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItemPresenter));
+        #endregion
+
         #endregion
 
         #region Properties
@@ -70,6 +88,18 @@ namespace Panuon.UI.Silver.Internal
                 column++;
             }
             return base.ArrangeOverride(finalSize);
+        }
+        #endregion
+
+        #region Event Handlers
+        private void OnCalendarXItemSelected(object sender, RoutedEventArgs e)
+        {
+            var item = e.Source as CalendarXItem;
+            foreach (var calendarXItem in _calendarXItems)
+            {
+                calendarXItem.IsChecked = calendarXItem == item;
+            }
+            RaiseEvent(new RoutedEventArgs(SelectedEvent, item));
         }
         #endregion
 

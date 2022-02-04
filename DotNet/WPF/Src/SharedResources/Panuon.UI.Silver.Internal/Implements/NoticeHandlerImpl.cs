@@ -5,6 +5,8 @@ namespace Panuon.UI.Silver.Internal.Implements
     class NoticeHandlerImpl : INoticeHandler
     {
         #region Fields
+        private bool _isClosed;
+
         private NoticeBoxItem _noticeBoxItem;
         #endregion
 
@@ -24,7 +26,14 @@ namespace Panuon.UI.Silver.Internal.Implements
         #region Methods
         public void Close()
         {
-            _noticeBoxItem.Close();
+            try
+            {
+                _noticeBoxItem.Close();
+            }
+            catch
+            {
+
+            }
         }
 
         internal void TriggerClicked(NoticeBoxItem noticeBoxItem)

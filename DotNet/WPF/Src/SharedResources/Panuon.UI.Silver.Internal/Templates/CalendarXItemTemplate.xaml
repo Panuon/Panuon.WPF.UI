@@ -17,13 +17,18 @@
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Padding="{TemplateBinding Padding}"
                                CornerRadius="{TemplateBinding CornerRadius}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <ContentPresenter Focusable="False"
-                              RecognizesAccessKey="True" />
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid>
+                <ContentControl Visibility="{Binding IsSpecialDay, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" 
+                                Content="{TemplateBinding DateTime}"
+                                ContentTemplate="{TemplateBinding SpecialDayHighlightTemplate}" />
+                <ContentPresenter Focusable="False"
+                                  RecognizesAccessKey="True"
+                                  Margin="{TemplateBinding Padding}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+            </Grid>
         </local:ContentControlX>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>

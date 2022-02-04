@@ -88,10 +88,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ExpanderHelperToggleArrowTransformControlStyle}"
-           TargetType="local:TransformControl"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ExpanderHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.ExpanderStyle}"
            TargetType="Expander">
         <Setter Property="i:VisualStateHelper.Regist"

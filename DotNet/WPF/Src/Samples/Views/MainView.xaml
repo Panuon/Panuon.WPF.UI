@@ -27,7 +27,7 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}"
+                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click">
             </Button>
@@ -55,7 +55,6 @@
                     Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
-                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -106,11 +105,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-       
-        <pu:CalendarX Grid.Row="1"
-                      Width="300"
-                      Height="300">
-        </pu:CalendarX>
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

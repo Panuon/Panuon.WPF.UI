@@ -1,6 +1,8 @@
 ﻿using Panuon.UI.Silver.Internal;
+using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
@@ -15,19 +17,78 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Properties
+        #region Routed Events
 
-        #region IsWeakenDisplay
-        public bool IsWeakenDisplay
+        #region Selected
+        public event RoutedEventHandler Selected
         {
-            get { return (bool)GetValue(IsWeakenDisplayProperty); }
-            set { SetValue(IsWeakenDisplayProperty, value); }
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
         }
 
-        public static readonly DependencyProperty IsWeakenDisplayProperty =
-            DependencyProperty.Register("IsWeakenDisplay", typeof(bool), typeof(CalendarXItem));
+        public static readonly RoutedEvent SelectedEvent =
+            EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
         #endregion
 
+        #endregion
+
+        #region Properties
+
+        #region DateTime
+        public DateTime? DateTime
+        {
+            get { return (DateTime?)GetValue(DateTimeProperty); }
+            set { SetValue(DateTimeProperty, value); }
+        }
+
+        public static readonly DependencyProperty DateTimeProperty =
+            DependencyProperty.Register("DateTime", typeof(DateTime?), typeof(CalendarXItem));
+        #endregion
+
+        #region CanSelect
+        public bool CanSelect
+        {
+            get { return (bool)GetValue(CanSelectProperty); }
+            set { SetValue(CanSelectProperty, value); }
+        }
+
+        public static readonly DependencyProperty CanSelectProperty =
+            DependencyProperty.Register("CanSelect", typeof(bool), typeof(CalendarXItem));
+        #endregion
+
+        #region IsToday
+        public bool IsToday
+        {
+            get { return (bool)GetValue(IsTodayProperty); }
+            set { SetValue(IsTodayProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsTodayProperty =
+            DependencyProperty.Register("IsToday", typeof(bool), typeof(CalendarXItem));
+        #endregion
+
+        #region IsSpecialDay
+        public bool IsSpecialDay
+        {
+            get { return (bool)GetValue(IsSpecialDayProperty); }
+            set { SetValue(IsSpecialDayProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsSpecialDayProperty =
+            DependencyProperty.Register("IsSpecialDay", typeof(bool), typeof(CalendarXItem));
+        #endregion
+
+        #region IsOutsideThisMonth 
+        public bool IsOutsideThisMonth 
+        {
+            get { return (bool)GetValue(IsOutsideThisMonthProperty); }
+            set { SetValue(IsOutsideThisMonthProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsOutsideThisMonthProperty =
+            DependencyProperty.Register("IsOutsideThisMonth", typeof(bool), typeof(CalendarXItem));
+        #endregion
+        
         #region CornerRadius
         public CornerRadius CornerRadius
         {
@@ -37,6 +98,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(CalendarXItem));
+        #endregion
+
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(CalendarXItem));
         #endregion
 
         #region HoverBackground
@@ -70,6 +142,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty HoverBorderBrushProperty =
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(CalendarXItem));
+        #endregion
+
+        #region HoverShadowColor
+        public Color? HoverShadowColor
+        {
+            get { return (Color?)GetValue(HoverShadowColorProperty); }
+            set { SetValue(HoverShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(CalendarXItem));
         #endregion
 
         #region CheckedBackground
@@ -116,6 +199,40 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(CalendarXItem));
         #endregion
 
+        #region CheckedShadowColor
+        public Color? CheckedShadowColor
+        {
+            get { return (Color?)GetValue(CheckedShadowColorProperty); }
+            set { SetValue(CheckedShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(CalendarXItem));
+        #endregion
+
+        #region SpecialDayHighlightTemplate
+        public DataTemplate SpecialDayHighlightTemplate
+        {
+            get { return (DataTemplate)GetValue(SpecialDayHighlightTemplateProperty); }
+            set { SetValue(SpecialDayHighlightTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty SpecialDayHighlightTemplateProperty =
+            DependencyProperty.Register("SpecialDayHighlightTemplate", typeof(DataTemplate), typeof(CalendarXItem));
+        #endregion
+
+        #endregion
+
+        #region Overrides
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            base.OnMouseDown(e);
+            if (CanSelect)
+            {
+                RaiseEvent(new RoutedEventArgs(SelectedEvent));
+            }
+        }
         #endregion
 
     }

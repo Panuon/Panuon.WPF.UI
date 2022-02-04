@@ -149,8 +149,10 @@
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -162,8 +164,10 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -175,8 +179,10 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -188,8 +194,10 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsHover, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"

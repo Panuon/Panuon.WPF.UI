@@ -34,10 +34,6 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ComboBoxHelperClearButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
@@ -60,10 +56,6 @@
         <Setter Property="Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.ComboBoxHelperRemoveButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="local:TransformControl">
@@ -90,10 +82,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ComboBoxHelperToggleArrowTransformControlStyle}"
-           TargetType="local:TransformControl"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=SearchTextBoxStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
@@ -114,10 +102,6 @@
         <Setter Property="Height"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.ComboBoxHelperSearchTextBoxStyle}"
-           TargetType="TextBox"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=SearchTextBoxStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
 
     <Style x:Key="{x:Static rs:StyleKeys.ComboBoxStyle}"
            TargetType="ComboBox">
@@ -153,7 +137,7 @@
                 Value="{Binding MaxDropDownHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
-        <Setter Property="local:ComboBoxHelper.WatermarkBrush"
+        <Setter Property="local:ComboBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsHeight"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />

@@ -14,22 +14,59 @@
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="HoverBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="CheckedBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Padding"
-                Value="5,0" />
-        <Setter Property="Background"
-                Value="#EAEAEA" />
-        <Setter Property="BorderThickness"
-                Value="0" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
+        <Setter Property="OmittingTextBlockStyle"
+                Value="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding ItemsMargin, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding ItemsPadding, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding ItemsWidth, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding ItemsHeight, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="ShadowColor"
+                Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverBackground"
+                Value="{Binding ItemsHoverBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverForeground"
+                Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverBorderBrush"
+                Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverShadowColor"
+                Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CheckedBackground"
+                Value="{Binding ItemsCheckedBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CheckedForeground"
+                Value="{Binding ItemsCheckedForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CheckedBorderBrush"
+                Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CheckedBorderThickness"
+                Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="CheckedShadowColor"
+                Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.PaginationItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsOmitting"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.PaginationItemOmittingTemplate}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

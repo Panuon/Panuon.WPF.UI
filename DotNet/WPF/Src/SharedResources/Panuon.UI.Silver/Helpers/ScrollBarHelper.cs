@@ -8,6 +8,11 @@ namespace Panuon.UI.Silver
 {
     public static class ScrollBarHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ScrollButtonStyle { get; } =
+            new ComponentResourceKey(typeof(ScrollBarHelper), nameof(ScrollButtonStyle));
+        #endregion
+
         #region Properties
 
         #region TrackBackground

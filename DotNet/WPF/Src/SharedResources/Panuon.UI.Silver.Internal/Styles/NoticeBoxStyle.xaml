@@ -29,9 +29,4 @@
                 Value="Stretch" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.NoticeBoxNoticeBoxItemStyle}"
-           TargetType="local:NoticeBoxItem"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type local:NoticeBox}}}" />
-
-
 </ResourceDictionary>

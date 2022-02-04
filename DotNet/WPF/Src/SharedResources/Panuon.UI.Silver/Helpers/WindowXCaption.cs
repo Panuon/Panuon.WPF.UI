@@ -6,6 +6,17 @@ namespace Panuon.UI.Silver
 {
     public static class WindowXCaption
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey MinimizeButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MinimizeButtonStyle));
+
+        public static ComponentResourceKey MaximizeButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MaximizeButtonStyle));
+
+        public static ComponentResourceKey CloseButtonStyle { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(CloseButtonStyle));
+        #endregion
+
         #region Properties
 
         #region Height
@@ -263,17 +274,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("BackstageCloseButtonStyle", typeof(Style), typeof(WindowXCaption));
         #endregion
 
-        #endregion
-
-        #region ComponentResourceKeys
-        public static ComponentResourceKey MinimizeButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(MinimizeButtonStyle));
-
-        public static ComponentResourceKey MaximizeButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(MaximizeButtonStyle));
-
-        public static ComponentResourceKey CloseButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(CloseButtonStyle));
         #endregion
 
         #region Event Handlers

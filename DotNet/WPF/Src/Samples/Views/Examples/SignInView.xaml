@@ -22,9 +22,9 @@
                     Value="#6CBCEA" />
             <Setter Property="pu:TextBoxHelper.CornerRadius"
                     Value="2" />
-            <Setter Property="pu:TextBoxHelper.WatermarkBrush"
+            <Setter Property="pu:TextBoxHelper.WatermarkForeground"
                     Value="#4A4A4A" />
-            <Setter Property="pu:TextBoxHelper.FocusedWatermarkBrush"
+            <Setter Property="pu:TextBoxHelper.FocusedWatermarkForeground"
                     Value="#AAAAAA" />
             <Setter Property="Height"
                     Value="35" />
@@ -41,9 +41,9 @@
                     Value="#6CBCEA" />
             <Setter Property="pu:PasswordBoxHelper.CornerRadius"
                     Value="2" />
-            <Setter Property="pu:PasswordBoxHelper.WatermarkBrush"
+            <Setter Property="pu:PasswordBoxHelper.WatermarkForeground"
                     Value="#4A4A4A" />
-            <Setter Property="pu:PasswordBoxHelper.FocusedWatermarkBrush"
+            <Setter Property="pu:PasswordBoxHelper.FocusedWatermarkForeground"
                     Value="#AAAAAA" />
             <Setter Property="pu:PasswordBoxHelper.ClearButtonVisibility"
                     Value="VisibleOnHoverAndNonnull" />

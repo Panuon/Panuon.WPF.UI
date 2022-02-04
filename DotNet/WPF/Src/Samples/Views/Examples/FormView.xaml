@@ -92,9 +92,9 @@
                     Value="#6CBCEA" />
             <Setter Property="pu:TextBoxHelper.CornerRadius"
                     Value="2" />
-            <Setter Property="pu:TextBoxHelper.WatermarkBrush"
+            <Setter Property="pu:TextBoxHelper.WatermarkForeground"
                     Value="#4A4A4A" />
-            <Setter Property="pu:TextBoxHelper.FocusedWatermarkBrush"
+            <Setter Property="pu:TextBoxHelper.FocusedWatermarkForeground"
                     Value="#AAAAAA" />
             <Setter Property="Height"
                     Value="35" />
@@ -252,7 +252,7 @@
                TargetType="pu:ColorPicker">
             <Setter Property="CornerRadius"
                     Value="2" />
-            <Setter Property="WatermarkBrush"
+            <Setter Property="WatermarkForeground"
                     Value="#4A4A4A" />
             <Setter Property="Height"
                     Value="35" />
@@ -266,7 +266,7 @@
                     Value="#6CBCEA" />
             <Setter Property="FocusedShadowColor"
                     Value="#6CBCEA" />
-            <Setter Property="FocusedWatermarkBrush"
+            <Setter Property="FocusedWatermarkForeground"
                     Value="#AAAAAA" />
             <Setter Property="pu:DropDownHelper.ShadowColor"
                     Value="#35303D" />
@@ -344,7 +344,7 @@
                                 Watermark="选择一个颜色"
                                 IsEditable="True"
                                 ColorChannels="ARGB"
-                                ColorTextFormats="ARGB"
+                                TextFormats="ARGB"
                                 SelectedColor="White"
                                 DefaultColor="{x:Null}"
                                 ClearButtonVisibility="VisibleOnHoverAndNonnull" />

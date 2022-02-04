@@ -13,11 +13,11 @@
            BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <WindowChrome  ResizeBorderThickness="3"
-                               GlassFrameThickness="0,1,0,0"
-                               CornerRadius="0" />
+                <WindowChrome ResizeBorderThickness="3"
+                              GlassFrameThickness="0,1,0,0"
+                              CornerRadius="0" />
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

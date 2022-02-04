@@ -10,6 +10,11 @@ namespace Panuon.UI.Silver
 {
     public static class NoticeBox
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey NoticeBoxItemStyle { get; } =
+            new ComponentResourceKey(typeof(NoticeBox), nameof(NoticeBoxItemStyle));
+        #endregion
+
         #region Fields
         private static NoticeBoxWindow _noticeWindow;
 

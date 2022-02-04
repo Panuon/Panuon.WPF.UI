@@ -27,10 +27,6 @@
                 Value="LightGray" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.SliderHelperThumbStyle}"
-           TargetType="Thumb"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.SliderStyle}"
            TargetType="Slider">
         <Setter Property="Background"

@@ -11,6 +11,11 @@ namespace Panuon.UI.Silver
 {
     public static class TabControlHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey RemoveButtonStyle { get; } =
+            new ComponentResourceKey(typeof(TabControlHelper), nameof(RemoveButtonStyle));
+        #endregion
+
         #region Routed Event
 
         #region ItemRemoving

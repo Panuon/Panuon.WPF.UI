@@ -27,10 +27,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    <Style x:Key="{x:Static rs:ComponentKeys.WindowXModalButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
@@ -160,7 +156,7 @@
                        VerticalAlignment="Center" />
         </StackPanel>
     </DataTemplate>
-    
+
     <Style x:Key="{x:Static irs:StyleKeys.WindowXStyle}"
            TargetType="local:WindowX">
         <Setter Property="local:IconHelper.FontFamily"
@@ -188,7 +184,7 @@
         <Setter Property="local:WindowXCaption.Background"
                 Value="{Binding Background, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:WindowXModalDialog.ButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
         <Setter Property="local:WindowXModalDialog.ButtonPanelHorizontalAlignment"
                 Value="Right" />
         <Setter Property="FontFamily"
@@ -199,8 +195,8 @@
                 Value="White" />
         <Setter Property="MaskBrush"
                 Value="#B3FFFFFF" />
-        <Setter Property="Template" 
-                Value="{StaticResource {x:Static irs:TemplateKeys.WindowXTemplate}}"/>
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.WindowXTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -211,6 +207,11 @@
                      Value="True">
                 <Setter Property="DisableDragMove"
                         Value="True" />
+            </Trigger>
+            <Trigger Property="IsFullScreen"
+                     Value="True">
+                <Setter Property="WindowStyle"
+                        Value="None" />
             </Trigger>
         </Style.Triggers>
     </Style>

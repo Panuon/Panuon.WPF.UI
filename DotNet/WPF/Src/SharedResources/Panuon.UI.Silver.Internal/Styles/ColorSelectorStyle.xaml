@@ -35,10 +35,6 @@
                 Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorSelectorDropperThumbStyle}"
-           TargetType="Thumb"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
-    
     <Style x:Key="{ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Slider"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
@@ -100,10 +96,6 @@
 
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorSelectorSliderStyle}"
-           TargetType="Slider"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="local:ThumbFence">
         <Setter Property="MinHeight"
@@ -135,10 +127,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorSelectorThumbFenceStyle}"
-           TargetType="local:ThumbFence"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
@@ -164,10 +152,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorSelectorInputTextBoxStyle}"
-           TargetType="TextBox"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
 
     <Style TargetType="local:ColorSelector">
         <Setter Property="Background"

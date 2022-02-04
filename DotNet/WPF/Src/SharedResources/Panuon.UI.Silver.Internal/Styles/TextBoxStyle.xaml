@@ -30,12 +30,8 @@
         <Setter Property="Content"
                 Value="&#xe92d;" />
         <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.TextBoxHelperClearButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
 
     <Style x:Key="{x:Static rs:StyleKeys.TextBoxStyle}"
            TargetType="TextBox">
@@ -57,7 +53,7 @@
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Left" />
-        <Setter Property="local:TextBoxHelper.WatermarkBrush"
+        <Setter Property="local:TextBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TextBoxHelper.ClearButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
@@ -66,7 +62,7 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Padding"
-                Value="3,0" />
+                Value="5,0" />
         <Setter Property="CaretBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template"
@@ -111,3 +107,4 @@
     </Style>
 
 </ResourceDictionary>
+

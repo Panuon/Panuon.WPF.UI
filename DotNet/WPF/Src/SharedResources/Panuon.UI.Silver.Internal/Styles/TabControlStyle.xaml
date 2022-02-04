@@ -33,10 +33,6 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=TabItem}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.TabControlHelperRemoveButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.TabControlStyle}"
            TargetType="TabControl">
         <Setter Property="local:IconHelper.FontFamily"

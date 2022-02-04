@@ -10,19 +10,25 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/RepeatButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="Width"
-                Value="24" />
+                Value="{Binding ItemsWidth, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="24" />
+                Value="{Binding ItemsHeight, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="local:RepeatButtonHelper.CornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="FontFamily"
                 Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
-        <Setter Property="local:RepeatButtonHelper.CornerRadius"
-                Value="2" />
         <Style.Triggers>
             <Trigger Property="Tag"
                      Value="Up">
@@ -43,45 +49,41 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.PaginationTurnPageButtonStyle}"
-           TargetType="RepeatButton"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
-
-    <Style x:Key="{ComponentResourceKey ResourceId=PaginationItemStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
-           TargetType="local:PaginationItem">
-        <Setter Property="Width"
-                Value="24" />
-        <Setter Property="Height"
-                Value="24" />
-        <Setter Property="Margin"
-                Value="5,0,0,0" />
-        <Setter Property="Foreground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="local:ToggleButtonHelper.CornerRadius"
-                Value="2" />
-    </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.PaginationPaginationItemStyle}"
-           TargetType="local:PaginationItem"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PaginationItemStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
            TargetType="TextBlock">
         <Setter Property="Margin"
                 Value="7,0,2,0" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
         <Setter Property="Text"
                 Value="..." />
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.PaginationOmittingTextBlockStyle}"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
-
     <Style TargetType="local:Pagination">
-        <Setter Property="TurnPageButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
-        <Setter Property="PaginationItemStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PaginationItemStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
+        <Setter Property="ItemsPadding"
+                Value="5,0" />
+        <Setter Property="ItemsBackground"
+                Value="#EAEAEA" />
+        <Setter Property="ItemsBorderThickness"
+                Value="0" />
+        <Setter Property="ItemsMargin"
+                Value="5,0,0,0" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeight"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsWidth"
+                Value="{Binding ItemsHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBackground"
+                Value="{Binding ItemsBackground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBackground"
+                Value="{Binding ItemsBackground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="PageTurnButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
         <Setter Property="OmittingTextBlockStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
         <Setter Property="Template"

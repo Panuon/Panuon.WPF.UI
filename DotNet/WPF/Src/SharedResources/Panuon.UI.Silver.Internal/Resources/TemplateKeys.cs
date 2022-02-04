@@ -3,6 +3,8 @@
     static class TemplateKeys
     {
         public const string ButtonTemplate = nameof(ButtonTemplate);
+        public const string BreadcrumbTemplate = nameof(BreadcrumbTemplate);
+        public const string BreadcrumbItemTemplate = nameof(BreadcrumbItemTemplate);
         public const string CalendarXTemplate = nameof(CalendarXTemplate);
         public const string CalendarXItemTemplate = nameof(CalendarXItemTemplate);
         public const string CardTemplate = nameof(CardTemplate);
@@ -21,6 +23,7 @@
         public const string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
         public const string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
         public const string DataGridTemplate = nameof(DataGridTemplate);
+        public const string DateTimePickerTemplate = nameof(DateTimePickerTemplate);
         public const string DrawerTemplate = nameof(DrawerTemplate);
         public const string DropDownTemplate = nameof(DropDownTemplate);
         public const string ExpanderUpDownTemplate = nameof(ExpanderUpDownTemplate);
@@ -43,6 +46,7 @@
         public const string NoticeBoxItemTemplate = nameof(NoticeBoxItemTemplate);
         public const string PaginationTemplate = nameof(PaginationTemplate);
         public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
+        public const string PaginationItemOmittingTemplate = nameof(PaginationItemOmittingTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);

@@ -38,17 +38,9 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.PendingBoxCancelButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type local:PendingBox}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=SpinnerStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
            TargetType="local:Spinner">
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.PendingBoxSpinnerStyle}"
-           TargetType="local:Spinner"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=SpinnerStyle, TypeInTargetAssembly={x:Type local:PendingBox}}}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=WindowStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
            TargetType="Window">
@@ -76,10 +68,6 @@
                 Value="True" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.PendingBoxWindowStyle}"
-           TargetType="Window"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowStyle, TypeInTargetAssembly={x:Type local:PendingBox}}}" />
-
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:PendingBox}}">
         <Grid>
             <Grid.RowDefinitions>
@@ -88,8 +76,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <TextBlock x:Name="PART_CaptionTextBlock"
-                       Margin="5,5,0,0"
-                       Text="{Binding Caption}" />
+                       Margin="5,5,0,0" />
             <Grid Grid.Row="1"
                   Margin="40,20">
                 <Grid.RowDefinitions>

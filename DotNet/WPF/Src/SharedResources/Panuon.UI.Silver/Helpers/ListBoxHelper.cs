@@ -12,6 +12,11 @@ namespace Panuon.UI.Silver
 {
     public static class ListBoxHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey RemoveButtonStyle { get; } =
+            new ComponentResourceKey(typeof(ListBoxHelper), nameof(RemoveButtonStyle));
+        #endregion
+
         #region Routed Event
 
         #region ItemRemoving

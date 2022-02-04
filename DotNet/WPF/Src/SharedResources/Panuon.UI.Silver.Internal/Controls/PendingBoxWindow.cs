@@ -1,9 +1,7 @@
 ﻿using Panuon.UI.Silver.Internal.Implements;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
