@@ -93,7 +93,7 @@ namespace Panuon.UI.Silver.Internal.Controls
         private void OnTimerTicked(object state)
         {
             _countdown--;
-            Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(new Action(() =>
             {
                 if (_countdown <= 0)
                 {
@@ -113,7 +113,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                         _defaultButton.Content = $"{stringContent} ({_countdown})";
                     }
                 }
-            });
+            }));
             if (!_isStoped)
             {
                 _timer.Change(1000, Timeout.Infinite);
