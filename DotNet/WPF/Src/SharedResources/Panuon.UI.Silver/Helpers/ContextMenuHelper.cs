@@ -6,6 +6,11 @@ namespace Panuon.UI.Silver
 {
     public static class ContextMenuHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey MenuItemStyle { get; } =
+            new ComponentResourceKey(typeof(ContextMenuHelper), nameof(MenuItemStyle));
+        #endregion
+
         #region Properties
 
         #region CheckedIconTemplate

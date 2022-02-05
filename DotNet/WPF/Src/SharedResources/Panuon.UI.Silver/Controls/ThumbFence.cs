@@ -15,6 +15,11 @@ namespace Panuon.UI.Silver
     [TemplatePart(Name = ThumbTemplateName, Type = typeof(Thumb))]
     public class ThumbFence : Control
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ThumbStyle { get; } =
+            new ComponentResourceKey(typeof(ThumbFence), nameof(ThumbStyle));
+        #endregion
+
         #region Fields
         private const string CanvasTemplateName = "PART_Canvas";
 
@@ -84,14 +89,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ThumbStyle
-        public Style ThumbStyle
+        public static Style GetThumbStyle(ThumbFence thumbFence)
         {
-            get { return (Style)GetValue(ThumbStyleProperty); }
-            set { SetValue(ThumbStyleProperty, value); }
+            return (Style)thumbFence.GetValue(ThumbStyleProperty);
+        }
+
+        public static void SetThumbStyle(ThumbFence thumbFence, Style value)
+        {
+            thumbFence.SetValue(ThumbStyleProperty, value);
         }
 
         public static readonly DependencyProperty ThumbStyleProperty =
-            DependencyProperty.Register("ThumbStyle", typeof(Style), typeof(ThumbFence), new PropertyMetadata(OnEffectivePropertyChanged));
+            DependencyProperty.RegisterAttached("ThumbStyle", typeof(Style), typeof(ThumbFence));
         #endregion
 
         #region AllowCross

@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <RepeatButton Tag="Up"
-                              Style="{TemplateBinding TurnPageButtonStyle}" />
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
                 <ItemsControl Grid.Column="1"
                               ItemsSource="{TemplateBinding PageList}">
                     <ItemsControl.ItemsPanel>
@@ -31,15 +31,12 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <local:PaginationItem x:Name="PgniPage"
-                                                      GroupName="GROUP_PAGINATION"
-                                                      Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, Mode=OneWay}"
-                                                      Style="{Binding PaginationItemStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
-                                                      Content="{Binding}" />
-                                <TextBlock Style="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
-                                           Visibility="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.NonnullToCollapseConverter}}, Mode=OneWay}" />
-                            </Grid>
+                            <local:PaginationItem x:Name="PgniPage"
+                                                  GroupName="GROUP_PAGINATION"
+                                                  Style="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                  IsOmitting="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, Mode=OneWay}"
+                                                  OmittingTextBlockStyle="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                  Content="{Binding}" />
                             <DataTemplate.Triggers>
                                 <DataTrigger Value="True">
                                     <DataTrigger.Binding>
@@ -60,7 +57,7 @@
                 </ItemsControl>
                 <RepeatButton Grid.Column="2"
                               Tag="Down"
-                              Style="{TemplateBinding TurnPageButtonStyle}" />
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
             </Grid>
         </Border>
     </ControlTemplate>

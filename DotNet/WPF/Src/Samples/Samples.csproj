@@ -112,6 +112,9 @@
     <Compile Include="Views\Examples\VisualStudio2019View.xaml.cs">
       <DependentUpon>VisualStudio2019View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FooView.xaml.cs">
+      <DependentUpon>FooView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Examples\VisualStudio2019View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FooView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

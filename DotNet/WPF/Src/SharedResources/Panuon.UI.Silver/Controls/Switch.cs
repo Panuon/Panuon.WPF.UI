@@ -8,7 +8,8 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class Switch : ToggleButton
+    public class Switch 
+        : ToggleButton
     {
         #region Ctor
         static Switch()

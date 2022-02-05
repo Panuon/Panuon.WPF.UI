@@ -6,34 +6,29 @@ namespace Panuon.UI.Silver
     public class ColumnWidthAttribute : Attribute
     {
         #region Ctor
-        public ColumnWidthAttribute() 
-        {
-        }
-
-        public ColumnWidthAttribute(string width)
-        {
-            Width = width;
-        }
-
-        public ColumnWidthAttribute(string width, double minWidth)
-            : this(width)
-        {
-            MinWidth = minWidth;
-        }
-
-        public ColumnWidthAttribute(string width, double minWidth, double maxWidth)
-            : this(width, minWidth)
-        {
-            MaxWidth = maxWidth;
-        }
         #endregion
 
         #region Properties
         public string Width { get; set; }
 
-        public double? MinWidth { get; set; }
+        public double MinWidth 
+        {
+            get => _minWidth;
+            set { _minWidth = value; IsMinWidthSet = true; }
+        }
+        private double _minWidth;
 
-        public double? MaxWidth { get; set; }
+        internal bool IsMinWidthSet { get; set; }
+
+        public double MaxWidth
+        {
+            get => _maxWidth;
+            set { _maxWidth = value; IsMaxWidthSet = true; }
+        }
+        private double _maxWidth;
+
+        internal bool IsMaxWidthSet { get; set; }
+
         #endregion
     }
 }

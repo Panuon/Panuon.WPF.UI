@@ -12,20 +12,20 @@ namespace Panuon.UI.Silver
 
         }
 
-        public ColumnHeaderAttribute(VerticalAlignment verticalHeaderAlignment)
-        {
-            VerticalHeaderAlignment = verticalHeaderAlignment;
-        }
-
         public ColumnHeaderAttribute(HorizontalAlignment horizontalHeaderAlignment)
         {
             HorizontalHeaderAlignment = horizontalHeaderAlignment;
         }
 
-        public ColumnHeaderAttribute(VerticalAlignment verticalHeaderAlignment, HorizontalAlignment horizontalHeaderAlignment)
+        public ColumnHeaderAttribute(VerticalAlignment verticalHeaderAlignment)
         {
             VerticalHeaderAlignment = verticalHeaderAlignment;
+        }
+
+        public ColumnHeaderAttribute(HorizontalAlignment horizontalHeaderAlignment, VerticalAlignment verticalHeaderAlignment)
+        {
             HorizontalHeaderAlignment = horizontalHeaderAlignment;
+            VerticalHeaderAlignment = verticalHeaderAlignment;
         }
         #endregion
 
@@ -34,9 +34,17 @@ namespace Panuon.UI.Silver
 
         public string StringFormat { get; set; }
 
-        public VerticalAlignment? VerticalHeaderAlignment { get; set; }
+        public VerticalAlignment? VerticalHeaderAlignment { get; }
 
-        public HorizontalAlignment? HorizontalHeaderAlignment { get; set; }
+        public HorizontalAlignment? HorizontalHeaderAlignment { get; }
+
+        public string Foreground { get; set; }
+
+        public string ForegroundBrushKey { get; set; }
+
+        public string Background { get; set; }
+
+        public string BackgroundBrushKey { get; set; }
         #endregion
     }
 }

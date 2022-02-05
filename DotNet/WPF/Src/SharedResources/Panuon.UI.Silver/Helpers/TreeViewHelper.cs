@@ -6,6 +6,11 @@ namespace Panuon.UI.Silver
 {
     public static class TreeViewHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ToggleArrowToggleButtonStyle { get; } =
+            new ComponentResourceKey(typeof(TreeViewHelper), nameof(ToggleArrowToggleButtonStyle));
+        #endregion
+
         #region Properties
 
         #region ToggleArrowToggleButtonStyle

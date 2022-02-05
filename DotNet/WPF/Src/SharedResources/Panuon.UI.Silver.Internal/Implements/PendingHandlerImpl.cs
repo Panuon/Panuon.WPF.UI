@@ -25,12 +25,19 @@ namespace Panuon.UI.Silver.Internal.Implements
         #region Methods
         public void Close()
         {
-            if (_window.IsAlive && _window.Target is PendingBoxWindow window)
+            try
             {
-                window.Dispatcher.Invoke(new Action(() =>
+                if (_window.IsAlive && _window.Target is PendingBoxWindow window)
                 {
-                    window.Close();
-                }));
+                    window.Dispatcher.Invoke(new Action(() =>
+                    {
+                        window.Close();
+                    }));
+                }
+            }
+            catch
+            {
+
             }
         }
         #endregion

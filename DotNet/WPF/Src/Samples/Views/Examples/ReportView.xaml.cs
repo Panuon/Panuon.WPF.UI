@@ -56,15 +56,15 @@ namespace Samples.Views.Examples
 
         #region Properties
         [DisplayName("Machine Code")]
-        [ColumnWidth("*")]
+        [ColumnWidth(Width = "*")]
         public string Code { get => _name; set => Set(ref _name, value); }
         private string _name;
 
-        [ColumnWidth("0.5*")]
+        [ColumnWidth(Width = "0.5*")]
         public string State { get => _state; set => Set(ref _state, value); }
         private string _state;
 
-        [ColumnWidth("*")]
+        [ColumnWidth(Width = "*")]
         public string Remark { get => _remark; set => Set(ref _remark, value); }
         private string _remark;
         #endregion

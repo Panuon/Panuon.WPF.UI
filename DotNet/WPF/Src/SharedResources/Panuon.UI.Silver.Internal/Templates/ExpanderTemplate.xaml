@@ -68,7 +68,7 @@
                         <i:IconPresenter x:Name="IcIcon"
                                          Grid.Column="1"
                                          Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                         Source="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
                         <ContentPresenter Grid.Column="2"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"
@@ -255,7 +255,7 @@
                         <i:IconPresenter x:Name="IcIcon"
                                          Grid.Column="1"
                                          Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                         Source="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
                         <ContentPresenter Grid.Row="2"
                                           Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                           ContentSource="Header"

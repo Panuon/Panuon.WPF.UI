@@ -12,6 +12,11 @@ namespace Panuon.UI.Silver
 {
     public static class ListBoxHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey RemoveButtonStyle { get; } =
+            new ComponentResourceKey(typeof(ListBoxHelper), nameof(RemoveButtonStyle));
+        #endregion
+
         #region Routed Event
 
         #region ItemRemoving
@@ -42,6 +47,21 @@ namespace Panuon.UI.Silver
 
         public static readonly RoutedEvent ItemRemovedEvent
             = EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(ItemRemovedEventHandler), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemClick
+        public static void AddItemClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.AddHandler(ItemClickEvent, handler);
+        }
+
+        public static void RemoveItemClickHandler(UIElement element, RoutedEventHandler handler)
+        {
+            element.RemoveHandler(ItemClickEvent, handler);
+        }
+
+        public static readonly RoutedEvent ItemClickEvent
+            = EventManager.RegisterRoutedEvent("ItemClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ListBoxHelper));
         #endregion
 
         #endregion

@@ -33,10 +33,6 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerClearButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
-
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=PreviewTemplate, TypeInTargetAssembly={x:Type local:ColorPicker}}">
         <Border Background="{Binding}"
                 BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
@@ -70,17 +66,16 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerToggleArrowTransformControlStyle}"
-           TargetType="local:TransformControl"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}"
            TargetType="local:ColorSelector">
+        <Setter Property="Width"
+                Value="NaN" />
+        <Setter Property="Height"
+                Value="NaN" />
+        <Setter Property="BorderThickness"
+                Value="0" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ColorPickerColorSelectorStyle}"
-           TargetType="local:ColorSelector"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
 
     <Style TargetType="local:ColorPicker">
         <Setter Property="i:VisualStateHelper.Regist"
@@ -109,11 +104,13 @@
                 Value="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.BorderThickness"
                 Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:DropDownHelper.MinWidth"
-                Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Width"
+                Value="350" />
+        <Setter Property="local:DropDownHelper.Height"
+                Value="300" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
-        <Setter Property="WatermarkBrush"
+        <Setter Property="WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="#EAEAEA" />

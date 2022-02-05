@@ -27,7 +27,7 @@
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}"
+                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click">
             </Button>
@@ -105,9 +105,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Grid Grid.Row="1">
-
-        </Grid>
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

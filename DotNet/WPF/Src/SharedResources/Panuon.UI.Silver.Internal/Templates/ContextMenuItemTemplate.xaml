@@ -35,7 +35,7 @@
                         <Grid Width="{Binding Path=(local:ContextMenuHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
                             <i:IconPresenter x:Name="IpIcon"
                                              Content="{TemplateBinding Icon}"
-                                             Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                             Source="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                             <ContentControl x:Name="ccChecked"
                                             Visibility="Collapsed"
                                             ContentTemplate="{Binding Path=(local:ContextMenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />

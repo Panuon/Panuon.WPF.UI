@@ -7,6 +7,11 @@ namespace Panuon.UI.Silver
 {
     public static class ToggleButtonHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey PendingSpinnerStyle { get; } =
+            new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinnerStyle));
+        #endregion
+
         #region Properties
 
         #region Icon
@@ -201,6 +206,20 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CheckedBorderBrushProperty =
             DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region CheckedShadowColor
+        public static Color? GetCheckedShadowColor(ToggleButton toggleButton)
+        {
+            return (Color?)toggleButton.GetValue(CheckedShadowColorProperty);
+        }
+
+        public static void SetCheckedShadowColor(ToggleButton toggleButton, Color? value)
+        {
+            toggleButton.SetValue(CheckedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(ToggleButtonHelper));
         #endregion
 
         #region CheckedContent

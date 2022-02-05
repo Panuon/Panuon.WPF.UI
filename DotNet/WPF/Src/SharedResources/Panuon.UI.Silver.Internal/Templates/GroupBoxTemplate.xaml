@@ -44,7 +44,7 @@
                                          VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Content="{Binding Path=(local:GroupBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                         Source="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
                         <ContentPresenter Grid.Column="1"
                                           ContentSource="Header"
                                           TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

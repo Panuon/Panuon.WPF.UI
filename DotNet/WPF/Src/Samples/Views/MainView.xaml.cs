@@ -36,7 +36,7 @@ namespace Samples.Views
         public MainView()
         {
             InitializeComponent();
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Loaded, new Action(() =>
+            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
             {
                 InitExampleItems();
             }));
@@ -64,7 +64,7 @@ namespace Samples.Views
 
         private void BtnTestMessageBoxX_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK);
+            MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK, 5);
         }
 
         private void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
@@ -135,7 +135,5 @@ namespace Samples.Views
             return border;
         }
         #endregion
-
     }
-
 }

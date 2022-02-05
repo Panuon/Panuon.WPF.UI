@@ -102,17 +102,17 @@
             <Setter Property="pu:DataGridHelper.ColumnHeaderClickBackground"
                     Value="#44FFFFFF" />
             <Setter Property="pu:DataGridHelper.UnitHoverBackground"
-                    Value="#22FFFFFF" />
+                    Value="#424243" />
             <Setter Property="pu:DataGridHelper.UnitSelectedBackground"
-                    Value="#44FFFFFF" />
+                    Value="#5F5F60" />
             <Setter Property="pu:DataGridHelper.ColumnHeaderSeparatorVisibility"
                     Value="Collapsed" />
             <Setter Property="pu:DataGridHelper.RowHeaderSeparatorVisibility"
                     Value="Collapsed" />
             <Setter Property="pu:DataGridHelper.RowHeaderHoverBackground"
-                    Value="#22FFFFFF" />
+                    Value="#424243" />
             <Setter Property="pu:DataGridHelper.RowHeaderClickBackground"
-                    Value="#44FFFFFF" />
+                    Value="#5F5F60" />
             <Setter Property="RowHeaderWidth"
                     Value="40" />
             <Setter Property="IsReadOnly"
@@ -123,31 +123,22 @@
                TargetType="pu:Pagination">
             <Setter Property="Foreground"
                     Value="#FFFFFF" />
-            <Setter Property="TurnPageButtonStyle">
+            <Setter Property="ItemsBackground"
+                    Value="Transparent" />
+            <Setter Property="ItemsCornerRadius"
+                    Value="12" />
+            <Setter Property="ItemsCheckedBackground"
+                    Value="#6CBCEA" />
+            <Setter Property="PageTurnButtonStyle">
                 <Setter.Value>
                     <Style TargetType="RepeatButton"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=TurnPageButtonStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
+                           BasedOn="{StaticResource {x:Static pu:Pagination.PageTurnButtonStyle}}">
                         <Setter Property="Background"
                                 Value="Transparent" />
                         <Setter Property="pu:RepeatButtonHelper.HoverForeground"
                                 Value="#6CBCEA" />
                         <Setter Property="pu:RepeatButtonHelper.CornerRadius"
                                 Value="12" />
-                        <Setter Property="Foreground"
-                                Value="#FFFFFF" />
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="PaginationItemStyle">
-                <Setter.Value>
-                    <Style TargetType="pu:PaginationItem"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PaginationItemStyle, TypeInTargetAssembly={x:Type pu:Pagination}}}">
-                        <Setter Property="Background"
-                                Value="Transparent" />
-                        <Setter Property="CornerRadius"
-                                Value="12" />
-                        <Setter Property="CheckedBackground"
-                                Value="#6CBCEA" />
                         <Setter Property="Foreground"
                                 Value="#FFFFFF" />
                     </Style>

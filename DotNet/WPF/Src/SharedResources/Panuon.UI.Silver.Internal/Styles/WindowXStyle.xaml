@@ -10,7 +10,6 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/WindowXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
     <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
@@ -28,10 +27,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
-    <Style x:Key="{x:Static rs:ComponentKeys.WindowXModalButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
@@ -67,10 +62,6 @@
         <Setter Property="Content"
                 Value="&#xe92a;" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.WindowXCaptionMinimizeButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
 
     <Style x:Key="{ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
@@ -114,10 +105,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.WindowXCaptionMaximizeButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
-
     <Style x:Key="{ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
@@ -153,10 +140,6 @@
                 Value="0" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.WindowXCaptionCloseButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
-
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=HeaderTemplate, TypeInTargetAssembly={x:Type local:WindowXCaption}}">
         <StackPanel  Orientation="Horizontal"
                      Margin="5,0,0,0"
@@ -173,7 +156,7 @@
                        VerticalAlignment="Center" />
         </StackPanel>
     </DataTemplate>
-    
+
     <Style x:Key="{x:Static irs:StyleKeys.WindowXStyle}"
            TargetType="local:WindowX">
         <Setter Property="local:IconHelper.FontFamily"
@@ -201,7 +184,7 @@
         <Setter Property="local:WindowXCaption.Background"
                 Value="{Binding Background, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:WindowXModalDialog.ButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
         <Setter Property="local:WindowXModalDialog.ButtonPanelHorizontalAlignment"
                 Value="Right" />
         <Setter Property="FontFamily"
@@ -212,8 +195,8 @@
                 Value="White" />
         <Setter Property="MaskBrush"
                 Value="#B3FFFFFF" />
-        <Setter Property="Template" 
-                Value="{StaticResource {x:Static irs:TemplateKeys.WindowXTemplate}}"/>
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.WindowXTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -224,6 +207,11 @@
                      Value="True">
                 <Setter Property="DisableDragMove"
                         Value="True" />
+            </Trigger>
+            <Trigger Property="IsFullScreen"
+                     Value="True">
+                <Setter Property="WindowStyle"
+                        Value="None" />
             </Trigger>
         </Style.Triggers>
     </Style>

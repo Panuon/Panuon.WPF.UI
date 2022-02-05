@@ -11,6 +11,8 @@
 
     <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
            TargetType="local:Spinner">
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
         <Setter Property="GlyphBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
@@ -18,11 +20,7 @@
         <Setter Property="Height"
                 Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.RepeatButtonHelperPendingSpinnerStyle}"
-           TargetType="local:Spinner"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
-
+  
     <Style x:Key="{x:Static rs:StyleKeys.RepeatButtonStyle}"
            TargetType="RepeatButton">
         <Setter Property="i:VisualStateHelper.Regist"

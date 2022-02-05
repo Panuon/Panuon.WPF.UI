@@ -1,5 +1,4 @@
 ﻿using Panuon.UI.Silver.Internal;
-using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +8,12 @@ namespace Panuon.UI.Silver
 {
     public static class ExpanderHelper
     {
+        
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
+            new ComponentResourceKey(typeof(ExpanderHelper), nameof(ToggleArrowTransformControlStyle));
+        #endregion
+
         #region Properties
 
         #region Icon

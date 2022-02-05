@@ -9,48 +9,115 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate  x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
-                      TargetType="local:CalendarX">
-        <local:ContentControlX Background="{TemplateBinding Background}"
-                           BorderBrush="{TemplateBinding BorderBrush}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           CornerRadius="{TemplateBinding CornerRadius}">
-            <local:ContentControlX.Effect>
-                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                    <Binding Path="ShadowColor"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.BlurRadius)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Direction)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Opacity)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.RenderingBias)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                </MultiBinding>
-            </local:ContentControlX.Effect>
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
+                     TargetType="local:CalendarX">
+        <local:ContentControlX x:Name="CcMain"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Padding="{TemplateBinding Padding}"
+                               CornerRadius="{TemplateBinding CornerRadius}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition />
+                    <RowDefinition Height="7*" />
                 </Grid.RowDefinitions>
-                <Border Height="{TemplateBinding HeaderHeight}">
-
-                </Border>
-                <Grid Grid.Row="1">
-                    <ContentControl Content="{TemplateBinding DayPresenter}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <RepeatButton x:Name="PART_BackwardButton"
+                                  Tag="Backward"
+                                  Style="{TemplateBinding PageTurnButtonStyle}" />
+                    <RepeatButton x:Name="PART_PreviousButton"
+                                  Grid.Column="1"
+                                  Tag="Previous"
+                                  Style="{TemplateBinding PageTurnButtonStyle}" />
+                    <Button x:Name="PART_YearButton"
+                            Grid.Column="3"
+                            Style="{TemplateBinding YearMonthButtonStyle}"
+                            ContentStringFormat="{TemplateBinding YearStringFormat}" />
+                    <TextBlock x:Name="PART_YearPeriodTextBlock"
+                               Grid.Column="4"
+                               Visibility="Collapsed"
+                               VerticalAlignment="Center"/>
+                    <Button x:Name="PART_MonthButton"
+                            Grid.Column="5"
+                            Style="{TemplateBinding YearMonthButtonStyle}" />
+                    <RepeatButton x:Name="PART_NextButton"
+                                  Grid.Column="7"
+                                  Tag="Next"
+                                  Style="{TemplateBinding PageTurnButtonStyle}" />
+                    <RepeatButton x:Name="PART_ForwardButton"
+                                  Grid.Column="8"
+                                  Tag="Forward"
+                                  Style="{TemplateBinding PageTurnButtonStyle}" />
                 </Grid>
+                <local:SeparatorX x:Name="SprtSeparator"
+                                  Grid.Row="1"
+                                  VerticalAlignment="Center"
+                                  Stroke="{TemplateBinding HeaderSeparatorBrush}"
+                                  StrokeThickness="{TemplateBinding HeaderSeparatorThickness}"
+                                  Margin="{TemplateBinding HeaderSeparatorMargin}"
+                                  Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
+                <local:CarouselPanel Grid.Row="2"
+                                     CurrentIndex="{TemplateBinding CurrentPanel}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="6*" />
+                        </Grid.RowDefinitions>
+                        <UniformGrid x:Name="PART_WeekNameUniformGrid"
+                                     Columns="7" />
+                        <i:CalendarXItemPresenter x:Name="PART_CalendarXDayPresenter"
+                                                  Grid.Row="1"
+                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}"/>
+                    </Grid>
+                    <i:CalendarXItemPresenter x:Name="PART_CalendarXMonthPresenter"
+                                              CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                    <i:CalendarXItemPresenter x:Name="PART_CalendarXYearPresenter"
+                                              CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                </local:CarouselPanel>
             </Grid>
-
         </local:ContentControlX>
+        <ControlTemplate.Triggers>
+            <Trigger Property="CurrentPanel"
+                     Value="2">
+                <Setter TargetName="PART_YearPeriodTextBlock"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="PART_PreviousButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_NextButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_YearButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_MonthButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="CurrentPanel"
+                     Value="1">
+                <Setter TargetName="PART_MonthButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 </ResourceDictionary>

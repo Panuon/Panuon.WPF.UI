@@ -64,4 +64,10 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationItemOmittingTemplate}"
+                     TargetType="local:PaginationItem">
+        <TextBlock IsHitTestVisible="False"
+                   Style="{TemplateBinding OmittingTextBlockStyle}" />
+    </ControlTemplate>
+    
 </ResourceDictionary>

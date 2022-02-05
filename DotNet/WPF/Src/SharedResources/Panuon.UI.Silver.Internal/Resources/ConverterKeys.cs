@@ -24,6 +24,7 @@
         public const string InternalSpinnerClassicRenderTransformOriginConverter = nameof(InternalSpinnerClassicRenderTransformOriginConverter);
         public const string IsEnumContainsInSpecificValueConverter = nameof(IsEnumContainsInSpecificValueConverter);
         public const string IsItemSeparatorShallVisibleControlConverter = nameof(IsItemSeparatorShallVisibleControlConverter);
+        public const string IsLastItemInItemsControlConverter = nameof(IsLastItemInItemsControlConverter);
         public const string IsTypeConverter = nameof(IsTypeConverter);
         public const string LightenSolidColorBrushConverter = nameof(LightenSolidColorBrushConverter);
         public const string ProgressBarBorderClipConverter = nameof(ProgressBarBorderClipConverter);

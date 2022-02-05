@@ -111,10 +111,6 @@
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuItemTemplate}}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ContextMenuHelperMenuItemStyle}"
-           TargetType="MenuItem"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"
         TargetType="{x:Type ContextMenu}">
         <Style.Resources>

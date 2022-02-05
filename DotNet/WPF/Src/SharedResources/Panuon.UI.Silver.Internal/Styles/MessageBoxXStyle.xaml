@@ -28,10 +28,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.MessageBoxXButtonStyle}"
-           TargetType="Button"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}}" />
-
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -39,40 +35,28 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <local:StateControl CurrentState="{Binding MessageBoxIcon}"
-                                VerticalAlignment="Center">
+                                VerticalAlignment="Center"
+                                Margin="10,0,20,0"
+                                FontSize="40"
+                                FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon">
                 <local:StateItem State="Info">
-                    <TextBlock Margin="10,0,20,0"
-                               FontSize="40"
-                               Foreground="#80BEE8"
-                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                    <TextBlock Foreground="#80BEE8"
                                Text="&#xe92f;" />
                 </local:StateItem>
                 <local:StateItem State="Question">
-                    <TextBlock Margin="10,0,20,0"
-                               FontSize="40"
-                               Foreground="#80BEE8"
-                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                    <TextBlock Foreground="#80BEE8"
                                Text="&#xe937;" />
                 </local:StateItem>
                 <local:StateItem State="Warning">
-                    <TextBlock Margin="10,0,20,0"
-                               FontSize="40"
-                               Foreground="#F9D01A"
-                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                    <TextBlock Foreground="#F9D01A"
                                Text="&#xe931;" />
                 </local:StateItem>
                 <local:StateItem State="Error">
-                    <TextBlock Margin="10,0,20,0"
-                               FontSize="40"
-                               Foreground="#FF5656"
-                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                    <TextBlock Foreground="#FF5656"
                                Text="&#xe933;" />
                 </local:StateItem>
                 <local:StateItem State="Success">
-                    <TextBlock Margin="10,0,20,0"
-                               FontSize="40"
-                               Foreground="#75CD43"
-                               FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                    <TextBlock Foreground="#75CD43"
                                Text="&#xe935;" />
                 </local:StateItem>
             </local:StateControl>
@@ -90,23 +74,18 @@
                 Value="Close" />
         <Setter Property="MinWidth"
                 Value="350" />
+        <Setter Property="MaxWidth"
+                Value="500" />
         <Setter Property="MinHeight"
                 Value="200" />
         <Setter Property="Padding"
                 Value="15,0,15,15" />
         <Setter Property="ShowInTaskbar"
                 Value="False" />
-        <Setter Property="SizeToContent"
-                Value="WidthAndHeight" />
         <Setter Property="InteropOwnersMask"
                 Value="True" />
         <Setter Property="ResizeMode"
                 Value="NoResize" />
     </Style>
-
-    <Style x:Key="{x:Static rs:ComponentKeys.MessageBoxXWindowXStyle}"
-           TargetType="local:WindowX"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}}" />
-
 
 </ResourceDictionary>

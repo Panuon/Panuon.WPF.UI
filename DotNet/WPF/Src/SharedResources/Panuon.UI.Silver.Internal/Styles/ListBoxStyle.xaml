@@ -33,10 +33,6 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ListBoxItem}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{x:Static rs:ComponentKeys.ListBoxHelperRemoveButtonStyle}"
-           TargetType="local:TransformControl"
-           BasedOn="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ListBoxHelper}}}" />
-
     <Style x:Key="{x:Static rs:StyleKeys.ListBoxStyle}"
            TargetType="ListBox">
         <Setter Property="i:VisualStateHelper.Regist"

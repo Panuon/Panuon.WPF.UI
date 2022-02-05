@@ -7,9 +7,9 @@ namespace Panuon.UI.Silver.Configurations
         #region Ctor
         public MessageBoxXSetting()
         {
-            WindowXStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "WindowXStyle"));
+            WindowXStyle = (Style)Application.Current.FindResource(MessageBoxX.WindowXStyle);
             ContentTemplate = (DataTemplate)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "ContentTemplate"));
-            ButtonStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(MessageBoxX), "ButtonStyle"));
+            ButtonStyle = (Style)Application.Current.FindResource(MessageBoxX.ButtonStyle);
         }
         #endregion
 

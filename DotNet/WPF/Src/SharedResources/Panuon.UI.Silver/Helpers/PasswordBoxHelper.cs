@@ -9,6 +9,14 @@ namespace Panuon.UI.Silver
 {
     public static class PasswordBoxHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ClearButtonStyle { get; } =
+            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(ClearButtonStyle));
+
+        public static ComponentResourceKey PlainButtonStyle { get; } =
+            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(PlainButtonStyle));
+        #endregion
+
         #region Properties
 
         #region Password
@@ -71,19 +79,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(PasswordBoxHelper));
         #endregion
 
-        #region WatermarkBrush
-        public static Brush GetWatermarkBrush(PasswordBox passwordBox)
+        #region WatermarkForeground
+        public static Brush GetWatermarkForeground(PasswordBox passwordBox)
         {
-            return (Brush)passwordBox.GetValue(WatermarkBrushProperty);
+            return (Brush)passwordBox.GetValue(WatermarkForegroundProperty);
         }
 
-        public static void SetWatermarkBrush(PasswordBox passwordBox, Brush value)
+        public static void SetWatermarkForeground(PasswordBox passwordBox, Brush value)
         {
-            passwordBox.SetValue(WatermarkBrushProperty, value);
+            passwordBox.SetValue(WatermarkForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty WatermarkBrushProperty =
-            VisualStateHelper.WatermarkBrushProperty.AddOwner(typeof(PasswordBoxHelper));
+        public static readonly DependencyProperty WatermarkForegroundProperty =
+            VisualStateHelper.WatermarkForegroundProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
         #region CornerRadius
@@ -233,19 +241,19 @@ namespace Panuon.UI.Silver
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
-        #region FocusedWatermarkBrush
-        public static Brush GetFocusedWatermarkBrush(PasswordBox passwordBox)
+        #region FocusedWatermarkForeground
+        public static Brush GetFocusedWatermarkForeground(PasswordBox passwordBox)
         {
-            return (Brush)passwordBox.GetValue(FocusedWatermarkBrushProperty);
+            return (Brush)passwordBox.GetValue(FocusedWatermarkForegroundProperty);
         }
 
-        public static void SetFocusedWatermarkBrush(PasswordBox passwordBox, Brush value)
+        public static void SetFocusedWatermarkForeground(PasswordBox passwordBox, Brush value)
         {
-            passwordBox.SetValue(FocusedWatermarkBrushProperty, value);
+            passwordBox.SetValue(FocusedWatermarkForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
-            VisualStateHelper.FocusedWatermarkBrushProperty.AddOwner(typeof(PasswordBoxHelper));
+        public static readonly DependencyProperty FocusedWatermarkForegroundProperty =
+            VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
         #region ClearButtonVisibility

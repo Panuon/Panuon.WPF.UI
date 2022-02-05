@@ -44,8 +44,6 @@ namespace Panuon.UI.Silver
 
         private WindowState _lastWindowState;
 
-        private WindowStyle _lastWindowStyle;
-
         private bool _isLoaded;
         #endregion
 
@@ -299,7 +297,6 @@ namespace Panuon.UI.Silver
         internal Button ModalNoButton => _noButton;
 
         internal Button ModalCancelButton => _cancelButton;
-         
         #endregion
 
         #region Attached Properties
@@ -341,6 +338,48 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Methods
+
+        #region Toast
+        public void Toast(string message)
+        {
+            ShowToast(message, MessageBoxIcon.None, ToastPlacement.Center, null);
+        }
+
+        public void Toast(string message, int duration)
+        {
+            ShowToast(message, MessageBoxIcon.None, ToastPlacement.Center, null);
+        }
+
+        public void Toast(string message, MessageBoxIcon icon)
+        {
+            ShowToast(message, icon, ToastPlacement.Center, null);
+        }
+
+        public void Toast(string message, MessageBoxIcon icon, int duration)
+        {
+            ShowToast(message, icon, ToastPlacement.Center, duration);
+        }
+
+        public void Toast(string message, ToastPlacement placement)
+        {
+            ShowToast(message, MessageBoxIcon.None, placement, null);
+        }
+
+        public void Toast(string message, ToastPlacement placement, int duration)
+        {
+            ShowToast(message, MessageBoxIcon.None, placement, duration);
+        }
+
+        public void Toast(string message, MessageBoxIcon icon, ToastPlacement placement)
+        {
+            ShowToast(message, icon, placement, null);
+        }
+
+        public void Toast(string message, MessageBoxIcon icon, ToastPlacement placement, int duration)
+        {
+            ShowToast(message, icon, placement, duration);
+        }
+        #endregion
 
         #region Close
         public new void Close()
@@ -450,13 +489,10 @@ namespace Panuon.UI.Silver
             if (IsFullScreen)
             {
                 _lastWindowState = WindowState;
-                _lastWindowStyle = WindowStyle;
-                SetCurrentValue(WindowStyleProperty, WindowStyle.None);
                 SetCurrentValue(WindowStateProperty, WindowState.Maximized);
             }
             else
             {
-                SetCurrentValue(WindowStyleProperty, _lastWindowStyle);
                 SetCurrentValue(WindowStateProperty, _lastWindowState);
             }
             FullScreenChanged?.Invoke(this, EventArgs.Empty);
@@ -648,6 +684,11 @@ namespace Panuon.UI.Silver
         private void OnDisableDragMoveChanged()
         {
             WindowChromeUtil.SetCaptionHeight(this, DisableDragMove ? 0 : WindowXCaption.GetHeight(this));
+        }
+
+        internal void ShowToast(string message, MessageBoxIcon icon, ToastPlacement placement, int? duration)
+        {
+
         }
         #endregion
 

@@ -9,6 +9,13 @@ namespace Panuon.UI.Silver
 {
     public static class TextBoxHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ClearButtonStyle { get; } =
+            new ComponentResourceKey(typeof(TextBoxHelper), nameof(ClearButtonStyle));
+        #endregion
+
+        
+
         #region Properties
 
         #region Icon
@@ -41,19 +48,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(TextBoxHelper));
         #endregion
 
-        #region WatermarkBrush
-        public static Brush GetWatermarkBrush(TextBox textBox)
+        #region WatermarkForeground
+        public static Brush GetWatermarkForeground(TextBox textBox)
         {
-            return (Brush)textBox.GetValue(WatermarkBrushProperty);
+            return (Brush)textBox.GetValue(WatermarkForegroundProperty);
         }
 
-        public static void SetWatermarkBrush(TextBox textBox, Brush value)
+        public static void SetWatermarkForeground(TextBox textBox, Brush value)
         {
-            textBox.SetValue(WatermarkBrushProperty, value);
+            textBox.SetValue(WatermarkForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty WatermarkBrushProperty =
-            VisualStateHelper.WatermarkBrushProperty.AddOwner(typeof(TextBoxHelper));
+        public static readonly DependencyProperty WatermarkForegroundProperty =
+            VisualStateHelper.WatermarkForegroundProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
         #region CornerRadius
@@ -203,19 +210,34 @@ namespace Panuon.UI.Silver
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
-        #region FocusedWatermarkBrush
-        public static Brush GetFocusedWatermarkBrush(TextBox textBox)
+        #region FocusedBorderThickness
+        public static Thickness? GetFocusedBorderThickness(TextBox textBox)
         {
-            return (Brush)textBox.GetValue(FocusedWatermarkBrushProperty);
+            return (Thickness?)textBox.GetValue(FocusedBorderThicknessProperty);
         }
 
-        public static void SetFocusedWatermarkBrush(TextBox textBox, Brush value)
+        public static void SetFocusedBorderThickness(TextBox textBox, Thickness? value)
         {
-            textBox.SetValue(FocusedWatermarkBrushProperty, value);
+            textBox.SetValue(FocusedBorderThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
-            VisualStateHelper.FocusedWatermarkBrushProperty.AddOwner(typeof(TextBoxHelper));
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("FocusedBorderThickness", typeof(Thickness?), typeof(TextBoxHelper));
+        #endregion
+
+        #region FocusedWatermarkForeground
+        public static Brush GetFocusedWatermarkForeground(TextBox textBox)
+        {
+            return (Brush)textBox.GetValue(FocusedWatermarkForegroundProperty);
+        }
+
+        public static void SetFocusedWatermarkForeground(TextBox textBox, Brush value)
+        {
+            textBox.SetValue(FocusedWatermarkForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedWatermarkForegroundProperty =
+            VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
         #region ClearButtonVisibility

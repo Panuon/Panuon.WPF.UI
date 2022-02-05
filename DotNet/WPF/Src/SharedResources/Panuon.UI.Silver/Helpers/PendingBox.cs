@@ -11,40 +11,51 @@ namespace Panuon.UI.Silver
 {
     public static class PendingBox
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey CancelButtonStyle { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(CancelButtonStyle));
+
+        public static ComponentResourceKey SpinnerStyle { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(SpinnerStyle));
+
+        public static ComponentResourceKey WindowStyle { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(WindowStyle));
+        #endregion
+
         #region Methods
         public static IPendingHandler Show(string message)
         {
-            return Show(message: message, canCancel: false);
+            return CallPendingBox(null, message, null, false);
         }
 
         public static IPendingHandler Show(Window owner, string message)
         {
-            return Show(owner: owner, message: message, canCancel: false);
+            return CallPendingBox(owner, message, null, false);
         }
 
         public static IPendingHandler Show(string message, bool canCancel)
         {
-            return Show(message: message, caption: null, canCancel: canCancel);
+            return CallPendingBox(null, message, null, canCancel);
         }
 
         public static IPendingHandler Show(Window owner, string message, bool canCancel)
         {
-            return Show(owner: owner, message: message, caption: null, canCancel: canCancel);
+            return CallPendingBox(owner, message, null, canCancel);
         }
 
         public static IPendingHandler Show(string message, string caption)
         {
-            return Show(message: message, caption: caption, canCancel: false);
+            return CallPendingBox(null, message, caption, false);
         }
 
         public static IPendingHandler Show(Window owner, string message, string caption)
         {
-            return Show(owner: owner, message: message, caption: caption, canCancel: false);
+            return CallPendingBox(owner, message, caption, false);
         }
 
         public static IPendingHandler Show(string message, string caption, bool canCancel)
         {
-            return Show(owner: null, message: message, caption: caption, canCancel: canCancel);
+            return CallPendingBox(null, message, caption, canCancel);
         }
 
         public static IPendingHandler Show(Window owner, string message, string caption, bool canCancel)

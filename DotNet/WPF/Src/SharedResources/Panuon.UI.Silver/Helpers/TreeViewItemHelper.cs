@@ -355,6 +355,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsMouseDirectlyOver", typeof(bool), typeof(TreeViewItemHelper));
         #endregion
 
+        #region IsStyleless
+        public static bool GetIsStyleless(TreeViewItem treeViewItem)
+        {
+            return (bool)treeViewItem.GetValue(IsStylelessProperty);
+        }
+
+        public static void SetIsStyleless(TreeViewItem treeViewItem, bool value)
+        {
+            treeViewItem.SetValue(IsStylelessProperty, value);
+        }
+
+        public static readonly DependencyProperty IsStylelessProperty =
+            DependencyProperty.RegisterAttached("IsStyleless", typeof(bool), typeof(TreeViewItemHelper));
+        #endregion
+        
+
         #endregion
 
         #region Internal Property

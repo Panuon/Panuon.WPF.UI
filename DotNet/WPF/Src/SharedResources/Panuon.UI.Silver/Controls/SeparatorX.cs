@@ -117,8 +117,8 @@ namespace Panuon.UI.Silver
         {
             UpdateComputedValues();
 
-            var width = (double.IsNaN(availableSize.Width) || double.IsInfinity(availableSize.Width)) ? 0.0 : availableSize.Width;
-            var height = (double.IsNaN(availableSize.Height) || double.IsInfinity(availableSize.Height)) ? 0.0 : availableSize.Height;
+            var width = 0d;
+            var height = 0d;
             if (_isVertical)
             {
                 width = StrokeThickness;
@@ -134,7 +134,7 @@ namespace Panuon.UI.Silver
         #region OnRender
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (RenderSize.Width == 0 || RenderSize.Height == 0)
+            if (RenderSize.Width == 0 || RenderSize.Height == 0 || _pen == null)
             {
                 return;
             }

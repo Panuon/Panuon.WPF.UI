@@ -7,6 +7,11 @@ namespace Panuon.UI.Silver
 {
     public static class RepeatButtonHelper
     {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey PendingSpinnerStyle { get; } =
+            new ComponentResourceKey(typeof(RepeatButtonHelper), nameof(PendingSpinnerStyle));
+        #endregion
+
         #region Properties
 
         #region Icon

@@ -16,6 +16,39 @@ namespace Panuon.UI.Silver
 
         #region Properties
 
+        #region IsOmitting
+        public bool IsOmitting
+        {
+            get { return (bool)GetValue(IsOmittingProperty); }
+            set { SetValue(IsOmittingProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsOmittingProperty =
+            DependencyProperty.Register("IsOmitting", typeof(bool), typeof(PaginationItem));
+        #endregion
+
+        #region OmittingTextBlockStyle
+        public Style OmittingTextBlockStyle
+        {
+            get { return (Style)GetValue(OmittingTextBlockStyleProperty); }
+            set { SetValue(OmittingTextBlockStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty OmittingTextBlockStyleProperty =
+            DependencyProperty.Register("OmittingTextBlockStyle", typeof(Style), typeof(PaginationItem));
+        #endregion
+
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(PaginationItem));
+        #endregion
+
         #region CornerRadius
         public CornerRadius CornerRadius
         {
@@ -60,6 +93,17 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
+        #region HoverShadowColor
+        public Color? HoverShadowColor
+        {
+            get { return (Color?)GetValue(HoverShadowColorProperty); }
+            set { SetValue(HoverShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(PaginationItem));
+        #endregion
+
         #region CheckedBackground
         public Brush CheckedBackground
         {
@@ -92,6 +136,28 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CheckedBorderBrushProperty =
             DependencyProperty.Register("CheckedBorderBrush", typeof(Brush), typeof(PaginationItem));
+        #endregion
+
+        #region CheckedBorderThickness
+        public Thickness? CheckedBorderThickness
+        {
+            get { return (Thickness?)GetValue(CheckedBorderThicknessProperty); }
+            set { SetValue(CheckedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedBorderThicknessProperty =
+            DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(PaginationItem));
+        #endregion
+
+        #region CheckedShadowColor
+        public Color? CheckedShadowColor
+        {
+            get { return (Color?)GetValue(CheckedShadowColorProperty); }
+            set { SetValue(CheckedShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
         #endregion

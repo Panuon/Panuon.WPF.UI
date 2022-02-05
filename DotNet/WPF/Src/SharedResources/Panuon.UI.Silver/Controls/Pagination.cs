@@ -1,14 +1,17 @@
 ﻿using Panuon.UI.Core;
+using Panuon.UI.Silver.Internal;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class Pagination : Control
+    public class Pagination 
+        : ItemsControl
     {
         #region Fields
         private object _pageListLock = new object();
@@ -53,6 +56,14 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey PageTurnButtonStyle { get; } =
+            new ComponentResourceKey(typeof(Pagination), nameof(PageTurnButtonStyle));
+
+        public static ComponentResourceKey OmittingTextBlockStyle { get; } =
+          new ComponentResourceKey(typeof(Pagination), nameof(OmittingTextBlockStyle));
+        #endregion
+
         #region Properties
 
         #region MinPage
@@ -89,37 +100,260 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("CurrentPage", typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCurrentPageChanged, OnCurrentPageCoerceValue));
         #endregion
 
-        #region TurnPageButtonStyle
-        public Style TurnPageButtonStyle
+        #region ItemContainerStyle
+        public static Style GetItemContainerStyle(Pagination pagination)
         {
-            get { return (Style)GetValue(TurnPageButtonStyleProperty); }
-            set { SetValue(TurnPageButtonStyleProperty, value); }
+            return (Style)pagination.GetValue(ItemContainerStyleProperty);
         }
 
-        public static readonly DependencyProperty TurnPageButtonStyleProperty =
-            DependencyProperty.Register("TurnPageButtonStyle", typeof(Style), typeof(Pagination));
+        public static void SetItemContainerStyle(Pagination pagination, Style value)
+        {
+            pagination.SetValue(ItemContainerStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemContainerStyleProperty =
+            DependencyProperty.RegisterAttached("ItemContainerStyle", typeof(Style), typeof(Pagination));
         #endregion
 
-        #region PaginationItemStyle
-        public Style PaginationItemStyle
+        #region PageTurnButtonStyle
+        public static Style GetPageTurnButtonStyle(Pagination pagination)
         {
-            get { return (Style)GetValue(PaginationItemStyleProperty); }
-            set { SetValue(PaginationItemStyleProperty, value); }
+            return (Style)pagination.GetValue(PageTurnButtonStyleProperty);
         }
 
-        public static readonly DependencyProperty PaginationItemStyleProperty =
-            DependencyProperty.Register("PaginationItemStyle", typeof(Style), typeof(Pagination));
+        public static void SetPageTurnButtonStyle(Pagination pagination, Style value)
+        {
+            pagination.SetValue(PageTurnButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty PageTurnButtonStyleProperty =
+            DependencyProperty.RegisterAttached("PageTurnButtonStyle", typeof(Style), typeof(Pagination));
         #endregion
 
         #region OmittingTextBlockStyle
-        public Style OmittingTextBlockStyle
+        public static Style GetOmittingTextBlockStyle(Pagination pagination)
         {
-            get { return (Style)GetValue(OmittingTextBlockStyleProperty); }
-            set { SetValue(OmittingTextBlockStyleProperty, value); }
+            return (Style)pagination.GetValue(OmittingTextBlockStyleProperty);
+        }
+
+        public static void SetOmittingTextBlockStyle(Pagination pagination, Style value)
+        {
+            pagination.SetValue(OmittingTextBlockStyleProperty, value);
         }
 
         public static readonly DependencyProperty OmittingTextBlockStyleProperty =
-            DependencyProperty.Register("OmittingTextBlockStyle", typeof(Style), typeof(Pagination));
+            DependencyProperty.RegisterAttached("OmittingTextBlockStyle", typeof(Style), typeof(Pagination));
+        #endregion
+
+        #region ItemsWidth
+        public double ItemsWidth
+        {
+            get { return (double)GetValue(ItemsWidthProperty); }
+            set { SetValue(ItemsWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsWidthProperty =
+            DependencyProperty.Register("ItemsWidth", typeof(double), typeof(Pagination));
+        #endregion
+
+        #region ItemsHeight
+        public double ItemsHeight
+        {
+            get { return (double)GetValue(ItemsHeightProperty); }
+            set { SetValue(ItemsHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHeightProperty =
+            DependencyProperty.Register("ItemsHeight", typeof(double), typeof(Pagination));
+        #endregion
+
+        #region ItemsMargin
+        public Thickness ItemsMargin
+        {
+            get { return (Thickness)GetValue(ItemsMarginProperty); }
+            set { SetValue(ItemsMarginProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsMarginProperty =
+            DependencyProperty.Register("ItemsMargin", typeof(Thickness), typeof(Pagination));
+        #endregion
+
+        #region ItemsPadding
+        public Thickness ItemsPadding
+        {
+            get { return (Thickness)GetValue(ItemsPaddingProperty); }
+            set { SetValue(ItemsPaddingProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsPaddingProperty =
+            DependencyProperty.Register("ItemsPadding", typeof(Thickness), typeof(Pagination));
+        #endregion
+
+        #region ItemsShadowColor
+        public Color? ItemsShadowColor
+        {
+            get { return (Color?)GetValue(ItemsShadowColorProperty); }
+            set { SetValue(ItemsShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsShadowColorProperty =
+            DependencyProperty.Register("ItemsShadowColor", typeof(Color?), typeof(Pagination));
+        #endregion
+
+        #region ItemsCornerRadius
+        public CornerRadius ItemsCornerRadius
+        {
+            get { return (CornerRadius)GetValue(ItemsCornerRadiusProperty); }
+            set { SetValue(ItemsCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCornerRadiusProperty =
+            DependencyProperty.Register("ItemsCornerRadius", typeof(CornerRadius), typeof(Pagination));
+        #endregion
+
+        #region ItemsBackground
+        public Brush ItemsBackground
+        {
+            get { return (Brush)GetValue(ItemsBackgroundProperty); }
+            set { SetValue(ItemsBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBackgroundProperty =
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(Pagination));
+
+        #endregion
+
+        #region ItemsForeground
+        public Brush ItemsForeground
+        {
+            get { return (Brush)GetValue(ItemsForegroundProperty); }
+            set { SetValue(ItemsForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsForegroundProperty =
+            DependencyProperty.Register("ItemsForeground", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsBorderBrush
+        public Brush ItemsBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsBorderBrushProperty); }
+            set { SetValue(ItemsBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBorderBrushProperty =
+            DependencyProperty.Register("ItemsBorderBrush", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsBorderThickness
+        public Thickness ItemsBorderThickness
+        {
+            get { return (Thickness)GetValue(ItemsBorderThicknessProperty); }
+            set { SetValue(ItemsBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBorderThicknessProperty =
+            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness), typeof(Pagination));
+        #endregion
+
+        #region ItemsHoverBackground
+        public Brush ItemsHoverBackground
+        {
+            get { return (Brush)GetValue(ItemsHoverBackgroundProperty); }
+            set { SetValue(ItemsHoverBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBackgroundProperty =
+            DependencyProperty.Register("ItemsHoverBackground", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsHoverForeground
+        public Brush ItemsHoverForeground
+        {
+            get { return (Brush)GetValue(ItemsHoverForegroundProperty); }
+            set { SetValue(ItemsHoverForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverForegroundProperty =
+            DependencyProperty.Register("ItemsHoverForeground", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsHoverBorderBrush
+        public Brush ItemsHoverBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsHoverBorderBrushProperty); }
+            set { SetValue(ItemsHoverBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderBrushProperty =
+            DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsHoverShadowColor
+        public Color? ItemsHoverShadowColor
+        {
+            get { return (Color?)GetValue(ItemsHoverShadowColorProperty); }
+            set { SetValue(ItemsHoverShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverShadowColorProperty =
+            DependencyProperty.Register("ItemsHoverShadowColor", typeof(Color?), typeof(Pagination));
+        #endregion
+
+        #region ItemsCheckedBackground
+        public Brush ItemsCheckedBackground
+        {
+            get { return (Brush)GetValue(ItemsCheckedBackgroundProperty); }
+            set { SetValue(ItemsCheckedBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBackgroundProperty =
+            DependencyProperty.Register("ItemsCheckedBackground", typeof(Brush), typeof(Pagination));
+
+        #endregion
+
+        #region ItemsCheckedForeground
+        public Brush ItemsCheckedForeground
+        {
+            get { return (Brush)GetValue(ItemsCheckedForegroundProperty); }
+            set { SetValue(ItemsCheckedForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedForegroundProperty =
+            DependencyProperty.Register("ItemsCheckedForeground", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsCheckedBorderBrush
+        public Brush ItemsCheckedBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsCheckedBorderBrushProperty); }
+            set { SetValue(ItemsCheckedBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBorderBrushProperty =
+            DependencyProperty.Register("ItemsCheckedBorderBrush", typeof(Brush), typeof(Pagination));
+        #endregion
+
+        #region ItemsCheckedBorderThickness
+        public Thickness? ItemsCheckedBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsCheckedBorderThicknessProperty); }
+            set { SetValue(ItemsCheckedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBorderThicknessProperty =
+            DependencyProperty.Register("ItemsCheckedBorderThickness", typeof(Thickness?), typeof(Pagination));
+        #endregion
+
+        #region ItemsCheckedShadowColor
+        public Color? ItemsCheckedShadowColor
+        {
+            get { return (Color?)GetValue(ItemsCheckedShadowColorProperty); }
+            set { SetValue(ItemsCheckedShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedShadowColorProperty =
+            DependencyProperty.Register("ItemsCheckedShadowColor", typeof(Color?), typeof(Pagination));
         #endregion
 
         #endregion

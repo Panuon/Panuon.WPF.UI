@@ -1,16 +1,11 @@
 ﻿using Panuon.UI.Core;
 using Panuon.UI.Silver.Internal;
 using Panuon.UI.Silver.Internal.Utils;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace Panuon.UI.Silver
 {
@@ -61,6 +56,17 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey ClearButtonStyle { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ClearButtonStyle));
+
+        public static ComponentResourceKey ColorSelectorStyle { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ColorSelectorStyle));
+        
+        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ToggleArrowTransformControlStyle));
+        #endregion
+
         #region Properties
 
         #region Icon
@@ -86,25 +92,36 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Watermark
-        public string Watermark
+        public object Watermark
         {
-            get { return (string)GetValue(WatermarkProperty); }
+            get { return (object)GetValue(WatermarkProperty); }
             set { SetValue(WatermarkProperty, value); }
         }
 
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.Register("Watermark", typeof(string), typeof(ColorPicker));
+            DependencyProperty.Register("Watermark", typeof(object), typeof(ColorPicker));
         #endregion
 
-        #region WatermarkBrush
-        public Brush WatermarkBrush
+        #region WatermarkForeground
+        public Brush WatermarkForeground
         {
-            get { return (Brush)GetValue(WatermarkBrushProperty); }
-            set { SetValue(WatermarkBrushProperty, value); }
+            get { return (Brush)GetValue(WatermarkForegroundProperty); }
+            set { SetValue(WatermarkForegroundProperty, value); }
         }
 
-        public static readonly DependencyProperty WatermarkBrushProperty =
-            DependencyProperty.Register("WatermarkBrush", typeof(Brush), typeof(ColorPicker));
+        public static readonly DependencyProperty WatermarkForegroundProperty =
+            VisualStateHelper.WatermarkForegroundProperty.AddOwner(typeof(ColorPicker));
+        #endregion
+
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
         #region HoverBackground
@@ -195,15 +212,15 @@ namespace Panuon.UI.Silver
             VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
-        #region FocusedWatermarkBrush
-        public Brush FocusedWatermarkBrush
+        #region FocusedWatermarkForeground
+        public Brush FocusedWatermarkForeground
         {
-            get { return (Brush)GetValue(FocusedWatermarkBrushProperty); }
-            set { SetValue(FocusedWatermarkBrushProperty, value); }
+            get { return (Brush)GetValue(FocusedWatermarkForegroundProperty); }
+            set { SetValue(FocusedWatermarkForegroundProperty, value); }
         }
 
-        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
-            VisualStateHelper.FocusedWatermarkBrushProperty.AddOwner(typeof(ColorPicker));
+        public static readonly DependencyProperty FocusedWatermarkForegroundProperty =
+            VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
         #region Text
@@ -218,7 +235,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region TextFormats
-        public ColorTextFormats ColorTextFormats
+        public ColorTextFormats TextFormats
         {
             get { return (ColorTextFormats)GetValue(TextFormatsProperty); }
             set { SetValue(TextFormatsProperty, value); }
@@ -297,25 +314,33 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ColorSelectorStyle
-        public Style ColorSelectorStyle
+        public static Style GetColorSelectorStyle(ColorPicker colorPicker)
         {
-            get { return (Style)GetValue(ColorSelectorStyleProperty); }
-            set { SetValue(ColorSelectorStyleProperty, value); }
+            return (Style)colorPicker.GetValue(ColorSelectorStyleProperty);
+        }
+
+        public static void SetColorSelectorStyle(ColorPicker colorPicker, Style value)
+        {
+            colorPicker.SetValue(ColorSelectorStyleProperty, value);
         }
 
         public static readonly DependencyProperty ColorSelectorStyleProperty =
-            DependencyProperty.Register("ColorSelectorStyle", typeof(Style), typeof(ColorPicker));
+            DependencyProperty.RegisterAttached("ColorSelectorStyle", typeof(Style), typeof(ColorPicker));
         #endregion
 
         #region ToggleArrowTransformControlStyle
-        public Style ToggleArrowTransformControlStyle
+        public static Style GetToggleArrowTransformControlStyle(ColorPicker colorPicker)
         {
-            get { return (Style)GetValue(ToggleArrowTransformControlStyleProperty); }
-            set { SetValue(ToggleArrowTransformControlStyleProperty, value); }
+            return (Style)colorPicker.GetValue(ToggleArrowTransformControlStyleProperty);
+        }
+
+        public static void SetToggleArrowTransformControlStyle(ColorPicker colorPicker, Style value)
+        {
+            colorPicker.SetValue(ToggleArrowTransformControlStyleProperty, value);
         }
 
         public static readonly DependencyProperty ToggleArrowTransformControlStyleProperty =
-            DependencyProperty.Register("ToggleArrowTransformControlStyle", typeof(Style), typeof(ColorPicker));
+            DependencyProperty.RegisterAttached("ToggleArrowTransformControlStyle", typeof(Style), typeof(ColorPicker));
         #endregion
 
         #region PreviewTemplate
@@ -330,14 +355,18 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ClearButtonStyle
-        public Style ClearButtonStyle
+        public static Style GetClearButtonStyle(ColorPicker colorPicker)
         {
-            get { return (Style)GetValue(ClearButtonStyleProperty); }
-            set { SetValue(ClearButtonStyleProperty, value); }
+            return (Style)colorPicker.GetValue(ClearButtonStyleProperty);
+        }
+
+        public static void SetClearButtonStyle(ColorPicker colorPicker, Style value)
+        {
+            colorPicker.SetValue(ClearButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClearButtonStyleProperty =
-            DependencyProperty.Register("ClearButtonStyle", typeof(Style), typeof(ColorPicker));
+            DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(ColorPicker));
         #endregion
 
         #region ClearButtonVisibility
@@ -520,7 +549,7 @@ namespace Panuon.UI.Silver
 
         private static void OnClearCommandExecute(ColorPicker colorPicker)
         {
-            colorPicker.SetCurrentValue(TextProperty, null);
+            colorPicker._editableTextBox.Text = null;
             colorPicker.SetCurrentValue(SelectedColorProperty, colorPicker.DefaultColor);
         }
 
@@ -566,7 +595,7 @@ namespace Panuon.UI.Silver
 
             if (nullableSelectedColor is Color selectedColor)
             {
-                switch (ColorTextFormats)
+                switch (TextFormats)
                 {
                     case ColorTextFormats.HEX:
                         text = ColorUtil.ToHEXString(selectedColor, ColorChannels == ColorChannels.ARGB, true);
@@ -600,7 +629,7 @@ namespace Panuon.UI.Silver
             var text = _editableTextBox.Text;
             var selectedColor = SelectedColor;
 
-            switch (ColorTextFormats)
+            switch (TextFormats)
             {
                 case ColorTextFormats.HEX:
                     if (ColorUtil.FromHEXString(text) is Color newHexColor)

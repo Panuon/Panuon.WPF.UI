@@ -274,4 +274,24 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewItemStylelessTemplate}"
+                     TargetType="TreeViewItem">
+        <Grid IsHitTestVisible="False">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentPresenter ContentSource="Header"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              Margin="{TemplateBinding Padding}" />
+            <local:SeparatorX x:Name="SprtSeparator"
+                              VerticalAlignment="Center"
+                              Stroke="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              StrokeThickness="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        </Grid>
+    </ControlTemplate>
+
 </ResourceDictionary>

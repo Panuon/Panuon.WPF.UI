@@ -1,0 +1,79 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.UI.Silver"
+                    xmlns:core="clr-namespace:Panuon.UI.Core;assembly=Panuon.UI.Core"
+                    xmlns:i="clr-namespace:Panuon.UI.Silver.Internal"
+                    xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
+                    xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/CalendarXItemTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="local:CalendarXItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsChecked"
+                Value="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="ShadowColor"
+                Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverBackground"
+                Value="{Binding ItemsHoverBackground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverForeground"
+                Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverBorderBrush"
+                Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverShadowColor"
+                Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedBackground"
+                Value="{Binding ItemsCheckedBackground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedForeground"
+                Value="{Binding ItemsCheckedForeground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedBorderBrush"
+                Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedBorderThickness"
+                Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedShadowColor"
+                Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="SpecialDayHighlightTemplate"
+                Value="{Binding ItemsSpecialDayHighlightTemplate, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.CalendarXItemTemplate}}"/>
+        <Style.Triggers>
+            <Trigger Property="CanSelect"
+                     Value="False">
+                <Setter Property="Cursor"
+                        Value="No" />
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+            <Trigger Property="IsOutsideThisMonth"
+                     Value="True">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

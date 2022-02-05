@@ -29,7 +29,6 @@ namespace Panuon.UI.Silver
         #region Overrides
         public override void OnApplyTemplate()
         {
-            
             _iconPresenter = GetTemplateChild(IconPresenterPartName) as IconPresenter;
             if (IconForeground != null)
             {
@@ -150,7 +149,6 @@ namespace Panuon.UI.Silver
         #region Functions
         private void OnIconForegroundChanged()
         {
-
             if (_iconPresenter != null)
             {
                 if (IconForeground != null)

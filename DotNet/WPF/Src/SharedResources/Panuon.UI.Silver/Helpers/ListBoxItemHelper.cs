@@ -1,12 +1,17 @@
 ﻿using Panuon.UI.Silver.Internal;
+using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
     public static class ListBoxItemHelper
     {
+        #region Properties
+
         #region Icon
         public static object GetIcon(ListBoxItem listBoxItem)
         {
@@ -292,5 +297,48 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsStyleless", typeof(bool), typeof(ListBoxItemHelper));
 
         #endregion
+
+        #endregion
+
+        #region Internal Properties
+
+        #region Regist
+        internal static bool GetRegist(ListBoxItem listBoxItem)
+        {
+            return (bool)listBoxItem.GetValue(RegistProperty);
+        }
+
+        internal static void SetRegist(ListBoxItem listBoxItem, bool value)
+        {
+            listBoxItem.SetValue(RegistProperty, value);
+        }
+
+        internal static readonly DependencyProperty RegistProperty =
+            DependencyProperty.RegisterAttached("Regist", typeof(bool), typeof(ListBoxItemHelper), new PropertyMetadata(OnRegistChanged));
+
+        #endregion
+
+        #endregion
+
+        #region Event Handlers
+        private static void OnRegistChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var listBoxItem = d as ListBoxItem;
+            listBoxItem.PreviewMouseDown += ListBoxItem_PreviewMouseDown;
+        }
+
+        private static void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var listBoxItem = sender as ListBoxItem;
+            var listBox = FrameworkElementUtil.FindVisualParent<ListBox>(listBoxItem);
+            var removedArgs = new RoutedEventArgs(ListBoxHelper.ItemClickEvent, listBoxItem);
+            listBox.RaiseEvent(removedArgs);
+            if (removedArgs.Handled)
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
+
     }
 }

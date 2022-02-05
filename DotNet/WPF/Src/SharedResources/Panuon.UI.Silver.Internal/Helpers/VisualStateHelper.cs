@@ -75,19 +75,19 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
-        #region WatermarkBrush
-        public static Brush GetWatermarkBrush(Control control)
+        #region WatermarkForeground
+        public static Brush GetWatermarkForeground(Control control)
         {
-            return (Brush)control.GetValue(WatermarkBrushProperty);
+            return (Brush)control.GetValue(WatermarkForegroundProperty);
         }
 
-        public static void SetWatermarkBrush(Control control, Brush value)
+        public static void SetWatermarkForeground(Control control, Brush value)
         {
-            control.SetValue(WatermarkBrushProperty, value);
+            control.SetValue(WatermarkForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty WatermarkBrushProperty =
-            DependencyProperty.RegisterAttached("WatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
+        public static readonly DependencyProperty WatermarkForegroundProperty =
+            DependencyProperty.RegisterAttached("WatermarkForeground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region GlyphBrush
@@ -198,12 +198,12 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("HoverGlyphBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
-        #region HoverGlyphBrushProperty
+        #region HoverToggleBrushProperty
         public static readonly DependencyProperty HoverToggleBrushProperty =
             DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
-        #region HoverGlyphBrushProperty
+        #region HoverRibbonLineBrushProperty
         public static readonly DependencyProperty HoverRibbonLineBrushProperty =
             DependencyProperty.RegisterAttached("HoverRibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
@@ -298,9 +298,9 @@ namespace Panuon.UI.Silver.Internal
             DependencyProperty.RegisterAttached("FocusedShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
-        #region FocusedWatermarkBrush
-        public static readonly DependencyProperty FocusedWatermarkBrushProperty =
-            DependencyProperty.RegisterAttached("FocusedWatermarkBrush", typeof(Brush), typeof(VisualStateHelper));
+        #region FocusedWatermarkForeground
+        public static readonly DependencyProperty FocusedWatermarkForegroundProperty =
+            DependencyProperty.RegisterAttached("FocusedWatermarkForeground", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
         #region IsFocused
@@ -345,6 +345,11 @@ namespace Panuon.UI.Silver.Internal
         #endregion
 
         #region CheckedProperty
+
+        #region SelectedShadowColor
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            DependencyProperty.RegisterAttached("CheckedShadowColor", typeof(Color?), typeof(VisualStateHelper), new PropertyMetadata(OnCheckedShadowColorChanged));
+        #endregion
 
         #region IsChecked
         public static bool? GetIsChecked(DependencyObject obj)
@@ -465,12 +470,56 @@ namespace Panuon.UI.Silver.Internal
         {
             var element = (FrameworkElement)sender;
             AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 0, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+
+            if (element.GetValue(CheckedShadowColorProperty) is Color)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+
         }
 
         private static void Element_Checked(object sender, RoutedEventArgs e)
         {
             var element = (FrameworkElement)sender;
             AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 1, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+
+            if (element.GetValue(CheckedShadowColorProperty) is Color checkedShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = checkedShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, checkedShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+
         }
 
         private static void OnSelectedShadowColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -479,6 +528,15 @@ namespace Panuon.UI.Silver.Internal
             if (GetIsSelected(element))
             {
                 Element_Selected(element, null);
+            }
+        }
+
+        private static void OnCheckedShadowColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if (GetIsChecked(element) == true)
+            {
+                Element_Checked(element, null);
             }
         }
 
@@ -629,9 +687,9 @@ namespace Panuon.UI.Silver.Internal
             {
                 propertyBrushes.Add(BorderBrushProperty, focusedBorderBrush);
             }
-            if (element.GetValue(FocusedWatermarkBrushProperty) is Brush watermarkBrush)
+            if (element.GetValue(FocusedWatermarkForegroundProperty) is Brush watermarkBrush)
             {
-                propertyBrushes.Add(WatermarkBrushProperty, watermarkBrush);
+                propertyBrushes.Add(WatermarkForegroundProperty, watermarkBrush);
             }
             if (propertyBrushes.Any())
             {
@@ -683,9 +741,9 @@ namespace Panuon.UI.Silver.Internal
             {
                 properties.Add(BorderBrushProperty);
             }
-            if (element.GetValue(FocusedWatermarkBrushProperty) != null)
+            if (element.GetValue(FocusedWatermarkForegroundProperty) != null)
             {
-                properties.Add(WatermarkBrushProperty);
+                properties.Add(WatermarkForegroundProperty);
             }
             if (properties.Any())
             {
