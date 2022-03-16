@@ -35,7 +35,7 @@
                                       Background="{Binding AccentColor, Converter={StaticResource {x:Static irs:ConverterKeys.ColorSelectorThumbFenceBackgroundConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Slider x:Name="PART_AccentColorSlider"
                             Grid.Row="1"
-                            Style="{TemplateBinding SliderStyle}"
+                            Style="{TemplateBinding AccentColorSliderStyle}"
                             Orientation="Horizontal"
                             Tag="AccentColor"
                             TickFrequency="1"
@@ -64,7 +64,7 @@
                     <Slider x:Name="PART_OpacitySlider"
                             Grid.Column="1"
                             Grid.RowSpan="2"
-                            Style="{TemplateBinding SliderStyle}"
+                            Style="{TemplateBinding OpacitySliderStyle}"
                             Orientation="Vertical"
                             Tag="Opacity"
                             IsSnapToTickEnabled="True"
@@ -122,24 +122,29 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition x:Name="CdHEX"/>
+                                <ColumnDefinition x:Name="CdA"
+                                                  Width="0.5*" />
+                                <ColumnDefinition x:Name="CdR"
+                                                  Width="0.5*" />
+                                <ColumnDefinition x:Name="CdG"
+                                                  Width="0.5*" />
+                                <ColumnDefinition x:Name="CdB"
+                                                  Width="0.5*" />
                             </Grid.ColumnDefinitions>
                             <TextBox x:Name="PART_HEXTextBox"
                                      Grid.Column="0"
                                      Tag="HEX"
-                                     Style="{TemplateBinding InputTextBoxStyle}" />
-                            <TextBlock Grid.Column="0"
+                                     Style="{TemplateBinding EditorTextBoxStyle}" />
+                            <TextBlock x:Name="TxtHEX"
+                                       Grid.Column="0"
                                        Grid.Row="2"
                                        Text="HEX"
                                        HorizontalAlignment="Center" />
                             <TextBox x:Name="PART_ATextBox"
                                      Grid.Column="1"
                                      Tag="A"
-                                     Style="{TemplateBinding InputTextBoxStyle}" />
+                                     Style="{TemplateBinding EditorTextBoxStyle}" />
                             <TextBlock x:Name="TxtA"
                                        Grid.Column="1"
                                        Grid.Row="2"
@@ -148,24 +153,27 @@
                             <TextBox x:Name="PART_RTextBox"
                                      Grid.Column="2"
                                      Tag="R"
-                                     Style="{TemplateBinding InputTextBoxStyle}" />
-                            <TextBlock Grid.Column="2"
+                                     Style="{TemplateBinding EditorTextBoxStyle}" />
+                            <TextBlock x:Name="TxtR"
+                                       Grid.Column="2"
                                        Grid.Row="2"
                                        Text="R"
                                        HorizontalAlignment="Center" />
                             <TextBox x:Name="PART_GTextBox"
                                      Grid.Column="3"
                                      Tag="G"
-                                     Style="{TemplateBinding InputTextBoxStyle}" />
-                            <TextBlock Grid.Column="3"
+                                     Style="{TemplateBinding EditorTextBoxStyle}" />
+                            <TextBlock x:Name="TxtG"
+                                       Grid.Column="3"
                                        Grid.Row="2"
                                        Text="G"
                                        HorizontalAlignment="Center" />
                             <TextBox x:Name="PART_BTextBox"
                                      Grid.Column="4"
                                      Tag="B"
-                                     Style="{TemplateBinding InputTextBoxStyle}" />
-                            <TextBlock Grid.Column="4"
+                                     Style="{TemplateBinding EditorTextBoxStyle}" />
+                            <TextBlock x:Name="TxtB"
+                                       Grid.Column="4"
                                        Grid.Row="2"
                                        HorizontalAlignment="Center"
                                        Text="B" />
@@ -175,8 +183,62 @@
             </i:ClippingBorder>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="ColorEditors"
+                     Value="HEX">
+                <Setter TargetName="CdA"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="PART_ATextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtA"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="CdR"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="PART_RTextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtR"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="CdG"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="PART_GTextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtG"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="CdB"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="PART_BTextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtB"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="ColorEditors"
+                     Value="ARGB">
+                <Setter TargetName="CdHEX"
+                        Property="Width"
+                        Value="0" />
+                <Setter TargetName="PART_HEXTextBox"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="TxtHEX"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
             <Trigger Property="ColorChannels"
                      Value="Rgb">
+                <Setter TargetName="CdA"
+                        Property="Width"
+                        Value="0" />
                 <Setter TargetName="PART_ATextBox"
                         Property="Visibility"
                         Value="Collapsed" />

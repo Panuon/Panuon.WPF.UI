@@ -18,7 +18,7 @@
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.Content"
-                Value="&#xe960;" />
+                Value="&#xe971;" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="VerticalAlignment"
@@ -35,65 +35,50 @@
                 Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=OpacitySliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Slider"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
+        <Setter Property="Margin"
+                Value="0,0,0,2" />
         <Setter Property="local:SliderHelper.TrackThickness"
                 Value="23" />
-        <Setter Property="local:SliderHelper.ThumbStyle">
-            <Setter.Value>
-                <Style TargetType="Thumb"
-                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}">
-                    <Setter Property="local:ThumbHelper.CornerRadius"
-                            Value="2" />
-                    <Setter Property="local:ThumbHelper.ShadowColor"
-                            Value="LightGray" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                     Value="AccentColor">
-                            <Setter Property="Width"
-                                    Value="15" />
-                            <Setter Property="Height"
-                                    Value="27" />
-                            <Setter Property="BorderBrush"
-                                    Value="White" />
-                            <Setter Property="BorderThickness"
-                                    Value="2" />
-                            <Setter Property="Background"
-                                    Value="{Binding AccentColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}"
-                                     Value="Opacity">
-                            <Setter Property="SnapsToDevicePixels"
-                                    Value="True" />
-                            <Setter Property="Height"
-                                    Value="25" />
-                            <Setter Property="Width"
-                                    Value="27" />
-                            <Setter Property="BorderBrush"
-                                    Value="White" />
-                            <Setter Property="BorderThickness"
-                                    Value="2" />
-                            <Setter Property="Background" 
-                                    Value="Transparent"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                         Value="AccentColor">
-                <Setter Property="Margin"
-                        Value="0,-2,0,0" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                         Value="Opacity">
-                <Setter Property="Margin"
-                        Value="0,0,0,2" />
-            </DataTrigger>
-        </Style.Triggers>
+        <Setter Property="local:SliderHelper.ThumbWidth"
+                Value="27" />
+        <Setter Property="local:SliderHelper.ThumbHeight"
+                Value="25" />
+        <Setter Property="local:SliderHelper.ThumbBorderBrush"
+                Value="White" />
+        <Setter Property="local:SliderHelper.ThumbBorderThickness"
+                Value="2" />
+        <Setter Property="local:SliderHelper.ThumbBackground"
+                Value="Transparent" />
+        <Setter Property="local:SliderHelper.ThumbCornerRadius"
+                Value="2" />
+        <Setter Property="local:SliderHelper.ThumbShadowColor"
+                Value="LightGray" />
+    </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=AccentColorSliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+           TargetType="Slider"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
+        <Setter Property="Margin"
+                Value="0,-2,0,0" />
+        <Setter Property="local:SliderHelper.TrackThickness"
+                Value="23" />
+        <Setter Property="local:SliderHelper.ThumbWidth"
+                Value="15" />
+        <Setter Property="local:SliderHelper.ThumbHeight"
+                Value="27" />
+        <Setter Property="local:SliderHelper.ThumbBorderBrush"
+                Value="White" />
+        <Setter Property="local:SliderHelper.ThumbBorderThickness"
+                Value="2" />
+        <Setter Property="local:SliderHelper.ThumbBackground"
+                Value="{Binding AccentColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+        <Setter Property="local:SliderHelper.ThumbCornerRadius"
+                Value="2" />
+        <Setter Property="local:SliderHelper.ThumbShadowColor"
+                Value="LightGray" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
@@ -127,13 +112,13 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
         <Setter Property="Height"
                 Value="30" />
-        <Setter Property="MinWidth"
-                Value="40" />
+        <Setter Property="Padding"
+                Value="5,0" />
         <Setter Property="Margin"
                 Value="2,0" />
         <Setter Property="HorizontalContentAlignment"
@@ -143,10 +128,8 @@
         <Style.Triggers>
             <Trigger Property="Tag"
                      Value="HEX">
-                <Setter Property="MinWidth"
-                        Value="100" />
                 <Setter Property="Margin"
-                        Value="10,0,15,0" />
+                        Value="5,0,10,0" />
                 <Setter Property="local:TextBoxHelper.Icon"
                         Value="#" />
             </Trigger>
@@ -168,10 +151,12 @@
                 Value="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="ThumbFenceStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
-        <Setter Property="InputTextBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
-        <Setter Property="SliderStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=SliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="EditorTextBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="OpacitySliderStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=OpacitySliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+        <Setter Property="AccentColorSliderStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=AccentColorSliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ColorSelectorTemplate}}" />
     </Style>

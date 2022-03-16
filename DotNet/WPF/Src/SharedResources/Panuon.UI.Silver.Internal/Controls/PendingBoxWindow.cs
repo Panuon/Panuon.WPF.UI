@@ -133,6 +133,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 if(spinner != null)
                 {
                     spinner.Style = _spinnerStyle;
+                    spinner.IsSpinning = true;
                 }
 
             }), DispatcherPriority.DataBind);
@@ -196,7 +197,10 @@ namespace Panuon.UI.Silver.Internal.Controls
 
             Dispatcher.Invoke(new Action(() =>
             {
-                _messageTextBlock.Text = message;
+                if (_messageTextBlock != null)
+                {
+                    _messageTextBlock.Text = message;
+                }
             }));
         }
         #endregion

@@ -72,6 +72,8 @@
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
         public const string ThumbTemplate = nameof(ThumbTemplate);
         public const string ThumbFenceTemplate = nameof(ThumbFenceTemplate);
+        public const string TimeSelectorTemplate = nameof(TimeSelectorTemplate);
+        public const string TimeSelectorItemTemplate = nameof(TimeSelectorItemTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);

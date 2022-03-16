@@ -6,6 +6,7 @@
         public const string ColorToBrushConverter = nameof(ColorToBrushConverter);
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
         public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
+        public const string DoubleIsConverter = nameof(DoubleIsConverter);
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
         public const string DoubleMultiplyByConverter = nameof(DoubleMultiplyByConverter);
         public const string DoublePlusConverter = nameof(DoublePlusConverter);
@@ -14,6 +15,7 @@
         public const string DoubleToThicknessConverter = nameof(DoubleToThicknessConverter);
         public const string FalseToCollapseConverter = nameof(FalseToCollapseConverter);
         public const string FalseToHiddenConverter = nameof(FalseToHiddenConverter);
+        public const string IsAllEqualConverter = nameof(IsAllEqualConverter);
         public const string IsNullConverter = nameof(IsNullConverter);
         public const string IsNonnullConverter = nameof(IsNonnullConverter);
         public const string IsStringEqualConverter = nameof(IsStringEqualConverter);

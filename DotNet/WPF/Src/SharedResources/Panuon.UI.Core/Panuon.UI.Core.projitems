@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\SearchTextChangedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ItemRemovingEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\SearchTextChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\SharedResourceDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />

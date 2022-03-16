@@ -67,7 +67,6 @@
                 </Grid>
                 <local:SeparatorX x:Name="SprtSeparator"
                                   Grid.Row="1"
-                                  VerticalAlignment="Center"
                                   Stroke="{TemplateBinding HeaderSeparatorBrush}"
                                   StrokeThickness="{TemplateBinding HeaderSeparatorThickness}"
                                   Margin="{TemplateBinding HeaderSeparatorMargin}"

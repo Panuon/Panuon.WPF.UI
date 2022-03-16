@@ -101,11 +101,14 @@ namespace Panuon.UI.Silver
         public static ComponentResourceKey ThumbFenceStyle { get; } =
             new ComponentResourceKey(typeof(ColorSelector), nameof(ThumbFenceStyle));
 
-        public static ComponentResourceKey SliderStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(SliderStyle));
+        public static ComponentResourceKey AccentColorSliderStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(AccentColorSliderStyle));
 
-        public static ComponentResourceKey InputTextBoxStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(InputTextBoxStyle));
+        public static ComponentResourceKey OpacitySliderStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(OpacitySliderStyle));
+
+        public static ComponentResourceKey EditorTextBoxStyle { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(EditorTextBoxStyle));
         #endregion
 
 
@@ -149,6 +152,17 @@ namespace Panuon.UI.Silver
 
         #endregion
 
+        #region ColorEditors
+        public ColorEditors ColorEditors
+        {
+            get { return (ColorEditors)GetValue(ColorEditorsProperty); }
+            set { SetValue(ColorEditorsProperty, value); }
+        }
+
+        public static readonly DependencyProperty ColorEditorsProperty =
+            DependencyProperty.Register("ColorEditors", typeof(ColorEditors), typeof(ColorSelector));
+        #endregion
+
         #region AccentColor
         internal Color AccentColor
         {
@@ -188,14 +202,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region DropperThumbStyle
-        public static Style GetDropperThumbStyle(Button button)
+        public static Style GetDropperThumbStyle(ColorSelector colorSelector)
         {
-            return (Style)button.GetValue(DropperThumbStyleProperty);
+            return (Style)colorSelector.GetValue(DropperThumbStyleProperty);
         }
 
-        public static void SetDropperThumbStyle(Button button, Style value)
+        public static void SetDropperThumbStyle(ColorSelector colorSelector, Style value)
         {
-            button.SetValue(DropperThumbStyleProperty, value);
+            colorSelector.SetValue(DropperThumbStyleProperty, value);
         }
 
         public static readonly DependencyProperty DropperThumbStyleProperty =
@@ -203,48 +217,63 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ThumbFenceStyle
-        public static Style GetThumbFenceStyle(Button button)
+        public static Style GetThumbFenceStyle(ColorSelector colorSelector)
         {
-            return (Style)button.GetValue(ThumbFenceStyleProperty);
+            return (Style)colorSelector.GetValue(ThumbFenceStyleProperty);
         }
 
-        public static void SetThumbFenceStyle(Button button, Style value)
+        public static void SetThumbFenceStyle(ColorSelector colorSelector, Style value)
         {
-            button.SetValue(ThumbFenceStyleProperty, value);
+            colorSelector.SetValue(ThumbFenceStyleProperty, value);
         }
 
         public static readonly DependencyProperty ThumbFenceStyleProperty =
             DependencyProperty.RegisterAttached("ThumbFenceStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
-        #region SliderStyle
-        public static Style GetSliderStyle(Button button)
+        #region AccentColorSliderStyle
+        public static Style GetAccentColorSliderStyle(ColorSelector colorSelector)
         {
-            return (Style)button.GetValue(SliderStyleProperty);
+            return (Style)colorSelector.GetValue(AccentColorSliderStyleProperty);
         }
 
-        public static void SetSliderStyle(Button button, Style value)
+        public static void SetAccentColorSliderStyle(ColorSelector colorSelector, Style value)
         {
-            button.SetValue(SliderStyleProperty, value);
+            colorSelector.SetValue(AccentColorSliderStyleProperty, value);
         }
 
-        public static readonly DependencyProperty SliderStyleProperty =
-            DependencyProperty.RegisterAttached("SliderStyle", typeof(Style), typeof(ColorSelector));
+        public static readonly DependencyProperty AccentColorSliderStyleProperty =
+            DependencyProperty.RegisterAttached("AccentColorSliderStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
-        #region InputTextBoxStyle
-        public static Style GetInputTextBoxStyle(Button button)
+        #region OpacitySliderStyle
+        public static Style GetOpacitySliderStyle(ColorSelector colorSelector)
         {
-            return (Style)button.GetValue(InputTextBoxStyleProperty);
+            return (Style)colorSelector.GetValue(OpacitySliderStyleProperty);
         }
 
-        public static void SetInputTextBoxStyle(Button button, Style value)
+        public static void SetOpacitySliderStyle(ColorSelector colorSelector, Style value)
         {
-            button.SetValue(InputTextBoxStyleProperty, value);
+            colorSelector.SetValue(OpacitySliderStyleProperty, value);
         }
 
-        public static readonly DependencyProperty InputTextBoxStyleProperty =
-            DependencyProperty.RegisterAttached("InputTextBoxStyle", typeof(Style), typeof(ColorSelector));
+        public static readonly DependencyProperty OpacitySliderStyleProperty =
+            DependencyProperty.RegisterAttached("OpacitySliderStyle", typeof(Style), typeof(ColorSelector));
+        #endregion
+
+        #region EditorTextBoxStyle
+        public static Style GetEditorTextBoxStyle(ColorSelector colorSelector)
+        {
+            return (Style)colorSelector.GetValue(EditorTextBoxStyleProperty);
+        }
+
+        public static void SetEditorTextBoxStyle(ColorSelector colorSelector, Style value)
+        {
+            colorSelector.SetValue(EditorTextBoxStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty EditorTextBoxStyleProperty =
+            DependencyProperty.RegisterAttached("EditorTextBoxStyle", typeof(Style), typeof(ColorSelector));
         #endregion
 
         #endregion
@@ -483,8 +512,9 @@ namespace Panuon.UI.Silver
                 , (byte)(colorLeft.G - (colorLeft.G - colorRight.G) * position.X)
                 , (byte)(colorLeft.B - (colorLeft.B - colorRight.B) * position.X));
 
-            var opacity = 1 - (_opacitySlider.Value / 100d);
-            selectedColor.A = (byte)(opacity * 255);
+            var opacityPercent = ColorChannels == ColorChannels.ARGB ? 1 - (_opacitySlider.Value / 100d)
+                : 1;
+            selectedColor.A = (byte)(opacityPercent * 255);
 
             SetCurrentValue(SelectedColorProperty, selectedColor);
 

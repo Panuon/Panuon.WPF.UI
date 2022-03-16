@@ -234,8 +234,8 @@
                 Value="Aliased" />
         <Setter Property="local:DataGridHelper.Hook"
                 Value="True" />
-        <Setter Property="local:DataGridHelper.MaxRowHeight"
-                Value="Infinity" />
+        <Setter Property="local:DataGridHelper.SortArrowVisibility"
+                Value="CollapsedWhenUnsorted" />
         <Setter Property="local:DataGridHelper.RowHeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.RowHeaderBackground"
@@ -253,7 +253,7 @@
         <Setter Property="local:DataGridHelper.ColumnHeaderHorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPadding"
-                Value="10,0" />
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.CellPadding"
                 Value="{Binding Path=(local:DataGridHelper.ColumnHeaderPadding), RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderBackground"
@@ -295,7 +295,7 @@
         <Setter Property="RowHeight"
                 Value="35" />
         <Setter Property="Padding"
-                Value="0" />
+                Value="5,0" />
         <Setter Property="ColumnHeaderHeight"
                 Value="35" />
         <Setter Property="RowHeaderWidth"

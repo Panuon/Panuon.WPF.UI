@@ -29,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\INoticeHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CacheControl.cs" />
@@ -52,11 +53,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\StateItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Switch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThumbFence.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AnimationEase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CarouselAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ArrangeDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CalendarXItemMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ColorChannels.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ColorEditors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ColorTextFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ContentPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DateTimePickerMode.cs" />

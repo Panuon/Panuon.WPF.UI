@@ -185,17 +185,53 @@
                                          Mode="OneWay" />
                             </MultiBinding>
                         </local:ContentControlX.Effect>
-                        <local:CalendarX x:Name="PART_CalendarX"
-                                         Style="{TemplateBinding CalendarXStyle}"
-                                         Culture="{TemplateBinding Culture}"
-                                         MinDate="{TemplateBinding MinDateTime}"
-                                         MaxDate="{TemplateBinding MaxDateTime}"
-                                         YearStringFormat="{TemplateBinding YearStringFormat}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <local:CalendarX x:Name="PART_CalendarX"
+                                             Style="{TemplateBinding CalendarXStyle}"
+                                             Culture="{TemplateBinding Culture}"
+                                             MinDate="{TemplateBinding MinDateTime}"
+                                             MaxDate="{TemplateBinding MaxDateTime}"
+                                             YearStringFormat="{TemplateBinding YearStringFormat}" />
+                            <local:SeparatorX x:Name="SprDateTime"
+                                              Grid.Column="1"
+                                              Orientation="Vertical"
+                                              Stroke="{TemplateBinding DateTimeSeparatorBrush}"
+                                              StrokeThickness="{TemplateBinding DateTimeSeparatorThickness}"
+                                              Margin="{TemplateBinding DateTimeSeparatorMargin}"
+                                              Visibility="{TemplateBinding DateTimeSeparatorVisibility}" />
+                            <local:TimeSelector x:Name="PART_TimeSelector"
+                                                Grid.Column="2"
+                                                Style="{TemplateBinding TimeSelectorStyle}"
+                                                Culture="{TemplateBinding Culture}"/>
+                        </Grid>
                     </local:ContentControlX>
                 </Grid>
             </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="Mode"
+                     Value="Date">
+                <Setter TargetName="PART_TimeSelector"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Time">
+                <Setter TargetName="PART_CalendarX"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
             <Trigger  Property="ClearButtonVisibility"
                       Value="Visible">
                 <Setter TargetName="BtnClear"

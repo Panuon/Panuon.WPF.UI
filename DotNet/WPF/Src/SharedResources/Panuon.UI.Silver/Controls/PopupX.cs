@@ -8,10 +8,12 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-   public class PopupX : Popup
+    public class PopupX : Popup
     {
         #region Fields
         private WeakReference _parentWindow;
+
+        private bool _isFirstInit = true;
         #endregion
 
         #region Ctor
@@ -60,14 +62,24 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Overrides
+
         protected override void OnOpened(EventArgs e)
         {
-            var hwnd = ((HwndSource)PresentationSource.FromVisual(Child)).Handle;
+            base.OnOpened(e);
 
-            //if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
-            //{
-            //    Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
-            //}
+            var hwndSource = ((HwndSource)PresentationSource.FromVisual(Child));
+            hwndSource.AddHook(new HwndSourceHook(WndProc));
+
+            if (_isFirstInit)
+            {
+                var hwnd = hwndSource.Handle;
+
+                if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
+                {
+                    Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
+                }
+                Win32Util.ShowWindow(hwnd, 0);
+            }
 
             var parentWindow = Window.GetWindow(this);
             if (parentWindow != null)
@@ -80,9 +92,22 @@ namespace Panuon.UI.Silver
                 parentWindow.MouseDown -= Window_MouseDown;
                 parentWindow.MouseDown += Window_MouseDown;
             }
-            UpdateActualPlacement();
-            base.OnOpened(e);
+            if (!_isFirstInit)
+            {
+                UpdateActualPlacement();
+            }
         }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == 0x0047) //WM_WINDOWPOSCHANGED
+            {
+                UpdateActualPlacement();
+            }
+
+            return IntPtr.Zero;
+        }
+
 
         protected override void OnClosed(EventArgs e)
         {
@@ -94,6 +119,7 @@ namespace Panuon.UI.Silver
             }
             base.OnClosed(e);
         }
+
         #endregion
 
         #region Methods
@@ -112,6 +138,14 @@ namespace Panuon.UI.Silver
         #region Event Handlers
         private CustomPopupPlacement[] PopupPlacementCallback(Size popupSize, Size targetSize, Point offset)
         {
+            if (_isFirstInit)
+            {
+                var hwndSource = ((HwndSource)PresentationSource.FromVisual(Child));
+                var hwnd = hwndSource.Handle;
+                Win32Util.ShowWindow(hwnd, 1);
+                _isFirstInit = false;
+            }
+
             var leftBottom = new Point(-popupSize.Width, 0);
             var left = new Point(-popupSize.Width, -(popupSize.Height - targetSize.Height) / 2);
             var leftTop = new Point(-popupSize.Width, -(popupSize.Height - targetSize.Height));
@@ -166,8 +200,8 @@ namespace Panuon.UI.Silver
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!IsMouseOver 
-                && !StaysOpen 
+            if (!IsMouseOver
+                && !StaysOpen
                 && (PlacementTarget == null || !PlacementTarget.IsMouseOver))
             {
                 SetCurrentValue(IsOpenProperty, false);
@@ -185,7 +219,7 @@ namespace Panuon.UI.Silver
             var location = Child.TranslatePoint(new Point(0, 0), target);
             if (RelativePosition.X != location.X || RelativePosition.Y != location.Y)
             {
-                SetCurrentValue(RelativePositionProperty,  location);
+                SetCurrentValue(RelativePositionProperty, location);
             }
 
             switch (Placement)

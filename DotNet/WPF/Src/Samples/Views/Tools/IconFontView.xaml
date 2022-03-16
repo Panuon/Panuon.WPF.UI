@@ -63,7 +63,7 @@
                     <Setter Property="BorderThickness"
                             Value="2" />
                     <Setter Property="FontFamily"
-                            Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+                            Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
                     <Setter Property="ToolTip">
                         <Setter.Value>
                             <StackPanel>

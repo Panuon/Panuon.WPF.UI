@@ -14,23 +14,33 @@
            TargetType="Thumb"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
         <Setter Property="Width"
-                Value="20" />
+                Value="{Binding Path=(local:SliderHelper.ThumbWidth), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="20" />
+                Value="{Binding Path=(local:SliderHelper.ThumbHeight), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="Background"
-                Value="#FFFFFF" />
+                Value="{Binding Path=(local:SliderHelper.ThumbBackground), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:SliderHelper.ThumbBorderBrush), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
-                Value="0" />
+                Value="{Binding Path=(local:SliderHelper.ThumbBorderThickness), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.CornerRadius"
-                Value="10" />
+                Value="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.ShadowColor"
-                Value="LightGray" />
+                Value="{Binding Path=(local:SliderHelper.ThumbShadowColor), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.SliderStyle}"
            TargetType="Slider">
         <Setter Property="Background"
                 Value="#EAEAEA" />
+        <Setter Property="local:SliderHelper.ThumbBackground"
+                Value="#FFFFFF" />
+        <Setter Property="local:SliderHelper.ThumbBorderThickness"
+                Value="0" />
+        <Setter Property="local:SliderHelper.ThumbCornerRadius"
+                Value="10" />
+        <Setter Property="local:SliderHelper.ThumbShadowColor"
+                Value="LightGray" />
         <Setter Property="local:SliderHelper.CoveredBackground"
                 Value="Gray" />
         <Setter Property="local:SliderHelper.ThumbStyle"

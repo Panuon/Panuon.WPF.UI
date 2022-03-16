@@ -93,7 +93,6 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ClickEffect", typeof(ClickEffect), typeof(Card));
         #endregion
 
-
         #endregion
 
     }

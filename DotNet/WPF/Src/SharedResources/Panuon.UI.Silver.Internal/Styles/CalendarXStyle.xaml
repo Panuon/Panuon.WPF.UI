@@ -100,6 +100,8 @@
                 Value="1" />
         <Setter Property="HeaderSeparatorVisibility"
                 Value="Collapsed" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="ItemsHoverBackground"
                 Value="#F1F1F1" />
         <Setter Property="ItemsCheckedBackground"

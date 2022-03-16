@@ -60,10 +60,27 @@
                                Text="&#xe935;" />
                 </local:StateItem>
             </local:StateControl>
-            <TextBlock Grid.Column="1"
-                       Text="{Binding Message}"
-                       TextWrapping="Wrap"
-                       VerticalAlignment="Center" />
+            <TextBox Grid.Column="1"
+                     Text="{Binding Message}"
+                     Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border x:Name="PART_ContentHost"
+                                            Focusable="False"
+                                            VerticalAlignment="Center"
+                                            Margin="5" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+
+            </TextBox>
         </Grid>
     </DataTemplate>
 
@@ -76,8 +93,12 @@
                 Value="350" />
         <Setter Property="MaxWidth"
                 Value="500" />
+        <Setter Property="MaxHeight"
+                Value="350" />
         <Setter Property="MinHeight"
                 Value="200" />
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
         <Setter Property="Padding"
                 Value="15,0,15,15" />
         <Setter Property="ShowInTaskbar"

@@ -10,8 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}">
-        <TextBlock x:Name="TxtMessage"
-                   TextWrapping="Wrap"
+        <TextBlock TextWrapping="Wrap"
                    TextTrimming="CharacterEllipsis"
                    Margin="0,3,0,0">
             <Run x:Name="RunIcon"
@@ -21,36 +20,24 @@
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
                          Value="Error">
-                <Setter TargetName="TxtMessage"
-                        Property="Foreground"
-                        Value="Red" />
                 <Setter TargetName="RunIcon"
                         Property="Text"
                         Value="&#xe933;" />
             </DataTrigger>
             <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
                          Value="Info">
-                <Setter TargetName="TxtMessage"
-                        Property="Foreground"
-                        Value="#6CBCEA" />
                 <Setter TargetName="RunIcon"
                         Property="Text"
                         Value="&#xe937;" />
             </DataTrigger>
             <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
                          Value="Success">
-                <Setter TargetName="TxtMessage"
-                        Property="Foreground"
-                        Value="#79AD61" />
                 <Setter TargetName="RunIcon"
                         Property="Text"
                         Value="&#xe935;" />
             </DataTrigger>
             <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
                          Value="Warning">
-                <Setter TargetName="TxtMessage"
-                        Property="Foreground"
-                        Value="Orange" />
                 <Setter TargetName="RunIcon"
                         Property="Text"
                         Value="&#xe931;" />
@@ -71,6 +58,14 @@
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MessageForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="ErrorMessageForeground"
+                Value="Red" />
+        <Setter Property="InfoMessageForeground"
+                Value="#6CBCEA" />
+        <Setter Property="SuccessMessageForeground"
+                Value="#79AD61" />
+        <Setter Property="WarningMessageForeground"
+                Value="Orange" />
         <Setter Property="MessageTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
         <Style.Triggers>
@@ -89,7 +84,28 @@
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
             </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Error">
+                <Setter Property="MessageForeground"
+                        Value="{Binding ErrorMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Info">
+                <Setter Property="MessageForeground"
+                        Value="{Binding InfoMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Success">
+                <Setter Property="MessageForeground"
+                        Value="{Binding SuccessMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Warning">
+                <Setter Property="MessageForeground"
+                        Value="{Binding WarningMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
         </Style.Triggers>
+        
     </Style>
 
 

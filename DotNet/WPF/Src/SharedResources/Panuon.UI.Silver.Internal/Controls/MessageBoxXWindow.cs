@@ -106,6 +106,10 @@ namespace Panuon.UI.Silver.Internal.Controls
                     if (_defaultButton == null)
                     {
                         _defaultButton = GetDefaultButton();
+                        if (_defaultButton == null)
+                        {
+                            throw new Exception("When the countdown parameter is used in MessageBoxX, the defaultButton parameter must be set. ");
+                        }
                         _defaultContent = _defaultButton.Content;
                     }
                     if (_defaultContent is string stringContent)

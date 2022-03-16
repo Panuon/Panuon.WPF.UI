@@ -21,6 +21,7 @@
     <icv:DataGridSelectionUnitIsNotFullRowConverter x:Key="{x:Static irs:ConverterKeys.DataGridSelectionUnitIsNotFullRowConverter}" />
     <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
+    <icv:DoubleIsConverter x:Key="{x:Static rs:ConverterKeys.DoubleIsConverter}" />
     <icv:DoubleEqualsConverter x:Key="{x:Static rs:ConverterKeys.DoubleEqualsConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
     <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />
@@ -37,6 +38,7 @@
     <icv:FalseToHiddenConverter x:Key="{x:Static rs:ConverterKeys.FalseToHiddenConverter}" />
     <icv:FontSizeMinusConverter x:Key="{x:Static irs:ConverterKeys.FontSizeMinusConverter}" />
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
+    <icv:IsAllEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllEqualConverter}" />
     <icv:IsEnumContainsInSpecificValueConverter x:Key="{x:Static irs:ConverterKeys.IsEnumContainsInSpecificValueConverter}" />
     <icv:IsItemSeparatorShallVisibleControlConverter x:Key="{x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}" />
     <icv:IsLastItemInItemsControlConverter x:Key="{x:Static irs:ConverterKeys.IsLastItemInItemsControlConverter}" />
