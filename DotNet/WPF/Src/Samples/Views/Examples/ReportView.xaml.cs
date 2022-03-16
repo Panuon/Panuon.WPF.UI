@@ -64,7 +64,7 @@ namespace Samples.Views.Examples
         public string State { get => _state; set => Set(ref _state, value); }
         private string _state;
 
-        [ColumnWidth(Width = "*")]
+        [ColumnWidth(Width = "400")]
         public string Remark { get => _remark; set => Set(ref _remark, value); }
         private string _remark;
         #endregion

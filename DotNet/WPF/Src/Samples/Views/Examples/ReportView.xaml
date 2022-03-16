@@ -121,6 +121,8 @@
 
         <Style x:Key="StandardPaginationStyle"
                TargetType="pu:Pagination">
+            <Setter Property="Height"
+                    Value="24" />
             <Setter Property="Foreground"
                     Value="#FFFFFF" />
             <Setter Property="ItemsBackground"
@@ -145,7 +147,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
     </pu:WindowX.Resources>
 
     <Grid Margin="20,10">
@@ -232,6 +234,7 @@
         <DataGrid x:Name="dataGrid"
                   Grid.Row="2"
                   Margin="0,20,0,0"
+                  HorizontalScrollBarVisibility="Visible"
                   Style="{StaticResource StandardDataGridStyle}">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>
@@ -241,12 +244,19 @@
                     </Border>
                 </DataTemplate>
             </DataGrid.RowHeaderTemplate>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Menu 1" />
+                    <MenuItem Header="Menu 2" />
+                    <MenuItem Header="Menu 3" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
         <pu:Pagination Grid.Row="3"
                        HorizontalAlignment="Left"
                        Margin="0,10,0,0"
                        MaxPage="10"
                        Style="{StaticResource StandardPaginationStyle}"
-                       CurrentPageChanged="Pagination_CurrentPageChanged"/>
+                       CurrentPageChanged="Pagination_CurrentPageChanged" />
     </Grid>
 </pu:WindowX>

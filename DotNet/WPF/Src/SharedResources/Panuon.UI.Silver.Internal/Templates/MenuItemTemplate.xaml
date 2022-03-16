@@ -18,14 +18,14 @@
             </Grid.RowDefinitions>
             <Grid>
                 <local:ContentControlX x:Name="CcMain"
-                                   Grid.Column="1"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   CornerRadius="{Binding Path=(local:MenuItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                       Grid.Column="1"
+                                       Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       CornerRadius="{Binding Path=(local:MenuItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -56,18 +56,12 @@
                     </Grid>
                 </local:ContentControlX>
                 <local:PopupX x:Name="popDropDown"
-                               Placement="{Binding Path=(local:MenuHelper.TopLevelDropDownPlacement), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               IsOpen="{Binding IsSubmenuOpen,  RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                               PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                               Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               AllowsTransparency="True"
-                               Focusable="False"
-                               PopupAnimation="Fade">
+                              AllowsTransparency="True"
+                              Focusable="False"
+                              IsOpen="{Binding IsSubmenuOpen,  RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                              PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                              Placement="{Binding Path=(local:MenuHelper.TopLevelDropDownPlacement), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                              PopupAnimation="Fade">
                     <local:PopupX.HorizontalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -100,7 +94,13 @@
                                      Mode="OneWay" />
                         </MultiBinding>
                     </local:PopupX.VerticalOffset>
-                    <Grid x:Name="GrdSubmenu">
+                    <Grid x:Name="GrdSubmenu"
+                          Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                         <Grid.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -353,13 +353,13 @@
             </Grid.RowDefinitions>
             <Grid>
                 <local:ContentControlX x:Name="CcMain"
-                                   Grid.Column="1"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   CornerRadius="{Binding Path=(local:MenuItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                       Grid.Column="1"
+                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       CornerRadius="{Binding Path=(local:MenuItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -390,18 +390,12 @@
                     </Grid>
                 </local:ContentControlX>
                 <local:PopupX x:Name="popDropDown"
-                               Placement="{Binding Path=(local:MenuHelper.SubmenuDropDownPlacement), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               IsOpen="{Binding IsSubmenuOpen,  RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                               PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                               Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                               AllowsTransparency="True"
-                               Focusable="False"
-                               PopupAnimation="Fade">
+                              Placement="{Binding Path=(local:MenuHelper.SubmenuDropDownPlacement), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                              IsOpen="{Binding IsSubmenuOpen,  RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                              PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                              AllowsTransparency="True"
+                              Focusable="False"
+                              PopupAnimation="Fade">
                     <local:PopupX.HorizontalOffset>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -434,7 +428,13 @@
                                      Mode="OneWay" />
                         </MultiBinding>
                     </local:PopupX.VerticalOffset>
-                    <Grid x:Name="GrdSubmenu">
+                    <Grid x:Name="GrdSubmenu"
+                          Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                          MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                         <Grid.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"

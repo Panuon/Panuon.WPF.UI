@@ -280,7 +280,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty SelectedDateProperty =
-            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(OnSelectedDateTimeChanged));
+            DependencyProperty.Register("SelectedDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.Now.Date, OnSelectedDateChanged, OnSelectedDateCoerceValue));
         #endregion
 
         #region SpecialDates
@@ -302,7 +302,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MinDateProperty =
-            DependencyProperty.Register("MinDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.MinValue));
+            DependencyProperty.Register("MinDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.MinValue, OnMinDateChanged, OnMinDateCoerceValue));
         #endregion
 
         #region MaxDate
@@ -313,7 +313,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MaxDateProperty =
-            DependencyProperty.Register("MaxDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.MaxValue));
+            DependencyProperty.Register("MaxDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.MaxValue, OnMaxDateChanged, OnMaxDateCoerceValue));
         #endregion
 
         #region YearStringFormat
@@ -328,6 +328,17 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Items Property
+
+        #region ItemsForeground
+        public Brush ItemsForeground
+        {
+            get { return (Brush)GetValue(ItemsForegroundProperty); }
+            set { SetValue(ItemsForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsForegroundProperty =
+            DependencyProperty.Register("ItemsForeground", typeof(Brush), typeof(CalendarX));
+        #endregion
 
         #region ItemsBackground
         public Brush ItemsBackground
@@ -524,11 +535,75 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Event Handlers
-        private static void OnSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static object OnMinDateCoerceValue(DependencyObject d, object baseValue)
+        {
+            var calendarX = (CalendarX)d;
+            var minDate = (DateTime)baseValue;
+            minDate = minDate.Date;
+            if (minDate > calendarX.MaxDate)
+            {
+                return calendarX.MaxDate;
+            }
+            return minDate;
+        }
+
+        private static void OnMinDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendarX = (CalendarX)d;
+            calendarX.CoerceValue(MaxDateProperty);
+            calendarX.CoerceValue(SelectedDateProperty);
+            calendarX.UpdateDay();
+            calendarX.UpdateMonth();
+            calendarX.UpdateYear();
+        }
+
+        private static object OnMaxDateCoerceValue(DependencyObject d, object baseValue)
+        {
+            var calendarX = (CalendarX)d;
+            var maxDate = (DateTime)baseValue;
+            maxDate = maxDate.Date;
+            if (maxDate > calendarX.MaxDate)
+            {
+                return calendarX.MaxDate;
+            }
+            return maxDate;
+        }
+
+        private static void OnMaxDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendarX = (CalendarX)d;
+            calendarX.CoerceValue(MaxDateProperty);
+            calendarX.CoerceValue(SelectedDateProperty);
+            calendarX.UpdateDay();
+            calendarX.UpdateMonth();
+            calendarX.UpdateYear();
+        }
+
+        private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var calendar = (CalendarX)d;
-            calendar.OnSelectedDateTimeChanged();
+            calendar.OnSelectedDateChanged();
             calendar.RaiseEvent(new SelectedValueChangedEventArgs<DateTime>(SelectedDateChangedEvent, (DateTime)e.OldValue, (DateTime)e.NewValue));
+        }
+
+        private static object OnSelectedDateCoerceValue(DependencyObject d, object baseValue)
+        {
+            var calendarX = (CalendarX)d;
+            var selectedDate = (DateTime)baseValue;
+            selectedDate = selectedDate.Date;
+            var maxDate = calendarX.MaxDate.Date;
+            var minDate = calendarX.MinDate.Date;
+
+            if(selectedDate > maxDate)
+            {
+                return maxDate;
+            }
+            if(selectedDate < minDate)
+            {
+                return minDate;
+            }
+            return selectedDate;
+
         }
 
         private void DayPresenter_Selected(object sender, RoutedEventArgs e)
@@ -681,7 +756,7 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Functions
-        private void OnSelectedDateTimeChanged()
+        private void OnSelectedDateChanged()
         {
             if (_yearPresenter == null
                 || _monthPresenter == null
@@ -725,6 +800,11 @@ namespace Panuon.UI.Silver
 
         private void UpdateYear()
         {
+            if (_yearPresenter == null)
+            {
+                return;
+            }
+
             var selectedDate = SelectedDate;
             var minDate = MinDate.Date;
             var maxDate = MaxDate.Date;
@@ -735,8 +815,9 @@ namespace Panuon.UI.Silver
             for (int i = 0; i < _yearRows * _yearColumns; i++)
             {
                 var item = _yearPresenter.GetItem(i);
-                item.SetCurrentValue(CalendarXItem.CanSelectProperty, selectedDate.Year >= minDate.Year
-                        || selectedDate.Year <= maxDate.Year);
+
+                item.SetCurrentValue(CalendarXItem.CanSelectProperty, currentYear >= minDate.Year
+                        || currentYear <= maxDate.Year);
                 item.SetCurrentValue(CalendarXItem.IsCheckedProperty, selectedDate.Year == currentYear);
                 item.SetCurrentValue(CalendarXItem.TagProperty, currentYear);
                 item.SetCurrentValue(CalendarXItem.ContentProperty, currentYear.ToString(YearStringFormat));
@@ -749,6 +830,11 @@ namespace Panuon.UI.Silver
 
         private void UpdateMonth()
         {
+            if (_monthPresenter == null)
+            {
+                return;
+            }
+
             var dateTimeFormat = GetDateTimeFormat();
             var selectedDate = SelectedDate.Date;
             var minDate = MinDate.Date;
@@ -758,9 +844,10 @@ namespace Panuon.UI.Silver
             {
                 var item = _monthPresenter.GetItem(i);
 
-                item.SetCurrentValue(CalendarXItem.CanSelectProperty, (selectedDate.Year != minDate.Year
-                    || (selectedDate.Month >= minDate.Month
-                        || selectedDate.Month <= maxDate.Month)));
+                item.SetCurrentValue(CalendarXItem.CanSelectProperty, selectedDate.Year != minDate.Year
+                    || selectedDate.Year != maxDate.Year
+                    || (i >= minDate.Month && i <= maxDate.Month));
+
                 item.SetCurrentValue(CalendarXItem.IsCheckedProperty, selectedDate.Month == (i + 1));
                 item.SetCurrentValue(CalendarXItem.TagProperty, i + 1);
                 item.SetCurrentValue(CalendarXItem.ContentProperty, dateTimeFormat.GetMonthName(i + 1));
@@ -770,6 +857,10 @@ namespace Panuon.UI.Silver
 
         private void UpdateDay()
         {
+            if (_dayPresenter == null)
+            {
+                return;
+            }
             var selectedDate = SelectedDate.Date;
             var minDate = MinDate.Date;
             var maxDate = MaxDate.Date;
@@ -794,8 +885,8 @@ namespace Panuon.UI.Silver
                     currentDate = firsDayOfMonth.AddDays(prevDays);
                 }
                 var item = _dayPresenter.GetItem(i);
-                item.SetCurrentValue(CalendarXItem.CanSelectProperty, (selectedDate.Year > minDate.Year || (selectedDate.Year == minDate.Year && (selectedDate.Month > minDate.Month || (selectedDate.Month == minDate.Month && selectedDate.Day >= minDate.Day))))
-                    && (selectedDate.Year < maxDate.Year || (selectedDate.Year == maxDate.Year && (selectedDate.Month < maxDate.Month || (selectedDate.Month == maxDate.Month && selectedDate.Day <= maxDate.Day)))));
+                item.SetCurrentValue(CalendarXItem.CanSelectProperty, currentDate == null || ((((DateTime)currentDate).Year > minDate.Year || (((DateTime)currentDate).Year == minDate.Year && (((DateTime)currentDate).Month > minDate.Month || (((DateTime)currentDate).Month == minDate.Month && ((DateTime)currentDate).Day >= minDate.Day))))
+                    && (((DateTime)currentDate).Year < maxDate.Year || (((DateTime)currentDate).Year == maxDate.Year && (((DateTime)currentDate).Month < maxDate.Month || (((DateTime)currentDate).Month == maxDate.Month && ((DateTime)currentDate).Day <= maxDate.Day))))));
 
                 item.SetCurrentValue(CalendarXItem.IsTodayProperty, currentDate != null
                     && DateTime.Now.Date.Equals(currentDate));

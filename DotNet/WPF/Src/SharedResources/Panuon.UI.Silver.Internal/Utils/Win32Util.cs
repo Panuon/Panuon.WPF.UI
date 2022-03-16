@@ -75,6 +75,9 @@ namespace Panuon.UI.Silver.Internal.Utils
 
         [DllImport("gdi32.dll")]
         internal static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
+
+        [DllImport("user32.dll")]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         #endregion
 
     }

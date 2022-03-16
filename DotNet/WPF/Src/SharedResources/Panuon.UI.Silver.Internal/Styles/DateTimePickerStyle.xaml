@@ -61,7 +61,17 @@
     <Style x:Key="{ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
            TargetType="local:CalendarX">
         <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Height"
                 Value="NaN" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+           TargetType="local:TimeSelector">
+        <Setter Property="Width"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="NaN" />
         <Setter Property="BorderThickness"
@@ -95,7 +105,7 @@
                 Value="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.BorderThickness"
                 Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:DropDownHelper.Width"
+        <Setter Property="local:DropDownHelper.MinWidth"
                 Value="250" />
         <Setter Property="local:DropDownHelper.Height"
                 Value="250" />
@@ -105,6 +115,8 @@
                 Value="#EAEAEA" />
         <Setter Property="CalendarXStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+        <Setter Property="TimeSelectorStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="ToggleArrowTransformControlStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="ClearButtonStyle"
@@ -119,6 +131,12 @@
                 Value="LightGray" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="DateTimeSeparatorBrush"
+                Value="LightGray" />
+        <Setter Property="DateTimeSeparatorThickness"
+                Value="1" />
+        <Setter Property="DateTimeSeparatorVisibility"
+                Value="Visible" />
         <Setter Property="DefaultDateTime"
                 Value="{Binding SelectedDateTime, RelativeSource={RelativeSource Self}, Mode=OneTime}" />
         <Setter Property="Padding"
@@ -128,6 +146,21 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DateTimePickerTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="Mode"
+                     Value="Date">
+                <Setter Property="TextStringFormat"
+                        Value="dd/MM/yyyy" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Time">
+                <Setter Property="TextStringFormat"
+                        Value="HH:mm:ss" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="DateTime">
+                <Setter Property="TextStringFormat"
+                        Value="dd/MM/yyyy HH:mm:ss" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

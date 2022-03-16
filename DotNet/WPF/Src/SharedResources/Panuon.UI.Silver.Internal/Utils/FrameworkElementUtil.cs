@@ -31,6 +31,16 @@ namespace Panuon.UI.Silver.Internal.Utils
         }
         #endregion
 
+        #region IsDefault
+        public static bool IsDefault(FrameworkElement element,
+            DependencyProperty property)
+        {
+            var baseValueSource = DependencyPropertyHelper.GetValueSource(element, property).BaseValueSource;
+            return baseValueSource == BaseValueSource.Default;
+        }
+
+        #endregion
+
         #region BindingPropertyIfUndefault
         public static void BindingPropertyIfUndefault(FrameworkElement element,
             DependencyProperty targetProperty,

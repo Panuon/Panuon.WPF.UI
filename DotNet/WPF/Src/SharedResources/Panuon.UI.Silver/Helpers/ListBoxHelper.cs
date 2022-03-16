@@ -173,6 +173,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Scrollable", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(true));
         #endregion
 
+        #region EmptyBackground
+        public static Brush GetEmptyBackground(ListBox listBox)
+        {
+            return (Brush)listBox.GetValue(EmptyBackgroundProperty);
+        }
+
+        public static void SetEmptyBackground(ListBox listBox, Brush value)
+        {
+            listBox.SetValue(EmptyBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty EmptyBackgroundProperty =
+            DependencyProperty.RegisterAttached("EmptyBackground", typeof(Brush), typeof(ListBoxHelper));
+        #endregion
+
         #region Items Properties
 
         #region ItemsIcon

@@ -10,16 +10,20 @@ namespace Panuon.UI.Silver.Internal.Converters
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var brush = (Brush)value;
-            var newBrush = brush.CloneCurrentValue();
-            if(double.TryParse(parameter?.ToString(), out double opacity))
+            if(brush != null)
             {
-                newBrush.Opacity = opacity;
+                var newBrush = brush.CloneCurrentValue();
+                if (double.TryParse(parameter?.ToString(), out double opacity))
+                {
+                    newBrush.Opacity = opacity;
+                }
+                if (newBrush.CanFreeze)
+                {
+                    newBrush.Freeze();
+                }
+                return newBrush;
             }
-            if (newBrush.CanFreeze)
-            {
-                newBrush.Freeze();
-            }
-            return newBrush;
+            return brush;
         }
     }
 }

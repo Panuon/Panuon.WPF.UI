@@ -24,6 +24,8 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="BorderBrush"

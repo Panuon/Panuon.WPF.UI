@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace Panuon.UI.Silver
@@ -67,6 +68,11 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Overrides
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            base.OnPreviewMouseDown(e);
+        }
 
         public override void OnApplyTemplate()
         {

@@ -208,6 +208,7 @@
                         </local:ContentControlX.Effect>
                         <local:ColorSelector x:Name="PART_ColorSelector"
                                              Style="{TemplateBinding ColorSelectorStyle}"
+                                             ColorEditors="{TemplateBinding ColorEditors}"
                                              ColorChannels="{TemplateBinding ColorChannels}" />
                     </local:ContentControlX>
                 </Grid>

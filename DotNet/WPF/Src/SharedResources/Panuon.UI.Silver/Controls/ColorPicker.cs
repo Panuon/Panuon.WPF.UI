@@ -278,6 +278,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("StaysOpen", typeof(bool), typeof(ColorPicker));
         #endregion
 
+        #region ColorEditors
+        public ColorEditors ColorEditors
+        {
+            get { return (ColorEditors)GetValue(ColorEditorsProperty); }
+            set { SetValue(ColorEditorsProperty, value); }
+        }
+
+        public static readonly DependencyProperty ColorEditorsProperty =
+            DependencyProperty.Register("ColorEditors", typeof(ColorEditors), typeof(ColorPicker));
+        #endregion
+
         #region ColorChannels
         public ColorChannels ColorChannels
         {

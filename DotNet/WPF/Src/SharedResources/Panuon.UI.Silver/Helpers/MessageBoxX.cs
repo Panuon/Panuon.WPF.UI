@@ -24,12 +24,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(null, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, null);
         }
 
-        public static MessageBoxResult Show(string message,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -39,13 +33,6 @@ namespace Panuon.UI.Silver
             string message)
         {
             return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -60,14 +47,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            MessageBoxXSetting setting,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -77,13 +56,6 @@ namespace Panuon.UI.Silver
             string caption)
         {
             return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(string message,
-            string caption,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -97,14 +69,6 @@ namespace Panuon.UI.Silver
             string caption)
         {
             return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(Window owner
-            , string message
-            , string caption
-            , int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -121,15 +85,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            string caption,
-            MessageBoxXSetting setting,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -141,14 +96,6 @@ namespace Panuon.UI.Silver
             MessageBoxButton button)
         {
             return CallMessageBoxXWindow(null, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(string message,
-            string caption,
-            MessageBoxButton button,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -164,15 +111,6 @@ namespace Panuon.UI.Silver
             MessageBoxButton button)
         {
             return CallMessageBoxXWindow(owner, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            string caption,
-            MessageBoxButton button,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -191,16 +129,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-          string message,
-          string caption,
-          MessageBoxButton button,
-          MessageBoxXSetting setting,
-          int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, button, MessageBoxIcon.None, DefaultButton.Unset, setting, countdown);
-        }
-
 
         /// <summary>
         /// Open a message box and return the result selected by the user.
@@ -212,13 +140,6 @@ namespace Panuon.UI.Silver
             MessageBoxIcon icon)
         {
             return CallMessageBoxXWindow(null, message, null, MessageBoxButton.OK, icon, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(string message,
-           MessageBoxIcon icon,
-           int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, null, MessageBoxButton.OK, icon, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -235,14 +156,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, icon, DefaultButton.Unset, null, null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            MessageBoxIcon icon,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, null, MessageBoxButton.OK, icon, DefaultButton.Unset, null, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -254,14 +167,6 @@ namespace Panuon.UI.Silver
             MessageBoxIcon icon)
         {
             return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(string message,
-           string caption,
-           MessageBoxIcon icon,
-           int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -277,15 +182,6 @@ namespace Panuon.UI.Silver
             MessageBoxIcon icon)
         {
             return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            string caption,
-            MessageBoxIcon icon,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -304,16 +200,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, setting, null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            string caption,
-            MessageBoxIcon icon,
-            MessageBoxXSetting setting,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, icon, DefaultButton.Unset, setting, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -327,15 +213,6 @@ namespace Panuon.UI.Silver
             MessageBoxIcon icon)
         {
             return CallMessageBoxXWindow(null, message, caption, button, icon, DefaultButton.Unset, null, null);
-        }
-
-        public static MessageBoxResult Show(string message,
-            string caption,
-            MessageBoxButton button,
-            MessageBoxIcon icon,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(null, message, caption, button, icon, DefaultButton.Unset, null, countdown);
         }
 
         /// <summary>
@@ -355,16 +232,6 @@ namespace Panuon.UI.Silver
             return CallMessageBoxXWindow(owner, message, caption, button, icon, DefaultButton.Unset, null,null);
         }
 
-        public static MessageBoxResult Show(Window owner,
-            string message,
-            string caption,
-            MessageBoxButton button,
-            MessageBoxIcon icon,
-            int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, button, icon, DefaultButton.Unset, null, countdown);
-        }
-
         /// <summary>
         /// Open a message box and return the result selected by the user.
         /// </summary>
@@ -381,17 +248,6 @@ namespace Panuon.UI.Silver
             MessageBoxXSetting setting)
         {
             return CallMessageBoxXWindow(owner, message, caption, button, icon, DefaultButton.Unset, setting, null);
-        }
-
-        public static MessageBoxResult Show(Window owner,
-           string message,
-           string caption,
-           MessageBoxButton button,
-           MessageBoxIcon icon,
-           MessageBoxXSetting setting,
-           int countdown)
-        {
-            return CallMessageBoxXWindow(owner, message, caption, button, icon, DefaultButton.Unset, setting, countdown);
         }
 
         /// <summary>

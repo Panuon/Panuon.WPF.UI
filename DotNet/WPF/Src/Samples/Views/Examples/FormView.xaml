@@ -83,7 +83,7 @@
     </pu:WindowXModalDialog.ButtonStyle>
     <pu:WindowX.Resources>
 
-        <Style x:Key="InputTextBoxStyle"
+        <Style x:Key="EditorTextBoxStyle"
                TargetType="TextBox"
                BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="pu:TextBoxHelper.FocusedBorderBrush"
@@ -106,9 +106,9 @@
                     Value="#F1F1F1" />
         </Style>
 
-        <Style x:Key="MultilineInputTextBoxStyle"
+        <Style x:Key="MultilineEditorTextBoxStyle"
                TargetType="TextBox"
-               BasedOn="{StaticResource InputTextBoxStyle}">
+               BasedOn="{StaticResource EditorTextBoxStyle}">
             <Setter Property="Height"
                     Value="100" />
             <Setter Property="Padding"
@@ -280,10 +280,10 @@
                                 Value="#35303D" />
                         <Setter Property="CornerRadius"
                                 Value="4" />
-                        <Setter Property="InputTextBoxStyle">
+                        <Setter Property="EditorTextBoxStyle">
                             <Setter.Value>
                                 <Style TargetType="TextBox"
-                                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=InputTextBoxStyle, TypeInTargetAssembly={x:Type pu:ColorSelector}}}">
+                                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type pu:ColorSelector}}}">
                                     <Setter Property="Background"
                                             Value="#4A4650" />
                                     <Setter Property="BorderThickness"
@@ -307,7 +307,7 @@
                           Header="Name : "
                           GroupName="MyFormGroup">
                 <TextBox x:Name="TbName"
-                         Style="{StaticResource InputTextBoxStyle}" />
+                         Style="{StaticResource EditorTextBoxStyle}" />
             </pu:FormGroup>
             <pu:FormGroup Style="{StaticResource  RequiredInputFormGroupStyle}"
                           Header="Age : "
@@ -334,7 +334,7 @@
                           Header="Email : "
                           GroupName="MyFormGroup">
                 <TextBox x:Name="TbAge"
-                         Style="{StaticResource InputTextBoxStyle}" />
+                         Style="{StaticResource EditorTextBoxStyle}" />
             </pu:FormGroup>
             <pu:FormGroup Style="{StaticResource InputFormGroupStyle}"
                           Header="Color:"
@@ -352,7 +352,7 @@
             <pu:FormGroup Style="{StaticResource  InputFormGroupStyle}"
                           Header="Address : "
                           GroupName="MyFormGroup">
-                <TextBox Style="{StaticResource MultilineInputTextBoxStyle}" />
+                <TextBox Style="{StaticResource MultilineEditorTextBoxStyle}" />
             </pu:FormGroup>
             <pu:FormGroup x:Name="FmgrpOptions"
                           Style="{StaticResource RequiredInputFormGroupStyle}"

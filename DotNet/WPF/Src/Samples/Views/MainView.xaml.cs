@@ -135,5 +135,9 @@ namespace Samples.Views
             return border;
         }
         #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

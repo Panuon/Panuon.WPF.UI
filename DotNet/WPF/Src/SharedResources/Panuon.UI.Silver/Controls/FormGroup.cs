@@ -203,6 +203,50 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("MessageTemplate", typeof(DataTemplate), typeof(FormGroup));
         #endregion
 
+        #region ErrorMessageForeground
+        public Brush ErrorMessageForeground
+        {
+            get { return (Brush)GetValue(ErrorMessageForegroundProperty); }
+            set { SetValue(ErrorMessageForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ErrorMessageForegroundProperty =
+            DependencyProperty.Register("ErrorMessageForeground", typeof(Brush), typeof(FormGroup));
+        #endregion
+
+        #region InfoMessageForeground
+        public Brush InfoMessageForeground
+        {
+            get { return (Brush)GetValue(InfoMessageForegroundProperty); }
+            set { SetValue(InfoMessageForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty InfoMessageForegroundProperty =
+            DependencyProperty.Register("InfoMessageForeground", typeof(Brush), typeof(FormGroup));
+        #endregion
+
+        #region SuccessMessageForeground
+        public Brush SuccessMessageForeground
+        {
+            get { return (Brush)GetValue(SuccessMessageForegroundProperty); }
+            set { SetValue(SuccessMessageForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty SuccessMessageForegroundProperty =
+            DependencyProperty.Register("SuccessMessageForeground", typeof(Brush), typeof(FormGroup));
+        #endregion
+
+        #region WarningMessageForeground
+        public Brush WarningMessageForeground
+        {
+            get { return (Brush)GetValue(WarningMessageForegroundProperty); }
+            set { SetValue(WarningMessageForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty WarningMessageForegroundProperty =
+            DependencyProperty.Register("WarningMessageForeground", typeof(Brush), typeof(FormGroup));
+        #endregion
+
         #region HorizontalHeaderAlignment
         public HorizontalAlignment HorizontalHeaderAlignment
         {

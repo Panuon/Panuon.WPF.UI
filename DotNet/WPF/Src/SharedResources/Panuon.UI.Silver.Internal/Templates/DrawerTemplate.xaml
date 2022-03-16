@@ -27,31 +27,5 @@
                                ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                ContentStringFormat="{TemplateBinding ContentStringFormat}" />
         </Border>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Placement"
-                     Value="Left">
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=right, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="Placement"
-                     Value="Right">
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=left, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="Placement"
-                     Value="Top">
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=bottom, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Trigger>
-            <Trigger Property="Placement"
-                     Value="Bottom">
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToThicknessConverter}}, ConverterParameter=top, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 </ResourceDictionary>
