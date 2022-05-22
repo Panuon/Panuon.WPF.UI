@@ -1,11 +1,10 @@
 ﻿using Panuon.UI.Core;
 using Panuon.UI.Silver.Internal;
-using Panuon.UI.Silver.Internal.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
+    [DefaultEvent(nameof(SelectedDateChanged))]
     public class CalendarX
         : Control
     {
@@ -867,7 +867,7 @@ namespace Panuon.UI.Silver
             var firsDayOfMonth = new DateTime(selectedDate.Year, selectedDate.Month, 1);
             var dayInMonth = DateTime.DaysInMonth(selectedDate.Year, selectedDate.Month);
 
-            var prevDays = GetIndexOfWeek(firsDayOfMonth.DayOfWeek) - GetIndexOfWeek(FirstDayOfWeek);
+            var prevDays = GetIndexOfWeek(firsDayOfMonth.DayOfWeek) - GetIndexOfWeek(FirstDayOfWeek) + GetIndexOfWeek(FirstDayOfWeek);
             if (prevDays > 0)
             {
                 prevDays *= -1;

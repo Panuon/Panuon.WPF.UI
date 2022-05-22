@@ -65,23 +65,14 @@ namespace Panuon.UI.Silver
 
         protected override void OnOpened(EventArgs e)
         {
-            base.OnOpened(e);
+            var parentWindow = Window.GetWindow(this);
 
-            var hwndSource = ((HwndSource)PresentationSource.FromVisual(Child));
-            hwndSource.AddHook(new HwndSourceHook(WndProc));
-
-            if (_isFirstInit)
+            if (Child != null)
             {
-                var hwnd = hwndSource.Handle;
-
-                if (Win32Util.GetWindowRect(hwnd, out Win32Util.RECT rect))
-                {
-                    Win32Util.SetWindowPos(hwnd, -2, rect.Left, rect.Top, (int)this.Width, (int)this.Height, 0);
-                }
-                Win32Util.ShowWindow(hwnd, 0);
+                var hwndSource = ((HwndSource)PresentationSource.FromVisual(Child));
+                hwndSource.AddHook(new HwndSourceHook(WndProc));
             }
 
-            var parentWindow = Window.GetWindow(this);
             if (parentWindow != null)
             {
                 _parentWindow = new WeakReference(parentWindow);
@@ -96,6 +87,8 @@ namespace Panuon.UI.Silver
             {
                 UpdateActualPlacement();
             }
+
+            base.OnOpened(e);
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)

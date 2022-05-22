@@ -11,42 +11,36 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CheckBoxTemplate}"
                      TargetType="CheckBox">
-        <Grid Background="Transparent"
-              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+        <Grid Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <local:ContentControlX x:Name="CcBox"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                   Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                   CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid>
                     <Path Visibility="{Binding IsChecked, Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           StrokeThickness="{Binding Path=(local:CheckBoxHelper.GlyphThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           StrokeDashCap="Round">
                         <Path.Stroke>
-                            <VisualBrush>
-                                <VisualBrush.Visual>
-                                    <Grid Height="1"
-                                          Width="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Border Width="{Binding Path=(i:VisualStateHelper.Percent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                                Background="{Binding Path=(local:CheckBoxHelper.CheckedGlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                                        <Border Grid.Column="1"
-                                                Background="{Binding Path=(i:VisualStateHelper.GlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                                    </Grid>
-                                </VisualBrush.Visual>
-                            </VisualBrush>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.CheckBoxGlyphPathStrokeConverter}}">
+                                <Binding Path="(i:VisualStateHelper.GlyphBrush)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:CheckBoxHelper.CheckedGlyphBrush)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="."
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
                         </Path.Stroke>
                         <Path.Data>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}}">
@@ -61,7 +55,7 @@
                     </Path>
                     <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             Visibility="{Binding IsChecked, Converter={StaticResource {x:Static rs:ConverterKeys.NonnullToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            Background="{Binding Path=(local:CheckBoxHelper.NullableGlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Background="{Binding Path=(local:CheckBoxHelper.NullGlyphBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CornerRadius="{Binding Path=(local:CheckBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             Width="{Binding Path=(local:CheckBoxHelper.BoxWidth), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             Height="{Binding Path=(local:CheckBoxHelper.BoxHeight), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -150,48 +144,48 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="{x:Null}" />
-                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcBox"
                         Property="Background"
-                        Value="{Binding Path=(local:CheckBoxHelper.NullableBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:CheckBoxHelper.NullBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="{x:Null}" />
-                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcBox"
                         Property="BorderBrush"
-                        Value="{Binding Path=(local:CheckBoxHelper.NullableBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:CheckBoxHelper.NullBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="{x:Null}" />
-                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcBox"
                         Property="BorderThickness"
-                        Value="{Binding Path=(local:CheckBoxHelper.NullableBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:CheckBoxHelper.NullBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="{x:Null}" />
-                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullableForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:CheckBoxHelper.NullForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:CheckBoxHelper.NullableForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:CheckBoxHelper.NullForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:CheckBoxHelper.NullableForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:CheckBoxHelper.NullForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

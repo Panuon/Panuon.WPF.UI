@@ -692,7 +692,7 @@
                         Property="Visibility"
                         Value="Collapsed" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:DataGridHelper.IsHorizontalScrollBarCrossingFrozenColumns), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="PART_VerticalScrollBar"
                         Property="Grid.Row"
@@ -701,7 +701,7 @@
                         Property="Grid.RowSpan"
                         Value="2" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding Path=(local:DataGridHelper.IsHorizontalScrollBarCrossingFrozenColumns), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="CdFrozen"
                         Property="Width"

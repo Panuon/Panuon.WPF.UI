@@ -6,6 +6,7 @@
         public const string Arc2Converter = nameof(Arc2Converter);
         public const string BrushOpacityConverter = nameof(BrushOpacityConverter);
         public const string CheckBoxCheckPathConverter = nameof(CheckBoxCheckPathConverter);
+        public const string CheckBoxGlyphPathStrokeConverter = nameof(CheckBoxGlyphPathStrokeConverter);
         public const string ColorSelectorOpacitySliderBackgroundConverter = nameof(ColorSelectorOpacitySliderBackgroundConverter);
         public const string ColorSelectorThumbFenceBackgroundConverter = nameof(ColorSelectorThumbFenceBackgroundConverter);
         public const string ComboBoxDropDownHorizontalOffsetConverter = nameof(ComboBoxDropDownHorizontalOffsetConverter);

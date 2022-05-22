@@ -9,6 +9,7 @@
     <icv:Arc2Converter x:Key="{x:Static irs:ConverterKeys.Arc2Converter}" />
     <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
+    <icv:CheckBoxGlyphPathStrokeConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxGlyphPathStrokeConverter}" />
     <icv:BrushToColorConverter x:Key="{x:Static rs:ConverterKeys.BrushToColorConverter}" />
     <icv:ColorSelectorThumbFenceBackgroundConverter x:Key="{x:Static irs:ConverterKeys.ColorSelectorThumbFenceBackgroundConverter}" />
     <icv:ColorSelectorOpacitySliderBackgroundConverter x:Key="{x:Static irs:ConverterKeys.ColorSelectorOpacitySliderBackgroundConverter}" />
@@ -53,13 +54,16 @@
     <icv:NullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NullToCollapseConverter}" />
     <icv:NonnullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NonnullToCollapseConverter}" />
     <icv:OppositeColorConverter x:Key="{x:Static rs:ConverterKeys.OppositeColorConverter}" />
+    <icv:OppositeBrushConverter x:Key="{x:Static rs:ConverterKeys.OppositeBrushConverter}" />
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
     <icv:SliderBorderClipConverter x:Key="{x:Static irs:ConverterKeys.SliderBorderClipConverter}" />
     <icv:InternalSpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.InternalSpinnerClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
+    <icv:StringNonnullAndNotEmptyToHiddenConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToHiddenConverter}" />
     <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />
+    <icv:StringNullOrEmptyToHiddenConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToHiddenConverter}" />
     <icv:SwitchToggleMarginConverter x:Key="{x:Static irs:ConverterKeys.SwitchToggleMarginConverter}" />
     <icv:TabPanelMaxHeightConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}" />
     <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}" />

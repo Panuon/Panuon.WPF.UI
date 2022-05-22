@@ -25,8 +25,11 @@
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
         public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
         public const string OppositeColorConverter = nameof(OppositeColorConverter);
+        public const string OppositeBrushConverter = nameof(OppositeBrushConverter);
         public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(StringNonnullAndNotEmptyToCollapseConverter);
+        public const string StringNonnullAndNotEmptyToHiddenConverter = nameof(StringNonnullAndNotEmptyToHiddenConverter);
         public const string StringNullOrEmptyToCollapseConverter = nameof(StringNullOrEmptyToCollapseConverter);
+        public const string StringNullOrEmptyToHiddenConverter = nameof(StringNullOrEmptyToHiddenConverter);
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);
         public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
         public const string TrueToHiddenConverter = nameof(TrueToHiddenConverter);

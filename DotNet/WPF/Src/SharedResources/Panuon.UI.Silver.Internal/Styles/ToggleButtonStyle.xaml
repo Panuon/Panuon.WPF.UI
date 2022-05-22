@@ -48,8 +48,13 @@
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ToggleButtonTemplate}}"/>
+                Value="{StaticResource {x:Static irs:TemplateKeys.ToggleButtonTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:ToggleButtonHelper.IsPending"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ToggleButtonPendingTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

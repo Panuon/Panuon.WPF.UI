@@ -66,8 +66,13 @@
         <Setter Property="CaretBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.TextBoxTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.TextBoxClearableTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:TextBoxHelper.ClearButtonVisibility"
+                     Value="Collapsed">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TextBoxTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

@@ -247,79 +247,79 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableBackground
-        public static Brush GetNullableBackground(CheckBox checkBox)
+        #region NullBackground
+        public static Brush GetNullBackground(CheckBox checkBox)
         {
-            return (Brush)checkBox.GetValue(NullableBackgroundProperty);
+            return (Brush)checkBox.GetValue(NullBackgroundProperty);
         }
 
-        public static void SetNullableBackground(CheckBox checkBox, Brush value)
+        public static void SetNullBackground(CheckBox checkBox, Brush value)
         {
-            checkBox.SetValue(NullableBackgroundProperty, value);
+            checkBox.SetValue(NullBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBackgroundProperty =
-            DependencyProperty.RegisterAttached("NullableBackground", typeof(Brush), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullBackgroundProperty =
+            DependencyProperty.RegisterAttached("NullBackground", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableForeground
-        public static Brush GetNullableForeground(CheckBox checkBox)
+        #region NullForeground
+        public static Brush GetNullForeground(CheckBox checkBox)
         {
-            return (Brush)checkBox.GetValue(NullableForegroundProperty);
+            return (Brush)checkBox.GetValue(NullForegroundProperty);
         }
 
-        public static void SetNullableForeground(CheckBox checkBox, Brush value)
+        public static void SetNullForeground(CheckBox checkBox, Brush value)
         {
-            checkBox.SetValue(NullableForegroundProperty, value);
+            checkBox.SetValue(NullForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableForegroundProperty =
-            DependencyProperty.RegisterAttached("NullableForeground", typeof(Brush), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullForegroundProperty =
+            DependencyProperty.RegisterAttached("NullForeground", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableBorderBrush
-        public static Brush GetNullableBorderBrush(CheckBox checkBox)
+        #region NullBorderBrush
+        public static Brush GetNullBorderBrush(CheckBox checkBox)
         {
-            return (Brush)checkBox.GetValue(NullableBorderBrushProperty);
+            return (Brush)checkBox.GetValue(NullBorderBrushProperty);
         }
 
-        public static void SetNullableBorderBrush(CheckBox checkBox, Brush value)
+        public static void SetNullBorderBrush(CheckBox checkBox, Brush value)
         {
-            checkBox.SetValue(NullableBorderBrushProperty, value);
+            checkBox.SetValue(NullBorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBorderBrushProperty =
-            DependencyProperty.RegisterAttached("NullableBorderBrush", typeof(Brush), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullBorderBrushProperty =
+            DependencyProperty.RegisterAttached("NullBorderBrush", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableBorderThickness
-        public static Thickness? GetNullableBorderThickness(CheckBox checkBox)
+        #region NullBorderThickness
+        public static Thickness? GetNullBorderThickness(CheckBox checkBox)
         {
-            return (Thickness)checkBox.GetValue(NullableBorderThicknessProperty);
+            return (Thickness)checkBox.GetValue(NullBorderThicknessProperty);
         }
 
-        public static void SetNullableBorderThickness(CheckBox checkBox, Thickness? value)
+        public static void SetNullBorderThickness(CheckBox checkBox, Thickness? value)
         {
-            checkBox.SetValue(NullableBorderThicknessProperty, value);
+            checkBox.SetValue(NullBorderThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness?), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("NullBorderThickness", typeof(Thickness?), typeof(CheckBoxHelper));
         #endregion
 
-        #region NullableGlyphBrush
-        public static Brush GetNullableGlyphBrush(CheckBox checkBox)
+        #region NullGlyphBrush
+        public static Brush GetNullGlyphBrush(CheckBox checkBox)
         {
-            return (Brush)checkBox.GetValue(NullableGlyphBrushProperty);
+            return (Brush)checkBox.GetValue(NullGlyphBrushProperty);
         }
 
-        public static void SetNullableGlyphBrush(CheckBox checkBox, Brush value)
+        public static void SetNullGlyphBrush(CheckBox checkBox, Brush value)
         {
-            checkBox.SetValue(NullableGlyphBrushProperty, value);
+            checkBox.SetValue(NullGlyphBrushProperty, value);
         }
 
-        public static readonly DependencyProperty NullableGlyphBrushProperty =
-            DependencyProperty.RegisterAttached("NullableGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
+        public static readonly DependencyProperty NullGlyphBrushProperty =
+            DependencyProperty.RegisterAttached("NullGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
         #endregion
     } 
 }

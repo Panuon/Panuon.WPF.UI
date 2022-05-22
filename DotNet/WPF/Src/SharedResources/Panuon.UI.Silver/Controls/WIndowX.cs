@@ -74,16 +74,28 @@ namespace Panuon.UI.Silver
         public override void OnApplyTemplate()
         {
             _cancelButton = GetTemplateChild(CancelButtonTemplateName) as Button;
-            _cancelButton.Click += ModalButton_Click;
+            if (_cancelButton != null)
+            {
+                _cancelButton.Click += ModalButton_Click;
+            }
 
             _okButton = GetTemplateChild(OKButtonTemplateName) as Button;
-            _okButton.Click += ModalButton_Click;
+            if (_okButton != null)
+            {
+                _okButton.Click += ModalButton_Click;
+            }
 
             _yesButton = GetTemplateChild(YesButtonTemplateName) as Button;
-            _yesButton.Click += ModalButton_Click;
+            if (_yesButton != null)
+            {
+                _yesButton.Click += ModalButton_Click;
+            }
 
             _noButton = GetTemplateChild(NoButtonTemplateName) as Button;
-            _noButton.Click += ModalButton_Click;
+            if (_noButton != null)
+            {
+                _noButton.Click += ModalButton_Click;
+            }
         }
 
         #endregion
@@ -119,7 +131,7 @@ namespace Panuon.UI.Silver
         {
             if (InteropOwnersMask && Owner is WindowX owner && owner.OwnedWindows.Count == 0)
             {
-                owner.IsMaskVisible = false;
+                owner.SetCurrentValue(WindowX.IsMaskVisibleProperty, false);
             }
             base.OnClosed(e);
 
@@ -557,7 +569,7 @@ namespace Panuon.UI.Silver
             {
                 if (InteropOwnersMask && Owner is WindowX owner)
                 {
-                    owner.IsMaskVisible = true;
+                    owner.SetCurrentValue(WindowX.IsMaskVisibleProperty, true);
                 }
                 _isLoaded = true;
             }

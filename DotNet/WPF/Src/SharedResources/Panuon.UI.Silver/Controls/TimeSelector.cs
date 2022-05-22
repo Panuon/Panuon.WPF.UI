@@ -10,6 +10,7 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
+    [StyleTypedProperty(Property = nameof(ItemContainerStyle), StyleTargetType = typeof(TimeSelector))]
     public class TimeSelector
         : Control
     {
@@ -128,7 +129,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MinTimeProperty =
-            DependencyProperty.Register("MinTime", typeof(DateTime), typeof(TimeSelector), new PropertyMetadata(new DateTime(1, 1, 1, 0, 0, 0), OnMinTimeChanged, OnMinTimeCoerceValue));
+            DependencyProperty.Register("MinTime", typeof(DateTime), typeof(TimeSelector), new PropertyMetadata(new DateTime(1, 1, 1, 0, 0, 0), OnMinTimeChanged));
         #endregion
 
         #region MaxTime
@@ -139,22 +140,18 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MaxTimeProperty =
-            DependencyProperty.Register("MaxTime", typeof(DateTime), typeof(TimeSelector), new PropertyMetadata(new DateTime(1, 1, 1, 23, 59, 59), OnMaxTimeChanged, OnMaxTimeCoerceValue));
+            DependencyProperty.Register("MaxTime", typeof(DateTime), typeof(TimeSelector), new PropertyMetadata(new DateTime(1, 1, 1, 23, 59, 59), OnMaxTimeChanged));
         #endregion
 
         #region ItemContainerStyle
-        public static Style GetItemContainerStyle(DependencyObject obj)
+        public Style ItemContainerStyle
         {
-            return (Style)obj.GetValue(ItemContainerStyleProperty);
-        }
-
-        public static void SetItemContainerStyle(DependencyObject obj, Style value)
-        {
-            obj.SetValue(ItemContainerStyleProperty, value);
+            get { return (Style)GetValue(ItemContainerStyleProperty); }
+            set { SetValue(ItemContainerStyleProperty, value); }
         }
 
         public static readonly DependencyProperty ItemContainerStyleProperty =
-            DependencyProperty.RegisterAttached("ItemContainerStyle", typeof(Style), typeof(TimeSelector));
+            DependencyProperty.Register("ItemContainerStyle", typeof(Style), typeof(TimeSelector));
         #endregion
 
         #region HeaderHeight
@@ -489,17 +486,6 @@ namespace Panuon.UI.Silver
             }
         }
 
-        private static object OnMinTimeCoerceValue(DependencyObject d, object baseValue)
-        {
-            var timeSelector = (TimeSelector)d;
-            var minTime = ((DateTime)baseValue).GetTime(); ;
-            if (minTime > timeSelector.MaxTime.GetTime())
-            {
-                return timeSelector.MaxTime;
-            }
-            return minTime;
-        }
-
         private static void OnMinTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var timeSelector = (TimeSelector)d;
@@ -509,17 +495,6 @@ namespace Panuon.UI.Silver
             timeSelector.UpdateSecond();
             timeSelector.UpdateMinute();
             timeSelector.UpdateHour();
-        }
-
-        private static object OnMaxTimeCoerceValue(DependencyObject d, object baseValue)
-        {
-            var timeSelector = (TimeSelector)d;
-            var maxTime = ((DateTime)baseValue).GetTime();
-            if (maxTime < timeSelector.MinTime.GetTime())
-            {
-                return timeSelector.MinTime;
-            }
-            return maxTime;
         }
 
         private static void OnMaxTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

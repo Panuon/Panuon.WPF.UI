@@ -25,7 +25,7 @@
                 Value="1" />
         <Setter Property="local:CheckBoxHelper.CheckedGlyphBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:CheckBoxHelper.NullableGlyphBrush"
+        <Setter Property="local:CheckBoxHelper.NullGlyphBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="5,0,0,0" />

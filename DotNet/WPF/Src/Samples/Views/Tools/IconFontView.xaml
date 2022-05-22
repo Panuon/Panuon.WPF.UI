@@ -63,13 +63,13 @@
                     <Setter Property="BorderThickness"
                             Value="2" />
                     <Setter Property="FontFamily"
-                            Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
+                            Value="{StaticResource PanuonIconFont}" />
                     <Setter Property="ToolTip">
                         <Setter.Value>
                             <StackPanel>
                                 <TextBlock Text="{Binding Icon}"
                                            Foreground="Black"
-                                           FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
+                                           FontFamily="{StaticResource PanuonIconFont}"
                                            FontSize="50" />
                                 <TextBlock HorizontalAlignment="Center"
                                            Text="{Binding Code}" />

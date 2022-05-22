@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
@@ -39,7 +40,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ScrollBarPositionProperty =
-            DependencyProperty.RegisterAttached("ScrollBarPosition", typeof(ScrollBarPosition), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(ScrollBarPosition.Inside, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ScrollBarPosition", typeof(ScrollBarPosition), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(ScrollBarPosition.Outside, FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -115,6 +116,27 @@ namespace Panuon.UI.Silver
         private static void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             var scrollViewer = (ScrollViewer)sender;
+
+            var element = e.OriginalSource as DependencyObject;
+            try
+            {
+                while (element != null
+                    && element != scrollViewer)
+                {
+                    if (element is ScrollViewer childScrollViewer)
+                    {
+                        if (GetHandleMouseWheel(childScrollViewer)
+                            && (childScrollViewer.ScrollableHeight > 0
+                                || childScrollViewer.ScrollableWidth > 0))
+                        {
+                            return;
+                        }
+                    }
+                    element = VisualTreeHelper.GetParent(element);
+                }
+            }
+            catch { }
+
             switch (GetWheelScrollingDirection(scrollViewer))
             {
                 case WheelScrollingDirection.Horizontal:
@@ -149,11 +171,12 @@ namespace Panuon.UI.Silver
                     scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
                     break;
             }
-            if (GetHandleMouseWheel(scrollViewer))
-            {
-                e.Handled = true;
-            }
+            //if (GetHandleMouseWheel(scrollViewer))
+            //{
+            //    e.Handled = true;
+            //}
         }
+
         #endregion
     }
 }
