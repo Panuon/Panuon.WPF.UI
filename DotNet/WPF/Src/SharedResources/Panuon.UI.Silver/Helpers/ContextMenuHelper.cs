@@ -44,112 +44,96 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Foreground
-        public static Brush GetForeground(ContextMenu contextMenu)
+        public static Brush GetForeground(DependencyObject obj)
         {
-            return (Brush)contextMenu.GetValue(ForegroundProperty);
+            return (Brush)obj.GetValue(ForegroundProperty);
         }
 
-        public static void SetForeground(ContextMenu contextMenu, Brush value)
+        public static void SetForeground(DependencyObject obj, Brush value)
         {
-            contextMenu.SetValue(ForegroundProperty, value);
+            obj.SetValue(ForegroundProperty, value);
         }
 
         public static readonly DependencyProperty ForegroundProperty =
-            DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(ContextMenuHelper), new PropertyMetadata(Brushes.Black));
+            DependencyProperty.RegisterAttached("Foreground", typeof(Brush), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
         #region Background
-        public static Brush GetBackground(ContextMenu contextMenu)
+        public static Brush GetBackground(DependencyObject obj)
         {
-            return (Brush)contextMenu.GetValue(BackgroundProperty);
+            return (Brush)obj.GetValue(BackgroundProperty);
         }
 
-        public static void SetBackground(ContextMenu contextMenu, Brush value)
+        public static void SetBackground(DependencyObject obj, Brush value)
         {
-            contextMenu.SetValue(BackgroundProperty, value);
+            obj.SetValue(BackgroundProperty, value);
         }
 
         public static readonly DependencyProperty BackgroundProperty =
-            DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(ContextMenuHelper), new PropertyMetadata(Brushes.White));
+            DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(Brushes.White, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region BorderBrush
-        public static Brush GetBorderBrush(ContextMenu contextMenu)
+        public static Brush GetBorderBrush(DependencyObject obj)
         {
-            return (Brush)contextMenu.GetValue(BorderBrushProperty);
+            return (Brush)obj.GetValue(BorderBrushProperty);
         }
 
-        public static void SetBorderBrush(ContextMenu contextMenu, Brush value)
+        public static void SetBorderBrush(DependencyObject obj, Brush value)
         {
-            contextMenu.SetValue(BorderBrushProperty, value);
+            obj.SetValue(BorderBrushProperty, value);
         }
 
         public static readonly DependencyProperty BorderBrushProperty =
-            DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(ContextMenuHelper), new PropertyMetadata(Brushes.LightGray));
+            DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(Brushes.LightGray, FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
         #region BorderThickness
-        public static Thickness GetBorderThickness(ContextMenu contextMenu)
+        public static Thickness GetBorderThickness(DependencyObject obj)
         {
-            return (Thickness)contextMenu.GetValue(BorderThicknessProperty);
+            return (Thickness)obj.GetValue(BorderThicknessProperty);
         }
 
-        public static void SetBorderThickness(ContextMenu contextMenu, Thickness value)
+        public static void SetBorderThickness(DependencyObject obj, Thickness value)
         {
-            contextMenu.SetValue(BorderThicknessProperty, value);
+            obj.SetValue(BorderThicknessProperty, value);
         }
 
         public static readonly DependencyProperty BorderThicknessProperty =
-            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(ContextMenuHelper), new PropertyMetadata(new Thickness(1)));
+            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(new Thickness(1), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
         #region CornerRadius
-        public static CornerRadius GetCornerRadius(ContextMenu contextMenu)
+        public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
-            return (CornerRadius)contextMenu.GetValue(CornerRadiusProperty);
+            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(ContextMenu contextMenu, CornerRadius value)
+        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
         {
-            contextMenu.SetValue(CornerRadiusProperty, value);
+            obj.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ContextMenuHelper));
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region ShadowColor
-        public static Color? GetShadowColor(ContextMenu contextMenu)
+        public static Color? GetShadowColor(DependencyObject obj)
         {
-            return (Color?)contextMenu.GetValue(ShadowColorProperty);
+            return (Color?)obj.GetValue(ShadowColorProperty);
         }
 
-        public static void SetShadowColor(ContextMenu contextMenu, Color? value)
+        public static void SetShadowColor(DependencyObject obj, Color? value)
         {
-            contextMenu.SetValue(ShadowColorProperty, value);
+            obj.SetValue(ShadowColorProperty, value);
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(ContextMenuHelper));
-        #endregion
-
-        #region Padding
-        public static Thickness GetPadding(ContextMenu contextMenu)
-        {
-            return (Thickness)contextMenu.GetValue(PaddingProperty);
-        }
-
-        public static void SetPadding(ContextMenu contextMenu, Thickness value)
-        {
-            contextMenu.SetValue(PaddingProperty, value);
-        }
-
-        public static readonly DependencyProperty PaddingProperty =
-            DependencyProperty.RegisterAttached("Padding", typeof(Thickness), typeof(ContextMenuHelper));
-
+            DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(ContextMenuHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region Items

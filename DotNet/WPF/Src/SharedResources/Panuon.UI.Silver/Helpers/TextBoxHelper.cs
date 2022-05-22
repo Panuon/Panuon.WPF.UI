@@ -1,5 +1,6 @@
 ﻿using Panuon.UI.Core;
 using Panuon.UI.Silver.Internal;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,8 +14,6 @@ namespace Panuon.UI.Silver
         public static ComponentResourceKey ClearButtonStyle { get; } =
             new ComponentResourceKey(typeof(TextBoxHelper), nameof(ClearButtonStyle));
         #endregion
-
-        
 
         #region Properties
 

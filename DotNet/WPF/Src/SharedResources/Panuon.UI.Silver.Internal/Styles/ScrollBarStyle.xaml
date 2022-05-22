@@ -68,8 +68,6 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ScrollBarStyle}"
            TargetType="ScrollBar">   
-        <Setter Property="local:ScrollBarHelper.ThumbCornerRadius"
-                Value="{Binding Path=(local:ScrollBarHelper.TrackCornerRadius), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.InternalThumbBackground"
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.InternalThumbBorderBrush"

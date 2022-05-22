@@ -28,7 +28,8 @@ namespace Panuon.UI.Silver.Internal.Converters
             var endX = (radius / 2) * (Math.Cos((2 * percent - 0.5) * Math.PI)) + center;
             var endY = (center) - (radius / 2 * Math.Sin((2 * percent + 0.5) * Math.PI));
             var pathBuilder = new StringBuilder();
-            if (percent > 0)
+            if (percent > 0
+                    && radius > 0)
             {
                 pathBuilder.Append($"M{startX},{startY} A{radius / 2},{radius / 2} 0 0 1 ");
                 if (percent <= 0.5)

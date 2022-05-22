@@ -2,6 +2,7 @@
 using Panuon.UI.Silver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -55,6 +56,7 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Properties
+
         [DisplayName("Machine Code")]
         [ColumnWidth(Width = "*")]
         public string Code { get => _name; set => Set(ref _name, value); }
@@ -67,6 +69,16 @@ namespace Samples.Views.Examples
         [ColumnWidth(Width = "400")]
         public string Remark { get => _remark; set => Set(ref _remark, value); }
         private string _remark;
+
         #endregion
+    }
+
+    public class ComboItem : NotifyPropertyChangedBase
+    {
+        #region DisplayName
+        public string Name { get => _name; set => Set(ref _name, value); }
+        private string _name;
+        #endregion
+
     }
 }

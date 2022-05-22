@@ -235,6 +235,7 @@
                   Grid.Row="2"
                   Margin="0,20,0,0"
                   HorizontalScrollBarVisibility="Visible"
+                  pu:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel="True"
                   Style="{StaticResource StandardDataGridStyle}">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>

@@ -29,7 +29,7 @@
                     ToolTip="Panuon IconFont Browser"
                     Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
                     Content="&#xe99d;"
-                    Click="BtnIconFont_Click">
+                    Click="BtnIconFont_Click"> 
             </Button>
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
@@ -39,6 +39,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        
         <TextBlock Text="Samples"
                    FontSize="30" />
         <StackPanel Orientation="Horizontal"
@@ -55,7 +56,6 @@
                     Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
-                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -79,6 +79,13 @@
                                 HorizontalContentAlignment="Stretch"
                                 Padding="5"
                                 Click="BtnExample_Click">
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Item 1"/>
+                                    <MenuItem Header="Item 2" />
+                                    <MenuItem Header="Item 3" />
+                                </ContextMenu>
+                            </Button.ContextMenu>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
@@ -106,26 +113,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <!--<pu:TimeSelector Grid.Row="1"
-                         CornerRadius="10"
-                         ShadowColor="#6CBCEA"
-                         MinTime="23:30:30"
-                         Width="300"
-                         Height="300"
-                         ItemsBorderThickness="0"
-                         BorderBrush="#6CBCEA"
-                         HeaderSeparatorBrush="#AA6CBCEA"
-                         TimeSeparatorBrush="#AA6CBCEA"
-                         ItemsCheckedForeground="#FFFFFF"
-                         ItemsHoverBackground="#446CBCEA"
-                         ItemsCheckedBackground="#AA6CBCEA"
-                         HeaderSeparatorVisibility="Visible"
-                         TimeSeparatorVisibility="Visible" />-->
-        <pu:DateTimePicker Grid.Row="1"
-                           Height="35"
-                           Width="250"
-                           Mode="DateTime"
-                           MinDateTime="2022-3-16 10:00:00"/>
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"

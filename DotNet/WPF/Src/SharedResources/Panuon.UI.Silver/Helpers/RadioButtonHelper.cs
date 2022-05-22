@@ -217,79 +217,79 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableBackground
-        public static Brush GetNullableBackground(RadioButton radioButton)
+        #region NullBackground
+        public static Brush GetNullBackground(RadioButton radioButton)
         {
-            return (Brush)radioButton.GetValue(NullableBackgroundProperty);
+            return (Brush)radioButton.GetValue(NullBackgroundProperty);
         }
 
-        public static void SetNullableBackground(RadioButton radioButton, Brush value)
+        public static void SetNullBackground(RadioButton radioButton, Brush value)
         {
-            radioButton.SetValue(NullableBackgroundProperty, value);
+            radioButton.SetValue(NullBackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBackgroundProperty =
-            DependencyProperty.RegisterAttached("NullableBackground", typeof(Brush), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullBackgroundProperty =
+            DependencyProperty.RegisterAttached("NullBackground", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableForeground
-        public static Brush GetNullableForeground(RadioButton radioButton)
+        #region NullForeground
+        public static Brush GetNullForeground(RadioButton radioButton)
         {
-            return (Brush)radioButton.GetValue(NullableForegroundProperty);
+            return (Brush)radioButton.GetValue(NullForegroundProperty);
         }
 
-        public static void SetNullableForeground(RadioButton radioButton, Brush value)
+        public static void SetNullForeground(RadioButton radioButton, Brush value)
         {
-            radioButton.SetValue(NullableForegroundProperty, value);
+            radioButton.SetValue(NullForegroundProperty, value);
         }
 
-        public static readonly DependencyProperty NullableForegroundProperty =
-            DependencyProperty.RegisterAttached("NullableForeground", typeof(Brush), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullForegroundProperty =
+            DependencyProperty.RegisterAttached("NullForeground", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableBorderBrush
-        public static Brush GetNullableBorderBrush(RadioButton radioButton)
+        #region NullBorderBrush
+        public static Brush GetNullBorderBrush(RadioButton radioButton)
         {
-            return (Brush)radioButton.GetValue(NullableBorderBrushProperty);
+            return (Brush)radioButton.GetValue(NullBorderBrushProperty);
         }
 
-        public static void SetNullableBorderBrush(RadioButton radioButton, Brush value)
+        public static void SetNullBorderBrush(RadioButton radioButton, Brush value)
         {
-            radioButton.SetValue(NullableBorderBrushProperty, value);
+            radioButton.SetValue(NullBorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBorderBrushProperty =
-            DependencyProperty.RegisterAttached("NullableBorderBrush", typeof(Brush), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullBorderBrushProperty =
+            DependencyProperty.RegisterAttached("NullBorderBrush", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableBorderThickness
-        public static Thickness? GetNullableBorderThickness(RadioButton radioButton)
+        #region NullBorderThickness
+        public static Thickness? GetNullBorderThickness(RadioButton radioButton)
         {
-            return (Thickness?)radioButton.GetValue(NullableBorderThicknessProperty);
+            return (Thickness?)radioButton.GetValue(NullBorderThicknessProperty);
         }
 
-        public static void SetNullableBorderThickness(RadioButton radioButton, Thickness? value)
+        public static void SetNullBorderThickness(RadioButton radioButton, Thickness? value)
         {
-            radioButton.SetValue(NullableBorderThicknessProperty, value);
+            radioButton.SetValue(NullBorderThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty NullableBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("NullableBorderThickness", typeof(Thickness?), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("NullBorderThickness", typeof(Thickness?), typeof(RadioButtonHelper));
         #endregion
 
-        #region NullableToggleBrush
-        public static Brush GetNullableToggleBrush(RadioButton radioButton)
+        #region NullToggleBrush
+        public static Brush GetNullToggleBrush(RadioButton radioButton)
         {
-            return (Brush)radioButton.GetValue(NullableToggleBrushProperty);
+            return (Brush)radioButton.GetValue(NullToggleBrushProperty);
         }
 
-        public static void SetNullableToggleBrush(RadioButton radioButton, Brush value)
+        public static void SetNullToggleBrush(RadioButton radioButton, Brush value)
         {
-            radioButton.SetValue(NullableToggleBrushProperty, value);
+            radioButton.SetValue(NullToggleBrushProperty, value);
         }
 
-        public static readonly DependencyProperty NullableToggleBrushProperty =
-            DependencyProperty.RegisterAttached("NullableToggleBrush", typeof(Brush), typeof(RadioButtonHelper));
+        public static readonly DependencyProperty NullToggleBrushProperty =
+            DependencyProperty.RegisterAttached("NullToggleBrush", typeof(Brush), typeof(RadioButtonHelper));
         #endregion
     }
 }

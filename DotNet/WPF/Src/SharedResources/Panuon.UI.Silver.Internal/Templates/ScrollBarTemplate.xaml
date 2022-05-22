@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
                 <RepeatButton x:Name="RptBack"
                               Style="{Binding Path=(local:ScrollBarHelper.ScrollButtonStyle),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:ScrollBarHelper.ScrollButtonVisibility),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}" />
+                              Visibility="{Binding Path=(local:ScrollBarHelper.ScrollButtonVisibility),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Track x:Name="PART_Track"
                        Grid.Row="1"
                        Grid.Column="1"
@@ -86,7 +86,7 @@
                                                         BorderBrush="{Binding Path=(local:ScrollBarHelper.InternalThumbBorderBrush),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
                                                         BorderThickness="{Binding Path=(local:ScrollBarHelper.ThumbBorderThickness),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
                                                         Background="{Binding Path=(local:ScrollBarHelper.InternalThumbBackground),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
-                                                        CornerRadius="{Binding Path=(local:ScrollBarHelper.ThumbCornerRadius),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}" />
+                                                        CornerRadius="{Binding Path=(local:ScrollBarHelper.ThumbCornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>

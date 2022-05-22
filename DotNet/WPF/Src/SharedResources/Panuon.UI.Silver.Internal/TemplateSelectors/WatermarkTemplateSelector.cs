@@ -28,7 +28,7 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
         {
             var factory = new FrameworkElementFactory(typeof(TextBlock));
             factory.SetBinding(TextBlock.TextProperty, new Binding() { Source = item });
-            factory.SetBinding(TextBlock.MarginProperty, new Binding() { RelativeSource = RelativeSource.TemplatedParent, Path = new PropertyPath(Control.PaddingProperty) });
+            factory.SetBinding(TextBlock.MarginProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(ContentControl), 1), Path = new PropertyPath(Control.PaddingProperty) });
             factory.SetValue(TextBlock.TextTrimmingProperty, TextTrimming.CharacterEllipsis);
             var dataTemplate = new DataTemplate
             {
@@ -43,9 +43,9 @@ namespace Panuon.UI.Silver.Internal.TemplateSelectors
             var factory = new FrameworkElementFactory(typeof(ContentPresenter));
             factory.SetBinding(ContentPresenter.ContentProperty, new Binding() { Source = item });
             factory.SetValue(ContentPresenter.FocusableProperty, false);
-            factory.SetBinding(ContentPresenter.MarginProperty, new Binding() { RelativeSource = RelativeSource.TemplatedParent, Path = new PropertyPath(Control.PaddingProperty) });
-            factory.SetBinding(ContentPresenter.VerticalAlignmentProperty, new Binding() { RelativeSource = RelativeSource.TemplatedParent, Path = new PropertyPath(Control.VerticalContentAlignmentProperty) });
-            factory.SetBinding(ContentPresenter.HorizontalAlignmentProperty, new Binding() { RelativeSource = RelativeSource.TemplatedParent, Path = new PropertyPath(Control.HorizontalContentAlignmentProperty) });
+            factory.SetBinding(ContentPresenter.MarginProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(ContentControl), 1), Path = new PropertyPath(ContentControl.PaddingProperty) });
+            factory.SetBinding(ContentPresenter.VerticalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(ContentControl), 1), Path = new PropertyPath(ContentControl.VerticalContentAlignmentProperty) });
+            factory.SetBinding(ContentPresenter.HorizontalAlignmentProperty, new Binding() { RelativeSource = new RelativeSource(RelativeSourceMode.FindAncestor, typeof(ContentControl), 1), Path = new PropertyPath(Control.HorizontalContentAlignmentProperty) });
             var dataTemplate = new DataTemplate
             {
                 VisualTree = factory

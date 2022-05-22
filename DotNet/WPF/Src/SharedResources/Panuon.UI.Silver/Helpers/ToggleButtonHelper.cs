@@ -29,6 +29,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Icon", typeof(object), typeof(ToggleButtonHelper));
         #endregion
 
+        #region CheckedIcon
+        public static object GetCheckedIcon(ToggleButton toggleButton)
+        {
+            return (object)toggleButton.GetValue(CheckedIconProperty);
+        }
+
+        public static void SetCheckedIcon(ToggleButton toggleButton, object value)
+        {
+            toggleButton.SetValue(CheckedIconProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedIconProperty =
+            DependencyProperty.RegisterAttached("CheckedIcon", typeof(object), typeof(ToggleButtonHelper));
+        #endregion
+
         #region IconPlacement
         public static IconPlacement GetIconPlacement(ToggleButton toggleButton)
         {
@@ -235,7 +250,7 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty CheckedContentProperty =
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(ToggleButtonHelper));
-        #endregion 
+        #endregion
 
         #endregion
     }

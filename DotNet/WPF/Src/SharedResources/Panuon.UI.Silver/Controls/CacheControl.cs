@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
+    [ContentProperty(nameof(Child))]
     public class CacheControl
         : FrameworkElement
     {
@@ -52,7 +52,9 @@ namespace Panuon.UI.Silver
             {
                 Child.Measure(availableSize);
             }
-            return base.MeasureOverride(availableSize);
+            return Child == null 
+                ? base.MeasureOverride(availableSize)
+                : Child.DesiredSize;
         }
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -68,7 +70,9 @@ namespace Panuon.UI.Silver
                     child.Arrange(new Rect());
                 }
             }
-            return base.ArrangeOverride(finalSize);
+            return Child == null 
+                ? base.ArrangeOverride(finalSize)
+                : Child.RenderSize;
         }
 
         protected override Visual GetVisualChild(int index) => _children[index];

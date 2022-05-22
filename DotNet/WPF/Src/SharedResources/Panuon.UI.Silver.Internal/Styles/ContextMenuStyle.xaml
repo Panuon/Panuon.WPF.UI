@@ -139,16 +139,6 @@
                 Value="Auto" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
-        <Setter Property="Foreground"
-                Value="{Binding Path=(local:ContextMenuHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Background"
-                Value="{Binding Path=(local:ContextMenuHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="BorderBrush"
-                Value="{Binding Path=(local:ContextMenuHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="BorderThickness"
-                Value="{Binding (local:ContextMenuHelper.BorderThickness), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Padding"
-                Value="{Binding (local:ContextMenuHelper.Padding), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ContextMenuHelper.ItemsPadding"
                 Value="5,0" />
         <Setter Property="local:ContextMenuHelper.ItemsHeight"
@@ -179,10 +169,12 @@
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="RightBottom" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:ContextMenuHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
-                Value="White" />
+                Value="{Binding Path=(local:ContextMenuHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
-                Value="1" />
+                Value="{Binding Path=(local:ContextMenuHelper.BorderThickness), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="VerticalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HorizontalOffset"
@@ -194,7 +186,7 @@
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="BorderBrush"
-                Value="LightGray" />
+                Value="{Binding Path=(local:ContextMenuHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Width"
                 Value="200" />
         <Setter Property="Template"

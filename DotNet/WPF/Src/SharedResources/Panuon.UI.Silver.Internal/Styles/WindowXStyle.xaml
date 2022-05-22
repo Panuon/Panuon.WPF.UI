@@ -198,6 +198,26 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.WindowXTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:WindowXCaption.Height"
+                     Value="0">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.WindowXWithoutCaptionTemplate}}" />
+            </Trigger>
+            <Trigger Property="local:WindowXModalDialog.Buttons"
+                     Value="{x:Null}">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.WindowXWithoutModalButtonsTemplate}}" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="local:WindowXCaption.Height"
+                               Value="0" />
+                    <Condition Property="local:WindowXModalDialog.Buttons"
+                               Value="{x:Null}" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.WindowXWithoutCaptionAndModalButtonsTemplate}}" />
+            </MultiTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

@@ -35,6 +35,8 @@
                               BorderThickness="{Binding Path=(local:ExpanderHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                               VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -57,23 +59,22 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="8,0,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <i:IconPresenter x:Name="IcIcon"
-                                         Grid.Column="1"
-                                         Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <ContentPresenter Grid.Column="2"
-                                          Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                          ContentSource="Header"
-                                          RecognizesAccessKey="True" />
-                        <ContentControl Grid.Column="4"
+                        <local:ContentControlX x:Name="CcHeader"
+                                               Grid.Column="1"
+                                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                               Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                               Content="{TemplateBinding Header}"
+                                               ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                               ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                               ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
+                        <ContentControl Grid.Column="2"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
@@ -153,8 +154,11 @@
                 <Setter TargetName="TgbHeader"
                         Property="Foreground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="IcIcon"
+                <Setter TargetName="CcHeader"
                         Property="Foreground"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcHeader"
+                        Property="IconForeground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
@@ -224,6 +228,8 @@
                               Width="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                               VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -244,22 +250,21 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                             <RowDefinition />
-                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="0,8,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <i:IconPresenter x:Name="IcIcon"
-                                         Grid.Column="1"
-                                         Content="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <ContentPresenter Grid.Row="2"
-                                          Margin="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                          ContentSource="Header"
-                                          RecognizesAccessKey="True" />
+                        <local:ContentControlX x:Name="CcHeader"
+                                               Grid.Column="1"
+                                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                               Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                               Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                               Content="{TemplateBinding Header}"
+                                               ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                               ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                               ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
                         <ContentControl Grid.Row="4"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
@@ -341,8 +346,11 @@
                 <Setter TargetName="TgbHeader"
                         Property="Foreground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="IcIcon"
+                <Setter TargetName="CcHeader"
                         Property="Foreground"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcHeader"
+                        Property="IconForeground"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="local:ExpanderHelper.ToggleArrowPlacement"

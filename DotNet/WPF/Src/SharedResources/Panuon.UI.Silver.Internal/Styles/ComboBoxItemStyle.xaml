@@ -41,6 +41,10 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxItemHelper.Icon"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxItemHelper.CornerRadius"
@@ -86,8 +90,13 @@
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxItemTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxItemRemovableTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:ComboBoxItemHelper.RemoveButtonVisibility"
+                     Value="Collapsed">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxItemTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

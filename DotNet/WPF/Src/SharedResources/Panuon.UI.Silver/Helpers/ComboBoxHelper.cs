@@ -451,22 +451,52 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("SearchText", typeof(string), typeof(ComboBoxHelper));
         #endregion
 
-        #region IsSearchTextBoxPinned
-        public static bool GetIsSearchTextBoxPinned(ComboBox comboBox)
+        #region FocusToEditor
+        public static bool GetFocusToEditor(ComboBox comboBox)
         {
-            return (bool)comboBox.GetValue(IsSearchTextBoxPinnedProperty);
+            return (bool)comboBox.GetValue(FocusToEditorProperty);
         }
 
-        public static void SetIsSearchTextBoxPinned(ComboBox comboBox, bool value)
+        public static void SetFocusToEditor(ComboBox comboBox, bool value)
         {
-            comboBox.SetValue(IsSearchTextBoxPinnedProperty, value);
+            comboBox.SetValue(FocusToEditorProperty, value);
         }
 
-        public static readonly DependencyProperty IsSearchTextBoxPinnedProperty =
-            DependencyProperty.RegisterAttached("IsSearchTextBoxPinned", typeof(bool), typeof(ComboBoxHelper));
-        #endregion 
+        public static readonly DependencyProperty FocusToEditorProperty =
+            DependencyProperty.RegisterAttached("FocusToEditor", typeof(bool), typeof(ComboBoxHelper), new PropertyMetadata(OnFocusToEditorChanged));
+        #endregion
 
         #region Items Properties
+
+        #region ItemsHorizontalContentAlignment
+        public static HorizontalAlignment GetItemsHorizontalContentAlignment(ComboBox comboBox)
+        {
+            return (HorizontalAlignment)comboBox.GetValue(ItemsHorizontalContentAlignmentProperty);
+        }
+
+        public static void SetItemsHorizontalContentAlignment(ComboBox comboBox, HorizontalAlignment value)
+        {
+            comboBox.SetValue(ItemsHorizontalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(ComboBoxHelper));
+        #endregion
+
+        #region ItemsVerticalContentAlignment
+        public static VerticalAlignment GetItemsVerticalContentAlignment(ComboBox comboBox)
+        {
+            return (VerticalAlignment)comboBox.GetValue(ItemsVerticalContentAlignmentProperty);
+        }
+
+        public static void SetItemsVerticalContentAlignment(ComboBox comboBox, VerticalAlignment value)
+        {
+            comboBox.SetValue(ItemsVerticalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("ItemsVerticalContentAlignment", typeof(VerticalAlignment), typeof(ComboBoxHelper));
+        #endregion
 
         #region ItemsIcon
         public static object GetItemsIcon(ComboBox comboBox)
@@ -1028,6 +1058,31 @@ namespace Panuon.UI.Silver
             comboBox.Focus();
         }
 
+        private static void OnFocusToEditorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = (ComboBox)d;
+            comboBox.GotFocus -= ComboBox_GotFocus;
+
+            if ((bool)e.NewValue)
+            {
+                comboBox.GotFocus -= ComboBox_GotFocus;
+                comboBox.GotFocus += ComboBox_GotFocus;
+            }
+        }
+
+        private static void ComboBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var comboBox = (ComboBox)sender;
+            if (comboBox.IsEditable)
+            {
+                var textBox = (comboBox.Template.FindName("PART_EditableTextBox", comboBox) as TextBox);
+                if (textBox != null)
+                {
+                    textBox.Focus();
+                    textBox.SelectionStart = textBox.Text.Length;
+                }
+            }
+        }
         #endregion
 
     }

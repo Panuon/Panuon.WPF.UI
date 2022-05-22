@@ -460,12 +460,6 @@
                                              To="360"
                                              Duration="0:0:1"
                                              RepeatBehavior="Forever" />
-                            <DoubleAnimation Storyboard.TargetProperty="Percent"
-                                             From="0.1"
-                                             To="0.8"
-                                             Duration="0:0:1.2"
-                                             AutoReverse="True"
-                                             RepeatBehavior="Forever" />
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -474,8 +468,6 @@
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetName="Rotate"
                                              Storyboard.TargetProperty="Angle"
-                                             Duration="0:0:0" />
-                            <DoubleAnimation Storyboard.TargetProperty="Percent"
                                              Duration="0:0:0" />
                         </Storyboard>
                     </BeginStoryboard>

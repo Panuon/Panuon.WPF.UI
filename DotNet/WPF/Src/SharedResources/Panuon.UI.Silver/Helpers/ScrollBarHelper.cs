@@ -132,7 +132,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ThumbCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(5), FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(1), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region HoverTrackBackground

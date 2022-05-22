@@ -18,12 +18,14 @@ namespace Panuon.UI.Silver
         private const string CalendarXTemplateName = "PART_CalendarX";
         private const string TimeSelectorCalendarXTemplateName = "PART_TimeSelector";
         private const string EditableTextBoxTemplateName = "PART_EditableTextBox";
-        private const string PopupTemplateName = "PART_Popup";
+        private const string PopupXTemplateName = "PART_PopupX";
 
         private CalendarX _calendarX;
         private TimeSelector _timeSelector;
         private TextBox _editableTextBox;
+        private PopupX _popupX;
 
+        private bool _isInternalUpdateSelectedDate;
         private bool _isInternalUpdateSelectedTime;
         private bool _isInternalUpdateTextBox;
         #endregion
@@ -52,6 +54,10 @@ namespace Panuon.UI.Silver
         public static readonly RoutedEvent SelectedDateTimeChangedEvent =
             EventManager.RegisterRoutedEvent("SelectedDateTimeChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedEventHandler<DateTime?>), typeof(DateTimePicker));
         #endregion
+
+        public event EventHandler Closed;
+
+        public event EventHandler Opened;
 
         #endregion
 
@@ -142,7 +148,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MinDateTimeProperty =
-            DependencyProperty.Register("MinDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MinValue));
+            DependencyProperty.Register("MinDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MinValue, OnDateTimeLimitChanged));
         #endregion
 
         #region MaxDateTime
@@ -153,7 +159,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty MaxDateTimeProperty =
-            DependencyProperty.Register("MaxDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MaxValue));
+            DependencyProperty.Register("MaxDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MaxValue, OnDateTimeLimitChanged));
         #endregion
 
         #region YearStringFormat
@@ -201,9 +207,9 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region HoverShadowColor
-        public DateTime? HoverShadowColor
+        public Color? HoverShadowColor
         {
-            get { return (DateTime?)GetValue(HoverShadowColorProperty); }
+            get { return (Color?)GetValue(HoverShadowColorProperty); }
             set { SetValue(HoverShadowColorProperty, value); }
         }
 
@@ -244,10 +250,10 @@ namespace Panuon.UI.Silver
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(DateTimePicker));
         #endregion
 
-        #region FocusedShadowDateTime
-        public DateTime? FocusedShadowColor
+        #region FocusedShadowColor
+        public Color? FocusedShadowColor
         {
-            get { return (DateTime?)GetValue(FocusedShadowColorProperty); }
+            get { return (Color?)GetValue(FocusedShadowColorProperty); }
             set { SetValue(FocusedShadowColorProperty, value); }
         }
 
@@ -332,6 +338,17 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("TextStringFormat", typeof(string), typeof(DateTimePicker), new PropertyMetadata("dd/MM/yyyy HH:mm:ss", OnTextFormatChanged));
         #endregion
 
+        #region InputTextStringFormat
+        public string InputTextStringFormat
+        {
+            get { return (string)GetValue(InputTextStringFormatProperty); }
+            set { SetValue(InputTextStringFormatProperty, value); }
+        }
+
+        public static readonly DependencyProperty InputTextStringFormatProperty =
+            DependencyProperty.Register("InputTextStringFormat", typeof(string), typeof(DateTimePicker));
+        #endregion
+
         #region IsDropDownOpen
         public bool IsDropDownOpen
         {
@@ -397,6 +414,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty DefaultDateTimeProperty =
             DependencyProperty.Register("DefaultDateTime", typeof(DateTime?), typeof(DateTimePicker), new PropertyMetadata(null));
+        #endregion
+
+        #region FocusToEditor
+        public bool FocusToEditor
+        {
+            get { return (bool)GetValue(FocusToEditorProperty); }
+            set { SetValue(FocusToEditorProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusToEditorProperty =
+            DependencyProperty.Register("FocusToEditor", typeof(bool), typeof(DateTimePicker), new PropertyMetadata(OnFocusToEditorChanged));
         #endregion
 
         #region CalendarXStyle
@@ -481,55 +509,95 @@ namespace Panuon.UI.Silver
             _editableTextBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
             _editableTextBox.TextChanged += EditableTextBox_TextChanged;
 
-            UpdateCalendarXSelectedDateTime();
-            UpdateTimeSelectorDateLimit();
+            _popupX = GetTemplateChild(PopupXTemplateName) as PopupX;
+            _popupX.Opened += PopupX_Opened;
+            _popupX.Closed += PopupX_Closed;
+
+            UpdateCalendarXSelectedDate();
+            UpdateTimeSelectorSelectedTime();
+            UpdateTimeSelectorTimeLimit();
             UpdateText();
         }
         #endregion
 
         #region Event Handlers
+        private static void OnFocusToEditorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var dateTimePicker = (DateTimePicker)d;
+            dateTimePicker.GotFocus -= DateTimePicker_GotFocus;
+
+            if ((bool)e.NewValue)
+            {
+                dateTimePicker.GotFocus -= DateTimePicker_GotFocus;
+                dateTimePicker.GotFocus += DateTimePicker_GotFocus;
+            }
+        }
+
+        private static void DateTimePicker_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var dateTimePicker = (DateTimePicker)sender;
+            if (dateTimePicker.IsEditable)
+            {
+                if (dateTimePicker._editableTextBox != null)
+                {
+                    dateTimePicker._editableTextBox.Focus();
+                    dateTimePicker._editableTextBox.SelectionStart = dateTimePicker._editableTextBox.Text.Length;
+                }
+            }
+        }
+
+        private static void OnDateTimeLimitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var dateTimePicker = (DateTimePicker)d;
+            dateTimePicker.CoerceValue(SelectedDateTimeProperty);
+            dateTimePicker.UpdateCalendarXSelectedDate();
+            dateTimePicker.UpdateTimeSelectorSelectedTime();
+            dateTimePicker.UpdateTimeSelectorTimeLimit();
+
+        }
+
         private static void OnTextFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)d;
-            DateTimePicker.UpdateText();
+            var dateTimePicker = (DateTimePicker)d;
+            dateTimePicker.UpdateText();
         }
 
         private static void OnDateTimePickerModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)d;
-            DateTimePicker.UpdateText();
+            var dateTimePicker = (DateTimePicker)d;
+            dateTimePicker.UpdateText();
         }
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)d;
+            var dateTimePicker = (DateTimePicker)d;
             if ((bool)e.NewValue)
             {
-                Mouse.Capture(DateTimePicker, CaptureMode.SubTree);
-                if (DateTimePicker.IsEditable
-                    && DateTimePicker._editableTextBox != null)
+                Mouse.Capture(dateTimePicker, CaptureMode.SubTree);
+                if (dateTimePicker.IsEditable
+                    && dateTimePicker._editableTextBox != null)
                 {
-                    DateTimePicker._editableTextBox.Focus();
+                    dateTimePicker._editableTextBox.Focus();
                 }
             }
             else
             {
-                if (DateTimePicker.IsKeyboardFocusWithin)
+                if (dateTimePicker.IsKeyboardFocusWithin)
                 {
-                    if (DateTimePicker.IsEditable)
+                    if (dateTimePicker.IsEditable)
                     {
-                        if (DateTimePicker._editableTextBox != null
-                            && !DateTimePicker._editableTextBox.IsKeyboardFocusWithin)
+                        if (dateTimePicker._editableTextBox != null
+                            && !dateTimePicker._editableTextBox.IsKeyboardFocusWithin)
                         {
-                            DateTimePicker.Focus();
+                            dateTimePicker.Focus();
                         }
                     }
                     else
                     {
-                        DateTimePicker.Focus();
+                        dateTimePicker.Focus();
                     }
                 }
-                if (Mouse.Captured == DateTimePicker)
+                if (Mouse.Captured == dateTimePicker)
                 {
                     Mouse.Capture(null);
                 }
@@ -538,19 +606,19 @@ namespace Panuon.UI.Silver
 
         private static void OnThisGotFocus(object sender, RoutedEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)sender;
+            var dateTimePicker = (DateTimePicker)sender;
             if (!e.Handled)
             {
-                if (DateTimePicker.IsEditable && DateTimePicker._editableTextBox != null)
+                if (dateTimePicker.IsEditable && dateTimePicker._editableTextBox != null)
                 {
-                    if (e.OriginalSource == DateTimePicker)
+                    if (e.OriginalSource == dateTimePicker)
                     {
-                        DateTimePicker._editableTextBox.Focus();
+                        dateTimePicker._editableTextBox.Focus();
                         e.Handled = true;
                     }
-                    else if (e.OriginalSource == DateTimePicker._editableTextBox)
+                    else if (e.OriginalSource == dateTimePicker._editableTextBox)
                     {
-                        DateTimePicker._editableTextBox.Focus();
+                        dateTimePicker._editableTextBox.Focus();
                     }
                 }
             }
@@ -559,34 +627,34 @@ namespace Panuon.UI.Silver
 
         private static void OnMouseButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)sender;
-            if ((DateTimePicker.ContextMenu == null || !DateTimePicker.ContextMenu.IsOpen)
-                      && !DateTimePicker.IsKeyboardFocusWithin)
+            var dateTimePicker = (DateTimePicker)sender;
+            if ((dateTimePicker.ContextMenu == null || !dateTimePicker.ContextMenu.IsOpen)
+                      && !dateTimePicker.IsKeyboardFocusWithin)
             {
-                DateTimePicker.Focus();
+                dateTimePicker.Focus();
             }
 
-            if (Mouse.Captured == DateTimePicker
-                && e.OriginalSource == DateTimePicker)
+            if (Mouse.Captured == dateTimePicker
+                && e.OriginalSource == dateTimePicker)
             {
-                DateTimePicker.SetCurrentValue(IsDropDownOpenProperty, false);
+                dateTimePicker.SetCurrentValue(IsDropDownOpenProperty, false);
             }
         }
 
         private static void OnPreviewMouseButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)sender;
-            if (DateTimePicker.IsEditable)
+            var dateTimePicker = (DateTimePicker)sender;
+            if (dateTimePicker.IsEditable)
             {
                 var originalSource = e.OriginalSource as Visual;
 
-                if (originalSource != null && DateTimePicker._editableTextBox != null
-                    && DateTimePicker.IsAncestorOf(originalSource))
+                if (originalSource != null && dateTimePicker._editableTextBox != null
+                    && dateTimePicker.IsAncestorOf(originalSource))
                 {
-                    if ((DateTimePicker.ContextMenu == null || !DateTimePicker.ContextMenu.IsOpen)
-                        && !DateTimePicker.IsKeyboardFocusWithin)
+                    if ((dateTimePicker.ContextMenu == null || !dateTimePicker.ContextMenu.IsOpen)
+                        && !dateTimePicker.IsKeyboardFocusWithin)
                     {
-                        DateTimePicker.Focus();
+                        dateTimePicker.Focus();
                     }
                 }
             }
@@ -594,21 +662,22 @@ namespace Panuon.UI.Silver
 
         private static void OnLostMouseCapture(object sender ,MouseEventArgs e)
         {
-             var DateTimePicker = (DateTimePicker)sender;
-            if(e.OriginalSource == DateTimePicker._editableTextBox)
+             var dateTimePicker = (DateTimePicker)sender;
+            if(e.OriginalSource == dateTimePicker._editableTextBox)
             {
-                DateTimePicker.SetCurrentValue(IsDropDownOpenProperty, true);
-                DateTimePicker._editableTextBox.Focus();
+                dateTimePicker.SetCurrentValue(IsDropDownOpenProperty, true);
+                dateTimePicker._editableTextBox.Focus();
             }
             Debug.WriteLine(e.OriginalSource);
         }
 
         private static void OnSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var DateTimePicker = (DateTimePicker)d;
-            DateTimePicker.UpdateCalendarXSelectedDateTime();
-            DateTimePicker.UpdateText();
-            DateTimePicker.RaiseEvent(new SelectedValueChangedEventArgs<DateTime?>(SelectedDateTimeChangedEvent, (DateTime?)e.OldValue, (DateTime?)e.NewValue));
+            var dateTimePicker = (DateTimePicker)d;
+            dateTimePicker.UpdateCalendarXSelectedDate();
+            dateTimePicker.UpdateTimeSelectorSelectedTime();
+            dateTimePicker.UpdateText();
+            dateTimePicker.RaiseEvent(new SelectedValueChangedEventArgs<DateTime?>(SelectedDateTimeChangedEvent, (DateTime?)e.OldValue, (DateTime?)e.NewValue));
         }
 
         private void EditableTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -627,16 +696,26 @@ namespace Panuon.UI.Silver
             _isInternalUpdateTextBox = false;
         }
 
-        private static void OnClearCommandExecute(DateTimePicker DateTimePicker)
+        private void PopupX_Closed(object sender, EventArgs e)
         {
-            DateTimePicker.SetCurrentValue(TextProperty, null);
-            DateTimePicker.SetCurrentValue(SelectedDateTimeProperty, DateTimePicker.DefaultDateTime);
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void PopupX_Opened(object sender, EventArgs e)
+        {
+            Opened?.Invoke(this, EventArgs.Empty);
+        }
+
+        private static void OnClearCommandExecute(DateTimePicker dateTimePicker)
+        {
+            dateTimePicker.SetCurrentValue(TextProperty, null);
+            dateTimePicker.SetCurrentValue(SelectedDateTimeProperty, dateTimePicker.DefaultDateTime);
         }
 
         private void CalendarX_SelectedDateTimeChanged(object sender, SelectedValueChangedEventArgs<DateTime> e)
         {
             UpdateSelectedDateTime();
-            UpdateTimeSelectorDateLimit();
+            UpdateTimeSelectorTimeLimit();
         }
 
 
@@ -647,9 +726,24 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Functions
-        private void UpdateCalendarXSelectedDateTime()
+        private void UpdateCalendarXSelectedDate()
         {
             if (_calendarX == null
+                || _isInternalUpdateSelectedDate)
+            {
+                return;
+            }
+
+            _isInternalUpdateSelectedDate = true;
+
+            _calendarX.SetCurrentValue(CalendarX.SelectedDateProperty, SelectedDateTime ?? DefaultDateTime ?? DateTime.Now);
+
+            _isInternalUpdateSelectedDate = false;
+        }
+
+        private void UpdateTimeSelectorSelectedTime()
+        {
+            if (_timeSelector == null
                 || _isInternalUpdateSelectedTime)
             {
                 return;
@@ -657,7 +751,7 @@ namespace Panuon.UI.Silver
 
             _isInternalUpdateSelectedTime = true;
 
-            _calendarX.SetCurrentValue(CalendarX.SelectedDateProperty, SelectedDateTime ?? DefaultDateTime ?? DateTime.Now);
+            _timeSelector.SetCurrentValue(TimeSelector.SelectedTimeProperty, (SelectedDateTime ?? DefaultDateTime ?? DateTime.Now).GetTime());
 
             _isInternalUpdateSelectedTime = false;
         }
@@ -700,7 +794,7 @@ namespace Panuon.UI.Silver
             var selectedDateTime = SelectedDateTime;
 
 
-            if (DateTime.TryParseExact(text, TextStringFormat, _calendarX.GetCulture(), DateTimeStyles.None, out DateTime newDateTime))
+            if (DateTime.TryParseExact(text, InputTextStringFormat ?? TextStringFormat, _calendarX.GetCulture(), DateTimeStyles.None, out DateTime newDateTime))
             {
                 selectedDateTime = newDateTime;
             }
@@ -710,11 +804,11 @@ namespace Panuon.UI.Silver
 
         private void UpdateSelectedDateTime()
         {
-            if (_isInternalUpdateSelectedTime)
+            if (_isInternalUpdateSelectedDate)
             {
                 return;
             }
-            _isInternalUpdateSelectedTime = true;
+            _isInternalUpdateSelectedDate = true;
 
             switch (Mode)
             {
@@ -729,35 +823,45 @@ namespace Panuon.UI.Silver
                     break;
             }
 
-            _isInternalUpdateSelectedTime = false;
+            _isInternalUpdateSelectedDate = false;
         }
 
-        private void UpdateTimeSelectorDateLimit()
+        private void UpdateTimeSelectorTimeLimit()
         {
-            if (_calendarX == null
-                || _timeSelector == null)
+            if (_timeSelector == null)
             {
                 return;
             }
 
             var minDateTime = MinDateTime;
             var maxDateTime = MaxDateTime;
-            var selectedDate = _calendarX.SelectedDate;
-            if (selectedDate.Date.Equals(minDateTime.Date))
+
+            if (_calendarX != null
+                && Mode != DateTimePickerMode.Time)
             {
-                _timeSelector.MinTime = minDateTime.GetTime();
-                _timeSelector.MaxTime = new DateTime(1, 1, 1, 23, 59, 59);
-            }
-            else if (selectedDate.Date.Equals(maxDateTime.Date))
-            {
-                _timeSelector.MinTime = new DateTime(1, 1, 1, 0, 0, 0);
-                _timeSelector.MaxTime = maxDateTime.GetTime();
+                var selectedDate = _calendarX.SelectedDate;
+                if (selectedDate.Date.Equals(minDateTime.Date))
+                {
+                    _timeSelector.MinTime = minDateTime.GetTime();
+                    _timeSelector.MaxTime = new DateTime(1, 1, 1, 23, 59, 59);
+                }
+                else if (selectedDate.Date.Equals(maxDateTime.Date))
+                {
+                    _timeSelector.MinTime = new DateTime(1, 1, 1, 0, 0, 0);
+                    _timeSelector.MaxTime = maxDateTime.GetTime();
+                }
+                else
+                {
+                    _timeSelector.MinTime = new DateTime(1, 1, 1, 0, 0, 0);
+                    _timeSelector.MaxTime = new DateTime(1, 1, 1, 23, 59, 59);
+                }
             }
             else
             {
-                _timeSelector.MinTime = new DateTime(1, 1, 1, 0, 0, 0);
-                _timeSelector.MaxTime = new DateTime(1, 1, 1, 23, 59, 59);
+                _timeSelector.MinTime = minDateTime.GetTime();
+                _timeSelector.MaxTime = maxDateTime.GetTime();
             }
+            
         }
         #endregion
     }

@@ -150,7 +150,6 @@
             </Grid>
             <local:SeparatorX x:Name="SprtSeparator"
                               Grid.Row="1"
-                              RenderOptions.EdgeMode="Unspecified"
                               VerticalAlignment="Center"
                               Stroke="{Binding Path=(local:MenuItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               StrokeThickness="{Binding Path=(local:MenuItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

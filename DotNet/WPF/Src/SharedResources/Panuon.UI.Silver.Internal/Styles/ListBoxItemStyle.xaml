@@ -87,12 +87,16 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="MinHeight"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsMinHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="MaxHeight"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsMaxHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding Path=(local:ListBoxHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="MinWidth"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsMinWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="MaxWidth"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsMaxWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Margin"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Padding"

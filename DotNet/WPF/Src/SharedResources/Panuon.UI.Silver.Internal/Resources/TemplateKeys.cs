@@ -3,6 +3,7 @@
     static class TemplateKeys
     {
         public const string ButtonTemplate = nameof(ButtonTemplate);
+        public const string ButtonPendingTemplate = nameof(ButtonPendingTemplate);
         public const string BreadcrumbTemplate = nameof(BreadcrumbTemplate);
         public const string BreadcrumbItemTemplate = nameof(BreadcrumbItemTemplate);
         public const string CalendarXTemplate = nameof(CalendarXTemplate);
@@ -12,8 +13,9 @@
         public const string ColorPickerTemplate = nameof(ColorPickerTemplate);
         public const string ColorSelectorTemplate = nameof(ColorSelectorTemplate);
         public const string ComboBoxTemplate = nameof(ComboBoxTemplate);
-        public const string ComboBoxWithFixedSearchBoxTemplate = nameof(ComboBoxWithFixedSearchBoxTemplate);
+        public const string ComboBoxEditableTemplate = nameof(ComboBoxEditableTemplate);
         public const string ComboBoxItemTemplate = nameof(ComboBoxItemTemplate);
+        public const string ComboBoxItemRemovableTemplate = nameof(ComboBoxItemRemovableTemplate);
         public const string ContextMenuTemplate = nameof(ContextMenuTemplate);
         public const string ContextMenuItemTemplate = nameof(ContextMenuItemTemplate);
         public const string ContentControlXTemplate = nameof(ContentControlXTemplate);
@@ -51,6 +53,7 @@
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
+        public const string RepeatButtonPendingTemplate = nameof(RepeatButtonPendingTemplate);
         public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);
         public const string SearchBoxTemplate = nameof(SearchBoxTemplate);
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
@@ -70,11 +73,13 @@
         public const string TabItemTemplate = nameof(TabItemTemplate);
         public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
+        public const string TextBoxClearableTemplate = nameof(TextBoxClearableTemplate);
         public const string ThumbTemplate = nameof(ThumbTemplate);
         public const string ThumbFenceTemplate = nameof(ThumbFenceTemplate);
         public const string TimeSelectorTemplate = nameof(TimeSelectorTemplate);
         public const string TimeSelectorItemTemplate = nameof(TimeSelectorItemTemplate);
         public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
+        public const string ToggleButtonPendingTemplate = nameof(ToggleButtonPendingTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);
         public const string TreeViewTemplate = nameof(TreeViewTemplate);
@@ -82,6 +87,9 @@
         public const string TreeViewItemTemplate = nameof(TreeViewItemTemplate);
         public const string TreeViewItemStylelessTemplate = nameof(TreeViewItemStylelessTemplate);
         public const string WindowXTemplate = nameof(WindowXTemplate);
+        public const string WindowXWithoutCaptionTemplate = nameof(WindowXWithoutCaptionTemplate);
+        public const string WindowXWithoutModalButtonsTemplate = nameof(WindowXWithoutModalButtonsTemplate);
+        public const string WindowXWithoutCaptionAndModalButtonsTemplate = nameof(WindowXWithoutCaptionAndModalButtonsTemplate);
 
     }
 }

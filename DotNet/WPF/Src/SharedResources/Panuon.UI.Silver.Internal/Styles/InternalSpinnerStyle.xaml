@@ -30,6 +30,34 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerRing2Template}}" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="SpinnerStyle"
+                               Value="Ring2" />
+                    <Condition Property="IsSpinning"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Percent"
+                                             From="0.1"
+                                             To="0.8"
+                                             Duration="0:0:1.2"
+                                             AutoReverse="True"
+                                             RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Percent"
+                                             Duration="0:0:0" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
             <Trigger Property="SpinnerStyle"
                      Value="Classic">
                 <Setter Property="Template"

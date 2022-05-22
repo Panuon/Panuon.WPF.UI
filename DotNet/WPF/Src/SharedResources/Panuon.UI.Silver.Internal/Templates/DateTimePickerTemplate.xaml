@@ -97,7 +97,7 @@
                     </Grid>
                 </ToggleButton>
             </local:ContentControlX>
-            <local:PopupX x:Name="PART_Popup"
+            <local:PopupX x:Name="PART_PopupX"
                            Focusable="False"
                            AllowsTransparency="True"
                            IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}"
@@ -114,7 +114,7 @@
                                  RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
                                  Mode="OneWay" />
                         <Binding Path="ActualPlacement"
-                                 ElementName="PART_Popup"
+                                 ElementName="PART_PopupX"
                                  Mode="OneWay" />
                         <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
                                  RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
@@ -130,7 +130,7 @@
                                  RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
                                  Mode="OneWay" />
                         <Binding Path="ActualPlacement"
-                                 ElementName="PART_Popup"
+                                 ElementName="PART_PopupX"
                                  Mode="OneWay" />
                         <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
                                  RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
@@ -150,7 +150,7 @@
                                      RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
                                      Mode="OneWay" />
                             <Binding Path="ActualPlacement"
-                                     ElementName="PART_Popup"
+                                     ElementName="PART_PopupX"
                                      Mode="OneWay" />
                             <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
                                      RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"

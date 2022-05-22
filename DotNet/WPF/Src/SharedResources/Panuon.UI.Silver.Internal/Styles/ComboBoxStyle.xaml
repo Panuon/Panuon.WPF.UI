@@ -139,6 +139,10 @@
                 Value="BottomRight" />
         <Setter Property="local:ComboBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ComboBoxHelper.ItemsHorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ComboBoxHelper.ItemsVerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsHeight"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsPadding"
@@ -188,15 +192,20 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="IsEditable"
+                          Value="False">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEditable"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxEditableTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
-            </Trigger>
-            <Trigger Property="local:ComboBoxHelper.IsSearchTextBoxPinned"
-                     Value="True">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxWithFixedSearchBoxTemplate}}" />
             </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

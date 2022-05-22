@@ -23,11 +23,11 @@
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:RadioButtonHelper.ToggleRadius"
                 Value="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RadioButtonHelper.ToggleBrush"
+        <Setter Property="local:RadioButtonHelper.CheckedToggleBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RadioButtonHelper.NullableBorderBrush"
+        <Setter Property="local:RadioButtonHelper.NullBorderBrush"
                 Value="{Binding BorderBrush, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RadioButtonHelper.NullableToggleBrush"
+        <Setter Property="local:RadioButtonHelper.NullToggleBrush"
                 Value="{Binding BorderBrush, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="5,0,0,0" />

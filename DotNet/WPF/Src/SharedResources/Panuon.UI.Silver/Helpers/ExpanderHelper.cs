@@ -166,6 +166,36 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderHelper));
         #endregion
 
+        #region HeaderFontSize
+        public static double GetHeaderFontSize(Expander expander)
+        {
+            return (double)expander.GetValue(HeaderFontSizeProperty);
+        }
+
+        public static void SetHeaderFontSize(Expander expander, double value)
+        {
+            expander.SetValue(HeaderFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(ExpanderHelper));
+        #endregion
+
+        #region HeaderFontFamily
+        public static FontFamily GetHeaderFontFamily(Expander expander)
+        {
+            return (FontFamily)expander.GetValue(HeaderFontFamilyProperty);
+        }
+
+        public static void SetHeaderFontFamily(Expander expander, FontFamily value)
+        {
+            expander.SetValue(HeaderFontFamilyProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderFontFamilyProperty =
+            DependencyProperty.RegisterAttached("HeaderFontFamily", typeof(FontFamily), typeof(ExpanderHelper));
+        #endregion
+
         #region HeaderHeight
         public static double GetHeaderHeight(Expander expander)
         {

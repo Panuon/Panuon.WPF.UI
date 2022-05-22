@@ -46,6 +46,12 @@ namespace Panuon.UI.Silver.Internal.Controls
         public override void OnApplyTemplate()
         {
         }
+
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+            Topmost = true;
+        }
         #endregion
 
         #region OnSourceInitialized
@@ -118,6 +124,9 @@ namespace Panuon.UI.Silver.Internal.Controls
             }));
             _noticeHandler.TriggerClosed(noticeBoxItem);
         }
+        #endregion
+
+        #region Functions
         #endregion
     }
 }

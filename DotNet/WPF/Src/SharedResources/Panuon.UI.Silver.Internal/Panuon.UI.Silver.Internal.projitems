@@ -20,10 +20,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItemPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleIsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLastItemInItemsControlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsAllEqualConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToHiddenConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TransparentColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorOpacitySliderBackgroundConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorThumbFenceBackgroundConverter.cs" />

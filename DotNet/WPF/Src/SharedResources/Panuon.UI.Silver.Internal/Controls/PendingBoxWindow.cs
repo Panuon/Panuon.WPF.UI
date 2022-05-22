@@ -85,7 +85,7 @@ namespace Panuon.UI.Silver.Internal.Controls
             {
                 ownerX.Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    ownerX.IsMaskVisible = true;
+                    ownerX.SetCurrentValue(WindowX.IsMaskVisibleProperty, true);
                 }));
                 _owner = ownerX;
             }
@@ -160,7 +160,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 {
                     if (_owner.OwnedWindows.Count == 0)
                     {
-                        _owner.IsMaskVisible = false;
+                        _owner.SetCurrentValue(WindowX.IsMaskVisibleProperty, false);
                     }
                 }));
             }

@@ -24,18 +24,17 @@
                       Width="{TemplateBinding BoxWidth}">
                     <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding CheckedBackground}" />
-                    <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            RenderTransformOrigin="0.5,0.5"
                             Background="{TemplateBinding Background}">
-                        <Border.RenderTransform>
-                            <ScaleTransform x:Name="ScaleBoxBack"
-                                            ScaleX="1"
-                                            ScaleY="1" />
-                        </Border.RenderTransform>
+                        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                Background="{TemplateBinding CheckedBackground}"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform x:Name="ScaleBoxBack"
+                                                ScaleX="0"
+                                                ScaleY="0" />
+                            </Border.RenderTransform>
+                        </Border>
                     </Border>
                     <Border x:Name="BdrContainer"
                             Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -194,7 +193,7 @@
                             </ThicknessAnimation>
                             <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
                                              Storyboard.TargetProperty="ScaleX"
-                                             To="0"
+                                             To="1"
                                              Duration="0:0:0.2">
                                 <DoubleAnimation.EasingFunction>
                                     <CubicEase EasingMode="EaseOut" />
@@ -202,7 +201,7 @@
                             </DoubleAnimation>
                             <DoubleAnimation Storyboard.TargetName="ScaleBoxBack"
                                              Storyboard.TargetProperty="ScaleY"
-                                             To="0"
+                                             To="1"
                                              Duration="0:0:0.3">
                                 <DoubleAnimation.EasingFunction>
                                     <CubicEase EasingMode="EaseOut" />

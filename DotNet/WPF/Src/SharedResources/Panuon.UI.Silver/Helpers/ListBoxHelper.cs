@@ -173,19 +173,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Scrollable", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(true));
         #endregion
 
-        #region EmptyBackground
-        public static Brush GetEmptyBackground(ListBox listBox)
+        #region EmptyContent
+        public static object GetEmptyContent(ListBox listBox)
         {
-            return (Brush)listBox.GetValue(EmptyBackgroundProperty);
+            return (object)listBox.GetValue(EmptyContentProperty);
         }
 
-        public static void SetEmptyBackground(ListBox listBox, Brush value)
+        public static void SetEmptyContent(ListBox listBox, object value)
         {
-            listBox.SetValue(EmptyBackgroundProperty, value);
+            listBox.SetValue(EmptyContentProperty, value);
         }
 
-        public static readonly DependencyProperty EmptyBackgroundProperty =
-            DependencyProperty.RegisterAttached("EmptyBackground", typeof(Brush), typeof(ListBoxHelper));
+        public static readonly DependencyProperty EmptyContentProperty =
+            DependencyProperty.RegisterAttached("EmptyContent", typeof(object), typeof(ListBoxHelper));
         #endregion
 
         #region Items Properties
@@ -295,19 +295,34 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ItemsMaxHeight", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(double.PositiveInfinity));
         #endregion
 
-        #region ItemsMargin
-        public static Thickness GetItemsMargin(ListBox listBox)
+        #region ItemsMinWidth
+        public static double GetItemsMinWidth(ListBox listBox)
         {
-            return (Thickness)listBox.GetValue(ItemsMarginProperty);
+            return (double)listBox.GetValue(ItemsMinWidthProperty);
         }
 
-        public static void SetItemsMargin(ListBox listBox, Thickness value)
+        public static void SetItemsMinWidth(ListBox listBox, double value)
         {
-            listBox.SetValue(ItemsMarginProperty, value);
+            listBox.SetValue(ItemsMinWidthProperty, value);
         }
 
-        public static readonly DependencyProperty ItemsMarginProperty =
-            DependencyProperty.RegisterAttached("ItemsMargin", typeof(Thickness), typeof(ListBoxHelper));
+        public static readonly DependencyProperty ItemsMinWidthProperty =
+            DependencyProperty.RegisterAttached("ItemsMinWidth", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(0d));
+        #endregion
+
+        #region ItemsMaxWidth
+        public static double GetItemsMaxWidth(ListBox listBox)
+        {
+            return (double)listBox.GetValue(ItemsMaxWidthProperty);
+        }
+
+        public static void SetItemsMaxWidth(ListBox listBox, double value)
+        {
+            listBox.SetValue(ItemsMaxWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsMaxWidthProperty =
+            DependencyProperty.RegisterAttached("ItemsMaxWidth", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(double.PositiveInfinity));
         #endregion
 
         #region ItemsPadding
@@ -323,6 +338,21 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemsPaddingProperty =
             DependencyProperty.RegisterAttached("ItemsPadding", typeof(Thickness), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsMargin
+        public static Thickness GetItemsMargin(ListBox listBox)
+        {
+            return (Thickness)listBox.GetValue(ItemsMarginProperty);
+        }
+
+        public static void SetItemsMargin(ListBox listBox, Thickness value)
+        {
+            listBox.SetValue(ItemsMarginProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsMarginProperty =
+            DependencyProperty.RegisterAttached("ItemsMargin", typeof(Thickness), typeof(ListBoxHelper));
         #endregion
 
         #region ItemsShadowColor
