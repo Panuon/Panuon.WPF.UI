@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.UI.Silver.Internal.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -7,10 +8,6 @@ namespace Panuon.UI.Silver
 {
     public static class ScrollViewerHelper
     {
-        #region Fields
-        private const double MouseWheelDelta = 48.0;
-        #endregion
-
         #region Properties
 
         #region ScrollBarThickness
@@ -89,9 +86,112 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ContentSpacing", typeof(double), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
+        #region AnimationEase
+        public static AnimationEase GetAnimationEase(DependencyObject obj)
+        {
+            return (AnimationEase)obj.GetValue(AnimationEaseProperty);
+        }
+
+        public static void SetAnimationEase(DependencyObject obj, AnimationEase value)
+        {
+            obj.SetValue(AnimationEaseProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimationEaseProperty =
+            DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(AnimationEase.None, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region AnimationDuration
+        public static TimeSpan GetAnimationDuration(DependencyObject obj)
+        {
+            return (TimeSpan)obj.GetValue(AnimationDurationProperty);
+        }
+
+        public static void SetAnimationDuration(DependencyObject obj, TimeSpan value)
+        {
+            obj.SetValue(AnimationDurationProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimationDurationProperty =
+            DependencyProperty.RegisterAttached("AnimationDuration", typeof(TimeSpan), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(new TimeSpan(), FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MouseWheelDelta
+        public static double GetMouseWheelDelta(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MouseWheelDeltaProperty);
+        }
+
+        public static void SetMouseWheelDelta(DependencyObject obj, double value)
+        {
+            obj.SetValue(MouseWheelDeltaProperty, value);
+        }
+
+        public static readonly DependencyProperty MouseWheelDeltaProperty =
+            DependencyProperty.RegisterAttached("MouseWheelDelta", typeof(double), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region VerticalOffset
+        public static double GetVerticalOffset(ScrollViewer scrollViewer)
+        {
+            return (double)scrollViewer.GetValue(VerticalOffsetProperty);
+        }
+
+        public static void SetVerticalOffset(ScrollViewer scrollViewer, double value)
+        {
+            value = Math.Min(scrollViewer.ScrollableHeight, Math.Max(0, value));
+
+            scrollViewer.SetValue(TargetVerticalOffsetProperty, value);
+
+            if (scrollViewer.IsLoaded)
+            {
+                var animationDuration = GetAnimationDuration(scrollViewer);
+                var animationEase = GetAnimationEase(scrollViewer);
+                AnimationUtil.BeginDoubleAnimation(scrollViewer, VerticalOffsetProperty, null, value, animationDuration, null, animationEase);
+            }
+            else
+            {
+                scrollViewer.SetValue(VerticalOffsetProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty VerticalOffsetProperty =
+            DependencyProperty.RegisterAttached("VerticalOffset", typeof(double), typeof(ScrollViewerHelper), new PropertyMetadata(0d, OnVerticalOffsetChanged));
+
+        #endregion
+
+        #region HorizontalOffset
+        public static double GetHorizontalOffset(ScrollViewer scrollViewer)
+        {
+            return (double)scrollViewer.GetValue(HorizontalOffsetProperty);
+        }
+
+        public static void SetHorizontalOffset(ScrollViewer scrollViewer, double value)
+        {
+            value = Math.Min(scrollViewer.ScrollableWidth, Math.Max(0, value));
+
+            scrollViewer.SetValue(TargetHorizontalOffsetProperty, value);
+            if (scrollViewer.IsLoaded)
+            {
+                var animationDuration = GetAnimationDuration(scrollViewer);
+                var animationEase = GetAnimationEase(scrollViewer);
+                AnimationUtil.BeginDoubleAnimation(scrollViewer, HorizontalOffsetProperty, null, value, animationDuration, null, animationEase);
+            }
+            else
+            {
+                scrollViewer.SetValue(HorizontalOffsetProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty HorizontalOffsetProperty =
+            DependencyProperty.RegisterAttached("HorizontalOffset", typeof(double), typeof(ScrollViewerHelper), new PropertyMetadata(0d, OnHorizontalOffsetChanged));
+        #endregion
+
         #endregion
 
         #region Internal Properties
+
+        #region Regist
         internal static bool GetRegist(DependencyObject obj)
         {
             return (bool)obj.GetValue(RegistProperty);
@@ -106,17 +206,89 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("Regist", typeof(bool), typeof(ScrollViewerHelper), new PropertyMetadata(OnRegistChanged));
         #endregion
 
+        #region TargetVerticalOffset
+        internal static double GetTargetVerticalOffset(ScrollViewer scrollViewer)
+        {
+            return (double)scrollViewer.GetValue(TargetVerticalOffsetProperty);
+        }
+
+        internal static void SetTargetVerticalOffset(ScrollViewer scrollViewer, double value)
+        {
+            scrollViewer.SetValue(TargetVerticalOffsetProperty, value);
+        }
+
+        internal static readonly DependencyProperty TargetVerticalOffsetProperty =
+            DependencyProperty.RegisterAttached("TargetVerticalOffset", typeof(double), typeof(ScrollViewerHelper), new PropertyMetadata(0d));
+        #endregion
+
+        #region TargetHorizontalOffset
+        internal static double GetTargetHorizontalOffset(ScrollViewer scrollViewer)
+        {
+            return (double)scrollViewer.GetValue(TargetHorizontalOffsetProperty);
+        }
+
+        internal static void SetTargetHorizontalOffset(ScrollViewer scrollViewer, double value)
+        {
+            scrollViewer.SetValue(TargetHorizontalOffsetProperty, value);
+        }
+
+        internal static readonly DependencyProperty TargetHorizontalOffsetProperty =
+            DependencyProperty.RegisterAttached("TargetHorizontalOffset", typeof(double), typeof(ScrollViewerHelper), new PropertyMetadata(0d));
+        #endregion
+
+        #endregion
+
         #region Event Handlers
+
+        private static void OnVerticalOffsetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var scrollViewer = (ScrollViewer)d;
+            var newValue = (double)e.NewValue;
+            scrollViewer.ScrollToVerticalOffset(newValue);
+        }
+
+        private static void OnHorizontalOffsetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var scrollViewer = (ScrollViewer)d;
+            var newValue = (double)e.NewValue;
+            scrollViewer.ScrollToHorizontalOffset(newValue);
+        }
+
         private static void OnRegistChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var scrollViewer = (ScrollViewer)d;
+            scrollViewer.ScrollChanged += ScrollViewer_ScrollChanged;
             scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
+        }
+
+        private static void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            var scrollViewer = sender as ScrollViewer;
+            if(e.HorizontalChange != 0)
+            {
+                var offset = scrollViewer.HorizontalOffset;
+                var thisOffset = GetHorizontalOffset(scrollViewer);
+                if (offset != thisOffset)
+                {
+                    scrollViewer.SetCurrentValue(HorizontalOffsetProperty, offset);
+                    scrollViewer.SetCurrentValue(TargetHorizontalOffsetProperty, offset);
+                }
+            }
+            if (e.VerticalChange != 0)
+            {
+                var offset = scrollViewer.VerticalOffset;
+                var thisOffset = GetVerticalOffset(scrollViewer);
+                if(offset != thisOffset)
+                {
+                    scrollViewer.SetCurrentValue(VerticalOffsetProperty, offset);
+                    scrollViewer.SetCurrentValue(TargetVerticalOffsetProperty, offset);
+                }
+            }
         }
 
         private static void ScrollViewer_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             var scrollViewer = (ScrollViewer)sender;
-
             var element = e.OriginalSource as DependencyObject;
             try
             {
@@ -136,39 +308,55 @@ namespace Panuon.UI.Silver
                 }
             }
             catch { }
-
+            var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
             switch (GetWheelScrollingDirection(scrollViewer))
             {
+                case WheelScrollingDirection.Vertical:
+                    SetVerticalOffset(scrollViewer, GetTargetVerticalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
+                    e.Handled = true;
+                    break;
                 case WheelScrollingDirection.Horizontal:
-                    scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                    SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
                     e.Handled = true;
                     break;
                 case WheelScrollingDirection.HorizontalThenVertical:
-                    if (e.Delta < 0 && scrollViewer.HorizontalOffset != scrollViewer.ScrollableWidth)
+                    if (e.Delta < 0 && GetTargetHorizontalOffset(scrollViewer) != scrollViewer.ScrollableWidth)
                     {
-                        scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                        SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
                         e.Handled = true;
                     }
-                    else if (e.Delta > 0 && scrollViewer.HorizontalOffset != 0)
+                    else if (e.Delta > 0 && GetTargetHorizontalOffset(scrollViewer) != 0)
                     {
-                        scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                        SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        SetVerticalOffset(scrollViewer, GetTargetVerticalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
                         e.Handled = true;
                     }
                     break;
                 case WheelScrollingDirection.VerticalThenHorizontal:
-                    if (e.Delta < 0 && scrollViewer.VerticalOffset == scrollViewer.ScrollableHeight)
+                    if (e.Delta < 0 && GetTargetVerticalOffset(scrollViewer) == scrollViewer.ScrollableHeight)
                     {
-                        scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                        SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
                         e.Handled = true;
                     }
-                    else if (e.Delta > 0 && scrollViewer.VerticalOffset == 0)
+                    else if (e.Delta > 0 && GetTargetVerticalOffset(scrollViewer) == 0)
                     {
-                        scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                        SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
+                        e.Handled = true;
+                    }
+                    else
+                    {
+                        SetVerticalOffset(scrollViewer, GetTargetVerticalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
                         e.Handled = true;
                     }
                     break;
                 case WheelScrollingDirection.Both:
-                    scrollViewer.ScrollToHorizontalOffset(scrollViewer.HorizontalOffset + (e.Delta < 0 ? MouseWheelDelta : -MouseWheelDelta));
+                    SetVerticalOffset(scrollViewer, GetTargetVerticalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
+                    SetHorizontalOffset(scrollViewer, GetTargetHorizontalOffset(scrollViewer) + (e.Delta < 0 ? mouseWheelDelta : -mouseWheelDelta));
+                    e.Handled = true;
                     break;
             }
             //if (GetHandleMouseWheel(scrollViewer))

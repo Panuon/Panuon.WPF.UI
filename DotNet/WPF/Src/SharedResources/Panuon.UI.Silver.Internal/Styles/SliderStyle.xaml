@@ -43,6 +43,8 @@
                 Value="LightGray" />
         <Setter Property="local:SliderHelper.CoveredBackground"
                 Value="Gray" />
+        <Setter Property="local:SliderHelper.TickBarForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:SliderHelper.ThumbStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}"/>
         <Style.Triggers>

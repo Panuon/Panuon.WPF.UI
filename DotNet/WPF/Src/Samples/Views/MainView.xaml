@@ -59,6 +59,9 @@
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
+                      pu:ScrollViewerHelper.MouseWheelDelta="96"
+                      pu:ScrollViewerHelper.AnimationDuration="0:0:0.5"
+                      pu:ScrollViewerHelper.AnimationEase="CubicOut"
                       pu:ScrollViewerHelper.ScrollBarPosition="Outside"
                       pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
             <ItemsControl x:Name="LsbExamples"
