@@ -30,6 +30,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <ToggleButton x:Name="TgbHeader"
+                              Focusable="{TemplateBinding Focusable}"
                               Height="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               BorderBrush="{Binding Path=(local:ExpanderHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               BorderThickness="{Binding Path=(local:ExpanderHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -75,6 +76,7 @@
                                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                                ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
                         <ContentControl Grid.Column="2"
+                                        Focusable="False"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
@@ -225,14 +227,15 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <ToggleButton x:Name="TgbHeader"
+                              Focusable="{TemplateBinding Focusable}"
                               Width="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ToggleButton.Style>
                         <Style TargetType="ToggleButton">
                             <Setter Property="Template">
@@ -254,6 +257,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <local:TransformControl x:Name="TcTransform"
+                                                Focusable="False"
                                                 Margin="0,8,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
                         <local:ContentControlX x:Name="CcHeader"
@@ -266,6 +270,7 @@
                                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                                ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
                         <ContentControl Grid.Row="4"
+                                        Focusable="False"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>

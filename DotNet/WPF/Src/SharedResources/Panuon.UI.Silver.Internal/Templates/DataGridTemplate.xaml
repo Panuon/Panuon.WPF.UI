@@ -601,7 +601,8 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <local:ContentControlX Background="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelBackground),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+            <local:ContentControlX x:Name="CcHeaderContainer"
+                                   Background="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelBackground),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                    BorderBrush="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelBorderBrush),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                    BorderThickness="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelBorderThickness),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                    CornerRadius="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelCornerRadius),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}">
@@ -707,9 +708,31 @@
                         Property="Width"
                         Value="0" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
-                         Value="Inside">
-                <Setter TargetName="PART_ColumnHeadersPresenter"
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="Inside" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcHeaderContainer"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="PART_ScrollContentPresenter"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="PART_ScrollContentPresenter"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="Inside" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcHeaderContainer"
                         Property="Grid.ColumnSpan"
                         Value="2" />
                 <Setter TargetName="PART_ScrollContentPresenter"
@@ -718,16 +741,35 @@
                 <Setter TargetName="PART_ScrollContentPresenter"
                         Property="Grid.RowSpan"
                         Value="2" />
-            </DataTrigger>
-            <DataTrigger Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
-                         Value="VerticalInside">
-                <Setter TargetName="PART_ColumnHeadersPresenter"
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="VerticalInside" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcHeaderContainer"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+                <Setter TargetName="PART_ScrollContentPresenter"
+                        Property="Grid.ColumnSpan"
+                        Value="3" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="VerticalInside" />
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcHeaderContainer"
                         Property="Grid.ColumnSpan"
                         Value="2" />
                 <Setter TargetName="PART_ScrollContentPresenter"
                         Property="Grid.ColumnSpan"
                         Value="3" />
-            </DataTrigger>
+            </MultiDataTrigger>
             <DataTrigger Binding="{Binding Path=(local:ScrollViewerHelper.ScrollBarPosition), RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Mode=OneWay}"
                          Value="HorizontalInside">
                 <Setter TargetName="PART_ScrollContentPresenter"

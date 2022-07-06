@@ -15,6 +15,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon"
                    Margin="0,0,5,0" />
     </DataTemplate>
@@ -23,6 +24,7 @@
         <TextBlock Text="&#xe92e;"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
+                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontFamily="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
@@ -109,6 +111,13 @@
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"

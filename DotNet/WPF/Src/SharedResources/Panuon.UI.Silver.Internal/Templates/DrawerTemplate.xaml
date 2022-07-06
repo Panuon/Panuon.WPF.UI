@@ -12,20 +12,21 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DrawerTemplate}"
                      TargetType="local:Drawer">
         <Border ClipToBounds="True">
-            <local:ContentControlX x:Name="CcMain"
-                               Background="{TemplateBinding Background}"
-                               BorderBrush="{TemplateBinding BorderBrush}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               Foreground="{TemplateBinding Foreground}"
-                               Padding="{TemplateBinding Padding}"
-                               CornerRadius="{TemplateBinding CornerRadius}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                               Content="{TemplateBinding Content}"
-                               ContentTemplate="{TemplateBinding ContentTemplate}"
-                               ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                               ContentStringFormat="{TemplateBinding ContentStringFormat}" />
+            <local:ContentControlX x:Name="PART_ContentControl"
+                                   Background="{TemplateBinding Background}"
+                                   BorderBrush="{TemplateBinding BorderBrush}"
+                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Padding="{TemplateBinding Padding}"
+                                   CornerRadius="{TemplateBinding CornerRadius}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   Content="{TemplateBinding Content}"
+                                   ContentTemplate="{TemplateBinding ContentTemplate}"
+                                   ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                   ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                   RenderTransformOrigin="0.5,0.5" />
         </Border>
     </ControlTemplate>
 </ResourceDictionary>

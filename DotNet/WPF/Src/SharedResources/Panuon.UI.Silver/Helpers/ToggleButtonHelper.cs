@@ -8,8 +8,8 @@ namespace Panuon.UI.Silver
     public static class ToggleButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinnerStyle { get; } =
-            new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinnerStyle));
+        public static ComponentResourceKey PendingSpinStyle { get; } =
+            new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinStyle));
         #endregion
 
         #region Properties
@@ -89,19 +89,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsPending", typeof(bool), typeof(ToggleButtonHelper));
         #endregion
 
-        #region PendingSpinnerStyle
-        public static Style GetPendingSpinnerStyle(ToggleButton toggleButton)
+        #region PendingSpinStyle
+        public static Style GetPendingSpinStyle(ToggleButton toggleButton)
         {
-            return (Style)toggleButton.GetValue(PendingSpinnerStyleProperty);
+            return (Style)toggleButton.GetValue(PendingSpinStyleProperty);
         }
 
-        public static void SetPendingSpinnerStyle(ToggleButton toggleButton, Style value)
+        public static void SetPendingSpinStyle(ToggleButton toggleButton, Style value)
         {
-            toggleButton.SetValue(PendingSpinnerStyleProperty, value);
+            toggleButton.SetValue(PendingSpinStyleProperty, value);
         }
 
-        public static readonly DependencyProperty PendingSpinnerStyleProperty =
-            DependencyProperty.RegisterAttached("PendingSpinnerStyle", typeof(Style), typeof(ToggleButtonHelper));
+        public static readonly DependencyProperty PendingSpinStyleProperty =
+            DependencyProperty.RegisterAttached("PendingSpinStyle", typeof(Style), typeof(ToggleButtonHelper));
         #endregion
 
         #region ShadowColor

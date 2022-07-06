@@ -28,23 +28,27 @@
         <Setter Property="local:RepeatButtonHelper.CornerRadius"
                 Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="FontFamily"
-                Value="/Panuon.UI.Silver;component/Resources/Fonts/#PanuonIcon" />
+                Value="/Panuon.UI.Silver;component/Resources/#PanuonIcon" />
         <Style.Triggers>
             <Trigger Property="Tag"
-                     Value="Up">
+                     Value="UpLeft">
                 <Setter Property="Content"
-                        Value="&#xe900;" />
-                <Setter Property="Command"
-                        Value="{x:Static local:Pagination.PageUpCommand}" />
+                        Value="&#xe901;" />
             </Trigger>
             <Trigger Property="Tag"
-                     Value="Down">
-                <Setter Property="Margin"
-                        Value="5,0,0,0" />
+                     Value="UpTop">
                 <Setter Property="Content"
                         Value="&#xe902;" />
-                <Setter Property="Command"
-                        Value="{x:Static local:Pagination.PageDownCommand}" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="DownRight">
+                <Setter Property="Content"
+                        Value="&#xe903;" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="DownBottom">
+                <Setter Property="Content"
+                        Value="&#xe904;" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -52,7 +56,7 @@
     <Style x:Key="{ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
            TargetType="TextBlock">
         <Setter Property="Margin"
-                Value="7,0,2,0" />
+                Value="2,0,2,0" />
         <Setter Property="VerticalAlignment"
                 Value="Center" />
         <Setter Property="HorizontalAlignment"
@@ -71,7 +75,7 @@
         <Setter Property="ItemsBorderThickness"
                 Value="0" />
         <Setter Property="ItemsMargin"
-                Value="5,0,0,0" />
+                Value="5,0" />
         <Setter Property="ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHeight"
@@ -80,14 +84,26 @@
                 Value="{Binding ItemsHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHoverBackground"
                 Value="{Binding ItemsBackground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="ItemsCheckedBackground"
+        <Setter Property="ItemsSelectedBackground"
                 Value="{Binding ItemsBackground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="PageTurnButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
         <Setter Property="OmittingTextBlockStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.PaginationTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.PaginationHorizontalTemplate}}" />
+            </Trigger>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="ItemsMargin"
+                        Value="0,5" />
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.PaginationVerticalTemplate}}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
 

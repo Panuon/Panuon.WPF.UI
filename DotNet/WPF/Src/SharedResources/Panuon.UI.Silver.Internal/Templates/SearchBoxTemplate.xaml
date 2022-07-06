@@ -12,43 +12,225 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SearchBoxTemplate}"
                      TargetType="local:SearchBox">
         <Grid>
-            <local:DropDown x:Name="PART_DropDown"
-                            StaysOpen="{TemplateBinding StaysOnOpen}"
-                            local:ShadowHelper.BlurRadius="{Binding Path=(local:ShadowHelper.BlurRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:ShadowHelper.Direction="{Binding Path=(local:ShadowHelper.Direction), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:ShadowHelper.Opacity="{Binding Path=(local:ShadowHelper.Opacity), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:ShadowHelper.RenderingBias="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:ShadowHelper.ShadowDepth="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.ClipDockSideShadow="{Binding Path=(local:DropDownHelper.ClipDockSideShadow), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.HorizontalOffset="{Binding Path=(local:DropDownHelper.HorizontalOffset), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.ShadowColor="{Binding Path=(local:DropDownHelper.ShadowColor), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.VerticalOffset="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            local:DropDownHelper.Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <local:DropDown.Content>
-                    <TextBox x:Name="PART_SearchTextBox"
-                             Style="{TemplateBinding TextBoxStyle}" />
-                </local:DropDown.Content>
-                <Decorator x:Name="PART_ListBoxContainer" />
-            </local:DropDown>
+            <local:ContentControlX x:Name="CcMain"
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                   CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   Icon="{Binding Icon, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl x:Name="CcWatermark"
+                                    Visibility="Collapsed"
+                                    Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                    Content="{Binding Watermark, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                    Padding="2,0,0,0"
+                                    Margin="{TemplateBinding Padding}"
+                                    Opacity="0.6"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    <TextBox x:Name="PART_EditableTextBox"
+                             Focusable="True"
+                             Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Padding="{TemplateBinding Padding}"
+                             CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                             Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="TextBox">
+                                            <ScrollViewer x:Name="PART_ContentHost"
+                                                          Focusable="False" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <Button x:Name="BtnClear"
+                            Grid.Column="1"
+                            Visibility="Collapsed"
+                            Style="{Binding ClearButtonStyle, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                            Command="{Binding ClearCommand, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:SearchBox}}" />
+                </Grid>
+            </local:ContentControlX>
+            <local:PopupX x:Name="PART_Popup"
+                          Focusable="False"
+                          AllowsTransparency="True"
+                          IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=TwoWay}"
+                          PlacementTarget="{Binding ElementName=CcMain}"
+                          Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                          PopupAnimation="Fade"
+                          StaysOpen="True">
+                <local:PopupX.HorizontalOffset>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.HorizontalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_Popup"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.HorizontalOffset>
+                <local:PopupX.VerticalOffset>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.VerticalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_Popup"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.VerticalOffset>
+                <Grid x:Name="GrdDropDown"
+                      Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                      Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                      MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                      MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                      MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                      MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}">
+                    <Grid.Margin>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}}">
+                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                     RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualPlacement"
+                                     ElementName="PART_Popup"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                     RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Grid.Margin>
+                    <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                           Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:SearchBox},Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}">
+                        <local:ContentControlX.Effect>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <Binding Path="(local:DropDownHelper.ShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:ContentControlX.Effect>
+                        <ScrollViewer x:Name="PART_ScrollViewer"
+                                      Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource AncestorType=local:SearchBox},Mode=OneWay}">
+                            <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                        </ScrollViewer>
+                    </local:ContentControlX>
+                </Grid>
+            </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding IsFocused, ElementName=PART_SearchTextBox}"
-                         Value="True">
-                <Setter TargetName="PART_DropDown"
-                        Property="StaysOpen"
-                        Value="True" />
+            <Trigger  Property="ClearButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <DataTrigger  Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                          Value="True">
+                <Setter TargetName="CcWatermark"
+                        Property="Visibility"
+                        Value="Visible" />
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="true" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

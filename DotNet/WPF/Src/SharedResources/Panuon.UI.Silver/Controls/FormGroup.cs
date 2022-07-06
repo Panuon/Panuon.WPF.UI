@@ -59,15 +59,15 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("IsPending", typeof(bool), typeof(FormGroup));
         #endregion
 
-        #region PendingSpinnerStyle
-        public Style PendingSpinnerStyle
+        #region PendingSpinStyle
+        public Style PendingSpinStyle
         {
-            get { return (Style)GetValue(PendingSpinnerStyleProperty); }
-            set { SetValue(PendingSpinnerStyleProperty, value); }
+            get { return (Style)GetValue(PendingSpinStyleProperty); }
+            set { SetValue(PendingSpinStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty PendingSpinnerStyleProperty =
-            DependencyProperty.Register("PendingSpinnerStyle", typeof(Style), typeof(FormGroup));
+        public static readonly DependencyProperty PendingSpinStyleProperty =
+            DependencyProperty.Register("PendingSpinStyle", typeof(Style), typeof(FormGroup));
         #endregion
 
         #region HeaderWidth

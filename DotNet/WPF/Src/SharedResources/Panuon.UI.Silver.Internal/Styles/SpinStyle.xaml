@@ -6,10 +6,10 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/InternalSpinnerTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/InternalSpinTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type local:Spinner}">
+    <Style TargetType="{x:Type local:Spin}">
         <Setter Property="IsSpinning"
                 Value="True" />
         <Setter Property="GlyphBrush"
@@ -19,22 +19,22 @@
         <Setter Property="GlyphCornerRadius"
                 Value="0" />
         <Style.Triggers>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Wave">
                 <Setter Property="GlyphSize"
                         Value="{Binding ActualWidth,RelativeSource={RelativeSource Self},Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=7,Mode=OneWay}" />
             </Trigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Ring">
                 <Setter Property="GlyphSize"
                         Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=15, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </Trigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Ring2">
                 <Setter Property="GlyphSize"
                         Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=15, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
             </Trigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Classic">
                 <Setter Property="GlyphSize"
                         Value="{Binding ActualWidth,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=10, RelativeSource={RelativeSource Self}, Mode=OneWay}" />

@@ -9,21 +9,21 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinnerStandardTemplate}"
-                     TargetType="i:InternalSpinner">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinStandardTemplate}"
+                     TargetType="i:InternalSpin">
         <ControlTemplate.Resources>
             <Style x:Key="RectangleStyle"
                    TargetType="{x:Type Rectangle}">
                 <Setter Property="Width"
-                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Height"
-                        Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=4, Mode=OneWay}" />
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=4, Mode=OneWay}" />
                 <Setter Property="RadiusX"
-                        Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="RadiusY"
-                        Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Fill"
-                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Opacity"
                         Value="0" />
                 <Setter Property="VerticalAlignment"
@@ -240,19 +240,19 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinnerWaveTemplate}"
-                     TargetType="{x:Type i:InternalSpinner}">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinWaveTemplate}"
+                     TargetType="{x:Type i:InternalSpin}">
         <ControlTemplate.Resources>
             <Style x:Key="RectangleStyle"
                    TargetType="{x:Type Rectangle}">
                 <Setter Property="Width"
-                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
+                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
                 <Setter Property="RadiusX"
-                        Value="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
+                        Value="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
                 <Setter Property="RadiusY"
-                        Value="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
+                        Value="{Binding CornerRadius,RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
                 <Setter Property="Fill"
-                        Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
+                        Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
                 <Setter Property="RenderTransformOrigin"
@@ -370,13 +370,13 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinnerRingTemplate}"
-                     TargetType="{x:Type i:InternalSpinner}">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinRingTemplate}"
+                     TargetType="{x:Type i:InternalSpin}">
         <Grid>
-            <Ellipse Stroke="{Binding Background, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
-                     StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
-            <Path Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
-                  StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
+            <Ellipse Stroke="{Binding Background, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
+                     StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
+            <Path Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
+                  StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
                   RenderTransformOrigin="0.5,0.5">
                 <Path.RenderTransform>
                     <RotateTransform x:Name="Rotate"
@@ -385,13 +385,13 @@
                 <Path.Data>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ArcConverter}}">
                         <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="Percent"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="Thickness"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                     </MultiBinding>
                 </Path.Data>
             </Path>
@@ -423,13 +423,13 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinnerRing2Template}"
-                     TargetType="{x:Type i:InternalSpinner}">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinRing2Template}"
+                     TargetType="{x:Type i:InternalSpin}">
         <Grid>
-            <Ellipse Stroke="{Binding Background, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
-                     StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}" />
-            <Path Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
-                  StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner},Mode=OneWay}"
+            <Ellipse Stroke="{Binding Background, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
+                     StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}" />
+            <Path Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
+                  StrokeThickness="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin},Mode=OneWay}"
                   RenderTransformOrigin="0.5,0.5">
                 <Path.RenderTransform>
                     <RotateTransform x:Name="Rotate"
@@ -438,13 +438,13 @@
                 <Path.Data>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ArcConverter}}">
                         <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="Percent"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="Thickness"
-                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}"></Binding>
+                                 RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                     </MultiBinding>
                 </Path.Data>
             </Path>
@@ -476,8 +476,8 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinnerClassicTemplate}"
-                     TargetType="{x:Type i:InternalSpinner}">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinClassicTemplate}"
+                     TargetType="{x:Type i:InternalSpin}">
         <ControlTemplate.Resources>
             <Style x:Key="EllipseStyle"
                    TargetType="Ellipse">
@@ -488,18 +488,18 @@
                 <Setter Property="HorizontalAlignment"
                         Value="Center" />
                 <Setter Property="Fill"
-                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Width"
-                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Height"
-                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpinner}, Mode=OneWay}" />
+                        Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="RenderTransformOrigin">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.InternalSpinnerClassicRenderTransformOriginConverter}}">
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.InternalSpinClassicRenderTransformOriginConverter}}">
                             <Binding Path="ActualHeight"
-                                     RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}" />
+                                     RelativeSource="{RelativeSource AncestorType=i:InternalSpin}" />
                             <Binding Path="Thickness"
-                                     RelativeSource="{RelativeSource AncestorType=i:InternalSpinner}" />
+                                     RelativeSource="{RelativeSource AncestorType=i:InternalSpin}" />
                         </MultiBinding>
                     </Setter.Value>
                 </Setter>

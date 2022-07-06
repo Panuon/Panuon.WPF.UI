@@ -1,4 +1,5 @@
 ﻿using Panuon.UI.Silver.Internal;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -8,6 +9,25 @@ namespace Panuon.UI.Silver
 {
     public class SliderHelper
     {
+        #region Events
+
+        #region GeneratingValueText
+        public static void AddGeneratingValueTextHandler(UIElement element, GeneratingValueTextRoutedEventHandler eventHandler)
+        {
+            element.AddHandler(GeneratingValueTextEvent, eventHandler);
+        }
+
+        public static void RemoveGeneratingValueTextHandler(UIElement element, GeneratingValueTextRoutedEventHandler eventHandler)
+        {
+            element.RemoveHandler(GeneratingValueTextEvent, eventHandler);
+        }
+
+        public static readonly RoutedEvent GeneratingValueTextEvent
+            = EventManager.RegisterRoutedEvent("GeneratingValueText", RoutingStrategy.Bubble, typeof(GeneratingValueTextRoutedEventHandler), typeof(SliderHelper));
+        #endregion
+
+        #endregion
+        
         #region ComponentResourceKeys
         public static ComponentResourceKey ThumbStyle { get; } =
             new ComponentResourceKey(typeof(SliderHelper), nameof(ThumbStyle));
@@ -195,6 +215,52 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ThumbStyle", typeof(Style), typeof(SliderHelper));
         #endregion
 
+        #region IsTextVisible
+        public static bool GetIsTextVisible(Slider slider)
+        {
+            return (bool)slider.GetValue(IsTextVisibleProperty);
+        }
+
+        public static void SetIsTextVisible(Slider slider, bool value)
+        {
+            slider.SetValue(IsTextVisibleProperty, value);
+        }
+
+        public static readonly DependencyProperty IsTextVisibleProperty =
+            DependencyProperty.RegisterAttached("IsTextVisible", typeof(bool), typeof(SliderHelper));
+        #endregion
+
+        #region TextStringFormat
+        public static string GetTextStringFormat(Slider slider)
+        {
+            return (string)slider.GetValue(TextStringFormatProperty);
+        }
+
+        public static void SetTextStringFormat(Slider slider, string value)
+        {
+            slider.SetValue(TextStringFormatProperty, value);
+        }
+
+        public static readonly DependencyProperty TextStringFormatProperty =
+            DependencyProperty.RegisterAttached("TextStringFormat", typeof(string), typeof(SliderHelper), new PropertyMetadata("{0:N2}", OnTextStringFormatChanged));
+
+        #endregion
+
+        #region TextSpacing
+        public static double GetTextSpacing(Slider slider)
+        {
+            return (double)slider.GetValue(TextSpacingProperty);
+        }
+
+        public static void SetTextSpacing(Slider slider, double value)
+        {
+            slider.SetValue(TextSpacingProperty, value);
+        }
+
+        public static readonly DependencyProperty TextSpacingProperty =
+            DependencyProperty.RegisterAttached("TextSpacing", typeof(double), typeof(SliderHelper));
+        #endregion
+
         #endregion
 
         #region Internal Properties
@@ -213,6 +279,69 @@ namespace Panuon.UI.Silver
         internal static readonly DependencyProperty ShadowColorProperty =
             VisualStateHelper.ShadowColorProperty.AddOwner(typeof(SliderHelper));
         #endregion
+
+        #region Hook
+        internal static bool GetHook(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HookProperty);
+        }
+
+        internal static void SetHook(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HookProperty, value);
+        }
+
+        internal static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(SliderHelper), new PropertyMetadata(OnHookChanged));
+        #endregion
+        
+        #region Text
+        internal static string GetText(DependencyObject obj)
+        {
+            return (string)obj.GetValue(TextProperty);
+        }
+
+        internal static void SetText(DependencyObject obj, string value)
+        {
+            obj.SetValue(TextProperty, value);
+        }
+
+        internal static readonly DependencyProperty TextProperty =
+            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(SliderHelper));
+        #endregion
+
+        #endregion
+
+        #region Event Handlers
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var slider = (Slider)d;
+            slider.ValueChanged -= Slider_ValueChanged;
+            slider.ValueChanged += Slider_ValueChanged;
+            Slider_ValueChanged(slider, new RoutedPropertyChangedEventArgs<double>(slider.Minimum, slider.Value));
+        }
+        
+        private static void OnTextStringFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var slider = (Slider)d;
+            UpdateText(slider);
+        }
+
+        private static void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var slider = sender as Slider;
+            UpdateText(slider);
+        }
+
+        private static void UpdateText(Slider slider)
+        {
+            var stringFormat = GetTextStringFormat(slider);
+            var value = slider.Value;
+            var text = string.IsNullOrEmpty(stringFormat) ? value.ToString() : string.Format(stringFormat, value);
+            var args = new GeneratingValueTextRoutedEventArgs(GeneratingValueTextEvent, value, text);
+            slider.RaiseEvent(args);
+            SetText(slider, args.Text);
+        }
 
         #endregion
     }

@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstracts\NotifyPropertyChangedBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstracts\ValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayRoutedCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand`.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangingEventHandler.cs" />
@@ -31,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\SearchTextChangedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DateTimeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Miscellaneous\SharedResourceDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DelayAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ObservableCollectionX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Samples"
              xmlns:pu="clr-namespace:Panuon.UI.Silver;assembly=Panuon.UI.Silver"
+             xmlns:puconfig="clr-namespace:Panuon.UI.Silver.Configurations;assembly=Panuon.UI.Silver"
              StartupUri="Views/MainView.xaml"
              ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-
                     <pu:MessageBoxXSettings x:Key="messageSetting">
                         <pu:MessageBoxXSettings.WindowXStyle>
                             <Style TargetType="pu:WindowX"
@@ -55,15 +55,15 @@
                     </pu:NoticeBoxSettings>
 
                     <pu:PendingBoxSettings x:Key="pendingSetting">
-                        <pu:PendingBoxSettings.SpinnerStyle>
-                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=SpinnerStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
-                                   TargetType="pu:Spinner">
-                                <Setter Property="SpinnerStyle"
+                        <pu:PendingBoxSettings.SpinStyle>
+                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=SpinStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
+                                   TargetType="pu:Spin">
+                                <Setter Property="SpinStyle"
                                         Value="Ring2" />
                                 <Setter Property="GlyphBrush"
                                         Value="#6CBCEA" />
                             </Style>
-                        </pu:PendingBoxSettings.SpinnerStyle>
+                        </pu:PendingBoxSettings.SpinStyle>
                         <pu:PendingBoxSettings.CancelButtonStyle>
                             <!--Attention : CancelButtonStyle in PendingBox does not support Helpers in PanuonUI-->
                             <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
@@ -82,6 +82,14 @@
                             </Style>
                         </pu:PendingBoxSettings.CancelButtonStyle>
                     </pu:PendingBoxSettings>
+
+                    <puconfig:NoticeBoxSetting x:Key="CustomSetting1">
+                    </puconfig:NoticeBoxSetting>
+
+                    <puconfig:NoticeBoxSetting x:Key="CustomSetting2"
+                                               AnimationEase="CircleInOut"
+                                               AnimationDuration="0:0:2">
+                    </puconfig:NoticeBoxSetting>
 
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Control.xaml" />

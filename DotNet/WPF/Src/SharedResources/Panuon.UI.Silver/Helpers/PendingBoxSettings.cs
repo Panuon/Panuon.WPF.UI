@@ -71,16 +71,30 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region SpinnerStyle
-        public Style SpinnerStyle
+        #region CreateOnNewThread
+        public bool CreateOnNewThread
         {
             get
             {
-                return Setting.SpinnerStyle;
+                return Setting.CreateOnNewThread;
             }
             set
             {
-                Setting.SpinnerStyle = value;
+                Setting.CreateOnNewThread = value;
+            }
+        }
+        #endregion
+
+        #region SpinStyle
+        public Style SpinStyle
+        {
+            get
+            {
+                return Setting.SpinStyle;
+            }
+            set
+            {
+                Setting.SpinStyle = value;
             }
         }
         #endregion

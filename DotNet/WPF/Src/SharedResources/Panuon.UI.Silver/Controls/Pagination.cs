@@ -11,7 +11,7 @@ using System.Windows.Media;
 namespace Panuon.UI.Silver
 {
     public class Pagination 
-        : ItemsControl
+        : Control
     {
         #region Fields
         private object _pageListLock = new object();
@@ -36,9 +36,9 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Commands
-        public static readonly RoutedCommand PageUpCommand = new RoutedCommand("PageUp", typeof(ScrollBar));
+        public static readonly RoutedCommand PageUpCommand = new RoutedCommand("PageUp", typeof(Pagination));
 
-        public static readonly RoutedCommand PageDownCommand = new RoutedCommand("PageDown", typeof(ScrollBar));
+        public static readonly RoutedCommand PageDownCommand = new RoutedCommand("PageDown", typeof(Pagination));
         #endregion
 
         #region Events
@@ -65,6 +65,17 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Properties
+
+        #region Orientation
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(Pagination));
+        #endregion
 
         #region MinPage
         public int MinPage
@@ -113,6 +124,17 @@ namespace Panuon.UI.Silver
 
         public static readonly DependencyProperty ItemContainerStyleProperty =
             DependencyProperty.RegisterAttached("ItemContainerStyle", typeof(Style), typeof(Pagination));
+        #endregion
+
+        #region PageTurnButtonVisibility
+        public Visibility PageTurnButtonVisibility
+        {
+            get { return (Visibility)GetValue(PageTurnButtonVisibilityProperty); }
+            set { SetValue(PageTurnButtonVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty PageTurnButtonVisibilityProperty =
+            DependencyProperty.Register("PageTurnButtonVisibility", typeof(Visibility), typeof(Pagination), new PropertyMetadata(Visibility.Visible));
         #endregion
 
         #region PageTurnButtonStyle
@@ -300,60 +322,60 @@ namespace Panuon.UI.Silver
             DependencyProperty.Register("ItemsHoverShadowColor", typeof(Color?), typeof(Pagination));
         #endregion
 
-        #region ItemsCheckedBackground
-        public Brush ItemsCheckedBackground
+        #region ItemsSelectedBackground
+        public Brush ItemsSelectedBackground
         {
-            get { return (Brush)GetValue(ItemsCheckedBackgroundProperty); }
-            set { SetValue(ItemsCheckedBackgroundProperty, value); }
+            get { return (Brush)GetValue(ItemsSelectedBackgroundProperty); }
+            set { SetValue(ItemsSelectedBackgroundProperty, value); }
         }
 
-        public static readonly DependencyProperty ItemsCheckedBackgroundProperty =
-            DependencyProperty.Register("ItemsCheckedBackground", typeof(Brush), typeof(Pagination));
+        public static readonly DependencyProperty ItemsSelectedBackgroundProperty =
+            DependencyProperty.Register("ItemsSelectedBackground", typeof(Brush), typeof(Pagination));
 
         #endregion
 
-        #region ItemsCheckedForeground
-        public Brush ItemsCheckedForeground
+        #region ItemsSelectedForeground
+        public Brush ItemsSelectedForeground
         {
-            get { return (Brush)GetValue(ItemsCheckedForegroundProperty); }
-            set { SetValue(ItemsCheckedForegroundProperty, value); }
+            get { return (Brush)GetValue(ItemsSelectedForegroundProperty); }
+            set { SetValue(ItemsSelectedForegroundProperty, value); }
         }
 
-        public static readonly DependencyProperty ItemsCheckedForegroundProperty =
-            DependencyProperty.Register("ItemsCheckedForeground", typeof(Brush), typeof(Pagination));
+        public static readonly DependencyProperty ItemsSelectedForegroundProperty =
+            DependencyProperty.Register("ItemsSelectedForeground", typeof(Brush), typeof(Pagination));
         #endregion
 
-        #region ItemsCheckedBorderBrush
-        public Brush ItemsCheckedBorderBrush
+        #region ItemsSelectedBorderBrush
+        public Brush ItemsSelectedBorderBrush
         {
-            get { return (Brush)GetValue(ItemsCheckedBorderBrushProperty); }
-            set { SetValue(ItemsCheckedBorderBrushProperty, value); }
+            get { return (Brush)GetValue(ItemsSelectedBorderBrushProperty); }
+            set { SetValue(ItemsSelectedBorderBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty ItemsCheckedBorderBrushProperty =
-            DependencyProperty.Register("ItemsCheckedBorderBrush", typeof(Brush), typeof(Pagination));
+        public static readonly DependencyProperty ItemsSelectedBorderBrushProperty =
+            DependencyProperty.Register("ItemsSelectedBorderBrush", typeof(Brush), typeof(Pagination));
         #endregion
 
-        #region ItemsCheckedBorderThickness
-        public Thickness? ItemsCheckedBorderThickness
+        #region ItemsSelectedBorderThickness
+        public Thickness? ItemsSelectedBorderThickness
         {
-            get { return (Thickness?)GetValue(ItemsCheckedBorderThicknessProperty); }
-            set { SetValue(ItemsCheckedBorderThicknessProperty, value); }
+            get { return (Thickness?)GetValue(ItemsSelectedBorderThicknessProperty); }
+            set { SetValue(ItemsSelectedBorderThicknessProperty, value); }
         }
 
-        public static readonly DependencyProperty ItemsCheckedBorderThicknessProperty =
-            DependencyProperty.Register("ItemsCheckedBorderThickness", typeof(Thickness?), typeof(Pagination));
+        public static readonly DependencyProperty ItemsSelectedBorderThicknessProperty =
+            DependencyProperty.Register("ItemsSelectedBorderThickness", typeof(Thickness?), typeof(Pagination));
         #endregion
 
-        #region ItemsCheckedShadowColor
-        public Color? ItemsCheckedShadowColor
+        #region ItemsSelectedShadowColor
+        public Color? ItemsSelectedShadowColor
         {
-            get { return (Color?)GetValue(ItemsCheckedShadowColorProperty); }
-            set { SetValue(ItemsCheckedShadowColorProperty, value); }
+            get { return (Color?)GetValue(ItemsSelectedShadowColorProperty); }
+            set { SetValue(ItemsSelectedShadowColorProperty, value); }
         }
 
-        public static readonly DependencyProperty ItemsCheckedShadowColorProperty =
-            DependencyProperty.Register("ItemsCheckedShadowColor", typeof(Color?), typeof(Pagination));
+        public static readonly DependencyProperty ItemsSelectedShadowColorProperty =
+            DependencyProperty.Register("ItemsSelectedShadowColor", typeof(Color?), typeof(Pagination));
         #endregion
 
         #endregion
@@ -363,6 +385,7 @@ namespace Panuon.UI.Silver
         {
             base.OnInitialized(e);
             OnEffectivePageValueChanged();
+            OnCurrentPageChanged(CurrentPage, 1);
         }
         #endregion
 
@@ -474,7 +497,7 @@ namespace Panuon.UI.Silver
             {
                 if (PageList == null)
                 {
-                    PageList = new ObservableCollection<int?>();
+                    SetCurrentValue(PageListProperty, new ObservableCollection<int?>());
                 }
                 else
                 {
@@ -533,7 +556,11 @@ namespace Panuon.UI.Silver
 
         private void OnCurrentPageChanged(int oldPage, int newPage)
         {
-
+            if (!IsInitialized)
+            {
+                return;
+            }
+            
             lock (_pageListLock)
             {
                 var index = 0;

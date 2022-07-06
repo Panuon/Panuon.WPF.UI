@@ -8,8 +8,8 @@ namespace Panuon.UI.Silver
     public static class RepeatButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinnerStyle { get; } =
-            new ComponentResourceKey(typeof(RepeatButtonHelper), nameof(PendingSpinnerStyle));
+        public static ComponentResourceKey PendingSpinStyle { get; } =
+            new ComponentResourceKey(typeof(RepeatButtonHelper), nameof(PendingSpinStyle));
         #endregion
 
         #region Properties
@@ -74,19 +74,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsPending", typeof(bool), typeof(RepeatButtonHelper));
         #endregion
 
-        #region PendingSpinnerStyle
-        public static Style GetPendingSpinnerStyle(RepeatButton repeatButton)
+        #region PendingSpinStyle
+        public static Style GetPendingSpinStyle(RepeatButton repeatButton)
         {
-            return (Style)repeatButton.GetValue(PendingSpinnerStyleProperty);
+            return (Style)repeatButton.GetValue(PendingSpinStyleProperty);
         }
 
-        public static void SetPendingSpinnerStyle(RepeatButton repeatButton, Style value)
+        public static void SetPendingSpinStyle(RepeatButton repeatButton, Style value)
         {
-            repeatButton.SetValue(PendingSpinnerStyleProperty, value);
+            repeatButton.SetValue(PendingSpinStyleProperty, value);
         }
 
-        public static readonly DependencyProperty PendingSpinnerStyleProperty =
-            DependencyProperty.RegisterAttached("PendingSpinnerStyle", typeof(Style), typeof(RepeatButtonHelper));
+        public static readonly DependencyProperty PendingSpinStyleProperty =
+            DependencyProperty.RegisterAttached("PendingSpinStyle", typeof(Style), typeof(RepeatButtonHelper));
         #endregion
 
         #region ShadowColor
@@ -116,7 +116,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            DependencyProperty.RegisterAttached("ClickEffect", typeof(ClickEffect), typeof(RepeatButtonHelper));
+            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(RepeatButtonHelper));
         #endregion
 
         #region HoverBackground

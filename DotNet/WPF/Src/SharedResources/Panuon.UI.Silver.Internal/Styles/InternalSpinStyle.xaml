@@ -6,33 +6,33 @@
                     xmlns:rs="clr-namespace:Panuon.UI.Silver.Resources"
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/InternalSpinnerTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/InternalSpinTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type i:InternalSpinner}">
+    <Style TargetType="{x:Type i:InternalSpin}">
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerStandardTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinStandardTemplate}}" />
         <Style.Triggers>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Wave">
                 <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerWaveTemplate}}" />
+                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinWaveTemplate}}" />
             </Trigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Ring">
                 <Setter Property="Percent"
                         Value="0.25" />
                 <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerRingTemplate}}" />
+                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinRingTemplate}}" />
             </Trigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Ring2">
                 <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerRing2Template}}" />
+                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinRing2Template}}" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="SpinnerStyle"
+                    <Condition Property="SpinStyle"
                                Value="Ring2" />
                     <Condition Property="IsSpinning"
                                Value="True" />
@@ -58,10 +58,10 @@
                     </BeginStoryboard>
                 </MultiTrigger.ExitActions>
             </MultiTrigger>
-            <Trigger Property="SpinnerStyle"
+            <Trigger Property="SpinStyle"
                      Value="Classic">
                 <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinnerClassicTemplate}}" />
+                        Value="{StaticResource {x:Static irs:TemplateKeys.InternalSpinClassicTemplate}}" />
             </Trigger>
         </Style.Triggers>
     </Style>

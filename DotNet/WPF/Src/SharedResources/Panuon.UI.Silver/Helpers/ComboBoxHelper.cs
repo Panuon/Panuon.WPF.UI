@@ -1014,12 +1014,7 @@ namespace Panuon.UI.Silver
 
             var type = e.NewValue?.GetType();
 
-            if (type == null)
-            {
-                comboBox.ItemsSource = null;
-                comboBox.SelectedItem = null;
-            }
-            else
+            if (type != null)
             {
                 var enumList = new ArrayList();
                 foreach (Enum item in Enum.GetValues(type))
@@ -1047,7 +1042,7 @@ namespace Panuon.UI.Silver
                 comboBox.ItemsSource = enumList;
                 comboBox.DisplayMemberPath = "Name";
                 comboBox.SelectedValuePath = "Enum";
-                comboBox.SelectedValue = comboBox.SelectedValue ?? e.NewValue;
+                comboBox.SetCurrentValue(ComboBox.SelectedValueProperty, comboBox.SelectedValue ?? e.NewValue);
             }
         }
 

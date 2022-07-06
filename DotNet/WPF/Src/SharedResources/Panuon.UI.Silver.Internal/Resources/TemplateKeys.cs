@@ -2,6 +2,7 @@
 {
     static class TemplateKeys
     {
+        public const string BadgeTemplate = nameof(BadgeTemplate);
         public const string ButtonTemplate = nameof(ButtonTemplate);
         public const string ButtonPendingTemplate = nameof(ButtonPendingTemplate);
         public const string BreadcrumbTemplate = nameof(BreadcrumbTemplate);
@@ -9,6 +10,7 @@
         public const string CalendarXTemplate = nameof(CalendarXTemplate);
         public const string CalendarXItemTemplate = nameof(CalendarXItemTemplate);
         public const string CardTemplate = nameof(CardTemplate);
+        public const string CarouselTemplate = nameof(CarouselTemplate);
         public const string CheckBoxTemplate = nameof(CheckBoxTemplate);
         public const string ColorPickerTemplate = nameof(ColorPickerTemplate);
         public const string ColorSelectorTemplate = nameof(ColorSelectorTemplate);
@@ -46,7 +48,8 @@
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
         public const string NoticeBoxItemTemplate = nameof(NoticeBoxItemTemplate);
-        public const string PaginationTemplate = nameof(PaginationTemplate);
+        public const string PaginationHorizontalTemplate = nameof(PaginationHorizontalTemplate);
+        public const string PaginationVerticalTemplate = nameof(PaginationVerticalTemplate);
         public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
         public const string PaginationItemOmittingTemplate = nameof(PaginationItemOmittingTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
@@ -56,16 +59,17 @@
         public const string RepeatButtonPendingTemplate = nameof(RepeatButtonPendingTemplate);
         public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);
         public const string SearchBoxTemplate = nameof(SearchBoxTemplate);
+        public const string SearchBoxItemTemplate = nameof(SearchBoxItemTemplate);
         public const string ScrollableControlTemplate = nameof(ScrollableControlTemplate);
         public const string ScrollBarTemplate = nameof(ScrollBarTemplate);
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
         public const string SliderHorizontalTemplate = nameof(SliderHorizontalTemplate);
         public const string SliderVerticalTemplate = nameof(SliderVerticalTemplate);
-        public const string InternalSpinnerStandardTemplate = nameof(InternalSpinnerStandardTemplate);
-        public const string InternalSpinnerWaveTemplate = nameof(InternalSpinnerWaveTemplate);
-        public const string InternalSpinnerRingTemplate = nameof(InternalSpinnerRingTemplate);
-        public const string InternalSpinnerRing2Template = nameof(InternalSpinnerRing2Template);
-        public const string InternalSpinnerClassicTemplate = nameof(InternalSpinnerClassicTemplate);
+        public const string InternalSpinStandardTemplate = nameof(InternalSpinStandardTemplate);
+        public const string InternalSpinWaveTemplate = nameof(InternalSpinWaveTemplate);
+        public const string InternalSpinRingTemplate = nameof(InternalSpinRingTemplate);
+        public const string InternalSpinRing2Template = nameof(InternalSpinRing2Template);
+        public const string InternalSpinClassicTemplate = nameof(InternalSpinClassicTemplate);
         public const string SwitchTemplate = nameof(SwitchTemplate);
         public const string StateControlTemplate = nameof(StateControlTemplate);
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);
@@ -90,6 +94,6 @@
         public const string WindowXWithoutCaptionTemplate = nameof(WindowXWithoutCaptionTemplate);
         public const string WindowXWithoutModalButtonsTemplate = nameof(WindowXWithoutModalButtonsTemplate);
         public const string WindowXWithoutCaptionAndModalButtonsTemplate = nameof(WindowXWithoutCaptionAndModalButtonsTemplate);
-
+        public const string ZoomViewerTemplate = nameof(ZoomViewerTemplate);
     }
 }

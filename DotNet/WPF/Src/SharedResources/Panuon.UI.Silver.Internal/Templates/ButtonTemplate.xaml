@@ -12,25 +12,26 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonPendingTemplate}"
                      TargetType="Button">
         <local:ContentControlX x:Name="CcMain"
-                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           IconPlacement="{Binding Path=(local:ButtonHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Padding="{TemplateBinding Padding}"
-                           CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                               i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               IconPlacement="{Binding Path=(local:ButtonHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Padding="{TemplateBinding Padding}"
+                               CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <local:Spinner x:Name="SprPending"
+                <local:Spin x:Name="SprPending"
                                IsSpinning="True"
-                               Style="{Binding Path=(local:ButtonHelper.PendingSpinnerStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Style="{Binding Path=(local:ButtonHelper.PendingSpinStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter Grid.Column="1"
@@ -77,69 +78,13 @@
                         Property="Foreground"
                         Value="{Binding Path=(local:ButtonHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="local:ButtonHelper.ClickEffect"
-                               Value="Sink" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="local:ButtonHelper.ClickEffect"
-                               Value="Shake" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="3,0,-3,0"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseIn" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="-3,0,3,0"
-                                                BeginTime="0:0:0.1"
-                                                Duration="0:0:0.1" />
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="0"
-                                                BeginTime="0:0:0.2"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseOut" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                BeginTime="0:0:0.3"
-                                                Duration="0:0:0" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
-            </MultiTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonTemplate}"
                      TargetType="Button">
         <local:ContentControlX x:Name="CcMain"
+                               i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderThickness="{TemplateBinding BorderThickness}"
@@ -192,63 +137,6 @@
                         Property="Foreground"
                         Value="{Binding Path=(local:ButtonHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="local:ButtonHelper.ClickEffect"
-                               Value="Sink" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="local:ButtonHelper.ClickEffect"
-                               Value="Shake" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="3,0,-3,0"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseIn" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="-3,0,3,0"
-                                                BeginTime="0:0:0.1"
-                                                Duration="0:0:0.1" />
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="0"
-                                                BeginTime="0:0:0.2"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseOut" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-                <MultiTrigger.ExitActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                BeginTime="0:0:0.3"
-                                                Duration="0:0:0" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.ExitActions>
-            </MultiTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

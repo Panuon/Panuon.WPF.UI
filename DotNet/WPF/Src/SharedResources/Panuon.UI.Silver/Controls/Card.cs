@@ -5,7 +5,8 @@ using System.Windows.Media;
 
 namespace Panuon.UI.Silver
 {
-    public class Card : ButtonBase
+    public class Card 
+        : ButtonBase
     {
         #region Ctor
         static Card()
@@ -82,6 +83,50 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(Card));
         #endregion
 
+        #region ClickBackground
+        public Brush ClickBackground
+        {
+            get { return (Brush)GetValue(ClickBackgroundProperty); }
+            set { SetValue(ClickBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBackgroundProperty =
+            DependencyProperty.Register("ClickBackground", typeof(Brush), typeof(Card));
+        #endregion
+
+        #region ClickForeground
+        public Brush ClickForeground
+        {
+            get { return (Brush)GetValue(ClickForegroundProperty); }
+            set { SetValue(ClickForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickForegroundProperty =
+            DependencyProperty.Register("ClickForeground", typeof(Brush), typeof(Card));
+        #endregion
+
+        #region ClickBorderBrush
+        public Brush ClickBorderBrush
+        {
+            get { return (Brush)GetValue(ClickBorderBrushProperty); }
+            set { SetValue(ClickBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBorderBrushProperty =
+            DependencyProperty.Register("ClickBorderBrush", typeof(Brush), typeof(Card));
+        #endregion
+
+        #region ClickBorderThickness
+        public Thickness? ClickBorderThickness
+        {
+            get { return (Thickness?)GetValue(ClickBorderThicknessProperty); }
+            set { SetValue(ClickBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.Register("ClickBorderThickness", typeof(Thickness?), typeof(Card));
+        #endregion
+
         #region ClickEffect
         public ClickEffect ClickEffect
         {
@@ -90,7 +135,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            DependencyProperty.Register("ClickEffect", typeof(ClickEffect), typeof(Card));
+            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(Card));
         #endregion
 
         #endregion

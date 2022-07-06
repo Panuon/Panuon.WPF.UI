@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
-    class InternalSpinnerClassicRenderTransformOriginConverter : MultiValueConverterBase
+    class InternalSpinClassicRenderTransformOriginConverter : MultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

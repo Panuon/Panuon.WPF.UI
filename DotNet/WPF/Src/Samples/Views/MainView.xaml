@@ -29,7 +29,7 @@
                     ToolTip="Panuon IconFont Browser"
                     Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
                     Content="&#xe99d;"
-                    Click="BtnIconFont_Click"> 
+                    Click="BtnIconFont_Click">
             </Button>
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
@@ -39,7 +39,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <TextBlock Text="Samples"
                    FontSize="30" />
         <StackPanel Orientation="Horizontal"
@@ -51,11 +51,13 @@
             <Button Margin="10,0,0,0"
                     Content="NoticeBox"
                     Click="BtnTestNoticeBox_Click" />
-            <Button Margin="10,0,0,0"
+            <Button x:Name="BtnTestPendingBox"
+                    Margin="10,0,0,0"
                     Content="PendingBox"
                     Click="BtnTestPendingBox_Click" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
+                      Visibility="Collapsed"
                       Margin="0,15,0,0"
                       VerticalScrollBarVisibility="Disabled"
                       HorizontalScrollBarVisibility="Auto"
@@ -84,7 +86,7 @@
                                 Click="BtnExample_Click">
                             <Button.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Item 1"/>
+                                    <MenuItem Header="Item 1" />
                                     <MenuItem Header="Item 2" />
                                     <MenuItem Header="Item 3" />
                                 </ContextMenu>
@@ -116,6 +118,157 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <!--<pu:ZoomViewer Grid.Row="1"
+                       Width="500"
+                       Height="500"
+                       MinZoomLevel="1"
+                       MaxZoomLevel="15"
+                       ZoomLevel="1"
+                       ZoomLevelInterval="0.5"
+                       ZoomOnWheeling="Ctrl,Alt"
+                       MoveOnDragging="CtrlAndAlt"
+                       ZoomOrigin="{x:Null}"
+                       BorderBrush="Gray"
+                       BorderThickness="1">
+            <Image Stretch="Uniform"
+                   Source="C:\Users\mocheng\Pictures\Desktop\IMG_3822(20220409-205456).JPG"/>
+        </pu:ZoomViewer>-->
+        <!--<pu:Badge Grid.Row="1"
+                  Width="30"
+                  Height="30"
+                  WaveThickness="15"
+                  CornerRadius="15"
+                  BorderThickness="0"
+                  Foreground="White"
+                  Content="1"
+                  ClickEffect="Shake"
+                  IsWaving="True">
+            <pu:Badge.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#FF70D9"
+                                  Offset="0" />
+                    <GradientStop Color="#FF4E8C"
+                                  Offset="0.2" />
+                    <GradientStop Color="#FF70D9"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </pu:Badge.Background>
+            <pu:Badge.WaveBrush>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#FF70D9"
+                                  Offset="0" />
+                    <GradientStop Color="#FF4E8C"
+                                  Offset="0.2" />
+                    <GradientStop Color="#FF70D9"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </pu:Badge.WaveBrush>
+        </pu:Badge>-->
+
+        <!--<Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        Height="35">
+                <Button Content="-"
+                        Width="35"
+                        Command="{Binding PageUpCommand, ElementName=panel}"
+                        CommandParameter="{Binding ElementName=panel}" />
+                <Button Content="+"
+                        Width="35"
+                        Command="{Binding PageDownCommand, ElementName=panel}"
+                        CommandParameter="{Binding ElementName=panel}"/>
+            </StackPanel>
+            
+            <pu:Carousel x:Name="panel"
+                         Grid.Row="1"
+                         Width="500"
+                         Height="300"
+                         Animation="Flow,Fade"
+                         Orientation="Vertical"
+                         AnimationEase="CubicOut"
+                         TextBlock.Foreground="White"
+                         TextBlock.FontSize="40"
+                         TextBlock.TextAlignment="Center">
+                <pu:Carousel.IndicatorPaginationStyle>
+                    <Style TargetType="pu:Pagination"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type pu:Carousel}}}">
+                        <Setter Property="ItemsWidth"
+                                Value="NaN" />
+                        <Setter Property="ItemsHeight"
+                                Value="NaN" />
+                        <Setter Property="ItemsBackground"
+                                Value="Transparent" />
+                        <Setter Property="ItemsForeground"
+                                Value="#55FFFFFF" />
+                        <Setter Property="ItemsSelectedBackground"
+                                Value="{x:Null}" />
+                        <Setter Property="ItemsSelectedForeground"
+                                Value="#FFFFFF" />
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="pu:PaginationItem">
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <TextBlock Text="&#xe954;"
+                                                           FontFamily="{StaticResource PanuonIconFont}"
+                                                           FontSize="20"/>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </pu:Carousel.IndicatorPaginationStyle>
+                <Border Background="#1ABBEA">
+                    <TextBlock Text="Item 1"
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Border Background="#F6AC0C">
+                    <TextBlock Text="Item 2"
+                               VerticalAlignment="Center" />
+                </Border>
+                <Border Background="#FF5CAC">
+                    <TextBlock Text="Item 3"
+                               VerticalAlignment="Center" />
+                </Border>
+            </pu:Carousel>
+        </Grid>-->
+
+        <!--<pu:Drawer Grid.Row="1"
+                   IsOpen="True"
+                   Placement="Right"
+                   HorizontalAlignment="Right"
+                   Width="500"
+                   MinWidth="50"
+                   BorderBrush="Red"
+                   BorderThickness="1"
+                   Background="White"
+                   ShadowColor="Black">
+            <ToggleButton Content="OP"
+                          Width="50"
+                          Height="50"
+                          HorizontalAlignment="Left"
+                          IsChecked="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=pu:Drawer}, Mode=TwoWay}"/>
+        </pu:Drawer>-->
+        <StackPanel
+            Grid.Row="1">
+            <Button Content="Go1"
+                    Height="35"
+                    Click="Button_Click" />
+
+            <Button Content="Go2"
+                    Height="35"
+                    Click="Button_Click_1" />
+        </StackPanel>
         <TextBlock Grid.Row="2"
                    FontSize="14"
                    Foreground="Gray"
@@ -123,3 +276,6 @@
                    Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
     </Grid>
 </pu:WindowX>
+
+
+

@@ -72,6 +72,8 @@
                                   Margin="{TemplateBinding HeaderSeparatorMargin}"
                                   Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
                 <local:CarouselPanel Grid.Row="2"
+                                     Animation="Fade,Scale"
+                                     AnimationEase="CubicOut"
                                      CurrentIndex="{TemplateBinding CurrentPanel}">
                     <Grid>
                         <Grid.RowDefinitions>

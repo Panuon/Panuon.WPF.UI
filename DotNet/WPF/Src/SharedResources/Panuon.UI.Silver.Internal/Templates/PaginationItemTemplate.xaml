@@ -32,34 +32,34 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CheckedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding SelectedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="Background"
-                        Value="{Binding CheckedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CheckedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding SelectedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="BorderBrush"
-                        Value="{Binding CheckedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding SelectedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CheckedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding SelectedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
                         Property="Foreground"
-                        Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

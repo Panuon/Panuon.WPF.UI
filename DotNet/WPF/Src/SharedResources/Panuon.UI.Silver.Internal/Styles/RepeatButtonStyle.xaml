@@ -9,8 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Templates/RepeatButtonTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
-           TargetType="local:Spinner">
+    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
+           TargetType="local:Spin">
         <Setter Property="Margin"
                 Value="0,0,5,0" />
         <Setter Property="GlyphBrush"
@@ -39,8 +39,8 @@
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:RepeatButtonHelper.ClickBackground"
                 Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:RepeatButtonHelper.PendingSpinnerStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
+        <Setter Property="local:RepeatButtonHelper.PendingSpinStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="Background"

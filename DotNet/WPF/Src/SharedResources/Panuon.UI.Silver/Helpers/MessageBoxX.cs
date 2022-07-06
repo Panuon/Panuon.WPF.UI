@@ -10,6 +10,9 @@ namespace Panuon.UI.Silver
         public static ComponentResourceKey ButtonStyle { get; } =
             new ComponentResourceKey(typeof(MessageBoxX), nameof(ButtonStyle));
 
+        public static ComponentResourceKey ContentTemplate { get; } =
+           new ComponentResourceKey(typeof(MessageBoxX), nameof(ContentTemplate));
+        
         public static ComponentResourceKey WindowXStyle { get; } =
             new ComponentResourceKey(typeof(MessageBoxX), nameof(WindowXStyle));
         #endregion
@@ -377,6 +380,11 @@ namespace Panuon.UI.Silver
             , MessageBoxXSetting setting
             , int? countdown)
         {
+            if(defaultButton == DefaultButton.Unset
+                && countdown != null)
+            {
+                throw new System.Exception("MessageBoxX : When using the countdown parameter, the value of the defaultButton parameter cannot be Unset.");
+            }
             var window = new MessageBoxXWindow(message, caption, button, icon, defaultButton, owner, setting ?? MessageBoxXSettings.Setting, countdown);
             var dialogResult = window.ShowDialog();
             switch (dialogResult)

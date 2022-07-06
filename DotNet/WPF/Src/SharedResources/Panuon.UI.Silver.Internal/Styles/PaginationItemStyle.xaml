@@ -48,16 +48,16 @@
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="HoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="CheckedBackground"
-                Value="{Binding ItemsCheckedBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="CheckedForeground"
-                Value="{Binding ItemsCheckedForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="CheckedBorderBrush"
-                Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="CheckedBorderThickness"
-                Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
-        <Setter Property="CheckedShadowColor"
-                Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedBackground"
+                Value="{Binding ItemsSelectedBackground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedForeground"
+                Value="{Binding ItemsSelectedForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedBorderBrush"
+                Value="{Binding ItemsSelectedBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedBorderThickness"
+                Value="{Binding ItemsSelectedBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedShadowColor"
+                Value="{Binding ItemsSelectedShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.PaginationItemTemplate}}" />
         <Style.Triggers>

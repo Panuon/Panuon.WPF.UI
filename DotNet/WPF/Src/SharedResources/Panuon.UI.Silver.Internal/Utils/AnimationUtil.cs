@@ -12,7 +12,9 @@ namespace Panuon.UI.Silver.Internal.Utils
         #region Methods
 
         #region BeginBrushAnimationStoryboard
-        public static void BeginBrushAnimationStoryboard(DependencyObject obj, Dictionary<DependencyProperty, Brush> propertyValues, TimeSpan? duration = null)
+        public static void BeginBrushAnimationStoryboard(DependencyObject obj, 
+            Dictionary<DependencyProperty, Brush> propertyValues, 
+            TimeSpan? duration = null)
         {
             var storyboard = new Storyboard();
             foreach (var propertyValue in propertyValues)
@@ -33,7 +35,9 @@ namespace Panuon.UI.Silver.Internal.Utils
             storyboard.Begin();
         }
 
-        public static void BeginBrushAnimationStoryboard(DependencyObject obj, List<DependencyProperty> properties, TimeSpan? duration = null)
+        public static void BeginBrushAnimationStoryboard(DependencyObject obj,
+            List<DependencyProperty> properties,
+            TimeSpan? duration = null)
         {
             var storyboard = new Storyboard();
             foreach (var dp in properties)
@@ -51,9 +55,19 @@ namespace Panuon.UI.Silver.Internal.Utils
         #endregion
 
         #region BeginDoubleAnimationStoryboard
-        public static void BeginDoubleAnimationStoryboard(DependencyObject obj, Dictionary<DependencyProperty, double> propertyValues, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginDoubleAnimationStoryboard(DependencyObject obj, 
+            Dictionary<DependencyProperty, double> propertyValues, 
+            TimeSpan? duration = null, 
+            TimeSpan? beginTime = null, 
+            AnimationEase? ease = null, 
+            Action callback = null,
+            RepeatBehavior? repeatBehavior = null)
         {
             var storyboard = new Storyboard();
+            if(repeatBehavior != null)
+            {
+                storyboard.RepeatBehavior = (RepeatBehavior)repeatBehavior;
+            }
             foreach (var propertyValue in propertyValues)
             {
                 var anima = new DoubleAnimation()
@@ -81,7 +95,14 @@ namespace Panuon.UI.Silver.Internal.Utils
         #endregion
 
         #region BeginDoubleAnimation
-        public static void BeginDoubleAnimation(UIElement element, DependencyProperty property, double? from, double? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginDoubleAnimation(UIElement element,
+            DependencyProperty property, 
+            double? from, 
+            double? to,
+            TimeSpan? duration = null, 
+            TimeSpan? beginTime = null,
+            AnimationEase? ease = null, 
+            Action callback = null)
         {
             var anima = new DoubleAnimation()
             {
@@ -266,12 +287,6 @@ namespace Panuon.UI.Silver.Internal.Utils
                     return new ExponentialEase() { EasingMode = EasingMode.EaseOut };
                 case AnimationEase.ExponentialInOut:
                     return new ExponentialEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.PowerIn:
-                    return new PowerEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.PowerOut:
-                    return new PowerEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.PowerInOut:
-                    return new PowerEase() { EasingMode = EasingMode.EaseInOut };
                 case AnimationEase.QuadraticIn:
                     return new QuadraticEase() { EasingMode = EasingMode.EaseIn };
                 case AnimationEase.QuadraticOut:

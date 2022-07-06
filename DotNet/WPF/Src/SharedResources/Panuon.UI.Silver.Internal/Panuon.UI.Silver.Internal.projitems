@@ -13,19 +13,28 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalSpinner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalSpin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItemPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntDivideByConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleIsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntMinusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntMultiplyByConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMultiplyByMultiConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntPlusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GetEnumDescriptionConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLastItemInItemsControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsAllEqualConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderTextTopConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderTextLeftConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TransparentColorToBrushConverter.cs" />
@@ -76,7 +85,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NonnullToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ScrollableControlScrollButtonVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\SpinnerClassicRenderTransformOriginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SpinClassicRenderTransformOriginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TabPanelMaxHeightConverter.cs" />
@@ -89,6 +98,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToCollapseConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TrueToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\WindowXCaptionDataContextConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ZoomViewerViewboxScaleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupSizeDeterminedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupSizeDeterminedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventArgs.cs" />
@@ -107,6 +117,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\BrushUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\CursorUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DrawingContextUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\EnumUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\FrameworkElementUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GeometryUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
@@ -117,6 +128,22 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\CarouselStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\BadgeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SearchBoxItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ZoomViewerStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,7 +243,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\SpinnerStyle.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SpinStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -308,7 +335,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Styles\InternalSpinnerStyle.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Styles\InternalSpinStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -357,6 +384,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\WindowXStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\CarouselTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\SearchBoxItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -524,7 +559,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Templates\InternalSpinnerTemplate.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Templates\InternalSpinTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -585,6 +620,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\WindowXTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\BadgeTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\ZoomViewerTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -135,7 +135,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Padding"
-                Value="{Binding Path=(local:DataGridHelper.CellPadding), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+                Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="VerticalContentAlignment"
                 Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="HorizontalContentAlignment"
@@ -196,7 +196,7 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DataGridRowHeaderTemplate}}" />
         <Style.Triggers>
-            
+
         </Style.Triggers>
     </Style>
 
@@ -254,8 +254,6 @@
                 Value="Stretch" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPadding"
                 Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="local:DataGridHelper.CellPadding"
-                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderPadding), RelativeSource={RelativeSource Self}}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderBackground"
                 Value="#F8F8F8" />
         <Setter Property="local:DataGridHelper.ColumnHeaderHoverBackground"
@@ -301,9 +299,9 @@
         <Setter Property="RowHeaderWidth"
                 Value="8" />
         <Setter Property="VerticalGridLinesBrush"
-                Value="#F1F1F1" />
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HorizontalGridLinesBrush"
-                Value="#F1F1F1" />
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"

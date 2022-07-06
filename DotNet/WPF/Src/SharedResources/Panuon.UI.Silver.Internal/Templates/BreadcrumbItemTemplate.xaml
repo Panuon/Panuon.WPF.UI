@@ -17,6 +17,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <local:ContentControlX x:Name="CcMain"
+                                   i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                    BorderThickness="{TemplateBinding BorderThickness}"
@@ -74,53 +75,6 @@
                         Property="Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ClickEffect"
-                               Value="Sink" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ClickEffect"
-                               Value="Shake" />
-                    <Condition Property="IsPressed"
-                               Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="3,0,-3,0"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseIn" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="-3,0,3,0"
-                                                BeginTime="0:0:0.1"
-                                                Duration="0:0:0.1" />
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="0"
-                                                BeginTime="0:0:0.2"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseOut" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-            </MultiTrigger>
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsLastItemInItemsControlConverter}}">

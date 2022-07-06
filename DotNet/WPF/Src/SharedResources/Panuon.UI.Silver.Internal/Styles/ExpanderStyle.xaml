@@ -128,6 +128,8 @@
                 Value="Transparent" />
         <Setter Property="Background"
                 Value="White" />
+        <Setter Property="BorderBrush"
+                Value="#4E4E4E" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="VerticalContentAlignment"

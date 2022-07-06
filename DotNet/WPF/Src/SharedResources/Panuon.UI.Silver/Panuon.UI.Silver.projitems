@@ -27,7 +27,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\PendingBoxSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\IPendingHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\INoticeHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SearchBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
@@ -54,6 +57,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Switch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ThumbFence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\UIElementHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ZoomViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AnimationEase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CarouselAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ArrangeDirection.cs" />
@@ -63,7 +68,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ColorTextFormats.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ContentPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DateTimePickerMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\DecorationVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DrawerPlacement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\IndicatorPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\MessageBoxIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPlacement.cs" />
@@ -84,12 +91,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ClickEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\IconPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ItemsControlRibbonLineVisibility.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Enums\SpinnerStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\SpinStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\WheelScrollingDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TransformControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SeparatorX.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Spinner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Spin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\WindowX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ComboKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingValueTextRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingValueTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThumbHelper.cs" />

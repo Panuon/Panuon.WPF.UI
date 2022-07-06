@@ -19,6 +19,20 @@ namespace Panuon.UI.Silver
         #region Properties
 
         #region InverseButtonsSequence
+        public bool InteropOwnersMask
+        {
+            get
+            {
+                return Setting.InteropOwnersMask;
+            }
+            set
+            {
+                Setting.InteropOwnersMask = value;
+            }
+        }
+        #endregion
+
+        #region InverseButtonsSequence
         public bool InverseButtonsSequence
         {
             get

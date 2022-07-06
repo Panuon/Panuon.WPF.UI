@@ -7,6 +7,7 @@
 
     <icv:ArcConverter x:Key="{x:Static irs:ConverterKeys.ArcConverter}" />
     <icv:Arc2Converter x:Key="{x:Static irs:ConverterKeys.Arc2Converter}" />
+    <icv:BoolOrConverter x:Key="{x:Static rs:ConverterKeys.BoolOrConverter}" />
     <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />
     <icv:CheckBoxGlyphPathStrokeConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxGlyphPathStrokeConverter}" />
@@ -39,6 +40,11 @@
     <icv:FalseToHiddenConverter x:Key="{x:Static rs:ConverterKeys.FalseToHiddenConverter}" />
     <icv:FontSizeMinusConverter x:Key="{x:Static irs:ConverterKeys.FontSizeMinusConverter}" />
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
+    <icv:GetEnumDescriptionConverter x:Key="{x:Static rs:ConverterKeys.GetEnumDescriptionConverter}" />
+    <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
+    <icv:IntMinusConverter x:Key="{x:Static rs:ConverterKeys.IntMinusConverter}" />
+    <icv:IntMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.IntMultiplyByConverter}" />
+    <icv:IntPlusConverter x:Key="{x:Static rs:ConverterKeys.IntPlusConverter}" />
     <icv:IsAllEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllEqualConverter}" />
     <icv:IsEnumContainsInSpecificValueConverter x:Key="{x:Static irs:ConverterKeys.IsEnumContainsInSpecificValueConverter}" />
     <icv:IsItemSeparatorShallVisibleControlConverter x:Key="{x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}" />
@@ -59,7 +65,9 @@
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
     <icv:SliderBorderClipConverter x:Key="{x:Static irs:ConverterKeys.SliderBorderClipConverter}" />
-    <icv:InternalSpinnerClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.InternalSpinnerClassicRenderTransformOriginConverter}" />
+    <icv:SliderTextLeftConverter x:Key="{x:Static irs:ConverterKeys.SliderTextLeftConverter}" />
+    <icv:SliderTextTopConverter x:Key="{x:Static irs:ConverterKeys.SliderTextTopConverter}" />
+    <icv:InternalSpinClassicRenderTransformOriginConverter x:Key="{x:Static irs:ConverterKeys.InternalSpinClassicRenderTransformOriginConverter}" />
     <icv:StringNonnullAndNotEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}" />
     <icv:StringNonnullAndNotEmptyToHiddenConverter x:Key="{x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToHiddenConverter}" />
     <icv:StringNullOrEmptyToCollapseConverter x:Key="{x:Static rs:ConverterKeys.StringNullOrEmptyToCollapseConverter}" />
@@ -76,4 +84,5 @@
     <icv:TrueToFalseConverter x:Key="{x:Static rs:ConverterKeys.TrueToFalseConverter}" />
     <icv:TrueToHiddenConverter x:Key="{x:Static rs:ConverterKeys.TrueToHiddenConverter}" />
     <icv:WindowXCaptionDataContextConverter x:Key="{x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}" />
+    <icv:ZoomViewerViewboxScaleConverter x:Key="{x:Static irs:ConverterKeys.ZoomViewerViewboxScaleConverter}" />
 </ResourceDictionary>

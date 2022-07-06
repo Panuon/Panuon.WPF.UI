@@ -78,6 +78,8 @@ namespace Panuon.UI.Silver
             VisualStateHelper.ShadowColorProperty.AddOwner(typeof(Breadcrumb));
         #endregion
 
+        #region ItemsProperties
+        
         #region ItemsIcon
         public object ItemsIcon
         {
@@ -156,14 +158,14 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region ItemsBorderThickness
-        public Thickness? ItemsBorderThickness
+        public Thickness ItemsBorderThickness
         {
-            get { return (Thickness?)GetValue(ItemsBorderThicknessProperty); }
+            get { return (Thickness)GetValue(ItemsBorderThicknessProperty); }
             set { SetValue(ItemsBorderThicknessProperty, value); }
         }
 
         public static readonly DependencyProperty ItemsBorderThicknessProperty =
-            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness?), typeof(Breadcrumb));
+            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness), typeof(Breadcrumb));
         #endregion
 
         #region ItemsHoverBackground
@@ -286,7 +288,9 @@ namespace Panuon.UI.Silver
         public static readonly DependencyProperty ItemsSeparatorMarginProperty =
             DependencyProperty.Register("ItemsSeparatorMargin", typeof(Thickness), typeof(Breadcrumb));
         #endregion
-
+        
+        #endregion
+        
         #endregion
 
         #region Event Handlers

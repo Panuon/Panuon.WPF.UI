@@ -87,7 +87,8 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty PercentStringFormatProperty =
-            DependencyProperty.RegisterAttached("PercentStringFormat", typeof(string), typeof(ProgressBarHelper), new PropertyMetadata("{0:P0}"));
+            DependencyProperty.RegisterAttached("PercentStringFormat", typeof(string), typeof(ProgressBarHelper), new PropertyMetadata("{0:P0}", OnPercentStringFormatChanged));
+
         #endregion
 
         #region InvertedForeground
@@ -196,7 +197,7 @@ namespace Panuon.UI.Silver
         }
 
         internal static readonly DependencyProperty ValueProperty =
-            DependencyProperty.RegisterAttached("Value", typeof(double), typeof(ProgressBarHelper), new PropertyMetadata(OnValueChanged));
+            DependencyProperty.RegisterAttached("Value", typeof(double), typeof(ProgressBarHelper), new PropertyMetadata(0d, OnValueChanged, OnValueCoerceValue));
         #endregion
 
         #endregion
@@ -207,13 +208,38 @@ namespace Panuon.UI.Silver
             var progressBar = (ProgressBar)d;
             progressBar.ValueChanged -= ProgressBar_ValueChanged;
             progressBar.ValueChanged += ProgressBar_ValueChanged;
-            if(progressBar.Value != progressBar.Minimum)
+            ProgressBar_ValueChanged(progressBar, new RoutedPropertyChangedEventArgs<double>(progressBar.Minimum, progressBar.Value));
+        }
+
+        private static object OnValueCoerceValue(DependencyObject d, object baseValue)
+        {
+            var progressBar = (ProgressBar)d;
+            var value = (double)baseValue;
+            if (value < progressBar.Minimum)
             {
-                ProgressBar_ValueChanged(progressBar, new RoutedPropertyChangedEventArgs<double>(progressBar.Minimum, progressBar.Value));
+                return progressBar.Minimum;
             }
+            if (value > progressBar.Maximum)
+            {
+                return progressBar.Maximum;
+            }
+            return value;
         }
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var progressBar = (ProgressBar)d;
+            var stringFormat = GetPercentStringFormat(progressBar);
+            var value = GetValue(progressBar);
+            var percent = (value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
+            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : string.Format(stringFormat, percent);
+            var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
+            progressBar.RaiseEvent(args);
+            SetText(progressBar, args.Text);
+        }
+
+
+        private static void OnPercentStringFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var progressBar = (ProgressBar)d;
             var stringFormat = GetPercentStringFormat(progressBar);

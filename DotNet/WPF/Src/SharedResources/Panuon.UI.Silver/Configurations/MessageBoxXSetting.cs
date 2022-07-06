@@ -15,6 +15,17 @@ namespace Panuon.UI.Silver.Configurations
 
         #region Properties
 
+        #region InteropOwnersMask
+        public bool InteropOwnersMask
+        {
+            get { return (bool)GetValue(InteropOwnersMaskProperty); }
+            set { SetValue(InteropOwnersMaskProperty, value); }
+        }
+
+        public static readonly DependencyProperty InteropOwnersMaskProperty =
+            DependencyProperty.Register("InteropOwnersMask", typeof(bool), typeof(MessageBoxXSetting), new PropertyMetadata(true));
+        #endregion
+
         #region InverseButtonsSequence
         public bool InverseButtonsSequence
         {

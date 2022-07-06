@@ -149,7 +149,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            DependencyProperty.Register("ClickEffect", typeof(ClickEffect), typeof(BreadcrumbItem));
+            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(BreadcrumbItem));
         #endregion
 
         #region SeparatorTemplate

@@ -41,7 +41,7 @@ namespace Samples.Views.Examples
                 : _searchList.Where(x => x.ToLower().Contains(searchText)).ToList();
         }
 
-        private void SchBox_SelectionChanged(object sender, SelectedValueChangedEventArgs<object> e)
+        private void SchBox_ItemClick(object sender, System.Windows.RoutedEventArgs e)
         {
             //do something
         }

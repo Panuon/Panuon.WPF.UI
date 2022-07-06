@@ -36,12 +36,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <TickBar  x:Name="TkbTop"
-                      SnapsToDevicePixels="True"
-                      Placement="Top"
-                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Visibility="Collapsed" />
+            <TickBar x:Name="TkbTop"
+                     SnapsToDevicePixels="True"
+                     Placement="Top"
+                     Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Visibility="Collapsed" />
             <Border Grid.Row="1"
                     SnapsToDevicePixels="True"
                     VerticalAlignment="Center"
@@ -97,13 +97,35 @@
                                   Command="Slider.IncreaseLarge" />
                 </Track.IncreaseRepeatButton>
             </Track>
-            <TickBar  x:Name="TkbBottom"
-                      Grid.Row="2"
-                      SnapsToDevicePixels="True"
-                      Placement="Bottom"
-                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Visibility="Collapsed" />
+            <TickBar x:Name="TkbBottom"
+                     Grid.Row="2"
+                     SnapsToDevicePixels="True"
+                     Placement="Bottom"
+                     Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Visibility="Collapsed" />
+            <Canvas Grid.Row="2"
+                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Canvas.Top="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Canvas.Left>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderTextLeftConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="ActualWidth"
+                                     ElementName="PART_Track" />
+                            <Binding Path="ActualWidth"
+                                     ElementName="ThbToggle" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}" />
+                        </MultiBinding>
+                    </Canvas.Left>
+                </TextBlock>
+            </Canvas>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="TickPlacement"
@@ -138,12 +160,12 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TickBar  x:Name="TkbLeft"
-                      SnapsToDevicePixels="True"
-                      Placement="Left"
-                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Visibility="Collapsed" />
+            <TickBar x:Name="TkbLeft"
+                     SnapsToDevicePixels="True"
+                     Placement="Left"
+                     Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Visibility="Collapsed" />
             <Border Grid.Column="1"
                     SnapsToDevicePixels="True"
                     HorizontalAlignment="Center"
@@ -199,13 +221,36 @@
                                   Command="Slider.IncreaseLarge" />
                 </Track.IncreaseRepeatButton>
             </Track>
-            <TickBar  x:Name="TkbRight"
-                      Grid.Column="2"
-                      SnapsToDevicePixels="True"
-                      Placement="Right"
-                      Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Visibility="Collapsed" />
+            <TickBar x:Name="TkbRight"
+                     Grid.Column="2"
+                     SnapsToDevicePixels="True"
+                     Placement="Right"
+                     Fill="{Binding Path=(local:SliderHelper.TickBarForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                     Visibility="Collapsed" />
+            <Canvas Grid.Column="2"
+                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Canvas.Left="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Canvas.Top>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderTextTopConverter}}">
+                            <Binding Path="Minimum"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="Value"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="Maximum"
+                                     RelativeSource="{RelativeSource AncestorType=Slider}" />
+                            <Binding Path="ActualHeight"
+                                     ElementName="PART_Track" />
+                            <Binding Path="ActualHeight"
+                                     ElementName="ThbToggle" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource Self}" />
+                        </MultiBinding>
+                    </Canvas.Top>
+                </TextBlock>
+            </Canvas>
+
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="TickPlacement"
