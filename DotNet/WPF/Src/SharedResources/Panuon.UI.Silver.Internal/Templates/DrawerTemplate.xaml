@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DrawerTemplate}"
                      TargetType="local:Drawer">
-        <Border ClipToBounds="True">
+        <Border>
             <local:ContentControlX x:Name="PART_ContentControl"
                                    Background="{TemplateBinding Background}"
                                    BorderBrush="{TemplateBinding BorderBrush}"

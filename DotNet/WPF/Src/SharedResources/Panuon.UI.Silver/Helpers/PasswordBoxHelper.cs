@@ -316,6 +316,21 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("PlainButtonStyle", typeof(Style), typeof(PasswordBoxHelper));
         #endregion
 
+        #region SelectAllOnFocus
+        public static bool GetSelectAllOnFocus(PasswordBox PasswordBox)
+        {
+            return (bool)PasswordBox.GetValue(SelectAllOnFocusProperty);
+        }
+
+        public static void SetSelectAllOnFocus(PasswordBox PasswordBox, bool value)
+        {
+            PasswordBox.SetValue(SelectAllOnFocusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectAllOnFocusProperty =
+            DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnSelectAllOnFocusChanged));
+        #endregion
+
         #endregion
 
         #region Commands
@@ -374,6 +389,51 @@ namespace Panuon.UI.Silver
             var passwordBox = sender as PasswordBox;
             SetPassword(passwordBox, passwordBox.Password);
         }
+
+        private static void OnSelectAllOnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = (PasswordBox)d;
+            passwordBox.PreviewMouseLeftButtonDown -= PasswordBox_PreviewMouseLeftButtonDown;
+            passwordBox.GotKeyboardFocus -= PasswordBox_SelectAll;
+            passwordBox.MouseDoubleClick -= PasswordBox_SelectAll;
+
+            if ((bool)e.NewValue)
+            {
+                passwordBox.PreviewMouseLeftButtonDown += PasswordBox_PreviewMouseLeftButtonDown;
+                passwordBox.GotKeyboardFocus += PasswordBox_SelectAll;
+                passwordBox.MouseDoubleClick += PasswordBox_SelectAll;
+            }
+        }
+
+        private static void PasswordBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var parent = e.OriginalSource as DependencyObject;
+            while (parent != null
+                && !(parent is PasswordBox))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            if (parent != null)
+            {
+                var passwordBox = (PasswordBox)parent;
+                if (!passwordBox.IsKeyboardFocusWithin)
+                {
+                    passwordBox.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private static void PasswordBox_SelectAll(object sender, RoutedEventArgs e)
+        {
+            var passwordBox = e.OriginalSource as PasswordBox;
+            if (passwordBox != null)
+            {
+                passwordBox.SelectAll();
+            }
+        }
+
         #endregion
 
     }

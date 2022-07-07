@@ -1630,9 +1630,12 @@ namespace Panuon.UI.Silver
                 }
                 else
                 {
-                    var targetColumn = unsetColumns.First();
-                    targetColumn.DisplayIndex = i;
-                    unsetColumns.Remove(targetColumn);
+                    var targetColumn = unsetColumns.FirstOrDefault();
+                    if (targetColumn != null)
+                    {
+                        targetColumn.DisplayIndex = i;
+                        unsetColumns.Remove(targetColumn);
+                    }
                 }
             }
 

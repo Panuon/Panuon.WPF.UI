@@ -13,7 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Abstracts\NotifyPropertyChangedBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Abstracts\ValueConverterBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Animations\BrushAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayRoutedCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\RelayCommand`.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\PositionChangingEventHandler.cs" />
