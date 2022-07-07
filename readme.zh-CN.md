@@ -1,5 +1,5 @@
-[English](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md)
-
+<a href="https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md" style="font-size:20px">Switch to English</a>
+<br/>  
 <a href="https://www.nuget.org/packages/Panuon.UI.Silver" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.UI.Silver-green"></a>
 ![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
 ![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
@@ -8,9 +8,12 @@
 
 # Panuon.UI.Silver v2.2
 
-### 此项目仍在开发中。请勿从之前的版本贸然升级到此版本，或在紧急项目上使用该版本。
- 
-[中文文档地址](http://yuque.com/mochengvia/silver2.2)
+### 请勿从Panuon.UI.Silver `1.x` 版本直接升级到 `2.2` 版本。两个版本之间的使用方式有很大的差异。  
+
+# 文档  
+
+现在仅提供了中文文档。  
+[中文Wiki文档](https://github.com/Panuon/Panuon.UI.Silver/wiki/WPF-Home-zh-CN)  
 
 # 贡献
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
