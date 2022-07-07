@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -66,14 +67,29 @@ namespace Samples.Views
 
         private void BtnTestNoticeBox_Click(object sender, RoutedEventArgs e)
         {
-            var handler = NoticeBox.Show("NoticeBox style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, 3000);
+            var handler = NoticeBox.Show("NoticeBox style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, true, 3000);
             //handler.Click += ...
         }
 
-        private void BtnTestPendingBox_Click(object sender, RoutedEventArgs e)
+        private async void BtnTestPendingBox_Click(object sender, RoutedEventArgs e)
         {
             var handler = PendingBox.Show(this, "PendingBox style configuration is placed in App.xaml.", "Caption", true);
             //handler.Cancelling += ...
+            //handler.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var setting = Application.Current.FindResource("CustomSetting1") as Panuon.UI.Silver.Configurations.NoticeBoxSetting;
+            NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NoticeBox.DestroyInstance();
+            
+            var setting = Application.Current.FindResource("CustomSetting2") as Panuon.UI.Silver.Configurations.NoticeBoxSetting;
+            NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
         }
         #endregion
 
@@ -135,6 +151,14 @@ namespace Samples.Views
 
         #endregion
 
-    }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    panel.CurrentIndex--;
+        //}
 
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    panel.CurrentIndex++;
+        //}
+    }
 }

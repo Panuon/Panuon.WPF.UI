@@ -46,6 +46,7 @@ namespace Panuon.UI.Silver.Internal.Controls
 
             Owner = owner;
             Title = caption ?? "";
+            InteropOwnersMask = setting.InteropOwnersMask;
             WindowStartupLocation = owner == null ? WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner;
 
             Style = setting.WindowXStyle;

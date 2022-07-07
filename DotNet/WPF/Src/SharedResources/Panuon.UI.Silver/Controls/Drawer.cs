@@ -7,13 +7,19 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Panuon.UI.Silver
 {
-    public class Drawer : ContentControl
+    public class Drawer
+        : ContentControl
     {
         #region Fields
-        private bool _isBound;
+        private const string ContentControlTemplateName = "PART_ContentControl";
+
+        private ContentControlX _contentControl;
+
+        private TranslateTransform _translateTransform = new TranslateTransform();
         #endregion
 
         #region Ctor
@@ -23,28 +29,12 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Routed Events
+        #region Events
 
-        #region Opened
-        public event RoutedEventHandler Opened
-        {
-            add { AddHandler(OpenedEvent, value); }
-            remove { RemoveHandler(OpenedEvent, value); }
-        }
+        #region Opened or Closed
+        public event EventHandler Opened;
 
-        public static readonly RoutedEvent OpenedEvent =
-            EventManager.RegisterRoutedEvent("Opened", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Drawer));
-        #endregion
-
-        #region Closed
-        public event RoutedEventHandler Closed
-        {
-            add { AddHandler(ClosedEvent, value); }
-            remove { RemoveHandler(ClosedEvent, value); }
-        }
-
-        public static readonly RoutedEvent ClosedEvent =
-            EventManager.RegisterRoutedEvent("Closed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Drawer));
+        public event EventHandler Closed;
         #endregion
 
         #endregion
@@ -131,27 +121,25 @@ namespace Panuon.UI.Silver
         #endregion
 
         #region Overrides
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        public override void OnApplyTemplate()
         {
-            _isBound = true;
-            OpenOrClose();
+            _contentControl = GetTemplateChild(ContentControlTemplateName) as ContentControlX;
+            _contentControl.RenderTransform = _translateTransform;
+
+            OnIsOpenChanged();
         }
 
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            OnIsOpenChanged();
+        }
         #endregion
 
         #region Event Handlers
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var drawer = (Drawer)d;
-            if (drawer.IsOpen)
-            {
-                drawer.RaiseEvent(new RoutedEventArgs(OpenedEvent));
-            }
-            else
-            {
-                drawer.RaiseEvent(new RoutedEventArgs(ClosedEvent));
-            }
-            drawer.OpenOrClose();
+            drawer.OnIsOpenChanged();
         }
 
         private void OnLostMouseCapture(object sender, MouseButtonEventArgs e)
@@ -162,39 +150,118 @@ namespace Panuon.UI.Silver
         }
         #endregion
 
-        #region Functions
-        private void OpenOrClose()
+        #region Methods
+        public void Open()
         {
-            if (!_isBound)
+            if (_contentControl == null
+                || ActualWidth == 0
+                || ActualHeight == 0)
             {
                 return;
             }
 
-            if (IsOpen)
+            if (!StaysOpen)
             {
-                if (!StaysOpen)
-                {
-                    Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
-                    Mouse.Capture(this, CaptureMode.SubTree);
-                }
+                Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
+                Mouse.Capture(this, CaptureMode.SubTree);
             }
+
             switch (Placement)
             {
                 case DrawerPlacement.Left:
                 case DrawerPlacement.Right:
-                    if (double.IsPositiveInfinity(MaxWidth))
+                    if (IsLoaded)
                     {
-                        return;
+                        var leftRightAnimation = new DoubleAnimation()
+                        {
+                            To = 0,
+                            Duration = AnimationDuration,
+                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        };
+                        _translateTransform.BeginAnimation(TranslateTransform.XProperty, leftRightAnimation);
                     }
-                    AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, IsOpen ? (MaxWidth - ShadowHelper.GetBlurRadius(this)) : MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
+                    _translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
                     break;
                 default:
-                    if (double.IsPositiveInfinity(MaxHeight))
+                    if (IsLoaded)
                     {
-                        throw new Exception("Drawer.MaxHeight must have a ensured value.");
+                        var topBottomAnimation = new DoubleAnimation()
+                        {
+                            To = 0,
+                            Duration = AnimationDuration,
+                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        };
+                        _translateTransform.BeginAnimation(TranslateTransform.YProperty, topBottomAnimation);
                     }
-                    AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, IsOpen ? (MaxHeight - ShadowHelper.GetBlurRadius(this)) : MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
+                    _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
                     break;
+            }
+
+            Opened?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void Close()
+        {
+            if (_contentControl == null
+                || ActualWidth == 0
+                || ActualHeight == 0)
+            {
+                return;
+            }
+
+
+            switch (Placement)
+            {
+                case DrawerPlacement.Left:
+                case DrawerPlacement.Right:
+                    if (!IsLoaded)
+                    {
+                        _translateTransform.X = ActualWidth - MinWidth;
+                    }
+                    else
+                    {
+                        var leftRightAnimation = new DoubleAnimation()
+                        {
+                            To = ActualWidth - MinWidth,
+                            Duration = AnimationDuration,
+                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        };
+                        _translateTransform.BeginAnimation(TranslateTransform.XProperty, leftRightAnimation);
+                    }
+                    _translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+                    break;
+                default:
+                    if (!IsLoaded)
+                    {
+                        _translateTransform.X = MinHeight;
+                    }
+                    else
+                    {
+                        var topBottomAnimation = new DoubleAnimation()
+                        {
+                            To = ActualHeight - MinHeight,
+                            Duration = AnimationDuration,
+                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        };
+                        _translateTransform.BeginAnimation(TranslateTransform.YProperty, topBottomAnimation);
+                    }
+                    _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+                    break;
+            }
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
+        #endregion
+
+        #region Functions
+        private void OnIsOpenChanged()
+        {
+            if (IsOpen)
+            {
+                Open();
+            }
+            else
+            {
+                Close();
             }
         }
 

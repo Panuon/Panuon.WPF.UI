@@ -108,9 +108,9 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <local:Spinner x:Name="SprPending"
+                <local:Spin x:Name="SprPending"
                                IsSpinning="True"
-                               Style="{Binding Path=(local:ToggleButtonHelper.PendingSpinnerStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Style="{Binding Path=(local:ToggleButtonHelper.PendingSpinStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter Grid.Column="1"

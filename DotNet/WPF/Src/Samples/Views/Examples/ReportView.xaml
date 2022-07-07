@@ -129,7 +129,7 @@
                     Value="Transparent" />
             <Setter Property="ItemsCornerRadius"
                     Value="12" />
-            <Setter Property="ItemsCheckedBackground"
+            <Setter Property="ItemsSelectedBackground"
                     Value="#6CBCEA" />
             <Setter Property="PageTurnButtonStyle">
                 <Setter.Value>
@@ -235,7 +235,7 @@
                   Grid.Row="2"
                   Margin="0,20,0,0"
                   HorizontalScrollBarVisibility="Visible"
-                  pu:DataGridHelper.IsVerticalScrollBarCrossingColumnHeaderPanel="True"
+                  pu:ScrollViewerHelper.ScrollBarPosition="VerticalInside"
                   Style="{StaticResource StandardDataGridStyle}">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>

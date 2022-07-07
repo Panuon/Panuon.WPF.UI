@@ -7,6 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.UI.Silver.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/TextBoxStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -64,23 +65,8 @@
                      Text="{Binding Message}"
                      Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                      TextWrapping="Wrap"
-                     VerticalAlignment="Center">
-                <TextBox.Style>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="TextBox">
-                                    <Border x:Name="PART_ContentHost"
-                                            Focusable="False"
-                                            VerticalAlignment="Center"
-                                            Margin="5" />
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </TextBox.Style>
-
-            </TextBox>
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center" />
         </Grid>
     </DataTemplate>
 
@@ -110,3 +96,5 @@
     </Style>
 
 </ResourceDictionary>
+
+

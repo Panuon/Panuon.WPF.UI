@@ -1,5 +1,6 @@
 ﻿using Panuon.UI.Core;
 using Panuon.UI.Silver.Internal;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -269,6 +270,22 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(TextBoxHelper));
         #endregion
 
+        #region SelectAllOnFocus
+        public static bool GetSelectAllOnFocus(TextBox textBox)
+        {
+            return (bool)textBox.GetValue(SelectAllOnFocusProperty);
+        }
+
+        public static void SetSelectAllOnFocus(TextBox textBox, bool value)
+        {
+            textBox.SetValue(SelectAllOnFocusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectAllOnFocusProperty =
+            DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(TextBoxHelper), new PropertyMetadata(OnSelectAllOnFocusChanged));
+
+        #endregion
+
         #endregion
 
         #region Commands
@@ -290,6 +307,50 @@ namespace Panuon.UI.Silver
         {
             textBox.Text = null;
             textBox.Focus();
+        }
+
+        private static void OnSelectAllOnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = (TextBox)d;
+            textBox.PreviewMouseLeftButtonDown -= TextBox_PreviewMouseLeftButtonDown;
+            textBox.GotKeyboardFocus -= TextBox_SelectAll;
+            textBox.MouseDoubleClick -= TextBox_SelectAll;
+
+            if ((bool)e.NewValue)
+            {
+                textBox.PreviewMouseLeftButtonDown += TextBox_PreviewMouseLeftButtonDown;
+                textBox.GotKeyboardFocus += TextBox_SelectAll;
+                textBox.MouseDoubleClick += TextBox_SelectAll;
+            }
+        }
+
+        private static void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var parent = e.OriginalSource as DependencyObject;
+            while (parent != null 
+                && !(parent is TextBox))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            if (parent != null)
+            {
+                var textBox = (TextBox)parent;
+                if (!textBox.IsKeyboardFocusWithin)
+                {
+                    textBox.Focus();
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private static void TextBox_SelectAll(object sender, RoutedEventArgs e)
+        {
+            var textBox = e.OriginalSource as TextBox;
+            if (textBox != null)
+            {
+                textBox.SelectAll();
+            }
         }
         #endregion
 

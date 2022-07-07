@@ -18,7 +18,7 @@ namespace Panuon.UI.Silver.Internal.Controls
 
         private const string CaptionTextBlockTemplateName = "PART_CaptionTextBlock";
 
-        private const string SpinnerTemplateName = "PART_Spinner";
+        private const string SpinTemplateName = "PART_Spin";
 
         private Button _cancelButton;
 
@@ -106,7 +106,7 @@ namespace Panuon.UI.Silver.Internal.Controls
                 _cancelButton = FrameworkElementUtil.FindVisualChild<Button>(this, CancelButtonTemplateName);
                 var captionTextBlock = FrameworkElementUtil.FindVisualChild<TextBlock>(this, CaptionTextBlockTemplateName);
                 _messageTextBlock = FrameworkElementUtil.FindVisualChild<TextBlock>(this, MessageTextBlockTemplateName);
-                var spinner = FrameworkElementUtil.FindVisualChild<Spinner>(this, SpinnerTemplateName);
+                var spinner = FrameworkElementUtil.FindVisualChild<Spin>(this, SpinTemplateName);
 
                 if (_cancelButton != null)
                 {

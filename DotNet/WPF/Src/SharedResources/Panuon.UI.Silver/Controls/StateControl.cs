@@ -163,9 +163,12 @@ namespace Panuon.UI.Silver
                     FrameworkElementUtil.BindingProperty(this, ContentProperty, item, StateItem.ContentProperty);
                     FrameworkElementUtil.BindingProperty(this, ContentTemplateProperty, item, StateItem.ContentTemplateProperty);
                     FrameworkElementUtil.BindingProperty(this, ContentTemplateSelectorProperty, item, StateItem.ContentTemplateSelectorProperty);
-                    break;
+                    return;
                 }
             }
+            SetCurrentValue(ContentProperty, null);
+            SetCurrentValue(ContentTemplateProperty, null);
+            SetCurrentValue(ContentTemplateSelectorProperty, null);
         }
 
         private bool VerifyState(object rawState)

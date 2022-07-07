@@ -5,7 +5,10 @@ namespace Panuon.UI.Silver
     public class GeneratingPercentTextRoutedEventArgs : RoutedEventArgs
     {
         #region Ctor
-        public GeneratingPercentTextRoutedEventArgs(RoutedEvent routedEvent, double value, double percent, string text)
+        public GeneratingPercentTextRoutedEventArgs(RoutedEvent routedEvent,
+            double value,
+            double percent, 
+            string text)
             : base(routedEvent)
         {
             Value = value;

@@ -15,7 +15,8 @@
                 Value="0" />
         <Setter Property="Background"
                 Value="#F1F1F1" />
-        <!--If you set PendingBox.Settings.CreateOnNewThread to False, you can use the button style in PanuonUI instead of custom button style-->
+        <!--If you set the PendingBox.Settings.CreateOnNewThread property to False,
+        you can use the button style provided in Panuon.UI.Silver instead of custom button style.-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -38,8 +39,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=SpinnerStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
-           TargetType="local:Spinner">
+    <Style x:Key="{ComponentResourceKey ResourceId=SpinStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
+           TargetType="local:Spin">
         <Setter Property="Width"
                 Value="50" />
         <Setter Property="Height"
@@ -92,7 +93,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <local:Spinner x:Name="PART_Spinner" />
+                    <local:Spin x:Name="PART_Spin" />
                     <TextBlock x:Name="PART_MessageTextBlock"
                                Grid.Column="1"
                                Margin="20,0,0,0"
@@ -110,3 +111,5 @@
     </DataTemplate>
 
 </ResourceDictionary>
+
+

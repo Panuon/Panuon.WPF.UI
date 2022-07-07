@@ -6,27 +6,27 @@ using System.Windows.Controls;
 
 namespace Panuon.UI.Silver.Internal
 {
-    class InternalSpinner : Control
+    class InternalSpin : Control
     {
         #region Ctor
-        static InternalSpinner()
+        static InternalSpin()
         {
-            FocusableProperty.OverrideMetadata(typeof(InternalSpinner), new FrameworkPropertyMetadata(false));
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(InternalSpinner), new FrameworkPropertyMetadata(typeof(InternalSpinner)));
+            FocusableProperty.OverrideMetadata(typeof(InternalSpin), new FrameworkPropertyMetadata(false));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(InternalSpin), new FrameworkPropertyMetadata(typeof(InternalSpin)));
         }
         #endregion
 
         #region Properties
 
-        #region SpinnerStyle
-        public SpinnerStyle SpinnerStyle
+        #region SpinStyle
+        public SpinStyle SpinStyle
         {
-            get { return (SpinnerStyle)GetValue(SpinnerStyleProperty); }
-            set { SetValue(SpinnerStyleProperty, value); }
+            get { return (SpinStyle)GetValue(SpinStyleProperty); }
+            set { SetValue(SpinStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty SpinnerStyleProperty =
-            DependencyProperty.Register("SpinnerStyle", typeof(SpinnerStyle), typeof(InternalSpinner));
+        public static readonly DependencyProperty SpinStyleProperty =
+            DependencyProperty.Register("SpinStyle", typeof(SpinStyle), typeof(InternalSpin));
         #endregion
 
         #region Thickness
@@ -37,7 +37,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register("Thickness", typeof(double), typeof(InternalSpinner));
+            DependencyProperty.Register("Thickness", typeof(double), typeof(InternalSpin));
         #endregion
 
         #region CornerRadius
@@ -48,7 +48,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(double), typeof(InternalSpinner));
+            DependencyProperty.Register("CornerRadius", typeof(double), typeof(InternalSpin));
         #endregion
 
         #region IsSpinning
@@ -59,7 +59,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         public static readonly DependencyProperty IsSpinningProperty =
-            DependencyProperty.Register("IsSpinning", typeof(bool), typeof(InternalSpinner));
+            DependencyProperty.Register("IsSpinning", typeof(bool), typeof(InternalSpin));
         #endregion
 
         #endregion
@@ -74,7 +74,7 @@ namespace Panuon.UI.Silver.Internal
         }
 
         internal static readonly DependencyProperty PercentProperty =
-            DependencyProperty.Register("Percent", typeof(double), typeof(InternalSpinner));
+            DependencyProperty.Register("Percent", typeof(double), typeof(InternalSpin));
         #endregion
 
         #endregion

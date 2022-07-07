@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Effects;
 
 namespace Panuon.UI.Silver.Internal
@@ -163,7 +164,39 @@ namespace Panuon.UI.Silver.Internal
 
         public static readonly DependencyProperty PercentProperty =
             DependencyProperty.RegisterAttached("Percent", typeof(double), typeof(VisualStateHelper));
-        #endregion 
+        #endregion
+
+        #region ClickEffect
+        public static ClickEffect GetClickEffect(DependencyObject obj)
+        {
+            return (ClickEffect)obj.GetValue(ClickEffectProperty);
+        }
+
+        public static void SetEffect(DependencyObject obj, ClickEffect value)
+        {
+            obj.SetValue(ClickEffectProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickEffectProperty =
+            DependencyProperty.RegisterAttached("ClickEffect", typeof(ClickEffect), typeof(VisualStateHelper));
+        #endregion
+
+        #region IsClickEffectPressed
+        public static bool GetIsClickEffectPressed(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsClickEffectPressedProperty);
+        }
+
+        public static void SetIsClickEffectPressed(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsClickEffectPressedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsClickEffectPressedProperty =
+            DependencyProperty.RegisterAttached("IsClickEffectPressed", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsClickEffectPressedChanged));
+
+        #endregion
+
 
         #endregion
 
@@ -466,6 +499,64 @@ namespace Panuon.UI.Silver.Internal
             }
         }
 
+        private static void OnIsClickEffectPressedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var isPressed = (bool)e.NewValue;
+            var element = (FrameworkElement)d;
+            var parent = element.TemplatedParent;
+            var clickEffect = GetClickEffect(parent);
+
+            var storyboard = new Storyboard();
+            switch (clickEffect)
+            {
+                case ClickEffect.Sink:
+                    var sinkMarginAnimation = new ThicknessAnimation()
+                    {
+                        To = isPressed ? new Thickness(0, 1, 0, -1) : new Thickness(),
+                        Duration = TimeSpan.Zero,
+                    };
+                    Storyboard.SetTarget(sinkMarginAnimation, element);
+                    Storyboard.SetTargetProperty(sinkMarginAnimation, new PropertyPath("Margin"));
+                    storyboard.Children.Add(sinkMarginAnimation);
+                    break;
+                case ClickEffect.Shake:
+                    if (isPressed)
+                    {
+                        var thirdPartSeconds = GlobalSettings.Setting.AnimationDuration.TotalSeconds / 3;
+                        var shakeMarginAnimation1 = new ThicknessAnimation()
+                        {
+                            To = new Thickness(3, 0, -3, 0),
+                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                        };
+                        Storyboard.SetTarget(shakeMarginAnimation1, element);
+                        Storyboard.SetTargetProperty(shakeMarginAnimation1, new PropertyPath("Margin"));
+                        storyboard.Children.Add(shakeMarginAnimation1);
+
+                        var shakeMarginAnimation2 = new ThicknessAnimation()
+                        {
+                            To = new Thickness(-3, 0, 3, 0),
+                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                            BeginTime = TimeSpan.FromSeconds(thirdPartSeconds),
+                        };
+                        Storyboard.SetTarget(shakeMarginAnimation2, element);
+                        Storyboard.SetTargetProperty(shakeMarginAnimation2, new PropertyPath("Margin"));
+                        storyboard.Children.Add(shakeMarginAnimation2);
+
+                        var shakeMarginAnimation3 = new ThicknessAnimation()
+                        {
+                            To = new Thickness(),
+                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                            BeginTime = TimeSpan.FromSeconds(thirdPartSeconds * 2),
+                        };
+                        Storyboard.SetTarget(shakeMarginAnimation3, element);
+                        Storyboard.SetTargetProperty(shakeMarginAnimation3, new PropertyPath("Margin"));
+                        storyboard.Children.Add(shakeMarginAnimation3);
+                    }
+                    break;
+            }
+            storyboard.Begin();
+        }
+        
         private static void Element_Unchecked(object sender, RoutedEventArgs e)
         {
             var element = (FrameworkElement)sender;

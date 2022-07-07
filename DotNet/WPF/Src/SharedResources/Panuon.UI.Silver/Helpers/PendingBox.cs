@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver.Internal.Controls;
+﻿using Panuon.UI.Silver.Configurations;
+using Panuon.UI.Silver.Internal.Controls;
 using Panuon.UI.Silver.Internal.Implements;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
@@ -15,8 +16,8 @@ namespace Panuon.UI.Silver
         public static ComponentResourceKey CancelButtonStyle { get; } =
             new ComponentResourceKey(typeof(PendingBox), nameof(CancelButtonStyle));
 
-        public static ComponentResourceKey SpinnerStyle { get; } =
-            new ComponentResourceKey(typeof(PendingBox), nameof(SpinnerStyle));
+        public static ComponentResourceKey SpinStyle { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(SpinStyle));
 
         public static ComponentResourceKey WindowStyle { get; } =
             new ComponentResourceKey(typeof(PendingBox), nameof(WindowStyle));
@@ -25,55 +26,79 @@ namespace Panuon.UI.Silver
         #region Methods
         public static IPendingHandler Show(string message)
         {
-            return CallPendingBox(null, message, null, false);
+            return CallPendingBox(null, message, null, false, null);
         }
 
         public static IPendingHandler Show(Window owner, string message)
         {
-            return CallPendingBox(owner, message, null, false);
+            return CallPendingBox(owner, message, null, false, null);
+        }
+
+        public static IPendingHandler Show(Window owner, string message, PendingBoxSetting setting)
+        {
+            return CallPendingBox(owner, message, null, false, setting);
         }
 
         public static IPendingHandler Show(string message, bool canCancel)
         {
-            return CallPendingBox(null, message, null, canCancel);
+            return CallPendingBox(null, message, null, canCancel, null);
         }
 
         public static IPendingHandler Show(Window owner, string message, bool canCancel)
         {
-            return CallPendingBox(owner, message, null, canCancel);
+            return CallPendingBox(owner, message, null, canCancel, null);
+        }
+
+        public static IPendingHandler Show(Window owner, string message, bool canCancel, PendingBoxSetting setting)
+        {
+            return CallPendingBox(owner, message, null, canCancel, setting);
         }
 
         public static IPendingHandler Show(string message, string caption)
         {
-            return CallPendingBox(null, message, caption, false);
+            return CallPendingBox(null, message, caption, false, null);
         }
 
         public static IPendingHandler Show(Window owner, string message, string caption)
         {
-            return CallPendingBox(owner, message, caption, false);
+            return CallPendingBox(owner, message, caption, false, null);
+        }
+
+        public static IPendingHandler Show(Window owner, string message, string caption, PendingBoxSetting setting)
+        {
+            return CallPendingBox(owner, message, caption, false, setting);
         }
 
         public static IPendingHandler Show(string message, string caption, bool canCancel)
         {
-            return CallPendingBox(null, message, caption, canCancel);
+            return CallPendingBox(null, message, caption, canCancel, null);
         }
 
         public static IPendingHandler Show(Window owner, string message, string caption, bool canCancel)
         {
-            return CallPendingBox(owner, message, caption, canCancel);
+            return CallPendingBox(owner, message, caption, canCancel, null);
+        }
+
+        public static IPendingHandler Show(Window owner, string message, string caption, bool canCancel, PendingBoxSetting setting)
+        {
+            return CallPendingBox(owner, message, caption, canCancel, setting);
         }
         #endregion
 
         #region Functions
-        private static IPendingHandler CallPendingBox(Window owner, string message, string caption, bool canCancel)
+        private static IPendingHandler CallPendingBox(Window owner, 
+            string message, 
+            string caption,
+            bool canCancel,
+            PendingBoxSetting setting)
         {
             return (IPendingHandler)Application.Current.Dispatcher.Invoke(new Func<IPendingHandler>(() =>
             {
-                var setting = PendingBoxSettings.Setting;
+                setting = setting ?? PendingBoxSettings.Setting;
                 var windowStyle = XamlUtil.ToXaml(setting.WindowStyle);
                 var cancelButtonStyle = XamlUtil.ToXaml(setting.CancelButtonStyle);
                 var contentTemplate = XamlUtil.ToXaml(setting.ContentTemplate);
-                var spinnerStyle = XamlUtil.ToXaml(setting.SpinnerStyle);
+                var spinnerStyle = XamlUtil.ToXaml(setting.SpinStyle);
                 var createOnNewThread = setting.CreateOnNewThread;
                 var cancelButtonContent = setting.CancelButtonContent;
                 var interopOwnersMask = setting.InteropOwnersMask;

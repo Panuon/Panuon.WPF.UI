@@ -268,7 +268,6 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemSubmenuTemplate}}" />
             </Trigger>
-
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

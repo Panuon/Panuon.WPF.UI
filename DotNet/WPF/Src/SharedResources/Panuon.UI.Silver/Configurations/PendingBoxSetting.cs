@@ -9,7 +9,7 @@ namespace Panuon.UI.Silver.Configurations
         {
             WindowStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "WindowStyle"));
             CancelButtonStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "CancelButtonStyle"));
-            SpinnerStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "SpinnerStyle"));
+            SpinStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "SpinStyle"));
             ContentTemplate = (DataTemplate)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "ContentTemplate"));
         }
         #endregion
@@ -38,15 +38,15 @@ namespace Panuon.UI.Silver.Configurations
             DependencyProperty.Register("CancelButtonStyle", typeof(Style), typeof(PendingBoxSetting));
         #endregion
 
-        #region SpinnerStyle
-        public Style SpinnerStyle
+        #region SpinStyle
+        public Style SpinStyle
         {
-            get { return (Style)GetValue(SpinnerStyleProperty); }
-            set { SetValue(SpinnerStyleProperty, value); }
+            get { return (Style)GetValue(SpinStyleProperty); }
+            set { SetValue(SpinStyleProperty, value); }
         }
 
-        public static readonly DependencyProperty SpinnerStyleProperty =
-            DependencyProperty.Register("SpinnerStyle", typeof(Style), typeof(PendingBoxSetting));
+        public static readonly DependencyProperty SpinStyleProperty =
+            DependencyProperty.Register("SpinStyle", typeof(Style), typeof(PendingBoxSetting));
         #endregion
 
         #region ContentTemplate

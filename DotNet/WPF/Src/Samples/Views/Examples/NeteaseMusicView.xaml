@@ -67,70 +67,51 @@
                     Value="#C62F2F" />
             <Setter Property="pu:DropDownHelper.BorderBrush"
                     Value="#C62F2F" />
+            <Setter Property="pu:DropDownHelper.Background"
+                    Value="White" />
             <Setter Property="pu:DropDownHelper.CornerRadius"
                     Value="4" />
             <Setter Property="pu:WindowX.IsDragMoveArea"
                     Value="False" />
-            <Setter Property="pu:SearchBox.TextBoxStyle">
+            <Setter Property="FocusedShadowColor"
+                    Value="#C62F2F" />
+            <Setter Property="CornerRadius"
+                    Value="13" />
+            <Setter Property="Height"
+                    Value="26" />
+            <Setter Property="Width"
+                    Value="220" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="Background"
+                    Value="#B12323" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+            <Setter Property="Padding"
+                    Value="10,0,30,0" />
+            <Setter Property="Watermark"
+                    Value="Search musics, vedios, radios" />
+            <Setter Property="ItemsBorderBrush"
+                    Value="#C62F2F" />
+            <Setter Property="ItemsCornerRadius"
+                    Value="4" />
+            <Setter Property="ItemsHeight"
+                    Value="35" />
+            <Setter Property="ItemsForeground"
+                    Value="#1E1E1E" />
+            <Setter Property="ItemsHoverBackground"
+                    Value="{x:Null}" />
+            <Setter Property="ItemsHoverForeground"
+                    Value="#C62F2F" />
+            <!--<Setter Property="ItemContainerStyle">
                 <Setter.Value>
-                    <Style TargetType="TextBox"
-                           BasedOn="{StaticResource {x:Type TextBox}}">
-                        <Setter Property="pu:TextBoxHelper.CornerRadius"
-                                Value="13" />
-                        <Setter Property="pu:TextBoxHelper.FocusedShadowColor"
-                                Value="#C62F2F" />
+                    <Style TargetType="pu:SearchBoxItem">
                         <Setter Property="Height"
-                                Value="26" />
-                        <Setter Property="Width"
-                                Value="220" />
-                        <Setter Property="FontSize"
-                                Value="12" />
-                        <Setter Property="Background"
-                                Value="#B12323" />
-                        <Setter Property="BorderThickness"
-                                Value="0" />
-                        <Setter Property="Foreground"
-                                Value="#F1F1F1" />
-                        <Setter Property="CaretBrush"
-                                Value="#F1F1F1" />
-                        <Setter Property="Padding"
-                                Value="10,0,30,0" />
-                        <Setter Property="pu:TextBoxHelper.Watermark"
-                                Value="Search musics, vedios, radios" />
+                                Value="50" />
                     </Style>
                 </Setter.Value>
-            </Setter>
-            <Setter Property="pu:SearchBox.ListBoxStyle">
-                <Setter.Value>
-                    <Style TargetType="ListBox"
-                           BasedOn="{StaticResource {x:Static pu:SearchBox.ListBoxStyle}}">
-                        <Setter Property="BorderBrush"
-                                Value="#C62F2F" />
-                        <Setter Property="pu:ListBoxHelper.CornerRadius"
-                                Value="4" />
-                        <Setter Property="pu:ListBoxHelper.ItemsHeight"
-                                Value="35" />
-                        <Setter Property="pu:ListBoxHelper.ItemsHoverBackground"
-                                Value="{x:Null}" />
-                        <Setter Property="pu:ListBoxHelper.ItemsHoverForeground"
-                                Value="#C62F2F" />
-                        <Setter Property="pu:ListBoxHelper.ItemsSelectedBackground"
-                                Value="{x:Null}" />
-                        <Setter Property="pu:ListBoxHelper.ItemsSelectedForeground"
-                                Value="#C62F2F" />
-                        <Setter Property="ItemContainerStyle">
-                            <Setter.Value>
-                                <Style TargetType="ListBoxItem"
-                                       BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                                    <Setter Property="Cursor"
-                                            Value="Hand" />
-                                </Style>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="pu:SearchBox.ItemTemplate">
+            </Setter>-->
+            <Setter Property="ItemTemplate">
                 <Setter.Value>
                     <DataTemplate>
                         <Grid>
@@ -290,10 +271,10 @@
                 <Grid Grid.Column="2"
                       Margin="10,0,0,0">
                     <pu:SearchBox x:Name="SchBox"
-                                  VerticalAlignment="Center"
                                   Style="{StaticResource SearchBoxStyle}"
+                                  VerticalAlignment="Center"
                                   SearchTextChanged="SchBox_SearchTextChanged"
-                                  SelectionChanged="SchBox_SelectionChanged"
+                                  ItemClick="SchBox_ItemClick"
                                   Opened="SchBox_Opened">
                     </pu:SearchBox>
                     <Button pu:WindowX.IsDragMoveArea="False"

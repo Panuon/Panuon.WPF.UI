@@ -191,7 +191,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            DependencyProperty.Register("ClickEffect", typeof(ClickEffect), typeof(NoticeBoxItem));
+            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(NoticeBoxItem));
         #endregion
 
         #endregion

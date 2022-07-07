@@ -1,6 +1,6 @@
 ﻿namespace Panuon.UI.Silver
 {
-    public enum SpinnerStyle
+    public enum SpinStyle
     {
         Standard,
         Wave,

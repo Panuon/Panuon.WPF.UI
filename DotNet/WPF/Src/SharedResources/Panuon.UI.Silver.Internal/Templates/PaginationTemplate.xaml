@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.UI.Silver;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationHorizontalTemplate}"
                      TargetType="local:Pagination">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
@@ -20,7 +20,9 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <RepeatButton Tag="Up"
+                <RepeatButton Tag="UpLeft"
+                              Visibility="{TemplateBinding PageTurnButtonVisibility}"
+                              Command="{x:Static local:Pagination.PageUpCommand}"
                               Style="{TemplateBinding PageTurnButtonStyle}" />
                 <ItemsControl Grid.Column="1"
                               ItemsSource="{TemplateBinding PageList}">
@@ -56,7 +58,66 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 <RepeatButton Grid.Column="2"
-                              Tag="Down"
+                              Tag="DownRight"
+                              Visibility="{TemplateBinding PageTurnButtonVisibility}"
+                              Command="{x:Static local:Pagination.PageDownCommand}"
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationVerticalTemplate}"
+                     TargetType="local:Pagination">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <RepeatButton Tag="UpTop"
+                              Visibility="{TemplateBinding PageTurnButtonVisibility}"
+                              Command="{x:Static local:Pagination.PageUpCommand}"
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
+                <ItemsControl Grid.Row="1"
+                              ItemsSource="{TemplateBinding PageList}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <local:PaginationItem x:Name="PgniPage"
+                                                  GroupName="GROUP_PAGINATION"
+                                                  Style="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                  IsOmitting="{Binding ., Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, Mode=OneWay}"
+                                                  OmittingTextBlockStyle="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
+                                                  Content="{Binding}" />
+                            <DataTemplate.Triggers>
+                                <DataTrigger Value="True">
+                                    <DataTrigger.Binding>
+                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
+                                            <Binding Path="." />
+                                            <Binding Path="CurrentPage"
+                                                     RelativeSource="{RelativeSource AncestorType=local:Pagination}"
+                                                     Mode="OneWay" />
+                                        </MultiBinding>
+                                    </DataTrigger.Binding>
+                                    <Setter TargetName="PgniPage"
+                                            Property="IsChecked"
+                                            Value="True" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <RepeatButton Grid.Column="2"
+                              Tag="DownBottom"
+                              Visibility="{TemplateBinding PageTurnButtonVisibility}"
+                              Command="{x:Static local:Pagination.PageDownCommand}"
                               Style="{TemplateBinding PageTurnButtonStyle}" />
             </Grid>
         </Border>

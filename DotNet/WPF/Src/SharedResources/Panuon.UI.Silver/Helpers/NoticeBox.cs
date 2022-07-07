@@ -1,4 +1,5 @@
-﻿using Panuon.UI.Silver.Internal.Controls;
+﻿using Panuon.UI.Silver.Configurations;
+using Panuon.UI.Silver.Internal.Controls;
 using Panuon.UI.Silver.Internal.Utils;
 using System;
 using System.Threading;
@@ -24,77 +25,155 @@ namespace Panuon.UI.Silver
         #region Methods
         public static INoticeHandler Show(string message)
         {
-            return Show(message: message, canClose: true);
+            return CallNoticeBox(message: message, caption: null, canClose: true, icon: MessageBoxIcon.None, timeout: null, imageIcon: null, setting: null);
         }
 
-        public static INoticeHandler Show(string message, bool canClose)
+        public static INoticeHandler Show(string message,
+            string caption)
         {
-            return Show(message: message, caption: null, canClose: canClose);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, timeout: null, imageIcon: null, setting: null);
         }
 
-        public static INoticeHandler Show(string message, bool canClose, MessageBoxIcon icon)
+        public static INoticeHandler Show(string message,
+           string caption,
+           NoticeBoxSetting setting)
         {
-            return Show(message: message, caption: null, canClose: canClose, icon: icon, duration: null, imageIcon: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, timeout: null, imageIcon: null, setting: setting);
         }
 
-        public static INoticeHandler Show(string message, bool canClose, ImageSource icon)
+        public static INoticeHandler Show(string message,
+            string caption,
+            MessageBoxIcon icon)
         {
-            return Show(message: message, caption: null, canClose: canClose, imageIcon: icon, duration: null, icon: MessageBoxIcon.None);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: icon, timeout: null, imageIcon: null, setting: null);
         }
 
-        public static INoticeHandler Show(string message, string caption)
+        public static INoticeHandler Show(string message,
+           string caption,
+           MessageBoxIcon icon,
+           NoticeBoxSetting setting)
         {
-            return Show(message: message, caption: caption, canClose: true);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: icon, timeout: null, imageIcon: null, setting: setting);
         }
 
-        public static INoticeHandler Show(string message, string caption, MessageBoxIcon icon)
+        public static INoticeHandler Show(string message,
+            string caption,
+            ImageSource icon)
         {
-            return Show(message: message, caption: caption, canClose: true, icon: icon, duration: null, imageIcon: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, imageIcon: icon, timeout: null, setting: null);
         }
 
-        public static INoticeHandler Show(string message, string caption, ImageSource icon)
+        public static INoticeHandler Show(string message,
+           string caption,
+           ImageSource imageIcon,
+           NoticeBoxSetting setting)
         {
-            return Show(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, imageIcon: icon, duration: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, timeout: null, imageIcon: imageIcon, setting: setting);
         }
 
-        public static INoticeHandler Show(string message, string caption, bool canClose)
+        public static INoticeHandler Show(string message,
+           string caption,
+           MessageBoxIcon icon,
+           bool canClose)
         {
-            return Show(message: message, caption: caption, canClose: canClose, duration: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: null, imageIcon: null, setting: null);
         }
 
-        public static INoticeHandler Show(string message, string caption, int? duration)
+        public static INoticeHandler Show(string message,
+           string caption,
+           MessageBoxIcon icon,
+           bool canClose,
+           NoticeBoxSetting setting)
         {
-            return Show(message: message, caption: caption, canClose: true, duration: duration);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: null, imageIcon: null, setting: setting);
         }
 
-        public static INoticeHandler Show(string message, string caption, MessageBoxIcon icon, int? duration)
+        public static INoticeHandler Show(string message,
+           string caption,
+           ImageSource imageIcon,
+           bool canClose)
         {
-            return Show(message: message, caption: caption, canClose: true, icon: icon, duration: duration, imageIcon: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: null, imageIcon: imageIcon, setting: null);
         }
 
-        public static INoticeHandler Show(string message, string caption, ImageSource icon, int? duration)
+        public static INoticeHandler Show(string message,
+           string caption,
+           ImageSource imageIcon,
+           bool canClose,
+           NoticeBoxSetting setting)
         {
-            return Show(message: message, caption: caption, canClose: true, icon: MessageBoxIcon.None, imageIcon: icon, duration: duration);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: null, imageIcon: imageIcon, setting: setting);
         }
 
-        public static INoticeHandler Show(string message, string caption, bool canClose, int? duration)
+        public static INoticeHandler Show(string message,
+          string caption,
+          MessageBoxIcon icon,
+          bool canClose,
+          int? duration)
         {
-            return Show(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, duration: duration, imageIcon: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: duration, imageIcon: null, setting: null);
         }
 
+        public static INoticeHandler Show(string message,
+           string caption,
+           MessageBoxIcon icon,
+           bool canClose,
+           int? duration,
+           NoticeBoxSetting setting)
+        {
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: duration, imageIcon: null, setting: setting);
+        }
+
+        public static INoticeHandler Show(string message,
+           string caption,
+           ImageSource imageIcon,
+           bool canClose,
+           int? duration)
+        {
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: duration, imageIcon: imageIcon, setting: null);
+        }
+
+        public static INoticeHandler Show(string message,
+           string caption,
+           ImageSource imageIcon,
+           bool canClose,
+           int? duration,
+           NoticeBoxSetting setting)
+        {
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: duration, imageIcon: imageIcon, setting: setting);
+        }
+
+        public static void DestroyInstance()
+        {
+            if (_noticeWindow != null)
+            {
+                _noticeWindow.Dispatcher.Invoke(new Action(() =>
+                {
+                    _noticeWindow.Close();
+                }));
+                _noticeWindow = null;
+            }
+        }
         #endregion
 
         #region Functions
-        private static INoticeHandler Show(string message, string caption, bool canClose, MessageBoxIcon icon, ImageSource imageIcon, int? duration)
+        private static INoticeHandler CallNoticeBox(string message,
+            string caption,
+            bool canClose,
+            MessageBoxIcon icon,
+            ImageSource imageIcon,
+            int? timeout,
+            NoticeBoxSetting setting)
         {
             return (INoticeHandler)Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
-                var setting = NoticeBoxSettings.Setting;
+                setting = setting ?? NoticeBoxSettings.Setting;
                 var animationEase = setting.AnimationEase;
                 var animationDuration = setting.AnimationDuration;
                 var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
                 var createOnNewThread = setting.CreateOnNewThread;
-
+                var defaultDuration = GlobalSettings.Setting.AnimationDuration;
+                
                 if (_noticeWindow == null)
                 {
                     if (createOnNewThread)
@@ -122,7 +201,7 @@ namespace Panuon.UI.Silver
                         _noticeWindow.Show();
                     }
                 }
-                var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, duration, canClose, animationDuration, noticeBoxItemStyle);
+                var handler = _noticeWindow.AddItem(message, caption, icon, imageIcon, timeout, defaultDuration, canClose, noticeBoxItemStyle);
                 return handler;
 
             }));

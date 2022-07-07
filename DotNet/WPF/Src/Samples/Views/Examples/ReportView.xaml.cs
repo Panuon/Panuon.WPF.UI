@@ -56,20 +56,22 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Properties
-
-        [DisplayName("Machine Code")]
-        [ColumnWidth(Width = "*")]
-        public string Code { get => _name; set => Set(ref _name, value); }
-        private string _name;
-
         [ColumnWidth(Width = "0.5*")]
+        [ColumnDisplayIndex(1)]
         public string State { get => _state; set => Set(ref _state, value); }
         private string _state;
 
+
         [ColumnWidth(Width = "400")]
+        [ColumnDisplayIndex(2)]
         public string Remark { get => _remark; set => Set(ref _remark, value); }
         private string _remark;
 
+        [DisplayName("Machine Code")]
+        [ColumnWidth(Width = "*")]
+        [ColumnDisplayIndex(0)]
+        public string Code { get => _code; set => Set(ref _code, value); }
+        private string _code;
         #endregion
     }
 

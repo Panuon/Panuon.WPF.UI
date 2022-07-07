@@ -35,6 +35,7 @@
                                 VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
                                 HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
                 <ContentControl Grid.Column="2"
+                                Focusable="False"
                                 Content="{TemplateBinding ExtendControl}" />
             </Grid>
             <ContentPresenter x:Name="CpContent"
@@ -97,6 +98,7 @@
                                 VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
                                 HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
                 <ContentControl Grid.Row="2"
+                                Focusable="False"
                                 Content="{TemplateBinding ExtendControl}" />
                 <ContentPresenter x:Name="CpContent"
                                   Grid.Column="1"

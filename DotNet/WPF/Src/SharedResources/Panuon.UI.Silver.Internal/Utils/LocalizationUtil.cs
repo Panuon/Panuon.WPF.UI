@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Panuon.UI.Silver.Internal.Utils
@@ -83,7 +84,11 @@ namespace Panuon.UI.Silver.Internal.Utils
         private static string GetString(string key, CultureInfo culture = null)
         {
             var ietf = (culture ?? System.Threading.Thread.CurrentThread.CurrentUICulture).IetfLanguageTag;
-            return _dictionary[ietf][key];
+            if (_dictionary.ContainsKey(ietf))
+            {
+                return _dictionary[ietf][key];
+            }
+            return _dictionary.ElementAt(0).Value[key];
         }
     }
 }

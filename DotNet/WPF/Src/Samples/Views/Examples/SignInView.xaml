@@ -64,11 +64,11 @@
                     Value="White" />
             <Setter Property="Height"
                     Value="35" />
-            <Setter Property="pu:ButtonHelper.PendingSpinnerStyle">
+            <Setter Property="pu:ButtonHelper.PendingSpinStyle">
                 <Setter.Value>
-                    <Style TargetType="pu:Spinner"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinnerStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
-                        <Setter Property="SpinnerStyle"
+                    <Style TargetType="pu:Spin"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
+                        <Setter Property="SpinStyle"
                                 Value="Ring2" />
                     </Style>
                 </Setter.Value>

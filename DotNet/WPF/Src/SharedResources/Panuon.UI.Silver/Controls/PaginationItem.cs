@@ -104,60 +104,60 @@ namespace Panuon.UI.Silver
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
-        #region CheckedBackground
-        public Brush CheckedBackground
+        #region SelectedBackground
+        public Brush SelectedBackground
         {
-            get { return (Brush)GetValue(CheckedBackgroundProperty); }
-            set { SetValue(CheckedBackgroundProperty, value); }
+            get { return (Brush)GetValue(SelectedBackgroundProperty); }
+            set { SetValue(SelectedBackgroundProperty, value); }
         }
 
-        public static readonly DependencyProperty CheckedBackgroundProperty =
-            DependencyProperty.Register("CheckedBackground", typeof(Brush), typeof(PaginationItem));
+        public static readonly DependencyProperty SelectedBackgroundProperty =
+            DependencyProperty.Register("SelectedBackground", typeof(Brush), typeof(PaginationItem));
 
         #endregion
 
-        #region CheckedForeground
-        public Brush CheckedForeground
+        #region SelectedForeground
+        public Brush SelectedForeground
         {
-            get { return (Brush)GetValue(CheckedForegroundProperty); }
-            set { SetValue(CheckedForegroundProperty, value); }
+            get { return (Brush)GetValue(SelectedForegroundProperty); }
+            set { SetValue(SelectedForegroundProperty, value); }
         }
 
-        public static readonly DependencyProperty CheckedForegroundProperty =
-            DependencyProperty.Register("CheckedForeground", typeof(Brush), typeof(PaginationItem));
+        public static readonly DependencyProperty SelectedForegroundProperty =
+            DependencyProperty.Register("SelectedForeground", typeof(Brush), typeof(PaginationItem));
         #endregion
 
-        #region CheckedBorderBrush
-        public Brush CheckedBorderBrush
+        #region SelectedBorderBrush
+        public Brush SelectedBorderBrush
         {
-            get { return (Brush)GetValue(CheckedBorderBrushProperty); }
-            set { SetValue(CheckedBorderBrushProperty, value); }
+            get { return (Brush)GetValue(SelectedBorderBrushProperty); }
+            set { SetValue(SelectedBorderBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty CheckedBorderBrushProperty =
-            DependencyProperty.Register("CheckedBorderBrush", typeof(Brush), typeof(PaginationItem));
+        public static readonly DependencyProperty SelectedBorderBrushProperty =
+            DependencyProperty.Register("SelectedBorderBrush", typeof(Brush), typeof(PaginationItem));
         #endregion
 
-        #region CheckedBorderThickness
-        public Thickness? CheckedBorderThickness
+        #region SelectedBorderThickness
+        public Thickness? SelectedBorderThickness
         {
-            get { return (Thickness?)GetValue(CheckedBorderThicknessProperty); }
-            set { SetValue(CheckedBorderThicknessProperty, value); }
+            get { return (Thickness?)GetValue(SelectedBorderThicknessProperty); }
+            set { SetValue(SelectedBorderThicknessProperty, value); }
         }
 
-        public static readonly DependencyProperty CheckedBorderThicknessProperty =
-            DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(PaginationItem));
+        public static readonly DependencyProperty SelectedBorderThicknessProperty =
+            DependencyProperty.Register("SelectedBorderThickness", typeof(Thickness?), typeof(PaginationItem));
         #endregion
 
-        #region CheckedShadowColor
-        public Color? CheckedShadowColor
+        #region SelectedShadowColor
+        public Color? SelectedShadowColor
         {
-            get { return (Color?)GetValue(CheckedShadowColorProperty); }
-            set { SetValue(CheckedShadowColorProperty, value); }
+            get { return (Color?)GetValue(SelectedShadowColorProperty); }
+            set { SetValue(SelectedShadowColorProperty, value); }
         }
 
-        public static readonly DependencyProperty CheckedShadowColorProperty =
-            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(PaginationItem));
+        public static readonly DependencyProperty SelectedShadowColorProperty =
+            VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
         #endregion

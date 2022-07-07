@@ -18,7 +18,7 @@
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.Content"
-                Value="&#xe99f;" />
+                Value="&#xe9a7;" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="VerticalAlignment"

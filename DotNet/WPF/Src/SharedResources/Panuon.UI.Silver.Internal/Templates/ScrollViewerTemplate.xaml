@@ -11,42 +11,46 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ScrollViewerTemplate}"
                      TargetType="ScrollViewer">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition x:Name="RdSpacing"
-                               Height="0" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition x:Name="CdSpacing"
-                                  Width="0" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <ScrollContentPresenter x:Name="scpContent"
-                                    VirtualizingStackPanel.IsVirtualizing="{Binding Path=(VirtualizingStackPanel.IsVirtualizing),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    VirtualizingStackPanel.VirtualizationMode="{Binding Path=(VirtualizingStackPanel.VirtualizationMode),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CanContentScroll="{TemplateBinding CanContentScroll}"
-                                    Margin="{TemplateBinding Padding}" />
-            <ScrollBar x:Name="PART_VerticalScrollBar"
-                       Grid.Column="2"
-                       MinWidth="0"
-                       Width="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       Value="{TemplateBinding VerticalOffset}"
-                       Maximum="{TemplateBinding ScrollableHeight}"
-                       ViewportSize="{TemplateBinding ViewportHeight}"
-                       Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
-            <ScrollBar x:Name="PART_HorizontalScrollBar"
-                       Grid.Row="2"
-                       Orientation="Horizontal"
-                       MinHeight="0"
-                       Height="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       Value="{TemplateBinding HorizontalOffset}"
-                       Maximum="{TemplateBinding ScrollableWidth}"
-                       ViewportSize="{TemplateBinding ViewportWidth}"
-                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
-        </Grid>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition x:Name="RdSpacing"
+                                   Height="0" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition x:Name="CdSpacing"
+                                      Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ScrollContentPresenter x:Name="scpContent"
+                                        VirtualizingStackPanel.IsVirtualizing="{Binding Path=(VirtualizingStackPanel.IsVirtualizing),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        VirtualizingStackPanel.VirtualizationMode="{Binding Path=(VirtualizingStackPanel.VirtualizationMode),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CanContentScroll="{TemplateBinding CanContentScroll}"
+                                        Margin="{TemplateBinding Padding}" />
+                <ScrollBar x:Name="PART_VerticalScrollBar"
+                           Grid.Column="2"
+                           MinWidth="0"
+                           Width="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Value="{TemplateBinding VerticalOffset}"
+                           Maximum="{TemplateBinding ScrollableHeight}"
+                           ViewportSize="{TemplateBinding ViewportHeight}"
+                           Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+                <ScrollBar x:Name="PART_HorizontalScrollBar"
+                           Grid.Row="2"
+                           Orientation="Horizontal"
+                           MinHeight="0"
+                           Height="{Binding Path=(local:ScrollViewerHelper.ScrollBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Value="{TemplateBinding HorizontalOffset}"
+                           Maximum="{TemplateBinding ScrollableWidth}"
+                           ViewportSize="{TemplateBinding ViewportWidth}"
+                           Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+            </Grid>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="ComputedVerticalScrollBarVisibility"
                      Value="Visible">

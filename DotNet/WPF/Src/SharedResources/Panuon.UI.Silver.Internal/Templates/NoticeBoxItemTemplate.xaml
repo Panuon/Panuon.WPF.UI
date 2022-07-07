@@ -12,16 +12,17 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.NoticeBoxItemTemplate}"
                      TargetType="local:NoticeBoxItem">
         <local:ContentControlX x:Name="CcMain"
-                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Padding="{TemplateBinding Padding}"
-                           CornerRadius="{TemplateBinding CornerRadius}"
-                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                               i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Padding="{TemplateBinding Padding}"
+                               CornerRadius="{TemplateBinding CornerRadius}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -57,7 +58,6 @@
                                 </Setter>
                             </Style>
                         </Button.Style>
-
                     </Button>
                 </Grid>
                 <Grid Grid.Row="1"
@@ -113,55 +113,54 @@
             </Grid>
         </local:ContentControlX>
         <ControlTemplate.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ClickEffect"
-                               Value="Sink" />
-                    <Condition Property="IsPressed"
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                </MultiTrigger.Conditions>
+                    <Condition Binding="{Binding ClickBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcMain"
-                        Property="Margin"
-                        Value="0,1,0,-1" />
-            </MultiTrigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="ClickEffect"
-                               Value="Shake" />
-                    <Condition Property="IsPressed"
+                        Property="Background"
+                        Value="{Binding ClickBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                </MultiTrigger.Conditions>
-                <MultiTrigger.EnterActions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="3,0,-3,0"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseIn" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="-3,0,3,0"
-                                                BeginTime="0:0:0.1"
-                                                Duration="0:0:0.1" />
-                            <ThicknessAnimation Storyboard.TargetName="CcMain"
-                                                Storyboard.TargetProperty="Margin"
-                                                To="0"
-                                                BeginTime="0:0:0.2"
-                                                Duration="0:0:0.1">
-                                <ThicknessAnimation.EasingFunction>
-                                    <CircleEase EasingMode="EaseOut" />
-                                </ThicknessAnimation.EasingFunction>
-                            </ThicknessAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </MultiTrigger.EnterActions>
-            </MultiTrigger>
+                    <Condition Binding="{Binding ClickBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderBrush"
+                        Value="{Binding ClickBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding ClickBorderThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderThickness"
+                        Value="{Binding ClickBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding ClickForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="IconForeground"
+                        Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="Foreground"
+                        Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
-
     </ControlTemplate>
 
 </ResourceDictionary>

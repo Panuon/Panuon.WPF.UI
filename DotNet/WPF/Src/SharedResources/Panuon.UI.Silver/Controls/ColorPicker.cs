@@ -15,9 +15,7 @@ namespace Panuon.UI.Silver
     {
         #region Fields
         private const string ColorSelectorTemplateName = "PART_ColorSelector";
-
         private const string EditableTextBoxTemplateName = "PART_EditableTextBox";
-
         private const string PopupTemplateName = "PART_Popup";
 
         private ColorSelector _colorSelector;

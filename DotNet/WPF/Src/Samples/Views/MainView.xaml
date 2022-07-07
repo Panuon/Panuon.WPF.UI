@@ -29,94 +29,243 @@
                     ToolTip="Panuon IconFont Browser"
                     Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
                     Content="&#xe99d;"
-                    Click="BtnIconFont_Click"> 
+                    Click="BtnIconFont_Click">
             </Button>
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
-    <Grid Margin="20,10,20,20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        
-        <TextBlock Text="Samples"
-                   FontSize="30" />
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Height="30">
-            <Button Content="MessageBoxX"
-                    Click="BtnTestMessageBoxX_Click" />
-            <Button Margin="10,0,0,0"
-                    Content="NoticeBox"
-                    Click="BtnTestNoticeBox_Click" />
-            <Button Margin="10,0,0,0"
-                    Content="PendingBox"
-                    Click="BtnTestPendingBox_Click" />
-        </StackPanel>
-        <ScrollViewer Grid.Row="1"
-                      Margin="0,15,0,0"
-                      VerticalScrollBarVisibility="Disabled"
-                      HorizontalScrollBarVisibility="Auto"
-                      pu:ScrollViewerHelper.ScrollBarPosition="Outside"
-                      pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
-            <ItemsControl x:Name="LsbExamples"
-                          VerticalContentAlignment="Stretch"
-                          HorizontalAlignment="Stretch">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Rows="2" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Margin="0,0,10,10"
-                                Background="Transparent"
-                                Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
-                                ToolTip="{Binding ViewPath}"
-                                VerticalContentAlignment="Stretch"
-                                HorizontalContentAlignment="Stretch"
-                                Padding="5"
-                                Click="BtnExample_Click">
-                            <Button.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Item 1"/>
-                                    <MenuItem Header="Item 2" />
-                                    <MenuItem Header="Item 3" />
-                                </ContextMenu>
-                            </Button.ContextMenu>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Viewbox HorizontalAlignment="Center">
-                                    <ContentControl Content="{Binding PreviewView}"
-                                                    IsHitTestVisible="False" />
-                                </Viewbox>
-                                <TextBlock Grid.Row="1"
-                                           Margin="0,5,0,0"
-                                           FontWeight="Bold"
-                                           Text="{Binding DisplayName}"
-                                           VerticalAlignment="Center" />
-                                <TextBlock Grid.Row="2"
-                                           Margin="0,5,0,0"
-                                           Foreground="DimGray"
-                                           TextTrimming="CharacterEllipsis"
-                                           Text="{Binding ViewPath}"
-                                           VerticalAlignment="Center" />
-                            </Grid>
-                        </Button>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-        <TextBlock Grid.Row="2"
-                   FontSize="14"
-                   Foreground="Gray"
+    <Grid>
+        <Grid Margin="20,10,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Samples"
+                       FontSize="30" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Height="30">
+                <Button Content="MessageBoxX"
+                        Click="BtnTestMessageBoxX_Click" />
+                <Button Margin="10,0,0,0"
+                        Content="NoticeBox"
+                        Click="BtnTestNoticeBox_Click" />
+                <Button x:Name="BtnTestPendingBox"
+                        Margin="10,0,0,0"
+                        Content="PendingBox"
+                        Click="BtnTestPendingBox_Click" />
+            </StackPanel>
+            <ScrollViewer Grid.Row="1"
+                          Margin="0,15,0,0"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Auto"
+                          pu:ScrollViewerHelper.MouseWheelDelta="96"
+                          pu:ScrollViewerHelper.AnimationDuration="0:0:0.5"
+                          pu:ScrollViewerHelper.AnimationEase="CubicOut"
+                          pu:ScrollViewerHelper.ScrollBarPosition="Outside"
+                          pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
+                <ItemsControl x:Name="LsbExamples"
+                              VerticalContentAlignment="Stretch"
+                              HorizontalAlignment="Stretch">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="2" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="0,0,10,10"
+                                    Background="Transparent"
+                                    Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
+                                    ToolTip="{Binding ViewPath}"
+                                    VerticalContentAlignment="Stretch"
+                                    HorizontalContentAlignment="Stretch"
+                                    Padding="5"
+                                    Click="BtnExample_Click">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Item 1" />
+                                        <MenuItem Header="Item 2" />
+                                        <MenuItem Header="Item 3" />
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Viewbox HorizontalAlignment="Center">
+                                        <ContentControl Content="{Binding PreviewView}"
+                                                        IsHitTestVisible="False" />
+                                    </Viewbox>
+                                    <TextBlock Grid.Row="1"
+                                               Margin="0,5,0,0"
+                                               FontWeight="Bold"
+                                               Text="{Binding DisplayName}"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Grid.Row="2"
+                                               Margin="0,5,0,0"
+                                               Foreground="DimGray"
+                                               TextTrimming="CharacterEllipsis"
+                                               Text="{Binding ViewPath}"
+                                               VerticalAlignment="Center" />
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <!--<pu:ZoomViewer Grid.Row="1"
+                       Width="500"
+                       Height="500"
+                       MinZoomLevel="1"
+                       MaxZoomLevel="15"
+                       ZoomLevel="1"
+                       ZoomLevelInterval="0.5"
+                       ZoomOnWheeling="Ctrl,Alt"
+                       MoveOnDragging="CtrlAndAlt"
+                       ZoomOrigin="{x:Null}"
+                       BorderBrush="Gray"
+                       BorderThickness="1">
+            <Image Stretch="Uniform"
+                   Source="C:\Users\mocheng\Pictures\Desktop\IMG_3822(20220409-205456).JPG"/>
+        </pu:ZoomViewer>-->
+            <!--<pu:Badge Grid.Row="1"
+                  Width="30"
+                  Height="30"
+                  WaveThickness="15"
+                  CornerRadius="15"
+                  BorderThickness="0"
+                  Foreground="White"
+                  Content="1"
+                  ClickEffect="Shake"
+                  IsWaving="True">
+            <pu:Badge.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#FF70D9"
+                                  Offset="0" />
+                    <GradientStop Color="#FF4E8C"
+                                  Offset="0.2" />
+                    <GradientStop Color="#FF70D9"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </pu:Badge.Background>
+            <pu:Badge.WaveBrush>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#FF70D9"
+                                  Offset="0" />
+                    <GradientStop Color="#FF4E8C"
+                                  Offset="0.2" />
+                    <GradientStop Color="#FF70D9"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </pu:Badge.WaveBrush>
+        </pu:Badge>-->
+            <!--<Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        Height="35">
+                <Button Content="-"
+                        Width="35"
+                        Command="{Binding PageUpCommand, ElementName=panel}"
+                        CommandParameter="{Binding ElementName=panel}" />
+                <Button Content="+"
+                        Width="35"
+                        Command="{Binding PageDownCommand, ElementName=panel}"
+                        CommandParameter="{Binding ElementName=panel}"/>
+            </StackPanel>
+            
+            <pu:Carousel x:Name="panel"
+                         Grid.Row="1"
+                         Width="500"
+                         Height="300"
+                         Animation="Flow,Fade"
+                         Orientation="Vertical"
+                         AnimationEase="CubicOut"
+                         TextBlock.Foreground="White"
+                         TextBlock.FontSize="40"
+                         TextBlock.TextAlignment="Center">
+                <pu:Carousel.IndicatorPaginationStyle>
+                    <Style TargetType="pu:Pagination"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type pu:Carousel}}}">
+                        <Setter Property="ItemsWidth"
+                                Value="NaN" />
+                        <Setter Property="ItemsHeight"
+                                Value="NaN" />
+                        <Setter Property="ItemsBackground"
+                                Value="Transparent" />
+                        <Setter Property="ItemsForeground"
+                                Value="#55FFFFFF" />
+                        <Setter Property="ItemsSelectedBackground"
+                                Value="{x:Null}" />
+                        <Setter Property="ItemsSelectedForeground"
+                                Value="#FFFFFF" />
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="pu:PaginationItem">
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <TextBlock Text="&#xe954;"
+                                                           FontFamily="{StaticResource PanuonIconFont}"
+                                                           FontSize="20"/>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </pu:Carousel.IndicatorPaginationStyle>
+                <Border Background="#1ABBEA">
+                    <TextBlock Text="Item 1"
+                               VerticalAlignment="Center"/>
+                </Border>
+                <Border Background="#F6AC0C">
+                    <TextBlock Text="Item 2"
+                               VerticalAlignment="Center" />
+                </Border>
+                <Border Background="#FF5CAC">
+                    <TextBlock Text="Item 3"
+                               VerticalAlignment="Center" />
+                </Border>
+            </pu:Carousel>
+        </Grid>-->
+            <TextBlock Grid.Row="2"
+                       FontSize="14"
+                       Foreground="Gray"
+                       HorizontalAlignment="Right"
+                       Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
+        </Grid>
+        <!--<pu:Drawer IsOpen="False"
+                   Placement="Right"
                    HorizontalAlignment="Right"
-                   Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
+                   Width="500"
+                   MinWidth="50"
+                   BorderBrush="Red"
+                   BorderThickness="1"
+                   Background="White"
+                   ShadowColor="Black"
+                   AnimationEase="CubicOut"
+                   AnimationDuration="0:0:0.4">
+            <ToggleButton Content="OP"
+                          Width="50"
+                          Height="50"
+                          HorizontalAlignment="Left"
+                          IsChecked="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=pu:Drawer}, Mode=TwoWay}" />
+        </pu:Drawer>-->
     </Grid>
 </pu:WindowX>
+
+
+

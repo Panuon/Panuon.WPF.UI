@@ -27,10 +27,22 @@
                 Value="{Binding Path=(local:SliderHelper.ThumbCornerRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.ShadowColor"
                 Value="{Binding Path=(local:SliderHelper.ThumbShadowColor), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.BlurRadius"
+                Value="{Binding Path=(local:ShadowHelper.BlurRadius), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Direction"
+                Value="{Binding Path=(local:ShadowHelper.Direction), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Opacity"
+                Value="{Binding Path=(local:ShadowHelper.Opacity), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.RenderingBias"
+                Value="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.ShadowDepth"
+                Value="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.SliderStyle}"
            TargetType="Slider">
+        <Setter Property="local:SliderHelper.Hook"
+                Value="True" />
         <Setter Property="Background"
                 Value="#EAEAEA" />
         <Setter Property="local:SliderHelper.ThumbBackground"
@@ -43,6 +55,10 @@
                 Value="LightGray" />
         <Setter Property="local:SliderHelper.CoveredBackground"
                 Value="Gray" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="local:SliderHelper.TickBarForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:SliderHelper.ThumbStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}"/>
         <Style.Triggers>

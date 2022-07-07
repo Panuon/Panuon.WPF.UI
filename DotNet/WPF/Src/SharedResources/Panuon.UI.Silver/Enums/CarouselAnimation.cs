@@ -1,13 +1,13 @@
-﻿namespace Panuon.UI.Silver
+﻿using System;
+
+namespace Panuon.UI.Silver
 {
+    [Flags]
     public enum CarouselAnimation
     {
-        VerticalSlide,
-        HorizontalSlide,
-        Fade,
-        VerticalSlideWithFade,
-        HorizontalSlideWithFade,
-        Scale,
-        ScaleWithFade,
+        Fade = 1,
+        Slide = 2,
+        Scale = 4,
+        Flow = 8,
     }
 }

@@ -8,8 +8,8 @@ namespace Panuon.UI.Silver
     public static class ButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinnerStyle { get; } =
-            new ComponentResourceKey(typeof(ButtonHelper), nameof(PendingSpinnerStyle));
+        public static ComponentResourceKey PendingSpinStyle { get; } =
+            new ComponentResourceKey(typeof(ButtonHelper), nameof(PendingSpinStyle));
         #endregion
 
         #region Properties
@@ -74,19 +74,19 @@ namespace Panuon.UI.Silver
             DependencyProperty.RegisterAttached("IsPending", typeof(bool), typeof(ButtonHelper));
         #endregion
 
-        #region PendingSpinnerStyle
-        public static Style GetPendingSpinnerStyle(Button button)
+        #region PendingSpinStyle
+        public static Style GetPendingSpinStyle(Button button)
         {
-            return (Style)button.GetValue(PendingSpinnerStyleProperty);
+            return (Style)button.GetValue(PendingSpinStyleProperty);
         }
 
-        public static void SetPendingSpinnerStyle(Button button, Style value)
+        public static void SetPendingSpinStyle(Button button, Style value)
         {
-            button.SetValue(PendingSpinnerStyleProperty, value);
+            button.SetValue(PendingSpinStyleProperty, value);
         }
 
-        public static readonly DependencyProperty PendingSpinnerStyleProperty =
-            DependencyProperty.RegisterAttached("PendingSpinnerStyle", typeof(Style), typeof(ButtonHelper));
+        public static readonly DependencyProperty PendingSpinStyleProperty =
+            DependencyProperty.RegisterAttached("PendingSpinStyle", typeof(Style), typeof(ButtonHelper));
         #endregion
 
         #region ShadowColor
@@ -116,7 +116,7 @@ namespace Panuon.UI.Silver
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            DependencyProperty.RegisterAttached("ClickEffect", typeof(ClickEffect), typeof(ButtonHelper));
+            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverBackground

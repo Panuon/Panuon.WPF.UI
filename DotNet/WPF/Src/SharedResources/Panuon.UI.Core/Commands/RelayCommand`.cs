@@ -6,38 +6,43 @@ namespace Panuon.UI.Core
     public class RelayCommand<T> : ICommand
     {
         #region Fields
-        private readonly Action<T> _execute;
-
+        private readonly Action<T> _executed;
         private readonly Predicate<T> _canExecute;
         #endregion
 
         #region Ctor
         /// <summary>
-        /// Initializes a new instance of <see cref="DelegateCommand{T}"/>.
+        /// Initializes a new instance of <see cref="RelayCommand{T}"/>.
         /// </summary>
-        /// <param name="execute">Delegate to execute when Execute is called on the command.  This can be null to just hook up a CanExecute delegate.</param>
+        /// <param name="executed">Delegate to execute when Execute is called on the command.  This can be null to just hook up a CanExecute delegate.</param>
         /// <remarks><seealso cref="CanExecute"/> will always return true.</remarks>
-        public RelayCommand(Action<T> execute)
-            : this(execute, null)
+        public RelayCommand(Action<T> executed)
+            : this(executed, null)
         {
         }
 
         /// <summary>
         /// Creates a new command.
         /// </summary>
-        /// <param name="execute">The execution logic.</param>
+        /// <param name="executed">The execution logic.</param>
         /// <param name="canExecute">The execution status logic.</param>
-        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
+        public RelayCommand(Action<T> executed,
+            Predicate<T> canExecute)
         {
-            if (execute == null)
+            if (executed == null)
             {
                 throw new ArgumentNullException("execute");
             }
 
-            _execute = execute;
+            _executed = executed;
             _canExecute = canExecute;
         }
-
+        
+        public RelayCommand(ExecutedRoutedEventHandler executed, 
+            CanExecuteRoutedEventHandler canExecute)
+        {
+            
+        }
         #endregion
 
         #region ICommand Members
@@ -68,7 +73,7 @@ namespace Panuon.UI.Core
         ///<param name="parameter">Data used by the command. If the command does not require data to be passed, this object can be set to <see langword="null" />.</param>
         public void Execute(object parameter)
         {
-            _execute((T)parameter);
+            _executed((T)parameter);
         }
         #endregion
     }

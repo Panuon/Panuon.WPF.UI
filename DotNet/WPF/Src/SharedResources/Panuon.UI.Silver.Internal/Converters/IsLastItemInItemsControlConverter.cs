@@ -14,7 +14,11 @@ namespace Panuon.UI.Silver.Internal.Converters
             var itemsCount = values[1];
 
             var itemsControl = ItemsControl.ItemsControlFromItemContainer(item);
-            return itemsControl.ItemContainerGenerator.IndexFromContainer(item) == itemsControl.Items.Count - 1;
+            if(itemsControl != null)
+            {
+                return itemsControl.ItemContainerGenerator.IndexFromContainer(item) == itemsControl.Items.Count - 1;
+            }
+            return false;
         }
     }
 }
