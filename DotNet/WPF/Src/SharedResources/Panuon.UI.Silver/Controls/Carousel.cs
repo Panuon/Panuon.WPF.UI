@@ -358,11 +358,11 @@ namespace Panuon.UI.Silver
 
         private void OnTimerTicked(object state)
         {
-            Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(new Action(() =>
             {
                 CurrentIndex++;
                 _timer.Change(AutoPlayDuration, TimeSpan.FromMilliseconds(-1));
-            });
+            }));
         }
         #endregion
 

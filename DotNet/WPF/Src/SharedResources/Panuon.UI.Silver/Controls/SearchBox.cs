@@ -638,7 +638,7 @@ namespace Panuon.UI.Silver
             var currentIndex = -1;
             SearchBoxItem currentItem = null;
 
-            for (int i = 0; i < ItemContainerGenerator.Items.Count; i++)
+            for (int i = 0; i < Items.Count; i++)
             {
                 var currentContainer = ItemContainerGenerator.ContainerFromIndex(i) as SearchBoxItem;
                 if (currentContainer != null
@@ -655,7 +655,7 @@ namespace Panuon.UI.Silver
                 case Key.Up:
                     if(currentIndex == -1)
                     {
-                        currentIndex = ItemContainerGenerator.Items.Count - 1;
+                        currentIndex = Items.Count - 1;
                     }
                     else
                     {
@@ -673,7 +673,7 @@ namespace Panuon.UI.Silver
             System.Diagnostics.Debug.WriteLine(currentIndex);
             
             if (currentIndex >= 0
-                && currentIndex < ItemContainerGenerator.Items.Count)
+                && currentIndex < Items.Count)
             {
                 var currentContainer = ItemContainerGenerator.ContainerFromIndex(currentIndex) as SearchBoxItem;
                 if (currentContainer != null)
@@ -794,7 +794,7 @@ namespace Panuon.UI.Silver
                 return;
             }
 
-            for (int i = 0; i < ItemContainerGenerator.Items.Count; i++)
+            for (int i = 0; i < Items.Count; i++)
             {
                 var currentContainer = ItemContainerGenerator.ContainerFromIndex(i) as SearchBoxItem;
                 if (currentContainer != null

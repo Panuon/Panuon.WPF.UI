@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
+using System.Linq;
 
 namespace Panuon.UI.Silver.Internal.Converters
 {
@@ -15,8 +16,9 @@ namespace Panuon.UI.Silver.Internal.Converters
                 return false;
             }
             var enumValue = ((Enum)value);
-            var description = enumValue.GetType().GetField(enumValue.ToString()).GetCustomAttribute<DescriptionAttribute>();
-            return description.Description;
+            var description = enumValue.GetType().GetField(enumValue.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), true)
+                .FirstOrDefault() as DescriptionAttribute;
+            return description?.Description;
         }
     }
 }
