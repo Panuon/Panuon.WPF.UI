@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DrawerTemplate}"
                      TargetType="local:Drawer">
-        <Border>
+        <Border ClipToBounds="True">
             <local:ContentControlX x:Name="PART_ContentControl"
                                    Background="{TemplateBinding Background}"
                                    BorderBrush="{TemplateBinding BorderBrush}"
@@ -26,7 +26,28 @@
                                    ContentTemplate="{TemplateBinding ContentTemplate}"
                                    ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                   RenderTransformOrigin="0.5,0.5" />
+                                   RenderTransformOrigin="0.5,0.5">
+                <local:ContentControlX.Margin>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DrawerContentMarginConverter}}">
+                        <Binding Path="ShadowColor"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                        <Binding Path="Placement"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                    </MultiBinding>
+                </local:ContentControlX.Margin>
+            </local:ContentControlX>
+            <Border.Margin>
+                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DrawerBorderMarginConverter}}">
+                    <Binding Path="ShadowColor"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="(local:ShadowHelper.BlurRadius)"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="Placement"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                </MultiBinding>
+            </Border.Margin>
         </Border>
     </ControlTemplate>
 </ResourceDictionary>

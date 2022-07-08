@@ -22,6 +22,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerContentMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerBorderMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntDivideByConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleIsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntMinusConverter.cs" />

@@ -1,25 +1,16 @@
 ﻿using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace Panuon.WPF.UI
 {
-    public class Drawer
-        : ContentControl
+    public class Drawer : ContentControl
     {
         #region Fields
-        private const string ContentControlTemplateName = "PART_ContentControl";
-
-        private ContentControlX _contentControl;
-
-        private TranslateTransform _translateTransform = new TranslateTransform();
         #endregion
 
         #region Ctor
@@ -29,14 +20,11 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
-        #region Events
+        #region Routed Events
 
-        #region Opened or Closed
         public event EventHandler Opened;
 
         public event EventHandler Closed;
-        #endregion
-
         #endregion
 
         #region Properties
@@ -121,18 +109,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Overrides
-        public override void OnApplyTemplate()
-        {
-            _contentControl = GetTemplateChild(ContentControlTemplateName) as ContentControlX;
-            _contentControl.RenderTransform = _translateTransform;
-
-            OnIsOpenChanged();
-        }
-
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             OnIsOpenChanged();
         }
+
         #endregion
 
         #region Event Handlers
@@ -150,11 +131,24 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
-        #region Methods
+        #region Functions
+        private void OnIsOpenChanged()
+        {
+            if (IsOpen)
+            {
+                Close();
+                Closed?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                Open();
+                Opened?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        
         public void Open()
         {
-            if (_contentControl == null
-                || ActualWidth == 0
+            if (ActualWidth == 0
                 || ActualHeight == 0)
             {
                 return;
@@ -170,101 +164,51 @@ namespace Panuon.WPF.UI
             {
                 case DrawerPlacement.Left:
                 case DrawerPlacement.Right:
-                    if (IsLoaded)
+                    if (double.IsPositiveInfinity(MaxWidth))
                     {
-                        var leftRightAnimation = new DoubleAnimation()
-                        {
-                            To = 0,
-                            Duration = AnimationDuration,
-                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                        };
-                        _translateTransform.BeginAnimation(TranslateTransform.XProperty, leftRightAnimation);
+                        throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
                     }
-                    _translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+                    AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MaxWidth - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
                     break;
                 default:
-                    if (IsLoaded)
+                    if (double.IsPositiveInfinity(MaxHeight))
                     {
-                        var topBottomAnimation = new DoubleAnimation()
-                        {
-                            To = 0,
-                            Duration = AnimationDuration,
-                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                        };
-                        _translateTransform.BeginAnimation(TranslateTransform.YProperty, topBottomAnimation);
+                        throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
                     }
-                    _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+                    AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MaxHeight - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
                     break;
             }
-
-            Opened?.Invoke(this, EventArgs.Empty);
         }
 
         public void Close()
         {
-            if (_contentControl == null
-                || ActualWidth == 0
+            if (ActualWidth == 0
                 || ActualHeight == 0)
             {
                 return;
             }
 
-
             switch (Placement)
             {
                 case DrawerPlacement.Left:
                 case DrawerPlacement.Right:
-                    if (!IsLoaded)
+                    if (double.IsInfinity(MaxWidth)
+                        || double.IsNaN(MaxWidth))
                     {
-                        _translateTransform.X = ActualWidth - MinWidth;
+                        throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
                     }
-                    else
-                    {
-                        var leftRightAnimation = new DoubleAnimation()
-                        {
-                            To = ActualWidth - MinWidth,
-                            Duration = AnimationDuration,
-                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                        };
-                        _translateTransform.BeginAnimation(TranslateTransform.XProperty, leftRightAnimation);
-                    }
-                    _translateTransform.BeginAnimation(TranslateTransform.YProperty, null);
+                    AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
                     break;
                 default:
-                    if (!IsLoaded)
+                    if (double.IsInfinity(MaxHeight)
+                        || double.IsNaN(MaxHeight))
                     {
-                        _translateTransform.X = MinHeight;
+                        throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
                     }
-                    else
-                    {
-                        var topBottomAnimation = new DoubleAnimation()
-                        {
-                            To = ActualHeight - MinHeight,
-                            Duration = AnimationDuration,
-                            EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                        };
-                        _translateTransform.BeginAnimation(TranslateTransform.YProperty, topBottomAnimation);
-                    }
-                    _translateTransform.BeginAnimation(TranslateTransform.XProperty, null);
+                    AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
                     break;
             }
-            Closed?.Invoke(this, EventArgs.Empty);
         }
-        #endregion
-
-        #region Functions
-        private void OnIsOpenChanged()
-        {
-            if (IsOpen)
-            {
-                Open();
-            }
-            else
-            {
-                Close();
-            }
-        }
-
         #endregion
     }
 }

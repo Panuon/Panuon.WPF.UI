@@ -1,14 +1,26 @@
-<a href="https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md" style="font-size:20px">切换到简体中文</a>
-<br/>  
 <a href="https://www.nuget.org/packages/Panuon.WPF.UI" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.WPF.UI-green"></a>
-![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
-![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
-![Nuget](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
-![Nuget](https://img.shields.io/badge/Visual%20Studio-2019-813dbf)
+![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.5-blue)
+![](https://img.shields.io/badge/.net-3.1-blue)
+![](https://img.shields.io/badge/.net-5-blue)
+![](https://img.shields.io/badge/.net-6-blue)
+![](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
+![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
+![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
 
-# Panuon.WPF.UI v2.2
+[切换到简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md)  
+<br/>  
 
-### Do not directly upgrade from Panuon.WPF.UI version `1.x` to version `2.x`. There's a big difference in how it's used between the two versions.  
+# Panuon.WPF.UI
+
+A professional UI engine for customization.  
+`Panuon.WPF.UI` allows you to achieve the desired UI effect with minimal code.  
+
+
+`Do not directly upgrade from Panuon.WPF.UI version 1.x to version 2.x. There's a big difference in how it's used between the two versions.`  
+
+# Upgrade
+
+Since `Panuon.UI.Silver` `2.2.20`, the control library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) (currently only supports Chinese).
 
 # Documents  
 

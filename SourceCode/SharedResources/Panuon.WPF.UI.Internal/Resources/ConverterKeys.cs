@@ -17,6 +17,8 @@
         public const string DisplayMemberPathPropertyValueConverter = nameof(DisplayMemberPathPropertyValueConverter);
         public const string DoubleToCornerRadiusConverter = nameof(DoubleToCornerRadiusConverter);
         public const string DoubleHalfToCornerRadiusConverter = nameof(DoubleHalfToCornerRadiusConverter);
+        public const string DrawerContentMarginConverter = nameof(DrawerContentMarginConverter);
+        public const string DrawerBorderMarginConverter = nameof(DrawerBorderMarginConverter);
         public const string DropDownMarginConverter = nameof(DropDownMarginConverter);
         public const string DropDownMinWidthConverter = nameof(DropDownMinWidthConverter);
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);

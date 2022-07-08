@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    public class ZoomViewerViewboxScaleConverter 
+    class ZoomViewerViewboxScaleConverter 
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

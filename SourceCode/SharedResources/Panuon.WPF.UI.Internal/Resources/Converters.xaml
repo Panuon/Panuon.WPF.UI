@@ -33,6 +33,8 @@
     <icv:DoubleMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.DoubleMultiplyByConverter}" />
     <icv:DoublePlusConverter x:Key="{x:Static rs:ConverterKeys.DoublePlusConverter}" />
     <icv:DoublePowConverter x:Key="{x:Static rs:ConverterKeys.DoublePowConverter}" />
+    <icv:DrawerContentMarginConverter x:Key="{x:Static irs:ConverterKeys.DrawerContentMarginConverter}" />
+    <icv:DrawerBorderMarginConverter x:Key="{x:Static irs:ConverterKeys.DrawerBorderMarginConverter}" />
     <icv:DropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.DropDownMarginConverter}" />
     <icv:DropDownMinWidthConverter x:Key="{x:Static irs:ConverterKeys.DropDownMinWidthConverter}" />
     <icv:DropShadowEffectWithDepthConverter x:Key="{x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}" />

@@ -1,14 +1,22 @@
-<a href="https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md" style="font-size:20px">Switch to English</a>
-<br/>  
 <a href="https://www.nuget.org/packages/Panuon.WPF.UI" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.WPF.UI-green"></a>
-![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
-![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
-![Nuget](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
-![Nuget](https://img.shields.io/badge/Visual%20Studio-2019-813dbf)
+![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.5-blue)
+![](https://img.shields.io/badge/.net-3.1-blue)
+![](https://img.shields.io/badge/.net-5-blue)
+![](https://img.shields.io/badge/.net-6-blue)
+![](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
+![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
+![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
+
+[切换到简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md)  
+<br/>  
 
 # Panuon.WPF.UI v2.2
 
-### 请勿从Panuon.WPF.UI `1.x` 版本直接升级到 `2.2` 版本。两个版本之间的使用方式有很大的差异。  
+
+一个专业的定制化UI引擎。  
+`Panuon.WPF.UI` 能让你用最少的代码来实现期望的UI效果。  
+
+`请勿从Panuon.WPF.UI 1.x 版本直接升级到 2.2 版本。两个版本之间的使用方式有很大的差异。`  
 
 # 文档  
 

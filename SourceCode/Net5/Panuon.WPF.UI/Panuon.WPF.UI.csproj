@@ -8,11 +8,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>5</WarningLevel>
-    <OutputPath>..\..\Outputs\Debug\Core31\</OutputPath>
+    <OutputPath>..\..\Outputs\Debug\Net5\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Outputs\Release\Core31\</OutputPath>
+    <OutputPath>..\..\Outputs\Release\Net5\</OutputPath>
   </PropertyGroup>
 
   <Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Panuon.WPF" Version="0.3.0-alpha" />
+    <PackageReference Include="Panuon.WPF" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

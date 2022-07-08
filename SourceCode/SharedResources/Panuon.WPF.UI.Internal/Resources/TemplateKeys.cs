@@ -53,6 +53,7 @@
         public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
         public const string PaginationItemOmittingTemplate = nameof(PaginationItemOmittingTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
+        public const string PasswordBoxClearableTemplate = nameof(PasswordBoxClearableTemplate);
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
