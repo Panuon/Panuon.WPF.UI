@@ -1,0 +1,267 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CarouselTemplate}"
+                     TargetType="local:Carousel">
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid x:Name="PART_ContainerGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <RepeatButton x:Name="RptLeftOrTop"
+                              Opacity="0"
+                              Command="{Binding PageUpCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
+                <RepeatButton x:Name="RptRightOrBottom"
+                              Opacity="0"
+                              Command="{Binding PageDownCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              Style="{TemplateBinding PageTurnButtonStyle}" />
+                <local:Pagination x:Name="PgnIndicator"
+                                  Grid.RowSpan="3"
+                                  Grid.ColumnSpan="3"
+                                  Opacity="0"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  PageTurnButtonVisibility="Collapsed"
+                                  Style="{TemplateBinding IndicatorPaginationStyle}"
+                                  MinPage="0"
+                                  MaxPage="{Binding Children.Count, Converter={StaticResource {x:Static rs:ConverterKeys.IntMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  CurrentPage="{Binding CurrentIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                </local:Pagination>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Tag"
+                        Value="UpLeft" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Grid.Column"
+                        Value="2" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Tag"
+                        Value="DownRight" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation"
+                               Value="Horizontal" />
+                    <Condition Property="IndicatorPosition"
+                               Value="LeftOrTop" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PgnIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter TargetName="PgnIndicator"
+                        Property="VerticalAlignment"
+                        Value="Top" />
+                <Setter TargetName="PgnIndicator"
+                        Property="Orientation"
+                        Value="Horizontal" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation"
+                               Value="Horizontal" />
+                    <Condition Property="IndicatorPosition"
+                               Value="RightOrBottom" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PgnIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Center" />
+                <Setter TargetName="PgnIndicator"
+                        Property="VerticalAlignment"
+                        Value="Bottom" />
+                <Setter TargetName="PgnIndicator"
+                        Property="Orientation"
+                        Value="Horizontal" />
+            </MultiTrigger>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Tag"
+                        Value="UpTop" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Grid.Row"
+                        Value="2" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Tag"
+                        Value="DownBottom" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation"
+                               Value="Vertical" />
+                    <Condition Property="IndicatorPosition"
+                               Value="LeftOrTop" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PgnIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Left" />
+                <Setter TargetName="PgnIndicator"
+                        Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter TargetName="PgnIndicator"
+                        Property="Orientation"
+                        Value="Vertical" />
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Orientation"
+                               Value="Vertical" />
+                    <Condition Property="IndicatorPosition"
+                               Value="RightOrBottom" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PgnIndicator"
+                        Property="HorizontalAlignment"
+                        Value="Right" />
+                <Setter TargetName="PgnIndicator"
+                        Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter TargetName="PgnIndicator"
+                        Property="Orientation"
+                        Value="Vertical" />
+            </MultiTrigger>
+            <Trigger Property="IndicatorVisibility"
+                     Value="Collapsed">
+                <Setter TargetName="PgnIndicator" 
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="IndicatorVisibility"
+                     Value="Visible">
+                <Setter TargetName="PgnIndicator"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="PgnIndicator"
+                        Property="Opacity"
+                        Value="1" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IndicatorVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PgnIndicator"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="PgnIndicator"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+            <Trigger Property="PageTurnButtonVisibility"
+                     Value="Collapsed">
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="PageTurnButtonVisibility"
+                     Value="Visible">
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="RptLeftOrTop"
+                        Property="Opacity"
+                        Value="1" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="RptRightOrBottom"
+                        Property="Opacity"
+                        Value="1" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="PageTurnButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <MultiTrigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="RptLeftOrTop"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                            <DoubleAnimation Storyboard.TargetName="RptRightOrBottom"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.EnterActions>
+                <MultiTrigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="RptLeftOrTop"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.3" />
+                            <DoubleAnimation Storyboard.TargetName="RptRightOrBottom"
+                                             Storyboard.TargetProperty="Opacity"
+                                             Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </MultiTrigger.ExitActions>
+            </MultiTrigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,64 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/BreadcrumbTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=SeparatorTemplate, TypeInTargetAssembly={x:Type local:Breadcrumb}}">
+        <TextBlock Text="/"
+                   Opacity="0.2"
+                   VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <Style TargetType="local:Breadcrumb">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverForeground"
+                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverForeground"
+                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsPadding"
+                Value="5,0" />
+        <Setter Property="ItemsBackground"
+                Value="Transparent" />
+        <Setter Property="ItemsBorderThickness"
+                Value="0" />
+        <Setter Property="ItemsSeparatorMargin"
+                Value="5,0" />
+        <Setter Property="ItemsSeparatorTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=SeparatorTemplate, TypeInTargetAssembly={x:Type local:Breadcrumb}}}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.BreadcrumbTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

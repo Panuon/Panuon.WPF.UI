@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewItemTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:StyleKeys.TreeViewItemStyle}"
+           TargetType="TreeViewItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding Path=(local:TreeViewItemHelper.IsMouseDirectlyOver), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsSelected"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Height"
+                Value="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.VerticalAlignment"
+                Value="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.HorizontalAlignment"
+                Value="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinWidth"
+                Value="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinHeight"
+                Value="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxWidth"
+                Value="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxHeight"
+                Value="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.InternalPadding">
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemInternalPaddingConverter}}">
+                    <Binding Path="(local:TreeViewItemHelper.InternalPadding)"
+                             RelativeSource="{RelativeSource AncestorType=FrameworkElement, Mode=FindAncestor}"
+                             Mode="OneWay"
+                             FallbackValue="0,0,0,0" />
+                    <Binding Path="Padding"
+                             RelativeSource="{RelativeSource Self}"
+                             Mode="OneWay" />
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="local:TreeViewItemHelper.Icon"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.CornerRadius"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ToggleBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverBackground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverForeground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverToggleBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedBackground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedBorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedForeground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedBorderThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedToggleBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedToggleBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SeparatorBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSeparatorBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SeparatorThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSeparatorThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SeparatorMargin"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SeparatorVisibility"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.RulerLineBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsRulerLineBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.RulerLineDashArray"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsRulerLineDashArray), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.RulerLineThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsRulerLineThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.RulerLineVisiblity"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsRulerLineVisiblity), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.Height"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="local:TreeViewItemHelper.IsStyleless"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewItemStylelessTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/RepeatButtonTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}"
+           TargetType="local:Spin">
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
+        <Setter Property="GlyphBrush"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+    </Style>
+  
+    <Style x:Key="{x:Static rs:StyleKeys.RepeatButtonStyle}"
+           TargetType="RepeatButton">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:RepeatButtonHelper.HoverBackground"
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:RepeatButtonHelper.ClickBackground"
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:RepeatButtonHelper.PendingSpinStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type local:RepeatButtonHelper}}}" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="Background"
+                Value="#EAEAEA" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.RepeatButtonTemplate}}"/>
+        <Style.Triggers>
+            <Trigger Property="local:RepeatButtonHelper.IsPending"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.RepeatButtonPendingTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

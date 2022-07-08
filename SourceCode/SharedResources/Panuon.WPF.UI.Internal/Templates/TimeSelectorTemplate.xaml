@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimeSelectorTemplate}"
+                     TargetType="local:TimeSelector">
+        <local:ContentControlX x:Name="CcMain"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Padding="{TemplateBinding Padding}"
+                               CornerRadius="{TemplateBinding CornerRadius}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid ClipToBounds="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5*" />
+                </Grid.RowDefinitions>
+                <UniformGrid x:Name="PART_TimeNameUniformGrid"
+                             Columns="3" />
+                <local:SeparatorX x:Name="SprtSeparator"
+                                  Grid.Row="1"
+                                  Stroke="{TemplateBinding HeaderSeparatorBrush}"
+                                  StrokeThickness="{TemplateBinding HeaderSeparatorThickness}"
+                                  Margin="{TemplateBinding HeaderSeparatorMargin}"
+                                  Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorHourPresenter"
+                                                 TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />
+                    <local:SeparatorX Grid.Column="1"
+                                      Orientation="Vertical"
+                                      Stroke="{TemplateBinding TimeSeparatorBrush}"
+                                      StrokeThickness="{TemplateBinding TimeSeparatorThickness}"
+                                      Margin="{TemplateBinding TimeSeparatorMargin}"
+                                      Visibility="{TemplateBinding TimeSeparatorVisibility}" />
+                    <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorMinutePresenter"
+                                                 Grid.Column="2"
+                                                 TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />
+                    <local:SeparatorX Grid.Column="3"
+                                      Orientation="Vertical"
+                                      Stroke="{TemplateBinding TimeSeparatorBrush}"
+                                      StrokeThickness="{TemplateBinding TimeSeparatorThickness}"
+                                      Margin="{TemplateBinding TimeSeparatorMargin}"
+                                      Visibility="{TemplateBinding TimeSeparatorVisibility}" />
+                    <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorSecondPresenter"
+                                                 Grid.Column="4"
+                                                 TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />
+                </Grid>
+            </Grid>
+        </local:ContentControlX>
+        <ControlTemplate.Triggers>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>
+

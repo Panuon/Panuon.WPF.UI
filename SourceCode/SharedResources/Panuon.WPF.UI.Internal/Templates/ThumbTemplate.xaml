@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ThumbTemplate}"
+                     TargetType="Thumb">
+        <local:ContentControlX x:Name="CcMain"
+                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           BorderThickness="{TemplateBinding BorderThickness}"
+                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           CornerRadius="{Binding Path=(local:ThumbHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Content="{Binding Path=(local:ThumbHelper.Content), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           ContentTemplate="{Binding Path=(local:ThumbHelper.ContentTemplate), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           ContentTemplateSelector="{Binding Path=(local:ThumbHelper.ContentTemplateSelector), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+    </ControlTemplate>
+
+</ResourceDictionary>

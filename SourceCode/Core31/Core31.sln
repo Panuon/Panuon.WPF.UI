@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Panuon.WPF.UI", "Panuon.WPF.UI\Panuon.WPF.UI.csproj", "{A0D64DF4-AC31-4952-9852-F195464ADC9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharedResources", "SharedResources", "{F605E0CE-65DC-4CC4-B29A-07B1110D5284}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.WPF.UI", "..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.shproj", "{D8C1F070-38E3-494A-A8F7-14C66EE92503}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Panuon.WPF.UI.Internal", "..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.shproj", "{3925A1D9-6E08-43A7-838F-E43CF7B208EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0D64DF4-AC31-4952-9852-F195464ADC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D64DF4-AC31-4952-9852-F195464ADC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D64DF4-AC31-4952-9852-F195464ADC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D64DF4-AC31-4952-9852-F195464ADC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D8C1F070-38E3-494A-A8F7-14C66EE92503} = {F605E0CE-65DC-4CC4-B29A-07B1110D5284}
+		{3925A1D9-6E08-43A7-838F-E43CF7B208EE} = {F605E0CE-65DC-4CC4-B29A-07B1110D5284}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1082DA57-8C8F-4B49-BEA2-0C273A82021D}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems*{3925a1d9-6e08-43a7-838f-e43cf7b208ee}*SharedItemsImports = 13
+		..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems*{a0d64df4-ac31-4952-9852-f195464adc9d}*SharedItemsImports = 5
+		..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems*{a0d64df4-ac31-4952-9852-f195464adc9d}*SharedItemsImports = 5
+		..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems*{d8c1f070-38e3-494a-a8f7-14c66ee92503}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal

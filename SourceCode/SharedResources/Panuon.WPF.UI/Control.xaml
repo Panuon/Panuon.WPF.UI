@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <FontFamily x:Key="PanuonIconFont">/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon</FontFamily>
+        </ResourceDictionary>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Button.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/CheckBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ComboBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ComboBoxItem.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ContextMenu.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/DataGrid.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Expander.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/GroupBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Label.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListBoxItem.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListView.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListViewItem.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Menu.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/MenuItem.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ProgressBar.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/PasswordBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RadioButton.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButton.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ScrollBar.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ScrollViewer.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Slider.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TabControl.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TabItem.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBox.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/Thumb.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButton.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToolTip.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TreeView.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TreeViewItem.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

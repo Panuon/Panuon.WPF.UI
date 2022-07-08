@@ -1,0 +1,99 @@
+﻿<Application x:Class="Samples.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Samples"
+             xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+             xmlns:puconfig="clr-namespace:Panuon.WPF.UI.Configurations;assembly=Panuon.WPF.UI"
+             StartupUri="Views/MainView.xaml"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <pu:MessageBoxXSettings x:Key="messageSetting">
+                        <pu:MessageBoxXSettings.WindowXStyle>
+                            <Style TargetType="pu:WindowX"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                <Setter Property="SizeToContent"
+                                        Value="Manual" />
+                                <Setter Property="Width"
+                                        Value="400" />
+                                <Setter Property="Height"
+                                        Value="200" />
+                            </Style>
+                        </pu:MessageBoxXSettings.WindowXStyle>
+                        <pu:MessageBoxXSettings.ButtonStyle>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                <Setter Property="pu:ButtonHelper.CornerRadius"
+                                        Value="4" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsDefault"
+                                             Value="True">
+                                        <Setter Property="Foreground"
+                                                Value="#FFFFFF" />
+                                        <Setter Property="Background"
+                                                Value="#80BEE8" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </pu:MessageBoxXSettings.ButtonStyle>
+                    </pu:MessageBoxXSettings>
+
+                    <pu:NoticeBoxSettings x:Key="noticeSetting">
+                        <pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                            <Style TargetType="pu:NoticeBoxItem"
+                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type pu:NoticeBox}}}">
+                                <Setter Property="Background"
+                                        Value="#1E1E1E" />
+                                <Setter Property="BorderBrush"
+                                        Value="#4E4E4E" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                            </Style>
+                        </pu:NoticeBoxSettings.NoticeBoxItemStyle>
+                    </pu:NoticeBoxSettings>
+
+                    <pu:PendingBoxSettings x:Key="pendingSetting">
+                        <pu:PendingBoxSettings.SpinStyle>
+                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=SpinStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
+                                   TargetType="pu:Spin">
+                                <Setter Property="SpinStyle"
+                                        Value="Ring2" />
+                                <Setter Property="GlyphBrush"
+                                        Value="#6CBCEA" />
+                            </Style>
+                        </pu:PendingBoxSettings.SpinStyle>
+                        <pu:PendingBoxSettings.CancelButtonStyle>
+                            <!--Attention : CancelButtonStyle in PendingBox does not support Helpers in PanuonUI-->
+                            <Style BasedOn="{StaticResource {ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type pu:PendingBox}}}"
+                                   TargetType="Button">
+                                <Setter Property="Background"
+                                        Value="#6CBCEA" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsPressed"
+                                             Value="True">
+                                        <Setter Property="Background"
+                                                Value="#6CABEA" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </pu:PendingBoxSettings.CancelButtonStyle>
+                    </pu:PendingBoxSettings>
+
+                    <puconfig:NoticeBoxSetting x:Key="CustomSetting1">
+                    </puconfig:NoticeBoxSetting>
+
+                    <puconfig:NoticeBoxSetting x:Key="CustomSetting2"
+                                               AnimationEase="CircleInOut"
+                                               AnimationDuration="0:0:2">
+                    </puconfig:NoticeBoxSetting>
+
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
