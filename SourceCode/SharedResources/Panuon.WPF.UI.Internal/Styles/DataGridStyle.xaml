@@ -1,0 +1,313 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/CheckBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ComboBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/DataGridTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=SelectAllButtonStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBorderThickness), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderHoverBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.HoverForeground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderHoverForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderHoverBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.ClickBackground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderClickBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.ClickForeground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderClickForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.ClickBorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderClickBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=SortArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}"
+           TargetType="local:TransformControl">
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="Content"
+                Value="&#xe903;" />
+        <Setter Property="FontFamily"
+                Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="Padding"
+                Value="4,0,0,0" />
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.15" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SortDirection, RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}, Mode=OneWay}"
+                         Value="Descending">
+                <Setter Property="ScaleY"
+                        Value="-1" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=AutoGeneratedTextBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}"
+           TargetType="TextBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
+        <Setter Property="Margin"
+                Value="0,2" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="#E3E3E3" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=AutoGeneratedComboBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}"
+           TargetType="ComboBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ComboBoxStyle}}">
+        <Setter Property="Margin"
+                Value="0,2" />
+        <Setter Property="Padding"
+                Value="3,0,0,0" />
+        <Setter Property="BorderBrush"
+                Value="#E3E3E3" />
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=AutoGeneratedCheckBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}"
+           TargetType="CheckBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.CheckBoxStyle}}">
+        <Setter Property="BorderBrush"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+    </Style>
+
+    <Style x:Key="{x:Static irs:StyleKeys.DataGridComboBoxStyle}"
+           TargetType="ComboBox">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="IsEnabled"
+                Value="False" />
+        <Setter Property="MaxDropDownHeight"
+                Value="300" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <Border x:Name="BdrBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}" />
+                        <ContentPresenter x:Name="ContentSite"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        <Border Background="Transparent" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.DataGridCellStyle}"
+           TargetType="DataGridCell">
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.DataGridCellTemplate}}" />
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.UnitSelectedForeground),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:DataGridHelper.UnitSelectedForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="IsReadOnly"
+                     Value="True">
+                <Setter Property="KeyboardNavigation.IsTabStop"
+                        Value="False" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.DataGridRowStyle}"
+           TargetType="DataGridRow">
+        <Setter Property="local:DataGridHelper.RowHook"
+                Value="True" />
+        <Setter Property="Background"
+                Value="{Binding RowBackground, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="MaxHeight"
+                Value="{Binding Path=(local:DataGridHelper.MaxRowHeight), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.DataGridRowTemplate}}" />
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.DataGridRowHeaderStyle}"
+           TargetType="DataGridRowHeader">
+        <Setter Property="local:DataGridHelper.RowHeaderHook"
+                Value="True" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBorderThickness), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="SeparatorBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderSeparatorBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="SeparatorVisibility"
+                Value="{Binding Path=(local:DataGridHelper.RowHeaderSeparatorVisibility), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.DataGridRowHeaderTemplate}}" />
+        <Style.Triggers>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.DataGridColumnHeaderStyle}"
+           TargetType="DataGridColumnHeader">
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderForeground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderPadding), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="SeparatorBrush"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderSeparatorBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="SeparatorVisibility"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderSeparatorVisibility), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.DataGridColumnHeaderTemplate}}" />
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.DataGridStyle}"
+           TargetType="DataGrid">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="RenderOptions.EdgeMode"
+                Value="Aliased" />
+        <Setter Property="local:DataGridHelper.Hook"
+                Value="True" />
+        <Setter Property="local:DataGridHelper.SortArrowVisibility"
+                Value="CollapsedWhenUnsorted" />
+        <Setter Property="local:DataGridHelper.RowHeaderForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.RowHeaderBackground"
+                Value="#F8F8F8" />
+        <Setter Property="local:DataGridHelper.RowHeaderHoverBackground"
+                Value="#FAFAFA" />
+        <Setter Property="local:DataGridHelper.RowHeaderClickBackground"
+                Value="#F8F8F8" />
+        <Setter Property="local:DataGridHelper.RowHeaderSeparatorBrush"
+                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderVerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderHorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderPadding"
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderBackground"
+                Value="#F8F8F8" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderHoverBackground"
+                Value="#FCFCFC" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderClickBackground"
+                Value="#FAFAFA" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderSeparatorBrush"
+                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderPanelSeparatorBrush"
+                Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.ColumnHeaderPanelSeparatorVisibility"
+                Value="Visible" />
+        <Setter Property="local:DataGridHelper.ResizeThumbThickness"
+                Value="3" />
+        <Setter Property="local:DataGridHelper.UnitHoverBackground"
+                Value="#F8F8F8" />
+        <Setter Property="local:DataGridHelper.UnitSelectedBackground"
+                Value="#F8F8F8" />
+        <Setter Property="local:DataGridHelper.UnitSelectedForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="local:DataGridHelper.SelectAllButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=SelectAllButtonStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
+        <Setter Property="local:DataGridHelper.SortArrowTransformControlStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=SortArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
+        <Setter Property="local:DataGridHelper.AutoGeneratedTextBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=AutoGeneratedTextBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
+        <Setter Property="local:DataGridHelper.AutoGeneratedComboBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=AutoGeneratedComboBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
+        <Setter Property="local:DataGridHelper.AutoGeneratedCheckBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=AutoGeneratedCheckBoxStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="#EAEAEA" />
+        <Setter Property="RowHeight"
+                Value="35" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="ColumnHeaderHeight"
+                Value="35" />
+        <Setter Property="RowHeaderWidth"
+                Value="8" />
+        <Setter Property="VerticalGridLinesBrush"
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="HorizontalGridLinesBrush"
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.DataGridTemplate}}" />
+    </Style>
+
+</ResourceDictionary>

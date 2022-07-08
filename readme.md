@@ -1,19 +1,31 @@
-<a href="https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md" style="font-size:20px">切换到简体中文</a>
+<a href="https://www.nuget.org/packages/Panuon.WPF.UI" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.WPF.UI-green"></a>
+![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.5-blue)
+![](https://img.shields.io/badge/.net-3.1-blue)
+![](https://img.shields.io/badge/.net-5-blue)
+![](https://img.shields.io/badge/.net-6-blue)
+![](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
+![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
+![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
+
+[切换到简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md)  
 <br/>  
-<a href="https://www.nuget.org/packages/Panuon.UI.Silver" target='_blank'><img src="https://img.shields.io/badge/Nuget-Panuon.UI.Silver-green"></a>
-![Nuget](https://img.shields.io/badge/.net%20framework-%E2%89%A54.0-blue)
-![Nuget](https://img.shields.io/badge/.net%20core-%E2%89%A53.1-blue)
-![Nuget](https://img.shields.io/nuget/dt/Panuon.UI.Silver)
-![Nuget](https://img.shields.io/badge/Visual%20Studio-2019-813dbf)
 
-# Panuon.UI.Silver v2.2
+# Panuon.WPF.UI
 
-### Do not directly upgrade from Panuon.UI.Silver version `1.x` to version `2.x`. There's a big difference in how it's used between the two versions.  
+A professional UI engine for customization.  
+`Panuon.WPF.UI` allows you to achieve the desired UI effect with minimal code.  
+
+
+`Do not directly upgrade from Panuon.WPF.UI version 1.x to version 2.x. There's a big difference in how it's used between the two versions.`  
+
+# Upgrade
+
+Since `Panuon.UI.Silver` `2.2.20`, the control library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) (currently only supports Chinese).
 
 # Documents  
 
 Only Chinese documentation is now available.  
-[Chinese Wiki Document](https://github.com/Panuon/Panuon.UI.Silver/wiki/WPF-Home-zh-CN)  
+[Chinese Wiki Document](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Home-zh-CN)  
 
 # Contributors
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
@@ -24,24 +36,24 @@ Only Chinese documentation is now available.
   
 ## Report
 Samples/Views/Examples/ReportView.xaml  
-`261 code lines` to implement this page in Panuon.UI.Silver.  
+`261 code lines` to implement this page in Panuon.WPF.UI.  
   
 ![Report](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/Report.png)  
   
 ## Visual Studio 2019 (SIM)  
 Samples/Views/Examples/VisualStudio2019View.xaml  
-`293 code lines` to implement this page in Panuon.UI.Silver.  
+`293 code lines` to implement this page in Panuon.WPF.UI.  
   
 ![Visual Studio 2019 (SIM)](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/VisualStudio2019.png)
   
 ## Netease Music (SIM)
 Samples/Views/Examples/NeteaseMusicView.xaml  
-`272 code lines` to implement this page in Panuon.UI.Silver.  
+`272 code lines` to implement this page in Panuon.WPF.UI.  
   
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/NeteaseMusic.png)
   
 ## Sign In Example
 Samples/Views/Examples/SignInView.xaml  
-`187 code lines` to implement this page in Panuon.UI.Silver.  
+`187 code lines` to implement this page in Panuon.WPF.UI.  
   
 ![](https://raw.githubusercontent.com/Panuon/Panuon.Documents/master/Resources/SignIn.png)

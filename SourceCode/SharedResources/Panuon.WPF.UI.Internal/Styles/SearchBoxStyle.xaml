@@ -1,0 +1,89 @@
+﻿
+    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/SearchBoxTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}"
+           TargetType="TextBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
+    </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ListBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}"
+           TargetType="ListBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ListBoxStyle}}">
+    </Style>
+
+    <Style TargetType="local:SearchBox">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.CornerRadius"
+                Value="{Binding CornerRadius, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Background"
+                Value="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.BorderBrush"
+                Value="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.BorderThickness"
+                Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MinWidth"
+                Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MaxHeight"
+                Value="{Binding MaxDropDownHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Placement"
+                Value="BottomRight" />
+        <!--<Setter Property="TextBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}}" />
+        <Setter Property="ListBoxStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ListBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}}" />-->
+        <Setter Property="ItemsBackground"
+                Value="Transparent" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsPadding"
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBackground"
+                Value="#EAEAEA" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="ItemsVerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="7,0" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.SearchBoxTemplate}}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

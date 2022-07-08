@@ -1,0 +1,164 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TabItemTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:StyleKeys.TabItemStyle}"
+           TargetType="TabItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsSelected"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Height"
+                Value="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.VerticalAlignment"
+                Value="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.HorizontalAlignment"
+                Value="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinWidth"
+                Value="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinHeight"
+                Value="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxWidth"
+                Value="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxHeight"
+                Value="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.FontFamily"
+                Value="{Binding Path=(local:TabControlHelper.ItemsFontFamily), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.Foreground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.Icon"
+                Value="{Binding Path=(local:TabControlHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.IconPlacement"
+                Value="{Binding Path=(local:TabControlHelper.ItemsIconPlacement), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.CornerRadius"
+                Value="{Binding Path=(local:TabControlHelper.ItemsCornerRadius), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RemoveButtonVisibility"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRemoveButtonVisibility), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineMargin"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineVisibility"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineVisibility), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLinePlacement"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLinePlacement), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverBackground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverForeground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverRibbonLineBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HoverRibbonLineThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHoverRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedBackground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedBorderBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedForeground"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedFontSize"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedFontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedRibbonLineBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedBorderThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedCornerRadius"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedCornerRadius), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedRibbonLineThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SeparatorBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SeparatorThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SeparatorMargin"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SeparatorVisibility"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.VerticalHeaderAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsVerticalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.HorizontalHeaderAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHorizontalHeaderAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.Margin"
+                Value="{Binding Path=(local:TabControlHelper.ItemsMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedWidth"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedWidth), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.SelectedHeight"
+                Value="{Binding Path=(local:TabControlHelper.ItemsSelectedHeight), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:TabControlHelper.ItemsWidth), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.FontSize"
+                Value="{Binding Path=(local:TabControlHelper.ItemsFontSize), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding Path=(local:TabControlHelper.ItemsPadding), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding Path=(local:TabControlHelper.ItemsBackground), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:TabControlHelper.ItemsBorderBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:TabControlHelper.ItemsBorderThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="VerticalAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsVerticalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="HorizontalAlignment"
+                Value="{Binding Path=(local:TabControlHelper.ItemsHorizontalAlignment), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.TabItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="local:TabItemHelper.IsStyleless"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TabItemStylelessTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.SelectedWidth), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.SelectedWidth), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:TabItemHelper.SelectedHeight), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.SelectedHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

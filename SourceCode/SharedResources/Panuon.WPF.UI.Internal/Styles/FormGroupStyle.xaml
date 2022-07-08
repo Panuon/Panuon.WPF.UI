@@ -1,0 +1,112 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/FormGroupTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}">
+        <TextBlock TextWrapping="Wrap"
+                   TextTrimming="CharacterEllipsis"
+                   Margin="0,3,0,0">
+            <Run x:Name="RunIcon"
+                 FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+            <Run Text="{Binding Mode=OneWay}" />
+        </TextBlock>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
+                         Value="Error">
+                <Setter TargetName="RunIcon"
+                        Property="Text"
+                        Value="&#xe933;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
+                         Value="Info">
+                <Setter TargetName="RunIcon"
+                        Property="Text"
+                        Value="&#xe937;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
+                         Value="Success">
+                <Setter TargetName="RunIcon"
+                        Property="Text"
+                        Value="&#xe935;" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ValidateResult, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
+                         Value="Warning">
+                <Setter TargetName="RunIcon"
+                        Property="Text"
+                        Value="&#xe931;" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <Style TargetType="local:FormGroup">
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalHeaderAlignment"
+                Value="Center" />
+        <Setter Property="HeaderForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="MessageForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="ErrorMessageForeground"
+                Value="Red" />
+        <Setter Property="InfoMessageForeground"
+                Value="#6CBCEA" />
+        <Setter Property="SuccessMessageForeground"
+                Value="#79AD61" />
+        <Setter Property="WarningMessageForeground"
+                Value="Orange" />
+        <Setter Property="MessageTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
+        <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.FormGroupVerticalTemplate}}" />
+            </Trigger>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.FormGroupHorizontalTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Error">
+                <Setter Property="MessageForeground"
+                        Value="{Binding ErrorMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Info">
+                <Setter Property="MessageForeground"
+                        Value="{Binding InfoMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Success">
+                <Setter Property="MessageForeground"
+                        Value="{Binding SuccessMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+            <Trigger Property="ValidateResult"
+                     Value="Warning">
+                <Setter Property="MessageForeground"
+                        Value="{Binding WarningMessageForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+            </Trigger>
+        </Style.Triggers>
+        
+    </Style>
+
+
+</ResourceDictionary>

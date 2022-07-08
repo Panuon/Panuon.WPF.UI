@@ -1,0 +1,100 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/WindowXStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="Button"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="Height"
+                Value="30" />
+        <Setter Property="Padding"
+                Value="15,0" />
+        <Setter Property="Margin"
+                Value="0,0,5,0" />
+        <Style.Triggers>
+            <Trigger Property="IsDefault"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#D1D1D1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <local:StateControl CurrentState="{Binding MessageBoxIcon}"
+                                VerticalAlignment="Center"
+                                Margin="10,0,20,0"
+                                FontSize="40"
+                                FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon">
+                <local:StateItem State="Info">
+                    <TextBlock Foreground="#80BEE8"
+                               Text="&#xe92f;" />
+                </local:StateItem>
+                <local:StateItem State="Question">
+                    <TextBlock Foreground="#80BEE8"
+                               Text="&#xe937;" />
+                </local:StateItem>
+                <local:StateItem State="Warning">
+                    <TextBlock Foreground="#F9D01A"
+                               Text="&#xe931;" />
+                </local:StateItem>
+                <local:StateItem State="Error">
+                    <TextBlock Foreground="#FF5656"
+                               Text="&#xe933;" />
+                </local:StateItem>
+                <local:StateItem State="Success">
+                    <TextBlock Foreground="#75CD43"
+                               Text="&#xe935;" />
+                </local:StateItem>
+            </local:StateControl>
+            <TextBox Grid.Column="1"
+                     Text="{Binding Message}"
+                     Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
+                     TextWrapping="Wrap"
+                     BorderThickness="0"
+                     VerticalContentAlignment="Center" />
+        </Grid>
+    </DataTemplate>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="local:WindowX"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
+        <Setter Property="local:WindowXCaption.Buttons"
+                Value="Close" />
+        <Setter Property="MinWidth"
+                Value="350" />
+        <Setter Property="MaxWidth"
+                Value="500" />
+        <Setter Property="MaxHeight"
+                Value="350" />
+        <Setter Property="MinHeight"
+                Value="200" />
+        <Setter Property="SizeToContent"
+                Value="WidthAndHeight" />
+        <Setter Property="Padding"
+                Value="15,0,15,15" />
+        <Setter Property="ShowInTaskbar"
+                Value="False" />
+        <Setter Property="InteropOwnersMask"
+                Value="True" />
+        <Setter Property="ResizeMode"
+                Value="NoResize" />
+    </Style>
+
+</ResourceDictionary>
+
+
