@@ -136,12 +136,12 @@ namespace Panuon.WPF.UI
         {
             if (IsOpen)
             {
-                Close();
+                Open();
                 Closed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                Open();
+                Close();
                 Opened?.Invoke(this, EventArgs.Empty);
             }
         }
