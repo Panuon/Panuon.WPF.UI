@@ -136,12 +136,12 @@ namespace Panuon.WPF.UI
         {
             if (IsOpen)
             {
-                Close();
+                Open();
                 Closed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                Open();
+                Close();
                 Opened?.Invoke(this, EventArgs.Empty);
             }
         }
@@ -149,7 +149,7 @@ namespace Panuon.WPF.UI
         public void Open()
         {
             if (ActualWidth == 0
-                || ActualHeight == 0)
+                && ActualHeight == 0)
             {
                 return;
             }
@@ -183,7 +183,7 @@ namespace Panuon.WPF.UI
         public void Close()
         {
             if (ActualWidth == 0
-                || ActualHeight == 0)
+                && ActualHeight == 0)
             {
                 return;
             }
