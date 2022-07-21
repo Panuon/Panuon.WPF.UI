@@ -261,7 +261,7 @@
                                                 Margin="0,8,0,0"
                                                 Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
                         <local:ContentControlX x:Name="CcHeader"
-                                               Grid.Column="1"
+                                               Grid.Row="1"
                                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                                Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                                Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
@@ -269,7 +269,7 @@
                                                ContentTemplate="{TemplateBinding HeaderTemplate}"
                                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                                ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
-                        <ContentControl Grid.Row="4"
+                        <ContentControl Grid.Row="2"
                                         Focusable="False"
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>

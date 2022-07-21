@@ -17,6 +17,10 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region Internal Events
+        internal event EventHandler InternalChildrenChanged;
+        #endregion
+
         #region Properties
 
         #region Animation
@@ -129,13 +133,49 @@ namespace Panuon.WPF.UI
 
                 child.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
             }
+            InternalChildrenChanged?.Invoke(this, EventArgs.Empty);
+            CoerceValue(CurrentIndexProperty);
             return base.ArrangeOverride(finalSize);
         }
 
+        protected override void OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)
+        {
+            base.OnVisualChildrenChanged(visualAdded, visualRemoved);
+
+            var currentIndex = CurrentIndex;
+            if (currentIndex >= 0 && currentIndex < InternalChildren.Count)
+            {
+                var currentElement = InternalChildren[currentIndex] as UIElement;
+                if (currentElement == null)
+                {
+
+                    while (currentElement == null)
+                    {
+                        currentIndex++;
+
+                        if (currentIndex > InternalChildren.Count - 1)
+                        {
+                            currentIndex = 0;
+                        }
+
+                        if (currentIndex == CurrentIndex)
+                        {
+                            return;
+                        }
+                        currentElement = InternalChildren[currentIndex] as UIElement;
+
+                    }
+
+                    if (currentIndex >= 0 && currentIndex < InternalChildren.Count)
+                    {
+                        OnCurrentIndexChanged(CurrentIndex, currentIndex);
+                    }
+                }
+            }
+        }
         #endregion
 
         #region Event Handlers
-
         private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var cardPanel = (CarouselPanel)d;
@@ -160,7 +200,6 @@ namespace Panuon.WPF.UI
             }
             return baseValue;
         }
-
         #endregion
 
         #region Functions
@@ -171,56 +210,49 @@ namespace Panuon.WPF.UI
             {
                 throw new Exception("CarouselPanel : Flow animation and Slide animation cannot be used together.");
             }
+            if(ActualWidth == 0
+                && ActualHeight == 0)
+            {
+                return;
+            }
 
-            var oldChild = InternalChildren[oldIndex] as FrameworkElement;
+            var oldChild = (oldIndex >= 0 && oldIndex <= InternalChildren.Count - 1)
+                ? InternalChildren[oldIndex] as FrameworkElement
+                : null;
+
+            var newChild = (newIndex >= 0 && newIndex <= InternalChildren.Count - 1)
+                ? InternalChildren[newIndex] as FrameworkElement
+                : null;
+
+            BeginOldChildAnimation(oldChild, newIndex > oldIndex);
+            BeginNewChildAnimation(newChild, newIndex > oldIndex);
+        }
+
+        private void BeginOldChildAnimation(FrameworkElement oldChild, bool forward)
+        {
+            if(oldChild == null)
+            {
+                return;
+            }
+            
             var oldTranformGroup = oldChild.RenderTransform as TransformGroup;
             if (oldTranformGroup == null
                 || oldTranformGroup.Children.Count != 2
                 || !(oldTranformGroup.Children[0] is TranslateTransform)
                 || !(oldTranformGroup.Children[1] is ScaleTransform))
             {
-                oldChild.RenderTransformOrigin = new Point(0.5, 0.5);
                 oldTranformGroup = new TransformGroup();
                 var translateTransform = new TranslateTransform();
                 oldTranformGroup.Children.Add(translateTransform);
                 var scaleTransform = new ScaleTransform();
                 oldTranformGroup.Children.Add(scaleTransform);
+                oldChild.RenderTransformOrigin = new Point(0.5, 0.5);
                 oldChild.RenderTransform = oldTranformGroup;
             }
-            var oldTranslateTransform = oldTranformGroup.Children[0] as TranslateTransform;
             var oldScaleTranform = oldTranformGroup.Children[1] as ScaleTransform;
-
-            var newChild = InternalChildren[newIndex] as FrameworkElement;
-            var newTranformGroup = newChild.RenderTransform as TransformGroup;
-            if (newTranformGroup == null
-                || newTranformGroup.Children.Count != 2
-                || !(newTranformGroup.Children[0] is TranslateTransform)
-                || !(newTranformGroup.Children[1] is ScaleTransform))
-            {
-                newChild.RenderTransformOrigin = new Point(0.5, 0.5);
-                newTranformGroup = new TransformGroup();
-                var translateTransform = new TranslateTransform();
-                newTranformGroup.Children.Add(translateTransform);
-                var scaleTransform = new ScaleTransform();
-                newTranformGroup.Children.Add(scaleTransform);
-                newChild.RenderTransform = newTranformGroup;
-            }
-            var newTranslateTransform = newTranformGroup.Children[0] as TranslateTransform;
-            var newScaleTranform = newTranformGroup.Children[1] as ScaleTransform;
-
-            newChild.Visibility = Visibility.Visible;
 
             if (Animation.HasFlag(CarouselAnimation.Fade))
             {
-                var newOpacityAnimation = new DoubleAnimation()
-                {
-                    To = 1,
-                    Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                };
-                newChild.BeginAnimation(OpacityProperty, newOpacityAnimation);
-                SetCurrentAnimation(newChild, newOpacityAnimation);
-
                 var oldOpacityAnimation = new DoubleAnimation()
                 {
                     To = 0,
@@ -240,27 +272,14 @@ namespace Panuon.WPF.UI
             }
             else
             {
-                newChild.BeginAnimation(OpacityProperty, null);
                 oldChild.BeginAnimation(OpacityProperty, null);
-                newChild.Opacity = 1;
                 oldChild.Opacity = 1;
             }
 
             if (Animation.HasFlag(CarouselAnimation.Slide))
             {
-                if (newIndex > oldIndex)
+                if (forward)
                 {
-                    var newThicknessAnimation = new ThicknessAnimation()
-                    {
-                        From = Orientation == Orientation.Horizontal
-                            ? new Thickness(ActualWidth, 0, -ActualWidth, 0)
-                            : new Thickness(0, ActualHeight, 0, -ActualHeight),
-                        To = new Thickness(),
-                        Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                    };
-                    newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
-
                     var oldThicknessAnimation = new ThicknessAnimation()
                     {
                         From = new Thickness(),
@@ -284,17 +303,6 @@ namespace Panuon.WPF.UI
                 }
                 else
                 {
-                    var newThicknessAnimation = new ThicknessAnimation()
-                    {
-                        From = Orientation == Orientation.Horizontal
-                            ? new Thickness(-ActualWidth, 0, ActualWidth, 0)
-                            : new Thickness(0, -ActualHeight, 0, ActualHeight),
-                        To = new Thickness(),
-                        Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                    };
-                    newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
-
                     var oldThicknessAnimation = new ThicknessAnimation()
                     {
                         From = new Thickness(),
@@ -320,40 +328,17 @@ namespace Panuon.WPF.UI
             else if (Animation.HasFlag(CarouselAnimation.Flow))
             {
                 oldChild.Visibility = Visibility.Collapsed;
-                var newThicknessAnimation = new ThicknessAnimation()
-                {
-                    From = Orientation == Orientation.Horizontal
-                            ? (newIndex > oldIndex ? new Thickness(-10, 0, 10, 0) : new Thickness(10, 0, -10, 0))
-                            : (newIndex > oldIndex ? new Thickness(0, -10, 0, 10) : new Thickness(0, 10, 0, -10)),
-                    To = new Thickness(),
-                    Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                };
-                newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
             }
             else
             {
-                newChild.BeginAnimation(MarginProperty, null);
                 oldChild.BeginAnimation(MarginProperty, null);
-                newChild.Margin = new Thickness();
                 oldChild.Margin = new Thickness();
             }
 
             if (Animation.HasFlag(CarouselAnimation.Scale))
             {
-                if (newIndex > oldIndex)
+                if (forward)
                 {
-                    var newDoubleAnimation = new DoubleAnimation()
-                    {
-                        From = 1.2,
-                        To = 1,
-                        Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
-                    };
-                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
-                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);
-
-                    
                     var oldDoubleAnimation = new DoubleAnimation()
                     {
                         From = 1,
@@ -383,9 +368,6 @@ namespace Panuon.WPF.UI
                         Duration = AnimationDuration,
                         EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
                     };
-                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
-                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);
-
 
                     var oldDoubleAnimation = new DoubleAnimation()
                     {
@@ -410,14 +392,138 @@ namespace Panuon.WPF.UI
             }
             else
             {
-                newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, null);
-                newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, null);
                 oldScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, null);
                 oldScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, null);
-                newScaleTranform.ScaleX = 1;
-                newScaleTranform.ScaleY = 1;
                 oldScaleTranform.ScaleX = 1;
                 oldScaleTranform.ScaleY = 1;
+            }
+
+        }
+
+        private void BeginNewChildAnimation(FrameworkElement newChild, bool forward)
+        {
+            if(newChild == null)
+            {
+                return;
+            }
+            
+            var newTranformGroup = newChild?.RenderTransform as TransformGroup;
+            if (newTranformGroup == null
+                || newTranformGroup.Children.Count != 2
+                || !(newTranformGroup.Children[0] is TranslateTransform)
+                || !(newTranformGroup.Children[1] is ScaleTransform))
+            {
+                newChild.RenderTransformOrigin = new Point(0.5, 0.5);
+                newTranformGroup = new TransformGroup();
+                var translateTransform = new TranslateTransform();
+                newTranformGroup.Children.Add(translateTransform);
+                var scaleTransform = new ScaleTransform();
+                newTranformGroup.Children.Add(scaleTransform);
+                newChild.RenderTransform = newTranformGroup;
+            }
+            var newScaleTranform = newTranformGroup.Children[1] as ScaleTransform;
+
+            newChild.Visibility = Visibility.Visible;
+
+            if (Animation.HasFlag(CarouselAnimation.Fade))
+            {
+                var newOpacityAnimation = new DoubleAnimation()
+                {
+                    To = 1,
+                    Duration = AnimationDuration,
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                };
+                newChild.BeginAnimation(OpacityProperty, newOpacityAnimation);
+                SetCurrentAnimation(newChild, newOpacityAnimation);
+
+            }
+            else
+            {
+                newChild.BeginAnimation(OpacityProperty, null);
+                newChild.Opacity = 1;
+            }
+
+            if (Animation.HasFlag(CarouselAnimation.Slide))
+            {
+                if (forward)
+                {
+                    var newThicknessAnimation = new ThicknessAnimation()
+                    {
+                        From = Orientation == Orientation.Horizontal
+                            ? new Thickness(ActualWidth, 0, -ActualWidth, 0)
+                            : new Thickness(0, ActualHeight, 0, -ActualHeight),
+                        To = new Thickness(),
+                        Duration = AnimationDuration,
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    };
+                    newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
+                }
+                else
+                {
+                    var newThicknessAnimation = new ThicknessAnimation()
+                    {
+                        From = Orientation == Orientation.Horizontal
+                            ? new Thickness(-ActualWidth, 0, ActualWidth, 0)
+                            : new Thickness(0, -ActualHeight, 0, ActualHeight),
+                        To = new Thickness(),
+                        Duration = AnimationDuration,
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    };
+                    newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
+                }
+            }
+            else if (Animation.HasFlag(CarouselAnimation.Flow))
+            {
+                var newThicknessAnimation = new ThicknessAnimation()
+                {
+                    From = Orientation == Orientation.Horizontal
+                            ? (forward ? new Thickness(-10, 0, 10, 0) : new Thickness(10, 0, -10, 0))
+                            : (forward ? new Thickness(0, -10, 0, 10) : new Thickness(0, 10, 0, -10)),
+                    To = new Thickness(),
+                    Duration = AnimationDuration,
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                };
+                newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
+            }
+            else
+            {
+                newChild.BeginAnimation(MarginProperty, null);
+                newChild.Margin = new Thickness();
+            }
+
+            if (Animation.HasFlag(CarouselAnimation.Scale))
+            {
+                if (forward)
+                {
+                    var newDoubleAnimation = new DoubleAnimation()
+                    {
+                        From = 1.2,
+                        To = 1,
+                        Duration = AnimationDuration,
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    };
+                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
+                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);
+                }
+                else
+                {
+                    var newDoubleAnimation = new DoubleAnimation()
+                    {
+                        From = 0.8,
+                        To = 1,
+                        Duration = AnimationDuration,
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    };
+                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
+                    newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);
+                }
+            }
+            else
+            {
+                newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, null);
+                newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, null);
+                newScaleTranform.ScaleX = 1;
+                newScaleTranform.ScaleY = 1;
             }
         }
         #endregion

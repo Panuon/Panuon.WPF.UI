@@ -312,7 +312,8 @@ namespace Panuon.WPF.UI
                 return;
             }
 
-            if (e.OriginalSource != scrollViewer)
+            if (originalSource != null
+                && originalSource != scrollViewer)
             {
                 scrollViewer.PreviewMouseWheel -= ScrollViewer_PreviewMouseWheel;
                 var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)

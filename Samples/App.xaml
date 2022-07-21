@@ -82,15 +82,6 @@
                             </Style>
                         </pu:PendingBoxSettings.CancelButtonStyle>
                     </pu:PendingBoxSettings>
-
-                    <puconfig:NoticeBoxSetting x:Key="CustomSetting1">
-                    </puconfig:NoticeBoxSetting>
-
-                    <puconfig:NoticeBoxSetting x:Key="CustomSetting2"
-                                               AnimationEase="CircleInOut"
-                                               AnimationDuration="0:0:2">
-                    </puconfig:NoticeBoxSetting>
-
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
             </ResourceDictionary.MergedDictionaries>

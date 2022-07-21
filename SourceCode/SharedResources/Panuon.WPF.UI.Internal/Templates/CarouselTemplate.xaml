@@ -35,7 +35,7 @@
                               Command="{Binding PageDownCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Style="{TemplateBinding PageTurnButtonStyle}" />
-                <local:Pagination x:Name="PgnIndicator"
+                <local:Pagination x:Name="PART_IndicatorPagination"
                                   Grid.RowSpan="3"
                                   Grid.ColumnSpan="3"
                                   Opacity="0"
@@ -78,13 +78,13 @@
                     <Condition Property="IndicatorPosition"
                                Value="LeftOrTop" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="HorizontalAlignment"
                         Value="Center" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="VerticalAlignment"
                         Value="Top" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Orientation"
                         Value="Horizontal" />
             </MultiTrigger>
@@ -95,13 +95,13 @@
                     <Condition Property="IndicatorPosition"
                                Value="RightOrBottom" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="HorizontalAlignment"
                         Value="Center" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="VerticalAlignment"
                         Value="Bottom" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Orientation"
                         Value="Horizontal" />
             </MultiTrigger>
@@ -133,13 +133,13 @@
                     <Condition Property="IndicatorPosition"
                                Value="LeftOrTop" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="HorizontalAlignment"
                         Value="Left" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="VerticalAlignment"
                         Value="Center" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Orientation"
                         Value="Vertical" />
             </MultiTrigger>
@@ -150,28 +150,28 @@
                     <Condition Property="IndicatorPosition"
                                Value="RightOrBottom" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="HorizontalAlignment"
                         Value="Right" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="VerticalAlignment"
                         Value="Center" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Orientation"
                         Value="Vertical" />
             </MultiTrigger>
             <Trigger Property="IndicatorVisibility"
                      Value="Collapsed">
-                <Setter TargetName="PgnIndicator" 
+                <Setter TargetName="PART_IndicatorPagination" 
                         Property="Visibility"
                         Value="Collapsed" />
             </Trigger>
             <Trigger Property="IndicatorVisibility"
                      Value="Visible">
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Visibility"
                         Value="Visible" />
-                <Setter TargetName="PgnIndicator"
+                <Setter TargetName="PART_IndicatorPagination"
                         Property="Opacity"
                         Value="1" />
             </Trigger>
@@ -185,7 +185,7 @@
                 <MultiTrigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="PgnIndicator"
+                            <DoubleAnimation Storyboard.TargetName="PART_IndicatorPagination"
                                              Storyboard.TargetProperty="Opacity"
                                              To="1"
                                              Duration="0:0:0.3" />
@@ -195,7 +195,7 @@
                 <MultiTrigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Storyboard.TargetName="PgnIndicator"
+                            <DoubleAnimation Storyboard.TargetName="PART_IndicatorPagination"
                                              Storyboard.TargetProperty="Opacity"
                                              Duration="0:0:0.3" />
                         </Storyboard>

@@ -37,7 +37,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty IsOpenProperty =
-            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Drawer), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsOpenChanged));
+            DependencyProperty.Register("IsOpen", typeof(bool), typeof(Drawer), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsOpenChanged));
         #endregion
 
         #region StaysOpen
@@ -136,78 +136,78 @@ namespace Panuon.WPF.UI
         {
             if (IsOpen)
             {
-                Close();
+                Open();
                 Closed?.Invoke(this, EventArgs.Empty);
             }
             else
             {
-                Open();
+                Close();
                 Opened?.Invoke(this, EventArgs.Empty);
             }
         }
         
         public void Open()
         {
-            if (ActualWidth == 0
-                || ActualHeight == 0)
+            if (ActualWidth != 0
+                && ActualHeight != 0)
             {
-                return;
+
+                if (!StaysOpen)
+                {
+                    Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
+                    Mouse.Capture(this, CaptureMode.SubTree);
+                }
+
+                switch (Placement)
+                {
+                    case DrawerPlacement.Left:
+                    case DrawerPlacement.Right:
+                        if (double.IsPositiveInfinity(MaxWidth))
+                        {
+                            throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
+                        }
+                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MaxWidth - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
+                        break;
+                    default:
+                        if (double.IsPositiveInfinity(MaxHeight))
+                        {
+                            throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
+                        }
+                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MaxHeight - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
+                        break;
+                }
             }
 
-            if (!StaysOpen)
-            {
-                Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
-                Mouse.Capture(this, CaptureMode.SubTree);
-            }
-
-            switch (Placement)
-            {
-                case DrawerPlacement.Left:
-                case DrawerPlacement.Right:
-                    if (double.IsPositiveInfinity(MaxWidth))
-                    {
-                        throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
-                    }
-                    AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MaxWidth - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
-                    break;
-                default:
-                    if (double.IsPositiveInfinity(MaxHeight))
-                    {
-                        throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
-                    }
-                    AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MaxHeight - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
-                    break;
-            }
+            SetCurrentValue(IsOpenProperty, true);
         }
 
         public void Close()
         {
-            if (ActualWidth == 0
-                || ActualHeight == 0)
+            if (ActualWidth != 0
+                && ActualHeight != 0)
             {
-                return;
+                switch (Placement)
+                {
+                    case DrawerPlacement.Left:
+                    case DrawerPlacement.Right:
+                        if (double.IsInfinity(MaxWidth)
+                            || double.IsNaN(MaxWidth))
+                        {
+                            throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
+                        }
+                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
+                        break;
+                    default:
+                        if (double.IsInfinity(MaxHeight)
+                            || double.IsNaN(MaxHeight))
+                        {
+                            throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
+                        }
+                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
+                        break;
+                }
             }
-
-            switch (Placement)
-            {
-                case DrawerPlacement.Left:
-                case DrawerPlacement.Right:
-                    if (double.IsInfinity(MaxWidth)
-                        || double.IsNaN(MaxWidth))
-                    {
-                        throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
-                    }
-                    AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
-                    break;
-                default:
-                    if (double.IsInfinity(MaxHeight)
-                        || double.IsNaN(MaxHeight))
-                    {
-                        throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
-                    }
-                    AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
-                    break;
-            }
+            SetCurrentValue(IsOpenProperty, false);
         }
         #endregion
     }

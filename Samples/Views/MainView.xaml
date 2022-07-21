@@ -182,64 +182,6 @@
                         Command="{Binding PageDownCommand, ElementName=panel}"
                         CommandParameter="{Binding ElementName=panel}"/>
             </StackPanel>
-            
-            <pu:Carousel x:Name="panel"
-                         Grid.Row="1"
-                         Width="500"
-                         Height="300"
-                         Animation="Flow,Fade"
-                         Orientation="Vertical"
-                         AnimationEase="CubicOut"
-                         TextBlock.Foreground="White"
-                         TextBlock.FontSize="40"
-                         TextBlock.TextAlignment="Center">
-                <pu:Carousel.IndicatorPaginationStyle>
-                    <Style TargetType="pu:Pagination"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type pu:Carousel}}}">
-                        <Setter Property="ItemsWidth"
-                                Value="NaN" />
-                        <Setter Property="ItemsHeight"
-                                Value="NaN" />
-                        <Setter Property="ItemsBackground"
-                                Value="Transparent" />
-                        <Setter Property="ItemsForeground"
-                                Value="#55FFFFFF" />
-                        <Setter Property="ItemsSelectedBackground"
-                                Value="{x:Null}" />
-                        <Setter Property="ItemsSelectedForeground"
-                                Value="#FFFFFF" />
-                        <Setter Property="ItemContainerStyle">
-                            <Setter.Value>
-                                <Style TargetType="pu:PaginationItem">
-                                    <Setter Property="Cursor"
-                                            Value="Hand" />
-                                    <Setter Property="ContentTemplate">
-                                        <Setter.Value>
-                                            <DataTemplate>
-                                                <TextBlock Text="&#xe954;"
-                                                           FontFamily="{StaticResource PanuonIconFont}"
-                                                           FontSize="20"/>
-                                            </DataTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </pu:Carousel.IndicatorPaginationStyle>
-                <Border Background="#1ABBEA">
-                    <TextBlock Text="Item 1"
-                               VerticalAlignment="Center"/>
-                </Border>
-                <Border Background="#F6AC0C">
-                    <TextBlock Text="Item 2"
-                               VerticalAlignment="Center" />
-                </Border>
-                <Border Background="#FF5CAC">
-                    <TextBlock Text="Item 3"
-                               VerticalAlignment="Center" />
-                </Border>
-            </pu:Carousel>
         </Grid>-->
                 <TextBlock Grid.Row="2"
                            FontSize="14"
