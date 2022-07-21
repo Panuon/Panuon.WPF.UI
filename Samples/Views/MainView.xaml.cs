@@ -2,10 +2,8 @@
 using Samples.Views.Tools;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -80,16 +78,14 @@ namespace Samples.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var setting = Application.Current.FindResource("CustomSetting1") as Panuon.WPF.UI.Configurations.NoticeBoxSetting;
-            NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            //handler.Closed += ...
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NoticeBox.DestroyInstance();
-            
-            var setting = Application.Current.FindResource("CustomSetting2") as Panuon.WPF.UI.Configurations.NoticeBoxSetting;
-            NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            //handler.Closed += ...
         }
         #endregion
 
@@ -151,14 +147,5 @@ namespace Samples.Views
 
         #endregion
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    panel.CurrentIndex--;
-        //}
-
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    panel.CurrentIndex++;
-        //}
     }
 }

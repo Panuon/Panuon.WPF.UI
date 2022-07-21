@@ -197,6 +197,52 @@
                     Value="0,0,0,1" />
         </Style>
 
+        <Style x:Key="CarouselStyle"
+               TargetType="pu:Carousel">
+            <Setter Property="Animation"
+                    Value="Flow,Fade" />
+            <Setter Property="AnimationEase"
+                    Value="CubicOut" />
+            <Setter Property="IndicatorVisibility"
+                    Value="Visible" />
+            <Setter Property="IndicatorPaginationStyle">
+                <Setter.Value>
+                    <Style TargetType="pu:Pagination"
+                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type pu:Carousel}}}">
+                        <Setter Property="ItemsWidth"
+                                Value="NaN" />
+                        <Setter Property="ItemsHeight"
+                                Value="NaN" />
+                        <Setter Property="ItemsBackground"
+                                Value="Transparent" />
+                        <Setter Property="ItemsForeground"
+                                Value="#55000000" />
+                        <Setter Property="ItemsSelectedBackground"
+                                Value="{x:Null}" />
+                        <Setter Property="ItemsSelectedForeground"
+                                Value="#C62F2F" />
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="pu:PaginationItem">
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <TextBlock Text="&#xe954;"
+                                                           FontFamily="{StaticResource PanuonIconFont}"
+                                                           FontSize="16" />
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </pu:WindowX.Resources>
     <pu:WindowXCaption.MinimizeButtonStyle>
         <Style TargetType="Button"
@@ -323,14 +369,43 @@
                               Header="Favorites" />
             </TreeView>
         </Grid>
-        <TabControl Grid.Column="1"
-                    Style="{StaticResource SubMenuTabControlStyle}">
-            <TabItem Header="Recommend"/>
-            <TabItem Header="List" />
-            <TabItem Header="Radio" />
-            <TabItem Header="Charts" />
-            <TabItem Header="Singer" />
-            <TabItem Header="Newest" />
-        </TabControl>
+        <ScrollViewer Grid.Column="1">
+            <StackPanel>
+                <pu:Carousel Style="{StaticResource CarouselStyle}"
+                             Height="300"
+                             TextBlock.FontSize="40"
+                             TextBlock.TextAlignment="Center">
+                    <Border Background="#FAFAFA">
+                        <TextBlock Text="Page 1"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <Border Background="#FAFAFA">
+                        <TextBlock Text="Page 2"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <Border Background="#FAFAFA">
+                        <TextBlock Text="Page 3"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <Border Background="#FAFAFA">
+                        <TextBlock Text="Page 4"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <Border Background="#FAFAFA">
+                        <TextBlock Text="Page 5"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                </pu:Carousel>
+
+                <TabControl Style="{StaticResource SubMenuTabControlStyle}">
+                    <TabItem Header="Recommend" />
+                    <TabItem Header="List" />
+                    <TabItem Header="Radio" />
+                    <TabItem Header="Charts" />
+                    <TabItem Header="Singer" />
+                    <TabItem Header="Newest" />
+                </TabControl>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </pu:WindowX>
