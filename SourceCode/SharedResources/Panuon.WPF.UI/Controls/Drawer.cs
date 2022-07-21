@@ -149,7 +149,7 @@ namespace Panuon.WPF.UI
         public void Open()
         {
             if (ActualWidth != 0
-                && ActualHeight != 0)
+                || ActualHeight != 0)
             {
 
                 if (!StaysOpen)
@@ -184,7 +184,7 @@ namespace Panuon.WPF.UI
         public void Close()
         {
             if (ActualWidth != 0
-                && ActualHeight != 0)
+                || ActualHeight != 0)
             {
                 switch (Placement)
                 {
