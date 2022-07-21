@@ -321,7 +321,7 @@ namespace Panuon.WPF.UI
                     RoutedEvent = UIElement.PreviewMouseWheelEvent,
                     Source = scrollViewer,
                 };
-                originalSource.RaiseEvent(eventArg);
+                originalSource?.RaiseEvent(eventArg);
                 scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
                 if (eventArg.Handled)
                 {
