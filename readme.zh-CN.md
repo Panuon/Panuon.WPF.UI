@@ -7,7 +7,7 @@
 ![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
 ![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
 
-[切换到简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.md)  
+[切换到简体中文](https://github.com/PanuonGroup/Panuon.WPF.UI)  
 <br/>  
 
 # Panuon.WPF.UI v2.2
@@ -16,12 +16,16 @@
 一个专业的定制化UI引擎。  
 `Panuon.WPF.UI` 能让你用最少的代码来实现期望的UI效果。  
 
-`请勿从Panuon.WPF.UI 1.x 版本直接升级到 2.2 版本。两个版本之间的使用方式有很大的差异。`  
+`请勿从Panuon.UI.Silver 1.x 版本直接升级到 Panuon.UI.Silver 2.2 或 Panuon.WPF.UI 1.x 版本。这些个版本之间的使用方式有很大的差异。`  
+  
+# 升级
+
+自 `Panuon.UI.Silver` `2.2.20` 开始, 本库已经重命名为 `Panuon.WPF.UI` 。 要升级到新库，请参阅这篇 [wiki文档](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) 。  
 
 # 文档  
 
 现在仅提供了中文文档。  
-[中文Wiki文档](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Home-zh-CN)  
+[中文Wiki文档](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/Home-zh-CN)  
 
 # 贡献
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
