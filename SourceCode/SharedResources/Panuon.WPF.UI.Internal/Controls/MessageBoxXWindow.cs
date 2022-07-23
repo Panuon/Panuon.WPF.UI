@@ -128,23 +128,27 @@ namespace Panuon.WPF.UI.Internal.Controls
 
         private void TriggerDefaultButton()
         {
-            if (ModalOKButton.IsDefault)
+            try
             {
-                DialogResult = true;
-            }
-            if (ModalCancelButton.IsDefault)
-            {
-                Close();
-            }
-            if (ModalYesButton.IsDefault)
-            {
-                DialogResult = true;
+                if (ModalOKButton.IsDefault)
+                {
+                    DialogResult = true;
+                }
+                if (ModalCancelButton.IsDefault)
+                {
+                    Close();
+                }
+                if (ModalYesButton.IsDefault)
+                {
+                    DialogResult = true;
 
+                }
+                if (ModalNoButton.IsDefault)
+                {
+                    DialogResult = false;
+                }
             }
-            if (ModalNoButton.IsDefault)
-            {
-                DialogResult = false;
-            }
+            catch { }
         }
 
         private Button GetDefaultButton()

@@ -22,30 +22,30 @@ namespace Panuon.WPF.UI
         #region ItemRemoving
         public static void AddItemRemovingHandler(UIElement element, ItemRemovingRoutedEventHandler eventHandler)
         {
-            element.AddHandler(ItemRemovingRoutedEvent, eventHandler);
+            element.AddHandler(ItemRemovingEvent, eventHandler);
         }
 
         public static void RemoveItemRemovingHandler(UIElement element, ItemRemovingRoutedEventHandler eventHandler)
         {
-            element.RemoveHandler(ItemRemovingRoutedEvent, eventHandler);
+            element.RemoveHandler(ItemRemovingEvent, eventHandler);
         }
 
-        public static readonly RoutedEvent ItemRemovingRoutedEvent
+        public static readonly RoutedEvent ItemRemovingEvent
             = EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(ItemRemovingRoutedEventHandler), typeof(ListBoxHelper));
         #endregion
 
         #region ItemRemoved
         public static void AddItemRemovedHandler(UIElement element, ItemRemovedRoutedEventHandler handler)
         {
-            element.AddHandler(ItemRemovedRoutedEvent, handler);
+            element.AddHandler(ItemRemovedEvent, handler);
         }
 
         public static void RemoveItemRemovedHandler(UIElement element, ItemRemovedRoutedEventHandler handler)
         {
-            element.RemoveHandler(ItemRemovedRoutedEvent, handler);
+            element.RemoveHandler(ItemRemovedEvent, handler);
         }
 
-        public static readonly RoutedEvent ItemRemovedRoutedEvent
+        public static readonly RoutedEvent ItemRemovedEvent
             = EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(ItemRemovedRoutedEventHandler), typeof(ListBoxHelper));
         #endregion
 
@@ -670,7 +670,7 @@ namespace Panuon.WPF.UI
             var animationEase = GetRemovingAnimationEase(listBox);
             var dataItem = listBox.ItemContainerGenerator.ItemFromContainer(listBoxItem);
 
-            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingRoutedEvent, dataItem);
+            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);
             listBox.RaiseEvent(removingArgs);
             if (removingArgs.Cancel)
             {
@@ -691,7 +691,7 @@ namespace Panuon.WPF.UI
                         listBox.Items.Remove(dataItem);
                     }
 
-                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedRoutedEvent, dataItem);
+                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedEvent, dataItem);
                     listBox.RaiseEvent(removedArgs);
                 }));
             });

@@ -32,45 +32,45 @@ namespace Panuon.WPF.UI
         #region ItemRemoving
         public static void AddItemRemovingHandler(UIElement element, ItemRemovingRoutedEventHandler eventHandler)
         {
-            element.AddHandler(ItemRemovingRoutedEvent, eventHandler);
+            element.AddHandler(ItemRemovingEvent, eventHandler);
         }
 
         public static void RemoveItemRemovingHandler(UIElement element, ItemRemovingRoutedEventHandler eventHandler)
         {
-            element.RemoveHandler(ItemRemovingRoutedEvent, eventHandler);
+            element.RemoveHandler(ItemRemovingEvent, eventHandler);
         }
 
-        public static readonly RoutedEvent ItemRemovingRoutedEvent
+        public static readonly RoutedEvent ItemRemovingEvent
             = EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(ItemRemovingRoutedEventHandler), typeof(ComboBoxHelper));
         #endregion
 
         #region ItemRemoved
         public static void AddItemRemovedHandler(UIElement element, ItemRemovedRoutedEventHandler handler)
         {
-            element.AddHandler(ItemRemovedRoutedEvent, handler);
+            element.AddHandler(ItemRemovedEvent, handler);
         }
 
         public static void RemoveItemRemovedHandler(UIElement element, ItemRemovedRoutedEventHandler handler)
         {
-            element.RemoveHandler(ItemRemovedRoutedEvent, handler);
+            element.RemoveHandler(ItemRemovedEvent, handler);
         }
 
-        public static readonly RoutedEvent ItemRemovedRoutedEvent
+        public static readonly RoutedEvent ItemRemovedEvent
             = EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(ItemRemovedRoutedEventHandler), typeof(ComboBoxHelper));
         #endregion
 
         #region SearchTextChanged
         public static void AddSearchTextChangedHandler(UIElement element, SearchTextChangedRoutedEventHandler handler)
         {
-            element.AddHandler(SearchTextChangedRoutedEvent, handler);
+            element.AddHandler(SearchTextChangedEvent, handler);
         }
 
         public static void RemoveSearchTextChangedHandler(UIElement element, SearchTextChangedRoutedEventHandler handler)
         {
-            element.RemoveHandler(SearchTextChangedRoutedEvent, handler);
+            element.RemoveHandler(SearchTextChangedEvent, handler);
         }
 
-        public static readonly RoutedEvent SearchTextChangedRoutedEvent
+        public static readonly RoutedEvent SearchTextChangedEvent
             = EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(SearchTextChangedRoutedEventHandler), typeof(ComboBoxHelper));
         #endregion
 
@@ -910,7 +910,7 @@ namespace Panuon.WPF.UI
             var comboBox = textBox.TemplatedParent as ComboBox;
             if (comboBox != null)
             {
-                comboBox.RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedRoutedEvent, textBox.Text));
+                comboBox.RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedEvent, textBox.Text));
             }
         }
 
@@ -922,7 +922,7 @@ namespace Panuon.WPF.UI
             var animationEase = GetRemovingAnimationEase(comboBox);
             var dataItem = comboBox.ItemContainerGenerator.ItemFromContainer(comboBoxItem);
 
-            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingRoutedEvent, dataItem);
+            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);
             comboBox.RaiseEvent(removingArgs);
             if (removingArgs.Cancel)
             {
@@ -943,7 +943,7 @@ namespace Panuon.WPF.UI
                         comboBox.Items.Remove(dataItem);
                     }
 
-                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedRoutedEvent, dataItem);
+                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedEvent, dataItem);
                     comboBox.RaiseEvent(removedArgs);
                 }));
             });

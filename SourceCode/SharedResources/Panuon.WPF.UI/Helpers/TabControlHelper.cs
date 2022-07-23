@@ -24,7 +24,7 @@ namespace Panuon.WPF.UI
             var element = d as UIElement;
             if (element != null)
             {
-                element.AddHandler(ItemRemovingRoutedEvent, handler);
+                element.AddHandler(ItemRemovingEvent, handler);
             }
         }
 
@@ -33,11 +33,11 @@ namespace Panuon.WPF.UI
             var element = d as UIElement;
             if (element != null)
             {
-                element.RemoveHandler(ItemRemovingRoutedEvent, handler);
+                element.RemoveHandler(ItemRemovingEvent, handler);
             }
         }
 
-        public static readonly RoutedEvent ItemRemovingRoutedEvent =
+        public static readonly RoutedEvent ItemRemovingEvent =
             EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(ItemRemovingRoutedEventHandler), typeof(TabControlHelper));
         #endregion
 
@@ -47,7 +47,7 @@ namespace Panuon.WPF.UI
             var element = d as UIElement;
             if (element != null)
             {
-                element.AddHandler(ItemRemovedRoutedEvent, handler);
+                element.AddHandler(ItemRemovedEvent, handler);
             }
         }
 
@@ -56,11 +56,11 @@ namespace Panuon.WPF.UI
             var element = d as UIElement;
             if (element != null)
             {
-                element.RemoveHandler(ItemRemovedRoutedEvent, handler);
+                element.RemoveHandler(ItemRemovedEvent, handler);
             }
         }
 
-        public static readonly RoutedEvent ItemRemovedRoutedEvent =
+        public static readonly RoutedEvent ItemRemovedEvent =
             EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(ItemRemovedRoutedEventHandler), typeof(TabControlHelper));
         #endregion
 
@@ -1014,7 +1014,7 @@ namespace Panuon.WPF.UI
             var animationEase = GetRemovingAnimationEase(tabControl);
             var dataItem = tabControl.ItemContainerGenerator.ItemFromContainer(tabItem);
 
-            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingRoutedEvent, dataItem);
+            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);
             tabControl.RaiseEvent(removingArgs);
             if (removingArgs.Cancel)
             {
@@ -1035,7 +1035,7 @@ namespace Panuon.WPF.UI
                         tabControl.Items.Remove(dataItem);
                     }
 
-                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedRoutedEvent, dataItem);
+                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedEvent, dataItem);
                     tabControl.RaiseEvent(removedArgs);
                 }));
             });
