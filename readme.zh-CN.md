@@ -20,7 +20,7 @@
   
 # 升级
 
-自 `Panuon.UI.Silver` `2.2.20` 开始, 本库已经重命名为 `Panuon.WPF.UI` 。 要升级到新库，请参阅这篇 [wiki文档](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) 。  
+自 `Panuon.UI.Silver` `2.2.20` 开始, 本库已经重命名为 `Panuon.WPF.UI` 。 要升级到新库，请参阅这篇 [wiki文档](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/Release-zh-CN#100) 。  
 
 # 文档  
 
