@@ -7,7 +7,7 @@
 ![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
 ![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
 
-[切换到简体中文](https://github.com/Panuon/PanuonUI.Silver-v2.2/blob/master/readme.zh-CN.md)  
+[切换到简体中文](https://github.com/PanuonGroup/Panuon.WPF.UI/blob/master/readme.zh-CN.md)  
 <br/>  
 
 # Panuon.WPF.UI
@@ -16,16 +16,16 @@ A professional UI engine for customization.
 `Panuon.WPF.UI` allows you to achieve the desired UI effect with minimal code.  
 
 
-`Do not directly upgrade from Panuon.WPF.UI version 1.x to version 2.x. There's a big difference in how it's used between the two versions.`  
+`Do not directly upgrade from Panuon.UI.Silver 1.x version to Panuon.UI.Silver 2.2 or Panuon.WPF.UI 1.x version. There are significant differences in how these versions are used. `  
 
 # Upgrade
 
-Since `Panuon.UI.Silver` `2.2.20`, the control library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) (currently only supports Chinese).
+Since `Panuon.UI.Silver` `2.2.20`, this library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) (currently only supports Chinese).  
 
 # Documents  
 
 Only Chinese documentation is now available.  
-[Chinese Wiki Document](https://github.com/Panuon/Panuon.WPF.UI/wiki/WPF-Home-zh-CN)  
+[Chinese Wiki Document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Home-zh-CN)  
 
 # Contributors
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
