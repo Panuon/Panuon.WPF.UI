@@ -572,11 +572,11 @@ namespace Panuon.WPF.UI
         #region SearchTextChanged
         public event SearchTextChangedRoutedEventHandler SearchTextChanged
         {
-            add { AddHandler(SearchTextChangedRoutedEvent, value); }
-            remove { RemoveHandler(SearchTextChangedRoutedEvent, value); }
+            add { AddHandler(SearchTextChangedEvent, value); }
+            remove { RemoveHandler(SearchTextChangedEvent, value); }
         }
 
-        public static readonly RoutedEvent SearchTextChangedRoutedEvent =
+        public static readonly RoutedEvent SearchTextChangedEvent =
             EventManager.RegisterRoutedEvent("SearchTextChanged", RoutingStrategy.Bubble, typeof(SearchTextChangedRoutedEventHandler), typeof(SearchBox));
         #endregion
 
@@ -589,7 +589,7 @@ namespace Panuon.WPF.UI
 
         public static readonly RoutedEvent ItemClickEvent =
             EventManager.RegisterRoutedEvent("ItemClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Breadcrumb));
-        #endregion
+        #endregion        
 
         #endregion
 
@@ -827,7 +827,7 @@ namespace Panuon.WPF.UI
 
         private void OnSearch()
         {
-            RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedRoutedEvent, _editorTextBox.Text));
+            RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedEvent, _editorTextBox.Text));
         }
         #endregion
     }

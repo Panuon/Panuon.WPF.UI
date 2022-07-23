@@ -78,13 +78,13 @@ namespace Samples.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true);
             //handler.Closed += ...
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true, setting);
+            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true);
             //handler.Closed += ...
         }
         #endregion

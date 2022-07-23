@@ -21,7 +21,6 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
@@ -34,7 +33,7 @@
                                 Margin="{TemplateBinding HeaderPadding}"
                                 VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
                                 HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
-                <ContentControl Grid.Column="2"
+                <ContentControl Grid.Column="1"
                                 Focusable="False"
                                 Content="{TemplateBinding ExtendControl}" />
             </Grid>
