@@ -20,12 +20,12 @@ A professional UI engine for customization.
 
 # Upgrade
 
-Since `Panuon.UI.Silver` `2.2.20`, this library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Release-zh-CN#100) (currently only supports Chinese).  
+Since `Panuon.UI.Silver` `2.2.20`, this library has been renamed `Panuon.WPF.UI`. For the specific upgrade method, please refer to this [wiki document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/Release-zh-CN#100) (currently only supports Chinese).  
 
 # Documents  
 
 Only Chinese documentation is now available.  
-[Chinese Wiki Document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/WPF-Home-zh-CN)  
+[Chinese Wiki Document](https://github.com/PanuonGroup/Panuon.WPF.UI/wiki/Home-zh-CN)  
 
 # Contributors
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
