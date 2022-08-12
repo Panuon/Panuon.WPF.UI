@@ -11,9 +11,17 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabControlTopBottomTemplate}"
                      TargetType="TabControl">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+        <local:ContentControlX x:Name="CcMain"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Padding="{TemplateBinding Padding}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               CornerRadius="{Binding Path=(local:TabControlHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="Stretch"
+                               HorizontalContentAlignment="Stretch">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -22,13 +30,13 @@
                 </Grid.RowDefinitions>
                 <Grid x:Name="GrdHeader">
                     <local:ContentControlX x:Name="CcHeader"
-                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderThickness="{Binding Path=(local:TabControlHelper.HeaderPanelBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                           Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:TabControlHelper.HeaderPanelBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="CdFrontBlank" />
@@ -85,10 +93,9 @@
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Row="1"
-                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent" />
             </Grid>
-        </Border>
+        </local:ContentControlX>
         <ControlTemplate.Triggers>
             <Trigger Property="local:TabControlHelper.CanHeaderPanelScroll"
                      Value="True">
@@ -174,9 +181,17 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TabControlLeftRightTemplate}"
                      TargetType="TabControl">
-        <Border Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+        <local:ContentControlX x:Name="CcMain"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Padding="{TemplateBinding Padding}"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               CornerRadius="{Binding Path=(local:TabControlHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               VerticalContentAlignment="Stretch"
+                               HorizontalContentAlignment="Stretch">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -185,13 +200,13 @@
                 </Grid.ColumnDefinitions>
                 <Grid x:Name="GrdHeader">
                     <local:ContentControlX x:Name="CcHeader"
-                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderThickness="{Binding Path=(local:TabControlHelper.HeaderPanelBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                           Height="{Binding Path=(local:TabControlHelper.HeaderPanelHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Background="{Binding Path=(local:TabControlHelper.HeaderPanelBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:TabControlHelper.HeaderPanelBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:TabControlHelper.HeaderPanelBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                           Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition x:Name="RdFrontBlank" />
@@ -200,7 +215,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition x:Name="RdEndBlank" />
                             </Grid.RowDefinitions>
-                        <ContentControl x:Name="CcFront"
+                            <ContentControl x:Name="CcFront"
                                             Grid.Row="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <local:SeparatorX x:Name="SprtFront"
@@ -232,7 +247,7 @@
                                           KeyboardNavigation.IsTabStop="True">
                                 </TabPanel>
                             </ScrollViewer>
-                          <ContentControl x:Name="CcEnd"
+                            <ContentControl x:Name="CcEnd"
                                             Grid.Row="3"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <local:SeparatorX x:Name="SprtEnd"
@@ -250,7 +265,7 @@
                                   Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent" />
             </Grid>
-        </Border>
+        </local:ContentControlX>
         <ControlTemplate.Triggers>
             <Trigger Property="local:TabControlHelper.CanHeaderPanelScroll"
                      Value="True">

@@ -63,7 +63,7 @@
                                VerticalContentAlignment="Stretch"
                                HorizontalContentAlignment="Stretch">
             <Grid>
-                <ItemsPresenter  x:Name="IpItems" />
+                <ItemsPresenter x:Name="IpItems" />
                 <ContentControl x:Name="CcEmpty"
                                 Visibility="Collapsed"
                                 Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />

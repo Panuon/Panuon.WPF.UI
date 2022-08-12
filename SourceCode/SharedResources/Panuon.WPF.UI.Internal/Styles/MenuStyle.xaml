@@ -6,6 +6,7 @@
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/MenuItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MenuTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -108,6 +109,8 @@
                 Value="{StaticResource {ComponentResourceKey ResourceId=SubemnuArrowIconTemplate, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
         <Setter Property="local:MenuHelper.CheckedIconTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconStyle, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.MenuItemStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.MenuTemplate}}" />
         <Style.Triggers>

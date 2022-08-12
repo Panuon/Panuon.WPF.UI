@@ -1,4 +1,4 @@
-﻿using Panuon.WPF;
+﻿using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.ComponentModel;
@@ -67,6 +67,36 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region CornerRadius
+        public static CornerRadius GetCornerRadius(TabControl tabControl)
+        {
+            return (CornerRadius)tabControl.GetValue(CornerRadiusProperty);
+        }
+
+        public static void SetCornerRadius(TabControl tabControl, CornerRadius value)
+        {
+            tabControl.SetValue(CornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
+        #endregion
+
+        #region ShadowColor
+        public static Color? GetShadowColor(TabControl tabControl)
+        {
+            return (Color?)tabControl.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(TabControl tabControl, Color? value)
+        {
+            tabControl.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(TabControlHelper));
+        #endregion
 
         #region FrontControl
         public static object GetFrontControl(TabControl tabControl)
@@ -204,18 +234,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region HeaderPanelCornerRadius
-        public static TabPanelHorizontalAlignment GetHeaderPanelCornerRadius(TabControl tabControl)
+        public static CornerRadius GetHeaderPanelCornerRadius(TabControl tabControl)
         {
-            return (TabPanelHorizontalAlignment)tabControl.GetValue(HeaderPanelCornerRadiusProperty);
+            return (CornerRadius)tabControl.GetValue(HeaderPanelCornerRadiusProperty);
         }
 
-        public static void SetHeaderPanelCornerRadius(TabControl tabControl, TabPanelHorizontalAlignment value)
+        public static void SetHeaderPanelCornerRadius(TabControl tabControl, CornerRadius value)
         {
             tabControl.SetValue(HeaderPanelCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPanelCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("HeaderPanelCornerRadius", typeof(TabPanelHorizontalAlignment), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("HeaderPanelCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
         #region HeaderPanelMargin

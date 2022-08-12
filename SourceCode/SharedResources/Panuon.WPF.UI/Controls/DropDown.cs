@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Threading;
 
 namespace Panuon.WPF.UI
 {
@@ -62,7 +63,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ChildProperty =
-            DependencyProperty.Register("Child", typeof(object), typeof(DropDown));
+            DependencyProperty.Register("Child", typeof(object), typeof(DropDown), new PropertyMetadata(OnChildChanged));
         #endregion
 
         #endregion
@@ -80,6 +81,19 @@ namespace Panuon.WPF.UI
             _popup.Opened += Popup_Opened;
             _popup.Closed += Popup_Closed;
         }
+
+        protected override void OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)
+        {
+            base.OnVisualChildrenChanged(visualAdded, visualRemoved);
+        }
+        #endregion
+
+        #region Event Handlers
+        private static void OnChildChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var dropDown = d as DropDown;
+            dropDown.OnChildChanged(e.OldValue as DispatcherObject, e.NewValue as DispatcherObject);
+        }
         #endregion
 
         #region Functions
@@ -91,6 +105,12 @@ namespace Panuon.WPF.UI
         private void Popup_Opened(object sender, EventArgs e)
         {
             Opened?.Invoke(this, e);
+        }
+
+        private void OnChildChanged(DispatcherObject oldChild, DispatcherObject newChild)
+        {
+            RemoveLogicalChild(oldChild);
+            AddLogicalChild(newChild);
         }
         #endregion
     }

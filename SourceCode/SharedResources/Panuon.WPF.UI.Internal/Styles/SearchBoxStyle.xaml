@@ -43,16 +43,14 @@
                 Value="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.BorderThickness"
                 Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:DropDownHelper.MinWidth"
+        <Setter Property="local:DropDownHelper.Width"
                 Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:DropDownHelper.MaxHeight"
+        <Setter Property="local:DropDownHelper.Height"
                 Value="{Binding MaxDropDownHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
-        <!--<Setter Property="TextBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}}" />
-        <Setter Property="ListBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ListBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}}" />-->
+        <Setter Property="ItemsHeight"
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsBackground"
                 Value="Transparent" />
         <Setter Property="ItemsForeground"

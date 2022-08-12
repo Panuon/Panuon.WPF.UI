@@ -66,7 +66,7 @@ namespace Panuon.WPF.UI.Internal.Controls
             _cancelButtonStyle = XamlUtil.FromXaml<Style>(cancelButtonStyle);
             _spinnerStyle = XamlUtil.FromXaml<Style>(spinnerStyle);
 
-            if(ownerRect == null)
+            if (ownerRect == null)
             {
                 WindowStartupLocation = owner == null
                   ? WindowStartupLocation.CenterScreen

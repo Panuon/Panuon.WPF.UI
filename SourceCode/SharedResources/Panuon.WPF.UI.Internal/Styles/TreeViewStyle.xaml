@@ -7,6 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TreeViewItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -91,6 +92,8 @@
                 Value="Transparent" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.TreeViewItemStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewTemplate}}" />
         <Style.Triggers>

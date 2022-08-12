@@ -959,6 +959,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RowIndex", typeof(int), typeof(DataGridHelper));
         #endregion
 
+        #region ColumnIndex
+        public static int GetColumnIndex(DataGridColumn dataGridColumn)
+        {
+            return (int)dataGridColumn.GetValue(ColumnIndexProperty);
+        }
+
+        public static void SetColumnIndex(DataGridColumn dataGridColumn, int value)
+        {
+            dataGridColumn.SetValue(ColumnIndexProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnIndexProperty =
+            DependencyProperty.RegisterAttached("ColumnIndex", typeof(int), typeof(DataGridHelper), new PropertyMetadata(-1));
+        #endregion
+
         #region ColumnsSequence
         public static IList<string> GetColumnsSequence(DataGrid dataGrid)
         {
@@ -1492,7 +1507,7 @@ namespace Panuon.WPF.UI
 
             if (attributes.OfType<ColumnDisplayIndexAttribute>().FirstOrDefault() is ColumnDisplayIndexAttribute displayIndexAttribute)
             {
-                e.Column.DisplayIndex = displayIndexAttribute.DisplayIndex;
+                SetColumnIndex(e.Column, displayIndexAttribute.DisplayIndex);
             }
             if (attributes.OfType<ColumnHeaderAttribute>().FirstOrDefault() is ColumnHeaderAttribute columnHeaderAttribute)
             {
@@ -1618,12 +1633,12 @@ namespace Panuon.WPF.UI
         {
             var dataGrid = (DataGrid)sender;
 
-            var setColumns = dataGrid.Columns.Where(x => x.DisplayIndex != -1).ToList();
-            var unsetColumns = dataGrid.Columns.Where(x => x.DisplayIndex == -1).ToList();
+            var setColumns = dataGrid.Columns.Where(x => GetColumnIndex(x) != -1).ToList();
+            var unsetColumns = dataGrid.Columns.Where(x => GetColumnIndex(x) == -1).ToList();
 
             for (int i = 0; i < dataGrid.Columns.Count; i++)
             {
-                if (setColumns.FirstOrDefault(x => x.DisplayIndex == i) is DataGridColumn column)
+                if (setColumns.FirstOrDefault(x => GetColumnIndex(x) == i) is DataGridColumn column)
                 {
                     column.DisplayIndex = i;
                     setColumns.Remove(column);
