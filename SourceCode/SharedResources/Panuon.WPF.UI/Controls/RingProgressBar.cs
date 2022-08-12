@@ -64,7 +64,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty PercentStringFormatProperty =
-            DependencyProperty.Register("PercentStringFormat", typeof(string), typeof(RingProgressBar), new PropertyMetadata("{0:P0}"));
+            DependencyProperty.Register("PercentStringFormat", typeof(string), typeof(RingProgressBar), new PropertyMetadata("{0:P0}", OnPercentStringFormatChanged));
         #endregion
 
         #region AnimationEase
@@ -153,6 +153,12 @@ namespace Panuon.WPF.UI
 
         #region Event Handlers
         private static void OnInternalValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var progressBar = (RingProgressBar)d;
+            progressBar.OnInternalValueChanged();
+        }
+
+        private static void OnPercentStringFormatChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var progressBar = (RingProgressBar)d;
             progressBar.OnInternalValueChanged();

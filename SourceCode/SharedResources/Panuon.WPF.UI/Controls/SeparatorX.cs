@@ -140,11 +140,11 @@ namespace Panuon.WPF.UI
             }
             if (_isVertical)
             {
-                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(0, 0), new Point(0, RenderSize.Height));
+                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(StrokeThickness / 2, 0), new Point(StrokeThickness / 2, RenderSize.Height));
             }
             else
             {
-                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(0, 0), new Point(RenderSize.Width, 0));
+                DrawingContextUtil.DrawLine(drawingContext, _pen, new Point(0, StrokeThickness / 2), new Point(RenderSize.Width, StrokeThickness / 2));
             }
         }
 

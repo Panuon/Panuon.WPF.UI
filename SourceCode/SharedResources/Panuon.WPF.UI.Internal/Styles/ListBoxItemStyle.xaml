@@ -49,6 +49,16 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.BlurRadius"
+                Value="{Binding Path=(local:ShadowHelper.BlurRadius), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Direction"
+                Value="{Binding Path=(local:ShadowHelper.Direction), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Opacity"
+                Value="{Binding Path=(local:ShadowHelper.Opacity), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.RenderingBias"
+                Value="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.ShadowDepth"
+                Value="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.Icon"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsIcon), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.IconPlacement"

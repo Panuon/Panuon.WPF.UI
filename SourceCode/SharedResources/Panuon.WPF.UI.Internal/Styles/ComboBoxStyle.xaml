@@ -8,6 +8,7 @@
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ComboBoxItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ComboBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -181,6 +182,8 @@
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.ComboBoxItemStyle}}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

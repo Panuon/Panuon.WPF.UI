@@ -7,6 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ListBoxItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ListBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -63,6 +64,8 @@
                 Value="5" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.ListBoxItemStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxTemplate}}" />
         <Style.Triggers>

@@ -20,6 +20,8 @@
                 Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="Content"
                 Value="&#xe903;" />
+        <Setter Property="Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
         <Setter Property="Margin"
                 Value="2,0" />
         <Setter Property="AnimationDuration"

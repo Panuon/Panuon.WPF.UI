@@ -50,6 +50,8 @@
                 Value="Center" />
         <Setter Property="Content"
                 Value="&#xe903;" />
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}, Mode=OneWay}" />
         <Setter Property="FontFamily"
                 Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="Padding"

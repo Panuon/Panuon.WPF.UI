@@ -37,6 +37,13 @@
                 Value="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
         <Setter Property="local:ShadowHelper.ShadowDepth"
                 Value="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="1" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.SliderStyle}"

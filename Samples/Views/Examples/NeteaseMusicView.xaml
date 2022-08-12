@@ -103,14 +103,14 @@
                     Value="{x:Null}" />
             <Setter Property="ItemsHoverForeground"
                     Value="#C62F2F" />
-            <!--<Setter Property="ItemContainerStyle">
+            <Setter Property="ItemContainerStyle">
                 <Setter.Value>
                     <Style TargetType="pu:SearchBoxItem">
                         <Setter Property="Height"
                                 Value="50" />
                     </Style>
                 </Setter.Value>
-            </Setter>-->
+            </Setter>
             <Setter Property="ItemTemplate">
                 <Setter.Value>
                     <DataTemplate>

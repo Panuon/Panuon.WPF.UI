@@ -7,6 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TabItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TabControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -35,6 +36,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.TabControlStyle}"
            TargetType="TabControl">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -43,8 +46,6 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"
                 Value="5,0,0,0" />
-        <Setter Property="i:VisualStateHelper.Regist"
-                Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsSelected"
@@ -97,6 +98,8 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.TabItemStyle}}" />
         <Style.Triggers>
             <Trigger Property="TabStripPlacement"
                      Value="Top">

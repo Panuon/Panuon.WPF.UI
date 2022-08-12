@@ -588,7 +588,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly RoutedEvent ItemClickEvent =
-            EventManager.RegisterRoutedEvent("ItemClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Breadcrumb));
+            EventManager.RegisterRoutedEvent("ItemClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SearchBox));
         #endregion        
 
         #endregion
@@ -622,6 +622,16 @@ namespace Panuon.WPF.UI
         protected override DependencyObject GetContainerForItemOverride()
         {
             return new SearchBoxItem();
+        }
+
+        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        {
+            var searchItem = element as SearchBoxItem;
+            if (LogicalTreeHelper.GetParent(searchItem) == null)
+            {
+                AddLogicalChild(searchItem);
+            }
+            base.PrepareContainerForItemOverride(element, item);
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -827,7 +837,10 @@ namespace Panuon.WPF.UI
 
         private void OnSearch()
         {
-            RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedEvent, _editorTextBox.Text));
+            Dispatcher.Invoke(() =>
+            {
+                RaiseEvent(new SearchTextChangedRoutedEventArgs(SearchTextChangedEvent, _editorTextBox.Text));
+            });
         }
         #endregion
     }

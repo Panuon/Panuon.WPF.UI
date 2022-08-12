@@ -112,9 +112,7 @@
                                 Command="{TemplateBinding ClearCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:ColorPicker}}" />
                         <local:TransformControl Grid.Column="3"
-                                                Style="{TemplateBinding ToggleArrowTransformControlStyle}"
-                                                TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                                TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}" />
+                                                Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
                     </Grid>
                 </ToggleButton>
             </local:ContentControlX>

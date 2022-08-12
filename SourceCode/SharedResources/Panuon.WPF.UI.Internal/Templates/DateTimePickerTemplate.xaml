@@ -91,9 +91,7 @@
                                 Command="{TemplateBinding ClearCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}" />
                         <local:TransformControl Grid.Column="2"
-                                                Style="{TemplateBinding ToggleArrowTransformControlStyle}"
-                                                TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
-                                                TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+                                                Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
                     </Grid>
                 </ToggleButton>
             </local:ContentControlX>

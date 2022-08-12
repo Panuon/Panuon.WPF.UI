@@ -299,7 +299,7 @@ namespace Panuon.WPF.UI
             {
                 e.Handled = true;
             }
-            
+
             //如果被滚动的ScrollViewer
             if (source is ScrollViewer
                 && source != scrollViewer)
@@ -310,6 +310,17 @@ namespace Panuon.WPF.UI
                 && originalSource != scrollViewer)
             {
                 return;
+            }
+
+            var parent = VisualTreeHelper.GetParent(source) as DependencyObject;
+            while(parent != null
+                && parent != scrollViewer)
+            {
+                if(parent is ScrollViewer)
+                {
+                    return;
+                }
+                parent = VisualTreeHelper.GetParent(parent) as DependencyObject;
             }
 
             if (originalSource != null
