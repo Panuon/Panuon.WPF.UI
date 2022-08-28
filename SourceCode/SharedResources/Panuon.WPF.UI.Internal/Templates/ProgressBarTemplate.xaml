@@ -104,4 +104,84 @@
         </Grid>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ProgressBarIndeterminateTemplate}"
+                     TargetType="ProgressBar">
+        <Grid>
+            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border.Effect>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <Binding Path="(local:ProgressBarHelper.ShadowColor)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Direction)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Opacity)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </Border.Effect>
+            </Border>
+            <i:ClippingBorder x:Name="BdrTrack"
+                              SnapsToDevicePixels="True"
+                              CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border x:Name="BdrFilling"
+                        HorizontalAlignment="Right"
+                        SnapsToDevicePixels="True"
+                        Background="{TemplateBinding Foreground}"
+                        Width="{Binding ActualWidth, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}}">
+                    <Border.Margin>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ProgressBarIndeterminateMarginConverter}}">
+                            <MultiBinding.Bindings>
+                                <Binding Path="ActualWidth" 
+                                         RelativeSource="{RelativeSource TemplatedParent}"/>
+                                <Binding Path="ActualWidth"
+                                         ElementName="BdrFilling" />
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </Border.Margin>
+                </Border>
+            </i:ClippingBorder>
+            <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    IsHitTestVisible="False" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <ThicknessAnimation Storyboard.TargetName="BdrFilling"
+                                                Storyboard.TargetProperty="Margin"
+                                                AutoReverse="True"
+                                                To="0,0,0,0"
+                                                Duration="0:0:1">
+                                <ThicknessAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseInOut" />
+                                </ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <Trigger Property="IsIndeterminate"
+                     Value="True">
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 </ResourceDictionary>

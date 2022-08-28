@@ -30,7 +30,53 @@
 # 贡献
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/45651732?v=4"></img>](https://github.com/GodLeaveMe)
+  
+# 如何使用
+  
+### 1. 将资源字典添加到 App.xaml 中
 
+```
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+```
+
+### 2. 像Material Design那样使用附加属性，尽管这两个库之间没有任何关系
+
+```
+xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+...
+
+<Button Width="150"
+        Height="35"
+        Background="#6CBCEA"
+        pu:ButtonHelper.CornerRadius="5"
+        pu:ButtonHelper.HoverBackground="#6CA3EA"
+        pu:ButtonHelper.ClickBackground="#83A6D4" />
+```
+
+### 3. 又或者，在不影响其他控件的情况下使用样式
+```
+<!--不要添加 Control.xaml-->
+
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/ButtonStyle.xaml" />
+
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/TextBoxStyle.xaml" />
+...
+```
+
+```
+xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+...
+
+<Button Width="150"
+        Height="35"
+        Style="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}"
+        Background="#6CBCEA"
+        pu:ButtonHelper.CornerRadius="5"
+        pu:ButtonHelper.HoverBackground="#6CA3EA"
+        pu:ButtonHelper.ClickBackground="#83A6D4" />
+```
+  
 # 示例 
 `这些界面已包含在"Samples"项目中。下载本仓库即可获得这些页面的源码。`  
   

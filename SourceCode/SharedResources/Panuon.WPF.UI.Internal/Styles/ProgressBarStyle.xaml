@@ -24,6 +24,11 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ProgressBarTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="IsIndeterminate"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ProgressBarIndeterminateTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

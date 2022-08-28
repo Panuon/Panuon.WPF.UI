@@ -31,6 +31,52 @@ Only Chinese documentation is now available.
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/45651732?v=4"></img>](https://github.com/GodLeaveMe)  
   
+# How to use
+  
+### 1. Add resource dictionary to your App.xaml
+
+```
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+```
+
+### 2. Use attached properties like Material Design does, although there is no relationship between the two libraries
+
+```
+xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+...
+
+<Button Width="150"
+        Height="35"
+        Background="#6CBCEA"
+        pu:ButtonHelper.CornerRadius="5"
+        pu:ButtonHelper.HoverBackground="#6CA3EA"
+        pu:ButtonHelper.ClickBackground="#83A6D4" />
+```
+
+### 3. Or, use styles without affecting other controls
+```
+<!--Don't add Control.xaml-->
+
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/ButtonStyle.xaml" />
+
+<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/TextBoxStyle.xaml" />
+...
+```
+
+```
+xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+...
+
+<Button Width="150"
+        Height="35"
+        Style="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}"
+        Background="#6CBCEA"
+        pu:ButtonHelper.CornerRadius="5"
+        pu:ButtonHelper.HoverBackground="#6CA3EA"
+        pu:ButtonHelper.ClickBackground="#83A6D4" />
+```
+  
 # Samples  
 `These pages were included in the Samples project. Download this repository to get the source code.`  
   
