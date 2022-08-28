@@ -29,7 +29,9 @@
         public const string IsStringNonnullAndNotEmptyConverter = nameof(IsStringNonnullAndNotEmptyConverter);
         public const string IsStringNullOrEmptyConverter = nameof(IsStringNullOrEmptyConverter);
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
+        public const string NonnullToHiddenConverter = nameof(NonnullToHiddenConverter);
         public const string NullToCollapseConverter = nameof(NullToCollapseConverter);
+        public const string NullToHiddenConverter = nameof(NullToHiddenConverter);
         public const string OppositeColorConverter = nameof(OppositeColorConverter);
         public const string OppositeBrushConverter = nameof(OppositeBrushConverter);
         public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(StringNonnullAndNotEmptyToCollapseConverter);

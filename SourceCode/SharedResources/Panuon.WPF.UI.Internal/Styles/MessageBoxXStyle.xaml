@@ -66,6 +66,7 @@
                      Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                      TextWrapping="Wrap"
                      BorderThickness="0"
+                     Background="Transparent"
                      VerticalContentAlignment="Center" />
         </Grid>
     </DataTemplate>

@@ -202,6 +202,20 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ToolTip", typeof(object), typeof(IconHelper), new PropertyMetadata(null));
         #endregion
 
+        #region HiddenOnNull
+        public static bool GetHiddenOnNull(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HiddenOnNullProperty);
+        }
+
+        public static void SetHiddenOnNull(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HiddenOnNullProperty, value);
+        }
+
+        public static readonly DependencyProperty HiddenOnNullProperty =
+            DependencyProperty.RegisterAttached("HiddenOnNull", typeof(bool), typeof(IconHelper));
+        #endregion
 
         #endregion
     }

@@ -18,7 +18,7 @@
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ThumbHelper.Content"
-                Value="&#xe9a7;" />
+                Value="&#xe9b1;" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="VerticalAlignment"
@@ -61,6 +61,8 @@
     <Style x:Key="{ComponentResourceKey ResourceId=AccentColorSliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Slider"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
+        <Setter Property="Height"
+                Value="{Binding Path=(local:SliderHelper.ThumbHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Margin"
                 Value="0,-2,0,0" />
         <Setter Property="local:SliderHelper.TrackThickness"

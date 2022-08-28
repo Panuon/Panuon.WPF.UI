@@ -32,6 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntPlusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GetEnumDescriptionConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLastItemInItemsControlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NonnullToHiddenConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsAllEqualConverter.cs" />

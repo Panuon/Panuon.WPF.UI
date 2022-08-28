@@ -232,7 +232,7 @@ namespace Panuon.WPF.UI
             var stringFormat = GetPercentStringFormat(progressBar);
             var value = GetValue(progressBar);
             var percent = (value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
-            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : string.Format(stringFormat, percent);
+            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : percent.ToString(stringFormat);
             var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
             progressBar.RaiseEvent(args);
             SetText(progressBar, args.Text);
@@ -245,7 +245,7 @@ namespace Panuon.WPF.UI
             var stringFormat = GetPercentStringFormat(progressBar);
             var value = GetValue(progressBar);
             var percent = (value - progressBar.Minimum) / (progressBar.Maximum - progressBar.Minimum);
-            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : string.Format(stringFormat, percent);
+            var text = string.IsNullOrEmpty(stringFormat) ? percent.ToString("P0") : percent.ToString(stringFormat);
             var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, progressBar.Value, percent, text);
             progressBar.RaiseEvent(args);
             SetText(progressBar, args.Text);

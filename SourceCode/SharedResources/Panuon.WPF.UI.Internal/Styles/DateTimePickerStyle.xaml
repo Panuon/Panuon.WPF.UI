@@ -146,21 +146,6 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DateTimePickerTemplate}}" />
         <Style.Triggers>
-            <Trigger Property="Mode"
-                     Value="Date">
-                <Setter Property="TextStringFormat"
-                        Value="dd/MM/yyyy" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Time">
-                <Setter Property="TextStringFormat"
-                        Value="HH:mm:ss" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="DateTime">
-                <Setter Property="TextStringFormat"
-                        Value="dd/MM/yyyy HH:mm:ss" />
-            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
@@ -194,6 +179,16 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding FocusedShadowColor, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
                         Value="True" />
             </MultiDataTrigger>
 

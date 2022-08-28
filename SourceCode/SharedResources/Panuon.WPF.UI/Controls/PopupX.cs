@@ -76,11 +76,14 @@ namespace Panuon.WPF.UI
             if (parentWindow != null)
             {
                 _parentWindow = new WeakReference(parentWindow);
+
+                parentWindow.StateChanged -= ParentWindow_StateChanged;
                 parentWindow.LocationChanged -= ParentWindow_LocationChanged;
-                parentWindow.LocationChanged += ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;
-                parentWindow.SizeChanged += ParentWindow_SizeChanged;
                 parentWindow.MouseDown -= Window_MouseDown;
+                parentWindow.StateChanged += ParentWindow_StateChanged;
+                parentWindow.LocationChanged += ParentWindow_LocationChanged;
+                parentWindow.SizeChanged += ParentWindow_SizeChanged;
                 parentWindow.MouseDown += Window_MouseDown;
             }
             if (!_isFirstInit)
@@ -104,7 +107,9 @@ namespace Panuon.WPF.UI
 
         protected override void OnClosed(EventArgs e)
         {
-            if (_parentWindow != null && _parentWindow.IsAlive && _parentWindow.Target is Window parentWindow)
+            if (_parentWindow != null 
+                && _parentWindow.IsAlive 
+                && _parentWindow.Target is Window parentWindow)
             {
                 parentWindow.LocationChanged -= ParentWindow_LocationChanged;
                 parentWindow.SizeChanged -= ParentWindow_SizeChanged;
@@ -178,6 +183,22 @@ namespace Panuon.WPF.UI
                     return new CustomPopupPlacement[] { new CustomPopupPlacement(bottom, PopupPrimaryAxis.Horizontal), new CustomPopupPlacement(top, PopupPrimaryAxis.Horizontal), };
                 default:
                     return new CustomPopupPlacement[] { new CustomPopupPlacement(bottomRight, PopupPrimaryAxis.Horizontal), new CustomPopupPlacement(topRight, PopupPrimaryAxis.Horizontal), };
+            }
+        }
+
+
+        private void ParentWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (_parentWindow != null
+                && _parentWindow.IsAlive
+                && _parentWindow.Target is Window parentWindow
+                && parentWindow.WindowState == WindowState.Minimized)
+            {
+                SetCurrentValue(IsOpenProperty, false);
+            }
+            else
+            {
+                Relocate();
             }
         }
 

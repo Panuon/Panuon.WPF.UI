@@ -60,7 +60,9 @@
     <icv:IsTypeConverter x:Key="{x:Static irs:ConverterKeys.IsTypeConverter}" />
     <icv:LightenSolidColorBrushConverter x:Key="{x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}" />
     <icv:NullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NullToCollapseConverter}" />
+    <icv:NullToHiddenConverter x:Key="{x:Static rs:ConverterKeys.NullToHiddenConverter}" />
     <icv:NonnullToCollapseConverter x:Key="{x:Static rs:ConverterKeys.NonnullToCollapseConverter}" />
+    <icv:NonnullToHiddenConverter x:Key="{x:Static rs:ConverterKeys.NonnullToHiddenConverter}" />
     <icv:OppositeColorConverter x:Key="{x:Static rs:ConverterKeys.OppositeColorConverter}" />
     <icv:OppositeBrushConverter x:Key="{x:Static rs:ConverterKeys.OppositeBrushConverter}" />
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />

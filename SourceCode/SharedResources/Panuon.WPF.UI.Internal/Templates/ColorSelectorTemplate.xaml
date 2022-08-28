@@ -22,7 +22,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="15" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -86,8 +85,9 @@
                             </MultiBinding>
                         </Slider.Background>
                     </Slider>
-                    <Grid Grid.Row="3"
-                          Grid.ColumnSpan="2">
+                    <Grid Grid.Row="2"
+                          Grid.ColumnSpan="2"
+                          Margin="{TemplateBinding EditorPanelMargin}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />

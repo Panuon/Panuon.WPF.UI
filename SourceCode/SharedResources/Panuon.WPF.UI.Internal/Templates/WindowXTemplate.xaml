@@ -13,7 +13,8 @@
                      TargetType="local:WindowX">
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}">
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="5">
             <Grid>
                 <Grid x:Name="GrdMain">
                     <Grid.RowDefinitions>

@@ -66,6 +66,24 @@
             </Grid>
         </local:ContentControlX>
         <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding IsEnabled, ElementName=PART_TimeSelectorHourPresenter}"
+                         Value="False">
+                <Setter TargetName="PART_TimeSelectorHourPresenter"
+                        Property="Opacity"
+                        Value="0.4" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsEnabled, ElementName=PART_TimeSelectorMinutePresenter}"
+                         Value="False">
+                <Setter TargetName="PART_TimeSelectorMinutePresenter"
+                        Property="Opacity"
+                        Value="0.4" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsEnabled, ElementName=PART_TimeSelectorSecondPresenter}"
+                         Value="False">
+                <Setter TargetName="PART_TimeSelectorSecondPresenter"
+                        Property="Opacity"
+                        Value="0.4" />
+            </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

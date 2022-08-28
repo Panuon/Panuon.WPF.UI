@@ -287,6 +287,21 @@ namespace Panuon.WPF.UI.Internal
 
         #endregion
 
+        #region HoverShadowColorLock
+        public static bool GetHoverShadowColorLock(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HoverShadowColorLockProperty);
+        }
+
+        public static void SetHoverShadowColorLock(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HoverShadowColorLockProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverShadowColorLockProperty =
+            DependencyProperty.RegisterAttached("HoverShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
+        #endregion
+
         #region IsHover
         public static bool GetIsHover(DependencyObject obj)
         {
@@ -636,11 +651,13 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)sender;
 
             var propertyBrushes = new Dictionary<DependencyProperty, Brush>();
-            if (!GetHoverBackgroundLock((DependencyObject)sender) && element.GetValue(HoverBackgroundProperty) is Brush hoverBackground)
+            if (!GetHoverBackgroundLock((DependencyObject)sender) 
+                && element.GetValue(HoverBackgroundProperty) is Brush hoverBackground)
             {
                 propertyBrushes.Add(BackgroundProperty, hoverBackground);
             }
-            if (!GetHoverForegroundLock((DependencyObject)sender) && element.GetValue(HoverForegroundProperty) is Brush hoverForeground)
+            if (!GetHoverForegroundLock((DependencyObject)sender) 
+                && element.GetValue(HoverForegroundProperty) is Brush hoverForeground)
             {
                 if (element is TextBox || element is PasswordBox)
                 {
@@ -651,7 +668,8 @@ namespace Panuon.WPF.UI.Internal
                     propertyBrushes.Add(ForegroundProperty, hoverForeground);
                 }
             }
-            if (!GetHoverBorderBrushLock((DependencyObject)sender) && element.GetValue(HoverBorderBrushProperty) is Brush hoverBorderBrush)
+            if (!GetHoverBorderBrushLock((DependencyObject)sender) 
+                && element.GetValue(HoverBorderBrushProperty) is Brush hoverBorderBrush)
             {
                 propertyBrushes.Add(BorderBrushProperty, hoverBorderBrush);
             }
@@ -671,7 +689,8 @@ namespace Panuon.WPF.UI.Internal
             {
                 AnimationUtil.BeginBrushAnimationStoryboard(element, propertyBrushes);
             }
-            if (element.GetValue(HoverShadowColorProperty) is Color hoverShadowColor)
+            if (!GetHoverShadowColorLock((DependencyObject)sender)
+                && element.GetValue(HoverShadowColorProperty) is Color hoverShadowColor)
             {
                 var effect = GetEffect(element);
                 if (effect == null)
@@ -702,11 +721,13 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)sender;
 
             var properties = new List<DependencyProperty>();
-            if (!GetHoverBackgroundLock((DependencyObject)sender) && element.GetValue(HoverBackgroundProperty) != null)
+            if (!GetHoverBackgroundLock((DependencyObject)sender)
+                && element.GetValue(HoverBackgroundProperty) != null)
             {
                 properties.Add(BackgroundProperty);
             }
-            if (!GetHoverForegroundLock((DependencyObject)sender) && element.GetValue(HoverForegroundProperty) != null)
+            if (!GetHoverForegroundLock((DependencyObject)sender)
+                && element.GetValue(HoverForegroundProperty) != null)
             {
                 if (element is TextBox || element is PasswordBox)
                 {
@@ -717,7 +738,8 @@ namespace Panuon.WPF.UI.Internal
                     properties.Add(ForegroundProperty);
                 }
             }
-            if (!GetHoverBorderBrushLock((DependencyObject)sender) && element.GetValue(HoverBorderBrushProperty) != null)
+            if (!GetHoverBorderBrushLock((DependencyObject)sender)
+                && element.GetValue(HoverBorderBrushProperty) != null)
             {
                 properties.Add(BorderBrushProperty);
             }
@@ -737,7 +759,8 @@ namespace Panuon.WPF.UI.Internal
             {
                 AnimationUtil.BeginBrushAnimationStoryboard(element, properties);
             }
-            if (element.GetValue(HoverShadowColorProperty) is Color)
+            if (!GetHoverShadowColorLock((DependencyObject)sender)
+                && element.GetValue(HoverShadowColorProperty) is Color)
             {
                 var effect = GetEffect(element);
                 if (effect == null)
@@ -754,7 +777,6 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
-
         }
 
         private static void Element_GotFocus(object sender, RoutedEventArgs e)

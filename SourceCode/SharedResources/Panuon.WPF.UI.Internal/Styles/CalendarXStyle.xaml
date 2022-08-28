@@ -90,10 +90,18 @@
                 Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
         <Setter Property="YearMonthButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=YearMonthButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+        <Setter Property="Background"
+                Value="White" />
         <Setter Property="BorderBrush"
                 Value="Gray" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="Animation"
+                Value="Fade,Scale" />
+        <Setter Property="AnimationEase"
+                Value="CubicOut" />
+        <Setter Property="AnimationDuration"
+                Value="0:0:0.3" />
         <Setter Property="HeaderSeparatorBrush"
                 Value="LightGray" />
         <Setter Property="HeaderSeparatorThickness"

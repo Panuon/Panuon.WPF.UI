@@ -22,7 +22,7 @@
                                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                    <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="7*" />
                 </Grid.RowDefinitions>
@@ -52,7 +52,7 @@
                     <TextBlock x:Name="PART_YearPeriodTextBlock"
                                Grid.Column="4"
                                Visibility="Collapsed"
-                               VerticalAlignment="Center"/>
+                               VerticalAlignment="Center" />
                     <Button x:Name="PART_MonthButton"
                             Grid.Column="5"
                             Style="{TemplateBinding YearMonthButtonStyle}" />
@@ -72,8 +72,9 @@
                                   Margin="{TemplateBinding HeaderSeparatorMargin}"
                                   Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
                 <local:CarouselPanel Grid.Row="2"
-                                     Animation="Fade,Scale"
-                                     AnimationEase="CubicOut"
+                                     Animation="{TemplateBinding Animation}"
+                                     AnimationEase="{TemplateBinding AnimationEase}"
+                                     AnimationDuration="{TemplateBinding AnimationDuration}"
                                      CurrentIndex="{TemplateBinding CurrentPanel}">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -84,7 +85,7 @@
                                      Columns="7" />
                         <i:CalendarXItemPresenter x:Name="PART_CalendarXDayPresenter"
                                                   Grid.Row="1"
-                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}"/>
+                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
                     </Grid>
                     <i:CalendarXItemPresenter x:Name="PART_CalendarXMonthPresenter"
                                               CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
