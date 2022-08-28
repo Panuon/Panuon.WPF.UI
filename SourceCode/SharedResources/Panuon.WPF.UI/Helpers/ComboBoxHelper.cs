@@ -558,6 +558,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ItemsHeight", typeof(double), typeof(ComboBoxHelper), new PropertyMetadata(30.0));
         #endregion
 
+        #region ItemsFontSize
+        public static double GetItemsFontSize(ComboBox comboBox)
+        {
+            return (double)comboBox.GetValue(ItemsFontSizeProperty);
+        }
+
+        public static void SetItemsFontSize(ComboBox comboBox, double value)
+        {
+            comboBox.SetValue(ItemsFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsFontSizeProperty =
+            DependencyProperty.RegisterAttached("ItemsFontSize", typeof(double), typeof(ComboBoxHelper), new PropertyMetadata(SystemFonts.MessageFontSize));
+        #endregion
+
         #region ItemsMargin
         public static Thickness GetItemsMargin(ComboBox comboBox)
         {

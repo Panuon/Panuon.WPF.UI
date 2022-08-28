@@ -4,6 +4,12 @@
     {
         Date,
         DateTime,
+        DateHour,
+        DateMinute,
+        Year,
+        Month,
         Time,
+        Hour,
+        Minute,
     }
 }

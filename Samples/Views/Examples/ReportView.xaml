@@ -101,9 +101,9 @@
                     Value="#22FFFFFF" />
             <Setter Property="pu:DataGridHelper.ColumnHeaderClickBackground"
                     Value="#44FFFFFF" />
-            <Setter Property="pu:DataGridHelper.UnitHoverBackground"
+            <Setter Property="pu:DataGridHelper.RowHoverBackground"
                     Value="#424243" />
-            <Setter Property="pu:DataGridHelper.UnitSelectedBackground"
+            <Setter Property="pu:DataGridHelper.RowSelectedBackground"
                     Value="#5F5F60" />
             <Setter Property="pu:DataGridHelper.ColumnHeaderSeparatorVisibility"
                     Value="Collapsed" />

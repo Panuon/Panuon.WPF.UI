@@ -477,8 +477,8 @@ namespace Panuon.WPF.UI
                 var newThicknessAnimation = new ThicknessAnimation()
                 {
                     From = Orientation == Orientation.Horizontal
-                            ? (forward ? new Thickness(-10, 0, 10, 0) : new Thickness(10, 0, -10, 0))
-                            : (forward ? new Thickness(0, -10, 0, 10) : new Thickness(0, 10, 0, -10)),
+                            ? (forward ? new Thickness(10, 0, -10, 0) : new Thickness(-10, 0, 10, 0))
+                            : (forward ? new Thickness(0, 10, 0, -10) : new Thickness(0, -10, 0, 10)),
                     To = new Thickness(),
                     Duration = AnimationDuration,
                     EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),

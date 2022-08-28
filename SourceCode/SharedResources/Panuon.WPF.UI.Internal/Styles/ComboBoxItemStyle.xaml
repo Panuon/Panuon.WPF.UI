@@ -73,6 +73,8 @@
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxItemHelper.SeparatorVisibility"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding Path=(local:ComboBoxHelper.ItemsFontSize), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ComboBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Width"

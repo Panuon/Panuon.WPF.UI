@@ -32,6 +32,7 @@
         public const string LightenSolidColorBrushConverter = nameof(LightenSolidColorBrushConverter);
         public const string ProgressBarBorderClipConverter = nameof(ProgressBarBorderClipConverter);
         public const string ProgressBarTextForegroundConverter = nameof(ProgressBarTextForegroundConverter);
+        public const string ProgressBarIndeterminateMarginConverter = nameof(ProgressBarIndeterminateMarginConverter);
         public const string ScrollableControlScrollButtonVisibilityConverter = nameof(ScrollableControlScrollButtonVisibilityConverter);
         public const string SliderBorderClipConverter = nameof(SliderBorderClipConverter);
         public const string SliderTextLeftConverter = nameof(SliderTextLeftConverter);

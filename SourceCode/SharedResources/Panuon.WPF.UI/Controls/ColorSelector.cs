@@ -140,6 +140,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ColorSelector));
         #endregion
 
+        #region EditorPanelMargin
+        public Thickness EditorPanelMargin
+        {
+            get { return (Thickness)GetValue(EditorPanelMarginProperty); }
+            set { SetValue(EditorPanelMarginProperty, value); }
+        }
+
+        public static readonly DependencyProperty EditorPanelMarginProperty =
+            DependencyProperty.Register("EditorPanelMargin", typeof(Thickness), typeof(ColorSelector), new PropertyMetadata(new Thickness(0, 15, 0, 0)));
+        #endregion
+
         #region ColorChannels
         public ColorChannels ColorChannels
         {

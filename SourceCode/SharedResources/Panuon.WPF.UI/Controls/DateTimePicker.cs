@@ -335,7 +335,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty TextStringFormatProperty =
-            DependencyProperty.Register("TextStringFormat", typeof(string), typeof(DateTimePicker), new PropertyMetadata("dd/MM/yyyy HH:mm:ss", OnTextFormatChanged));
+            DependencyProperty.Register("TextStringFormat", typeof(string), typeof(DateTimePicker), new PropertyMetadata(null, OnTextFormatChanged));
         #endregion
 
         #region InputTextStringFormat
@@ -517,6 +517,7 @@ namespace Panuon.WPF.UI
             UpdateTimeSelectorSelectedTime();
             UpdateTimeSelectorTimeLimit();
             UpdateText();
+            UpdateMode();
         }
         #endregion
 
@@ -566,6 +567,7 @@ namespace Panuon.WPF.UI
         {
             var dateTimePicker = (DateTimePicker)d;
             dateTimePicker.UpdateText();
+            dateTimePicker.UpdateMode();
         }
 
         private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -709,7 +711,7 @@ namespace Panuon.WPF.UI
         private static void OnClearCommandExecute(DateTimePicker dateTimePicker)
         {
             dateTimePicker.SetCurrentValue(TextProperty, null);
-            dateTimePicker.SetCurrentValue(SelectedDateTimeProperty, dateTimePicker.DefaultDateTime);
+            dateTimePicker.SetSelectedDateTime(dateTimePicker.DefaultDateTime);
         }
 
         private void CalendarX_SelectedDateTimeChanged(object sender, SelectedValueChangedRoutedEventArgs<DateTime> e)
@@ -768,7 +770,41 @@ namespace Panuon.WPF.UI
 
             if (nullableSelectedDateTime is DateTime selectedDateTime)
             {
-                text = selectedDateTime.ToString(TextStringFormat);
+                var textStringFormat = TextStringFormat;
+                if (string.IsNullOrEmpty(textStringFormat))
+                {
+                    switch (Mode)
+                    {
+                        case DateTimePickerMode.Date:
+                            textStringFormat = "dd/MM/yyyy";
+                            break;
+                        case DateTimePickerMode.DateTime:
+                            textStringFormat = "dd/MM/yyyy HH:mm:ss";
+                            break;
+                        case DateTimePickerMode.DateHour:
+                            textStringFormat = "dd/MM/yyyy HH:00:00";
+                            break;
+                        case DateTimePickerMode.DateMinute:
+                            textStringFormat = "dd/MM/yyyy HH:mm:00";
+                            break;
+                        case DateTimePickerMode.Month:
+                            textStringFormat = "MM/yyyy";
+                            break;
+                        case DateTimePickerMode.Year:
+                            textStringFormat = "yyyy";
+                            break;
+                        case DateTimePickerMode.Time:
+                            textStringFormat = "HH:mm:ss";
+                            break;
+                        case DateTimePickerMode.Hour:
+                            textStringFormat = "HH:00:00";
+                            break;
+                        case DateTimePickerMode.Minute:
+                            textStringFormat = "HH:mm:00";
+                            break;
+                    }
+                }
+                text = selectedDateTime.ToString(textStringFormat);
             }
 
             SetCurrentValue(TextProperty, text);
@@ -783,6 +819,35 @@ namespace Panuon.WPF.UI
             }
         }
 
+        private void UpdateMode()
+        {
+            if(_calendarX == null)
+            {
+                return;
+            }
+
+            switch (Mode)
+            {
+                case DateTimePickerMode.Year:
+                    _calendarX.Mode = CalendarXMode.Year;
+                    break;
+                case DateTimePickerMode.Month:
+                    _calendarX.Mode = CalendarXMode.Month;
+                    break;
+                case DateTimePickerMode.Date:
+                    _calendarX.Mode = CalendarXMode.Date;
+                    break;
+                case DateTimePickerMode.Hour:
+                    _timeSelector.Mode = TimeSelectorMode.Hour;
+                    break;
+                case DateTimePickerMode.Minute:
+                    _timeSelector.Mode = TimeSelectorMode.Minute;
+                    break;
+                case DateTimePickerMode.Time:
+                    _timeSelector.Mode = TimeSelectorMode.Time;
+                    break;
+            }
+        }
         private void UpdateSelectedDateTimeFromText()
         {
             if (_editableTextBox == null)
@@ -799,7 +864,7 @@ namespace Panuon.WPF.UI
                 selectedDateTime = newDateTime;
             }
 
-            SetCurrentValue(SelectedDateTimeProperty, selectedDateTime);
+            SetSelectedDateTime(selectedDateTime);
         }
 
         private void UpdateSelectedDateTime()
@@ -813,13 +878,17 @@ namespace Panuon.WPF.UI
             switch (Mode)
             {
                 case DateTimePickerMode.Date:
-                    SetCurrentValue(SelectedDateTimeProperty, _calendarX.SelectedDate);
+                case DateTimePickerMode.Year:
+                case DateTimePickerMode.Month:
+                    SetSelectedDateTime(_calendarX.SelectedDate);
                     break;
                 case DateTimePickerMode.Time:
-                    SetCurrentValue(SelectedDateTimeProperty, _timeSelector.SelectedTime);
+                case DateTimePickerMode.Hour:
+                case DateTimePickerMode.Minute:
+                    SetSelectedDateTime(_timeSelector.SelectedTime);
                     break;
                 case DateTimePickerMode.DateTime:
-                    SetCurrentValue(SelectedDateTimeProperty, new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, _timeSelector.SelectedTime.Second));
+                    SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, _timeSelector.SelectedTime.Second));
                     break;
             }
 
@@ -862,6 +931,30 @@ namespace Panuon.WPF.UI
                 _timeSelector.MaxTime = maxDateTime.GetTime();
             }
             
+        }
+
+        private void SetSelectedDateTime(DateTime? selectedDateTime)
+        {
+            if (selectedDateTime is DateTime dateTime)
+            {
+                switch (Mode)
+                {
+                    case DateTimePickerMode.Year:
+                        selectedDateTime = new DateTime(dateTime.Year, 1, 1);
+                        break;
+                    case DateTimePickerMode.Month:
+                        selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, 1);
+                        break;
+                    case DateTimePickerMode.Hour:
+                        selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
+                        break;
+                    case DateTimePickerMode.Minute:
+                        selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
+                        break;
+                }
+            }
+
+            SetCurrentValue(SelectedDateTimeProperty, selectedDateTime);
         }
         #endregion
     }

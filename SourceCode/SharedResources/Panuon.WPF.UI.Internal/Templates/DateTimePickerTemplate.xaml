@@ -222,7 +222,43 @@
                         Value="Collapsed" />
             </Trigger>
             <Trigger Property="Mode"
+                     Value="Year">
+                <Setter TargetName="PART_TimeSelector"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Month">
+                <Setter TargetName="PART_TimeSelector"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Mode"
                      Value="Time">
+                <Setter TargetName="PART_CalendarX"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Hour">
+                <Setter TargetName="PART_CalendarX"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="SprDateTime"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </Trigger>
+            <Trigger Property="Mode"
+                     Value="Minute">
                 <Setter TargetName="PART_CalendarX"
                         Property="Visibility"
                         Value="Collapsed" />

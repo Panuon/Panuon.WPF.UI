@@ -70,7 +70,10 @@ namespace Panuon.WPF.UI.Internal
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, ForegroundProperty, Source, IconHelper.ForegroundProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, FontSizeProperty, Source, IconHelper.FontSizeProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, ToolTipProperty, Source, IconHelper.ToolTipProperty);
-                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VisibilityProperty, this, ContentProperty, new NullToCollapseConverter());
+                FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VisibilityProperty, this, ContentProperty, 
+                    (Source != null && IconHelper.GetHiddenOnNull(Source))
+                    ? (ValueConverterBase)new NullToHiddenConverter()
+                    : new NullToCollapseConverter());
             }
         }
         #endregion

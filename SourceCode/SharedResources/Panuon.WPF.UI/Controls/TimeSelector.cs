@@ -71,6 +71,9 @@ namespace Panuon.WPF.UI
             UpdateSecond();
             UpdateMinute();
             UpdateHour();
+            UpdateMode();
+            
+            SetSelectedTime(SelectedTime);
         }
         #endregion
 
@@ -119,6 +122,17 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty SelectedTimeProperty =
             DependencyProperty.Register("SelectedTime", typeof(DateTime), typeof(TimeSelector), new PropertyMetadata(new DateTime(), OnSelectedTimeChanged, OnSelectedTimeCoerceValue));
 
+        #endregion
+
+        #region Mode
+        public TimeSelectorMode Mode
+        {
+            get { return (TimeSelectorMode)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ModeProperty =
+            DependencyProperty.Register("Mode", typeof(TimeSelectorMode), typeof(TimeSelector), new PropertyMetadata(OnModeChanged));
         #endregion
 
         #region MinTime
@@ -508,6 +522,16 @@ namespace Panuon.WPF.UI
             timeSelector.UpdateHour();
         }
 
+        private static void OnModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var timeSelector = (TimeSelector)d;
+            if (timeSelector._hourPresenter != null)
+            {
+                timeSelector.UpdateMode();
+                timeSelector.SetSelectedTime(timeSelector.SelectedTime);
+            }
+        }
+
         private static object OnSelectedTimeCoerceValue(DependencyObject d, object baseValue)
         {
             var timeSelector = (TimeSelector)d;
@@ -537,7 +561,7 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as TimeSelectorItem;
             var day = item.Time;
             var selectedTime = SelectedTime;
-            SetCurrentValue(SelectedTimeProperty, new DateTime(1, 1, 1, selectedTime.Hour, selectedTime.Minute, day));
+            SetSelectedTime(new DateTime(1, 1, 1, selectedTime.Hour, selectedTime.Minute, day));
         }
 
         private void MinutePresenter_Selected(object sender, RoutedEventArgs e)
@@ -545,7 +569,7 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as TimeSelectorItem;
             var minute = item.Time;
             var selectedTime = SelectedTime;
-            SetCurrentValue(SelectedTimeProperty, new DateTime(1, 1, 1, selectedTime.Hour, minute, selectedTime.Second));
+            SetSelectedTime(new DateTime(1, 1, 1, selectedTime.Hour, minute, selectedTime.Second));
         }
 
         private void HourPresenter_Selected(object sender, RoutedEventArgs e)
@@ -553,7 +577,7 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as TimeSelectorItem;
             var hour = (int)item.Time;
             var selectedTime = SelectedTime;
-            SetCurrentValue(SelectedTimeProperty, new DateTime(1, 1, 1, hour, selectedTime.Minute, selectedTime.Second));
+            SetSelectedTime(new DateTime(1, 1, 1, hour, selectedTime.Minute, selectedTime.Second));
         }
         #endregion
 
@@ -663,7 +687,48 @@ namespace Panuon.WPF.UI
             _secondPresenter.SetSelectedIndex(selectedTime.Second);
         }
 
-        #endregion
+        private void UpdateMode()
+        {
+            switch (Mode)
+            {
+                case TimeSelectorMode.Hour:
+                    _hourPresenter.IsEnabled = true;
+                    _minutePresenter.IsEnabled = false;
+                    _secondPresenter.IsEnabled = false;
+                    break;
+                case TimeSelectorMode.Minute:
+                    _hourPresenter.IsEnabled = true;
+                    _minutePresenter.IsEnabled = true;
+                    _secondPresenter.IsEnabled = false;
+                    break;
+                case TimeSelectorMode.Time:
+                    _hourPresenter.IsEnabled = true;
+                    _minutePresenter.IsEnabled = true;
+                    _secondPresenter.IsEnabled = true;
+                    break;
+            }
+        }
 
+        private void SetSelectedTime(DateTime dateTime)
+        {
+            switch (Mode)
+            {
+                case TimeSelectorMode.Hour:
+                    if (dateTime.Minute != 1
+                        || dateTime.Second != 1)
+                    {
+                        dateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
+                    }
+                    break;
+                case TimeSelectorMode.Minute:
+                    if (dateTime.Second != 1)
+                    {
+                        dateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
+                    }
+                    break;
+            }
+            SetCurrentValue(SelectedTimeProperty, dateTime);
+        }
+        #endregion
     }
 }

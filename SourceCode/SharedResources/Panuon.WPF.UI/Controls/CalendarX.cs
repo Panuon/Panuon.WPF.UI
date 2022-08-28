@@ -75,7 +75,7 @@ namespace Panuon.WPF.UI
         #region Overrides
         public override void OnApplyTemplate()
         {
-            
+
             _dayPresenter = GetTemplateChild(CalendarXDayPresenterTemplateName) as CalendarXItemPresenter;
             _dayPresenter.Selected += DayPresenter_Selected;
             _dayPresenter.Init(_dayRows, _dayColumns);
@@ -83,7 +83,7 @@ namespace Panuon.WPF.UI
             _monthPresenter = GetTemplateChild(CalendarXMonthPresenterTemplateName) as CalendarXItemPresenter;
             _monthPresenter.Selected += MonthPresenter_Selected;
             _monthPresenter.Init(_monthRows, _monthColumns);
-          
+
             _yearPresenter = GetTemplateChild(CalendarXYearPresenterTemplateName) as CalendarXItemPresenter;
             _yearPresenter.Selected += YearPresenter_Selected;
             _yearPresenter.Init(_yearRows, _yearColumns);
@@ -115,6 +115,9 @@ namespace Panuon.WPF.UI
             UpdateYear();
             InitWeekNameUniformGrid();
             UpdateButtonContent();
+            UpdateCurrentPanel();
+            
+            SetSelectedDate(SelectedDate);
         }
         #endregion
 
@@ -293,7 +296,19 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty SpecialDatesProperty =
             DependencyProperty.Register("SpecialDates", typeof(IEnumerable<DateTime>), typeof(CalendarX));
         #endregion
-       
+
+        #region Mode
+        public CalendarXMode Mode
+        {
+            get { return (CalendarXMode)GetValue(ModeProperty); }
+            set { SetValue(ModeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ModeProperty =
+            DependencyProperty.Register("Mode", typeof(CalendarXMode), typeof(CalendarX), new PropertyMetadata(OnModeChanged));
+
+        #endregion
+
         #region MinDate
         public DateTime MinDate
         {
@@ -314,6 +329,39 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty MaxDateProperty =
             DependencyProperty.Register("MaxDate", typeof(DateTime), typeof(CalendarX), new PropertyMetadata(DateTime.MaxValue, OnMaxDateChanged, OnMaxDateCoerceValue));
+        #endregion
+
+        #region Animation
+        public CarouselAnimation Animation
+        {
+            get { return (CarouselAnimation)GetValue(AnimationProperty); }
+            set { SetValue(AnimationProperty, value); }
+        }
+
+        public static readonly DependencyProperty AnimationProperty =
+            DependencyProperty.Register("Animation", typeof(CarouselAnimation), typeof(CalendarX));
+        #endregion
+
+        #region AnimationEase
+        public AnimationEase AnimationEase
+        {
+            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
+            set { SetValue(AnimationEaseProperty, value); }
+        }
+
+        public static readonly DependencyProperty AnimationEaseProperty =
+            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(CalendarX));
+        #endregion
+
+        #region AnimationDuration
+        public TimeSpan AnimationDuration
+        {
+            get { return (TimeSpan)GetValue(AnimationDurationProperty); }
+            set { SetValue(AnimationDurationProperty, value); }
+        }
+
+        public static readonly DependencyProperty AnimationDurationProperty =
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(CalendarX), new PropertyMetadata(TimeSpan.FromSeconds(0.5)));
         #endregion
 
         #region YearStringFormat
@@ -594,16 +642,25 @@ namespace Panuon.WPF.UI
             var maxDate = calendarX.MaxDate.Date;
             var minDate = calendarX.MinDate.Date;
 
-            if(selectedDate > maxDate)
+            if (selectedDate > maxDate)
             {
                 return maxDate;
             }
-            if(selectedDate < minDate)
+            if (selectedDate < minDate)
             {
                 return minDate;
             }
             return selectedDate;
+        }
 
+        private static void OnModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendar = (CalendarX)d;
+            if (calendar._dayPresenter != null)
+            {
+                calendar.UpdateCurrentPanel();
+                calendar.SetSelectedDate(calendar.SelectedDate);
+            }
         }
 
         private void DayPresenter_Selected(object sender, RoutedEventArgs e)
@@ -614,7 +671,7 @@ namespace Panuon.WPF.UI
             {
                 var selectedDate = SelectedDate;
                 var firsDayOfMonth = new DateTime(selectedDate.Year, selectedDate.Month, 1);
-                SetCurrentValue(SelectedDateProperty, firsDayOfMonth.AddDays((int)day));
+                SetSelectedDate(firsDayOfMonth.AddDays((int)day));
             }
         }
 
@@ -623,8 +680,13 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as CalendarXItem;
             var month = (int)item.Tag;
             var selectedDate = SelectedDate;
-            SetCurrentValue(SelectedDateProperty, new DateTime(selectedDate.Year, month, selectedDate.Day));
-            SetCurrentValue(CurrentPanelProperty, 0);
+            SetSelectedDate(new DateTime(selectedDate.Year, month, selectedDate.Day));
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                    SetCurrentValue(CurrentPanelProperty, 0);
+                    break;
+            }
         }
 
         private void YearPresenter_Selected(object sender, RoutedEventArgs e)
@@ -632,8 +694,14 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as CalendarXItem;
             var year = (int)item.Tag;
             var selectedDate = SelectedDate;
-            SetCurrentValue(SelectedDateProperty, new DateTime(year, selectedDate.Month, selectedDate.Day));
-            SetCurrentValue(CurrentPanelProperty, 1);
+            SetSelectedDate(new DateTime(year, selectedDate.Month, selectedDate.Day));
+            switch (Mode)
+            {
+                case CalendarXMode.Month:
+                case CalendarXMode.Date:
+                    SetCurrentValue(CurrentPanelProperty, 1);
+                    break;
+            }
         }
 
         private void BackwardButton_Click(object sender, RoutedEventArgs e)
@@ -657,12 +725,12 @@ namespace Panuon.WPF.UI
 
                 if (selectedDate >= minDate)
                 {
-                    SetCurrentValue(SelectedDateProperty, selectedDate);
+                    SetSelectedDate(selectedDate);
                 }
             }
             catch
             {
-                SetCurrentValue(SelectedDateProperty, minDate);
+                SetSelectedDate(minDate);
             }
         }
 
@@ -684,12 +752,12 @@ namespace Panuon.WPF.UI
 
                 if (selectedDate >= minDate)
                 {
-                    SetCurrentValue(SelectedDateProperty, selectedDate);
+                    SetSelectedDate(selectedDate);
                 }
             }
             catch
             {
-                SetCurrentValue(SelectedDateProperty, minDate);
+                SetSelectedDate(minDate);
             }
         }
 
@@ -709,13 +777,12 @@ namespace Panuon.WPF.UI
                         break;
                 }
 
-                SetCurrentValue(SelectedDateProperty, selectedDate);
+                SetSelectedDate(selectedDate);
             }
             catch
             {
             }
         }
-
 
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
@@ -736,7 +803,7 @@ namespace Panuon.WPF.UI
                         break;
                 }
 
-                SetCurrentValue(SelectedDateProperty, selectedDate);
+                SetSelectedDate(selectedDate);
             }
             catch
             {
@@ -872,7 +939,7 @@ namespace Panuon.WPF.UI
             {
                 prevDays *= -1;
             }
-            else if(prevDays == 0)
+            else if (prevDays == 0)
             {
                 prevDays = -7;
             }
@@ -923,7 +990,43 @@ namespace Panuon.WPF.UI
                 daysOfWeek++;
             }
         }
-        #endregion
 
+        private void UpdateCurrentPanel()
+        {
+            switch (Mode)
+            {
+                case CalendarXMode.Date:
+                    SetCurrentValue(CurrentPanelProperty, 0);
+                    break;
+                case CalendarXMode.Month:
+                    SetCurrentValue(CurrentPanelProperty, 1);
+                    break;
+                case CalendarXMode.Year:
+                    SetCurrentValue(CurrentPanelProperty, 2);
+                    break;
+            }
+        }
+
+        private void SetSelectedDate(DateTime dateTime)
+        {
+            switch (Mode)
+            {
+                case CalendarXMode.Year:
+                    if (dateTime.Month != 1
+                        || dateTime.Day != 1)
+                    {
+                        dateTime = new DateTime(dateTime.Year, 1, 1);
+                    }
+                    break;
+                case CalendarXMode.Month:
+                    if (dateTime.Day != 1)
+                    {
+                        dateTime = new DateTime(dateTime.Year, dateTime.Month, 1);
+                    }
+                    break;
+            }
+            SetCurrentValue(SelectedDateProperty, dateTime);
+        }
+        #endregion
     }
 }

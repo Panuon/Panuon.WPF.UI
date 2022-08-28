@@ -337,7 +337,7 @@ namespace Panuon.WPF.UI
         {
             var stringFormat = GetTextStringFormat(slider);
             var value = slider.Value;
-            var text = string.IsNullOrEmpty(stringFormat) ? value.ToString() : string.Format(stringFormat, value);
+            var text = string.IsNullOrEmpty(stringFormat) ? value.ToString() : value.ToString(stringFormat);
             var args = new GeneratingValueTextRoutedEventArgs(GeneratingValueTextEvent, value, text);
             slider.RaiseEvent(args);
             SetText(slider, args.Text);

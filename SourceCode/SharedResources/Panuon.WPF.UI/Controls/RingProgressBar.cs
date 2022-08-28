@@ -171,7 +171,7 @@ namespace Panuon.WPF.UI
             _initializeHandler = false;
 
             var percent = (InternalValue - Minimum) / (Maximum - Minimum);
-            var text = string.IsNullOrEmpty(PercentStringFormat) ? percent.ToString("P0") : string.Format(PercentStringFormat, percent);
+            var text = string.IsNullOrEmpty(PercentStringFormat) ? percent.ToString("P0") : percent.ToString(PercentStringFormat);
             var args = new GeneratingPercentTextRoutedEventArgs(GeneratingPercentTextEvent, InternalValue, percent, text);
             RaiseEvent(args);
             Text = args.Text;

@@ -140,6 +140,8 @@
                 Value="BottomRight" />
         <Setter Property="local:ComboBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ComboBoxHelper.ItemsFontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsHorizontalContentAlignment"
                 Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsVerticalContentAlignment"
@@ -238,6 +240,16 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.FocusedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
                         Value="True" />
             </MultiDataTrigger>
         </Style.Triggers>
