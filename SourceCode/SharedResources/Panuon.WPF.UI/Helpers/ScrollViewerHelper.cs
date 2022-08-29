@@ -292,116 +292,119 @@ namespace Panuon.WPF.UI
         private static void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             var scrollViewer = (ScrollViewer)sender;
-            var source = e.Source as UIElement;
-            var originalSource = e.OriginalSource as UIElement;
+            if (e.Source is UIElement source
+                && e.OriginalSource is UIElement originalSource)
+            {
 
-            if (GetHandleMouseWheel(scrollViewer))
-            {
-                e.Handled = true;
-            }
 
-            //如果被滚动的ScrollViewer
-            if (source is ScrollViewer
-                && source != scrollViewer)
-            {
-                return;
-            }
-            if (originalSource is ScrollViewer
-                && originalSource != scrollViewer)
-            {
-                return;
-            }
-
-            var parent = VisualTreeHelper.GetParent(source) as DependencyObject;
-            while(parent != null
-                && parent != scrollViewer)
-            {
-                if(parent is ScrollViewer)
-                {
-                    return;
-                }
-                parent = VisualTreeHelper.GetParent(parent) as DependencyObject;
-            }
-
-            if (originalSource != null
-                && originalSource != scrollViewer)
-            {
-                scrollViewer.PreviewMouseWheel -= ScrollViewer_PreviewMouseWheel;
-                var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
-                {
-                    RoutedEvent = UIElement.PreviewMouseWheelEvent,
-                    Source = scrollViewer,
-                };
-                originalSource?.RaiseEvent(eventArg);
-                scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
-                if (eventArg.Handled)
+                if (GetHandleMouseWheel(scrollViewer))
                 {
                     e.Handled = true;
+                }
+
+                //如果被滚动的ScrollViewer
+                if (source is ScrollViewer
+                    && source != scrollViewer)
+                {
                     return;
                 }
-            }
+                if (originalSource is ScrollViewer
+                    && originalSource != scrollViewer)
+                {
+                    return;
+                }
 
-            var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
-            mouseWheelDelta = scrollViewer.CanContentScroll
-                ? (int)Math.Floor(mouseWheelDelta / 48)
-                : mouseWheelDelta;
-            switch (GetWheelScrollingDirection(scrollViewer))
-            {
-                case WheelScrollingDirection.Vertical:
-                    if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                var parent = VisualTreeHelper.GetParent(source) as DependencyObject;
+                while (parent != null
+                    && parent != scrollViewer)
+                {
+                    if (parent is ScrollViewer)
                     {
                         return;
                     }
-                    break;
-                case WheelScrollingDirection.Horizontal:
-                    if (SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                    parent = VisualTreeHelper.GetParent(parent) as DependencyObject;
+                }
+
+                if (originalSource != null
+                    && originalSource != scrollViewer)
+                {
+                    scrollViewer.PreviewMouseWheel -= ScrollViewer_PreviewMouseWheel;
+                    var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
                     {
+                        RoutedEvent = UIElement.PreviewMouseWheelEvent,
+                        Source = scrollViewer,
+                    };
+                    originalSource?.RaiseEvent(eventArg);
+                    scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
+                    if (eventArg.Handled)
+                    {
+                        e.Handled = true;
                         return;
                     }
-                    break;
-                case WheelScrollingDirection.HorizontalThenVertical:
-                    if (e.Delta < 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    else if (e.Delta > 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    else if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    break;
-                case WheelScrollingDirection.VerticalThenHorizontal:
-                    if (e.Delta < 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    else if (e.Delta > 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    else if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    break;
-                case WheelScrollingDirection.Both:
-                    if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    if (SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
-                    {
-                        return;
-                    }
-                    break;
+                }
+
+                var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
+                mouseWheelDelta = scrollViewer.CanContentScroll
+                    ? (int)Math.Floor(mouseWheelDelta / 48)
+                    : mouseWheelDelta;
+                switch (GetWheelScrollingDirection(scrollViewer))
+                {
+                    case WheelScrollingDirection.Vertical:
+                        if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        break;
+                    case WheelScrollingDirection.Horizontal:
+                        if (SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        break;
+                    case WheelScrollingDirection.HorizontalThenVertical:
+                        if (e.Delta < 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        else if (e.Delta > 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        else if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        break;
+                    case WheelScrollingDirection.VerticalThenHorizontal:
+                        if (e.Delta < 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        else if (e.Delta > 0 && SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        else if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        break;
+                    case WheelScrollingDirection.Both:
+                        if (SetTargetVerticalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        if (SetTargetHorizontalOffset(scrollViewer, e.Delta, mouseWheelDelta, e))
+                        {
+                            return;
+                        }
+                        break;
+                }
+                //if (GetHandleMouseWheel(scrollViewer))
+                //{
+                //    e.Handled = true;
+                //}
             }
-            //if (GetHandleMouseWheel(scrollViewer))
-            //{
-            //    e.Handled = true;
-            //}
         }
 
         private static bool SetTargetVerticalOffset(ScrollViewer scrollViewer,
