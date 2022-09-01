@@ -75,7 +75,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Panuon.WPF, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Panuon.WPF.0.3.0-alpha\lib\net472\Panuon.WPF.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DotNet\WPF\References\Net472\Panuon.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -170,7 +171,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
