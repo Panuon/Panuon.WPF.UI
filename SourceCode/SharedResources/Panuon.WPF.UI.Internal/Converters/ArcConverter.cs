@@ -14,7 +14,7 @@ namespace Panuon.WPF.UI.Internal.Converters
         {
             var actualWidth = values[0] as double? ?? 0;
             var actualHeight = values[1] as double? ?? 0;
-            if (actualWidth == 0 || actualWidth == 0)
+            if (actualWidth == 0 || actualHeight == 0)
             {
                 return null;
             }
