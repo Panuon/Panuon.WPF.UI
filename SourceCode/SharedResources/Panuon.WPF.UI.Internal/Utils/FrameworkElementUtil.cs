@@ -102,9 +102,9 @@ namespace Panuon.WPF.UI.Internal.Utils
                 for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
                 {
                     var child = VisualTreeHelper.GetChild(obj, i) as FrameworkElement;
-                    if (child != null && child is T && (string.IsNullOrEmpty(name) || child.Name == name))
+                    if (child is T t && (string.IsNullOrEmpty(name) || child.Name == name))
                     {
-                        yield return (T)child;
+                        yield return t;
                     }
 
                     foreach (T childOfChild in FindVisualChildren<T>(child, name))
