@@ -18,7 +18,7 @@ namespace Panuon.WPF.UI.Internal.Converters
             }
             var type = value.GetType();
             var propertyInfo = type.GetProperty(displayMemberPath, BindingFlags.Public | BindingFlags.Instance);
-            if(propertyInfo == null)
+            if (propertyInfo != null)
             {
                 throw new Exception($"Can not find property names {propertyInfo.Name} in {type}");
             }

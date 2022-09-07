@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class Arc2Converter 
+    class Arc2Converter
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -14,7 +14,7 @@ namespace Panuon.WPF.UI.Internal.Converters
             var actualWidth = values[0] as double? ?? 0;
             var actualHeight = values[1] as double? ?? 0;
             var size = Math.Min(actualHeight, actualWidth);
-            if (actualWidth == 0 || actualWidth == 0)
+            if (actualWidth == 0 || actualHeight == 0)
             {
                 return null;
             }
