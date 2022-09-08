@@ -2,6 +2,7 @@
 using Panuon.WPF.UI.Internal;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -269,7 +270,7 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty ClearButtonStyleProperty =
             DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(TextBoxHelper));
         #endregion
-
+        
         #region SelectAllOnFocus
         public static bool GetSelectAllOnFocus(TextBox textBox)
         {
@@ -282,8 +283,42 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SelectAllOnFocusProperty =
-            DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(TextBoxHelper), new PropertyMetadata(OnSelectAllOnFocusChanged));
+            DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(TextBoxHelper));
 
+        #endregion
+
+        #region InputLimit
+        public static InputLimits GetInputLimit(DependencyObject obj)
+        {
+            return (InputLimits)obj.GetValue(InputLimitProperty);
+        }
+
+        public static void SetInputLimit(DependencyObject obj, InputLimits value)
+        {
+            obj.SetValue(InputLimitProperty, value);
+        }
+
+        public static readonly DependencyProperty InputLimitProperty =
+            DependencyProperty.RegisterAttached("InputLimit", typeof(InputLimits), typeof(TextBoxHelper), new PropertyMetadata(InputLimits.None));
+        #endregion
+
+        #endregion
+
+        #region Internal Properties
+
+        #region Hook
+        public static bool GetHook(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HookProperty);
+        }
+
+        public static void SetHook(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HookProperty, value);
+        }
+
+        public static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(TextBoxHelper), new PropertyMetadata(OnHookChanged));
         #endregion
 
         #endregion
@@ -309,49 +344,168 @@ namespace Panuon.WPF.UI
             textBox.Focus();
         }
 
-        private static void OnSelectAllOnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var textBox = (TextBox)d;
-            textBox.PreviewMouseLeftButtonDown -= TextBox_PreviewMouseLeftButtonDown;
-            textBox.GotKeyboardFocus -= TextBox_SelectAll;
-            textBox.MouseDoubleClick -= TextBox_SelectAll;
-
-            if ((bool)e.NewValue)
-            {
-                textBox.PreviewMouseLeftButtonDown += TextBox_PreviewMouseLeftButtonDown;
-                textBox.GotKeyboardFocus += TextBox_SelectAll;
-                textBox.MouseDoubleClick += TextBox_SelectAll;
-            }
-        }
-
         private static void TextBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var parent = e.OriginalSource as DependencyObject;
-            while (parent != null 
-                && !(parent is TextBox))
+            var textBox = sender as TextBox;
+            if (textBox != null
+                && GetSelectAllOnFocus(textBox))
             {
-                parent = VisualTreeHelper.GetParent(parent);
-            }
-
-            if (parent != null)
-            {
-                var textBox = (TextBox)parent;
-                if (!textBox.IsKeyboardFocusWithin)
+                var parent = e.OriginalSource as DependencyObject;
+                while (parent != null
+                    && !(parent is TextBox))
                 {
-                    textBox.Focus();
-                    e.Handled = true;
+                    parent = VisualTreeHelper.GetParent(parent);
+                }
+
+                if (parent != null)
+                {
+                    var parentTextBox = (TextBox)parent;
+                    if (!parentTextBox.IsKeyboardFocusWithin)
+                    {
+                        parentTextBox.Focus();
+                        e.Handled = true;
+                    }
                 }
             }
         }
 
         private static void TextBox_SelectAll(object sender, RoutedEventArgs e)
         {
-            var textBox = e.OriginalSource as TextBox;
-            if (textBox != null)
+            var textBox = sender as TextBox;
+            if (textBox != null
+                && GetSelectAllOnFocus(textBox))
             {
                 textBox.SelectAll();
             }
         }
+
+        private static void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            var inputLimit = GetInputLimit(textBox);
+            if (inputLimit == InputLimits.None)
+            {
+                return;
+            }
+            var text = textBox.Text ?? "";
+
+            foreach (var inputChar in e.Text)
+            {
+                if ((inputLimit.HasFlag(InputLimits.Digit)
+                     && inputChar >= 48 && inputChar <= 57) ||
+                   (inputLimit.HasFlag(InputLimits.UpperCaseLetters)
+                     && inputChar >= 97 && inputChar <= 122) ||
+                   (inputLimit.HasFlag(InputLimits.LowerCaseLetters)
+                     && inputChar >= 65 && inputChar <= 90) ||
+                   (inputLimit.HasFlag(InputLimits.Point)
+                     && inputChar == '.' && !text.Contains(".")) ||
+                   (inputLimit.HasFlag(InputLimits.At)
+                     && inputChar == '@' && !text.Contains("@")) ||
+                   (inputLimit.HasFlag(InputLimits.MultiplePoints)
+                     && inputChar == '.') ||
+                   (inputLimit.HasFlag(InputLimits.MultipleAts)
+                     && inputChar == '@'))
+                {
+                    text += inputChar;
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private static void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                var textBox = sender as TextBox;
+                var inputLimit = GetInputLimit(textBox);
+                if (inputLimit == InputLimits.None)
+                {
+                    return;
+                }
+                var text = textBox.Text ?? "";
+
+                if (inputLimit.HasFlag(InputLimits.Space)
+                       && !text.Contains(" "))
+                {
+
+                }
+                else
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private static void TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            var inputLimit = GetInputLimit(textBox);
+            if (inputLimit == InputLimits.None)
+            {
+                return;
+            }
+
+            if (!e.SourceDataObject.GetDataPresent(DataFormats.UnicodeText, true))
+            {
+                e.CancelCommand();
+            }
+
+            var pastingText = e.SourceDataObject.GetData(DataFormats.UnicodeText) as string;
+            var text = textBox.Text ?? "";
+
+            foreach (var inputChar in pastingText)
+            {
+                if ((inputLimit.HasFlag(InputLimits.Digit)
+                     && inputChar >= 48 && inputChar <= 57) ||
+                   (inputLimit.HasFlag(InputLimits.UpperCaseLetters)
+                     && inputChar >= 97 && inputChar <= 122) ||
+                   (inputLimit.HasFlag(InputLimits.LowerCaseLetters)
+                     && inputChar >= 65 && inputChar <= 90) ||
+                   (inputLimit.HasFlag(InputLimits.Point)
+                     && inputChar == '.' && !text.Contains(".")) ||
+                   (inputLimit.HasFlag(InputLimits.At)
+                     && inputChar == '@' && !text.Contains("@")) ||
+                   (inputLimit.HasFlag(InputLimits.MultiplePoints)
+                     && inputChar == '.') ||
+                   (inputLimit.HasFlag(InputLimits.MultipleAts)
+                     && inputChar == '@'))
+                {
+                    text += inputChar;
+                }
+                else
+                {
+                    e.CancelCommand();
+                    return;
+                }
+            }
+        }
+
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBox = (TextBox)d;
+            textBox.PreviewMouseLeftButtonDown -= TextBox_PreviewMouseLeftButtonDown;
+            textBox.GotKeyboardFocus -= TextBox_SelectAll;
+            textBox.MouseDoubleClick -= TextBox_SelectAll;
+            textBox.PreviewTextInput -= TextBox_PreviewTextInput;
+            textBox.PreviewKeyDown -= TextBox_PreviewKeyDown;
+            DataObject.RemovePastingHandler(textBox, TextBox_Pasting);
+
+            if ((bool)e.NewValue)
+            {
+                textBox.PreviewMouseLeftButtonDown += TextBox_PreviewMouseLeftButtonDown;
+                textBox.GotKeyboardFocus += TextBox_SelectAll;
+                textBox.MouseDoubleClick += TextBox_SelectAll;
+                textBox.PreviewTextInput += TextBox_PreviewTextInput;
+                textBox.PreviewKeyDown += TextBox_PreviewKeyDown;
+                DataObject.AddPastingHandler(textBox, TextBox_Pasting);
+            }
+        }
+
         #endregion
 
     }

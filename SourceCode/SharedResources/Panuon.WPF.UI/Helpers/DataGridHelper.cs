@@ -97,6 +97,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(DataGridHelper));
         #endregion
 
+        #region ClickToEdit
+        public static bool GetClickToEdit(DataGrid dataGrid)
+        {
+            return (bool)dataGrid.GetValue(ClickToEditProperty);
+        }
+
+        public static void SetClickToEdit(DataGrid dataGrid, bool value)
+        {
+            dataGrid.SetValue(ClickToEditProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickToEditProperty =
+            DependencyProperty.RegisterAttached("ClickToEdit", typeof(bool), typeof(DataGridHelper), new PropertyMetadata(OnClickToEditChanged));
+        #endregion
+
+        #region ClickToExtendedSelect
+        public static bool GetClickToExtendedSelect(DataGrid dataGrid)
+        {
+            return (bool)dataGrid.GetValue(ClickToExtendedSelectProperty);
+        }
+
+        public static void SetClickToExtendedSelect(DataGrid dataGrid, bool value)
+        {
+            dataGrid.SetValue(ClickToExtendedSelectProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickToExtendedSelectProperty =
+            DependencyProperty.RegisterAttached("ClickToExtendedSelect", typeof(bool), typeof(DataGridHelper));
+        #endregion
+
         #region ShadowColor
         public static Color? GetShadowColor(DataGrid dataGrid)
         {
@@ -110,7 +140,7 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ShadowColorProperty =
             VisualStateHelper.ShadowColorProperty.AddOwner(typeof(DataGridHelper));
-        #endregion
+        #endregion        #endregion
 
         #region IsHorizontalScrollBarCrossingFrozenColumns
         public static bool GetIsHorizontalScrollBarCrossingFrozenColumns(DataGrid dataGrid)
@@ -247,6 +277,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ColumnHeaderPadding", typeof(Thickness), typeof(DataGridHelper));
         #endregion
 
+        #region ColumnHeaderFontSize
+        public static double GetColumnHeaderFontSize(DataGrid dataGrid)
+        {
+            return (double)dataGrid.GetValue(ColumnHeaderFontSizeProperty);
+        }
+
+        public static void SetColumnHeaderFontSize(DataGrid dataGrid, double value)
+        {
+            dataGrid.SetValue(ColumnHeaderFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderFontSizeProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderFontSize", typeof(double), typeof(DataGridHelper), new PropertyMetadata(SystemFonts.MessageFontSize));
+        #endregion
+
+        #region ColumnHeaderFontWeight
+        public static FontWeight GetColumnHeaderFontWeight(DataGrid dataGrid)
+        {
+            return (FontWeight)dataGrid.GetValue(ColumnHeaderFontWeightProperty);
+        }
+
+        public static void SetColumnHeaderFontWeight(DataGrid dataGrid, FontWeight value)
+        {
+            dataGrid.SetValue(ColumnHeaderFontWeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderFontWeightProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderFontWeight", typeof(FontWeight), typeof(DataGridHelper), new PropertyMetadata(SystemFonts.MessageFontWeight));
+        #endregion
+
         #region ColumnHeaderForeground
         public static Brush GetColumnHeaderForeground(DataGrid dataGrid)
         {
@@ -371,6 +431,36 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region ColumnHeaderHoverBorderBrush
+        public static Brush GetColumnHeaderHoverBorderBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(ColumnHeaderHoverBorderBrushProperty);
+        }
+
+        public static void SetColumnHeaderHoverBorderBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(ColumnHeaderHoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderHoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderHoverBorderBrush", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region ColumnHeaderHoverBorderThickness
+        public static Thickness? GetColumnHeaderHoverBorderThickness(DataGrid dataGrid)
+        {
+            return (Thickness?)dataGrid.GetValue(ColumnHeaderHoverBorderThicknessProperty);
+        }
+
+        public static void SetColumnHeaderHoverBorderThickness(DataGrid dataGrid, Thickness? value)
+        {
+            dataGrid.SetValue(ColumnHeaderHoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderHoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderHoverBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
+        #endregion
+
         #region ColumnHeaderClickBackground
         public static Brush GetColumnHeaderClickBackground(DataGrid dataGrid)
         {
@@ -401,6 +491,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ColumnHeaderClickForegroundProperty =
             DependencyProperty.RegisterAttached("ColumnHeaderClickForeground", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region ColumnHeaderClickBorderBrush
+        public static Brush GetColumnHeaderClickBorderBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(ColumnHeaderClickBorderBrushProperty);
+        }
+
+        public static void SetColumnHeaderClickBorderBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(ColumnHeaderClickBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderClickBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderClickBorderBrush", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region ColumnHeaderClickBorderThickness
+        public static Thickness? GetColumnHeaderClickBorderThickness(DataGrid dataGrid)
+        {
+            return (Thickness?)dataGrid.GetValue(ColumnHeaderClickBorderThicknessProperty);
+        }
+
+        public static void SetColumnHeaderClickBorderThickness(DataGrid dataGrid, Thickness? value)
+        {
+            dataGrid.SetValue(ColumnHeaderClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderClickBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
         #endregion
 
         #region ColumnHeaderPanelCornerRadius
@@ -636,6 +756,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CellSelectedBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
         #endregion
 
+        #region RowShadowColor
+        public static Color? GetRowShadowColor(DataGrid dataGrid)
+        {
+            return (Color?)dataGrid.GetValue(RowShadowColorProperty);
+        }
+
+        public static void SetRowShadowColor(DataGrid dataGrid, Color? value)
+        {
+            dataGrid.SetValue(RowShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty RowShadowColorProperty =
+            DependencyProperty.RegisterAttached("RowShadowColor", typeof(Color?), typeof(DataGridHelper));
+        #endregion
+
         #region RowHoverBackground
         public static Brush GetRowHoverBackground(DataGrid dataGrid)
         {
@@ -666,8 +801,6 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty RowHoverForegroundProperty =
             DependencyProperty.RegisterAttached("RowHoverForeground", typeof(Brush), typeof(DataGridHelper));
-
-
         #endregion
 
         #region RowSelectedBackground
@@ -732,6 +865,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty RowSelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("RowSelectedBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
+        #endregion
+
+        #region RowSelectedShadowColor
+        public static Color? GetRowSelectedShadowColor(DataGrid dataGrid)
+        {
+            return (Color?)dataGrid.GetValue(RowSelectedShadowColorProperty);
+        }
+
+        public static void SetRowSelectedShadowColor(DataGrid dataGrid, Color? value)
+        {
+            dataGrid.SetValue(RowSelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty RowSelectedShadowColorProperty =
+            DependencyProperty.RegisterAttached("RowSelectedShadowColor", typeof(Color?), typeof(DataGridHelper));
         #endregion
 
         #region RowHeader Properties
@@ -1339,6 +1487,17 @@ namespace Panuon.WPF.UI
             }
         }
 
+
+        private static void OnClickToEditChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var dataGrid = (DataGrid)d;
+            dataGrid.RemoveHandler(DataGridCell.GotFocusEvent, (RoutedEventHandler)OnDataGridCellGotFocus);
+            if ((bool)e.NewValue == true)
+            {
+                dataGrid.AddHandler(DataGridCell.GotFocusEvent, (RoutedEventHandler)OnDataGridCellGotFocus);
+            }
+        }
+
         private static void OnParentScrollViewerChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var dataGrid = (DataGrid)d;
@@ -1891,6 +2050,8 @@ namespace Panuon.WPF.UI
         private static void OnRowHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var row = (DataGridRow)d;
+            row.MouseDown -= Row_MouseDown;
+            row.PreviewMouseDown -= Row_PreviewMouseDown;
             row.MouseDoubleClick -= DataGridRow_MouseDoubleClick;
             if ((bool)e.NewValue)
             {
@@ -1902,9 +2063,17 @@ namespace Panuon.WPF.UI
 
         private static void Row_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var row = sender as DataGridRow;
-            var dataGrid = FrameworkElementUtil.FindVisualParent<DataGrid>(row);
-            var selectediNDEX = dataGrid.SelectedIndex;
+            if (e.LeftButton == MouseButtonState.Pressed
+                && e.OriginalSource is FrameworkElement element
+                && FrameworkElementUtil.FindVisualParent<DataGridRow>(element) is DataGridRow row)
+            {
+                if (FrameworkElementUtil.FindVisualParent<DataGrid>(row) is DataGrid dataGrid
+                    && GetClickToExtendedSelect(dataGrid))
+                {
+                    row.IsSelected = !row.IsSelected;
+                    e.Handled = true;
+                }
+            }
         }
 
         private static void Row_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1921,10 +2090,24 @@ namespace Panuon.WPF.UI
             }
         }
 
+        private static void OnDataGridCellGotFocus(object sender, RoutedEventArgs e)
+        {
+            DataGrid dataGrid = (DataGrid)sender;
+            if (e.OriginalSource is DataGridCell)
+            {
+                dataGrid.BeginEdit(e);
+
+                var childEditor = FrameworkElementUtil.FindVisualChild<Control>(e.OriginalSource as DataGridCell);
+                if (childEditor != null)
+                {
+                    childEditor.Focus();
+                }
+            }
+        }
         #endregion
 
         #region Functions
-        
+
         private static DataTemplate CreateDefaultTemplate(string propertyName, ColumnBindingAttribute bindingAttribute)
         {
             var textBlock = new FrameworkElementFactory(typeof(TextBlock));

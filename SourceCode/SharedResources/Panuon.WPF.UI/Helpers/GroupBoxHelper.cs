@@ -82,6 +82,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderFontWeight
+        public static FontWeight GetHeaderFontWeight(GroupBox groupBox)
+        {
+            return (FontWeight)groupBox.GetValue(HeaderFontWeightProperty);
+        }
+
+        public static void SetHeaderFontWeight(GroupBox groupBox, FontWeight value)
+        {
+            groupBox.SetValue(HeaderFontWeightProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderFontWeightProperty =
+            DependencyProperty.RegisterAttached("HeaderFontWeight", typeof(FontWeight), typeof(GroupBoxHelper), new PropertyMetadata(SystemFonts.MessageFontWeight));
+        #endregion
+
         #region HeaderForeground
         public static Brush GetHeaderForeground(GroupBox groupBox)
         {

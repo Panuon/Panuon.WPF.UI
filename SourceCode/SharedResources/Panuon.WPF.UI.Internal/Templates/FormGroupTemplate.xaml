@@ -30,6 +30,8 @@
                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
                                 ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                 Foreground="{TemplateBinding HeaderForeground}"
+                                FontSize="{TemplateBinding HeaderFontSize}"
+                                FontWeight="{TemplateBinding HeaderFontWeight}"
                                 Margin="{TemplateBinding HeaderPadding}"
                                 VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
                                 HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />

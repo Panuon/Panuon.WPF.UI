@@ -1,6 +1,7 @@
 ﻿using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -185,6 +186,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty EmptyContentProperty =
             DependencyProperty.RegisterAttached("EmptyContent", typeof(object), typeof(ListBoxHelper));
+        #endregion
+
+        #region SelectedItems
+        public static IList GetSelectedItems(ListBox listBox)
+        {
+            return listBox.SelectedItems;
+        }
+
+        public static void SetSelectedItems(ListBox listBox, IList value)
+        {
+            throw new Exception("ListBoxHelper.SelectedItems is a read-only property.");
+        }
+
+        public static readonly DependencyProperty SelectedItemsProperty =
+            DependencyProperty.RegisterAttached("SelectedItems", typeof(IList), typeof(ListBoxHelper));
         #endregion
 
         #region Items Properties
@@ -646,6 +662,25 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region Internal Properties
+
+        #region Hook
+        internal static bool GetHook(ListBox listBox)
+        {
+            return (bool)listBox.GetValue(HookProperty);
+        }
+
+        internal static void SetHook(ListBox listBox, bool value)
+        {
+            listBox.SetValue(HookProperty, value);
+        }
+
+        internal static readonly DependencyProperty HookProperty =
+            DependencyProperty.RegisterAttached("Hook", typeof(bool), typeof(ListBoxHelper), new PropertyMetadata(OnHookChanged));
+        #endregion
+
+        #endregion
+
         #region Commands
 
         #region RemoveCommand
@@ -661,6 +696,16 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
+        private static void OnHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var listBox = (ListBox)d;
+
+            if ((bool)e.NewValue)
+            {
+                listBox.SetValue(SelectedItemsProperty, listBox.SelectedItems);
+            }
+        }
+
         private static void OnRemoveCommandExecute(object obj)
         {
             var listBoxItem = (ListBoxItem)obj;

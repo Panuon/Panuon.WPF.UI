@@ -178,7 +178,22 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HeaderFontSizeProperty =
-            DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(ExpanderHelper));
+            DependencyProperty.RegisterAttached("HeaderFontSize", typeof(double), typeof(ExpanderHelper), new PropertyMetadata(SystemFonts.MessageFontSize));
+        #endregion
+
+        #region HeaderFontWeight
+        public static FontWeight GetHeaderFontWeight(Expander expander)
+        {
+            return (FontWeight)expander.GetValue(HeaderFontWeightProperty);
+        }
+
+        public static void SetHeaderFontWeight(Expander expander, FontWeight value)
+        {
+            expander.SetValue(HeaderFontWeightProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderFontWeightProperty =
+            DependencyProperty.RegisterAttached("HeaderFontWeight", typeof(FontWeight), typeof(ExpanderHelper), new PropertyMetadata(SystemFonts.MessageFontWeight));
         #endregion
 
         #region HeaderFontFamily

@@ -47,12 +47,16 @@
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="InputMethod.IsInputMethodEnabled"
+                Value="False" />
         <Setter Property="local:IconHelper.Margin"
                 Value="10,0,0,0" />
         <Setter Property="local:IconHelper.VerticalAlignment"
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Left" />
+        <Setter Property="local:TextBoxHelper.Hook"
+                Value="True" />
         <Setter Property="local:TextBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TextBoxHelper.ClearButtonStyle"
@@ -118,6 +122,11 @@
                 <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
                         Value="True" />
             </MultiDataTrigger>
+            <Trigger Property="local:TextBoxHelper.InputLimit"
+                     Value="None">
+                <Setter Property="InputMethod.IsInputMethodEnabled"
+                        Value="True" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 

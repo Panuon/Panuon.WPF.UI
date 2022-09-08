@@ -60,6 +60,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UIElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ZoomViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\AnimationEase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\InputLimits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TimeSelectorMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CalendarXMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CarouselAnimation.cs" />

@@ -49,6 +49,8 @@
                                           ContentSource="Header"
                                           TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextElement.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          TextBlock.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          TextElement.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

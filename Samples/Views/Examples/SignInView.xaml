@@ -173,6 +173,7 @@
                       Margin="0,50,0,0"
                       Style="{StaticResource InputFormGroupStyle}">
             <TextBox Style="{StaticResource SignInTextBoxStyle}"
+                     pu:TextBoxHelper.InputLimit="UpperCaseLetters,LowerCaseLetters,Digit"
                      pu:TextBoxHelper.Watermark="UserName / Email / Phone" />
         </pu:FormGroup>
         <pu:FormGroup x:Name="FrmPassword"
