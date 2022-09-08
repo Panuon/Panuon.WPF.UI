@@ -242,7 +242,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty TextStringFormatProperty =
-            DependencyProperty.RegisterAttached("TextStringFormat", typeof(string), typeof(SliderHelper), new PropertyMetadata("{0:N2}", OnTextStringFormatChanged));
+            DependencyProperty.RegisterAttached("TextStringFormat", typeof(string), typeof(SliderHelper), new PropertyMetadata("N2", OnTextStringFormatChanged));
 
         #endregion
 
