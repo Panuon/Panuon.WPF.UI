@@ -94,6 +94,27 @@ namespace Panuon.WPF.UI.Internal.Utils
         #endregion
 
         #region FindVisualChildren
+        public static IEnumerable<T> FindVisualChildren<T>(FrameworkElement obj)
+            where T : FrameworkElement
+        {
+            if (obj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+                {
+                    var child = VisualTreeHelper.GetChild(obj, i) as FrameworkElement;
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
         public static IEnumerable<T> FindVisualChildren<T>(FrameworkElement obj, string name)
             where T : FrameworkElement
         {
@@ -117,6 +138,17 @@ namespace Panuon.WPF.UI.Internal.Utils
         #endregion
 
         #region FindVisualChild
+        public static T FindVisualChild<T>(FrameworkElement obj)
+            where T : FrameworkElement
+        {
+            foreach (T child in FindVisualChildren<T>(obj))
+            {
+                return child;
+            }
+
+            return null;
+        }
+
         public static T FindVisualChild<T>(FrameworkElement obj, string name)
             where T : FrameworkElement
         {

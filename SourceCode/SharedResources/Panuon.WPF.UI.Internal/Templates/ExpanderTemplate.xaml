@@ -232,6 +232,7 @@
                               Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                              FontWeight="{Binding Path=(local:ExpanderHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                               VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

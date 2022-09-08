@@ -51,57 +51,105 @@
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
                         Property="Background"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver,RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderThickness), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="False" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
                 <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrBack"
-                        Property="Background"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="Background"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderBrush), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBack"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderThickness), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
                         Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
                 <Setter TargetName="CpContent"
                         Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
+                        Value="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="Role"
                      Value="Padding">

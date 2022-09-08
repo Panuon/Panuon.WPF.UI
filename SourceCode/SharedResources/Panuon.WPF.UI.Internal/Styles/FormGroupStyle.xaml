@@ -54,6 +54,10 @@
                 Value="Stretch" />
         <Setter Property="VerticalHeaderAlignment"
                 Value="Center" />
+        <Setter Property="HeaderFontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="HeaderFontWeight"
+                Value="{Binding FontWeight, RelativeSource={RelativeSource Self}}" />
         <Setter Property="HeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
         <Setter Property="MessageForeground"

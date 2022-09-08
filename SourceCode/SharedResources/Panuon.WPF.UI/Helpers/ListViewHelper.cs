@@ -55,6 +55,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ColumnHeaderPadding", typeof(Thickness), typeof(ListViewHelper));
         #endregion
 
+        #region ColumnHeaderFontSize
+        public static double GetColumnHeaderFontSize(ListView listView)
+        {
+            return (double)listView.GetValue(ColumnHeaderFontSizeProperty);
+        }
+
+        public static void SetColumnHeaderFontSize(ListView listView, double value)
+        {
+            listView.SetValue(ColumnHeaderFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderFontSizeProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderFontSize", typeof(double), typeof(ListViewHelper), new PropertyMetadata(SystemFonts.MessageFontSize));
+        #endregion
+
+        #region ColumnHeaderFontWeight
+        public static FontWeight GetColumnHeaderFontWeight(ListView listView)
+        {
+            return (FontWeight)listView.GetValue(ColumnHeaderFontWeightProperty);
+        }
+
+        public static void SetColumnHeaderFontWeight(ListView listView, FontWeight value)
+        {
+            listView.SetValue(ColumnHeaderFontWeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderFontWeightProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderFontWeight", typeof(FontWeight), typeof(ListViewHelper), new PropertyMetadata(SystemFonts.MessageFontWeight));
+        #endregion
+
         #region ColumnHeaderForeground
         public static Brush GetColumnHeaderForeground(ListView listView)
         {
@@ -149,6 +179,36 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region ColumnHeaderHoverBorderBrush
+        public static Brush GetColumnHeaderHoverBorderBrush(ListView listView)
+        {
+            return (Brush)listView.GetValue(ColumnHeaderHoverBorderBrushProperty);
+        }
+
+        public static void SetColumnHeaderHoverBorderBrush(ListView listView, Brush value)
+        {
+            listView.SetValue(ColumnHeaderHoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderHoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderHoverBorderBrush", typeof(Brush), typeof(ListViewHelper));
+        #endregion
+
+        #region ColumnHeaderHoverBorderThickness
+        public static Thickness? GetColumnHeaderHoverBorderThickness(ListView listView)
+        {
+            return (Thickness?)listView.GetValue(ColumnHeaderHoverBorderThicknessProperty);
+        }
+
+        public static void SetColumnHeaderHoverBorderThickness(ListView listView, Thickness? value)
+        {
+            listView.SetValue(ColumnHeaderHoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderHoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderHoverBorderThickness", typeof(Thickness?), typeof(ListViewHelper));
+        #endregion
+
         #region ColumnHeaderClickBackground
         public static Brush GetColumnHeaderClickBackground(ListView listView)
         {
@@ -179,6 +239,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ColumnHeaderClickForegroundProperty =
             DependencyProperty.RegisterAttached("ColumnHeaderClickForeground", typeof(Brush), typeof(ListViewHelper));
+        #endregion
+
+        #region ColumnHeaderClickBorderBrush
+        public static Brush GetColumnHeaderClickBorderBrush(ListView listView)
+        {
+            return (Brush)listView.GetValue(ColumnHeaderClickBorderBrushProperty);
+        }
+
+        public static void SetColumnHeaderClickBorderBrush(ListView listView, Brush value)
+        {
+            listView.SetValue(ColumnHeaderClickBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderClickBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderClickBorderBrush", typeof(Brush), typeof(ListViewHelper));
+        #endregion
+
+        #region ColumnHeaderClickBorderThickness
+        public static Thickness? GetColumnHeaderClickBorderThickness(ListView listView)
+        {
+            return (Thickness?)listView.GetValue(ColumnHeaderClickBorderThicknessProperty);
+        }
+
+        public static void SetColumnHeaderClickBorderThickness(ListView listView, Thickness? value)
+        {
+            listView.SetValue(ColumnHeaderClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderClickBorderThickness", typeof(Thickness?), typeof(ListViewHelper));
         #endregion
 
         #region ColumnHeaderPanelSeparatorBrush

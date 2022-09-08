@@ -93,6 +93,28 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("HeaderHeight", typeof(GridLength), typeof(FormGroup), new PropertyMetadata(new GridLength(1, GridUnitType.Auto), OnHeaderWidthOrHeightChanged));
         #endregion
 
+        #region HeaderFontSize
+        public double HeaderFontSize
+        {
+            get { return (double)GetValue(HeaderFontSizeProperty); }
+            set { SetValue(HeaderFontSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(FormGroup), new PropertyMetadata(SystemFonts.MessageFontSize));
+        #endregion
+
+        #region HeaderFontWeight
+        public FontWeight HeaderFontWeight
+        {
+            get { return (FontWeight)GetValue(HeaderFontWeightProperty); }
+            set { SetValue(HeaderFontWeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderFontWeightProperty =
+            DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight), typeof(FormGroup), new PropertyMetadata(SystemFonts.MessageFontWeight));
+        #endregion
+
         #region HeaderForeground
         public Brush HeaderForeground
         {
