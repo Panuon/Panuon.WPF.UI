@@ -386,18 +386,8 @@ namespace Panuon.WPF.UI
                 throw new System.Exception("MessageBoxX : When using the countdown parameter, the value of the defaultButton parameter cannot be Unset.");
             }
             var window = new MessageBoxXWindow(message, caption, button, icon, defaultButton, owner, setting ?? MessageBoxXSettings.Setting, countdown);
-            var dialogResult = window.ShowDialog();
-            switch (dialogResult)
-            {
-                case true:
-                    return (button == MessageBoxButton.YesNo || button == MessageBoxButton.YesNoCancel)
-                        ? MessageBoxResult.Yes
-                        : MessageBoxResult.OK;
-                case false:
-                    return MessageBoxResult.No;
-                default:
-                    return MessageBoxResult.Cancel;
-            }
+            window.ShowDialog();
+            return WindowXModalDialog.GetDialogResult(window);
         }
         #endregion
     }

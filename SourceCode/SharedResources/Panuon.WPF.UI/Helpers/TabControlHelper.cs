@@ -249,18 +249,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region HeaderPanelMargin
-        public static TabPanelHorizontalAlignment GetHeaderPanelMargin(TabControl tabControl)
+        public static Thickness GetHeaderPanelMargin(TabControl tabControl)
         {
-            return (TabPanelHorizontalAlignment)tabControl.GetValue(HeaderPanelMarginProperty);
+            return (Thickness)tabControl.GetValue(HeaderPanelMarginProperty);
         }
 
-        public static void SetHeaderPanelMargin(TabControl tabControl, TabPanelHorizontalAlignment value)
+        public static void SetHeaderPanelMargin(TabControl tabControl, Thickness value)
         {
             tabControl.SetValue(HeaderPanelMarginProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPanelMarginProperty =
-            DependencyProperty.RegisterAttached("HeaderPanelMargin", typeof(TabPanelHorizontalAlignment), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("HeaderPanelMargin", typeof(Thickness), typeof(TabControlHelper));
         #endregion
 
         #region HeaderPanelPadding
@@ -607,7 +607,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TabControlHelper), new PropertyMetadata(Brushes.Transparent));
 
         #endregion
 

@@ -47,6 +47,7 @@
                                          Source="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Mode=OneWay}" />
                         <ContentPresenter Grid.Column="1"
                                           ContentSource="Header"
+                                          Focusable="False"
                                           TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextElement.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextBlock.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -56,6 +57,7 @@
                                           TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextElement.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         <ContentControl Grid.Column="2"
+                                        Focusable="False"
                                         Content="{Binding Path=(local:GroupBoxHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </Border>

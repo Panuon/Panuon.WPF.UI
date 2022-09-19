@@ -630,7 +630,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(ComboBoxHelper), new PropertyMetadata(Brushes.Transparent));
 
         #endregion
 

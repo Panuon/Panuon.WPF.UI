@@ -177,7 +177,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TreeViewHelper));
+            DependencyProperty.RegisterAttached("ItemsBackground", typeof(Brush), typeof(TreeViewHelper), new PropertyMetadata(Brushes.Transparent));
 
         #endregion
 

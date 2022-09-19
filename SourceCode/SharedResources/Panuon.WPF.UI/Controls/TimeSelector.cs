@@ -332,7 +332,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(TimeSelector));
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(TimeSelector), new PropertyMetadata(Brushes.Transparent));
         #endregion
 
         #region ItemsBorderBrush

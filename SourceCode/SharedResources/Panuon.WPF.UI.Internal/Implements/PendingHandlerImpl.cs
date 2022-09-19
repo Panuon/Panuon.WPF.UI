@@ -37,7 +37,40 @@ namespace Panuon.WPF.UI.Internal.Implements
             }
             catch
             {
+            }
+        }
 
+        public void Hide()
+        {
+            try
+            {
+                if (_window.IsAlive && _window.Target is PendingBoxWindow window)
+                {
+                    window.Dispatcher.Invoke(new Action(() =>
+                    {
+                        window.Hide();
+                    }));
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        public void Show()
+        {
+            try
+            {
+                if (_window.IsAlive && _window.Target is PendingBoxWindow window)
+                {
+                    window.Dispatcher.Invoke(new Action(() =>
+                    {
+                        window.Show();
+                    }));
+                }
+            }
+            catch
+            {
             }
         }
         #endregion

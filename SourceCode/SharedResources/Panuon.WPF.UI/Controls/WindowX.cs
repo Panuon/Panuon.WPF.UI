@@ -663,20 +663,25 @@ namespace Panuon.WPF.UI
             WindowChromeUtil.SetCaptionHeight(windowX, windowX.DisableDragMove ? 0 : WindowXCaption.GetHeight(windowX));
         }
 
-
         private void ModalButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             switch (button.Tag)
             {
-                case "Cancel":
-                    Close();
-                    break;
                 case "Yes":
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.Yes);
+                    DialogResult = true;
+                    break;
                 case "OK":
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.OK);
                     DialogResult = true;
                     break;
                 case "No":
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.No);
+                    DialogResult = false;
+                    break;
+                case "Cancel":
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.Cancel);
                     DialogResult = false;
                     break;
             }

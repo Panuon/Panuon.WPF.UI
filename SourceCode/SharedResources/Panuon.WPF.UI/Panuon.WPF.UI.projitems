@@ -105,6 +105,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingValueTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BrushAnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThumbHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CheckBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ComboBoxHelper.cs" />
