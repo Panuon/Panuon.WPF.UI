@@ -187,7 +187,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty TopLevelItemsBackgroundProperty =
-            DependencyProperty.RegisterAttached("TopLevelItemsBackground", typeof(Brush), typeof(MenuHelper));
+            DependencyProperty.RegisterAttached("TopLevelItemsBackground", typeof(Brush), typeof(MenuHelper), new PropertyMetadata(Brushes.Transparent));
         #endregion
 
         #region TopLevelItemsForeground
@@ -597,7 +597,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SubmenuItemsBackgroundProperty =
-            DependencyProperty.RegisterAttached("SubmenuItemsBackground", typeof(Brush), typeof(MenuHelper));
+            DependencyProperty.RegisterAttached("SubmenuItemsBackground", typeof(Brush), typeof(MenuHelper), new PropertyMetadata(Brushes.Transparent));
 
         #endregion
 

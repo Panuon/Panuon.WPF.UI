@@ -367,7 +367,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(SearchBox));
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(SearchBox), new PropertyMetadata(Brushes.Transparent));
         #endregion
 
         #region ItemsBorderBrush

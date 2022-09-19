@@ -11,6 +11,10 @@ namespace Panuon.WPF.UI
          
         void Close();
 
+        void Hide();
+
+        void Show();
+
         void UpdateMessage(string message);
     }
 }

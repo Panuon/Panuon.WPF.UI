@@ -396,7 +396,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(CalendarX));
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(CalendarX), new PropertyMetadata(Brushes.Transparent));
         #endregion
 
         #region ItemsBorderBrush

@@ -163,6 +163,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CancelButtonContent", typeof(object), typeof(WindowXModalDialog), new PropertyMetadata(LocalizationUtil.Cancel));
         #endregion
 
+        #region DialogResult
+        public static MessageBoxResult GetDialogResult(WindowX windowX)
+        {
+            return (MessageBoxResult)windowX.GetValue(DialogResultProperty);
+        }
+
+        public static void SetDialogResult(WindowX windowX, MessageBoxResult value)
+        {
+            windowX.SetValue(DialogResultProperty, value);
+        }
+
+        public static readonly DependencyProperty DialogResultProperty =
+            DependencyProperty.RegisterAttached("DialogResult", typeof(MessageBoxResult), typeof(WindowXModalDialog));
+        #endregion
+
         #endregion
 
         #region Methods

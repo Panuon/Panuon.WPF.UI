@@ -241,7 +241,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsBackgroundProperty =
-            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(Pagination));
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(Pagination), new PropertyMetadata(Brushes.Transparent));
 
         #endregion
 

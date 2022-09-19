@@ -48,6 +48,10 @@ namespace Panuon.WPF.UI.Internal.Controls
             Owner = owner;
             Title = caption ?? "";
             InteropOwnersMask = setting.InteropOwnersMask;
+            if (owner == null)
+            {
+                Topmost = true;
+            }
             WindowStartupLocation = owner == null ? WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner;
 
             Style = setting.WindowXStyle;
@@ -136,12 +140,11 @@ namespace Panuon.WPF.UI.Internal.Controls
                 }
                 if (ModalCancelButton.IsDefault)
                 {
-                    Close();
+                    DialogResult = null;
                 }
                 if (ModalYesButton.IsDefault)
                 {
                     DialogResult = true;
-
                 }
                 if (ModalNoButton.IsDefault)
                 {

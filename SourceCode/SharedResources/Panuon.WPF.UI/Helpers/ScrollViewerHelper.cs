@@ -314,7 +314,7 @@ namespace Panuon.WPF.UI
                     return;
                 }
 
-                var parent = VisualTreeHelper.GetParent(source) as DependencyObject;
+                var parent = VisualTreeHelper.GetParent(originalSource) as DependencyObject;
                 while (parent != null
                     && parent != scrollViewer)
                 {
