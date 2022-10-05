@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="Panuon.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\DotNet\WPF\References\Net472\Panuon.WPF.dll</HintPath>
+      <HintPath>..\..\References\Net472\Panuon.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
