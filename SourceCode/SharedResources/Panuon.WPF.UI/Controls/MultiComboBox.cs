@@ -1,7 +1,9 @@
 ﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -42,8 +44,34 @@ namespace Panuon.WPF.UI
         public static ComponentResourceKey CheckBoxStyle { get; } =
             new ComponentResourceKey(typeof(MultiComboBox), nameof(CheckBoxStyle));
 
-        public static ComponentResourceKey SelectionBoxTagItemStyle { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(SelectionBoxTagItemStyle));
+        public static ComponentResourceKey SelectionBoxItemLabelStyle { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(SelectionBoxItemLabelStyle));
+        #endregion
+
+        #region Events
+
+        #region ItemRemoving
+        public event RoutedEventHandler ItemRemoving
+        {
+            add { AddHandler(ItemRemovingEvent, value); }
+            remove { RemoveHandler(ItemRemovingEvent, value); }
+        }
+
+        public static readonly RoutedEvent ItemRemovingEvent =
+            EventManager.RegisterRoutedEvent("ItemRemoving", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiComboBox));
+        #endregion
+
+        #region ItemRemoved
+        public event RoutedEventHandler ItemRemoved
+        {
+            add { AddHandler(ItemRemovedEvent, value); }
+            remove { RemoveHandler(ItemRemovedEvent, value); }
+        }
+
+        public static readonly RoutedEvent ItemRemovedEvent =
+            EventManager.RegisterRoutedEvent("ItemRemoved", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiComboBox));
+        #endregion
+
         #endregion
 
         #region Properties
@@ -57,6 +85,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ClearCommandProperty =
             DependencyProperty.Register("ClearCommand", typeof(ICommand), typeof(MultiComboBox), new PropertyMetadata(new RelayCommand<MultiComboBox>(OnClearCommandExecute)));
+        #endregion
+
+        #region UnselectCommand
+        public ICommand UnselectCommand
+        {
+            get { return (ICommand)GetValue(UnselectCommandProperty); }
+            set { SetValue(UnselectCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty UnselectCommandProperty =
+            DependencyProperty.Register("UnselectCommand", typeof(ICommand), typeof(MultiComboBox), new PropertyMetadata(new RelayCommand(OnUnselectCommandExecute)));
         #endregion
 
         #region Icon
@@ -286,7 +325,40 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty RemoveButtonStyleProperty =
             DependencyProperty.RegisterAttached("RemoveButtonStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
-         
+
+        #region RemoveCommand
+        public ICommand RemoveCommand
+        {
+            get { return (ICommand)GetValue(RemoveCommandProperty); }
+            set { SetValue(RemoveCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty RemoveCommandProperty =
+            DependencyProperty.Register("RemoveCommand", typeof(ICommand), typeof(MultiComboBox), new PropertyMetadata(new RelayCommand(OnRemoveCommandExecute)));
+        #endregion
+
+        #region RemovingAnimationDuration
+        public TimeSpan? RemovingAnimationDuration
+        {
+            get { return (TimeSpan?)GetValue(RemovingAnimationDurationProperty); }
+            set { SetValue(RemovingAnimationDurationProperty, value); }
+        }
+
+        public static readonly DependencyProperty RemovingAnimationDurationProperty =
+            DependencyProperty.Register("RemovingAnimationDuration", typeof(TimeSpan?), typeof(MultiComboBox));
+        #endregion
+
+        #region RemovingAnimationEase
+        public AnimationEase RemovingAnimationEase
+        {
+            get { return (AnimationEase)GetValue(RemovingAnimationEaseProperty); }
+            set { SetValue(RemovingAnimationEaseProperty, value); }
+        }
+
+        public static readonly DependencyProperty RemovingAnimationEaseProperty =
+            DependencyProperty.Register("RemovingAnimationEase", typeof(AnimationEase), typeof(MultiComboBox));
+        #endregion
+
         #region CheckBoxStyle
         public static Style GetCheckBoxStyle(MultiComboBox multiComboBox)
         {
@@ -317,19 +389,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ToggleArrowTransformControlStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
 
-        #region SelectionBoxTagItemStyle
-        public static Style GetSelectionBoxTagItemStyle(MultiComboBox multiComboBox)
+        #region SelectionBoxItemLabelStyle
+        public static Style GetSelectionBoxItemLabelStyle(MultiComboBox multiComboBox)
         {
-            return (Style)multiComboBox.GetValue(SelectionBoxTagItemStyleProperty);
+            return (Style)multiComboBox.GetValue(SelectionBoxItemLabelStyleProperty);
         }
 
-        public static void SetSelectionBoxTagItemStyle(MultiComboBox objmultiComboBox, Style value)
+        public static void SetSelectionBoxItemLabelStyle(MultiComboBox objmultiComboBox, Style value)
         {
-            objmultiComboBox.SetValue(SelectionBoxTagItemStyleProperty, value);
+            objmultiComboBox.SetValue(SelectionBoxItemLabelStyleProperty, value);
         }
 
-        public static readonly DependencyProperty SelectionBoxTagItemStyleProperty =
-            DependencyProperty.RegisterAttached("SelectionBoxTagItemStyle", typeof(Style), typeof(MultiComboBox));
+        public static readonly DependencyProperty SelectionBoxItemLabelStyleProperty =
+            DependencyProperty.RegisterAttached("SelectionBoxItemLabelStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
 
         #region Items Properties
@@ -692,10 +764,60 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Functions
+        private static void OnRemoveCommandExecute(object obj)
+        {
+            var comboBoxItem = (MultiComboBoxItem)obj;
+            var comboBox = (MultiComboBox)ItemsControl.ItemsControlFromItemContainer(comboBoxItem);
+            var animationDuration = comboBox.RemovingAnimationDuration;
+            var animationEase = comboBox.RemovingAnimationEase;
+            var dataItem = comboBox.ItemContainerGenerator.ItemFromContainer(comboBoxItem);
+
+            var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);
+            comboBox.RaiseEvent(removingArgs);
+            if (removingArgs.Cancel)
+            {
+                return;
+            }
+
+            var action = new Action(() =>
+            {
+                comboBox.Dispatcher.Invoke(new Action(() =>
+                {
+                    var collectionView = (IEditableCollectionView)comboBox.Items;
+                    if (collectionView.CanRemove)
+                    {
+                        collectionView.Remove(dataItem);
+                    }
+                    else
+                    {
+                        comboBox.Items.Remove(dataItem);
+                    }
+
+                    var removedArgs = new ItemRemovedRoutedEventArgs(ItemRemovedEvent, dataItem);
+                    comboBox.RaiseEvent(removedArgs);
+                }));
+            });
+            if (animationDuration != null && ((TimeSpan)animationDuration).TotalMilliseconds > 0)
+            {
+                AnimationUtil.BeginDoubleAnimation(comboBoxItem, ComboBoxItem.HeightProperty, null, 0, animationDuration, null, animationEase, action);
+            }
+            else
+            {
+                action?.Invoke();
+            }
+        }
+
         private static void OnClearCommandExecute(MultiComboBox multiComboBox)
         {
             multiComboBox.UnselectAll();
             multiComboBox.Focus();
+        }
+
+        private static void OnUnselectCommandExecute(object sender)
+        {
+            var tagItem = (TagItem)sender;
+            var comboBox = ItemsControl.ItemsControlFromItemContainer(tagItem);
+            var multiComboBox = tagItem.TemplatedParent;
         }
 
         private void UpdateSelectionBoxItems()

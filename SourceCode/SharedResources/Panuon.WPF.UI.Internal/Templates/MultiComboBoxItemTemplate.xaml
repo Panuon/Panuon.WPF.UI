@@ -32,11 +32,18 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <CheckBox IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                               Style="{Binding CheckBoxStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" 
                               Visibility="{TemplateBinding CheckBoxVisibility}" />
                     <ContentPresenter Grid.Column="1" />
+                    <Button x:Name="BtnRemove"
+                            Grid.Column="2"
+                            Visibility="Hidden"
+                            Style="{Binding RemoveButtonStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                            Command="{Binding RemoveCommand, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </local:ContentControlX>
             <local:SeparatorX x:Name="SprtSeparator"
@@ -48,7 +55,7 @@
                               Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <!--<DataTrigger Value="False">
+            <DataTrigger Value="False">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
                         <Binding Path="."
@@ -60,7 +67,7 @@
                 <Setter TargetName="SprtSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
-            </DataTrigger>-->
+            </DataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -104,6 +111,47 @@
                 <Setter TargetName="CcMain"
                         Property="BorderThickness"
                         Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <Trigger Property="RemoveButtonVisibility"
+                     Value="Visible">
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="RemoveButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RemoveButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Content, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RemoveButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Content, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnRemove"
+                        Property="Visibility"
+                        Value="Visible" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

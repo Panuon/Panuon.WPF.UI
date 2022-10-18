@@ -1,6 +1,7 @@
 ﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI
@@ -47,6 +48,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region RemoveCommand
+        public ICommand RemoveCommand
+        {
+            get { return (ICommand)GetValue(RemoveCommandProperty); }
+            set { SetValue(RemoveCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty RemoveCommandProperty =
+            DependencyProperty.Register("RemoveCommand", typeof(ICommand), typeof(TagItem));
+        #endregion
+
 
         #region CornerRadius
         public CornerRadius CornerRadius

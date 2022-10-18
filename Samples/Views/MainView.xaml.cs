@@ -36,26 +36,6 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
-
-            //Mcb.ItemsSource = new List<string>()
-            //{
-            //    "Item 1",
-            //    "Item 2",
-            //    "Item 3",
-            //};
-
-            //Mcmb.ItemsSource = new List<object>()
-            //{
-            //    new { Name = "Item 1" },
-            //    new { Name = "Item 2" },
-            //    new { Name = "Item 3" },
-            //};
-            Mcmb2.ItemsSource = new List<object>()
-            {
-                new { Name = "Item 1" },
-                new { Name = "Item 2" },
-                new { Name = "Item 3" },
-            };
         }
         #endregion
 

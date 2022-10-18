@@ -88,8 +88,8 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <local:TagItem x:Name="TagItem"
-                                                       Style="{Binding SelectionBoxTagItemStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        <Label x:Name="TagItem"
+                                                       Style="{Binding SelectionBoxItemLabelStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                                        Content="{Binding}"
                                                        ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                                        ContentTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
@@ -115,6 +115,79 @@
                 </ScrollViewer>
             </local:DropDown.Child>
         </local:DropDown>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcWatermark"
+                        Property="Visibility"
+                        Value="Visible" />
+            </DataTrigger>
+            <Trigger  Property="ClearButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 </ResourceDictionary>

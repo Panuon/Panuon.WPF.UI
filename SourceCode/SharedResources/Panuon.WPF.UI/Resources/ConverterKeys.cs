@@ -27,6 +27,7 @@
         public const string IsStringEqualConverter = nameof(IsStringEqualConverter);
         public const string IsStringUnequalConverter = nameof(IsStringUnequalConverter);
         public const string IsStringNonnullAndNotEmptyConverter = nameof(IsStringNonnullAndNotEmptyConverter);
+        public const string IsIEnumerableHasItemsConverter = nameof(IsIEnumerableHasItemsConverter);
         public const string IsStringNullOrEmptyConverter = nameof(IsStringNullOrEmptyConverter);
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
         public const string NonnullToHiddenConverter = nameof(NonnullToHiddenConverter);

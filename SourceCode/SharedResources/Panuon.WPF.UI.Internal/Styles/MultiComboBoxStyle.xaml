@@ -8,6 +8,7 @@
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/CheckBoxStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/LabelStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/MultiComboBoxItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MultiComboBoxTemplate.xaml" />
@@ -91,8 +92,9 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=SelectionBoxTagItemStyle, TypeInTargetAssembly={x:Type local:MultiComboBox}}"
-           TargetType="local:TagItem">
+    <Style x:Key="{ComponentResourceKey ResourceId=SelectionBoxItemLabelStyle, TypeInTargetAssembly={x:Type local:MultiComboBox}}"
+           TargetType="Label"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.LabelStyle}}">
         <Setter Property="Margin"
                 Value="0,5,5,5"/>
         <Setter Property="Padding"
@@ -165,8 +167,8 @@
                 Value="1" />
         <Setter Property="ItemsSeparatorVisibility"
                 Value="Collapsed" />
-        <Setter Property="SelectionBoxTagItemStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=SelectionBoxTagItemStyle, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
+        <Setter Property="SelectionBoxItemLabelStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=SelectionBoxItemLabelStyle, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
         <Setter Property="CheckBoxStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=CheckBoxStyle, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
         <Setter Property="ClearButtonStyle"

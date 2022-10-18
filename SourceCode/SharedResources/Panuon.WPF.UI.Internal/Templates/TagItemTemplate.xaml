@@ -33,7 +33,9 @@
                 <Button x:Name="PART_RemoveButton"
                         Grid.Column="1"
                         Visibility="Collapsed"
-                        Style="{TemplateBinding RemoveButtonStyle}" />
+                        Style="{TemplateBinding RemoveButtonStyle}"
+                        Command="{Binding RemoveCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
         </local:ContentControlX>
         <ControlTemplate.Triggers>
