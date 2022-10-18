@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/PaginationItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:PaginationItem">
+    <Style x:Key="{x:Static rs:StyleKeys.PaginationItemStyle}"
+           TargetType="local:PaginationItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

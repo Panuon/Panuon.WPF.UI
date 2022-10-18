@@ -36,19 +36,82 @@ namespace Panuon.WPF.UI.Internal.Utils
         }
 
         public static void BeginBrushAnimationStoryboard(DependencyObject obj,
+            Dictionary<DependencyProperty, object> propertyValues,
+            TimeSpan? duration = null)
+        {
+            var storyboard = new Storyboard();
+            foreach (var propertyValue in propertyValues)
+            {
+                AnimationTimeline anima = null;
+
+                if (propertyValue.Value is Brush brushValue)
+                {
+                    if (!brushValue.CanFreeze)
+                    {
+                        continue;
+                    }
+                    anima = new BrushAnimation()
+                    {
+                        To = brushValue,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                if (propertyValue.Value is Thickness thicknessValue)
+                {
+                    anima = new ThicknessAnimation()
+                    {
+                        To = thicknessValue,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                if (propertyValue.Value is CornerRadius cornerRadiusValue)
+                {
+                    anima = new CornerRadiusAnimation()
+                    {
+                        To = cornerRadiusValue,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                Storyboard.SetTarget(anima, obj);
+                Storyboard.SetTargetProperty(anima, new PropertyPath(propertyValue.Key));
+                storyboard.Children.Add(anima);
+            }
+            storyboard.Begin();
+        }
+
+        public static void BeginBrushAnimationStoryboard(DependencyObject obj,
             List<DependencyProperty> properties,
             TimeSpan? duration = null)
         {
             var storyboard = new Storyboard();
             foreach (var dp in properties)
             {
-                var anima = new BrushAnimation()
+                AnimationTimeline anima = null;
+
+                if (dp.PropertyType == typeof(Brush))
                 {
-                    Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
-                };
+                    anima = new BrushAnimation()
+                    {
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (dp.PropertyType == typeof(Thickness))
+                {
+                    anima = new ThicknessAnimation()
+                    {
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (dp.PropertyType == typeof(CornerRadius))
+                {
+                    anima = new CornerRadiusAnimation()
+                    {
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
                 Storyboard.SetTarget(anima, obj);
-                Storyboard.SetTargetProperty(anima, new PropertyPath(dp));
-                storyboard.Children.Add(anima);
+                    Storyboard.SetTargetProperty(anima, new PropertyPath(dp));
+                    storyboard.Children.Add(anima);
             }
             storyboard.Begin();
         }

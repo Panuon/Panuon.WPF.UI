@@ -47,6 +47,8 @@
         public const string MenuTemplate = nameof(MenuTemplate);
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
+        public const string MultiComboBoxTemplate = nameof(MultiComboBoxTemplate);
+        public const string MultiComboBoxItemTemplate = nameof(MultiComboBoxItemTemplate);
         public const string NoticeBoxItemTemplate = nameof(NoticeBoxItemTemplate);
         public const string PaginationHorizontalTemplate = nameof(PaginationHorizontalTemplate);
         public const string PaginationVerticalTemplate = nameof(PaginationVerticalTemplate);
@@ -78,6 +80,7 @@
         public const string TabControlLeftRightTemplate = nameof(TabControlLeftRightTemplate);
         public const string TabItemTemplate = nameof(TabItemTemplate);
         public const string TabItemStylelessTemplate = nameof(TabItemStylelessTemplate);
+        public const string TagItemTemplate = nameof(TagItemTemplate);
         public const string TextBoxTemplate = nameof(TextBoxTemplate);
         public const string TextBoxClearableTemplate = nameof(TextBoxClearableTemplate);
         public const string ThumbTemplate = nameof(ThumbTemplate);

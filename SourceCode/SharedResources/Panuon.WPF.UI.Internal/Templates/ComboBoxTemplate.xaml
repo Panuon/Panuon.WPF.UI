@@ -64,7 +64,7 @@
                                         Content="{TemplateBinding SelectionBoxItem}"
                                         ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                         ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                        ContentStringFormat="{TemplateBinding ItemStringFormat}"
+                                        ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         <TextBox x:Name="PART_EditableTextBox"

@@ -22,7 +22,8 @@
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ListBoxStyle}}">
     </Style>
 
-    <Style TargetType="local:SearchBox">
+    <Style x:Key="{x:Static rs:StyleKeys.SearchBoxStyle}"
+           TargetType="local:SearchBox">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

@@ -25,6 +25,9 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+                <ItemsPresenter Grid.RowSpan="3"
+                                Grid.ColumnSpan="3" 
+                                Margin="{TemplateBinding Padding}" />
                 <RepeatButton x:Name="RptLeftOrTop"
                               Opacity="0"
                               Command="{Binding PageUpCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -44,7 +47,7 @@
                                   PageTurnButtonVisibility="Collapsed"
                                   Style="{TemplateBinding IndicatorPaginationStyle}"
                                   MinPage="0"
-                                  MaxPage="{Binding Children.Count, Converter={StaticResource {x:Static rs:ConverterKeys.IntMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  MaxPage="{Binding Items.Count, Converter={StaticResource {x:Static rs:ConverterKeys.IntMinusConverter}}, ConverterParameter=1, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   CurrentPage="{Binding CurrentIndex, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                 </local:Pagination>
             </Grid>

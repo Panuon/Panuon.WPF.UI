@@ -19,7 +19,8 @@
                 Value="40" />
     </Style>
 
-    <Style TargetType="local:ThumbFence">
+    <Style x:Key="{x:Static rs:StyleKeys.ThumbFenceStyle}"
+           TargetType="local:ThumbFence">
         <Setter Property="Background"
                 Value="#FFFFFF" />
         <Setter Property="BorderBrush"

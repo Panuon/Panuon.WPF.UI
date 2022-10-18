@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/InternalSpinTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type local:Spin}">
+    <Style x:Key="{x:Static rs:StyleKeys.SpinStyle}"
+           TargetType="{x:Type local:Spin}">
         <Setter Property="IsSpinning"
                 Value="True" />
         <Setter Property="GlyphBrush"

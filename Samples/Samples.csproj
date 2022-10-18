@@ -130,15 +130,15 @@
     </Compile>
     <Page Include="Views\Examples\FormView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\Examples\NeteaseMusicView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\Examples\ReportView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\Examples\SignInView.xaml">
       <SubType>Designer</SubType>
@@ -146,7 +146,7 @@
     </Page>
     <Page Include="Views\Examples\VisualStudio2019View.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\FooView.xaml">
       <SubType>Designer</SubType>

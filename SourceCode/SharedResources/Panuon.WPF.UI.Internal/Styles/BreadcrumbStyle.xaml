@@ -16,7 +16,8 @@
                    VerticalAlignment="Center" />
     </DataTemplate>
 
-    <Style TargetType="local:Breadcrumb">
+    <Style x:Key="{x:Static rs:StyleKeys.BreadcrumbStyle}"
+           TargetType="local:Breadcrumb">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

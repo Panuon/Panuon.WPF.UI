@@ -138,6 +138,8 @@
                 Value="{Binding MaxDropDownHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
+        <Setter Property="local:DropDownHelper.ShadowColor"
+                Value="#EAEAEA" />
         <Setter Property="local:ComboBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsFontSize"
@@ -164,8 +166,6 @@
                 Value="1" />
         <Setter Property="local:ComboBoxHelper.ItemsSeparatorVisibility"
                 Value="Collapsed" />
-        <Setter Property="local:DropDownHelper.ShadowColor"
-                Value="#EAEAEA" />
         <Setter Property="local:ComboBoxHelper.SearchTextBoxStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SearchTextBoxStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.ClearButtonStyle"

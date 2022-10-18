@@ -1,0 +1,193 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
+                    xmlns:its="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.MultiComboBoxTemplate}"
+                     TargetType="local:MultiComboBox">
+        <ControlTemplate.Resources>
+            <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
+        </ControlTemplate.Resources>
+        <local:DropDown IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                        local:DropDownHelper.Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.ClipDockSideShadow="{Binding Path=(local:DropDownHelper.ClipDockSideShadow), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.HorizontalOffset="{Binding Path=(local:DropDownHelper.HorizontalOffset), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.ShadowColor="{Binding Path=(local:DropDownHelper.ShadowColor), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.VerticalOffset="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        local:DropDownHelper.Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <local:DropDown.Content>
+                <local:ContentControlX x:Name="CcMain"
+                                       Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       BorderThickness="{TemplateBinding BorderThickness}"
+                                       CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Icon="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <ToggleButton Focusable="False"
+                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ContentControl x:Name="CcWatermark"
+                                            Margin="2,0,0,0"
+                                            IsHitTestVisible="False"
+                                            Visibility="Collapsed"
+                                            Focusable="False"
+                                            Padding="{TemplateBinding Padding}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            Content="{Binding Watermark, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                            Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <ItemsControl x:Name="IcSelection"
+                                          AlternationCount="2"
+                                          ItemsSource="{Binding SelectionBoxItems, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Stretch"
+                                          HorizontalAlignment="Stretch">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label x:Name="TagItem"
+                                                       Style="{Binding SelectionBoxItemLabelStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                       Content="{Binding}"
+                                                       ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                       ContentTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                       ContentStringFormat="{Binding SelectionBoxItemStringFormat, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Button x:Name="BtnClear"
+                                    Grid.Column="1"
+                                    Visibility="Collapsed"
+                                    Style="{Binding ClearButtonStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                            <local:TransformControl Grid.Column="2"
+                                                    Style="{Binding ToggleArrowTransformControlStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Grid>
+                    </ToggleButton>
+                </local:ContentControlX>
+            </local:DropDown.Content>
+            <local:DropDown.Child>
+                <ScrollViewer Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                </ScrollViewer>
+            </local:DropDown.Child>
+        </local:DropDown>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcWatermark"
+                        Property="Visibility"
+                        Value="Visible" />
+            </DataTrigger>
+            <Trigger  Property="ClearButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

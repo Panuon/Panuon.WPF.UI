@@ -67,7 +67,8 @@
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
     </Style>
 
-    <Style TargetType="local:Pagination">
+    <Style x:Key="{x:Static rs:StyleKeys.PaginationStyle}"
+           TargetType="local:Pagination">
         <Setter Property="ItemsPadding"
                 Value="5,0" />
         <Setter Property="ItemsBackground"

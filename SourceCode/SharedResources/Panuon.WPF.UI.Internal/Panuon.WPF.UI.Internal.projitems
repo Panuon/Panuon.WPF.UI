@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXItemPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalItemsControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\IconPresenter.cs" />
@@ -22,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIEnumerableHasItemsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerContentMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerBorderMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntDivideByConverter.cs" />
@@ -141,6 +143,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\BadgeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TagItemStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\MultiComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\MultiComboBoxItemStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -393,6 +407,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\CarouselTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\TagItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\MultiComboBoxTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\MultiComboBoxItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
