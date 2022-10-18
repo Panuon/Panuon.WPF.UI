@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ZoomViewerTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:ZoomViewer">
+    <Style x:Key="{x:Static rs:StyleKeys.ZoomViewerStyle}"
+           TargetType="local:ZoomViewer">
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"

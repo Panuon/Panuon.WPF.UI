@@ -98,12 +98,12 @@ namespace Panuon.WPF.UI
 
         private static void OnIsTransitioningChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is FrameworkElement element)
+            if (d is FrameworkElement element
+                && GetToBrush(element) != null)
             {
                 var brushAnimation = new BrushAnimation()
                 {
                     Duration = GetAnimationDuration(element),
-                    
                 };
 
                 if (GetIsTransitioning(element))

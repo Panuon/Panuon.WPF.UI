@@ -45,7 +45,8 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <Style TargetType="local:FormGroup">
+    <Style x:Key="{x:Static rs:StyleKeys.FormGroupStyle}"
+           TargetType="local:FormGroup">
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="VerticalContentAlignment"

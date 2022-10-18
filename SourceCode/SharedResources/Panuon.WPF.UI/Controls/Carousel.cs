@@ -12,19 +12,10 @@ using System.Windows.Media.Animation;
 
 namespace Panuon.WPF.UI
 {
-    [ContentProperty(nameof(Children))]
-    [TemplatePart(Name = ContainerGridTemplateName, Type = typeof(Grid))]
-    [TemplatePart(Name = IndicatorPaginationTemplateName, Type = typeof(Pagination))]
     public class Carousel
-        : Control
+        : ItemsControl
     {
         #region Fields
-        private const string ContainerGridTemplateName = "PART_ContainerGrid";
-        private const string IndicatorPaginationTemplateName = "PART_IndicatorPagination";
-
-        private CarouselPanel _carouselPanel;
-        private Pagination _indicatorPagination;
-
         private Timer _timer;
         #endregion
 
@@ -32,21 +23,6 @@ namespace Panuon.WPF.UI
         static Carousel()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Carousel), new FrameworkPropertyMetadata(typeof(Carousel)));
-        }
-
-        public Carousel()
-        {
-            _carouselPanel = new CarouselPanel();
-            _carouselPanel.InternalChildrenChanged += CarouselPanel_InternalChildrenChanged;
-            Grid.SetColumnSpan(_carouselPanel, 3);
-            Grid.SetRowSpan(_carouselPanel, 3);
-
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.MarginProperty, this, PaddingProperty);
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.AnimationProperty, this, AnimationProperty);
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.AnimationDurationProperty, this, AnimationDurationProperty);
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.AnimationEaseProperty, this, AnimationEaseProperty);
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.OrientationProperty, this, OrientationProperty);
-            FrameworkElementUtil.BindingProperty(_carouselPanel, CarouselPanel.CurrentIndexProperty, this, CurrentIndexProperty, mode: BindingMode.TwoWay, trigger: UpdateSourceTrigger.PropertyChanged);
         }
         #endregion
 
@@ -141,10 +117,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("AutoPlayDuration", typeof(TimeSpan), typeof(Carousel), new PropertyMetadata(OnAutoPlayDurationChanged));
         #endregion
 
-        #region Children
-        public UIElementCollection Children => _carouselPanel.Children;
-        #endregion
-
         #region CanTurnPageWithKeys
         public bool CanTurnPageWithKeys
         {
@@ -232,11 +204,6 @@ namespace Panuon.WPF.UI
         #region Overrides
         public override void OnApplyTemplate()
         {
-            var grid = GetTemplateChild(ContainerGridTemplateName) as Grid;
-            grid.Children.Insert(0, _carouselPanel);
-
-            _indicatorPagination = GetTemplateChild(IndicatorPaginationTemplateName) as Pagination;
-            
             UpdateAutoPlayTimer();
         }
 
@@ -312,14 +279,14 @@ namespace Panuon.WPF.UI
             if (currentIndex < 0)
             {
                 return carousel.IsCyclic
-                    ? Math.Max(0, carousel.Children.Count - 1)
+                    ? Math.Max(0, carousel.Items.Count - 1)
                     : 0;
             }
-            if (carousel.IsLoaded && currentIndex > carousel.Children.Count - 1)
+            if (carousel.IsLoaded && currentIndex > carousel.Items.Count - 1)
             {
                 return carousel.IsCyclic
                     ? 0
-                    : Math.Max(0, carousel.Children.Count - 1);
+                    : Math.Max(0, carousel.Items.Count - 1);
             }
             return baseValue;
         }
@@ -357,7 +324,7 @@ namespace Panuon.WPF.UI
             {
                 return carousel.IsCyclic
                    ? true
-                   : carousel.CurrentIndex < carousel.Children.Count - 1;
+                   : carousel.CurrentIndex < carousel.Items.Count - 1;
             }
             return false;
         }
@@ -371,15 +338,6 @@ namespace Panuon.WPF.UI
             }));
         }
 
-        private void CarouselPanel_InternalChildrenChanged(object sender, EventArgs e)
-        {
-            CoerceValue(CurrentIndexProperty);
-            if (_indicatorPagination != null
-                && _carouselPanel != null)
-            {
-                _indicatorPagination.MaxPage = _carouselPanel.Children.Count - 1;
-            }
-        }
         #endregion
 
         #region Functions

@@ -118,6 +118,72 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
+                <StackPanel Grid.Row="1"
+                            Visibility="Collapsed">
+
+                    <pu:MultiComboBox x:Name="Mcmb"
+                                      Grid.Row="1"
+                                      Height="40"
+                                      Width="250">
+                        <pu:MultiComboBoxItem Content="Item 1" />
+                        <pu:MultiComboBoxItem Content="Item 2" />
+                        <pu:MultiComboBoxItem Content="Item 3" />
+                    </pu:MultiComboBox>
+
+                    <pu:MultiComboBox x:Name="Mcmb2"
+                                      Grid.Row="1"
+                                      Margin="0,15,0,0"
+                                      Height="40"
+                                      Width="250"
+                                      CornerRadius="2"
+                                      AlternationCount="3"
+                                      DisplayMemberPath="Name"
+                                      ItemsSelectedBackground="#226CBCEA">
+                        <pu:MultiComboBox.SelectionBoxTagItemStyle>
+                            <Style TargetType="pu:TagItem"
+                                   BasedOn="{StaticResource {x:Static pu:MultiComboBox.SelectionBoxTagItemStyle}}">
+                                <Setter Property="Foreground"
+                                        Value="#6CBCEA" />
+                                <Setter Property="Background"
+                                        Value="#446CBCEA" />
+                                <Setter Property="CornerRadius"
+                                        Value="2" />
+                                <Setter Property="Padding"
+                                        Value="5,0,5,0" />
+                                <Setter Property="RemoveButtonVisibility"
+                                        Value="Visible" />
+                                <Setter Property="RemoveButtonVisibility"
+                                        Value="VisibleOnHover" />
+                            </Style>
+                        </pu:MultiComboBox.SelectionBoxTagItemStyle>
+                        <pu:MultiComboBox.CheckBoxStyle>
+                            <Style TargetType="CheckBox"
+                                   BasedOn="{StaticResource {x:Static pu:MultiComboBox.CheckBoxStyle}}">
+                                <Setter Property="Foreground"
+                                        Value="#F1F1F1" />
+                                <Setter Property="pu:CheckBoxHelper.BoxHeight"
+                                        Value="18" />
+                                <Setter Property="pu:CheckBoxHelper.BoxWidth"
+                                        Value="18" />
+                                <Setter Property="pu:CheckBoxHelper.CornerRadius"
+                                        Value="2" />
+                                <Setter Property="pu:CheckBoxHelper.HoverBorderBrush"
+                                        Value="#6CBCEA" />
+                                <Setter Property="pu:CheckBoxHelper.CheckedBackground"
+                                        Value="#6CBCEA" />
+                                <Setter Property="pu:CheckBoxHelper.CheckedBorderThickness"
+                                        Value="0" />
+                                <Setter Property="pu:CheckBoxHelper.CheckedGlyphBrush"
+                                        Value="#FFFFFF" />
+                            </Style>
+                        </pu:MultiComboBox.CheckBoxStyle>
+                    </pu:MultiComboBox>
+
+                    <Grid Margin="0,25,0,0"
+                          Height="100">
+                        <pu:TagItem Content="Item 1" />
+                    </Grid>
+                </StackPanel>
                 <!--<pu:ZoomViewer Grid.Row="1"
                        Width="500"
                        Height="500"
