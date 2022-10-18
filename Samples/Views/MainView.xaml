@@ -183,6 +183,11 @@
                         CommandParameter="{Binding ElementName=panel}"/>
             </StackPanel>
         </Grid>-->
+                <TextBlock Grid.Row="2"
+                           FontSize="14"
+                           Foreground="Gray"
+                           HorizontalAlignment="Right"
+                           Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
         <!--<pu:Drawer IsOpen="False"
