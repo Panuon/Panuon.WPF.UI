@@ -145,7 +145,7 @@ namespace Panuon.WPF.UI
                 Opened?.Invoke(this, EventArgs.Empty);
             }
         }
-        
+
         public void Open()
         {
             if (ActualWidth != 0
