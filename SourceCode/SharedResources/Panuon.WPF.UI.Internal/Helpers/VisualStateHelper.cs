@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -74,6 +75,36 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
+        #region BorderThickness
+        public static Thickness GetBorderThickness(Control control)
+        {
+            return (Thickness)control.GetValue(BorderThicknessProperty);
+        }
+
+        public static void SetBorderThickness(Control control, Thickness value)
+        {
+            control.SetValue(BorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(VisualStateHelper));
+        #endregion
+
+        #region CornerRadius
+        public static CornerRadius GetCornerRadius(Control control)
+        {
+            return (CornerRadius)control.GetValue(CornerRadiusProperty);
+        }
+
+        public static void SetCornerRadius(Control control, CornerRadius value)
+        {
+            control.SetValue(CornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(VisualStateHelper));
         #endregion
 
         #region WatermarkForeground
@@ -211,9 +242,19 @@ namespace Panuon.WPF.UI.Internal
 
         #region Hover Properties
 
+        #region HoverCornerRadiusProperty
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("HoverCornerRadius", typeof(CornerRadius?), typeof(VisualStateHelper));
+        #endregion
+
         #region HoverBorderBrushProperty
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
+        #region HoverBorderThicknessProperty
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("HoverBorderThickness", typeof(Thickness?), typeof(VisualStateHelper));
         #endregion
 
         #region HoverBackgroundProperty
@@ -254,6 +295,36 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty HoverBorderBrushLockProperty =
             DependencyProperty.RegisterAttached("HoverBorderBrushLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
+        #endregion
+
+        #region HoverBorderThicknessLock
+        public static bool GetHoverBorderThicknessLock(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HoverBorderThicknessLockProperty);
+        }
+
+        public static void SetHoverBorderThicknessLock(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HoverBorderThicknessLockProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessLockProperty =
+            DependencyProperty.RegisterAttached("HoverBorderThicknessLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
+        #endregion
+
+        #region HoverCornerRadiusLock
+        public static bool GetHoverCornerRadiusLock(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HoverCornerRadiusLockProperty);
+        }
+
+        public static void SetHoverCornerRadiusLock(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HoverCornerRadiusLockProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusLockProperty =
+            DependencyProperty.RegisterAttached("HoverCornerRadiusLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
         #region HoverBackgroundLock
@@ -431,6 +502,21 @@ namespace Panuon.WPF.UI.Internal
                 FrameworkElementUtil.BindingProperty(element, ForegroundProperty, element, Control.ForegroundProperty);
             }
             FrameworkElementUtil.BindingProperty(element, BorderBrushProperty, element, Control.BorderBrushProperty);
+            FrameworkElementUtil.BindingProperty(element, BorderThicknessProperty, element, Control.BorderThicknessProperty);
+
+            if (element is Button)
+            {
+                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, ButtonHelper.CornerRadiusProperty);
+            }
+            else if (element is RepeatButton)
+            {
+                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, RepeatButtonHelper.CornerRadiusProperty);
+            }
+            else if (element is TagItem)
+            {
+                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, TagItem.CornerRadiusProperty);
+            }
+
             if (element is CheckBox)
             {
                 FrameworkElementUtil.BindingProperty(element, GlyphBrushProperty, element, CheckBoxHelper.GlyphBrushProperty);
@@ -650,44 +736,54 @@ namespace Panuon.WPF.UI.Internal
         {
             var element = (FrameworkElement)sender;
 
-            var propertyBrushes = new Dictionary<DependencyProperty, Brush>();
+            var propertyValues = new Dictionary<DependencyProperty, object>();
             if (!GetHoverBackgroundLock((DependencyObject)sender) 
                 && element.GetValue(HoverBackgroundProperty) is Brush hoverBackground)
             {
-                propertyBrushes.Add(BackgroundProperty, hoverBackground);
+                propertyValues.Add(BackgroundProperty, hoverBackground);
             }
             if (!GetHoverForegroundLock((DependencyObject)sender) 
                 && element.GetValue(HoverForegroundProperty) is Brush hoverForeground)
             {
                 if (element is TextBox || element is PasswordBox)
                 {
-                    propertyBrushes.Add(Control.ForegroundProperty, hoverForeground);
+                    propertyValues.Add(Control.ForegroundProperty, hoverForeground);
                 }
                 else
                 {
-                    propertyBrushes.Add(ForegroundProperty, hoverForeground);
+                    propertyValues.Add(ForegroundProperty, hoverForeground);
                 }
             }
             if (!GetHoverBorderBrushLock((DependencyObject)sender) 
                 && element.GetValue(HoverBorderBrushProperty) is Brush hoverBorderBrush)
             {
-                propertyBrushes.Add(BorderBrushProperty, hoverBorderBrush);
+                propertyValues.Add(BorderBrushProperty, hoverBorderBrush);
+            }
+            if (!GetHoverBorderThicknessLock((DependencyObject)sender)
+               && element.GetValue(HoverBorderThicknessProperty) is Thickness hoverBorderThickness)
+            {
+                propertyValues.Add(BorderThicknessProperty, hoverBorderThickness);
+            }
+            if (!GetHoverCornerRadiusLock((DependencyObject)sender)
+               && element.GetValue(HoverCornerRadiusProperty) is CornerRadius hoverCornerRadius)
+            {
+                propertyValues.Add(CornerRadiusProperty, hoverCornerRadius);
             }
             if (element.GetValue(HoverGlyphBrushProperty) is Brush hoverGlyphBrush)
             {
-                propertyBrushes.Add(GlyphBrushProperty, hoverGlyphBrush);
+                propertyValues.Add(GlyphBrushProperty, hoverGlyphBrush);
             }
             if (element.GetValue(HoverToggleBrushProperty) is Brush hoverToggleBrush)
             {
-                propertyBrushes.Add(ToggleBrushProperty, hoverToggleBrush);
+                propertyValues.Add(ToggleBrushProperty, hoverToggleBrush);
             }
             if(element.GetValue(HoverRibbonLineBrushProperty) is Brush hoverRibbonLineBrush)
             {
-                propertyBrushes.Add(RibbonLineBrushProperty, hoverRibbonLineBrush);
+                propertyValues.Add(RibbonLineBrushProperty, hoverRibbonLineBrush);
             }
-            if (propertyBrushes.Any())
+            if (propertyValues.Any())
             {
-                AnimationUtil.BeginBrushAnimationStoryboard(element, propertyBrushes);
+                AnimationUtil.BeginBrushAnimationStoryboard(element, propertyValues);
             }
             if (!GetHoverShadowColorLock((DependencyObject)sender)
                 && element.GetValue(HoverShadowColorProperty) is Color hoverShadowColor)
@@ -742,6 +838,16 @@ namespace Panuon.WPF.UI.Internal
                 && element.GetValue(HoverBorderBrushProperty) != null)
             {
                 properties.Add(BorderBrushProperty);
+            }
+            if (!GetHoverBorderThicknessLock((DependencyObject)sender)
+                && element.GetValue(HoverBorderThicknessProperty) != null)
+            {
+                properties.Add(BorderThicknessProperty);
+            }
+            if (!GetHoverCornerRadiusLock((DependencyObject)sender)
+                && element.GetValue(HoverCornerRadiusProperty) != null)
+            {
+                properties.Add(CornerRadiusProperty);
             }
             if (element.GetValue(HoverGlyphBrushProperty) != null)
             {

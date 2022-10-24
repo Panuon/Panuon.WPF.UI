@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TransformControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:TransformControl">
+    <Style x:Key="{x:Static rs:StyleKeys.TransformControlStyle}"
+           TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"

@@ -10,7 +10,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:DropDown">
+    <Style x:Key="{x:Static rs:StyleKeys.DropDownStyle}"
+           TargetType="local:DropDown">
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
         <Setter Property="local:DropDownHelper.Background"

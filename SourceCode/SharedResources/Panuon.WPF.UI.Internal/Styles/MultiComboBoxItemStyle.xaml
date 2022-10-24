@@ -1,0 +1,108 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MultiComboBoxItemTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="{x:Static rs:StyleKeys.MultiComboBoxItemStyle}"
+           TargetType="local:MultiComboBoxItem">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
+        <Setter Property="i:VisualStateHelper.IsHover"
+                Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="i:VisualStateHelper.IsSelected"
+                Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Width"
+                Value="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.Height"
+                Value="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.VerticalAlignment"
+                Value="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.HorizontalAlignment"
+                Value="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinWidth"
+                Value="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MinHeight"
+                Value="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxWidth"
+                Value="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.MaxHeight"
+                Value="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontSize"
+                Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="local:IconHelper.FontFamily"
+                Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding ItemsHorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding ItemsVerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="CheckBoxVisibility"
+                Value="{Binding ItemsCheckBoxVisibility, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="RemoveButtonVisibility"
+                Value="{Binding ItemsRemoveButtonVisibility, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HoverBorderBrush"
+                Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HoverForeground"
+                Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedBackground"
+                Value="{Binding ItemsSelectedBackground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedBorderBrush"
+                Value="{Binding ItemsSelectedBorderBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedForeground"
+                Value="{Binding ItemsSelectedForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedBorderThickness"
+                Value="{Binding ItemsSelectedBorderThickness, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SeparatorBrush"
+                Value="{Binding ItemsSeparatorBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SeparatorThickness"
+                Value="{Binding ItemsSeparatorThickness, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SeparatorMargin"
+                Value="{Binding ItemsSeparatorMargin, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SeparatorVisibility"
+                Value="{Binding ItemsSeparatorVisibility, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="FontSize"
+                Value="{Binding ItemsFontSize, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding ItemsHeight, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Width"
+                Value="{Binding ItemsWidth, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Margin"
+                Value="{Binding ItemsMargin, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Padding"
+                Value="{Binding ItemsPadding, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.MultiComboBoxItemTemplate}}" />
+        <Style.Triggers>
+            <Trigger Property="RemoveButtonVisibility"
+                     Value="Collapsed">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.MultiComboBoxItemTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

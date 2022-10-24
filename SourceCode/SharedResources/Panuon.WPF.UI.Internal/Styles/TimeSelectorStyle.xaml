@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TimeSelectorTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
-    <Style TargetType="local:TimeSelector">
+    <Style x:Key="{x:Static rs:StyleKeys.TimeSelectorStyle}"
+           TargetType="local:TimeSelector">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="local:IconHelper.FontFamily"

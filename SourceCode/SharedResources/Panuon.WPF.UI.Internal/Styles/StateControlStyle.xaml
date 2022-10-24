@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/StateControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:StateControl">
+    <Style x:Key="{x:Static rs:StyleKeys.StateControlStyle}"
+           TargetType="local:StateControl">
         <Setter Property="Template"
                  Value="{StaticResource {x:Static irs:TemplateKeys.StateControlTemplate}}" />
     </Style>

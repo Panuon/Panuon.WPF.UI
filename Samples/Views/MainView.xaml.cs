@@ -146,6 +146,5 @@ namespace Samples.Views
 
 
         #endregion
-
     }
 }

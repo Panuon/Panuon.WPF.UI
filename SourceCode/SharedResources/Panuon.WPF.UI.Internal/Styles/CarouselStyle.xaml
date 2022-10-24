@@ -86,7 +86,19 @@
         </Setter>
     </Style>
 
-    <Style TargetType="local:Carousel">
+    <Style x:Key="{x:Static rs:StyleKeys.CarouselStyle}"
+           TargetType="local:Carousel">
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <local:CarouselPanel Animation="{Binding Animation, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
+                                         AnimationDuration="{Binding AnimationDuration, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
+                                         AnimationEase="{Binding AnimationEase, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
+                                         Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
+                                         CurrentIndex="{Binding CurrentIndex, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="PageTurnButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Carousel}}}" />
         <Setter Property="IndicatorPaginationStyle"

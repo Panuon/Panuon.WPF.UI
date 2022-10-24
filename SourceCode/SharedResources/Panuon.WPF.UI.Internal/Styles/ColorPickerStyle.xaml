@@ -76,8 +76,8 @@
                 Value="0" />
     </Style>
 
-
-    <Style TargetType="local:ColorPicker">
+    <Style x:Key="{x:Static rs:StyleKeys.ColorPickerStyle}"
+           TargetType="local:ColorPicker">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

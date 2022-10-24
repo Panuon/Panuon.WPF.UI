@@ -138,7 +138,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="local:ColorSelector">
+    <Style x:Key="{x:Static rs:StyleKeys.ColorSelectorStyle}"
+           TargetType="local:ColorSelector">
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"
@@ -146,7 +147,7 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="Padding"
-                Value="5" />
+                Value="0" />
         <Setter Property="Height"
                 Value="300" />
         <Setter Property="DropperThumbStyle"

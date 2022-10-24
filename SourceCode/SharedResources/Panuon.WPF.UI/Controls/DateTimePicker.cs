@@ -662,10 +662,10 @@ namespace Panuon.WPF.UI
             }
         }
 
-        private static void OnLostMouseCapture(object sender ,MouseEventArgs e)
+        private static void OnLostMouseCapture(object sender, MouseEventArgs e)
         {
-             var dateTimePicker = (DateTimePicker)sender;
-            if(e.OriginalSource == dateTimePicker._editableTextBox)
+            var dateTimePicker = (DateTimePicker)sender;
+            if (e.OriginalSource == dateTimePicker._editableTextBox)
             {
                 dateTimePicker.SetCurrentValue(IsDropDownOpenProperty, true);
                 dateTimePicker._editableTextBox.Focus();
@@ -760,7 +760,7 @@ namespace Panuon.WPF.UI
 
         private void UpdateText()
         {
-            if(_editableTextBox == null)
+            if (_editableTextBox == null)
             {
                 return;
             }
@@ -821,7 +821,7 @@ namespace Panuon.WPF.UI
 
         private void UpdateMode()
         {
-            if(_calendarX == null)
+            if (_calendarX == null)
             {
                 return;
             }
@@ -852,7 +852,7 @@ namespace Panuon.WPF.UI
         {
             if (_editableTextBox == null)
             {
-                return; 
+                return;
             }
 
             var text = _editableTextBox.Text;
@@ -930,7 +930,7 @@ namespace Panuon.WPF.UI
                 _timeSelector.MinTime = minDateTime.GetTime();
                 _timeSelector.MaxTime = maxDateTime.GetTime();
             }
-            
+
         }
 
         private void SetSelectedDateTime(DateTime? selectedDateTime)

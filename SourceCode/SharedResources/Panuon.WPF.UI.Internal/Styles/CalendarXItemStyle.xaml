@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/CalendarXItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:CalendarXItem">
+    <Style x:Key="{x:Static rs:StyleKeys.CalendarXItemStyle}"
+           TargetType="local:CalendarXItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

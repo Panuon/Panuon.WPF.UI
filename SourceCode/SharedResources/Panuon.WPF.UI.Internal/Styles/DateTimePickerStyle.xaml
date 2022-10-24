@@ -78,7 +78,8 @@
                 Value="0" />
     </Style>
 
-    <Style TargetType="local:DateTimePicker">
+    <Style x:Key="{x:Static rs:StyleKeys.DateTimePickerStyle}"
+           TargetType="local:DateTimePicker">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

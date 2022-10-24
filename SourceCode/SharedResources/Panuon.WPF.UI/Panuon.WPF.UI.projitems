@@ -30,8 +30,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SearchBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationStackPanel.cs" />
@@ -105,7 +108,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingValueTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\GeneratingPercentTextRoutedEventHandler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BrushAnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AnimationHelper\CornerRadiusAnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AnimationHelper\ThicknessAnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AnimationHelper\ColorAnimationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AnimationHelper\BrushAnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ThumbHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\CheckBoxHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ComboBoxHelper.cs" />
@@ -160,6 +166,130 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Badge.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\BreadcrumbItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Breadcrumb.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\NoticeBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TimeSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ZoomViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TransformControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TimeSelectorItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ThumbFence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TagItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Switch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\StateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Spin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\SearchBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\RingProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Pagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\PaginationItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\MultiComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\MultiComboBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\FormGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\DropDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Drawer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\DateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ContentControlX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ColorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Carousel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Card.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\CalendarX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\CalendarXItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

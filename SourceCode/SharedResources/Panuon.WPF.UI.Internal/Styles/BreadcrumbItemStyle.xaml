@@ -9,7 +9,8 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/BreadcrumbItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:BreadcrumbItem">
+    <Style x:Key="{x:Static rs:StyleKeys.BreadcrumbItemStyle}"
+           TargetType="local:BreadcrumbItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"

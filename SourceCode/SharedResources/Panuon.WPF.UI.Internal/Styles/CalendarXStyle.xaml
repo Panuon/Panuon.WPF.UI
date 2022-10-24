@@ -75,7 +75,8 @@
         </Style.Triggers>
     </Style>
     
-    <Style TargetType="local:CalendarX">
+    <Style x:Key="{x:Static rs:StyleKeys.CalendarXStyle}"
+           TargetType="local:CalendarX">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="local:IconHelper.FontFamily"
