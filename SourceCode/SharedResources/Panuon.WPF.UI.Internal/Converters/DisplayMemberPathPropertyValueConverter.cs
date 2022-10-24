@@ -12,7 +12,7 @@ namespace Panuon.WPF.UI.Internal.Converters
         {
             var value = values[0];
             var displayMemberPath = (string)values[1];
-            if (value == null 
+            if (value == null
                 || string.IsNullOrEmpty(displayMemberPath))
             {
                 return value;
