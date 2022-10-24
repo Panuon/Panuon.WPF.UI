@@ -142,13 +142,15 @@ namespace Panuon.WPF.UI.Internal.Utils
         public static T FindVisualChild<T>(FrameworkElement obj)
             where T : FrameworkElement
         {
-            return FindVisualChildren<T>(obj).FirstOrDefault();
+            return FindVisualChildren<T>(obj)
+                .FirstOrDefault();
         }
 
         public static T FindVisualChild<T>(FrameworkElement obj, string name)
             where T : FrameworkElement
         {
-            return FindVisualChildren<T>(obj, name).FirstOrDefault();
+            return FindVisualChildren<T>(obj, name)
+                .FirstOrDefault();
         }
         #endregion
 
