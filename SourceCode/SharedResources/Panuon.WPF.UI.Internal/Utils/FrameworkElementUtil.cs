@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -141,23 +142,13 @@ namespace Panuon.WPF.UI.Internal.Utils
         public static T FindVisualChild<T>(FrameworkElement obj)
             where T : FrameworkElement
         {
-            foreach (T child in FindVisualChildren<T>(obj))
-            {
-                return child;
-            }
-
-            return null;
+            return FindVisualChildren<T>(obj).FirstOrDefault();
         }
 
         public static T FindVisualChild<T>(FrameworkElement obj, string name)
             where T : FrameworkElement
         {
-            foreach (T child in FindVisualChildren<T>(obj, name))
-            {
-                return child;
-            }
-
-            return null;
+            return FindVisualChildren<T>(obj, name).FirstOrDefault();
         }
         #endregion
 
