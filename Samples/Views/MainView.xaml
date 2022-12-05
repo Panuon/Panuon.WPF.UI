@@ -32,43 +32,6 @@
                     Click="BtnIconFont_Click" />
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
-    <pu:WindowX.Resources>
-        
-        <Style x:Key="NormalDataGridStyle"
-               BasedOn="{StaticResource {x:Static purs:StyleKeys.DataGridStyle}}"
-               TargetType="DataGrid">
-            <Setter Property="VerticalContentAlignment"
-                    Value="Center" />
-            <Setter Property="CanUserAddRows"
-                    Value="False" />
-            <Setter Property="CanUserDeleteRows"
-                    Value="False" />
-            <Setter Property="CanUserReorderColumns"
-                    Value="False" />
-            <Setter Property="CanUserResizeColumns"
-                    Value="False" />
-            <Setter Property="CanUserSortColumns"
-                    Value="False" />
-            <Setter Property="AlternationCount"
-                    Value="2" />
-            <Setter Property="AlternatingRowBackground"
-                    Value="#1236e3" />
-            <Setter Property="pu:DataGridHelper.RowSelectedBorderBrush"
-                    Value="Red" />
-            <Setter Property="pu:DataGridHelper.RowSelectedBorderThickness"
-                    Value="1" />
-            <Setter Property="pu:DataGridHelper.CellFocusedBorderBrush"
-                    Value="DarkRed" />
-            <Setter Property="pu:DataGridHelper.CellFocusedBorderThickness"
-                    Value="1" />
-            <Setter Property="RowHeaderWidth"
-                    Value="0" />
-            <Setter Property="SelectionMode"
-                    Value="Extended" />
-            <!--<Setter Property="RowStyle" Value="{StaticResource HighlighDataGridRowStyle}" />-->
-        </Style>
-
-    </pu:WindowX.Resources>
     <Grid>
         <Grid Margin="20,10,20,20">
             <Grid>
@@ -95,7 +58,6 @@
                 </StackPanel>
                 <ScrollViewer Grid.Row="1"
                               Margin="0,15,0,0"
-                              Visibility="Collapsed"
                               VerticalScrollBarVisibility="Disabled"
                               HorizontalScrollBarVisibility="Auto"
                               pu:ScrollViewerHelper.MouseWheelDelta="96"
@@ -155,12 +117,6 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-                <TreeView Grid.Row="1"
-                          pu:TreeViewHelper.ItemsSeparatorVisibility="Visible">
-                    <TreeViewItem Header="Item 1" />
-                    <TreeViewItem Header="Item 2" />
-                    <TreeViewItem Header="Item 3" />
-                </TreeView>
                 <!--<pu:ZoomViewer Grid.Row="1"
                        Width="500"
                        Height="500"
