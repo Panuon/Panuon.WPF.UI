@@ -29,6 +29,21 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+           TargetType="TextBox"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="IsReadOnly"
+                Value="True" />
+        <Setter Property="TextWrapping"
+                Value="Wrap" />
+        <Setter Property="Foreground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+    </Style>
+
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -63,10 +78,7 @@
             </local:StateControl>
             <TextBox Grid.Column="1"
                      Text="{Binding Message}"
-                     Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
-                     TextWrapping="Wrap"
-                     BorderThickness="0"
-                     Background="Transparent"
+                     Style="{Binding TextBoxStyle}"
                      VerticalContentAlignment="Center" />
         </Grid>
     </DataTemplate>

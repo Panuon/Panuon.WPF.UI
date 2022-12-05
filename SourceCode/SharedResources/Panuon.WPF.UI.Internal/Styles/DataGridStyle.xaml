@@ -334,6 +334,8 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="RowStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.DataGridRowStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DataGridTemplate}}" />
         <Style.Triggers>
@@ -346,3 +348,4 @@
     </Style>
 
 </ResourceDictionary>
+

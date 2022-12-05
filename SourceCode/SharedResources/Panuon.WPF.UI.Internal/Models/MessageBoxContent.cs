@@ -47,5 +47,16 @@ namespace Panuon.WPF.UI.Internal.Models
         public static readonly DependencyProperty ButtonStyleProperty =
             DependencyProperty.Register("ButtonStyle", typeof(Style), typeof(MessageBoxContent));
         #endregion
+
+        #region TextBoxStyle
+        public Style TextBoxStyle
+        {
+            get { return (Style)GetValue(TextBoxStyleProperty); }
+            set { SetValue(TextBoxStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextBoxStyleProperty =
+            DependencyProperty.Register("TextBoxStyle", typeof(Style), typeof(MessageBoxContent));
+        #endregion
     }
 }

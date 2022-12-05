@@ -48,12 +48,11 @@
                             <ContentControl x:Name="CcFront"
                                             Grid.Column="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <local:SeparatorX x:Name="SprtFront"
-                                              Grid.ColumnSpan="2"
-                                              Orientation="Horizontal"
-                                              Stroke="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Rectangle x:Name="SprtFront"
+                                       Grid.ColumnSpan="2"
+                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ScrollViewer x:Name="PART_ScrollViewer"
                                           Grid.Column="2"
                                           HorizontalScrollBarVisibility="Disabled"
@@ -81,13 +80,12 @@
                             <ContentControl x:Name="CcEnd"
                                             Grid.Column="3"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <local:SeparatorX x:Name="SprtEnd"
-                                              Grid.Column="3"
-                                              Grid.ColumnSpan="2"
-                                              Orientation="Horizontal"
-                                              Stroke="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Rectangle x:Name="SprtEnd"
+                                       Grid.Column="3"
+                                       Grid.ColumnSpan="2"
+                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
                     </local:ContentControlX>
                 </Grid>
@@ -218,12 +216,11 @@
                             <ContentControl x:Name="CcFront"
                                             Grid.Row="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <local:SeparatorX x:Name="SprtFront"
-                                              Grid.RowSpan="2"
-                                              Orientation="Vertical"
-                                              Stroke="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Rectangle x:Name="SprtFront"
+                                       Grid.RowSpan="2"
+                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ScrollViewer x:Name="PART_ScrollViewer"
                                           Grid.Row="2"
                                           HorizontalScrollBarVisibility="Disabled"
@@ -250,13 +247,12 @@
                             <ContentControl x:Name="CcEnd"
                                             Grid.Row="3"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <local:SeparatorX x:Name="SprtEnd"
-                                              Grid.Row="3"
-                                              Grid.RowSpan="2"
-                                              Orientation="Vertical"
-                                              Stroke="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              StrokeThickness="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Rectangle x:Name="SprtEnd"
+                                       Grid.Row="3"
+                                       Grid.RowSpan="2"
+                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
                     </local:ContentControlX>
                 </Grid>

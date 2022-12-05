@@ -10,6 +10,9 @@ namespace Panuon.WPF.UI
         public static ComponentResourceKey ButtonStyle { get; } =
             new ComponentResourceKey(typeof(MessageBoxX), nameof(ButtonStyle));
 
+        public static ComponentResourceKey TextBoxStyle { get; } =
+            new ComponentResourceKey(typeof(MessageBoxX), nameof(TextBoxStyle));
+
         public static ComponentResourceKey ContentTemplate { get; } =
            new ComponentResourceKey(typeof(MessageBoxX), nameof(ContentTemplate));
         

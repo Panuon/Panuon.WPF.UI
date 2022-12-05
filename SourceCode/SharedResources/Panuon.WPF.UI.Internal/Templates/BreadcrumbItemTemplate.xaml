@@ -75,14 +75,13 @@
                         Property="Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <DataTrigger Value="True">
+            <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsLastItemInItemsControlConverter}}">
-                        <Binding RelativeSource="{RelativeSource Self}"
-                                 Mode="OneWay" />
-                        <Binding Path="Items.Count"
-                                 RelativeSource="{RelativeSource AncestorType=local:Breadcrumb}"
-                                 Mode="OneWay" />
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </DataTrigger.Binding>
                 <Setter TargetName="CcSeparator"

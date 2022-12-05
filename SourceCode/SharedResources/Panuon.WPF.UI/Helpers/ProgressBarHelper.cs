@@ -87,7 +87,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty PercentStringFormatProperty =
-            DependencyProperty.RegisterAttached("PercentStringFormat", typeof(string), typeof(ProgressBarHelper), new PropertyMetadata("{0:P0}", OnPercentStringFormatChanged));
+            DependencyProperty.RegisterAttached("PercentStringFormat", typeof(string), typeof(ProgressBarHelper), new PropertyMetadata("P0", OnPercentStringFormatChanged));
 
         #endregion
 

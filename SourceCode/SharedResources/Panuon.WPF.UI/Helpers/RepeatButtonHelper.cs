@@ -223,6 +223,20 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ClickBorderBrush", typeof(Brush), typeof(RepeatButtonHelper));
         #endregion
 
+        #region ClickBorderThickness
+        public static Thickness? GetClickBorderThickness(RepeatButton repeatButton)
+        {
+            return (Thickness?)repeatButton.GetValue(ClickBorderThicknessProperty);
+        }
+
+        public static void SetClickBorderThickness(RepeatButton repeatButton, Thickness? value)
+        {
+            repeatButton.SetValue(ClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(RepeatButtonHelper));
+        #endregion
         #endregion
     }
 }

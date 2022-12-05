@@ -56,60 +56,72 @@
                        Fill="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Margin="{Binding Path=(local:TabItemHelper.RibbonLineMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Visibility="{Binding Path=(local:TabItemHelper.RibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:TabItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Fill="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Width="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:TabItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="TabStripPlacement"
                      Value="Top">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Column"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.RowSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Vertical" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="NaN" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Bottom">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Column"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.RowSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Vertical" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="NaN" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Left">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.ColumnSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Horizontal" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="NaN" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Right">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.ColumnSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Horizontal" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="NaN" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Left">
@@ -403,61 +415,73 @@
                               ContentSource="Header"
                               VerticalAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Grid.Row="1"
-                              Stroke="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:TabItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Grid.Row="1"
+                       Fill="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Width="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:TabItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:TabItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="TabStripPlacement"
                      Value="Top">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Column"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.RowSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Vertical" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="NaN" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Bottom">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Column"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.RowSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Vertical" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="NaN" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Left">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.ColumnSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Horizontal" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="NaN" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Right">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Row"
                         Value="1" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.ColumnSpan"
                         Value="2" />
-                <Setter TargetName="SprtSeparator"
-                        Property="Orientation"
-                        Value="Horizontal" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="NaN" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

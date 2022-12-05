@@ -13,17 +13,17 @@
                      TargetType="TreeViewItem">
         <StackPanel>
             <local:ContentControlX x:Name="CcMain"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               Icon="{Binding Path=(local:TreeViewItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               IconWidth="{Binding Path=(local:TreeViewHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
-                               CornerRadius="{Binding Path=(local:TreeViewItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Padding="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderThickness="{TemplateBinding BorderThickness}"
+                                   Icon="{Binding Path=(local:TreeViewItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   IconWidth="{Binding Path=(local:TreeViewHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                   CornerRadius="{Binding Path=(local:TreeViewItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Padding="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <local:ContentControlX.ExtendControl>
                     <ToggleButton x:Name="TgbToggle"
                                   IsChecked="True"
@@ -36,15 +36,14 @@
                                       ContentSource="Header"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    <local:SeparatorX x:Name="SprtHorizontal"
-                                      Visibility="Collapsed"
-                                      Orientation="Horizontal"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Left"
-                                      Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                      StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                      StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                        <local:SeparatorX.Width>
+                    <Rectangle x:Name="SprtHorizontal"
+                               Visibility="Collapsed"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <Rectangle.Width>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorWidthConverter}}">
                                 <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
                                          RelativeSource="{RelativeSource AncestorType=TreeView}"
@@ -56,8 +55,8 @@
                                          ElementName="TgbToggle"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </local:SeparatorX.Width>
-                        <local:SeparatorX.Margin>
+                        </Rectangle.Width>
+                        <Rectangle.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}}">
                                 <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
                                          RelativeSource="{RelativeSource AncestorType=TreeView}"
@@ -78,27 +77,26 @@
                                          RelativeSource="{RelativeSource TemplatedParent}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </local:SeparatorX.Margin>
-                    </local:SeparatorX>
+                        </Rectangle.Margin>
+                    </Rectangle>
                 </Grid>
             </local:ContentControlX>
-            <local:SeparatorX x:Name="SprtSeparator"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       VerticalAlignment="Center"
+                       Fill="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Grid x:Name="GrdItems"
                   Visibility="Collapsed">
                 <ItemsPresenter x:Name="ItemsHost" />
-                <local:SeparatorX x:Name="SprtVertical"
-                                  Orientation="Vertical"
-                                  Visibility="Collapsed"
-                                  HorizontalAlignment="Left"
-                                  Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <local:SeparatorX.Margin>
+                <Rectangle x:Name="SprtVertical"
+                           Visibility="Collapsed"
+                           HorizontalAlignment="Left"
+                           Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Rectangle.Margin>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemVerticalSeparatorMarginConverter}}">
                             <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
                                      RelativeSource="{RelativeSource AncestorType=TreeView}"
@@ -119,8 +117,8 @@
                                      RelativeSource="{RelativeSource TemplatedParent}"
                                      Mode="OneWay" />
                         </MultiBinding>
-                    </local:SeparatorX.Margin>
-                </local:SeparatorX>
+                    </Rectangle.Margin>
+                </Rectangle>
             </Grid>
         </StackPanel>
         <ControlTemplate.Triggers>
@@ -271,6 +269,19 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
+            <DataTrigger Value="False">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RectSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -285,13 +296,27 @@
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               Margin="{TemplateBinding Padding}" />
-            <local:SeparatorX x:Name="SprtSeparator"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Fill="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding Path=(local:TreeViewItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:TreeViewItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:TreeViewItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Value="False">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RectSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
 </ResourceDictionary>

@@ -223,6 +223,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CheckedBorderBrush", typeof(Brush), typeof(ToggleButtonHelper));
         #endregion
 
+        #region CheckedBorderThickness
+        public static Thickness? GetCheckedBorderThickness(ToggleButton toggleButton)
+        {
+            return (Thickness?)toggleButton.GetValue(CheckedBorderThicknessProperty);
+        }
+
+        public static void SetCheckedBorderThickness(ToggleButton toggleButton, Thickness? value)
+        {
+            toggleButton.SetValue(CheckedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness?), typeof(ToggleButtonHelper));
+        #endregion
+
         #region CheckedShadowColor
         public static Color? GetCheckedShadowColor(ToggleButton toggleButton)
         {

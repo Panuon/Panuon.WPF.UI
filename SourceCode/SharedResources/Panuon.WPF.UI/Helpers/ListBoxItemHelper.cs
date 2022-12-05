@@ -282,6 +282,22 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SeparatorVisibility", typeof(Visibility), typeof(ListBoxItemHelper));
         #endregion
 
+        #region SeparatorOrientation
+        public static Orientation GetSeparatorOrientation(ListBoxItem listBoxItem)
+        {
+            return (Orientation)listBoxItem.GetValue(SeparatorOrientationProperty);
+        }
+
+        public static void SetSeparatorOrientation(ListBoxItem listBoxItem, Orientation value)
+        {
+            listBoxItem.SetValue(SeparatorOrientationProperty, value);
+        }
+
+        public static readonly DependencyProperty SeparatorOrientationProperty =
+            DependencyProperty.RegisterAttached("SeparatorOrientation", typeof(Orientation), typeof(ListBoxItemHelper));
+        #endregion
+
+
         #region IsStyleless
         public static bool GetIsStyleless(ListBoxItem listBoxItem)
         {
