@@ -138,7 +138,7 @@
                      pu:ShadowHelper.ShadowDepth="3"
                      pu:DropDownHelper.Placement="BottomLeft"
                      pu:DropDownHelper.ClipDockSideShadow="False"
-                     StaysOpen="True">
+                     StaysOpen="False">
             <pu:DropDown.Content>
                 <ToggleButton IsChecked="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=pu:DropDown}}"
                               Content="&#xe9e5;"
