@@ -95,6 +95,8 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorMargin), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SeparatorVisibility"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SeparatorOrientation"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSeparatorOrientation), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="Width"

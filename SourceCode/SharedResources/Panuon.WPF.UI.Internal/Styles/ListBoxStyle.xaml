@@ -52,12 +52,6 @@
                 Value="#FAFAFA" />
         <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
                 Value="#F1F1F1" />
-        <Setter Property="local:ListBoxHelper.ItemsSeparatorBrush"
-                Value="LightGray" />
-        <Setter Property="local:ListBoxHelper.ItemsSeparatorThickness"
-                Value="1" />
-        <Setter Property="local:ListBoxHelper.ItemsSeparatorVisibility"
-                Value="Collapsed" />
         <Setter Property="local:ListBoxHelper.RemoveButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ListBoxHelper}}}" />
         <Setter Property="local:ListBoxHelper.ItemsPadding"

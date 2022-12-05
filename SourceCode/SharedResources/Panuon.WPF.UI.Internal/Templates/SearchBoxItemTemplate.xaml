@@ -32,13 +32,12 @@
                 <ContentPresenter Focusable="False"
                                   RecognizesAccessKey="True" />
             </local:ContentControlX>
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Grid.Row="1"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding SeparatorThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding SeparatorMargin, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Grid.Row="1"
+                       Fill="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding SeparatorThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding SeparatorMargin, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
@@ -77,17 +76,16 @@
                         Property="Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            <DataTrigger Value="True">
+            <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsLastItemInItemsControlConverter}}">
-                        <Binding RelativeSource="{RelativeSource Self}"
-                                 Mode="OneWay" />
-                        <Binding Path="Items.Count"
-                                 RelativeSource="{RelativeSource AncestorType=local:SearchBox}"
-                                 Mode="OneWay" />
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
             </DataTrigger>

@@ -50,7 +50,6 @@
     <icv:IsAllEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllEqualConverter}" />
     <icv:IsEnumContainsInSpecificValueConverter x:Key="{x:Static irs:ConverterKeys.IsEnumContainsInSpecificValueConverter}" />
     <icv:IsItemSeparatorShallVisibleControlConverter x:Key="{x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}" />
-    <icv:IsLastItemInItemsControlConverter x:Key="{x:Static irs:ConverterKeys.IsLastItemInItemsControlConverter}" />
     <icv:IsNonnullConverter x:Key="{x:Static rs:ConverterKeys.IsNonnullConverter}" />
     <icv:IsNullConverter x:Key="{x:Static rs:ConverterKeys.IsNullConverter}" />
     <icv:IsIEnumerableHasItemsConverter x:Key="{x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}" />

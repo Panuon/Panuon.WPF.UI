@@ -28,12 +28,12 @@
                 </Grid.RowDefinitions>
                 <UniformGrid x:Name="PART_TimeNameUniformGrid"
                              Columns="3" />
-                <local:SeparatorX x:Name="SprtSeparator"
-                                  Grid.Row="1"
-                                  Stroke="{TemplateBinding HeaderSeparatorBrush}"
-                                  StrokeThickness="{TemplateBinding HeaderSeparatorThickness}"
-                                  Margin="{TemplateBinding HeaderSeparatorMargin}"
-                                  Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="1"
+                           Fill="{TemplateBinding HeaderSeparatorBrush}"
+                           Height="{TemplateBinding HeaderSeparatorThickness}"
+                           Margin="{TemplateBinding HeaderSeparatorMargin}"
+                           Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -44,21 +44,19 @@
                     </Grid.ColumnDefinitions>
                     <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorHourPresenter"
                                                  TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />
-                    <local:SeparatorX Grid.Column="1"
-                                      Orientation="Vertical"
-                                      Stroke="{TemplateBinding TimeSeparatorBrush}"
-                                      StrokeThickness="{TemplateBinding TimeSeparatorThickness}"
-                                      Margin="{TemplateBinding TimeSeparatorMargin}"
-                                      Visibility="{TemplateBinding TimeSeparatorVisibility}" />
+                    <Rectangle Grid.Column="1"
+                               Fill="{TemplateBinding TimeSeparatorBrush}"
+                               Width="{TemplateBinding TimeSeparatorThickness}"
+                               Margin="{TemplateBinding TimeSeparatorMargin}"
+                               Visibility="{TemplateBinding TimeSeparatorVisibility}" />
                     <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorMinutePresenter"
                                                  Grid.Column="2"
                                                  TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />
-                    <local:SeparatorX Grid.Column="3"
-                                      Orientation="Vertical"
-                                      Stroke="{TemplateBinding TimeSeparatorBrush}"
-                                      StrokeThickness="{TemplateBinding TimeSeparatorThickness}"
-                                      Margin="{TemplateBinding TimeSeparatorMargin}"
-                                      Visibility="{TemplateBinding TimeSeparatorVisibility}" />
+                    <Rectangle Grid.Column="3"
+                               Fill="{TemplateBinding TimeSeparatorBrush}"
+                               Width="{TemplateBinding TimeSeparatorThickness}"
+                               Margin="{TemplateBinding TimeSeparatorMargin}"
+                               Visibility="{TemplateBinding TimeSeparatorVisibility}" />
                     <i:TimeSelectorItemPresenter x:Name="PART_TimeSelectorSecondPresenter"
                                                  Grid.Column="4"
                                                  TimeSelectorItemStyle="{TemplateBinding ItemContainerStyle}" />

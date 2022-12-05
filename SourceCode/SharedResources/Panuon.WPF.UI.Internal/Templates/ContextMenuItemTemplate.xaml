@@ -161,13 +161,12 @@
                     </local:ContentControlX>
                 </local:PopupX>
             </Grid>
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Grid.Row="1"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding Path=(local:MenuItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:MenuItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:MenuItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:MenuItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Grid.Row="1"
+                       Fill="{Binding Path=(local:MenuItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding Path=(local:MenuItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:MenuItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:MenuItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Value="False">
@@ -179,7 +178,7 @@
                                  RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Visibility"
                         Value="Collapsed" />
             </DataTrigger>

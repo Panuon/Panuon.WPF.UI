@@ -80,13 +80,12 @@
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
-                <local:SeparatorX x:Name="SprtSeparator"
-                                  Grid.Row="1"
-                                  VerticalAlignment="Center"
-                                  Stroke="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  StrokeThickness="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Visibility="Collapsed" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="1"
+                           Fill="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Height="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Visibility="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="PART_ContentBorder"
                         Grid.Row="2"
                         Visibility="Collapsed">
@@ -196,7 +195,7 @@
             </Trigger>
             <Trigger Property="IsExpanded"
                      Value="True">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Visibility"
                         Value="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter  TargetName="PART_ContentBorder"
@@ -275,14 +274,12 @@
                                         Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </ToggleButton>
-                <local:SeparatorX x:Name="SprtSeparator"
-                                  Grid.Column="1"
-                                  Orientation="Vertical"
-                                  HorizontalAlignment="Center"
-                                  Stroke="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  StrokeThickness="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Visibility="Collapsed" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Column="1"
+                           Fill="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Width="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Visibility="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="PART_ContentBorder"
                         Grid.Column="2"
                         Visibility="Collapsed">
@@ -370,7 +367,7 @@
             </Trigger>
             <Trigger Property="IsExpanded"
                      Value="True">
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Visibility"
                         Value="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter  TargetName="PART_ContentBorder"

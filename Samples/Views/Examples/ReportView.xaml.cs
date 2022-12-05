@@ -17,14 +17,8 @@ namespace Samples.Views.Examples
         public ReportView()
         {
             InitializeComponent();
-            dataGrid.ItemsSource = new List<Machine>()
-            {
-                new Machine("M000000", "Working", "N/A"),
-                new Machine("M000001", "Working", "N/A"),
-                new Machine("M000002", "Working", "N/A"),
-                new Machine("M000003", "Repairing", "N/A"),
-                new Machine("M000004", "Repairing", "N/A"),
-            };
+
+            RefreshList(1);
         }
 
         private void RingProgressBar_GeneratingPercentText(object sender, GeneratingPercentTextRoutedEventArgs e)
@@ -34,20 +28,35 @@ namespace Samples.Views.Examples
 
         private void Pagination_CurrentPageChanged(object sender, SelectedValueChangedRoutedEventArgs<int> e)
         {
-            dataGrid.ItemsSource = new List<Machine>()
+            RefreshList(e.NewValue);
+        }
+
+        private void RefreshList(int pageIndex)
+        {
+            var startNumber = (pageIndex - 1) * 5;
+            dataGrid.ItemsSource = new List<MachineItem>()
             {
-                new Machine("M00000" + (e.NewValue - 1) * 5, "Working", "N/A"),
-                new Machine("M00000" + ((e.NewValue - 1) * 5 + 1), "Working", "N/A"),
-                new Machine("M00000" + ((e.NewValue - 1) * 5 + 2), "Working", "N/A"),
-                new Machine("M00000" + ((e.NewValue - 1) * 5 + 3), "Repairing", "N/A"),
-                new Machine("M00000" + ((e.NewValue - 1) * 5 + 4), "Repairing", "N/A"),
+                new MachineItem("M00000" + startNumber, "Working", "N/A") { Type = MachineType.UX_10 },
+                new MachineItem("M00000" + startNumber + 1, "Working", "N/A"),
+                new MachineItem("M00000" + startNumber + 2, "Working", "N/A"),
+                new MachineItem("M00000" + startNumber * 5 + 3, "Repairing", "N/A"),
+                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
             };
         }
+
     }
-    public class Machine : NotifyPropertyChangedBase
+
+    public enum MachineType
+    {
+        UX_01,
+        UX_02,
+        UX_10,
+    }
+
+    public class MachineItem : NotifyPropertyChangedBase
     {
         #region Ctor
-        public Machine(string code, string state, string remark)
+        public MachineItem(string code, string state, string remark)
         {
             Code = code;
             State = state;
@@ -72,15 +81,12 @@ namespace Samples.Views.Examples
         [ColumnDisplayIndex(0)]
         public string Code { get => _code; set => Set(ref _code, value); }
         private string _code;
-        #endregion
-    }
 
-    public class ComboItem : NotifyPropertyChangedBase
-    {
-        #region DisplayName
-        public string Name { get => _name; set => Set(ref _name, value); }
-        private string _name;
+        [DisplayName("Machine Type")]
+        [ColumnWidth(Width = "100")]
+        [ColumnDisplayIndex(3)]
+        public MachineType Type { get => _type; set => Set(ref _type, value); }
+        private MachineType _type;
         #endregion
-
     }
 }

@@ -74,7 +74,8 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Panuon.WPF">
+    <Reference Include="Panuon.WPF, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SourceCode\References\Net472\Panuon.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />

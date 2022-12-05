@@ -61,6 +61,7 @@ namespace Panuon.WPF.UI.Internal.Controls
                 Caption = caption,
                 MessageBoxIcon = icon,
                 ButtonStyle = setting.ButtonStyle,
+                TextBoxStyle = setting.TextBoxStyle,
             };
             ContentTemplate = setting.ContentTemplate;
 

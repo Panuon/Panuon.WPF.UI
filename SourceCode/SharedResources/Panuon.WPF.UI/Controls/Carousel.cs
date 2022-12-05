@@ -282,7 +282,7 @@ namespace Panuon.WPF.UI
                     ? Math.Max(0, carousel.Items.Count - 1)
                     : 0;
             }
-            if (carousel.IsLoaded && currentIndex > carousel.Items.Count - 1)
+            if (carousel.IsInitialized && currentIndex > carousel.Items.Count - 1)
             {
                 return carousel.IsCyclic
                     ? 0
@@ -335,6 +335,7 @@ namespace Panuon.WPF.UI
             {
                 CurrentIndex++;
                 _timer.Change(AutoPlayDuration, TimeSpan.FromMilliseconds(-1));
+                System.Diagnostics.Debug.WriteLine(CurrentIndex);
             }));
         }
 

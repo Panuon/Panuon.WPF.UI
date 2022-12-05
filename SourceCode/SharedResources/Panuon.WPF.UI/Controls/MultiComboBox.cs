@@ -1,6 +1,7 @@
 ﻿using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

@@ -61,6 +61,20 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey CalendarXStyle { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(CalendarXStyle));
+
+        public static ComponentResourceKey TimeSelectorStyle { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(TimeSelectorStyle));
+
+        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(ToggleArrowTransformControlStyle));
+
+        public static ComponentResourceKey ClearButtonStyle { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(ClearButtonStyle));
+        #endregion
+            
         #region Properties
 
         #region Culture
@@ -141,25 +155,25 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region MinDateTime
-        public DateTime MinDateTime
+        public DateTime? MinDateTime
         {
-            get { return (DateTime)GetValue(MinDateTimeProperty); }
+            get { return (DateTime?)GetValue(MinDateTimeProperty); }
             set { SetValue(MinDateTimeProperty, value); }
         }
 
         public static readonly DependencyProperty MinDateTimeProperty =
-            DependencyProperty.Register("MinDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MinValue, OnDateTimeLimitChanged));
+            DependencyProperty.Register("MinDateTime", typeof(DateTime?), typeof(DateTimePicker), new PropertyMetadata(DateTime.MinValue, OnDateTimeLimitChanged));
         #endregion
 
         #region MaxDateTime
-        public DateTime MaxDateTime
+        public DateTime? MaxDateTime
         {
-            get { return (DateTime)GetValue(MaxDateTimeProperty); }
+            get { return (DateTime?)GetValue(MaxDateTimeProperty); }
             set { SetValue(MaxDateTimeProperty, value); }
         }
 
         public static readonly DependencyProperty MaxDateTimeProperty =
-            DependencyProperty.Register("MaxDateTime", typeof(DateTime), typeof(DateTimePicker), new PropertyMetadata(DateTime.MaxValue, OnDateTimeLimitChanged));
+            DependencyProperty.Register("MaxDateTime", typeof(DateTime?), typeof(DateTimePicker), new PropertyMetadata(DateTime.MaxValue, OnDateTimeLimitChanged));
         #endregion
 
         #region YearStringFormat
@@ -401,7 +415,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SelectedDateTimeProperty =
-            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged));
+            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedTimeCoerceValue));
 
         #endregion
 
@@ -428,47 +442,63 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region CalendarXStyle
-        public Style CalendarXStyle
+        public static Style GetCalendarXStyle(DateTimePicker dateTimePicker)
         {
-            get { return (Style)GetValue(CalendarXStyleProperty); }
-            set { SetValue(CalendarXStyleProperty, value); }
+            return (Style)dateTimePicker.GetValue(CalendarXStyleProperty);
+        }
+
+        public static void SetCalendarXStyle(DateTimePicker dateTimePicker, Style value)
+        {
+            dateTimePicker.SetValue(CalendarXStyleProperty, value);
         }
 
         public static readonly DependencyProperty CalendarXStyleProperty =
-            DependencyProperty.Register("CalendarXStyle", typeof(Style), typeof(DateTimePicker));
+            DependencyProperty.RegisterAttached("CalendarXStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
         #region TimeSelectorStyle
-        public Style TimeSelectorStyle
+        public static Style GetTimeSelectorStyle(DateTimePicker dateTimePicker)
         {
-            get { return (Style)GetValue(TimeSelectorStyleProperty); }
-            set { SetValue(TimeSelectorStyleProperty, value); }
+            return (Style)dateTimePicker.GetValue(TimeSelectorStyleProperty);
+        }
+
+        public static void SetTimeSelectorStyle(DateTimePicker dateTimePicker, Style value)
+        {
+            dateTimePicker.SetValue(TimeSelectorStyleProperty, value);
         }
 
         public static readonly DependencyProperty TimeSelectorStyleProperty =
-            DependencyProperty.Register("TimeSelectorStyle", typeof(Style), typeof(DateTimePicker));
+            DependencyProperty.RegisterAttached("TimeSelectorStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
         #region ToggleArrowTransformControlStyle
-        public Style ToggleArrowTransformControlStyle
+        public static Style GetToggleArrowTransformControlStyle(DateTimePicker dateTimePicker)
         {
-            get { return (Style)GetValue(ToggleArrowTransformControlStyleProperty); }
-            set { SetValue(ToggleArrowTransformControlStyleProperty, value); }
+            return (Style)dateTimePicker.GetValue(ToggleArrowTransformControlStyleProperty);
+        }
+
+        public static void SetToggleArrowTransformControlStyle(DateTimePicker dateTimePicker, Style value)
+        {
+            dateTimePicker.SetValue(ToggleArrowTransformControlStyleProperty, value);
         }
 
         public static readonly DependencyProperty ToggleArrowTransformControlStyleProperty =
-            DependencyProperty.Register("ToggleArrowTransformControlStyle", typeof(Style), typeof(DateTimePicker));
+            DependencyProperty.RegisterAttached("ToggleArrowTransformControlStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
         #region ClearButtonStyle
-        public Style ClearButtonStyle
+        public static Style GetClearButtonStyle(DateTimePicker dateTimePicker)
         {
-            get { return (Style)GetValue(ClearButtonStyleProperty); }
-            set { SetValue(ClearButtonStyleProperty, value); }
+            return (Style)dateTimePicker.GetValue(ClearButtonStyleProperty);
+        }
+
+        public static void SetClearButtonStyle(DateTimePicker dateTimePicker, Style value)
+        {
+            dateTimePicker.SetValue(ClearButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty ClearButtonStyleProperty =
-            DependencyProperty.Register("ClearButtonStyle", typeof(Style), typeof(DateTimePicker));
+            DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(DateTimePicker));
         #endregion
 
         #region ClearButtonVisibility
@@ -545,6 +575,64 @@ namespace Panuon.WPF.UI
                     dateTimePicker._editableTextBox.SelectionStart = dateTimePicker._editableTextBox.Text.Length;
                 }
             }
+        }
+
+        private static object OnSelectedTimeCoerceValue(DependencyObject d, object baseValue)
+        {
+            DateTimePicker dateTimePicker = (DateTimePicker)d;
+            DateTime? dateTime = (DateTime?)baseValue;
+            if (dateTime.HasValue)
+            {
+                var minDateTime = dateTimePicker.MinDateTime ?? DateTime.MinValue;
+                var maxDateTime = dateTimePicker.MaxDateTime ?? DateTime.MaxValue;
+                switch (dateTimePicker.Mode)
+                {
+                    case DateTimePickerMode.Year:
+                        minDateTime = new DateTime(minDateTime.Year, 1, 1);
+                        maxDateTime = new DateTime(maxDateTime.Year, 1, 1);
+                        break;
+                    case DateTimePickerMode.Month:
+                        minDateTime = new DateTime(minDateTime.Year, minDateTime.Month, 1);
+                        maxDateTime = new DateTime(maxDateTime.Year, maxDateTime.Month, 1);
+                        break;
+                    case DateTimePickerMode.Date:
+                        minDateTime = new DateTime(minDateTime.Year, minDateTime.Month, minDateTime.Day);
+                        maxDateTime = new DateTime(maxDateTime.Year, maxDateTime.Month, maxDateTime.Day);
+                        break;
+                    case DateTimePickerMode.DateHour:
+                        minDateTime = new DateTime(minDateTime.Year, minDateTime.Month, minDateTime.Day, minDateTime.Hour, 0, 0);
+                        maxDateTime = new DateTime(maxDateTime.Year, maxDateTime.Month, maxDateTime.Day, maxDateTime.Hour, 0, 0);
+                        break;
+                    case DateTimePickerMode.DateMinute:
+                        minDateTime = new DateTime(minDateTime.Year, minDateTime.Month, minDateTime.Day, minDateTime.Hour, minDateTime.Minute, 0);
+                        maxDateTime = new DateTime(maxDateTime.Year, maxDateTime.Month, maxDateTime.Day, maxDateTime.Hour, maxDateTime.Minute, 0);
+                        break;
+                    case DateTimePickerMode.Hour:
+                        minDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, minDateTime.Hour, 0, 0);
+                        maxDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, maxDateTime.Hour, 0, 0);
+                        break;
+                    case DateTimePickerMode.Minute:
+                        minDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, minDateTime.Hour, minDateTime.Minute, 0);
+                        maxDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, maxDateTime.Hour, maxDateTime.Minute, 0);
+                        break;
+                    case DateTimePickerMode.Time:
+                        minDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, minDateTime.Hour, minDateTime.Minute, minDateTime.Second);
+                        maxDateTime = new DateTime(dateTime.Value.Year, dateTime.Value.Month, dateTime.Value.Day, maxDateTime.Hour, maxDateTime.Minute, maxDateTime.Second);
+                        break;
+                }
+
+                if (dateTime < minDateTime)
+                {
+                    return minDateTime;
+                }
+
+                if (dateTime > maxDateTime)
+                {
+                    return maxDateTime;
+                }
+            }
+
+            return dateTime;
         }
 
         private static void OnDateTimeLimitChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -797,10 +885,10 @@ namespace Panuon.WPF.UI
                             textStringFormat = "HH:mm:ss";
                             break;
                         case DateTimePickerMode.Hour:
-                            textStringFormat = "HH:00:00";
+                            textStringFormat = "HH:00";
                             break;
                         case DateTimePickerMode.Minute:
-                            textStringFormat = "HH:mm:00";
+                            textStringFormat = "HH:mm";
                             break;
                     }
                 }
@@ -821,31 +909,33 @@ namespace Panuon.WPF.UI
 
         private void UpdateMode()
         {
-            if (_calendarX == null)
+            if (_calendarX != null)
             {
-                return;
-            }
-
-            switch (Mode)
-            {
-                case DateTimePickerMode.Year:
-                    _calendarX.Mode = CalendarXMode.Year;
-                    break;
-                case DateTimePickerMode.Month:
-                    _calendarX.Mode = CalendarXMode.Month;
-                    break;
-                case DateTimePickerMode.Date:
-                    _calendarX.Mode = CalendarXMode.Date;
-                    break;
-                case DateTimePickerMode.Hour:
-                    _timeSelector.Mode = TimeSelectorMode.Hour;
-                    break;
-                case DateTimePickerMode.Minute:
-                    _timeSelector.Mode = TimeSelectorMode.Minute;
-                    break;
-                case DateTimePickerMode.Time:
-                    _timeSelector.Mode = TimeSelectorMode.Time;
-                    break;
+                switch (Mode)
+                {
+                    case DateTimePickerMode.Year:
+                        _calendarX.Mode = CalendarXMode.Year;
+                        break;
+                    case DateTimePickerMode.Month:
+                        _calendarX.Mode = CalendarXMode.Month;
+                        break;
+                    case DateTimePickerMode.Date:
+                        _calendarX.Mode = CalendarXMode.Date;
+                        break;
+                    case DateTimePickerMode.Hour:
+                        _timeSelector.Mode = TimeSelectorMode.Hour;
+                        break;
+                    case DateTimePickerMode.Minute:
+                        _timeSelector.Mode = TimeSelectorMode.Minute;
+                        break;
+                    case DateTimePickerMode.Time:
+                        _timeSelector.Mode = TimeSelectorMode.Time;
+                        break;
+                    case DateTimePickerMode.DateTime:
+                    case DateTimePickerMode.DateHour:
+                    case DateTimePickerMode.DateMinute:
+                        break;
+                }
             }
         }
         private void UpdateSelectedDateTimeFromText()
@@ -869,11 +959,13 @@ namespace Panuon.WPF.UI
 
         private void UpdateSelectedDateTime()
         {
-            if (_isInternalUpdateSelectedDate)
+            if (_isInternalUpdateSelectedDate
+                || _isInternalUpdateSelectedTime)
             {
                 return;
             }
             _isInternalUpdateSelectedDate = true;
+            _isInternalUpdateSelectedTime = true;
 
             switch (Mode)
             {
@@ -893,6 +985,7 @@ namespace Panuon.WPF.UI
             }
 
             _isInternalUpdateSelectedDate = false;
+            _isInternalUpdateSelectedTime = false;
         }
 
         private void UpdateTimeSelectorTimeLimit()
@@ -902,11 +995,9 @@ namespace Panuon.WPF.UI
                 return;
             }
 
-            var minDateTime = MinDateTime;
-            var maxDateTime = MaxDateTime;
-
-            if (_calendarX != null
-                && Mode != DateTimePickerMode.Time)
+            var minDateTime = MinDateTime ?? DateTime.MinValue;
+            var maxDateTime = MaxDateTime ?? DateTime.MaxValue;
+            if (_calendarX != null && Mode != DateTimePickerMode.Time)
             {
                 var selectedDate = _calendarX.SelectedDate;
                 if (selectedDate.Date.Equals(minDateTime.Date))
@@ -930,7 +1021,6 @@ namespace Panuon.WPF.UI
                 _timeSelector.MinTime = minDateTime.GetTime();
                 _timeSelector.MaxTime = maxDateTime.GetTime();
             }
-
         }
 
         private void SetSelectedDateTime(DateTime? selectedDateTime)

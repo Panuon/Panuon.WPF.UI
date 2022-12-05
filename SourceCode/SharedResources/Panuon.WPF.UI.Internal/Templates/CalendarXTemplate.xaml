@@ -65,12 +65,12 @@
                                   Tag="Forward"
                                   Style="{TemplateBinding PageTurnButtonStyle}" />
                 </Grid>
-                <local:SeparatorX x:Name="SprtSeparator"
-                                  Grid.Row="1"
-                                  Stroke="{TemplateBinding HeaderSeparatorBrush}"
-                                  StrokeThickness="{TemplateBinding HeaderSeparatorThickness}"
-                                  Margin="{TemplateBinding HeaderSeparatorMargin}"
-                                  Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="1"
+                           Fill="{TemplateBinding HeaderSeparatorBrush}"
+                           Height="{TemplateBinding HeaderSeparatorThickness}"
+                           Margin="{TemplateBinding HeaderSeparatorMargin}"
+                           Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
                 <local:CarouselPanel Grid.Row="2"
                                      Animation="{TemplateBinding Animation}"
                                      AnimationEase="{TemplateBinding AnimationEase}"

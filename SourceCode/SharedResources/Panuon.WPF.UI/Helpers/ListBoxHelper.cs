@@ -609,7 +609,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsSeparatorBrushProperty =
-            DependencyProperty.RegisterAttached("ItemsSeparatorBrush", typeof(Brush), typeof(ListBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSeparatorBrush", typeof(Brush), typeof(ListBoxHelper), new PropertyMetadata(Brushes.LightGray));
         #endregion
 
         #region ItemsSeparatorThickness
@@ -624,7 +624,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsSeparatorThicknessProperty =
-            DependencyProperty.RegisterAttached("ItemsSeparatorThickness", typeof(double), typeof(ListBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSeparatorThickness", typeof(double), typeof(ListBoxHelper), new PropertyMetadata(1d));
         #endregion
 
         #region ItemsSeparatorMargin
@@ -654,9 +654,23 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ItemsSeparatorVisibilityProperty =
-            DependencyProperty.RegisterAttached("ItemsSeparatorVisibility", typeof(Visibility), typeof(ListBoxHelper));
+            DependencyProperty.RegisterAttached("ItemsSeparatorVisibility", typeof(Visibility), typeof(ListBoxHelper), new PropertyMetadata(Visibility.Collapsed));
         #endregion
 
+        #region ItemsSeparatorOrientation
+        public static Orientation GetItemsSeparatorOrientation(ListBox listBox)
+        {
+            return (Orientation)listBox.GetValue(ItemsSeparatorOrientationProperty);
+        }
+
+        public static void SetItemsSeparatorOrientation(ListBox listBox, Orientation value)
+        {
+            listBox.SetValue(ItemsSeparatorOrientationProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSeparatorOrientationProperty =
+            DependencyProperty.RegisterAttached("ItemsSeparatorOrientation", typeof(Orientation), typeof(ListBoxHelper), new PropertyMetadata(Orientation.Vertical));
+        #endregion
 
         #endregion
 

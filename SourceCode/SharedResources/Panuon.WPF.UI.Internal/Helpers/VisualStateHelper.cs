@@ -544,7 +544,7 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)d;
             if (!(bool)e.NewValue)
             {
-                Element_MouseLeave(element, null);
+                Element_Unhover(element, null);
             }
         }
 
@@ -553,11 +553,11 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)d;
             if ((bool)e.NewValue)
             {
-                Element_MouseEnter(element, null);
+                Element_Hover(element, null);
             }
             else
             {
-                Element_MouseLeave(element, null);
+                Element_Unhover(element, null);
             }
         }
 
@@ -732,7 +732,7 @@ namespace Panuon.WPF.UI.Internal
             }
         }
 
-        private static void Element_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private static void Element_Hover(object sender, System.Windows.Input.MouseEventArgs e)
         {
             var element = (FrameworkElement)sender;
 
@@ -809,10 +809,9 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, hoverShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
-
         }
 
-        private static void Element_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private static void Element_Unhover(object sender, System.Windows.Input.MouseEventArgs e)
         {
             var element = (FrameworkElement)sender;
 

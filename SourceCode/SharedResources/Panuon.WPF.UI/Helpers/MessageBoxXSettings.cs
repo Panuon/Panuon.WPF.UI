@@ -60,6 +60,20 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region TextBoxStyle
+        public Style TextBoxStyle
+        {
+            get
+            {
+                return Setting.TextBoxStyle;
+            }
+            set
+            {
+                Setting.TextBoxStyle = value;
+            }
+        }
+        #endregion
+
         #region WindowXStyle
         public Style WindowXStyle
         {
@@ -74,6 +88,7 @@ namespace Panuon.WPF.UI
         }
 
         #endregion
+
 
         #region ContentTemplate
         public DataTemplate ContentTemplate

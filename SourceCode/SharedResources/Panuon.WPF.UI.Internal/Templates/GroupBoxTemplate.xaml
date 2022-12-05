@@ -61,13 +61,12 @@
                                         Content="{Binding Path=(local:GroupBoxHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
                 </Border>
-                <local:SeparatorX x:Name="SprtSeparator"
-                                  Grid.Row="1"
-                                  VerticalAlignment="Center"
-                                  Stroke="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  StrokeThickness="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Margin="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  Visibility="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="1"
+                           Fill="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Height="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Margin="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Visibility="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter Grid.Row="2"
                                   Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

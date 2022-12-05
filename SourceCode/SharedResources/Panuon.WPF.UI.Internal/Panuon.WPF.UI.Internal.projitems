@@ -33,7 +33,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMultiplyByMultiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntPlusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GetEnumDescriptionConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLastItemInItemsControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NonnullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />

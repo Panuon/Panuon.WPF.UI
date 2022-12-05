@@ -16,8 +16,11 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
             <local:ContentControlX x:Name="CcMain"
-                               Grid.Column="1"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -46,13 +49,12 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </local:ContentControlX>
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Grid.Row="1"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:ListBoxItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Grid.Row="1"
+                       Fill="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:ListBoxItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
@@ -102,6 +104,19 @@
                         Property="BorderThickness"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <DataTrigger Value="False">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RectSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
             <Trigger Property="local:ListBoxItemHelper.RemoveButtonVisibility"
                      Value="Collapsed">
                 <Setter TargetName="BtnRemove"
@@ -113,6 +128,21 @@
                 <Setter TargetName="BtnRemove"
                         Property="Visibility"
                         Value="Visible" />
+            </Trigger>
+            <Trigger Property="local:ListBoxItemHelper.SeparatorOrientation"
+                     Value="Horizontal">
+                <Setter TargetName="RectSeparator"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="RectSeparator"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="RectSeparator"
+                        Property="Width"
+                        Value="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="RectSeparator"
+                        Property="Height"
+                        Value="NaN" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -162,14 +192,28 @@
             <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               Margin="{TemplateBinding Padding}" />
-            <local:SeparatorX x:Name="SprtSeparator"
-                              Grid.Row="1"
-                              VerticalAlignment="Center"
-                              Stroke="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              StrokeThickness="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:ListBoxItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Rectangle x:Name="RectSeparator"
+                       Grid.Row="1"
+                       Fill="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Height="{Binding Path=(local:ListBoxItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Margin="{Binding Path=(local:ListBoxItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Value="False">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RectSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     
