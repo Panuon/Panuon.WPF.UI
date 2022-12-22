@@ -176,13 +176,13 @@
         <Setter Property="local:WindowXCaption.CloseButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.BackstageMinimizeButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.BackstageMaximizeButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.BackstageCloseButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.CloseButtonStyle), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:WindowXCaption.CloseButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.Background"
-                Value="{Binding Background, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXModalDialog.ButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
         <Setter Property="local:WindowXModalDialog.ButtonPanelHorizontalAlignment"

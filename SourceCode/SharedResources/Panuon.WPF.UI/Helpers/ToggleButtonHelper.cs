@@ -1,5 +1,6 @@
 ﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -164,6 +165,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ToggleButtonHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(ToggleButton toggleButton)
+        {
+            return (Thickness?)toggleButton.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(ToggleButton toggleButton, Thickness? value)
+        {
+            toggleButton.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ToggleButtonHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(ToggleButton toggleButton)
+        {
+            return (CornerRadius?)toggleButton.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(ToggleButton toggleButton, CornerRadius? value)
+        {
+            toggleButton.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ToggleButtonHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(ToggleButton toggleButton)
         {
@@ -265,6 +296,81 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedContentProperty =
             DependencyProperty.RegisterAttached("CheckedContent", typeof(object), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region ClickBackground
+        public static Brush GetClickBackground(ToggleButton toggleButton)
+        {
+            return (Brush)toggleButton.GetValue(ClickBackgroundProperty);
+        }
+
+        public static void SetClickBackground(ToggleButton toggleButton, Brush value)
+        {
+            toggleButton.SetValue(ClickBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBackgroundProperty =
+            DependencyProperty.RegisterAttached("ClickBackground", typeof(Brush), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region ClickForeground
+        public static Brush GetClickForeground(ToggleButton toggleButton)
+        {
+            return (Brush)toggleButton.GetValue(ClickForegroundProperty);
+        }
+
+        public static void SetClickForeground(ToggleButton toggleButton, Brush value)
+        {
+            toggleButton.SetValue(ClickForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickForegroundProperty =
+            DependencyProperty.RegisterAttached("ClickForeground", typeof(Brush), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region ClickBorderBrush
+        public static Brush GetClickBorderBrush(ToggleButton toggleButton)
+        {
+            return (Brush)toggleButton.GetValue(ClickBorderBrushProperty);
+        }
+
+        public static void SetClickBorderBrush(ToggleButton toggleButton, Brush value)
+        {
+            toggleButton.SetValue(ClickBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ClickBorderBrush", typeof(Brush), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region ClickBorderThickness
+        public static Thickness? GetClickBorderThickness(ToggleButton toggleButton)
+        {
+            return (Thickness?)toggleButton.GetValue(ClickBorderThicknessProperty);
+        }
+
+        public static void SetClickBorderThickness(ToggleButton toggleButton, Thickness? value)
+        {
+            toggleButton.SetValue(ClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(ToggleButtonHelper));
+        #endregion
+
+        #region ClickCornerRadius
+        public static CornerRadius? GetClickCornerRadius(ToggleButton toggleButton)
+        {
+            return (CornerRadius?)toggleButton.GetValue(ClickCornerRadiusProperty);
+        }
+
+        public static void SetClickCornerRadius(ToggleButton toggleButton, CornerRadius? value)
+        {
+            toggleButton.SetValue(ClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(ToggleButtonHelper));
         #endregion
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -164,6 +165,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(RepeatButtonHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(RepeatButton repeatButton)
+        {
+            return (Thickness?)repeatButton.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(RepeatButton repeatButton, Thickness? value)
+        {
+            repeatButton.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(RepeatButtonHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(RepeatButton repeatButton)
+        {
+            return (CornerRadius?)repeatButton.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(RepeatButton repeatButton, CornerRadius? value)
+        {
+            repeatButton.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(RepeatButtonHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(RepeatButton repeatButton)
         {
@@ -237,6 +268,22 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty ClickBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(RepeatButtonHelper));
         #endregion
+
+        #region ClickCornerRadius
+        public static CornerRadius? GetClickCornerRadius(RepeatButton repeatButton)
+        {
+            return (CornerRadius?)repeatButton.GetValue(ClickCornerRadiusProperty);
+        }
+
+        public static void SetClickCornerRadius(RepeatButton repeatButton, CornerRadius? value)
+        {
+            repeatButton.SetValue(ClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(RepeatButtonHelper));
+        #endregion
+
         #endregion
     }
 }

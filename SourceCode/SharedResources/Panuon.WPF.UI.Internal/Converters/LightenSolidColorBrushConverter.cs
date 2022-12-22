@@ -16,6 +16,10 @@ namespace Panuon.WPF.UI.Internal.Converters
                 return value;
             }
             double.TryParse(parameter?.ToString(), out double percent);
+            if(percent == 1)
+            {
+                return value;
+            }
             if (percent == 0)
             {
                 percent = 1;

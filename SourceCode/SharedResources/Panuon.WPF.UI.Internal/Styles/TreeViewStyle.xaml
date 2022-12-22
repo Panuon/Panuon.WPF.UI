@@ -61,7 +61,7 @@
         <Setter Property="local:IconHelper.Margin"
                 Value="0,0,5,0" />
         <Setter Property="local:TreeViewItemHelper.InternalPadding"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TreeViewHelper.ItemsPadding"
                 Value="15,0,0,0" />
         <Setter Property="local:TreeViewHelper.ItemsBackground"
@@ -79,15 +79,15 @@
         <Setter Property="local:TreeViewHelper.ItemsSeparatorVisibility"
                 Value="Collapsed" />
         <Setter Property="local:TreeViewHelper.ItemsRulerLineBrush"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TreeViewHelper.ItemsRulerLineThickness" 
                 Value="1" />
         <Setter Property="local:TreeViewHelper.ItemsRulerLineVisiblity"
                 Value="None" />
         <Setter Property="local:TreeViewHelper.ItemsExpandedToggleBrush"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TreeViewHelper.ItemsToggleBrush"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="VerticalContentAlignment"

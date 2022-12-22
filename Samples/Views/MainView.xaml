@@ -77,7 +77,7 @@
                             <DataTemplate>
                                 <Button Margin="0,0,10,10"
                                         Background="Transparent"
-                                        Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}}"
+                                        Width="{Binding ActualHeight, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=100, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                         ToolTip="{Binding ViewPath}"
                                         VerticalContentAlignment="Stretch"
                                         HorizontalContentAlignment="Stretch"

@@ -64,8 +64,42 @@
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="NaN" />
+        <Setter Property="Background"
+                Value="Transparent" />
         <Setter Property="BorderThickness"
                 Value="0" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBackground"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsShadowColor"
+                Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBackground"
+                Value="{Binding ItemsHoverBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverForeground"
+                Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBorderBrush"
+                Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverShadowColor"
+                Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBackground"
+                Value="{Binding ItemsCheckedBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedForeground"
+                Value="{Binding ItemsCheckedForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBorderBrush"
+                Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBorderThickness"
+                Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedShadowColor"
+                Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsSpecialDayHighlightTemplate"
+                Value="{Binding ItemsSpecialDayHighlightTemplate, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
@@ -76,6 +110,36 @@
                 Value="NaN" />
         <Setter Property="BorderThickness"
                 Value="0" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBackground"
+                Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBorderBrush"
+                Value="{Binding ItemsBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsBorderThickness"
+                Value="{Binding ItemsBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsShadowColor"
+                Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBackground"
+                Value="{Binding ItemsHoverBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverForeground"
+                Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBorderBrush"
+                Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverShadowColor"
+                Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBackground"
+                Value="{Binding ItemsCheckedBackground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedForeground"
+                Value="{Binding ItemsCheckedForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBorderBrush"
+                Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedBorderThickness"
+                Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedShadowColor"
+                Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.DateTimePickerStyle}"
@@ -144,6 +208,16 @@
                 Value="5,0,0,0" />
         <Setter Property="WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBackground"
+                Value="#F1F1F1" />
+        <Setter Property="ItemsCheckedBackground"
+                Value="#EAEAEA" />
+        <Setter Property="ItemsBackground"
+                Value="Transparent" />
+        <Setter Property="ItemsBorderThickness"
+                Value="0" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DateTimePickerTemplate}}" />
         <Style.Triggers>
