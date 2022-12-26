@@ -150,6 +150,18 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ToggleShadowColor", typeof(Color?), typeof(Switch));
         #endregion
 
+        #region ToggleCornerRadius
+        public CornerRadius ToggleCornerRadius
+        {
+            get { return (CornerRadius)GetValue(ToggleCornerRadiusProperty); }
+            set { SetValue(ToggleCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleCornerRadiusProperty =
+            DependencyProperty.Register("ToggleCornerRadius", typeof(CornerRadius), typeof(Switch));
+        #endregion
+
+
         #region CheckedBackground
         public Brush CheckedBackground
         {

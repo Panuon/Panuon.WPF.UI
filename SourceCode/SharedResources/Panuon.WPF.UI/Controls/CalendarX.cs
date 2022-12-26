@@ -129,6 +129,12 @@ namespace Panuon.WPF.UI
             new ComponentResourceKey(typeof(WindowXCaption), nameof(PageTurnButtonStyle));
         #endregion
 
+        #region Internal Properties
+
+        internal DateTimePicker ParentDateTimePicker { get; set; }
+
+        #endregion
+
         #region Properties
 
         #region Culture
@@ -1026,6 +1032,12 @@ namespace Panuon.WPF.UI
                     break;
             }
             SetCurrentValue(SelectedDateProperty, dateTime);
+
+            if (ParentDateTimePicker != null
+                && ParentDateTimePicker.SelectedDateTime == null)
+            {
+                RaiseEvent(new SelectedValueChangedRoutedEventArgs<DateTime>(SelectedDateChangedEvent, dateTime, dateTime));
+            }
         }
         #endregion
     }

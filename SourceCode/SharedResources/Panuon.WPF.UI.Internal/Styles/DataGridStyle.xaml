@@ -190,6 +190,16 @@
                 <Setter Property="Foreground"
                         Value="{Binding Path=(local:DataGridHelper.RowHoverForeground),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
             </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedForeground),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground"
+                        Value="{Binding Path=(local:DataGridHelper.RowSelectedForeground),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -259,7 +269,7 @@
         <Setter Property="local:DataGridHelper.SortArrowVisibility"
                 Value="CollapsedWhenUnsorted" />
         <Setter Property="local:DataGridHelper.RowHeaderForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.RowHeaderBackground"
                 Value="#F8F8F8" />
         <Setter Property="local:DataGridHelper.RowHeaderHoverBackground"
@@ -267,29 +277,29 @@
         <Setter Property="local:DataGridHelper.RowHeaderClickBackground"
                 Value="#F8F8F8" />
         <Setter Property="local:DataGridHelper.RowHeaderSeparatorBrush"
-                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderVerticalContentAlignment"
                 Value="Center" />
         <Setter Property="local:DataGridHelper.ColumnHeaderHorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPadding"
-                Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderBackground"
                 Value="#F8F8F8" />
         <Setter Property="local:DataGridHelper.ColumnHeaderFontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderFontWeight"
-                Value="{Binding FontWeight, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding FontWeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderHoverBackground"
                 Value="#FCFCFC" />
         <Setter Property="local:DataGridHelper.ColumnHeaderClickBackground"
                 Value="#FAFAFA" />
         <Setter Property="local:DataGridHelper.ColumnHeaderSeparatorBrush"
-                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPanelSeparatorBrush"
-                Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding HorizontalGridLinesBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.ColumnHeaderPanelSeparatorVisibility"
                 Value="Visible" />
         <Setter Property="local:DataGridHelper.ResizeThumbThickness"
@@ -299,9 +309,9 @@
         <Setter Property="local:DataGridHelper.RowSelectedBackground"
                 Value="#F8F8F8" />
         <Setter Property="local:DataGridHelper.RowSelectedForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.CellSelectedForeground"
-                Value="{Binding Path=(local:DataGridHelper.RowSelectedForeground), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:DataGridHelper.RowSelectedForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DataGridHelper.SelectAllButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SelectAllButtonStyle, TypeInTargetAssembly={x:Type local:DataGridHelper}}}" />
         <Setter Property="local:DataGridHelper.SortArrowTransformControlStyle"

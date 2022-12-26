@@ -77,6 +77,12 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region Internal Properties
+
+        internal DateTimePicker ParentDateTimePicker { get; set; }
+
+        #endregion
+
         #region Properties
 
         #region Culture
@@ -347,14 +353,14 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ItemsBorderThickness
-        public Thickness? ItemsBorderThickness
+        public Thickness ItemsBorderThickness
         {
-            get { return (Thickness?)GetValue(ItemsBorderThicknessProperty); }
+            get { return (Thickness)GetValue(ItemsBorderThicknessProperty); }
             set { SetValue(ItemsBorderThicknessProperty, value); }
         }
 
         public static readonly DependencyProperty ItemsBorderThicknessProperty =
-            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness?), typeof(TimeSelector));
+            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness), typeof(TimeSelector));
         #endregion
 
         #region ItemsCornerRadius
@@ -728,6 +734,13 @@ namespace Panuon.WPF.UI
                     break;
             }
             SetCurrentValue(SelectedTimeProperty, dateTime);
+
+
+            if (ParentDateTimePicker != null
+                && ParentDateTimePicker.SelectedDateTime == null)
+            {
+                RaiseEvent(new SelectedValueChangedRoutedEventArgs<DateTime>(SelectedTimeChangedEvent, dateTime, dateTime));
+            }
         }
         #endregion
     }

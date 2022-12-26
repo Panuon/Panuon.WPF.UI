@@ -167,7 +167,9 @@
             <Setter Property="pu:CheckBoxHelper.CheckedBorderThickness"
                     Value="0" />
             <Setter Property="pu:CheckBoxHelper.CheckedGlyphBrush"
-                    Value="#FFFFFF" />
+                    Value="#252526" />
+            <Setter Property="pu:CheckBoxHelper.GlyphThickness"
+                    Value="1.5" />
         </Style>
 
         <Style x:Key="SliderStyle"
@@ -298,6 +300,42 @@
             </Setter>
         </Style>
 
+        <Style x:Key="DateTimePickerStyle"
+               TargetType="pu:DateTimePicker">
+            <Setter Property="CornerRadius"
+                    Value="2" />
+            <Setter Property="WatermarkForeground"
+                    Value="#4A4A4A" />
+            <Setter Property="Height"
+                    Value="35" />
+            <Setter Property="Padding"
+                    Value="5,0" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="#F1F1F1" />
+            <Setter Property="FocusedBorderBrush"
+                    Value="#6CBCEA" />
+            <Setter Property="FocusedShadowColor"
+                    Value="#6CBCEA" />
+            <Setter Property="FocusedWatermarkForeground"
+                    Value="#AAAAAA" />
+            <Setter Property="pu:DropDownHelper.ShadowColor"
+                    Value="#35303D" />
+            <Setter Property="pu:DropDownHelper.Background"
+                    Value="#252526" />
+            <Setter Property="ItemsHoverBackground"
+                    Value="#44FFFFFF" />
+            <Setter Property="ItemsHoverForeground"
+                    Value="#FFFFFF" />
+            <Setter Property="ItemsCheckedBackground"
+                    Value="#AAFFFFFF" />
+            <Setter Property="ItemsCheckedForeground"
+                    Value="#252526" />
+            <Setter Property="ItemsCornerRadius"
+                    Value="2" />
+        </Style>
+
     </pu:WindowX.Resources>
 
     <ScrollViewer Margin="20,10">
@@ -335,6 +373,13 @@
                           GroupName="MyFormGroup">
                 <TextBox x:Name="TbAge"
                          Style="{StaticResource EditorTextBoxStyle}" />
+            </pu:FormGroup>
+            <pu:FormGroup Style="{StaticResource InputFormGroupStyle}"
+                          Header="Birthday : "
+                          GroupName="MyFormGroup">
+                <pu:DateTimePicker x:Name="DtpBirthday"
+                                   DefaultDateTime="{x:Null}"
+                                   Style="{StaticResource DateTimePickerStyle}" />
             </pu:FormGroup>
             <pu:FormGroup Style="{StaticResource InputFormGroupStyle}"
                           Header="Color:"

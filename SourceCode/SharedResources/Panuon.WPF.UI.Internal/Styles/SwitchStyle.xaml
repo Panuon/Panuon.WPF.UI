@@ -40,7 +40,9 @@
         <Setter Property="ToggleShadowColor"
                 Value="LightGray" />
         <Setter Property="CornerRadius"
-                Value="{Binding BoxHeight, Converter={StaticResource {x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}}, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding BoxHeight, Converter={StaticResource {x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ToggleCornerRadius"
+                Value="{Binding ToggleSize, Converter={StaticResource {x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.SwitchTemplate}}" />
         <Style.Triggers>

@@ -37,6 +37,7 @@
     <icv:DrawerBorderMarginConverter x:Key="{x:Static irs:ConverterKeys.DrawerBorderMarginConverter}" />
     <icv:DropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.DropDownMarginConverter}" />
     <icv:DropDownMinWidthConverter x:Key="{x:Static irs:ConverterKeys.DropDownMinWidthConverter}" />
+    <icv:DropDownOffsetConverter x:Key="{x:Static irs:ConverterKeys.DropDownOffsetConverter}" />
     <icv:DropShadowEffectWithDepthConverter x:Key="{x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}" />
     <icv:FalseToCollapseConverter x:Key="{x:Static rs:ConverterKeys.FalseToCollapseConverter}" />
     <icv:FalseToHiddenConverter x:Key="{x:Static rs:ConverterKeys.FalseToHiddenConverter}" />

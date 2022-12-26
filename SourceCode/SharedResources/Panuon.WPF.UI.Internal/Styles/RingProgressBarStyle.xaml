@@ -11,6 +11,10 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.RingProgressBarStyle}"
            TargetType="local:RingProgressBar">
+        <Setter Property="Minimum"
+                Value="0" />
+        <Setter Property="Maximum"
+                Value="100" />
         <Setter Property="BorderThickness"
                 Value="8" />
         <Setter Property="BorderBrush"

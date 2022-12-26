@@ -36,7 +36,7 @@
                             <i:IconPresenter x:Name="IpIcon"
                                              Content="{TemplateBinding Icon}"
                                              Source="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                            <ContentControl x:Name="ccChecked"
+                            <ContentControl x:Name="CcChecked"
                                             Visibility="Collapsed"
                                             Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                             Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
@@ -53,11 +53,9 @@
                                             ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                             ContentTemplate="{Binding Path=(local:ContextMenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
                         </Grid>
-                        <ContentPresenter x:Name="cpHeader"
+                        <ContentPresenter x:Name="CpHeader"
                                           Grid.Column="1"
                                           RecognizesAccessKey="True"
-                                          TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -113,11 +111,8 @@
                                      Mode="OneWay" />
                         </MultiBinding>
                     </local:PopupX.VerticalOffset>
-                    <local:ContentControlX Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                       BorderBrush="{TemplateBinding BorderBrush}"
-                                       BorderThickness="{TemplateBinding BorderThickness}"
-                                       CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
-                        <local:ContentControlX.Margin>
+                    <Grid x:Name="GrdSubmenu">
+                        <Grid.Margin>
                             <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
@@ -129,36 +124,49 @@
                                          RelativeSource="{RelativeSource AncestorType=ContextMenu}"
                                          Mode="OneWay" />
                             </MultiBinding>
-                        </local:ContentControlX.Margin>
-                        <local:ContentControlX.Effect>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                                <Binding Path="(local:DropDownHelper.ShadowColor)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.Direction)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.Opacity)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                         RelativeSource="{RelativeSource AncestorType=ContextMenu}"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </local:ContentControlX.Effect>
-                        <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                      HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                      Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
-                            <StackPanel IsItemsHost="True"
-                                        KeyboardNavigation.DirectionalNavigation="Cycle" />
-                        </ScrollViewer>
-                    </local:ContentControlX>
+                        </Grid.Margin>
+                        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
+                            <Border.Effect>
+                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                    <Binding Path="(local:DropDownHelper.ShadowColor)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.Direction)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.Opacity)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                             RelativeSource="{RelativeSource AncestorType=ContextMenu}"
+                                             Mode="OneWay" />
+                                </MultiBinding>
+                            </Border.Effect>
+                        </Border>
+                        <i:ClippingBorder SnapsToDevicePixels="True"
+                                          CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
+                            <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                          HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
+                                <StackPanel IsItemsHost="True"
+                                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+                            </ScrollViewer>
+                        </i:ClippingBorder>
+                        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}"
+                                IsHitTestVisible="False" />
+                    </Grid>
                 </local:PopupX>
             </Grid>
             <Rectangle x:Name="RectSeparator"
@@ -189,7 +197,7 @@
                     <Condition Property="IsCheckable"
                                Value="True" />
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ccChecked"
+                <Setter TargetName="CcChecked"
                         Property="Visibility"
                         Value="Visible" />
                 <Setter TargetName="IpIcon"
@@ -203,18 +211,12 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpHeader"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpHeader"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcMain"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
+                <Setter TargetName="CcChecked"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -259,18 +261,12 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpHeader"
-                        Property="TextBlock.Foreground"
+                <Setter TargetName="CcMain"
+                        Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpHeader"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcChecked"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -304,18 +300,12 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="cpHeader"
-                        Property="TextBlock.Foreground"
+                <Setter TargetName="CcMain"
+                        Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="cpHeader"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextBlock.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="ccChecked"
-                        Property="TextElement.Foreground"
-                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcChecked"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />

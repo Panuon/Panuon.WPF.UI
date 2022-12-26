@@ -36,57 +36,58 @@
                             </Border.RenderTransform>
                         </Border>
                     </Border>
-                    <Border x:Name="BdrContainer"
-                            Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                            HorizontalAlignment="Right">
-                        <Border.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SwitchToggleMarginConverter}}">
-                                <Binding Path="BoxWidth"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="ActualWidth"
-                                         RelativeSource="{RelativeSource Self}"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </Border.Margin>
-                        <Border x:Name="BdrToggle"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Height="{TemplateBinding ToggleSize}"
-                                Width="{TemplateBinding ToggleSize}"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                Background="{TemplateBinding ToggleBrush}">
-                            <Border.Effect>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                                    <Binding Path="InternalToggleShadowColor"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:ShadowHelper.Direction)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:ShadowHelper.Opacity)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                </MultiBinding>
-                            </Border.Effect>
-                        </Border>
-                    </Border>
+
                     <Border x:Name="BdrBorder"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}" />
                 </Grid>
+                <Border x:Name="BdrContainer"
+                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        HorizontalAlignment="Right">
+                    <Border.Margin>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SwitchToggleMarginConverter}}">
+                            <Binding Path="BoxWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Border.Margin>
+                    <Border x:Name="BdrToggle"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Height="{TemplateBinding ToggleSize}"
+                            Width="{TemplateBinding ToggleSize}"
+                            CornerRadius="{TemplateBinding ToggleCornerRadius}"
+                            Background="{TemplateBinding ToggleBrush}">
+                        <Border.Effect>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <Binding Path="InternalToggleShadowColor"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </Border.Effect>
+                    </Border>
+                </Border>
                 <ContentPresenter x:Name="CpContent"
                                   Grid.Column="1"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

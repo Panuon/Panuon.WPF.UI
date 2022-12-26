@@ -14,17 +14,17 @@
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(local:ToolTipHelper.Foreground), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
-                Value="{Binding Path=(local:ToolTipHelper.Background), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="BorderBrush"
-                Value="{Binding Path=(local:ToolTipHelper.BorderBrush), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
-                Value="{Binding Path=(local:ToolTipHelper.BorderThickness), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.BorderThickness), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="FontSize"
-                Value="{Binding Path=(local:ToolTipHelper.FontSize), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.FontSize), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Padding"
-                Value="{Binding Path=(local:ToolTipHelper.Padding), RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Path=(local:ToolTipHelper.Padding), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="VerticalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HorizontalOffset"

@@ -24,7 +24,7 @@
         <TextBlock Text="&#xe92e;"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ContentControl}, Mode=OneWay}"
                    FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
@@ -124,7 +124,7 @@
         TargetType="{x:Type ContextMenu}">
         <Style.Resources>
             <Style TargetType="MenuItem"
-                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
+                   BasedOn="{StaticResource {x:Static local:ContextMenuHelper.MenuItemStyle}}" />
         </Style.Resources>
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
@@ -176,8 +176,32 @@
                 Value="#F1F1F1" />
         <Setter Property="local:ContextMenuHelper.ItemsIconWidth"
                 Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.CornerRadius"
+                Value="{Binding Path=(local:ContextMenuHelper.CornerRadius), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Background"
+                Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.BorderBrush"
+                Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.BorderThickness"
+                Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Width"
+                Value="{Binding Width, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.Height"
+                Value="{Binding Height, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MinWidth"
+                Value="{Binding MinWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MinHeight"
+                Value="{Binding MinHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MaxWidth"
+                Value="{Binding MaxWidth, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.MaxHeight"
+                Value="{Binding MaxHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:DropDownHelper.ShadowColor"
+                Value="{Binding Path=(local:ContextMenuHelper.ShadowColor), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="RightBottom" />
+        <Setter Property="local:DropDownHelper.ShadowColor"
+                Value="{Binding Path=(local:ContextMenuHelper.ShadowColor), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:ContextMenuHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"

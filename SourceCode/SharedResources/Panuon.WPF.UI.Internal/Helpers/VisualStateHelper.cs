@@ -737,6 +737,7 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)sender;
 
             var propertyValues = new Dictionary<DependencyProperty, object>();
+
             if (!GetHoverBackgroundLock((DependencyObject)sender) 
                 && element.GetValue(HoverBackgroundProperty) is Brush hoverBackground)
             {

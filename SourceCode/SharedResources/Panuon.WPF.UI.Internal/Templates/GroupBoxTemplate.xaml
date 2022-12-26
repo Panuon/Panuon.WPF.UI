@@ -79,7 +79,7 @@
                 <Setter TargetName="BdrHeader"
                         Property="Grid.Row"
                         Value="4" />
-                <Setter TargetName="SprtSeparator"
+                <Setter TargetName="RectSeparator"
                         Property="Grid.Row"
                         Value="3" />
             </Trigger>

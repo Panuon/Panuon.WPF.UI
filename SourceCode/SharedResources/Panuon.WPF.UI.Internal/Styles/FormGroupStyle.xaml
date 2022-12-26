@@ -10,7 +10,8 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}">
-        <TextBlock TextWrapping="Wrap"
+        <TextBlock Foreground="{Binding MessageForeground, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
+                   TextWrapping="Wrap"
                    TextTrimming="CharacterEllipsis"
                    Margin="0,3,0,0">
             <Run x:Name="RunIcon"
@@ -56,13 +57,13 @@
         <Setter Property="VerticalHeaderAlignment"
                 Value="Center" />
         <Setter Property="HeaderFontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HeaderFontWeight"
-                Value="{Binding FontWeight, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding FontWeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HeaderForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="MessageForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ErrorMessageForeground"
                 Value="Red" />
         <Setter Property="InfoMessageForeground"

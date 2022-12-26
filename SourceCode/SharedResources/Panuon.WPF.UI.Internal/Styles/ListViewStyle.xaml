@@ -36,11 +36,11 @@
         <Setter Property="local:ListViewHelper.ColumnHeaderVerticalContentAlignment"
                 Value="Center" />
         <Setter Property="local:ListViewHelper.ColumnHeaderPadding"
-                Value="{Binding Padding, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderBackground"
                 Value="Transparent" />
         <Setter Property="local:ListViewHelper.ColumnHeaderForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderHeight"
                 Value="35" />
         <Setter Property="local:ListViewHelper.ColumnHeaderSeparatorVisibility"

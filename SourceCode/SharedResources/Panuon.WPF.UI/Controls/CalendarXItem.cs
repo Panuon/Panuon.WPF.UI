@@ -30,6 +30,17 @@ namespace Panuon.WPF.UI
             EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
         #endregion
 
+        #region Pressed
+        public event RoutedEventHandler Pressed
+        {
+            add { AddHandler(PressedEvent, value); }
+            remove { RemoveHandler(PressedEvent, value); }
+        }
+
+        public static readonly RoutedEvent PressedEvent =
+            EventManager.RegisterRoutedEvent("Pressed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
+        #endregion
+
         #endregion
 
         #region Properties
@@ -224,6 +235,12 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Overrides
+        protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
+        {
+            base.OnPreviewMouseDown(e);
+            RaiseEvent(new RoutedEventArgs(PressedEvent));
+        }
+
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
             e.Handled = true;

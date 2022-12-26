@@ -164,6 +164,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(Button button)
+        {
+            return (Thickness?)button.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(Button button, Thickness? value)
+        {
+            button.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ButtonHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(Button button)
+        {
+            return (CornerRadius?)button.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(Button button, CornerRadius? value)
+        {
+            button.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ButtonHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(Button button)
         {
@@ -236,6 +266,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ClickBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(ButtonHelper));
+        #endregion
+
+        #region ClickCornerRadius
+        public static CornerRadius? GetClickCornerRadius(Button button)
+        {
+            return (CornerRadius?)button.GetValue(ClickCornerRadiusProperty);
+        }
+
+        public static void SetClickCornerRadius(Button button, CornerRadius? value)
+        {
+            button.SetValue(ClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(ButtonHelper));
         #endregion
 
         #endregion

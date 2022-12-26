@@ -40,6 +40,13 @@ namespace Panuon.WPF.UI
             EventManager.RegisterClassHandler(typeof(DateTimePicker), Mouse.PreviewMouseDownEvent, new MouseButtonEventHandler(OnPreviewMouseButtonDown));
             EventManager.RegisterClassHandler(typeof(DateTimePicker), UIElement.GotFocusEvent, new RoutedEventHandler(OnThisGotFocus));
         }
+
+        public DateTimePicker()
+        {
+            AddHandler(CalendarXItem.PressedEvent, new RoutedEventHandler(OnItemPressed));
+            AddHandler(TimeSelectorItem.PressedEvent, new RoutedEventHandler(OnItemPressed));
+        }
+
         #endregion
 
         #region Events
@@ -415,7 +422,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SelectedDateTimeProperty =
-            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedTimeCoerceValue));
+            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(DateTime.Now, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedTimeCoerceValue));
 
         #endregion
 
@@ -525,15 +532,197 @@ namespace Panuon.WPF.UI
             ClearCommandPropertyKey.DependencyProperty;
         #endregion
 
+        #region ItemsProperty
+
+        #region ItemsForeground
+        public Brush ItemsForeground
+        {
+            get { return (Brush)GetValue(ItemsForegroundProperty); }
+            set { SetValue(ItemsForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsForegroundProperty =
+            DependencyProperty.Register("ItemsForeground", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsBackground
+        public Brush ItemsBackground
+        {
+            get { return (Brush)GetValue(ItemsBackgroundProperty); }
+            set { SetValue(ItemsBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBackgroundProperty =
+            DependencyProperty.Register("ItemsBackground", typeof(Brush), typeof(DateTimePicker), new PropertyMetadata(Brushes.Transparent));
+        #endregion
+
+        #region ItemsBorderBrush
+        public Brush ItemsBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsBorderBrushProperty); }
+            set { SetValue(ItemsBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBorderBrushProperty =
+            DependencyProperty.Register("ItemsBorderBrush", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsBorderThickness
+        public Thickness ItemsBorderThickness
+        {
+            get { return (Thickness)GetValue(ItemsBorderThicknessProperty); }
+            set { SetValue(ItemsBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsBorderThicknessProperty =
+            DependencyProperty.Register("ItemsBorderThickness", typeof(Thickness), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCornerRadius
+        public CornerRadius ItemsCornerRadius
+        {
+            get { return (CornerRadius)GetValue(ItemsCornerRadiusProperty); }
+            set { SetValue(ItemsCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCornerRadiusProperty =
+            DependencyProperty.Register("ItemsCornerRadius", typeof(CornerRadius), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsShadowColor
+        public Color? ItemsShadowColor
+        {
+            get { return (Color?)GetValue(ItemsShadowColorProperty); }
+            set { SetValue(ItemsShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsShadowColorProperty =
+            DependencyProperty.Register("ItemsShadowColor", typeof(Color?), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsHoverBackground
+        public Brush ItemsHoverBackground
+        {
+            get { return (Brush)GetValue(ItemsHoverBackgroundProperty); }
+            set { SetValue(ItemsHoverBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBackgroundProperty =
+            DependencyProperty.Register("ItemsHoverBackground", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsHoverForeground
+        public Brush ItemsHoverForeground
+        {
+            get { return (Brush)GetValue(ItemsHoverForegroundProperty); }
+            set { SetValue(ItemsHoverForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverForegroundProperty =
+            DependencyProperty.Register("ItemsHoverForeground", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsHoverBorderBrush
+        public Brush ItemsHoverBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsHoverBorderBrushProperty); }
+            set { SetValue(ItemsHoverBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderBrushProperty =
+            DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsHoverShadowColor
+        public Color? ItemsHoverShadowColor
+        {
+            get { return (Color?)GetValue(ItemsHoverShadowColorProperty); }
+            set { SetValue(ItemsHoverShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverShadowColorProperty =
+            DependencyProperty.Register("ItemsHoverShadowColor", typeof(Color?), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCheckedBackground
+        public Brush ItemsCheckedBackground
+        {
+            get { return (Brush)GetValue(ItemsCheckedBackgroundProperty); }
+            set { SetValue(ItemsCheckedBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBackgroundProperty =
+            DependencyProperty.Register("ItemsCheckedBackground", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCheckedForeground
+        public Brush ItemsCheckedForeground
+        {
+            get { return (Brush)GetValue(ItemsCheckedForegroundProperty); }
+            set { SetValue(ItemsCheckedForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedForegroundProperty =
+            DependencyProperty.Register("ItemsCheckedForeground", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCheckedBorderBrush
+        public Brush ItemsCheckedBorderBrush
+        {
+            get { return (Brush)GetValue(ItemsCheckedBorderBrushProperty); }
+            set { SetValue(ItemsCheckedBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBorderBrushProperty =
+            DependencyProperty.Register("ItemsCheckedBorderBrush", typeof(Brush), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCheckedBorderThickness
+        public Thickness? ItemsCheckedBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsCheckedBorderThicknessProperty); }
+            set { SetValue(ItemsCheckedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedBorderThicknessProperty =
+            DependencyProperty.Register("ItemsCheckedBorderThickness", typeof(Thickness?), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsCheckedShadowColor
+        public Color? ItemsCheckedShadowColor
+        {
+            get { return (Color?)GetValue(ItemsCheckedShadowColorProperty); }
+            set { SetValue(ItemsCheckedShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedShadowColorProperty =
+            DependencyProperty.Register("ItemsCheckedShadowColor", typeof(Color?), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsSpecialDayHighlightTemplate
+        public DataTemplate ItemsSpecialDayHighlightTemplate
+        {
+            get { return (DataTemplate)GetValue(ItemsSpecialDayHighlightTemplateProperty); }
+            set { SetValue(ItemsSpecialDayHighlightTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsSpecialDayHighlightTemplateProperty =
+            DependencyProperty.Register("ItemsSpecialDayHighlightTemplate", typeof(DataTemplate), typeof(DateTimePicker));
+        #endregion
+
+        #endregion
+
         #endregion
 
         #region Overrides
         public override void OnApplyTemplate()
         {
             _calendarX = GetTemplateChild(CalendarXTemplateName) as CalendarX;
+            _calendarX.ParentDateTimePicker = this;
             _calendarX.SelectedDateChanged += CalendarX_SelectedDateTimeChanged;
 
             _timeSelector = GetTemplateChild(TimeSelectorCalendarXTemplateName) as TimeSelector;
+            _timeSelector.ParentDateTimePicker = this;
             _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
 
             _editableTextBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
@@ -552,6 +741,15 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
+        private void OnItemPressed(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is CalendarXItem item
+                && item.IsChecked == true)
+            {
+                SetCurrentValue(IsDropDownOpenProperty, false);
+            }
+        }
+
         private static void OnFocusToEditorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var dateTimePicker = (DateTimePicker)d;
@@ -798,8 +996,8 @@ namespace Panuon.WPF.UI
 
         private static void OnClearCommandExecute(DateTimePicker dateTimePicker)
         {
-            dateTimePicker.SetCurrentValue(TextProperty, null);
             dateTimePicker.SetSelectedDateTime(dateTimePicker.DefaultDateTime);
+            dateTimePicker.UpdateText();
         }
 
         private void CalendarX_SelectedDateTimeChanged(object sender, SelectedValueChangedRoutedEventArgs<DateTime> e)
@@ -982,10 +1180,17 @@ namespace Panuon.WPF.UI
                 case DateTimePickerMode.DateTime:
                     SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, _timeSelector.SelectedTime.Second));
                     break;
+                case DateTimePickerMode.DateHour:
+                    SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, 0, 0));
+                    break;
+                case DateTimePickerMode.DateMinute:
+                    SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, 0));
+                    break;
             }
 
             _isInternalUpdateSelectedDate = false;
             _isInternalUpdateSelectedTime = false;
+            UpdateText();
         }
 
         private void UpdateTimeSelectorTimeLimit()
@@ -1035,9 +1240,11 @@ namespace Panuon.WPF.UI
                     case DateTimePickerMode.Month:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, 1);
                         break;
+                    case DateTimePickerMode.DateHour:
                     case DateTimePickerMode.Hour:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
                         break;
+                    case DateTimePickerMode.DateMinute:
                     case DateTimePickerMode.Minute:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
                         break;

@@ -51,9 +51,9 @@
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -64,9 +64,9 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -77,9 +77,9 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -90,9 +90,9 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderHoverForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -106,7 +106,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -117,7 +117,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -128,7 +128,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
@@ -139,7 +139,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ListViewHelper.ColumnHeaderClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
                                Value="True" />
