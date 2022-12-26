@@ -268,6 +268,26 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemSubmenuTemplate}}" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsCheckable"
+                               Value="True" />
+                    <Condition Property="IsChecked"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
+                        Value="True" />
+                <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
+                        Value="True" />
+                <Setter Property="i:VisualStateHelper.HoverBorderThicknessLock"
+                        Value="True" />
+                <Setter Property="i:VisualStateHelper.HoverCornerRadiusLock"
+                        Value="True" />
+                <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                        Value="True" />
+                <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
+                        Value="True" />
+            </MultiTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

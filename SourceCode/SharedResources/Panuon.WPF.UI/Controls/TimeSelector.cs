@@ -77,6 +77,12 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region Internal Properties
+
+        internal DateTimePicker ParentDateTimePicker { get; set; }
+
+        #endregion
+
         #region Properties
 
         #region Culture
@@ -728,6 +734,13 @@ namespace Panuon.WPF.UI
                     break;
             }
             SetCurrentValue(SelectedTimeProperty, dateTime);
+
+
+            if (ParentDateTimePicker != null
+                && ParentDateTimePicker.SelectedDateTime == null)
+            {
+                RaiseEvent(new SelectedValueChangedRoutedEventArgs<DateTime>(SelectedTimeChangedEvent, dateTime, dateTime));
+            }
         }
         #endregion
     }

@@ -31,13 +31,13 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Pressed
-        internal event RoutedEventHandler Pressed
+        public event RoutedEventHandler Pressed
         {
             add { AddHandler(PressedEvent, value); }
             remove { RemoveHandler(PressedEvent, value); }
         }
 
-        internal static readonly RoutedEvent PressedEvent =
+        public static readonly RoutedEvent PressedEvent =
             EventManager.RegisterRoutedEvent("Pressed", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(CalendarXItem));
         #endregion
 

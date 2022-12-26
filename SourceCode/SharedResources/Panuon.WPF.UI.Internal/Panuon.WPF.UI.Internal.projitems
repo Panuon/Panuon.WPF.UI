@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIEnumerableHasItemsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerContentMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerBorderMarginConverter.cs" />

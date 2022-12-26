@@ -196,7 +196,8 @@
                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}" />
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:DataGridHelper.RowCornerRadius), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
             <SelectiveScrollingGrid>
                 <SelectiveScrollingGrid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -277,13 +278,16 @@
                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
-                    Background="{TemplateBinding Background}" />
-            <Rectangle x:Name="RectRight"
-                       Width="1"
-                       Margin="-0.5,0,0,0"
-                       HorizontalAlignment="Right"
-                       Visibility="{TemplateBinding SeparatorVisibility}"
-                       Fill="{TemplateBinding SeparatorBrush}" />
+                    Background="{TemplateBinding Background}"
+                    CornerRadius="{Binding Path=(local:DataGridHelper.ColumnHeaderCornerRadius), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+            <Border Margin="-0.5,0,0,0">
+                <Rectangle x:Name="RectRight"
+                           Width="1"
+                           Margin="{Binding Path=(local:DataGridHelper.ColumnHeaderSeparatorMargin), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                           HorizontalAlignment="Right"
+                           Visibility="{TemplateBinding SeparatorVisibility}"
+                           Fill="{TemplateBinding SeparatorBrush}" />
+            </Border>
             <Grid Margin="{TemplateBinding Padding}"
                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}">

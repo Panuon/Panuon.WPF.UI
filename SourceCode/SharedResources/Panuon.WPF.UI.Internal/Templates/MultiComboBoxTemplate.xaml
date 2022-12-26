@@ -117,7 +117,7 @@
         </local:DropDown>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding SelectionBoxItems, Converter={StaticResource {x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                         Value="True">
+                         Value="False">
                 <Setter TargetName="CcWatermark"
                         Property="Visibility"
                         Value="Visible" />

@@ -21,6 +21,7 @@
         public const string DrawerBorderMarginConverter = nameof(DrawerBorderMarginConverter);
         public const string DropDownMarginConverter = nameof(DropDownMarginConverter);
         public const string DropDownMinWidthConverter = nameof(DropDownMinWidthConverter);
+        public const string DropDownOffsetConverter = nameof(DropDownOffsetConverter);
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
         public const string FontSizeMinusConverter = nameof(FontSizeMinusConverter);
         public const string GetTypeConverter = nameof(GetTypeConverter);

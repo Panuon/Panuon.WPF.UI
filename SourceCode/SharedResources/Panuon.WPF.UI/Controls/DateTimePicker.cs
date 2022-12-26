@@ -422,7 +422,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SelectedDateTimeProperty =
-            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedTimeCoerceValue));
+            DependencyProperty.Register("SelectedDateTime", typeof(DateTime?), typeof(DateTimePicker), new FrameworkPropertyMetadata(DateTime.Now, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateTimeChanged, OnSelectedTimeCoerceValue));
 
         #endregion
 
@@ -718,9 +718,11 @@ namespace Panuon.WPF.UI
         public override void OnApplyTemplate()
         {
             _calendarX = GetTemplateChild(CalendarXTemplateName) as CalendarX;
+            _calendarX.ParentDateTimePicker = this;
             _calendarX.SelectedDateChanged += CalendarX_SelectedDateTimeChanged;
 
             _timeSelector = GetTemplateChild(TimeSelectorCalendarXTemplateName) as TimeSelector;
+            _timeSelector.ParentDateTimePicker = this;
             _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
 
             _editableTextBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
@@ -994,8 +996,8 @@ namespace Panuon.WPF.UI
 
         private static void OnClearCommandExecute(DateTimePicker dateTimePicker)
         {
-            dateTimePicker.SetCurrentValue(TextProperty, null);
             dateTimePicker.SetSelectedDateTime(dateTimePicker.DefaultDateTime);
+            dateTimePicker.UpdateText();
         }
 
         private void CalendarX_SelectedDateTimeChanged(object sender, SelectedValueChangedRoutedEventArgs<DateTime> e)
@@ -1178,10 +1180,17 @@ namespace Panuon.WPF.UI
                 case DateTimePickerMode.DateTime:
                     SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, _timeSelector.SelectedTime.Second));
                     break;
+                case DateTimePickerMode.DateHour:
+                    SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, 0, 0));
+                    break;
+                case DateTimePickerMode.DateMinute:
+                    SetSelectedDateTime(new DateTime(_calendarX.SelectedDate.Year, _calendarX.SelectedDate.Month, _calendarX.SelectedDate.Day, _timeSelector.SelectedTime.Hour, _timeSelector.SelectedTime.Minute, 0));
+                    break;
             }
 
             _isInternalUpdateSelectedDate = false;
             _isInternalUpdateSelectedTime = false;
+            UpdateText();
         }
 
         private void UpdateTimeSelectorTimeLimit()
@@ -1231,9 +1240,11 @@ namespace Panuon.WPF.UI
                     case DateTimePickerMode.Month:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, 1);
                         break;
+                    case DateTimePickerMode.DateHour:
                     case DateTimePickerMode.Hour:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
                         break;
+                    case DateTimePickerMode.DateMinute:
                     case DateTimePickerMode.Minute:
                         selectedDateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
                         break;

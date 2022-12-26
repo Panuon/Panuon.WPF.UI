@@ -39,8 +39,6 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
-                               Value="False" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedToggleBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"

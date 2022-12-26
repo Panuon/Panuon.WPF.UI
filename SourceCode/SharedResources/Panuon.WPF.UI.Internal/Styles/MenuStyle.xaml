@@ -19,8 +19,11 @@
                    Margin="0,0,5,0" />
     </DataTemplate>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconStyle, TypeInTargetAssembly={x:Type local:MenuHelper}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplate, TypeInTargetAssembly={x:Type local:MenuHelper}}">
         <TextBlock Text="&#xe92e;"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ContentControl}, Mode=OneWay}"
                    FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
@@ -108,7 +111,7 @@
         <Setter Property="local:MenuHelper.SubmenuArrowIconTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SubemnuArrowIconTemplate, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
         <Setter Property="local:MenuHelper.CheckedIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconStyle, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplate, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
         <Setter Property="ItemContainerStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.MenuItemStyle}}" />
         <Setter Property="Template"

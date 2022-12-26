@@ -57,6 +57,7 @@
                             Click="BtnTestPendingBox_Click" />
                 </StackPanel>
                 <ScrollViewer Grid.Row="1"
+                              Visibility="Collapsed"
                               Margin="0,15,0,0"
                               VerticalScrollBarVisibility="Disabled"
                               HorizontalScrollBarVisibility="Auto"
@@ -117,6 +118,26 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
+                <pu:Switch Grid.Row="1"
+                           BoxHeight="16"
+                           BoxWidth="34"
+                           ToggleSize="24">
+                    <pu:Switch.ContextMenu>
+                        <ContextMenu pu:ContextMenuHelper.ItemsHoverBackground="Red"
+                                     pu:ContextMenuHelper.ItemsHoverForeground="white"
+                                     pu:ContextMenuHelper.ItemsCheckedBackground="{x:Null}"
+                                     pu:ContextMenuHelper.ItemsCheckedForeground="Green">
+                            <MenuItem Header="Item 1" 
+                                      IsCheckable="True"
+                                      IsChecked="True"/>
+                            <MenuItem Header="Item 2" />
+                            <MenuItem Header="Item 3">
+                                <MenuItem Header="Item 1" />
+                                <MenuItem Header="Item 2" />
+                            </MenuItem>
+                        </ContextMenu>
+                    </pu:Switch.ContextMenu>
+                </pu:Switch>
                 <!--<pu:ZoomViewer Grid.Row="1"
                        Width="500"
                        Height="500"
@@ -186,7 +207,15 @@
                            FontSize="14"
                            Foreground="Gray"
                            HorizontalAlignment="Right"
-                           Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
+                           Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}">
+                    <TextBlock.ContextMenu>
+                        <ContextMenu Placement="Left">
+                            <MenuItem Header="Item 1" />
+                            <MenuItem Header="Item 2" />
+                            <MenuItem Header="Item 3"/>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
+                </TextBlock>
             </Grid>
         </Grid>
         <!--<pu:Drawer IsOpen="False"
