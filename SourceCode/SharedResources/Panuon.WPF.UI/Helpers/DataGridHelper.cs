@@ -67,6 +67,23 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("AutoScrollIntoView", typeof(bool), typeof(DataGridHelper), new PropertyMetadata(false, OnAutoScrollIntoViewChanged));
         #endregion
 
+        #region SingleClickToEdit
+        public static bool GetSingleClickToEdit(DataGrid dataGrid)
+        {
+            return (bool)dataGrid.GetValue(SingleClickToEditProperty);
+        }
+
+        public static void SetSingleClickToEdit(DataGrid dataGrid, bool value)
+        {
+            dataGrid.SetValue(SingleClickToEditProperty, value);
+        }
+
+        public static readonly DependencyProperty SingleClickToEditProperty =
+            DependencyProperty.RegisterAttached("SingleClickToEdit", typeof(bool), typeof(DataGridHelper), new PropertyMetadata(false, OnSingleClickToEditChanged));
+        #endregion
+
+        
+
         #region ScrollToBottomOnAdded
         public static bool GetScrollToBottomOnAdded(DataGrid dataGrid)
         {
@@ -1590,6 +1607,26 @@ namespace Panuon.WPF.UI
         private static void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.SetValue(RowIndexProperty, e.Row.GetIndex() + 1);
+        }
+
+        private static void OnSingleClickToEditChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var dataGrid = (DataGrid)d;
+            dataGrid.RemoveHandler(DataGridCell.SelectedEvent, (RoutedEventHandler)OnDataGridCellSelectedChanged);
+
+            if ((bool)e.NewValue)
+            {
+                dataGrid.AddHandler(DataGridCell.SelectedEvent, (RoutedEventHandler)OnDataGridCellSelectedChanged);
+            }
+        }
+
+        private static void OnDataGridCellSelectedChanged(object sender, RoutedEventArgs e)
+        {
+            if (e.OriginalSource is DataGridCell)
+            {
+                var dataGrid = (DataGrid)sender;
+                dataGrid.BeginEdit(e);
+            }
         }
 
         private static void OnAutoScrollIntoViewChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

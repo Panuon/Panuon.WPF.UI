@@ -94,6 +94,10 @@
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Width"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemTopLevelTemplate}}" />
             </Trigger>
@@ -151,6 +155,10 @@
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Width"
                         Value="{Binding Path=(local:MenuHelper.TopLevelItemsWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.TopLevelItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemTopLevelTemplate}}" />
             </Trigger>
@@ -208,6 +216,10 @@
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Width"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemSubmenuTemplate}}" />
             </Trigger>
@@ -265,6 +277,10 @@
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Width"
                         Value="{Binding Path=(local:MenuHelper.SubmenuItemsWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsVerticalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="{Binding Path=(local:MenuHelper.SubmenuItemsHorizontalContentAlignment), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemSubmenuTemplate}}" />
             </Trigger>

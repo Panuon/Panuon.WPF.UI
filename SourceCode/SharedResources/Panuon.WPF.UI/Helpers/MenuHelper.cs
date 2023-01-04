@@ -85,6 +85,36 @@ namespace Panuon.WPF.UI
 
         #region TopLevel Item
 
+        #region TopLevelItemsHorizontalContentAlignment
+        public static double GetTopLevelItemsHorizontalContentAlignment(Menu menu)
+        {
+            return (double)menu.GetValue(TopLevelItemsHorizontalContentAlignmentProperty);
+        }
+
+        public static void SetTopLevelItemsHorizontalContentAlignment(Menu menu, HorizontalAlignment value)
+        {
+            menu.SetValue(TopLevelItemsHorizontalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty TopLevelItemsHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("TopLevelItemsHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(MenuHelper));
+        #endregion
+
+        #region TopLevelItemsVerticalContentAlignment
+        public static double GetTopLevelItemsVerticalContentAlignment(Menu menu)
+        {
+            return (double)menu.GetValue(TopLevelItemsVerticalContentAlignmentProperty);
+        }
+
+        public static void SetTopLevelItemsVerticalContentAlignment(Menu menu, VerticalAlignment value)
+        {
+            menu.SetValue(TopLevelItemsVerticalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty TopLevelItemsVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("TopLevelItemsVerticalContentAlignment", typeof(VerticalAlignment), typeof(MenuHelper));
+        #endregion
+
         #region TopLevelItemsIconWidth
         public static double GetTopLevelItemsIconWidth(Menu menu)
         {
@@ -494,6 +524,36 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Submenu Item
+
+        #region SubmenuItemsHorizontalContentAlignment
+        public static double GetSubmenuItemsHorizontalContentAlignment(Menu menu)
+        {
+            return (double)menu.GetValue(SubmenuItemsHorizontalContentAlignmentProperty);
+        }
+
+        public static void SetSubmenuItemsHorizontalContentAlignment(Menu menu, HorizontalAlignment value)
+        {
+            menu.SetValue(SubmenuItemsHorizontalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty SubmenuItemsHorizontalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("SubmenuItemsHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(MenuHelper));
+        #endregion
+
+        #region SubmenuItemsVerticalContentAlignment
+        public static double GetSubmenuItemsVerticalContentAlignment(Menu menu)
+        {
+            return (double)menu.GetValue(SubmenuItemsVerticalContentAlignmentProperty);
+        }
+
+        public static void SetSubmenuItemsVerticalContentAlignment(Menu menu, VerticalAlignment value)
+        {
+            menu.SetValue(SubmenuItemsVerticalContentAlignmentProperty, value);
+        }
+
+        public static readonly DependencyProperty SubmenuItemsVerticalContentAlignmentProperty =
+            DependencyProperty.RegisterAttached("SubmenuItemsVerticalContentAlignment", typeof(VerticalAlignment), typeof(MenuHelper));
+        #endregion
 
         #region SubmenuItemsIconWidth
         public static double GetSubmenuItemsIconWidth(Menu menu)

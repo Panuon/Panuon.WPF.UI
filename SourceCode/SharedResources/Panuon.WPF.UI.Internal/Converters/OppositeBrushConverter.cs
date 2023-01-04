@@ -14,6 +14,10 @@ namespace Panuon.WPF.UI.Internal.Converters
             {
                 return null;
             }
+            if(!(value is SolidColorBrush))
+            {
+                return Brushes.White;
+            }
 
             var color = ((SolidColorBrush)value).Color;
             var minValue = Math.Min(Math.Min(color.R, color.G), color.B);
