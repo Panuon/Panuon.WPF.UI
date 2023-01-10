@@ -616,9 +616,9 @@ namespace Panuon.WPF.UI
             var calendarX = (CalendarX)d;
             var maxDate = (DateTime)baseValue;
             maxDate = maxDate.Date;
-            if (maxDate > calendarX.MaxDate)
+            if (maxDate < calendarX.MinDate)
             {
-                return calendarX.MaxDate;
+                return calendarX.MinDate;
             }
             return maxDate;
         }
