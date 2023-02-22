@@ -81,7 +81,8 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CurrentIndexProperty =
-            DependencyProperty.Register("CurrentIndex", typeof(int), typeof(Carousel), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, null, OnCurrentIndexCoerceValue));
+            DependencyProperty.Register("CurrentIndex", typeof(int), typeof(Carousel), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnCurrentIndexChanged, OnCurrentIndexCoerceValue));
+
         #endregion
 
         #region Orientation
@@ -272,6 +273,18 @@ namespace Panuon.WPF.UI
             carousel.UpdateAutoPlayTimer();
         }
 
+
+        private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        {
+            var carousel = (Carousel)d;
+            carousel.OnCurrentIndexChanged();
+        }
+
+        private void OnCurrentIndexChanged()
+        {
+            UpdateAutoPlayTimer();
+        }
+
         private static object OnCurrentIndexCoerceValue(DependencyObject d, object baseValue)
         {
             var carousel = (Carousel)d;
@@ -334,8 +347,6 @@ namespace Panuon.WPF.UI
             Dispatcher.Invoke(new Action(() =>
             {
                 CurrentIndex++;
-                _timer.Change(AutoPlayDuration, TimeSpan.FromMilliseconds(-1));
-                System.Diagnostics.Debug.WriteLine(CurrentIndex);
             }));
         }
 

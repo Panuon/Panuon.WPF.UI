@@ -1,8 +1,6 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Globalization;
-using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
 

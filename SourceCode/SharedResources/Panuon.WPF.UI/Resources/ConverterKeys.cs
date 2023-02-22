@@ -6,7 +6,7 @@
         public const string BrushToColorConverter = nameof(BrushToColorConverter);
         public const string ColorToBrushConverter = nameof(ColorToBrushConverter);
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
-        public const string DoubleEqualsConverter = nameof(DoubleEqualsConverter);
+        public const string IsAllDoublesEqualConverter = nameof(IsAllDoublesEqualConverter);
         public const string DoubleIsConverter = nameof(DoubleIsConverter);
         public const string DoubleMinusConverter = nameof(DoubleMinusConverter);
         public const string DoubleMultiplyByConverter = nameof(DoubleMultiplyByConverter);
@@ -18,13 +18,17 @@
         public const string FalseToHiddenConverter = nameof(FalseToHiddenConverter);
         public const string GetEnumDescriptionConverter = nameof(GetEnumDescriptionConverter);
         public const string IntDivideByConverter = nameof(IntDivideByConverter);
+        public const string IsDoubleEqualToConverter = nameof(IsDoubleEqualToConverter);
+        public const string IsDoubleNotEqualToConverter = nameof(IsDoubleNotEqualToConverter);
+        public const string IsIntEqualToConverter = nameof(IsIntEqualToConverter);
+        public const string IsIntNotEqualToConverter = nameof(IsIntNotEqualToConverter);
         public const string IntMinusConverter = nameof(IntMinusConverter);
         public const string IntMultiplyByConverter = nameof(IntMultiplyByConverter);
         public const string IntPlusConverter = nameof(IntPlusConverter);
         public const string IsAllEqualConverter = nameof(IsAllEqualConverter);
         public const string IsNullConverter = nameof(IsNullConverter);
         public const string IsNonnullConverter = nameof(IsNonnullConverter);
-        public const string IsStringEqualConverter = nameof(IsStringEqualConverter);
+        public const string IsStringEqualToConverter = nameof(IsStringEqualToConverter);
         public const string IsStringUnequalConverter = nameof(IsStringUnequalConverter);
         public const string IsStringNonnullAndNotEmptyConverter = nameof(IsStringNonnullAndNotEmptyConverter);
         public const string IsIEnumerableHasItemsConverter = nameof(IsIEnumerableHasItemsConverter);

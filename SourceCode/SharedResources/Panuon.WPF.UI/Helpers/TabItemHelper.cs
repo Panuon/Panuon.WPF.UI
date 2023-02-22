@@ -176,6 +176,22 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RibbonLineThickness", typeof(double), typeof(TabItemHelper));
         #endregion
 
+        #region RibbonLineCornerRadius
+        public static CornerRadius GetRibbonLineCornerRadius(TabItem tabItem)
+        {
+            return (CornerRadius)tabItem.GetValue(RibbonLineCornerRadiusProperty);
+        }
+
+        public static void SetRibbonLineCornerRadius(TabItem tabItem, CornerRadius value)
+        {
+            tabItem.SetValue(RibbonLineCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty RibbonLineCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("RibbonLineCornerRadius", typeof(CornerRadius), typeof(TabItemHelper));
+        #endregion
+
+
         #region RibbonLineMargin
         public static Thickness GetRibbonLineMargin(TabItem tabItem)
         {

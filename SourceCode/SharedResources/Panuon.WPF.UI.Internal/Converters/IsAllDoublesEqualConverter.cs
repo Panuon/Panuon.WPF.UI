@@ -1,11 +1,9 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Globalization;
-using System.Linq;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class DoubleEqualsConverter 
+    class IsAllDoublesEqualConverter 
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

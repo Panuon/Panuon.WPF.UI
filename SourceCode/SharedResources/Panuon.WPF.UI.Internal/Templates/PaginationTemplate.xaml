@@ -42,7 +42,7 @@
                             <DataTemplate.Triggers>
                                 <DataTrigger Value="True">
                                     <DataTrigger.Binding>
-                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
+                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}}">
                                             <Binding Path="." />
                                             <Binding Path="CurrentPage"
                                                      RelativeSource="{RelativeSource AncestorType=local:Pagination}"
@@ -99,7 +99,7 @@
                             <DataTemplate.Triggers>
                                 <DataTrigger Value="True">
                                     <DataTrigger.Binding>
-                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.DoubleEqualsConverter}}">
+                                        <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}}">
                                             <Binding Path="." />
                                             <Binding Path="CurrentPage"
                                                      RelativeSource="{RelativeSource AncestorType=local:Pagination}"

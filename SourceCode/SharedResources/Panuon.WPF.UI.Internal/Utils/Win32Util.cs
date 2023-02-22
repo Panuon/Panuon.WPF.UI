@@ -47,6 +47,14 @@ namespace Panuon.WPF.UI.Internal.Utils
         {
             WCA_ACCENT_POLICY = 19,
         }
+
+
+        [Flags]
+        internal enum DwmWindowAttribute : uint
+        {
+            DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
+            DWMWA_MICA_EFFECT = 1029
+        }
         #endregion
 
         #region Methods
@@ -78,6 +86,10 @@ namespace Panuon.WPF.UI.Internal.Utils
 
         [DllImport("user32.dll")]
         internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DwmWindowAttribute dwAttribute, ref int pvAttribute, int cbAttribute);
+
         #endregion
 
     }

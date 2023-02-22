@@ -542,7 +542,7 @@ namespace Panuon.WPF.UI
         {
             var windowX = (WindowX)d;
             if (windowX.Effect is AcrylicWindowXEffect
-                || windowX.Effect is AeroWindowXEffect aeroEffect)
+                || windowX.Effect is AeroWindowXEffect)
             {
                 return Brushes.Transparent;
             }

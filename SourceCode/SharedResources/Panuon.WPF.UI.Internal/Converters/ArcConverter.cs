@@ -1,8 +1,6 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Text;
-using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal.Converters

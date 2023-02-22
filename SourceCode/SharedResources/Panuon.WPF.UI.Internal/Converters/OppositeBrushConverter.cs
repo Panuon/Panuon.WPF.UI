@@ -1,18 +1,21 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
     class OppositeBrushConverter 
-        : ValueConverterBase
+        : ValueConverterBase  
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
             {
                 return null;
+            }
+            if(!(value is SolidColorBrush))
+            {
+                return Brushes.White;
             }
 
             var color = ((SolidColorBrush)value).Color;
@@ -30,4 +33,4 @@ namespace Panuon.WPF.UI.Internal.Converters
             return brush;
         }
     }
-}
+} 

@@ -46,6 +46,7 @@
                     SnapsToDevicePixels="True"
                     VerticalAlignment="Center"
                     Height="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:SliderHelper.TrackCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}" />

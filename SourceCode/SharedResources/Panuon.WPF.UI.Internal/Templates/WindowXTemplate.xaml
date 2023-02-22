@@ -4,7 +4,8 @@
                     xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
-                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
@@ -151,12 +152,6 @@
                 <Setter TargetName="BtnMaximize"
                         Property="IsEnabled"
                         Value="False" />
-            </Trigger>
-            <Trigger Property="WindowState"
-                     Value="Maximized">
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="8" />
             </Trigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
@@ -483,12 +478,6 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="WindowState"
-                     Value="Maximized">
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="8" />
-            </Trigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>
@@ -796,12 +785,6 @@
                         Property="IsEnabled"
                         Value="False" />
             </Trigger>
-            <Trigger Property="WindowState"
-                     Value="Maximized">
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="8" />
-            </Trigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
                 <Setter TargetName="BtnMinimize"
@@ -942,12 +925,6 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-            <Trigger Property="WindowState"
-                     Value="Maximized">
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="8" />
-            </Trigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>

@@ -372,6 +372,7 @@
         <ScrollViewer Grid.Column="1">
             <StackPanel>
                 <pu:Carousel Style="{StaticResource CarouselStyle}"
+                             AutoPlayDuration="0:0:2"
                              Height="300"
                              TextBlock.FontSize="40"
                              TextBlock.TextAlignment="Center">
