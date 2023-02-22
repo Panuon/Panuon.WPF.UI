@@ -74,6 +74,9 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PInvoke.cs" />
+  </ItemGroup>
   <Import Project="..\..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems" Label="Shared" />
   <Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

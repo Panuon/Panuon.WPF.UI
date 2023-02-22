@@ -159,7 +159,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WindowXModalDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AeroWindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AcrylicWindowXEffect.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\MicaWindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\WindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />

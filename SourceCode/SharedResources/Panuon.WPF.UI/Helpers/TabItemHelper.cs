@@ -188,7 +188,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty RibbonLineCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("RibbonLineCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
+            DependencyProperty.RegisterAttached("RibbonLineCornerRadius", typeof(CornerRadius), typeof(TabItemHelper));
         #endregion
 
 

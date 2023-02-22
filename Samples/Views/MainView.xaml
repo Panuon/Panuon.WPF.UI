@@ -11,7 +11,17 @@
             Height="600"
             Width="1000"
             WindowStartupLocation="CenterScreen"
-            MaskBrush="#AA000000">
+            MaskBrush="#AA000000"
+            Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      ResizeBorderThickness="8"
+                      CornerRadius="0"
+                      GlassFrameThickness="-1"/>
+    </WindowChrome.WindowChrome>
+    <pu:WindowX.Effect>
+        <pu:MicaWindowXEffect />
+    </pu:WindowX.Effect>
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
