@@ -153,17 +153,6 @@
                         Property="IsEnabled"
                         Value="False" />
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource Self}}"
-                               Value="Maximized" />
-                    <Condition Binding="{Binding Version.Major, Converter={StaticResource {x:Static rs:ConverterKeys.IsIntNotEqualToConverter}},ConverterParameter=10, Source={x:Static sys:Environment.OSVersion}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="7" />
-            </MultiDataTrigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
                 <Setter TargetName="BtnMinimize"
@@ -489,17 +478,6 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-                       <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource Self}}"
-                               Value="Maximized" />
-                    <Condition Binding="{Binding Version.Major, Converter={StaticResource {x:Static rs:ConverterKeys.IsIntNotEqualToConverter}},ConverterParameter=10, Source={x:Static sys:Environment.OSVersion}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="7" />
-            </MultiDataTrigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>
@@ -807,17 +785,6 @@
                         Property="IsEnabled"
                         Value="False" />
             </Trigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource Self}}"
-                               Value="Maximized" />
-                    <Condition Binding="{Binding Version.Major, Converter={StaticResource {x:Static rs:ConverterKeys.IsIntNotEqualToConverter}},ConverterParameter=10, Source={x:Static sys:Environment.OSVersion}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="7" />
-            </MultiDataTrigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
                 <Setter TargetName="BtnMinimize"
@@ -958,17 +925,6 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource Self}}"
-                               Value="Maximized" />
-                    <Condition Binding="{Binding Version.Major, Converter={StaticResource {x:Static rs:ConverterKeys.IsIntNotEqualToConverter}},ConverterParameter=10, Source={x:Static sys:Environment.OSVersion}}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="GrdMain"
-                        Property="Margin"
-                        Value="7" />
-            </MultiDataTrigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>
