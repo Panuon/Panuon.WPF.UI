@@ -108,6 +108,8 @@
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Height"
                 Value="NaN" />
+        <Setter Property="Background"
+                Value="Transparent" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="ItemsForeground"
