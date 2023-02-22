@@ -1,10 +1,9 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Globalization;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class IsStringEqualConverter
+    class IsStringEqualToConverter
         : ValueConverterBase
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

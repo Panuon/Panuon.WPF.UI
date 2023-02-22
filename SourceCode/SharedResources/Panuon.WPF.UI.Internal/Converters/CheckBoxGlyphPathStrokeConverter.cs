@@ -1,6 +1,4 @@
-﻿using Panuon.WPF;
-using System;
-using System.Collections;
+﻿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;

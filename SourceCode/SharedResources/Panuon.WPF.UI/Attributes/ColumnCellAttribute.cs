@@ -31,6 +31,8 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+        public string CellStyleKey { get; set; }
+
         public object ElementStyleKey { get; set; }
 
         public object EditingElementStyleKey { get; set; }

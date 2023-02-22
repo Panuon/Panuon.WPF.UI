@@ -1,7 +1,5 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Globalization;
-using System.Linq;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {

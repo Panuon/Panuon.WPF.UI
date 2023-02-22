@@ -103,10 +103,16 @@
                 <Setter TargetName="GrdBox"
                         Property="Grid.Column"
                         Value="2" />
+                <Setter TargetName="BdrContainer"
+                        Property="Grid.Column"
+                        Value="2" />
             </Trigger>
             <Trigger Property="ContentPlacement"
                      Value="Right">
                 <Setter TargetName="GrdBox"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="BdrContainer"
                         Property="Grid.Column"
                         Value="0" />
             </Trigger>

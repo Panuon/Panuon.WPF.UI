@@ -34,6 +34,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleMultiplyByMultiConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntPlusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GetEnumDescriptionConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleEqualToConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleNotEqualToConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntNotEqualToConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntEqualToConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NonnullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />
@@ -50,11 +54,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BrushToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DisplayMemberPathPropertyValueConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleEqualsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsAllDoublesEqualConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoublePowConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringNullOrEmptyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringUnequalConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringEqualConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsStringEqualToConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BrushOpacityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxCheckPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownHorizontalOffsetConverter.cs" />

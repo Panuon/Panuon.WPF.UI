@@ -1,8 +1,6 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
-using System.Reflection;
 using System.Linq;
 
 namespace Panuon.WPF.UI.Internal.Converters

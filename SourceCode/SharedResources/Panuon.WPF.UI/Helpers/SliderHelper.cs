@@ -80,6 +80,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("TrackThickness", typeof(double), typeof(SliderHelper), new PropertyMetadata(4d));
         #endregion
 
+        #region TrackCornerRadius
+        public static CornerRadius GetTrackCornerRadius(Slider slider)
+        {
+            return (CornerRadius)slider.GetValue(TrackCornerRadiusProperty);
+        }
+
+        public static void SetTrackCornerRadius(Slider slider, CornerRadius value)
+        {
+            slider.SetValue(TrackCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty TrackCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("TrackCornerRadius", typeof(CornerRadius), typeof(SliderHelper));
+        #endregion
+
         #region CoveredBackground
         public static Brush GetCoveredBackground(Slider slider)
         {

@@ -2004,7 +2004,9 @@ namespace Panuon.WPF.UI
             {
                 var cellStyle = new Style(typeof(DataGridCell))
                 {
-                    BasedOn = e.Column.CellStyle ?? dataGrid.FindResource(typeof(DataGridCell)) as Style,
+                    BasedOn = cellAttribute.CellStyleKey == null
+                    ? (e.Column.CellStyle ?? dataGrid.FindResource(typeof(DataGridCell)) as Style)
+                    : dataGrid.FindResource(cellAttribute.CellStyleKey) as Style,
                 };
 
                 if (cellAttribute.ForegroundBrushKey != null)

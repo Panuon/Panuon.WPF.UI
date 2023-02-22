@@ -48,10 +48,11 @@
                             <ContentControl x:Name="CcFront"
                                             Grid.Column="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Rectangle x:Name="SprtFront"
+                            <Border x:Name="BdrFront"
                                        Grid.ColumnSpan="2"
-                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                        Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ScrollViewer x:Name="PART_ScrollViewer"
                                           Grid.Column="2"
@@ -106,7 +107,7 @@
                 <Setter TargetName="GrdHeader"
                         Property="Grid.Row"
                         Value="0" />
-                <Setter TargetName="SprtFront"
+                <Setter TargetName="BdrFront"
                         Property="VerticalAlignment"
                         Value="Bottom" />
                 <Setter TargetName="SprtEnd"
@@ -118,7 +119,7 @@
                 <Setter TargetName="GrdHeader"
                         Property="Grid.Row"
                         Value="2" />
-                <Setter TargetName="SprtFront"
+                <Setter TargetName="BdrFront"
                         Property="VerticalAlignment"
                         Value="Top" />
                 <Setter TargetName="SprtEnd"
@@ -216,11 +217,12 @@
                             <ContentControl x:Name="CcFront"
                                             Grid.Row="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Rectangle x:Name="SprtFront"
-                                       Grid.RowSpan="2"
-                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Border x:Name="BdrFront"
+                                    Grid.RowSpan="2"
+                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ScrollViewer x:Name="PART_ScrollViewer"
                                           Grid.Row="2"
                                           HorizontalScrollBarVisibility="Disabled"
@@ -277,7 +279,7 @@
                 <Setter TargetName="GrdHeader"
                         Property="Grid.Column"
                         Value="0" />
-                <Setter TargetName="SprtFront"
+                <Setter TargetName="BdrFront"
                         Property="HorizontalAlignment"
                         Value="Right" />
                 <Setter TargetName="SprtEnd"
@@ -289,7 +291,7 @@
                 <Setter TargetName="GrdHeader"
                         Property="Grid.Column"
                         Value="2" />
-                <Setter TargetName="SprtFront"
+                <Setter TargetName="BdrFront"
                         Property="HorizontalAlignment"
                         Value="Left" />
                 <Setter TargetName="SprtEnd"

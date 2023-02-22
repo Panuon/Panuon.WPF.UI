@@ -52,10 +52,11 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </local:ContentControlX>
-            <Rectangle x:Name="RectRibbon"
-                       Fill="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       Margin="{Binding Path=(local:TabItemHelper.RibbonLineMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       Visibility="{Binding Path=(local:TabItemHelper.RibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border x:Name="BdrRibbon"
+                    Background="{Binding Path=(i:VisualStateHelper.RibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Margin="{Binding Path=(local:TabItemHelper.RibbonLineMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Visibility="{Binding Path=(local:TabItemHelper.RibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:TabItemHelper.RibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Rectangle x:Name="RectSeparator"
                        Fill="{Binding Path=(local:TabItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Width="{Binding Path=(local:TabItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -125,37 +126,37 @@
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Left">
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="HorizontalAlignment"
                         Value="Left" />
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.RibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Top">
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="VerticalAlignment"
                         Value="Top" />
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.RibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Right">
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="HorizontalAlignment"
                         Value="Right" />
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.RibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="local:TabItemHelper.RibbonLinePlacement"
                      Value="Bottom">
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="VerticalAlignment"
                         Value="Bottom" />
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.RibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
@@ -170,7 +171,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Left" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -185,7 +186,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Top" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -200,7 +201,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Right" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -215,7 +216,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Bottom" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.HoverRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -295,8 +296,8 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.SelectedRibbonLineBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
-                        Property="Fill"
+                <Setter TargetName="BdrRibbon"
+                        Property="Background"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
@@ -308,7 +309,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Left" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -321,7 +322,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Top" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -334,7 +335,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Right" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Width"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -347,7 +348,7 @@
                     <Condition Binding="{Binding Path=(local:TabItemHelper.RibbonLinePlacement), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="Bottom" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="RectRibbon"
+                <Setter TargetName="BdrRibbon"
                         Property="Height"
                         Value="{Binding Path=(local:TabItemHelper.SelectedRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

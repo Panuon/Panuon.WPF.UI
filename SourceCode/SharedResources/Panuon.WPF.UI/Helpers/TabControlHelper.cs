@@ -323,6 +323,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderPanelRibbonLineThickness", typeof(double), typeof(TabControlHelper));
         #endregion
 
+        #region HeaderPanelRibbonLineCornerRadius
+        public static CornerRadius GetHeaderPanelRibbonLineCornerRadius(TabControl tabControl)
+        {
+            return (CornerRadius)tabControl.GetValue(HeaderPanelRibbonLineCornerRadiusProperty);
+        }
+
+        public static void SetHeaderPanelRibbonLineCornerRadius(TabControl tabControl, CornerRadius value)
+        {
+            tabControl.SetValue(HeaderPanelRibbonLineCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelRibbonLineCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelRibbonLineCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
+        #endregion
+
         #region HeaderPanelHorizontalAlignment
         public static TabPanelHorizontalAlignment GetHeaderPanelHorizontalAlignment(TabControl tabControl)
         {
@@ -655,6 +670,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsRibbonLineThicknessProperty =
             DependencyProperty.RegisterAttached("ItemsRibbonLineThickness", typeof(double), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsRibbonLineCornerRadius
+        public static CornerRadius GetItemsRibbonLineCornerRadius(TabControl tabControl)
+        {
+            return (CornerRadius)tabControl.GetValue(ItemsRibbonLineCornerRadiusProperty);
+        }
+
+        public static void SetItemsRibbonLineCornerRadius(TabControl tabControl, CornerRadius value)
+        {
+            tabControl.SetValue(ItemsRibbonLineCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsRibbonLineCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsRibbonLineCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
         #region ItemsRibbonLineVisibility

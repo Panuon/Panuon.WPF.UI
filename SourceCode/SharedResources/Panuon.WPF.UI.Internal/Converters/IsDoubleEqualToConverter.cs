@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class BrushToColorConverter 
+    class IsDoubleEqualToConverter
         : ValueConverterBase
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
+            if (double.TryParse(value?.ToString(), out double doubleValue))
             {
-                if (parameter != null)
+                if (double.TryParse(parameter?.ToString(), out double doubleParameter))
                 {
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString(parameter as string));
+                    return doubleValue.Equals(doubleParameter);
                 }
-                return null;
             }
-            return new SolidColorBrush((Color)value);
+            return false;
         }
     }
 }

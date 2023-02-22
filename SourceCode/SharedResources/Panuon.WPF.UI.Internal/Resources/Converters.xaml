@@ -24,7 +24,7 @@
     <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
     <icv:DoubleIsConverter x:Key="{x:Static rs:ConverterKeys.DoubleIsConverter}" />
-    <icv:DoubleEqualsConverter x:Key="{x:Static rs:ConverterKeys.DoubleEqualsConverter}" />
+    <icv:IsAllDoublesEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
     <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />
     <icv:DoubleToGridLengthConverter x:Key="{x:Static rs:ConverterKeys.DoubleToGridLengthConverter}" />
@@ -45,6 +45,11 @@
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GetEnumDescriptionConverter x:Key="{x:Static rs:ConverterKeys.GetEnumDescriptionConverter}" />
     <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
+
+    <icv:IsDoubleEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleEqualToConverter}" />
+    <icv:IsDoubleNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleNotEqualToConverter}" />
+    <icv:IsIntEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntEqualToConverter}" />
+    <icv:IsIntNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntNotEqualToConverter}" />
     <icv:IntMinusConverter x:Key="{x:Static rs:ConverterKeys.IntMinusConverter}" />
     <icv:IntMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.IntMultiplyByConverter}" />
     <icv:IntPlusConverter x:Key="{x:Static rs:ConverterKeys.IntPlusConverter}" />
@@ -54,7 +59,7 @@
     <icv:IsNonnullConverter x:Key="{x:Static rs:ConverterKeys.IsNonnullConverter}" />
     <icv:IsNullConverter x:Key="{x:Static rs:ConverterKeys.IsNullConverter}" />
     <icv:IsIEnumerableHasItemsConverter x:Key="{x:Static rs:ConverterKeys.IsIEnumerableHasItemsConverter}" />
-    <icv:IsStringEqualConverter x:Key="{x:Static rs:ConverterKeys.IsStringEqualConverter}" />
+    <icv:IsStringEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsStringEqualToConverter}" />
     <icv:IsStringUnequalConverter x:Key="{x:Static rs:ConverterKeys.IsStringUnequalConverter}" />
     <icv:IsStringNonnullAndNotEmptyConverter x:Key="{x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}" />
     <icv:IsStringNullOrEmptyConverter x:Key="{x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}" />
