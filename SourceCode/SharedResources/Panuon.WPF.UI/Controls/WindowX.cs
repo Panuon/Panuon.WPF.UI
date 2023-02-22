@@ -527,8 +527,7 @@ namespace Panuon.WPF.UI
         private static object OnBackgroundCoerceValue(DependencyObject d, object baseValue)
         {
             var windowX = (WindowX)d;
-            if(windowX.Effect is AcrylicWindowXEffect
-                || windowX.Effect is MicaWindowXEffect)
+            if(windowX.Effect is AcrylicWindowXEffect)
             {
                 return Brushes.Transparent;
             }
@@ -543,8 +542,7 @@ namespace Panuon.WPF.UI
         {
             var windowX = (WindowX)d;
             if (windowX.Effect is AcrylicWindowXEffect
-                || windowX.Effect is AeroWindowXEffect
-                || windowX.Effect is MicaWindowXEffect)
+                || windowX.Effect is AeroWindowXEffect)
             {
                 return Brushes.Transparent;
             }
@@ -557,10 +555,6 @@ namespace Panuon.WPF.UI
             if (windowX.Effect is AcrylicWindowXEffect)
             {
                 return new Thickness(0, 1, 0, 0);
-            }
-            else if(windowX.Effect is MicaWindowXEffect)
-            {
-                return new Thickness(-1);
             }
             return baseValue;
         }
