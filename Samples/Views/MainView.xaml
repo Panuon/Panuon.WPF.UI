@@ -6,6 +6,7 @@
             xmlns:local="clr-namespace:Samples.Views"
             xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
             xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+            xmlns:i="clr-namespace:Panuon.WPF.UI.Internal;assembly=Panuon.WPF.UI"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
@@ -13,6 +14,12 @@
             WindowStartupLocation="CenterScreen"
             MaskBrush="#AA000000"
             Background="Transparent">
+    <WindowChrome.WindowChrome>
+        <WindowChrome />
+    </WindowChrome.WindowChrome>
+    <pu:WindowX.Effect>
+        <pu:MicaWindowXEffect />
+    </pu:WindowX.Effect>
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -34,7 +41,8 @@
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid>
-        <Grid Margin="20,10,20,20">
+        <Grid Margin="20,10,20,20"
+              Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -190,7 +198,7 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <!--<pu:Drawer IsOpen="False"
+    <!--<pu:Drawer IsOpen="False"
                    Placement="Left"
                    MaxWidth="300"
                    MinWidth="50"

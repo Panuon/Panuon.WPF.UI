@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace Panuon.WPF.UI.Internal
 {
-    class ClippingBorder 
+    public class ClippingBorder 
         : Border
     {
         #region Ctor

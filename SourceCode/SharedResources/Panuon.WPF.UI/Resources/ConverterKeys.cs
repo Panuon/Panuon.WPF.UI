@@ -26,12 +26,16 @@
         public const string IntMultiplyByConverter = nameof(IntMultiplyByConverter);
         public const string IntPlusConverter = nameof(IntPlusConverter);
         public const string IsAllEqualConverter = nameof(IsAllEqualConverter);
+        public const string IsDoubleGreaterThanConverter = nameof(IsDoubleGreaterThanConverter);
+        public const string IsDoubleLessThanConverter = nameof(IsDoubleLessThanConverter);
         public const string IsNullConverter = nameof(IsNullConverter);
         public const string IsNonnullConverter = nameof(IsNonnullConverter);
         public const string IsStringEqualToConverter = nameof(IsStringEqualToConverter);
         public const string IsStringUnequalConverter = nameof(IsStringUnequalConverter);
         public const string IsStringNonnullAndNotEmptyConverter = nameof(IsStringNonnullAndNotEmptyConverter);
         public const string IsIEnumerableHasItemsConverter = nameof(IsIEnumerableHasItemsConverter);
+        public const string IsIntGreaterThanConverter = nameof(IsIntGreaterThanConverter);
+        public const string IsIntLessThanConverter = nameof(IsIntLessThanConverter);
         public const string IsStringNullOrEmptyConverter = nameof(IsStringNullOrEmptyConverter);
         public const string NonnullToCollapseConverter = nameof(NonnullToCollapseConverter);
         public const string NonnullToHiddenConverter = nameof(NonnullToHiddenConverter);

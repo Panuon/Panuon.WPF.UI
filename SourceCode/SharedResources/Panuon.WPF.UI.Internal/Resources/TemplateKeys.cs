@@ -59,6 +59,7 @@
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string ProgressBarIndeterminateTemplate = nameof(ProgressBarIndeterminateTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
+        public const string RateControlTemplate = nameof(RateControlTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
         public const string RepeatButtonPendingTemplate = nameof(RepeatButtonPendingTemplate);
         public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);

@@ -31,6 +31,7 @@
                 </Grid.RowDefinitions>
                 <Border x:Name="BdrHeader"
                         Height="{Binding Path=(local:GroupBoxHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(local:GroupBoxHelper.HeaderCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid Margin="{Binding Path=(local:GroupBoxHelper.HeaderPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                           VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
