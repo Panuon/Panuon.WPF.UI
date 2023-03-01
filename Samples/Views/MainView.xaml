@@ -34,8 +34,7 @@
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid>
-        <Grid Margin="20,10,20,20"
-              Visibility="Collapsed">
+        <Grid Margin="20,10,20,20">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -126,37 +125,6 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-
-        <pu:RateControl FontSize="30"
-                        Rate="2.5"
-                        CanSelectHalf="True"
-                        IsReadOnly="True"
-                        Foreground="HotPink"
-                        RateChanged="RateControl_RateChanged">
-            <pu:RateControl.GlyphTemplate>
-                <DataTemplate>
-                    <TextBlock x:Name="TxtGlyph"
-                               Cursor="Hand"
-                               Text="&#xe96f;"
-                               FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Rate}"
-                                     Value="0.5">
-                            <Setter TargetName="TxtGlyph"
-                                    Property="Text"
-                                    Value="&#xe970;" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Rate}"
-                                     Value="1">
-                            <Setter TargetName="TxtGlyph"
-                                    Property="Text"
-                                    Value="&#xe971;" />
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </pu:RateControl.GlyphTemplate>
-        </pu:RateControl>
-
         <!--<pu:Drawer IsOpen="False"
                    Placement="Left"
                    MaxWidth="300"
