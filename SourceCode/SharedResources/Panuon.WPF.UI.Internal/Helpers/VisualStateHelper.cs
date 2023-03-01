@@ -397,9 +397,19 @@ namespace Panuon.WPF.UI.Internal
 
         #region Focused Properties
 
+        #region FocusedCornerRadius
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("FocusedCornerRadius", typeof(CornerRadius?), typeof(VisualStateHelper));
+        #endregion
+
         #region FocusedBorderBrush
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             DependencyProperty.RegisterAttached("FocusedBorderBrush", typeof(Brush), typeof(VisualStateHelper));
+        #endregion
+
+        #region FocusedBorderThickness
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("FocusedBorderThickness", typeof(Thickness?), typeof(VisualStateHelper));
         #endregion
 
         #region FocusedBackground
@@ -504,15 +514,7 @@ namespace Panuon.WPF.UI.Internal
             FrameworkElementUtil.BindingProperty(element, BorderBrushProperty, element, Control.BorderBrushProperty);
             FrameworkElementUtil.BindingProperty(element, BorderThicknessProperty, element, Control.BorderThicknessProperty);
 
-            if (element is Button)
-            {
-                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, ButtonHelper.CornerRadiusProperty);
-            }
-            else if (element is RepeatButton)
-            {
-                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, RepeatButtonHelper.CornerRadiusProperty);
-            }
-            else if (element is TagItem)
+            if (element is TagItem)
             {
                 FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, TagItem.CornerRadiusProperty);
             }
@@ -889,7 +891,7 @@ namespace Panuon.WPF.UI.Internal
         {
             var element = (FrameworkElement)sender;
 
-            var propertyBrushes = new Dictionary<DependencyProperty, Brush>();
+            var propertyBrushes = new Dictionary<DependencyProperty, object>();
             if (element.GetValue(FocusedBackgroundProperty) is Brush focusedBackground)
             {
                 propertyBrushes.Add(BackgroundProperty, focusedBackground);
@@ -906,13 +908,21 @@ namespace Panuon.WPF.UI.Internal
             {
                 propertyBrushes.Add(BorderBrushProperty, focusedBorderBrush);
             }
+            if (element.GetValue(FocusedBorderThicknessProperty) is Thickness focusedBorderThickness)
+            {
+                propertyBrushes.Add(BorderThicknessProperty, focusedBorderThickness);
+            }
+            if (element.GetValue(FocusedCornerRadiusProperty) is CornerRadius focusedCornerRadius)
+            {
+                propertyBrushes.Add(CornerRadiusProperty, focusedCornerRadius);
+            }
             if (element.GetValue(FocusedWatermarkForegroundProperty) is Brush watermarkBrush)
             {
                 propertyBrushes.Add(WatermarkForegroundProperty, watermarkBrush);
             }
             if (propertyBrushes.Any())
             {
-                AnimationUtil.BeginBrushAnimationStoryboard(element, propertyBrushes);
+                AnimationUtil.BeginAnimationStoryboard(element, propertyBrushes);
             }
             if (element.GetValue(FocusedShadowColorProperty) is Color focusedShadowColor)
             {

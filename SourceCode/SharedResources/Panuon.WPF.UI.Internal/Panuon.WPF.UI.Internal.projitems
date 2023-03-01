@@ -24,6 +24,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GroupBoxHeaderCornerRadiusConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntLessThanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntGreaterThanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleLessThanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleGreaterThanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIEnumerableHasItemsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerContentMarginConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DrawerBorderMarginConverter.cs" />
@@ -147,6 +152,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\BadgeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\NumberInputStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\RateControlStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -411,6 +424,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\CarouselTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\NumberInputTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\RateControlTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

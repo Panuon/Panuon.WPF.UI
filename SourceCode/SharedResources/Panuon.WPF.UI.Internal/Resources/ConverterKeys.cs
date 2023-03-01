@@ -25,6 +25,7 @@
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
         public const string FontSizeMinusConverter = nameof(FontSizeMinusConverter);
         public const string GetTypeConverter = nameof(GetTypeConverter);
+        public const string GroupBoxHeaderCornerRadiusConverter = nameof(GroupBoxHeaderCornerRadiusConverter);
         public const string InternalSpinClassicRenderTransformOriginConverter = nameof(InternalSpinClassicRenderTransformOriginConverter);
         public const string IsEnumContainsInSpecificValueConverter = nameof(IsEnumContainsInSpecificValueConverter);
         public const string IsItemSeparatorShallVisibleControlConverter = nameof(IsItemSeparatorShallVisibleControlConverter);

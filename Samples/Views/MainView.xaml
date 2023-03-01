@@ -6,13 +6,13 @@
             xmlns:local="clr-namespace:Samples.Views"
             xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
             xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+            xmlns:i="clr-namespace:Panuon.WPF.UI.Internal;assembly=Panuon.WPF.UI"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
             Width="1000"
             WindowStartupLocation="CenterScreen"
-            MaskBrush="#AA000000"
-            Background="Transparent">
+            MaskBrush="#AA000000">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -118,71 +118,6 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-                <!--<pu:ZoomViewer Grid.Row="1"
-                       Width="500"
-                       Height="500"
-                       MinZoomLevel="1"
-                       MaxZoomLevel="15"
-                       ZoomLevel="1"
-                       ZoomLevelInterval="0.5"
-                       ZoomOnWheeling="Ctrl,Alt"
-                       MoveOnDragging="CtrlAndAlt"
-                       ZoomOrigin="{x:Null}"
-                       BorderBrush="Gray"
-                       BorderThickness="1">
-            <Image Stretch="Uniform"
-                   Source="C:\Users\mocheng\Pictures\Desktop\IMG_3822(20220409-205456).JPG"/>
-        </pu:ZoomViewer>-->
-                <!--<pu:Badge Grid.Row="1"
-                  Width="30"
-                  Height="30"
-                  WaveThickness="15"
-                  CornerRadius="15"
-                  BorderThickness="0"
-                  Foreground="White"
-                  Content="1"
-                  ClickEffect="Shake"
-                  IsWaving="True">
-            <pu:Badge.Background>
-                <LinearGradientBrush StartPoint="0,0"
-                                     EndPoint="1,1">
-                    <GradientStop Color="#FF70D9"
-                                  Offset="0" />
-                    <GradientStop Color="#FF4E8C"
-                                  Offset="0.2" />
-                    <GradientStop Color="#FF70D9"
-                                  Offset="1" />
-                </LinearGradientBrush>
-            </pu:Badge.Background>
-            <pu:Badge.WaveBrush>
-                <LinearGradientBrush StartPoint="0,0"
-                                     EndPoint="1,1">
-                    <GradientStop Color="#FF70D9"
-                                  Offset="0" />
-                    <GradientStop Color="#FF4E8C"
-                                  Offset="0.2" />
-                    <GradientStop Color="#FF70D9"
-                                  Offset="1" />
-                </LinearGradientBrush>
-            </pu:Badge.WaveBrush>
-        </pu:Badge>-->
-                <!--<Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal"
-                        Height="35">
-                <Button Content="-"
-                        Width="35"
-                        Command="{Binding PageUpCommand, ElementName=panel}"
-                        CommandParameter="{Binding ElementName=panel}" />
-                <Button Content="+"
-                        Width="35"
-                        Command="{Binding PageDownCommand, ElementName=panel}"
-                        CommandParameter="{Binding ElementName=panel}"/>
-            </StackPanel>
-        </Grid>-->
                 <TextBlock Grid.Row="2"
                            FontSize="14"
                            Foreground="Gray"
@@ -206,4 +141,3 @@
         </pu:Drawer>-->
     </Grid>
 </pu:WindowX>
-

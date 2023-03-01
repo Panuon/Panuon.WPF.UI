@@ -1,5 +1,4 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Utils;
+﻿using Panuon.WPF.UI.Utils;
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
@@ -52,6 +51,7 @@ namespace Panuon.WPF.UI
             WindowChrome.GlassFrameThicknessProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(new Thickness(), null, OnGlassFrameThicknessCoerceValue));
             WindowXCaption.BackgroundProperty.OverrideMetadata(typeof(WindowX), new FrameworkPropertyMetadata(Brushes.White, null, OnCaptionBackgroundCoerceValue));
         }
+
         public WindowX()
         {
             Loaded += WindowX_Loaded;
@@ -103,7 +103,7 @@ namespace Panuon.WPF.UI
             {
                 Close();
             }
-            else if(IsF11Enabled && e.Key == Key.F11)
+            else if (IsF11Enabled && e.Key == Key.F11)
             {
                 SetCurrentValue(IsFullScreenProperty, !IsFullScreen);
             }
@@ -527,7 +527,7 @@ namespace Panuon.WPF.UI
         private static object OnBackgroundCoerceValue(DependencyObject d, object baseValue)
         {
             var windowX = (WindowX)d;
-            if(windowX.Effect is AcrylicWindowXEffect)
+            if (windowX.Effect is AcrylicWindowXEffect)
             {
                 return Brushes.Transparent;
             }

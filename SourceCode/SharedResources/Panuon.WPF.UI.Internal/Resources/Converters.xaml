@@ -44,11 +44,15 @@
     <icv:FontSizeMinusConverter x:Key="{x:Static irs:ConverterKeys.FontSizeMinusConverter}" />
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GetEnumDescriptionConverter x:Key="{x:Static rs:ConverterKeys.GetEnumDescriptionConverter}" />
+    <icv:GroupBoxHeaderCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.GroupBoxHeaderCornerRadiusConverter}" />
     <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
-
     <icv:IsDoubleEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleEqualToConverter}" />
+    <icv:IsDoubleGreaterThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}" />
+    <icv:IsDoubleLessThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleLessThanConverter}" />
     <icv:IsDoubleNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleNotEqualToConverter}" />
     <icv:IsIntEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntEqualToConverter}" />
+    <icv:IsIntGreaterThanConverter x:Key="{x:Static rs:ConverterKeys.IsIntGreaterThanConverter}" />
+    <icv:IsIntLessThanConverter x:Key="{x:Static rs:ConverterKeys.IsIntLessThanConverter}" />
     <icv:IsIntNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntNotEqualToConverter}" />
     <icv:IntMinusConverter x:Key="{x:Static rs:ConverterKeys.IntMinusConverter}" />
     <icv:IntMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.IntMultiplyByConverter}" />

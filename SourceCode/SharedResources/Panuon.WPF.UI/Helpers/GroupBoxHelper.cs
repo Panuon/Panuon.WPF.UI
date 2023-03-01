@@ -127,6 +127,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderCornerRadius
+        public static CornerRadius GetHeaderCornerRadius(GroupBox groupBox)
+        {
+            return (CornerRadius)groupBox.GetValue(HeaderCornerRadiusProperty);
+        }
+
+        public static void SetHeaderCornerRadius(GroupBox groupBox, CornerRadius value)
+        {
+            groupBox.SetValue(HeaderCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("HeaderCornerRadius", typeof(CornerRadius), typeof(GroupBoxHelper));
+        #endregion
+
         #region HeaderHeight
         public static double GetHeaderHeight(GroupBox groupBox)
         {

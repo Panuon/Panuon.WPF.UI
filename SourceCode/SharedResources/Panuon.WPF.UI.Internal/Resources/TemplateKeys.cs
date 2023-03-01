@@ -50,6 +50,7 @@
         public const string MultiComboBoxTemplate = nameof(MultiComboBoxTemplate);
         public const string MultiComboBoxItemTemplate = nameof(MultiComboBoxItemTemplate);
         public const string NoticeBoxItemTemplate = nameof(NoticeBoxItemTemplate);
+        public const string NumberInputTemplate = nameof(NumberInputTemplate);
         public const string PaginationHorizontalTemplate = nameof(PaginationHorizontalTemplate);
         public const string PaginationVerticalTemplate = nameof(PaginationVerticalTemplate);
         public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
@@ -59,6 +60,7 @@
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string ProgressBarIndeterminateTemplate = nameof(ProgressBarIndeterminateTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);
+        public const string RateControlTemplate = nameof(RateControlTemplate);
         public const string RepeatButtonTemplate = nameof(RepeatButtonTemplate);
         public const string RepeatButtonPendingTemplate = nameof(RepeatButtonPendingTemplate);
         public const string RingProgressBarTemplate = nameof(RingProgressBarTemplate);

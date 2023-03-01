@@ -77,7 +77,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(SearchBox));
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(SearchBox));
         #endregion
 
         #region CornerRadius
@@ -88,7 +88,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(SearchBox));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(SearchBox));
         #endregion
 
         #region IsDropDownOpen
@@ -168,6 +168,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(SearchBox));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(SearchBox));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(SearchBox));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -210,6 +232,29 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(SearchBox));
+        #endregion
+
+
+        #region FocusedBorderThickness
+        public Thickness? FocusedBorderThickness
+        {
+            get { return (Thickness?)GetValue(FocusedBorderThicknessProperty); }
+            set { SetValue(FocusedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(SearchBox));
+        #endregion
+
+        #region FocusedCornerRadius
+        public CornerRadius? FocusedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(FocusedCornerRadiusProperty); }
+            set { SetValue(FocusedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(SearchBox));
         #endregion
 
         #region FocusedShadowColor
@@ -765,9 +810,9 @@ namespace Panuon.WPF.UI
             Opened?.Invoke(this, EventArgs.Empty);
         }
 
-        private static void OnClearCommandExecute(SearchBox searchTextBox)
+        private static void OnClearCommandExecute(SearchBox searchBox)
         {
-            searchTextBox.SetCurrentValue(TextProperty, null);
+            searchBox.SetCurrentValue(TextProperty, null);
         }
         #endregion
 

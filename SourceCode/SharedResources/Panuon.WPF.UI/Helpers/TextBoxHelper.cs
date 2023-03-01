@@ -76,7 +76,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(TextBoxHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
         #region ShadowColor
@@ -138,6 +138,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(TextBox textBox)
+        {
+            return (Thickness)textBox.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(TextBox textBox, Thickness? value)
+        {
+            textBox.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(TextBoxHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(TextBox textBox)
+        {
+            return (CornerRadius)textBox.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(TextBox textBox, CornerRadius? value)
+        {
+            textBox.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(TextBoxHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(TextBox textBox)
         {
@@ -150,20 +180,6 @@ namespace Panuon.WPF.UI
         }
         public static readonly DependencyProperty HoverShadowColorProperty =
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(TextBoxHelper));
-        #endregion
-
-        #region FocusedShadowColor
-        public static Color? GetFocusedShadowColor(TextBox textBox)
-        {
-            return (Color?)textBox.GetValue(FocusedShadowColorProperty);
-        }
-
-        public static void SetFocusedShadowColor(TextBox textBox, Color? value)
-        {
-            textBox.SetValue(FocusedShadowColorProperty, value);
-        }
-        public static readonly DependencyProperty FocusedShadowColorProperty =
-            VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
         #region FocusedBackground
@@ -223,7 +239,36 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty FocusedBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("FocusedBorderThickness", typeof(Thickness?), typeof(TextBoxHelper));
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(TextBoxHelper));
+        #endregion
+
+        #region FocusedCornerRadius
+        public static CornerRadius? GetFocusedCornerRadius(TextBox textBox)
+        {
+            return (CornerRadius)textBox.GetValue(FocusedCornerRadiusProperty);
+        }
+
+        public static void SetFocusedCornerRadius(TextBox textBox, CornerRadius? value)
+        {
+            textBox.SetValue(FocusedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(TextBoxHelper));
+        #endregion
+
+        #region FocusedShadowColor
+        public static Color? GetFocusedShadowColor(TextBox textBox)
+        {
+            return (Color?)textBox.GetValue(FocusedShadowColorProperty);
+        }
+
+        public static void SetFocusedShadowColor(TextBox textBox, Color? value)
+        {
+            textBox.SetValue(FocusedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty FocusedShadowColorProperty =
+            VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(TextBoxHelper));
         #endregion
 
         #region FocusedWatermarkForeground

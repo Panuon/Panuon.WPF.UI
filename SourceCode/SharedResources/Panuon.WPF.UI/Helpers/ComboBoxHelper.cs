@@ -212,6 +212,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(ComboBox comboBox)
+        {
+            return (Thickness)comboBox.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(ComboBox comboBox, Thickness? value)
+        {
+            comboBox.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(ComboBox comboBox)
+        {
+            return (CornerRadius)comboBox.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(ComboBox comboBox, CornerRadius? value)
+        {
+            comboBox.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(ComboBox comboBox)
         {
@@ -269,6 +299,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
+        #region FocusedBorderThickness
+        public static Thickness? GetFocusedBorderThickness(ComboBox comboBox)
+        {
+            return (Thickness?)comboBox.GetValue(FocusedBorderThicknessProperty);
+        }
+
+        public static void SetFocusedBorderThickness(ComboBox comboBox, Thickness? value)
+        {
+            comboBox.SetValue(FocusedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
+        #region FocusedCornerRadius
+        public static CornerRadius? GetFocusedCornerRadius(ComboBox comboBox)
+        {
+            return (CornerRadius)comboBox.GetValue(FocusedCornerRadiusProperty);
+        }
+
+        public static void SetFocusedCornerRadius(ComboBox comboBox, CornerRadius? value)
+        {
+            comboBox.SetValue(FocusedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
         #region FocusedShadowColor

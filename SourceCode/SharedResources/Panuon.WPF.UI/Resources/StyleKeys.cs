@@ -39,11 +39,13 @@
         public const string MultiComboBoxItemStyle = nameof(MultiComboBoxItemStyle);
         public const string MultiComboBoxStyle = nameof(MultiComboBoxStyle);
         public const string NoticeBoxItemStyle = nameof(NoticeBoxItemStyle);
+        public const string NumberInputStyle = nameof(NumberInputStyle);
         public const string PaginationItemStyle = nameof(PaginationItemStyle);
         public const string PaginationStyle = nameof(PaginationStyle);
         public const string PasswordBoxStyle = nameof(PasswordBoxStyle);
         public const string ProgressBarStyle = nameof(ProgressBarStyle);
         public const string RadioButtonStyle = nameof(RadioButtonStyle);
+        public const string RateControlStyle = nameof(RateControlStyle);
         public const string RepeatButtonStyle = nameof(RepeatButtonStyle);
         public const string RingProgressBarStyle = nameof(RingProgressBarStyle);
         public const string ScrollBarStyle = nameof(ScrollBarStyle);

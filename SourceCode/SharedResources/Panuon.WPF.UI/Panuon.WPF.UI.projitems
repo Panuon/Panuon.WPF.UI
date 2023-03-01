@@ -32,6 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NumberInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RateControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SearchBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
@@ -166,6 +168,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\NumberInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\RateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
