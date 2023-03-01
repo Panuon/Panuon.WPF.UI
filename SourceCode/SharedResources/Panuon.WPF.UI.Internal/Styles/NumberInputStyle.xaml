@@ -6,69 +6,43 @@
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/PasswordBoxTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/NumberInputTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:PasswordBoxHelper}}"
-           TargetType="Button"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
-        <Setter Property="local:ButtonHelper.HoverForeground"
-                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
+    <Style x:Key="{ComponentResourceKey ResourceId=UpDownButtonStyle, TypeInTargetAssembly={x:Type local:NumberInput}}"
+           TargetType="RepeatButton"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="FontSize"
+                Value="{Binding FontSize,Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMinusConverter}},ConverterParameter=2, RelativeSource={RelativeSource AncestorType=local:NumberInput}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="Transparent" />
-        <Setter Property="local:ButtonHelper.HoverBackground"
+        <Setter Property="local:RepeatButtonHelper.HoverBackground"
                 Value="{x:Null}" />
-        <Setter Property="local:ButtonHelper.ClickBackground"
+        <Setter Property="local:RepeatButtonHelper.ClickBackground"
                 Value="{x:Null}" />
-        <Setter Property="FontFamily"
-                Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
-        <Setter Property="FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
-        <Setter Property="Content"
-                Value="&#xe92d;" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=PasswordBox}, Mode=OneWay}" />
-    </Style>
-
-    <Style x:Key="{ComponentResourceKey ResourceId=PlainButtonStyle, TypeInTargetAssembly={x:Type local:PasswordBoxHelper}}"
-           TargetType="Button"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
-        <Setter Property="local:ButtonHelper.HoverForeground"
-                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
-        <Setter Property="Background"
-                Value="Transparent" />
-        <Setter Property="local:ButtonHelper.HoverBackground"
-                Value="{x:Null}" />
-        <Setter Property="local:ButtonHelper.ClickBackground"
-                Value="{x:Null}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:NumberInput}, Mode=OneWay}" />
         <Setter Property="FontFamily"
-                Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
-        <Setter Property="FontSize"
-                Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
-        <Setter Property="Content"
-                Value="&#xe94b;" />
-        <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=PasswordBox}, Mode=OneWay}" />
+                Value="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
         <Style.Triggers>
-            <Trigger Property="IsPressed"
-                     Value="True">
+            <Trigger Property="Tag"
+                     Value="Up">
                 <Setter Property="Content"
-                        Value="&#xe94c;" />
+                        Value="&#xe902;" />
+            </Trigger>
+            <Trigger Property="Tag"
+                     Value="Down">
+                <Setter Property="Content"
+                        Value="&#xe904;" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{x:Static rs:StyleKeys.PasswordBoxStyle}"
-           TargetType="PasswordBox">
+    <Style x:Key="{x:Static rs:StyleKeys.NumberInputStyle}"
+           TargetType="local:NumberInput">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
@@ -79,6 +53,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Margin"
+                Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"
@@ -87,24 +63,26 @@
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Left" />
-        <Setter Property="local:PasswordBoxHelper.PasswordHook"
-                Value="True" />
-        <Setter Property="local:PasswordBoxHelper.WatermarkForeground"
+        <Setter Property="WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:PasswordBoxHelper.ClearButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:PasswordBoxHelper}}}" />
-        <Setter Property="local:PasswordBoxHelper.PlainButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PlainButtonStyle, TypeInTargetAssembly={x:Type local:PasswordBoxHelper}}}" />
-        <Setter Property="VerticalContentAlignment"
-                Value="Center" />
+        <Setter Property="Padding"
+                Value="5,0" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="#ABADB3" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
-        <Setter Property="Padding"
-                Value="3,0" />
-        <Setter Property="CaretBrush"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="UpDownButtonsOrientation"
+                Value="Vertical" />
+        <Setter Property="UpDownButtonStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=UpDownButtonStyle, TypeInTargetAssembly={x:Type local:NumberInput}}}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.PasswordBoxTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.NumberInputTemplate}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled"
                      Value="False">
@@ -115,7 +93,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
@@ -125,7 +103,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedBorderThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBorderThicknessLock"
@@ -135,7 +113,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedCornerRadius, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverCornerRadiusLock"
@@ -145,7 +123,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
@@ -155,7 +133,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverForegroundLock"
@@ -165,7 +143,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:PasswordBoxHelper.FocusedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding FocusedShadowColor, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
@@ -173,5 +151,4 @@
             </MultiDataTrigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

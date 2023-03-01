@@ -17,8 +17,8 @@
                                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
                                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
                                    Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
+                                   CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
                                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}"
                                    Icon="{Binding Icon, RelativeSource={RelativeSource AncestorType=local:SearchBox}, Mode=OneWay}">
                 <Grid>

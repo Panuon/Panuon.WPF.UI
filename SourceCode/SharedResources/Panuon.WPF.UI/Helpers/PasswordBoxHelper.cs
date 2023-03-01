@@ -168,6 +168,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(PasswordBox passwordBox)
+        {
+            return (Thickness)passwordBox.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(PasswordBox passwordBox, Thickness? value)
+        {
+            passwordBox.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(PasswordBox passwordBox)
+        {
+            return (CornerRadius)passwordBox.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(PasswordBox passwordBox, CornerRadius? value)
+        {
+            passwordBox.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(PasswordBox passwordBox)
         {
@@ -180,20 +210,6 @@ namespace Panuon.WPF.UI
         }
         public static readonly DependencyProperty HoverShadowColorProperty =
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
-        #endregion
-
-        #region FocusedShadowColor
-        public static Color? GetFocusedShadowColor(PasswordBox passwordBox)
-        {
-            return (Color?)passwordBox.GetValue(FocusedShadowColorProperty);
-        }
-
-        public static void SetFocusedShadowColor(PasswordBox passwordBox, Color? value)
-        {
-            passwordBox.SetValue(FocusedShadowColorProperty, value);
-        }
-        public static readonly DependencyProperty FocusedShadowColorProperty =
-            VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
         #region FocusedBackground
@@ -239,6 +255,50 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
+        #region FocusedBorderThickness
+        public static Thickness? GetFocusedBorderThickness(PasswordBox passwordBox)
+        {
+            return (Thickness?)passwordBox.GetValue(FocusedBorderThicknessProperty);
+        }
+
+        public static void SetFocusedBorderThickness(PasswordBox passwordBox, Thickness? value)
+        {
+            passwordBox.SetValue(FocusedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
+        #region FocusedCornerRadius
+        public static CornerRadius? GetFocusedCornerRadius(PasswordBox passwordBox)
+        {
+            return (CornerRadius)passwordBox.GetValue(FocusedCornerRadiusProperty);
+        }
+
+        public static void SetFocusedCornerRadius(PasswordBox passwordBox, CornerRadius? value)
+        {
+            passwordBox.SetValue(FocusedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(PasswordBoxHelper));
+        #endregion
+
+        #region FocusedShadowColor
+        public static Color? GetFocusedShadowColor(PasswordBox passwordBox)
+        {
+            return (Color?)passwordBox.GetValue(FocusedShadowColorProperty);
+        }
+
+        public static void SetFocusedShadowColor(PasswordBox passwordBox, Color? value)
+        {
+            passwordBox.SetValue(FocusedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty FocusedShadowColorProperty =
+            VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
 
         #region FocusedWatermarkForeground

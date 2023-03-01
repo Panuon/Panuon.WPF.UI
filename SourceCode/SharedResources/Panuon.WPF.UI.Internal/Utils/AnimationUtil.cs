@@ -1,5 +1,4 @@
-﻿using Panuon.WPF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
@@ -10,6 +9,57 @@ namespace Panuon.WPF.UI.Internal.Utils
     static class AnimationUtil
     {
         #region Methods
+
+        #region BeginAnimationStoryboard
+        public static void BeginAnimationStoryboard(DependencyObject obj,
+            Dictionary<DependencyProperty, object> propertyValues,
+            TimeSpan? duration = null)
+        {
+            var storyboard = new Storyboard();
+            foreach (var propertyValue in propertyValues)
+            {
+                AnimationTimeline anima = null;
+                if (propertyValue.Value is Brush)
+                {
+                    var value = (Brush)propertyValue.Value;
+                    if (!value.CanFreeze)
+                    {
+                        continue;
+                    }
+                    anima = new BrushAnimation()
+                    {
+                        To = value,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (propertyValue.Value is Thickness)
+                {
+                    var value = (Thickness)propertyValue.Value;
+                    anima = new ThicknessAnimation()
+                    {
+                        To = value,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (propertyValue.Value is CornerRadius)
+                {
+                    var value = (CornerRadius)propertyValue.Value;
+                    anima = new CornerRadiusAnimation()
+                    {
+                        To = value,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                if (anima != null)
+                {
+                    Storyboard.SetTarget(anima, obj);
+                    Storyboard.SetTargetProperty(anima, new PropertyPath(propertyValue.Key));
+                    storyboard.Children.Add(anima);
+                }
+            }
+            storyboard.Begin();
+        }
+        #endregion
 
         #region BeginBrushAnimationStoryboard
         public static void BeginBrushAnimationStoryboard(DependencyObject obj, 

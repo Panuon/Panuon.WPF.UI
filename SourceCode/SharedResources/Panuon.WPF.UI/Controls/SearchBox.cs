@@ -765,9 +765,9 @@ namespace Panuon.WPF.UI
             Opened?.Invoke(this, EventArgs.Empty);
         }
 
-        private static void OnClearCommandExecute(SearchBox searchTextBox)
+        private static void OnClearCommandExecute(SearchBox searchBox)
         {
-            searchTextBox.SetCurrentValue(TextProperty, null);
+            searchBox.SetCurrentValue(TextProperty, null);
         }
         #endregion
 

@@ -39,6 +39,7 @@
         public const string MultiComboBoxItemStyle = nameof(MultiComboBoxItemStyle);
         public const string MultiComboBoxStyle = nameof(MultiComboBoxStyle);
         public const string NoticeBoxItemStyle = nameof(NoticeBoxItemStyle);
+        public const string NumberInputStyle = nameof(NumberInputStyle);
         public const string PaginationItemStyle = nameof(PaginationItemStyle);
         public const string PaginationStyle = nameof(PaginationStyle);
         public const string PasswordBoxStyle = nameof(PasswordBoxStyle);

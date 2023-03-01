@@ -16,14 +16,14 @@
             <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector"/>
         </ControlTemplate.Resources>
         <local:ContentControlX x:Name="CcMain"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           CornerRadius="{Binding Path=(local:TextBoxHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Icon="{Binding Path=(local:TextBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Icon="{Binding Path=(local:TextBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Border Margin="{TemplateBinding Padding}">
                     <ContentControl Margin="2,0,0,0"
@@ -43,19 +43,6 @@
                               HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}" />
             </Grid>
         </local:ContentControlX>
-        <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:TextBoxHelper.FocusedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="BorderThickness"
-                        Value="{Binding Path=(local:TextBoxHelper.FocusedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TextBoxClearableTemplate}"
@@ -102,17 +89,6 @@
             </Grid>
         </local:ContentControlX>
         <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:TextBoxHelper.FocusedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="BorderThickness"
-                        Value="{Binding Path=(local:TextBoxHelper.FocusedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </MultiDataTrigger>
             <Trigger  Property="local:TextBoxHelper.ClearButtonVisibility"
                       Value="Visible">
                 <Setter TargetName="BtnClear"

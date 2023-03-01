@@ -1,0 +1,119 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
+                    xmlns:its="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.NumberInputTemplate}"
+                     TargetType="local:NumberInput">
+        <ControlTemplate.Resources>
+            <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
+        </ControlTemplate.Resources>
+        <local:ContentControlX x:Name="CcMain"
+                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Icon="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="PART_InputTextBox"
+                         local:TextBoxHelper.Hook="True"
+                         local:TextBoxHelper.InputLimit="Digit,Point">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="InputMethod.IsInputMethodEnabled"
+                                    Value="False" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            <Setter Property="Padding"
+                                    Value="{Binding Padding, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+                            <Setter Property="CaretBrush"
+                                    Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <ScrollViewer x:Name="PART_ContentHost"
+                                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Border Margin="{TemplateBinding Padding}">
+                    <ContentControl Margin="2,0,0,0"
+                                    IsHitTestVisible="False"
+                                    Focusable="False"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}}, ElementName=PART_InputTextBox, Mode=OneWay}"
+                                    Content="{Binding Watermark, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                    Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </Border>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <RepeatButton x:Name="PART_UpButton"
+                                  Tag="Up"
+                                  Style="{TemplateBinding UpDownButtonStyle}"
+                                  Command="{Binding UpCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <RepeatButton x:Name="PART_DownButton"
+                                  Tag="Down"
+                                  Style="{TemplateBinding UpDownButtonStyle}"
+                                  Command="{Binding DownCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                </Grid>
+            </Grid>
+        </local:ContentControlX>
+        <ControlTemplate.Triggers>
+            <Trigger Property="UpDownButtonsOrientation"
+                     Value="Horizontal">
+                <Setter TargetName="PART_UpButton"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+                <Setter TargetName="PART_DownButton"
+                        Property="Grid.Column"
+                        Value="1" />
+                <Setter TargetName="PART_DownButton"
+                        Property="Grid.RowSpan"
+                        Value="2" />
+            </Trigger>
+            <Trigger Property="UpDownButtonsOrientation"
+                     Value="Vertical">
+                <Setter TargetName="PART_UpButton"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+                <Setter TargetName="PART_DownButton"
+                        Property="Grid.Row"
+                        Value="1" />
+                <Setter TargetName="PART_DownButton"
+                        Property="Grid.ColumnSpan"
+                        Value="2" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

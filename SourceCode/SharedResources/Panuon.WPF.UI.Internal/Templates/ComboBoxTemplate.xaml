@@ -17,14 +17,14 @@
         </ControlTemplate.Resources>
         <Grid>
             <local:ContentControlX x:Name="CcMain"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{Binding Path=(local:ComboBoxHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                               Icon="{Binding Path=(local:ComboBoxHelper.Icon), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                   Icon="{Binding Path=(local:ComboBoxHelper.Icon), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                 <ToggleButton Focusable="False"
                               IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}">
                     <ToggleButton.Style>
