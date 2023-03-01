@@ -146,15 +146,5 @@ namespace Samples.Views
 
 
         #endregion
-
-        private void NumberInput_ValueChanged(object sender, Panuon.WPF.SelectedValueChangedRoutedEventArgs<double> e)
-        {
-
-        }
-
-        private void RateControl_RateChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
