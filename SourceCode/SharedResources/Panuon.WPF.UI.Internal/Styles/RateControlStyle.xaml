@@ -38,8 +38,6 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
-        <Setter Property="SelectedForeground"
-                Value="{Binding Foreground, RelativeSource={RelativeSource Self},Mode=OneWay}" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BorderThickness"

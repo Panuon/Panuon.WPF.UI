@@ -76,6 +76,10 @@
                 Value="7,0" />
         <Setter Property="Background"
                 Value="White" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="#ABADB3" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
                 Value="Auto" />
         <Setter Property="Template"

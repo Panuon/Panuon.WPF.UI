@@ -71,7 +71,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(NumberInput));
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(NumberInput));
         #endregion
 
         #region CornerRadius
@@ -82,7 +82,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(NumberInput));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(NumberInput));
         #endregion
 
         #region HoverBackground
@@ -229,14 +229,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region UpDownButtonStyle
-        public Style UpDownButtonStyle
+        public static Style GetUpDownButtonStyle(NumberInput numberInput)
         {
-            get { return (Style)GetValue(UpDownButtonStyleProperty); }
-            set { SetValue(UpDownButtonStyleProperty, value); }
+            return (Style)numberInput.GetValue(UpDownButtonStyleProperty);
+        }
+
+        public static void SetUpDownButtonStyle(NumberInput numberInput, Style value)
+        {
+            numberInput.SetValue(UpDownButtonStyleProperty, value);
         }
 
         public static readonly DependencyProperty UpDownButtonStyleProperty =
-            DependencyProperty.Register("UpDownButtonStyle", typeof(Style), typeof(NumberInput));
+            DependencyProperty.RegisterAttached("UpDownButtonStyle", typeof(Style), typeof(NumberInput));
         #endregion
 
         #region UpDownButtonsOrientation
@@ -333,6 +337,26 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region ComponentResourceKeys
+        public static ComponentResourceKey UpDownButtonStyle { get; }
+            = new ComponentResourceKey(typeof(NumberInput), nameof(UpDownButtonStyle));
+        #endregion
+
+        #region Event
+
+        #region ValueChanged
+        public event SelectedValueChangedRoutedEventHandler<double> ValueChanged
+        {
+            add { AddHandler(ValueChangedEvent, value); }
+            remove { RemoveHandler(ValueChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent ValueChangedEvent =
+            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedRoutedEventHandler<double>), typeof(NumberInput));
+        #endregion
+
+        #endregion
+
         #region Overrides
         public override void OnApplyTemplate()
         {
@@ -359,7 +383,7 @@ namespace Panuon.WPF.UI
             }
             if (numberInput.IsSnapToIntervalEnabled)
             {
-                var newValue = (value / numberInput.Interval) * numberInput.Interval;
+                var newValue = Math.Ceiling(value / numberInput.Interval) * numberInput.Interval;
                 return newValue;
             }
             return value;
@@ -368,7 +392,7 @@ namespace Panuon.WPF.UI
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var numberInput = (NumberInput)d;
-            numberInput.OnValueChanged();
+            numberInput.OnValueChanged((double)e.OldValue, (double)e.NewValue);
         }
 
         private static void OnMaximumOrMinimumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -414,9 +438,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Functions
-        private void OnValueChanged()
+        private void OnValueChanged(double oldValue,
+            double newValue)
         {
             UpdateTextFromValue();
+            RaiseEvent(new SelectedValueChangedRoutedEventArgs<double>(ValueChangedEvent, oldValue, newValue));
         }
 
         private void UpdateTextFromValue()

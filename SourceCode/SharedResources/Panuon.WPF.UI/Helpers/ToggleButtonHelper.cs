@@ -72,7 +72,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ToggleButtonHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ToggleButtonHelper));
         #endregion
 
         #region IsPending

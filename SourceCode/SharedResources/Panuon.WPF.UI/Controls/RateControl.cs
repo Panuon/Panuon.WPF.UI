@@ -81,17 +81,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CanSelectHalf", typeof(bool), typeof(RateControl));
         #endregion
 
-        #region SelectedForeground
-        public Brush SelectedForeground
-        {
-            get { return (Brush)GetValue(SelectedForegroundProperty); }
-            set { SetValue(SelectedForegroundProperty, value); }
-        }
-
-        public static readonly DependencyProperty SelectedForegroundProperty =
-            DependencyProperty.Register("SelectedForeground", typeof(Brush), typeof(RateControl));
-        #endregion
-
         #region GlyphTemplate
         public DataTemplate GlyphTemplate
         {

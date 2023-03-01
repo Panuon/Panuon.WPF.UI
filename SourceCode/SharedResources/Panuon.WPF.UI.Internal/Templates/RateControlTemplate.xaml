@@ -24,14 +24,6 @@
                     <ContentControl x:Name="CcGlyph"
                                     Content="{Binding}"
                                     ContentTemplate="{Binding GlyphTemplate, RelativeSource={RelativeSource AncestorType=local:RateControl}, Mode=OneWay}" />
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Converter={StaticResource {x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}}, ConverterParameter=0}"
-                                     Value="True">
-                            <Setter TargetName="CcGlyph"
-                                    Property="Foreground"
-                                    Value="{Binding SelectedForeground, RelativeSource={RelativeSource AncestorType=local:RateControl}, Mode=OneWay}" />
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

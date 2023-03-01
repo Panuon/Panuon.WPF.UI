@@ -514,15 +514,7 @@ namespace Panuon.WPF.UI.Internal
             FrameworkElementUtil.BindingProperty(element, BorderBrushProperty, element, Control.BorderBrushProperty);
             FrameworkElementUtil.BindingProperty(element, BorderThicknessProperty, element, Control.BorderThicknessProperty);
 
-            if (element is Button)
-            {
-                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, ButtonHelper.CornerRadiusProperty);
-            }
-            else if (element is RepeatButton)
-            {
-                FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, RepeatButtonHelper.CornerRadiusProperty);
-            }
-            else if (element is TagItem)
+            if (element is TagItem)
             {
                 FrameworkElementUtil.BindingProperty(element, CornerRadiusProperty, element, TagItem.CornerRadiusProperty);
             }

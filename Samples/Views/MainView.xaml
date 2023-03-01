@@ -13,9 +13,6 @@
             Width="1000"
             WindowStartupLocation="CenterScreen"
             MaskBrush="#AA000000">
-    <!--<WindowChrome.WindowChrome>
-        <WindowChrome />
-    </WindowChrome.WindowChrome>-->
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -129,15 +126,37 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <StackPanel>
-            <pu:NumberInput Height="30"
-                            Width="180"
-                            Minimum="0"
-                            Maximum="100"
-                            Watermark="数字"
-                            UpDownButtonsOrientation="Horizontal" />
 
-        </StackPanel>
+        <pu:RateControl FontSize="30"
+                        Rate="2.5"
+                        CanSelectHalf="True"
+                        IsReadOnly="True"
+                        Foreground="HotPink"
+                        RateChanged="RateControl_RateChanged">
+            <pu:RateControl.GlyphTemplate>
+                <DataTemplate>
+                    <TextBlock x:Name="TxtGlyph"
+                               Cursor="Hand"
+                               Text="&#xe96f;"
+                               FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Rate}"
+                                     Value="0.5">
+                            <Setter TargetName="TxtGlyph"
+                                    Property="Text"
+                                    Value="&#xe970;" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Rate}"
+                                     Value="1">
+                            <Setter TargetName="TxtGlyph"
+                                    Property="Text"
+                                    Value="&#xe971;" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </pu:RateControl.GlyphTemplate>
+        </pu:RateControl>
+
         <!--<pu:Drawer IsOpen="False"
                    Placement="Left"
                    MaxWidth="300"
@@ -154,4 +173,3 @@
         </pu:Drawer>-->
     </Grid>
 </pu:WindowX>
-
