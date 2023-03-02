@@ -406,36 +406,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderSeparatorMargin", typeof(Thickness), typeof(ExpanderHelper));
         #endregion
 
-        #region AnimationDuration
-        public static TimeSpan? GetAnimationDuration(Expander expander)
-        {
-            return (TimeSpan?)expander.GetValue(AnimationDurationProperty);
-        }
-
-        public static void SetAnimationDuration(Expander expander, TimeSpan? value)
-        {
-            expander.SetValue(AnimationDurationProperty, value);
-        }
-
-        public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.RegisterAttached("AnimationDuration", typeof(TimeSpan?), typeof(ExpanderHelper));
-        #endregion
-
-        #region AnimationEase
-        public static AnimationEase GetAnimationEase(Expander expander)
-        {
-            return (AnimationEase)expander.GetValue(AnimationEaseProperty);
-        }
-
-        public static void SetAnimationEase(Expander expander, AnimationEase value)
-        {
-            expander.SetValue(AnimationEaseProperty, value);
-        }
-
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ExpanderHelper));
-        #endregion
-
         #region ExtendControl
         public static object GetExtendControl(Expander expander)
         {
