@@ -16,9 +16,9 @@ using System.Windows;
 [assembly: InternalsVisibleTo("Panuon.WPF.UI.Themes")]
 
 [assembly: ThemeInfo(
-    ResourceDictionaryLocation.None, 
+    ResourceDictionaryLocation.None,
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.1.8.1")]
-[assembly: AssemblyFileVersion("1.1.8.1")]
+[assembly: AssemblyVersion("1.1.8.2")]
+[assembly: AssemblyFileVersion("1.1.8.2")]

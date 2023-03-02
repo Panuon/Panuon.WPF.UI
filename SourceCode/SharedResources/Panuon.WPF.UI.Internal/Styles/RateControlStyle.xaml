@@ -29,7 +29,7 @@
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
-    
+
     <Style x:Key="{x:Static rs:StyleKeys.RateControlStyle}"
            TargetType="local:RateControl">
         <Setter Property="i:VisualStateHelper.Regist"
