@@ -12,20 +12,20 @@
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=GlyphTemplate, TypeInTargetAssembly={x:Type local:RateControl}}">
         <TextBlock x:Name="TxtGlyph"
                    Cursor="Hand"
-                   Text="&#xe968;"
+                   Text="&#xe96c;"
                    FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Rate}"
                          Value="0.5">
                 <Setter TargetName="TxtGlyph"
                         Property="Text"
-                        Value="&#xe969;" />
+                        Value="&#xe96d;" />
             </DataTrigger>
             <DataTrigger Binding="{Binding Rate}"
                          Value="1">
                 <Setter TargetName="TxtGlyph"
                         Property="Text"
-                        Value="&#xe96a;" />
+                        Value="&#xe96e;" />
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
