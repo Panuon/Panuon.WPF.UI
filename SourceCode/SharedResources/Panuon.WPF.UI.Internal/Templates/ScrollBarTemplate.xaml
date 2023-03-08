@@ -73,7 +73,7 @@
                         </RepeatButton>
                     </Track.IncreaseRepeatButton>
                     <Track.Thumb>
-                        <Thumb MinHeight="{Binding Path=(local:ScrollBarHelper.ThumbMinHeight),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}">
+                        <Thumb MinHeight="{Binding Path=(local:ScrollBarHelper.ThumbMinSize),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}">
                             <Thumb.Style>
                                 <Style TargetType="Thumb">
                                     <Setter Property="local:ScrollBarHelper.IsThumbHover"
@@ -101,7 +101,7 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=(local:ScrollBarHelper.ThumbMinHeight), Converter={StaticResource {x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}}, ConverterParameter=0, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding Path=(local:ScrollBarHelper.ThumbMinSize), Converter={StaticResource {x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}}, ConverterParameter=0, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="PART_Track"
                         Property="ViewportSize"

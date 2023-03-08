@@ -135,19 +135,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(1), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region ThumbMinHeight
-        public static double GetThumbMinHeight(DependencyObject obj)
+        #region ThumbMinSize
+        public static double GetThumbMinSize(DependencyObject obj)
         {
-            return (double)obj.GetValue(ThumbMinHeightProperty);
+            return (double)obj.GetValue(ThumbMinSizeProperty);
         }
 
-        public static void SetThumbMinHeight(DependencyObject obj, double value)
+        public static void SetThumbMinSize(DependencyObject obj, double value)
         {
-            obj.SetValue(ThumbMinHeightProperty, value);
+            obj.SetValue(ThumbMinSizeProperty, value);
         }
 
-        public static readonly DependencyProperty ThumbMinHeightProperty =
-            DependencyProperty.RegisterAttached("ThumbMinHeight", typeof(double), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty ThumbMinSizeProperty =
+            DependencyProperty.RegisterAttached("ThumbMinSize", typeof(double), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region HoverTrackBackground
