@@ -272,12 +272,17 @@
                     Value="#AAAAAA" />
             <Setter Property="pu:DropDownHelper.ShadowColor"
                     Value="#35303D" />
+            <Setter Property="pu:DropDownHelper.Width"
+                    Value="250" />
+            <Setter Property="pu:DropDownHelper.Height"
+                    Value="250" />
             <Setter Property="ColorSelectorStyle">
                 <Setter.Value>
                     <Style TargetType="pu:ColorSelector"
                            BasedOn="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type pu:ColorPicker}}}">
                         <Setter Property="Foreground"
                                 Value="White" />
+                      
                         <Setter Property="Background"
                                 Value="#35303D" />
                         <Setter Property="CornerRadius"
@@ -388,6 +393,7 @@
                                 Style="{StaticResource ColorPickerStyle}"
                                 Watermark="选择一个颜色"
                                 IsEditable="True"
+                                ColorEditors="HEX"
                                 ColorChannels="ARGB"
                                 TextFormats="ARGB"
                                 SelectedColor="White"
