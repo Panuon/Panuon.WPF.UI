@@ -345,7 +345,7 @@ namespace Panuon.WPF.UI
 
                 var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
                 mouseWheelDelta = scrollViewer.CanContentScroll
-                    ? (int)Math.Floor(mouseWheelDelta / 48)
+                    ? scrollViewer.ViewportHeight
                     : mouseWheelDelta;
                 switch (GetWheelScrollingDirection(scrollViewer))
                 {
