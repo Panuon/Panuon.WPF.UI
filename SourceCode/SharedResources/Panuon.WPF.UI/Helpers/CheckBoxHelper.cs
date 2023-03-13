@@ -19,7 +19,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(CheckBoxHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(CheckBoxHelper));
         #endregion
 
         #region BoxHeight
@@ -66,7 +66,22 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty ContentPlacementProperty =
             DependencyProperty.RegisterAttached("ContentPlacement", typeof(ContentPlacement), typeof(CheckBoxHelper), new PropertyMetadata(ContentPlacement.Right));
         #endregion
-        
+
+        #region ShadowColor
+        public static Color? GetShadowColor(CheckBox checkBox)
+        {
+            return (Color?)checkBox.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(CheckBox checkBox, Color? value)
+        {
+            checkBox.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(CheckBoxHelper));
+        #endregion
+
         #region GlyphBrush
         public static Brush GetGlyphBrush(CheckBox checkBox)
         {
@@ -142,6 +157,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(CheckBoxHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(CheckBox checkBox)
+        {
+            return (Thickness?)checkBox.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(CheckBox checkBox, Thickness? value)
+        {
+            checkBox.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(CheckBoxHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(CheckBox checkBox)
+        {
+            return (CornerRadius?)checkBox.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(CheckBox checkBox, CornerRadius? value)
+        {
+            checkBox.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(CheckBoxHelper));
+        #endregion
+
         #region HoverGlyphBrush
         public static Brush GetHoverGlyphBrush(CheckBox checkBox)
         {
@@ -155,6 +200,20 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HoverGlyphBrushProperty =
             VisualStateHelper.HoverGlyphBrushProperty.AddOwner(typeof(CheckBoxHelper));
+        #endregion
+
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(CheckBox checkBox)
+        {
+            return (Color?)checkBox.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(CheckBox checkBox, Color? value)
+        {
+            checkBox.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(CheckBoxHelper));
         #endregion
 
         #region CheckedForeground
@@ -230,6 +289,35 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedGlyphBrushProperty =
             DependencyProperty.RegisterAttached("CheckedGlyphBrush", typeof(Brush), typeof(CheckBoxHelper));
+        #endregion
+
+        #region CheckedCornerRadius
+        public static CornerRadius? GetCheckedCornerRadius(CheckBox checkBox)
+        {
+            return (CornerRadius?)checkBox.GetValue(CheckedCornerRadiusProperty);
+        }
+
+        public static void SetCheckedCornerRadius(CheckBox checkBox, CornerRadius? value)
+        {
+            checkBox.SetValue(CheckedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(CheckBoxHelper));
+        #endregion
+
+        #region CheckedShadowColor
+        public static Color? GetCheckedShadowColor(CheckBox checkBox)
+        {
+            return (Color?)checkBox.GetValue(CheckedShadowColorProperty);
+        }
+
+        public static void SetCheckedShadowColor(CheckBox checkBox, Color? value)
+        {
+            checkBox.SetValue(CheckedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(CheckBoxHelper));
         #endregion
 
         #region CheckedContent
