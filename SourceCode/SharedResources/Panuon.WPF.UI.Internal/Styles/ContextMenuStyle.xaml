@@ -29,7 +29,7 @@
                    FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}"
+    <Style x:Key="{x:Static irs:StyleKeys.InternalContextMenuItemStyle}"
            TargetType="MenuItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
@@ -119,6 +119,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="{ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}"
+           TargetType="MenuItem"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalContextMenuItemStyle}}">
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static irs:StyleKeys.InternalContextMenuItemStyle}}" />
+    </Style>
+
 
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuStyle}"
         TargetType="{x:Type ContextMenu}">

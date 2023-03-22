@@ -1,4 +1,5 @@
-﻿using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -17,47 +18,10 @@ namespace Panuon.WPF.UI
             KeyboardNavigation.AcceptsReturnProperty.OverrideMetadata(typeof(Switch), new FrameworkPropertyMetadata(false));
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Switch), new FrameworkPropertyMetadata(typeof(Switch)));
         }
-
-        public Switch()
-        {
-            SwitchChecked += Switch_SwitchChecked;
-            SetBinding(InternalToggleShadowColorProperty, new Binding()
-            {
-                Path = new PropertyPath(ToggleShadowColorProperty),
-                Source = this,
-            });
-        }
         #endregion
 
         #region Internal Events
         internal static event EventHandler SwitchChecked;
-        #endregion
-
-        #region Overrides
-
-        #region OnChecked
-        protected override void OnChecked(RoutedEventArgs e)
-        {
-            base.OnChecked(e);
-            RaiseSwitchChecked();
-            if (CheckedToggleShadowColor is Color checkedShadowColor)
-            {
-                AnimationUtil.BeginColorAnimation(this, InternalToggleShadowColorProperty, null, checkedShadowColor, TimeSpan.FromSeconds(0.2));
-            }
-        }
-        #endregion
-
-        #region OnUnchecked
-        protected override void OnUnchecked(RoutedEventArgs e)
-        {
-            base.OnUnchecked(e);
-            if (CheckedToggleShadowColor is Color && ToggleShadowColor is Color shadowColor)
-            {
-                AnimationUtil.BeginColorAnimation(this, InternalToggleShadowColorProperty, null, shadowColor, TimeSpan.FromSeconds(0.2));
-            }
-        }
-        #endregion
-
         #endregion
 
         #region Properties
@@ -92,7 +56,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Switch));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region BoxWidth
@@ -125,7 +89,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ToggleBrushProperty =
-            DependencyProperty.Register("ToggleBrush", typeof(Brush), typeof(Switch));
+            VisualStateHelper.ToggleBrushProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region ToggleSize
@@ -136,7 +100,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ToggleSizeProperty =
-            DependencyProperty.Register("ToggleSize", typeof(double), typeof(Switch));
+            VisualStateHelper.ToggleSizeProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region ToggleShadowColor
@@ -147,7 +111,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ToggleShadowColorProperty =
-            DependencyProperty.Register("ToggleShadowColor", typeof(Color?), typeof(Switch));
+            VisualStateHelper.ToggleShadowColorProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region ToggleCornerRadius
@@ -158,9 +122,129 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ToggleCornerRadiusProperty =
-            DependencyProperty.Register("ToggleCornerRadius", typeof(CornerRadius), typeof(Switch));
+            VisualStateHelper.ToggleCornerRadiusProperty.AddOwner(typeof(Switch));
         #endregion
 
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverBackground
+        public Brush HoverBackground
+        {
+            get { return (Brush)GetValue(HoverBackgroundProperty); }
+            set { SetValue(HoverBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            VisualStateHelper.HoverBackgroundProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverForeground
+        public Brush HoverForeground
+        {
+            get { return (Brush)GetValue(HoverForegroundProperty); }
+            set { SetValue(HoverForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverForegroundProperty =
+            VisualStateHelper.HoverForegroundProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverBorderBrush
+        public Brush HoverBorderBrush
+        {
+            get { return (Brush)GetValue(HoverBorderBrushProperty); }
+            set { SetValue(HoverBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverShadowColor
+        public Color? HoverShadowColor
+        {
+            get { return (Color?)GetValue(HoverShadowColorProperty); }
+            set { SetValue(HoverShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverToggleSize
+        public double? HoverToggleSize
+        {
+            get { return (double?)GetValue(HoverToggleSizeProperty); }
+            set { SetValue(HoverToggleSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverToggleSizeProperty =
+            VisualStateHelper.HoverToggleSizeProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverToggleBrush
+        public Brush HoverToggleBrush
+        {
+            get { return (Brush)GetValue(HoverToggleBrushProperty); }
+            set { SetValue(HoverToggleBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverToggleBrushProperty =
+            VisualStateHelper.HoverToggleBrushProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverToggleCornerRadius
+        public CornerRadius? HoverToggleCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverToggleCornerRadiusProperty); }
+            set { SetValue(HoverToggleCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverToggleCornerRadiusProperty =
+            VisualStateHelper.HoverToggleCornerRadiusProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(Switch));
+        #endregion
+
+        #region HoverToggleShadowColor
+        public Color? HoverToggleShadowColor
+        {
+            get { return (Color?)GetValue(HoverToggleShadowColorProperty); }
+            set { SetValue(HoverToggleShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverToggleShadowColorProperty =
+            VisualStateHelper.HoverToggleShadowColorProperty.AddOwner(typeof(Switch));
+        #endregion
 
         #region CheckedBackground
         public Brush CheckedBackground
@@ -206,6 +290,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(Switch));
         #endregion
 
+        #region CheckedToggleSize
+        public double? CheckedToggleSize
+        {
+            get { return (double?)GetValue(CheckedToggleSizeProperty); }
+            set { SetValue(CheckedToggleSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedToggleSizeProperty =
+            DependencyProperty.Register("CheckedToggleSize", typeof(double?), typeof(Switch));
+        #endregion
+
         #region CheckedToggleBrush
         public Brush CheckedToggleBrush
         {
@@ -215,6 +310,28 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedToggleBrushProperty =
             DependencyProperty.Register("CheckedToggleBrush", typeof(Brush), typeof(Switch));
+        #endregion
+
+        #region CheckedToggleCornerRadius
+        public CornerRadius? CheckedToggleCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(CheckedToggleCornerRadiusProperty); }
+            set { SetValue(CheckedToggleCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedToggleCornerRadiusProperty =
+            DependencyProperty.Register("CheckedToggleCornerRadius", typeof(CornerRadius?), typeof(Switch));
+        #endregion
+
+        #region CheckedShadowColor
+        public Color? CheckedShadowColor
+        {
+            get { return (Color?)GetValue(CheckedShadowColorProperty); }
+            set { SetValue(CheckedShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region CheckedContent
@@ -239,19 +356,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CheckedToggleShadowColor", typeof(Color?), typeof(Switch));
         #endregion
 
-        #endregion
-
-        #region Internal Properties
-
-        #region InternalToggleShadowColor
-        internal Color? InternalToggleShadowColor
+        #region CheckedCornerRadius
+        public CornerRadius? CheckedCornerRadius
         {
-            get { return (Color?)GetValue(InternalToggleShadowColorProperty); }
-            set { SetValue(InternalToggleShadowColorProperty, value); }
+            get { return (CornerRadius?)GetValue(CheckedCornerRadiusProperty); }
+            set { SetValue(CheckedCornerRadiusProperty, value); }
         }
 
-        internal static readonly DependencyProperty InternalToggleShadowColorProperty =
-            DependencyProperty.Register("InternalToggleShadowColor", typeof(Color?), typeof(Switch));
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.Register("CheckedCornerRadius", typeof(CornerRadius?), typeof(Switch));
         #endregion
 
         #endregion

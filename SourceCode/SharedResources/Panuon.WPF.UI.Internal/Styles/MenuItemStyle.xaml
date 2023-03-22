@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MenuItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:StyleKeys.MenuItemStyle}"
+    <Style x:Key="{x:Static irs:StyleKeys.InternalMenuItemStyle}"
            TargetType="MenuItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
@@ -39,6 +39,7 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        
         <Style.Triggers>
             <Trigger Property="Role"
                      Value="TopLevelHeader">
@@ -284,6 +285,11 @@
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.MenuItemSubmenuTemplate}}" />
             </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsCheckable"
@@ -304,13 +310,64 @@
                 <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
                         Value="True" />
             </MultiTrigger>
-            <Trigger Property="IsEnabled"
-                     Value="False">
-                <Setter Property="Opacity"
-                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
-            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverBorderThicknessLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverCornerRadiusLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                        Value="True" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="{x:Static rs:StyleKeys.MenuItemStyle}"
+           TargetType="MenuItem"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}">
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}" />
+    </Style>
 
 </ResourceDictionary>

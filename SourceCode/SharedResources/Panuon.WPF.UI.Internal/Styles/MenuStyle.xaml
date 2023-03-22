@@ -56,6 +56,8 @@
                 Value="#F1F1F1" />
         <Setter Property="local:MenuHelper.TopLevelItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:MenuHelper.SubmenuItemsPadding"
+                Value="5,0,15,0" />
         <Setter Property="local:MenuHelper.SubmenuItemsIconWidth"
                 Value="{Binding Path=(local:MenuHelper.SubmenuItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuItemsHeight"
@@ -112,6 +114,8 @@
                 Value="1" />
         <Setter Property="Padding"
                 Value="0" />
+        <Setter Property="Background"
+                Value="White" />
         <Setter Property="FontFamily"
                 Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="FontSize"

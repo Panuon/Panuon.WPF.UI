@@ -172,6 +172,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("OpenedBorderBrush", typeof(Brush), typeof(MenuItemHelper));
         #endregion
 
+        #region OpenedBorderThickness
+        public static Thickness? GetOpenedBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(OpenedBorderThicknessProperty);
+        }
+
+        public static void SetOpenedBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(OpenedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("OpenedBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region OpenedCornerRadius
+        public static CornerRadius? GetOpenedCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(OpenedCornerRadiusProperty);
+        }
+
+        public static void SetOpenedCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(OpenedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("OpenedCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
+        #endregion
+
         #region CheckedBackground
         public static Brush GetCheckedBackground(MenuItem menuItem)
         {
@@ -230,6 +260,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region CheckedCornerRadius
+        public static CornerRadius? GetCheckedCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(CheckedCornerRadiusProperty);
+        }
+
+        public static void SetCheckedCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(CheckedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
         #endregion
 
         #region SeparatorBrush

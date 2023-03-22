@@ -13,7 +13,8 @@
                      TargetType="local:Switch">
         <Border Background="Transparent">
             <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                  Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -22,11 +23,13 @@
                 <Grid x:Name="GrdBox"
                       Height="{TemplateBinding BoxHeight}"
                       Width="{TemplateBinding BoxWidth}">
-                    <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            Background="{TemplateBinding Background}">
-                        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                CornerRadius="{TemplateBinding CornerRadius}"
+                    <Border x:Name="BdrBox"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <Border x:Name="BdrInnerBox"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 Background="{TemplateBinding CheckedBackground}"
                                 RenderTransformOrigin="0.5,0.5">
                             <Border.RenderTransform>
@@ -36,12 +39,11 @@
                             </Border.RenderTransform>
                         </Border>
                     </Border>
-
                     <Border x:Name="BdrBorder"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" />
+                            CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
                 <Border x:Name="BdrContainer"
                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -60,40 +62,19 @@
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
-                            Height="{TemplateBinding ToggleSize}"
-                            Width="{TemplateBinding ToggleSize}"
-                            CornerRadius="{TemplateBinding ToggleCornerRadius}"
-                            Background="{TemplateBinding ToggleBrush}">
-                        <Border.Effect>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                                <Binding Path="InternalToggleShadowColor"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.Direction)"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.Opacity)"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                                <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                         RelativeSource="{RelativeSource TemplatedParent}"
-                                         Mode="OneWay" />
-                            </MultiBinding>
-                        </Border.Effect>
+                            Width="{Binding Path=(i:VisualStateHelper.ToggleSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Height="{Binding Path=(i:VisualStateHelper.ToggleSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CornerRadius="{Binding Path=(i:VisualStateHelper.ToggleCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Background="{Binding Path=(i:VisualStateHelper.ToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Effect="{Binding Path=(i:VisualStateHelper.ToggleEffect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     </Border>
                 </Border>
                 <ContentPresenter x:Name="CpContent"
                                   Grid.Column="1"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  TextElement.Foreground="{TemplateBinding Foreground}"
-                                  TextBlock.Foreground="{TemplateBinding Foreground}"
+                                  TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{TemplateBinding Padding}" />
             </Grid>
         </Border>
@@ -167,12 +148,54 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding CheckedCornerRadius, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrBox"
+                        Property="CornerRadius"
+                        Value="{Binding CheckedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrInnerBox"
+                        Property="CornerRadius"
+                        Value="{Binding CheckedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrBorder"
+                        Property="CornerRadius"
+                        Value="{Binding CheckedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
                     <Condition Binding="{Binding CheckedToggleBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrToggle"
                         Property="Background"
                         Value="{Binding CheckedToggleBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CheckedToggleCornerRadius, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrToggle"
+                        Property="CornerRadius"
+                        Value="{Binding CheckedToggleCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CheckedToggleSize, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrToggle"
+                        Property="Width"
+                        Value="{Binding CheckedToggleSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrToggle"
+                        Property="Height"
+                        Value="{Binding CheckedToggleSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
