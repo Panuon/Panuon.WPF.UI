@@ -34,7 +34,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ComboBoxItemHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ComboBoxItemHelper));
         #endregion
 
         #region RemoveButtonVisibility
@@ -97,6 +97,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ComboBoxItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(ComboBoxItem comboBoxItem)
+        {
+            return (Thickness?)comboBoxItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(ComboBoxItem comboBoxItem, Thickness? value)
+        {
+            comboBoxItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ComboBoxItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(ComboBoxItem comboBoxItem)
+        {
+            return (CornerRadius?)comboBoxItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(ComboBoxItem comboBoxItem, CornerRadius? value)
+        {
+            comboBoxItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ComboBoxItemHelper));
+        #endregion
+
         #region SelectedBackground
         public static Brush GetSelectedBackground(ComboBoxItem comboBoxItem)
         {
@@ -155,6 +185,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("SelectedBorderThickness", typeof(Thickness?), typeof(ComboBoxItemHelper));
+        #endregion
+
+        #region SelectedCornerRadius
+        public static CornerRadius? GetSelectedCornerRadius(ComboBoxItem comboBoxItem)
+        {
+            return (CornerRadius?)comboBoxItem.GetValue(SelectedCornerRadiusProperty);
+        }
+
+        public static void SetSelectedCornerRadius(ComboBoxItem comboBoxItem, CornerRadius? value)
+        {
+            comboBoxItem.SetValue(SelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("SelectedCornerRadius", typeof(CornerRadius?), typeof(ComboBoxItemHelper));
         #endregion
 
         #region SeparatorBrush

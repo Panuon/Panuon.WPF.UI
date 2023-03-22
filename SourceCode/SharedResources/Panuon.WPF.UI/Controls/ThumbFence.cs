@@ -226,7 +226,7 @@ namespace Panuon.WPF.UI
             }
 
             var thumbWidth = _thumb.RenderSize.Width;
-            var thumbHeight = _thumb.RenderSize.Width;
+            var thumbHeight = _thumb.RenderSize.Height;
             var halfThumbWidth = thumbWidth / 2;
             var halfThumbHeight = thumbHeight / 2;
             var renderWidth = _canvas.RenderSize.Width;

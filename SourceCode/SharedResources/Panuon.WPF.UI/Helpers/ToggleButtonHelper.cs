@@ -373,6 +373,22 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(ToggleButtonHelper));
         #endregion
 
+        #region CheckedCornerRadius
+        public static CornerRadius? GetCheckedCornerRadius(ToggleButton toggleButton)
+        {
+            return (CornerRadius?)toggleButton.GetValue(CheckedCornerRadiusProperty);
+        }
+
+        public static void SetCheckedCornerRadius(ToggleButton toggleButton, CornerRadius? value)
+        {
+            toggleButton.SetValue(CheckedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(ToggleButtonHelper));
+        #endregion
+
+
         #endregion
     }
 }

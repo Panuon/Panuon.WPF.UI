@@ -137,6 +137,36 @@ namespace Panuon.WPF.UI.Internal
             DependencyProperty.RegisterAttached("GlyphBrush", typeof(Brush), typeof(VisualStateHelper));
         #endregion
 
+        #region ToggleSize
+        public static double GetToggleSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ToggleSizeProperty);
+        }
+
+        public static void SetToggleSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(ToggleSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ToggleSizeProperty =
+            DependencyProperty.RegisterAttached("ToggleSize", typeof(double), typeof(VisualStateHelper));
+        #endregion
+
+        #region ToggleCornerRadius
+        public static CornerRadius GetToggleCornerRadius(DependencyObject obj)
+        {
+            return (CornerRadius)obj.GetValue(ToggleCornerRadiusProperty);
+        }
+
+        public static void SetToggleCornerRadius(DependencyObject obj, CornerRadius value)
+        {
+            obj.SetValue(ToggleCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ToggleCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ToggleCornerRadius", typeof(CornerRadius), typeof(VisualStateHelper));
+        #endregion
+
         #region ToggleBrush
         public static Brush GetToggleBrush(Control control)
         {
@@ -180,6 +210,21 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty EffectProperty =
             DependencyProperty.RegisterAttached("Effect", typeof(DropShadowEffect), typeof(VisualStateHelper));
+        #endregion
+
+        #region ToggleEffect
+        public static DropShadowEffect GetToggleEffect(DependencyObject obj)
+        {
+            return (DropShadowEffect)obj.GetValue(ToggleEffectProperty);
+        }
+
+        public static void SetToggleEffect(DependencyObject obj, DropShadowEffect value)
+        {
+            obj.SetValue(ToggleEffectProperty, value);
+        }
+
+        public static readonly DependencyProperty ToggleEffectProperty =
+            DependencyProperty.RegisterAttached("ToggleEffect", typeof(DropShadowEffect), typeof(VisualStateHelper));
         #endregion
 
         #region Percent
@@ -228,59 +273,43 @@ namespace Panuon.WPF.UI.Internal
 
         #endregion
 
-
         #endregion
 
         #region ShadowColor Properties
 
-        #region ShadowColor
         public static readonly DependencyProperty ShadowColorProperty =
             DependencyProperty.RegisterAttached("ShadowColor", typeof(Color?), typeof(VisualStateHelper));
-        #endregion
+
+        public static readonly DependencyProperty ToggleShadowColorProperty =
+            DependencyProperty.RegisterAttached("ToggleShadowColor", typeof(Color?), typeof(VisualStateHelper));
 
         #endregion
 
         #region Hover Properties
 
-        #region HoverCornerRadiusProperty
         public static readonly DependencyProperty HoverCornerRadiusProperty =
             DependencyProperty.RegisterAttached("HoverCornerRadius", typeof(CornerRadius?), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverBorderBrushProperty
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverBorderThicknessProperty
         public static readonly DependencyProperty HoverBorderThicknessProperty =
             DependencyProperty.RegisterAttached("HoverBorderThickness", typeof(Thickness?), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverBackgroundProperty
         public static readonly DependencyProperty HoverBackgroundProperty =
             DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverForegroundProperty
         public static readonly DependencyProperty HoverForegroundProperty =
             DependencyProperty.RegisterAttached("HoverForeground", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverGlyphBrushProperty
         public static readonly DependencyProperty HoverGlyphBrushProperty =
             DependencyProperty.RegisterAttached("HoverGlyphBrush", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
-
-        #region HoverToggleBrushProperty
+        
         public static readonly DependencyProperty HoverToggleBrushProperty =
             DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
 
-        #region HoverRibbonLineBrushProperty
         public static readonly DependencyProperty HoverRibbonLineBrushProperty =
             DependencyProperty.RegisterAttached("HoverRibbonLineBrush", typeof(Brush), typeof(VisualStateHelper));
-        #endregion
 
         #region HoverBorderBrushLock
         public static bool GetHoverBorderBrushLock(DependencyObject obj)
@@ -388,11 +417,17 @@ namespace Panuon.WPF.UI.Internal
             DependencyProperty.RegisterAttached("IsHover", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsHoverChanged));
         #endregion
 
-        #region HoverShadowColor
         public static readonly DependencyProperty HoverShadowColorProperty =
             DependencyProperty.RegisterAttached("HoverShadowColor", typeof(Color?), typeof(VisualStateHelper));
-        #endregion
 
+        public static readonly DependencyProperty HoverToggleSizeProperty =
+            DependencyProperty.RegisterAttached("HoverToggleSize", typeof(double?), typeof(VisualStateHelper));
+
+        public static readonly DependencyProperty HoverToggleCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("HoverToggleCornerRadius", typeof(CornerRadius?), typeof(VisualStateHelper));
+
+        public static readonly DependencyProperty HoverToggleShadowColorProperty =
+            DependencyProperty.RegisterAttached("HoverToggleShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
         #region Focused Properties
@@ -475,10 +510,11 @@ namespace Panuon.WPF.UI.Internal
 
         #region CheckedProperty
 
-        #region SelectedShadowColor
         public static readonly DependencyProperty CheckedShadowColorProperty =
             DependencyProperty.RegisterAttached("CheckedShadowColor", typeof(Color?), typeof(VisualStateHelper), new PropertyMetadata(OnCheckedShadowColorChanged));
-        #endregion
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(VisualStateHelper));
 
         #region IsChecked
         public static bool? GetIsChecked(DependencyObject obj)
@@ -539,6 +575,18 @@ namespace Panuon.WPF.UI.Internal
             effectBinding.Bindings.Add(CreateBinding(ShadowHelper.OpacityProperty));
             effectBinding.Bindings.Add(CreateBinding(ShadowHelper.RenderingBiasProperty));
             element.SetBinding(EffectProperty, effectBinding);
+
+            var toggleEffectBinding = new MultiBinding()
+            {
+                Converter = new DropShadowEffectWithDepthConverter(),
+            };
+            toggleEffectBinding.Bindings.Add(CreateBinding(ToggleShadowColorProperty));
+            toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.BlurRadiusProperty));
+            toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.ShadowDepthProperty));
+            toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.DirectionProperty));
+            toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.OpacityProperty));
+            toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.RenderingBiasProperty));
+            element.SetBinding(ToggleEffectProperty, toggleEffectBinding);
         }
 
         private static void OnHoverLockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -660,62 +708,6 @@ namespace Panuon.WPF.UI.Internal
             storyboard.Begin();
         }
         
-        private static void Element_Unchecked(object sender, RoutedEventArgs e)
-        {
-            var element = (FrameworkElement)sender;
-            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 0, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
-
-            if (element.GetValue(CheckedShadowColorProperty) is Color)
-            {
-                var effect = GetEffect(element);
-                if (effect == null)
-                {
-                    return;
-                }
-                var shadowColor = element.GetValue(ShadowColorProperty);
-                if (shadowColor == null)
-                {
-                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
-                }
-                else
-                {
-                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
-                }
-            }
-
-        }
-
-        private static void Element_Checked(object sender, RoutedEventArgs e)
-        {
-            var element = (FrameworkElement)sender;
-            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 1, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
-
-            if (element.GetValue(CheckedShadowColorProperty) is Color checkedShadowColor)
-            {
-                var effect = GetEffect(element);
-                if (effect == null)
-                {
-                    effect = new DropShadowEffect()
-                    {
-                        Color = checkedShadowColor,
-                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
-                        Direction = ShadowHelper.GetDirection(element),
-                        BlurRadius = ShadowHelper.GetBlurRadius(element),
-                        Opacity = 0,
-                        RenderingBias = ShadowHelper.GetRenderingBias(element),
-                    };
-                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
-                    SetEffect(element, effect);
-                }
-                else
-                {
-                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
-                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, checkedShadowColor, GlobalSettings.Setting.AnimationDuration);
-                }
-            }
-
-        }
-
         private static void OnSelectedShadowColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = (FrameworkElement)d;
@@ -776,11 +768,19 @@ namespace Panuon.WPF.UI.Internal
             {
                 propertyValues.Add(GlyphBrushProperty, hoverGlyphBrush);
             }
+            if (element.GetValue(HoverToggleCornerRadiusProperty) is CornerRadius hoverToggleCornerRadius)
+            {
+                propertyValues.Add(ToggleCornerRadiusProperty, hoverToggleCornerRadius);
+            }
             if (element.GetValue(HoverToggleBrushProperty) is Brush hoverToggleBrush)
             {
                 propertyValues.Add(ToggleBrushProperty, hoverToggleBrush);
             }
-            if(element.GetValue(HoverRibbonLineBrushProperty) is Brush hoverRibbonLineBrush)
+            if (element.GetValue(HoverToggleSizeProperty) is double hoverToggleSize)
+            {
+                propertyValues.Add(ToggleSizeProperty, hoverToggleSize);
+            }
+            if (element.GetValue(HoverRibbonLineBrushProperty) is Brush hoverRibbonLineBrush)
             {
                 propertyValues.Add(RibbonLineBrushProperty, hoverRibbonLineBrush);
             }
@@ -810,6 +810,30 @@ namespace Panuon.WPF.UI.Internal
                 {
                     AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, hoverShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+            if (!GetHoverShadowColorLock((DependencyObject)sender)
+                && element.GetValue(HoverToggleShadowColorProperty) is Color hoverToggleShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = hoverToggleShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetToggleEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, hoverToggleShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
         }
@@ -855,9 +879,17 @@ namespace Panuon.WPF.UI.Internal
             {
                 properties.Add(GlyphBrushProperty);
             }
+            if (element.GetValue(HoverToggleSizeProperty) != null)
+            {
+                properties.Add(ToggleSizeProperty);
+            }
             if (element.GetValue(HoverToggleBrushProperty) != null)
             {
                 properties.Add(ToggleBrushProperty);
+            }
+            if (element.GetValue(HoverToggleCornerRadiusProperty) != null)
+            {
+                properties.Add(ToggleCornerRadiusProperty);
             }
             if (element.GetValue(HoverRibbonLineBrushProperty) != null)
             {
@@ -876,6 +908,24 @@ namespace Panuon.WPF.UI.Internal
                     return;
                 }
                 var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+            if (!GetHoverShadowColorLock((DependencyObject)sender)
+               && element.GetValue(HoverToggleShadowColorProperty) is Color)
+            {
+                var effect = GetToggleEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ToggleShadowColorProperty);
                 if (shadowColor == null)
                 {
                     AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
@@ -947,6 +997,16 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, focusedShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
+            else
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+
+                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+            }
         }
 
         private static void Element_LostFocus(object sender, RoutedEventArgs e)
@@ -969,6 +1029,14 @@ namespace Panuon.WPF.UI.Internal
             if (element.GetValue(FocusedBorderBrushProperty) != null)
             {
                 properties.Add(BorderBrushProperty);
+            }
+            if (element.GetValue(FocusedBorderThicknessProperty) != null)
+            {
+                properties.Add(BorderThicknessProperty);
+            }
+            if (element.GetValue(FocusedCornerRadiusProperty) != null)
+            {
+                properties.Add(CornerRadiusProperty);
             }
             if (element.GetValue(FocusedWatermarkForegroundProperty) != null)
             {
@@ -1024,6 +1092,16 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, selectedShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
+            else
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+
+                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+            }
         }
 
         private static void Element_Unselected(object sender, RoutedEventArgs e)
@@ -1048,6 +1126,87 @@ namespace Panuon.WPF.UI.Internal
                 }
             }
         }
+
+        private static void Element_Checked(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 1, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+
+            if (element.GetValue(CheckedShadowColorProperty) is Color checkedShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = checkedShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, checkedShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+            else
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+
+                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+            }
+
+            var propertyBrushes = new Dictionary<DependencyProperty, object>();
+            if (element.GetValue(CheckedCornerRadiusProperty) is CornerRadius checkedCornerRadius)
+            {
+                propertyBrushes.Add(CornerRadiusProperty, checkedCornerRadius);
+            }
+            if (propertyBrushes.Any())
+            {
+                AnimationUtil.BeginAnimationStoryboard(element, propertyBrushes);
+            }
+        }
+
+        private static void Element_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 0, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+
+            if (element.GetValue(CheckedShadowColorProperty) is Color)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+
+            var properties = new List<DependencyProperty>();
+            if (element.GetValue(CheckedCornerRadiusProperty) != null)
+            {
+                properties.Add(CornerRadiusProperty);
+            }
+        }
+
         #endregion
 
         #region Functions

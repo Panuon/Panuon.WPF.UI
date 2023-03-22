@@ -6,7 +6,6 @@
             xmlns:local="clr-namespace:Samples.Views"
             xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
             xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
-            xmlns:i="clr-namespace:Panuon.WPF.UI.Internal;assembly=Panuon.WPF.UI"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
