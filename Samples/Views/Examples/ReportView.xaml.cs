@@ -41,11 +41,6 @@ namespace Samples.Views.Examples
                 new MachineItem("M00000" + startNumber + 2, "Working", "N/A"),
                 new MachineItem("M00000" + startNumber * 5 + 3, "Repairing", "N/A"),
                 new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
-                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
-                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
-                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
-                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
-                new MachineItem("M00000" + startNumber * 5 + 4, "Repairing", "N/A"),
             };
         }
 

@@ -82,6 +82,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(MenuItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(MenuItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(MenuItemHelper));
+        #endregion
+
         #region ClickBackground
         public static Brush GetClickBackground(MenuItem menuItem)
         {
@@ -125,6 +155,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ClickBorderBrushProperty =
             DependencyProperty.RegisterAttached("ClickBorderBrush", typeof(Brush), typeof(MenuItemHelper));
+        #endregion
+
+        #region ClickBorderThickness
+        public static Thickness? GetClickBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(ClickBorderThicknessProperty);
+        }
+
+        public static void SetClickBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(ClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region ClickCornerRadius
+        public static CornerRadius? GetClickCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(ClickCornerRadiusProperty);
+        }
+
+        public static void SetClickCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(ClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
         #endregion
 
         #region OpenedBackground
