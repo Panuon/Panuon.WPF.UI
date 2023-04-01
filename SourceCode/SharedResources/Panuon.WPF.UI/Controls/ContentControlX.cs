@@ -35,6 +35,15 @@ namespace Panuon.WPF.UI
                 _iconPresenter.Foreground = IconForeground;
             }
         }
+
+        protected override Size ArrangeOverride(Size arrangeBounds)
+        {
+            var size = base.ArrangeOverride(arrangeBounds);
+
+            var cibte = FindChild();
+
+            return size;
+        }
         #endregion
 
         #region Properties
@@ -169,6 +178,47 @@ namespace Panuon.WPF.UI
                 }
             }
 
+        }
+
+        private FrameworkElement FindChild()
+        {
+            var content = Content;
+
+            DependencyObject visual = null;
+            if (content != null)
+            {
+                if (content is Visual visualContent)
+                {
+                    visual = visualContent;
+                }
+                else
+                {
+                    if (ContentTemplate != null)
+                    {
+                        FrameworkElement templateRoot = ContentTemplate.LoadContent() as FrameworkElement;
+                        if (templateRoot != null)
+                        {
+                            templateRoot.DataContext = content;
+                            visual = templateRoot;
+                        }
+                    }
+                }
+            }
+
+            if (visual != null)
+            {
+                int childCount = VisualTreeHelper.GetChildrenCount(visual);
+                for (int i = 0; i < childCount; i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(visual, i);
+                    if (child is FrameworkElement)
+                    {
+                        FrameworkElement finalElement = child as FrameworkElement;
+                        return finalElement;
+                    }
+                }
+            }
+            return null;
         }
         #endregion
 

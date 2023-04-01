@@ -127,6 +127,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderBackground", typeof(Brush), typeof(GroupBoxHelper));
         #endregion
 
+        #region HeaderBorderBrush
+        public static Brush GetHeaderBorderBrush(GroupBox groupBox)
+        {
+            return (Brush)groupBox.GetValue(HeaderBorderBrushProperty);
+        }
+
+        public static void SetHeaderBorderBrush(GroupBox groupBox, Brush value)
+        {
+            groupBox.SetValue(HeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderBrush", typeof(Brush), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderBorderThickness
+        public static Thickness GetHeaderBorderThickness(GroupBox groupBox)
+        {
+            return (Thickness)groupBox.GetValue(HeaderBorderThicknessProperty);
+        }
+
+        public static void SetHeaderBorderThickness(GroupBox groupBox, Thickness value)
+        {
+            groupBox.SetValue(HeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("HeaderBorderThickness", typeof(Thickness), typeof(GroupBoxHelper));
+        #endregion
+
         #region HeaderCornerRadius
         public static CornerRadius GetHeaderCornerRadius(GroupBox groupBox)
         {
@@ -140,6 +170,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HeaderCornerRadiusProperty =
             DependencyProperty.RegisterAttached("HeaderCornerRadius", typeof(CornerRadius), typeof(GroupBoxHelper));
+        #endregion
+
+        #region HeaderShadowColor
+        public static Color? GetHeaderShadowColor(GroupBox groupBox)
+        {
+            return (Color?)groupBox.GetValue(HeaderShadowColorProperty);
+        }
+
+        public static void SetHeaderShadowColor(GroupBox groupBox, Color? value)
+        {
+            groupBox.SetValue(HeaderShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderShadowColorProperty =
+            DependencyProperty.RegisterAttached("HeaderShadowColor", typeof(Color?), typeof(GroupBoxHelper));
         #endregion
 
         #region HeaderHeight
@@ -157,19 +202,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderHeight", typeof(double), typeof(GroupBoxHelper), new PropertyMetadata(double.NaN));
         #endregion
 
-        #region HeaderVerticalAlignment
-        public static GroupBoxHeaderVerticalAlignment GetHeaderVerticalAlignment(GroupBox groupBox)
+        #region HeaderPlacement
+        public static GroupBoxHeaderPlacement GetHeaderPlacement(GroupBox groupBox)
         {
-            return (GroupBoxHeaderVerticalAlignment)groupBox.GetValue(HeaderVerticalAlignmentProperty);
+            return (GroupBoxHeaderPlacement)groupBox.GetValue(HeaderPlacementProperty);
         }
 
-        public static void SetHeaderVerticalAlignment(GroupBox groupBox, GroupBoxHeaderVerticalAlignment value)
+        public static void SetHeaderPlacement(GroupBox groupBox, GroupBoxHeaderPlacement value)
         {
-            groupBox.SetValue(HeaderVerticalAlignmentProperty, value);
+            groupBox.SetValue(HeaderPlacementProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderVerticalAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderVerticalAlignment", typeof(GroupBoxHeaderVerticalAlignment), typeof(GroupBoxHelper));
+        public static readonly DependencyProperty HeaderPlacementProperty =
+            DependencyProperty.RegisterAttached("HeaderPlacement", typeof(GroupBoxHeaderPlacement), typeof(GroupBoxHelper));
         #endregion
 
         #region HeaderHorizontalContentAlignment

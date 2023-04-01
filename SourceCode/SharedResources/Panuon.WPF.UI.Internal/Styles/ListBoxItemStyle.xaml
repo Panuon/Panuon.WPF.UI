@@ -71,20 +71,26 @@
                 Value="{Binding Path=(local:ListBoxHelper.ItemsRemoveButtonVisibility), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.HoverBackground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-        <Setter Property="local:ListBoxItemHelper.HoverBorderBrush"
-                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.HoverForeground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverBorderThickness"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverBorderThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.HoverCornerRadius"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsHoverCornerRadius), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.HoverShadowColor"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsHoverShadowColor), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SelectedBackground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
-        <Setter Property="local:ListBoxItemHelper.SelectedBorderBrush"
-                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SelectedForeground"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedBorderBrush"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SelectedBorderThickness"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
+        <Setter Property="local:ListBoxItemHelper.SelectedCornerRadius"
+                Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedCornerRadius), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SelectedShadowColor"
                 Value="{Binding Path=(local:ListBoxHelper.ItemsSelectedShadowColor), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}" />
         <Setter Property="local:ListBoxItemHelper.SeparatorBrush"

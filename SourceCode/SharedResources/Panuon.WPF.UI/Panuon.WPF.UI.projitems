@@ -89,7 +89,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\WindowXHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CaptionButtons.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\DataGridSortArrowVisibility.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Enums\GroupBoxHeaderVerticalAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\GroupBoxHeaderPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\HighlightRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\PopupXPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\RulerLineVisiblity.cs" />

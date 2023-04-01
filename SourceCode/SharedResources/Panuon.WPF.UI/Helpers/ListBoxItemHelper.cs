@@ -132,6 +132,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ListBoxItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(ListBoxItem listBoxItem)
+        {
+            return (Thickness?)listBoxItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(ListBoxItem listBoxItem, Thickness? value)
+        {
+            listBoxItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ListBoxItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(ListBoxItem listBoxItem)
+        {
+            return (CornerRadius?)listBoxItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(ListBoxItem listBoxItem, CornerRadius? value)
+        {
+            listBoxItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ListBoxItemHelper));
+        #endregion
+
         #region HoverShadowColor
         public static Color? GetHoverShadowColor(ListBoxItem listBoxItem)
         {
@@ -192,21 +222,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SelectedBorderBrush", typeof(Brush), typeof(ListBoxItemHelper));
         #endregion
 
-        #region SelectedShadowColor
-        public static Color? GetSelectedShadowColor(ListBoxItem listBoxItem)
-        {
-            return (Color?)listBoxItem.GetValue(SelectedShadowColorProperty);
-        }
-
-        public static void SetSelectedShadowColor(ListBoxItem listBoxItem, Color? value)
-        {
-            listBoxItem.SetValue(SelectedShadowColorProperty, value);
-        }
-
-        public static readonly DependencyProperty SelectedShadowColorProperty =
-            VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(ListBoxItemHelper));
-        #endregion
-
         #region SelectedBorderThickness
         public static Thickness? GetSelectedBorderThickness(ListBoxItem listBoxItem)
         {
@@ -220,6 +235,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("SelectedBorderThickness", typeof(Thickness?), typeof(ListBoxItemHelper));
+        #endregion
+
+        #region SelectedCornerRadius
+        public static CornerRadius? GetSelectedCornerRadius(ListBoxItem listBoxItem)
+        {
+            return (CornerRadius?)listBoxItem.GetValue(SelectedCornerRadiusProperty);
+        }
+
+        public static void SetSelectedCornerRadius(ListBoxItem listBoxItem, CornerRadius? value)
+        {
+            listBoxItem.SetValue(SelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("SelectedCornerRadius", typeof(CornerRadius?), typeof(ListBoxItemHelper));
+        #endregion
+
+        #region SelectedShadowColor
+        public static Color? GetSelectedShadowColor(ListBoxItem listBoxItem)
+        {
+            return (Color?)listBoxItem.GetValue(SelectedShadowColorProperty);
+        }
+
+        public static void SetSelectedShadowColor(ListBoxItem listBoxItem, Color? value)
+        {
+            listBoxItem.SetValue(SelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedShadowColorProperty =
+            VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(ListBoxItemHelper));
         #endregion
 
         #region SeparatorBrush
