@@ -36,6 +36,7 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
+
         }
         #endregion
 

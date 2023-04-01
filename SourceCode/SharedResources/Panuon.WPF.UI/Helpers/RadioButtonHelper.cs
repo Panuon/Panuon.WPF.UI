@@ -67,6 +67,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ToggleRadius", typeof(double), typeof(RadioButtonHelper));
         #endregion
 
+        #region ShadowColor
+        public static Color? GetShadowColor(RadioButton radioButton)
+        {
+            return (Color?)radioButton.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(RadioButton radioButton, Color? value)
+        {
+            radioButton.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(RadioButtonHelper));
+        #endregion
+
         #region HoverForeground
         public static Brush GetHoverForeground(RadioButton radioButton)
         {
@@ -112,6 +127,21 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(RadioButtonHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(RadioButton radioButton)
+        {
+            return (Thickness?)radioButton.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(RadioButton radioButton, Thickness? value)
+        {
+            radioButton.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(RadioButtonHelper));
+        #endregion
+
         #region HoverToggleBrush
         public static Brush GetHoverToggleBrush(RadioButton radioButton)
         {
@@ -125,6 +155,20 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HoverToggleBrushProperty =
             VisualStateHelper.HoverToggleBrushProperty.AddOwner(typeof(RadioButtonHelper));
+        #endregion
+
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(RadioButton radioButton)
+        {
+            return (Color?)radioButton.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(RadioButton radioButton, Color? value)
+        {
+            radioButton.SetValue(HoverShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(RadioButtonHelper));
         #endregion
 
         #region CheckedForeground
@@ -200,6 +244,20 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedToggleBrushProperty =
             DependencyProperty.RegisterAttached("CheckedToggleBrush", typeof(Brush), typeof(RadioButtonHelper));
+        #endregion
+
+        #region CheckedShadowColor
+        public static Color? GetCheckedShadowColor(RadioButton radioButton)
+        {
+            return (Color?)radioButton.GetValue(CheckedShadowColorProperty);
+        }
+
+        public static void SetCheckedShadowColor(RadioButton radioButton, Color? value)
+        {
+            radioButton.SetValue(CheckedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty CheckedShadowColorProperty =
+            VisualStateHelper.CheckedShadowColorProperty.AddOwner(typeof(RadioButtonHelper));
         #endregion
 
         #region CheckedContent

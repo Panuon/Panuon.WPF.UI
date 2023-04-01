@@ -94,7 +94,15 @@ namespace Panuon.WPF.UI.Internal.Utils
             {
                 AnimationTimeline anima = null;
 
-                if (propertyValue.Value is Brush brushValue)
+                if (propertyValue.Value is double doubleValue)
+                {
+                    anima = new DoubleAnimation()
+                    {
+                        To = doubleValue,
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (propertyValue.Value is Brush brushValue)
                 {
                     if (!brushValue.CanFreeze)
                     {
@@ -106,7 +114,7 @@ namespace Panuon.WPF.UI.Internal.Utils
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
                 }
-                if (propertyValue.Value is Thickness thicknessValue)
+                else if (propertyValue.Value is Thickness thicknessValue)
                 {
                     anima = new ThicknessAnimation()
                     {
@@ -114,7 +122,7 @@ namespace Panuon.WPF.UI.Internal.Utils
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
                 }
-                if (propertyValue.Value is CornerRadius cornerRadiusValue)
+                else if (propertyValue.Value is CornerRadius cornerRadiusValue)
                 {
                     anima = new CornerRadiusAnimation()
                     {
@@ -138,7 +146,14 @@ namespace Panuon.WPF.UI.Internal.Utils
             {
                 AnimationTimeline anima = null;
 
-                if (dp.PropertyType == typeof(Brush))
+                if (dp.PropertyType == typeof(double))
+                {
+                    anima = new DoubleAnimation()
+                    {
+                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
+                    };
+                }
+                else if (dp.PropertyType == typeof(Brush))
                 {
                     anima = new BrushAnimation()
                     {

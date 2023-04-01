@@ -273,7 +273,6 @@ namespace Panuon.WPF.UI
             carousel.UpdateAutoPlayTimer();
         }
 
-
         private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {
             var carousel = (Carousel)d;

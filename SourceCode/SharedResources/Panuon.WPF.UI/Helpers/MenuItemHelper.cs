@@ -82,6 +82,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(MenuItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(MenuItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(MenuItemHelper));
+        #endregion
+
         #region ClickBackground
         public static Brush GetClickBackground(MenuItem menuItem)
         {
@@ -127,6 +157,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ClickBorderBrush", typeof(Brush), typeof(MenuItemHelper));
         #endregion
 
+        #region ClickBorderThickness
+        public static Thickness? GetClickBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(ClickBorderThicknessProperty);
+        }
+
+        public static void SetClickBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(ClickBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ClickBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region ClickCornerRadius
+        public static CornerRadius? GetClickCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(ClickCornerRadiusProperty);
+        }
+
+        public static void SetClickCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(ClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
+        #endregion
+
         #region OpenedBackground
         public static Brush GetOpenedBackground(MenuItem menuItem)
         {
@@ -170,6 +230,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty OpenedBorderBrushProperty =
             DependencyProperty.RegisterAttached("OpenedBorderBrush", typeof(Brush), typeof(MenuItemHelper));
+        #endregion
+
+        #region OpenedBorderThickness
+        public static Thickness? GetOpenedBorderThickness(MenuItem menuItem)
+        {
+            return (Thickness?)menuItem.GetValue(OpenedBorderThicknessProperty);
+        }
+
+        public static void SetOpenedBorderThickness(MenuItem menuItem, Thickness? value)
+        {
+            menuItem.SetValue(OpenedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("OpenedBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region OpenedCornerRadius
+        public static CornerRadius? GetOpenedCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(OpenedCornerRadiusProperty);
+        }
+
+        public static void SetOpenedCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(OpenedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("OpenedCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
         #endregion
 
         #region CheckedBackground
@@ -230,6 +320,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("CheckedBorderThickness", typeof(Thickness?), typeof(MenuItemHelper));
+        #endregion
+
+        #region CheckedCornerRadius
+        public static CornerRadius? GetCheckedCornerRadius(MenuItem menuItem)
+        {
+            return (CornerRadius?)menuItem.GetValue(CheckedCornerRadiusProperty);
+        }
+
+        public static void SetCheckedCornerRadius(MenuItem menuItem, CornerRadius? value)
+        {
+            menuItem.SetValue(CheckedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
         #endregion
 
         #region SeparatorBrush

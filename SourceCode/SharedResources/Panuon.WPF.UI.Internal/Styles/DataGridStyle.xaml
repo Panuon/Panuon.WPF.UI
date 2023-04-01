@@ -346,6 +346,10 @@
                 Value="Stretch" />
         <Setter Property="RowStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.DataGridRowStyle}}" />
+        <Setter Property="ColumnHeaderStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.DataGridColumnHeaderStyle}}" />
+        <Setter Property="CellStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.DataGridCellStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.DataGridTemplate}}" />
         <Style.Triggers>

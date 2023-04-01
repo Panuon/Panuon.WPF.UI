@@ -295,8 +295,6 @@ namespace Panuon.WPF.UI
             if (e.Source is UIElement source
                 && e.OriginalSource is UIElement originalSource)
             {
-
-
                 if (GetHandleMouseWheel(scrollViewer))
                 {
                     e.Handled = true;
@@ -344,9 +342,10 @@ namespace Panuon.WPF.UI
                 }
 
                 var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
-                mouseWheelDelta = scrollViewer.CanContentScroll
-                    ? scrollViewer.ViewportHeight
-                    : mouseWheelDelta;
+                mouseWheelDelta = (!scrollViewer.CanContentScroll || scrollViewer.ViewportHeight == scrollViewer.ActualHeight)
+                    ? mouseWheelDelta
+                    : scrollViewer.ViewportHeight;
+
                 switch (GetWheelScrollingDirection(scrollViewer))
                 {
                     case WheelScrollingDirection.Vertical:
