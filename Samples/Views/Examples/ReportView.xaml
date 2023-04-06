@@ -234,9 +234,7 @@
                   Margin="0,20,0,0"
                   HorizontalScrollBarVisibility="Visible"
                   pu:ScrollViewerHelper.ScrollBarPosition="VerticalInside"
-                  Style="{StaticResource StandardDataGridStyle}"
-                  Background="#22FFFFFF"
-                  pu:DataGridHelper.CornerRadius="15">
+                  Style="{StaticResource StandardDataGridStyle}">
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>
                     <Border>
