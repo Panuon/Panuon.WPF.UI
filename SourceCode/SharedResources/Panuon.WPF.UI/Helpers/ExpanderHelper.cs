@@ -527,19 +527,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ExtendControl", typeof(object), typeof(ExpanderHelper));
         #endregion
 
-        #region AnimationEase
-        public static AnimationEase GetAnimationEase(Expander expander)
+        #region AnimationEasing
+        public static AnimationEasing GetAnimationEasing(Expander expander)
         {
-            return (AnimationEase)expander.GetValue(AnimationEaseProperty);
+            return (AnimationEasing)expander.GetValue(AnimationEasingProperty);
         }
 
-        public static void SetAnimationEase(Expander expander, AnimationEase value)
+        public static void SetAnimationEasing(Expander expander, AnimationEasing value)
         {
-            expander.SetValue(AnimationEaseProperty, value);
+            expander.SetValue(AnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ExpanderHelper));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.RegisterAttached("AnimationEasing", typeof(AnimationEasing), typeof(ExpanderHelper));
         #endregion
 
         #region AnimationDuration
@@ -645,7 +645,7 @@ namespace Panuon.WPF.UI
                     From = from,
                     To = to,
                     Duration = GetAnimationDuration(expander),
-                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEase(expander)),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEasing(expander)),
                 };
                 animation.Completed += delegate
                 {
@@ -661,7 +661,7 @@ namespace Panuon.WPF.UI
                     From = from,
                     To = 0,
                     Duration = GetAnimationDuration(expander),
-                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEase(expander)),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEasing(expander)),
                 };
                 animation.Completed += delegate
                 {

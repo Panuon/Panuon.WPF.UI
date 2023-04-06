@@ -51,15 +51,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("Animation", typeof(CarouselAnimation), typeof(Carousel), new PropertyMetadata(CarouselAnimation.Slide));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(Carousel));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(Carousel));
         #endregion
 
         #region AnimationDuration
@@ -272,6 +272,7 @@ namespace Panuon.WPF.UI
             var carousel = (Carousel)d;
             carousel.UpdateAutoPlayTimer();
         }
+
 
         private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
         {

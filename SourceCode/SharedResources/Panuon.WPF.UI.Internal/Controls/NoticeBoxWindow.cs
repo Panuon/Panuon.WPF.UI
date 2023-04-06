@@ -21,7 +21,7 @@ namespace Panuon.WPF.UI.Internal.Controls
         #endregion
 
         #region Ctor
-        public NoticeBoxWindow(AnimationEase animationEase, TimeSpan animationDuration)
+        public NoticeBoxWindow(AnimationEasing animationEase, TimeSpan animationDuration)
         {
             SizeToContent = SizeToContent.Width;
             ShowInTaskbar = false;
@@ -31,7 +31,7 @@ namespace Panuon.WPF.UI.Internal.Controls
 
             _astkItems = new AnimationStackPanel()
             {
-                AnimationEase = animationEase,
+                AnimationEasing = animationEase,
                 AnimationDuration = animationDuration,
                 ArrangeDirection = ArrangeDirection.Reverse,
                 HorizontalAlignment = HorizontalAlignment.Right,

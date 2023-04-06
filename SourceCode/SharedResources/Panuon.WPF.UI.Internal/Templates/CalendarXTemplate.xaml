@@ -73,7 +73,7 @@
                            Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
                 <local:CarouselPanel Grid.Row="2"
                                      Animation="{TemplateBinding Animation}"
-                                     AnimationEase="{TemplateBinding AnimationEase}"
+                                     AnimationEasing="{TemplateBinding AnimationEasing}"
                                      AnimationDuration="{TemplateBinding AnimationDuration}"
                                      CurrentIndex="{TemplateBinding CurrentPanel}">
                     <Grid>

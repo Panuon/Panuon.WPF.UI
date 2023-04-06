@@ -128,19 +128,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RemovingAnimationDuration", typeof(TimeSpan?), typeof(ListBoxHelper));
         #endregion
 
-        #region RemovingAnimationEase
-        public static AnimationEase GetRemovingAnimationEase(ListBox listBox)
+        #region RemovingAnimationEasing
+        public static AnimationEasing GetRemovingAnimationEasing(ListBox listBox)
         {
-            return (AnimationEase)listBox.GetValue(RemovingAnimationEaseProperty);
+            return (AnimationEasing)listBox.GetValue(RemovingAnimationEasingProperty);
         }
 
-        public static void SetRemovingAnimationEase(ListBox listBox, AnimationEase value)
+        public static void SetRemovingAnimationEasing(ListBox listBox, AnimationEasing value)
         {
-            listBox.SetValue(RemovingAnimationEaseProperty, value);
+            listBox.SetValue(RemovingAnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty RemovingAnimationEaseProperty =
-            DependencyProperty.RegisterAttached("RemovingAnimationEase", typeof(AnimationEase), typeof(ListBoxHelper));
+        public static readonly DependencyProperty RemovingAnimationEasingProperty =
+            DependencyProperty.RegisterAttached("RemovingAnimationEasing", typeof(AnimationEasing), typeof(ListBoxHelper));
         #endregion
 
         #region AutoScrollIntoView
@@ -770,7 +770,7 @@ namespace Panuon.WPF.UI
             var listBoxItem = (ListBoxItem)obj;
             var listBox = (ListBox)ItemsControl.ItemsControlFromItemContainer(listBoxItem);
             var animationDuration = GetRemovingAnimationDuration(listBox);
-            var animationEase = GetRemovingAnimationEase(listBox);
+            var animationEase = GetRemovingAnimationEasing(listBox);
             var dataItem = listBox.ItemContainerGenerator.ItemFromContainer(listBoxItem);
 
             var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);

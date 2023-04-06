@@ -34,15 +34,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("Animation", typeof(CarouselAnimation), typeof(CarouselPanel), new PropertyMetadata(CarouselAnimation.Slide));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(CarouselPanel));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(CarouselPanel));
         #endregion
 
         #region AnimationDuration
@@ -257,7 +257,7 @@ namespace Panuon.WPF.UI
                 {
                     To = 0,
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 oldOpacityAnimation.Completed += delegate
                 {
@@ -287,7 +287,7 @@ namespace Panuon.WPF.UI
                             ? new Thickness(-ActualWidth, 0, ActualWidth, 0)
                             : new Thickness(0, -ActualHeight, 0, ActualHeight),
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     oldChild.BeginAnimation(MarginProperty, oldThicknessAnimation);
                     SetCurrentAnimation(oldChild, oldThicknessAnimation);
@@ -310,7 +310,7 @@ namespace Panuon.WPF.UI
                             ? new Thickness(ActualWidth, 0, -ActualWidth, 0)
                             : new Thickness(0, ActualHeight, 0, -ActualHeight),
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     oldChild.BeginAnimation(MarginProperty, oldThicknessAnimation);
                     SetCurrentAnimation(oldChild, oldThicknessAnimation);
@@ -344,7 +344,7 @@ namespace Panuon.WPF.UI
                         From = 1,
                         To = 0.8,
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
 
                     oldDoubleAnimation.Completed += delegate
@@ -366,7 +366,7 @@ namespace Panuon.WPF.UI
                         From = 0.8,
                         To = 1,
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
 
                     var oldDoubleAnimation = new DoubleAnimation()
@@ -374,7 +374,7 @@ namespace Panuon.WPF.UI
                         From = 1,
                         To = 1.2,
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
 
                     oldDoubleAnimation.Completed += delegate
@@ -431,7 +431,7 @@ namespace Panuon.WPF.UI
                 {
                     To = 1,
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 newChild.BeginAnimation(OpacityProperty, newOpacityAnimation);
                 SetCurrentAnimation(newChild, newOpacityAnimation);
@@ -454,7 +454,7 @@ namespace Panuon.WPF.UI
                             : new Thickness(0, ActualHeight, 0, -ActualHeight),
                         To = new Thickness(),
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
                 }
@@ -467,7 +467,7 @@ namespace Panuon.WPF.UI
                             : new Thickness(0, -ActualHeight, 0, ActualHeight),
                         To = new Thickness(),
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
                 }
@@ -481,7 +481,7 @@ namespace Panuon.WPF.UI
                             : (forward ? new Thickness(0, 10, 0, -10) : new Thickness(0, -10, 0, 10)),
                     To = new Thickness(),
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 newChild.BeginAnimation(MarginProperty, newThicknessAnimation);
             }
@@ -500,7 +500,7 @@ namespace Panuon.WPF.UI
                         From = 1.2,
                         To = 1,
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
                     newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);
@@ -512,7 +512,7 @@ namespace Panuon.WPF.UI
                         From = 0.8,
                         To = 1,
                         Duration = AnimationDuration,
-                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                        EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                     };
                     newScaleTranform.BeginAnimation(ScaleTransform.ScaleXProperty, newDoubleAnimation);
                     newScaleTranform.BeginAnimation(ScaleTransform.ScaleYProperty, newDoubleAnimation);

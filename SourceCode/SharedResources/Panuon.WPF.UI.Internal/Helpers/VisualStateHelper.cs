@@ -1130,7 +1130,7 @@ namespace Panuon.WPF.UI.Internal
         private static void Element_Checked(object sender, RoutedEventArgs e)
         {
             var element = (FrameworkElement)sender;
-            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 1, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 1, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEasing.CubicInOut);
 
             if (element.GetValue(CheckedShadowColorProperty) is Color checkedShadowColor)
             {
@@ -1180,7 +1180,7 @@ namespace Panuon.WPF.UI.Internal
         private static void Element_Unchecked(object sender, RoutedEventArgs e)
         {
             var element = (FrameworkElement)sender;
-            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 0, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEase.CubicInOut);
+            AnimationUtil.BeginDoubleAnimation(element, PercentProperty, null, 0, TimeSpan.FromMilliseconds(GlobalSettings.Setting.AnimationDuration.TotalMilliseconds), null, AnimationEasing.CubicInOut);
 
             if (element.GetValue(CheckedShadowColorProperty) is Color)
             {

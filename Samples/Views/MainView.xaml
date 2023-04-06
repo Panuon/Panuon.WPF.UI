@@ -63,7 +63,7 @@
                               HorizontalScrollBarVisibility="Auto"
                               pu:ScrollViewerHelper.MouseWheelDelta="96"
                               pu:ScrollViewerHelper.AnimationDuration="0:0:0.5"
-                              pu:ScrollViewerHelper.AnimationEase="CubicOut"
+                              pu:ScrollViewerHelper.AnimationEasing="CubicOut"
                               pu:ScrollViewerHelper.ScrollBarPosition="Outside"
                               pu:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
                     <ItemsControl x:Name="LsbExamples"
@@ -125,12 +125,15 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <ComboBox Height="35"
-                  Width="200">
-            <ComboBoxItem Content="Item 1" />
-            <ComboBoxItem Content="Item 2" />
-            <ComboBoxItem Content="Item 3" />
-        </ComboBox>
+        <TabControl Width="200"
+                    Height="200"
+                    Background="Blue"
+                    pu:TabControlHelper.HeaderPanelBackground="White"
+                    pu:TabControlHelper.HeaderPanelShadowColor="Red">
+            <TabItem Header="标签1" />
+            <TabItem Header="标签2" />
+            <TabItem Header="标签3" />
+        </TabControl>
         <!--<pu:Drawer IsOpen="False"
                    Placement="Left"
                    MaxWidth="300"

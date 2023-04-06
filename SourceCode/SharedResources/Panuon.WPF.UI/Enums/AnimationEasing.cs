@@ -1,6 +1,6 @@
 ﻿namespace Panuon.WPF.UI
 {
-    public enum AnimationEase
+    public enum AnimationEasing
     {
         None,
         BackIn,
@@ -21,6 +21,9 @@
         ExponentialIn,
         ExponentialOut,
         ExponentialInOut,
+        PowerIn,
+        PowerOut,
+        PowerInOut,
         QuadraticIn,
         QuadraticOut,
         QuadraticInOut,

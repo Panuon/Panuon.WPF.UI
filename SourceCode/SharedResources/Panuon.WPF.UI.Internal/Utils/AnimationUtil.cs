@@ -94,15 +94,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             {
                 AnimationTimeline anima = null;
 
-                if (propertyValue.Value is double doubleValue)
-                {
-                    anima = new DoubleAnimation()
-                    {
-                        To = doubleValue,
-                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
-                    };
-                }
-                else if (propertyValue.Value is Brush brushValue)
+                if (propertyValue.Value is Brush brushValue)
                 {
                     if (!brushValue.CanFreeze)
                     {
@@ -114,7 +106,7 @@ namespace Panuon.WPF.UI.Internal.Utils
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
                 }
-                else if (propertyValue.Value is Thickness thicknessValue)
+                if (propertyValue.Value is Thickness thicknessValue)
                 {
                     anima = new ThicknessAnimation()
                     {
@@ -122,7 +114,7 @@ namespace Panuon.WPF.UI.Internal.Utils
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
                 }
-                else if (propertyValue.Value is CornerRadius cornerRadiusValue)
+                if (propertyValue.Value is CornerRadius cornerRadiusValue)
                 {
                     anima = new CornerRadiusAnimation()
                     {
@@ -146,14 +138,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             {
                 AnimationTimeline anima = null;
 
-                if (dp.PropertyType == typeof(double))
-                {
-                    anima = new DoubleAnimation()
-                    {
-                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
-                    };
-                }
-                else if (dp.PropertyType == typeof(Brush))
+                if (dp.PropertyType == typeof(Brush))
                 {
                     anima = new BrushAnimation()
                     {
@@ -187,7 +172,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             Dictionary<DependencyProperty, double> propertyValues, 
             TimeSpan? duration = null, 
             TimeSpan? beginTime = null, 
-            AnimationEase? ease = null, 
+            AnimationEasing? easing = null, 
             Action callback = null,
             RepeatBehavior? repeatBehavior = null)
         {
@@ -203,7 +188,7 @@ namespace Panuon.WPF.UI.Internal.Utils
                     To = propertyValue.Value,
                     Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     BeginTime = beginTime ?? TimeSpan.Zero,
-                    EasingFunction = CreateEasingFunction(ease),
+                    EasingFunction = CreateEasingFunction(easing),
                 };
                 Storyboard.SetTarget(anima, obj);
                 Storyboard.SetTargetProperty(anima, new PropertyPath(propertyValue.Key));
@@ -229,7 +214,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             double? to,
             TimeSpan? duration = null, 
             TimeSpan? beginTime = null,
-            AnimationEase? ease = null, 
+            AnimationEasing? ease = null, 
             Action callback = null)
         {
             var anima = new DoubleAnimation()
@@ -252,7 +237,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             element.BeginAnimation(property, anima);
         }
 
-        public static void BeginDoubleAnimation(Animatable animatable, DependencyProperty property, double? from, double? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginDoubleAnimation(Animatable animatable, DependencyProperty property, double? from, double? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEasing? ease = null, Action callback = null)
         {
             var anima = new DoubleAnimation()
             {
@@ -277,7 +262,7 @@ namespace Panuon.WPF.UI.Internal.Utils
         #endregion
 
         #region BeginThicknessAnimation
-        public static void BeginThicknessAnimation(UIElement element, DependencyProperty property, Thickness? from, Thickness? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginThicknessAnimation(UIElement element, DependencyProperty property, Thickness? from, Thickness? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEasing? ease = null, Action callback = null)
         {
             var anima = new ThicknessAnimation()
             {
@@ -299,7 +284,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             element.BeginAnimation(property, anima);
         }
 
-        public static void BeginThicknessAnimation(Animatable animatable, DependencyProperty property, Thickness? from, Thickness? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginThicknessAnimation(Animatable animatable, DependencyProperty property, Thickness? from, Thickness? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEasing? ease = null, Action callback = null)
         {
             var anima = new ThicknessAnimation()
             {
@@ -324,7 +309,7 @@ namespace Panuon.WPF.UI.Internal.Utils
         #endregion
 
         #region BeginColorAnimation
-        public static void BeginColorAnimation(UIElement element, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginColorAnimation(UIElement element, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEasing? ease = null, Action callback = null)
         {
             var anima = new ColorAnimation()
             {
@@ -347,7 +332,7 @@ namespace Panuon.WPF.UI.Internal.Utils
         }
 
 
-        public static void BeginColorAnimation(Animatable obj, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEase? ease = null, Action callback = null)
+        public static void BeginColorAnimation(Animatable obj, DependencyProperty property, Color? from, Color? to, TimeSpan? duration = null, TimeSpan? beginTime = null, AnimationEasing? ease = null, Action callback = null)
         {
             var anima = new ColorAnimation()
             {
@@ -371,7 +356,7 @@ namespace Panuon.WPF.UI.Internal.Utils
         #endregion
 
         #region CreateEasingFunction
-        public static IEasingFunction CreateEasingFunction(AnimationEase? animationEasing)
+        public static IEasingFunction CreateEasingFunction(AnimationEasing? animationEasing)
         {
             if (animationEasing == null)
             {
@@ -379,65 +364,71 @@ namespace Panuon.WPF.UI.Internal.Utils
             }
             switch (animationEasing)
             {
-                case AnimationEase.BackIn:
+                case AnimationEasing.BackIn:
                     return new BackEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.BackOut:
+                case AnimationEasing.BackOut:
                     return new BackEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.BackInOut:
+                case AnimationEasing.BackInOut:
                     return new BackEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.BounceIn:
+                case AnimationEasing.BounceIn:
                     return new BounceEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.BounceOut:
+                case AnimationEasing.BounceOut:
                     return new BounceEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.BounceInOut:
+                case AnimationEasing.BounceInOut:
                     return new BounceEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.CircleIn:
+                case AnimationEasing.CircleIn:
                     return new CircleEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.CircleOut:
+                case AnimationEasing.CircleOut:
                     return new CircleEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.CircleInOut:
+                case AnimationEasing.CircleInOut:
                     return new CircleEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.CubicIn:
+                case AnimationEasing.CubicIn:
                     return new CubicEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.CubicOut:
+                case AnimationEasing.CubicOut:
                     return new CubicEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.CubicInOut:
+                case AnimationEasing.CubicInOut:
                     return new CubicEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.ElasticIn:
+                case AnimationEasing.ElasticIn:
                     return new ElasticEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.ElasticOut:
+                case AnimationEasing.ElasticOut:
                     return new ElasticEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.ElasticInOut:
+                case AnimationEasing.ElasticInOut:
                     return new ElasticEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.ExponentialIn:
+                case AnimationEasing.ExponentialIn:
                     return new ExponentialEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.ExponentialOut:
+                case AnimationEasing.ExponentialOut:
                     return new ExponentialEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.ExponentialInOut:
+                case AnimationEasing.ExponentialInOut:
                     return new ExponentialEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.QuadraticIn:
+                case AnimationEasing.PowerIn:
+                    return new PowerEase() { EasingMode = EasingMode.EaseIn };
+                case AnimationEasing.PowerOut:
+                    return new PowerEase() { EasingMode = EasingMode.EaseOut };
+                case AnimationEasing.PowerInOut:
+                    return new PowerEase() { EasingMode = EasingMode.EaseInOut };
+                case AnimationEasing.QuadraticIn:
                     return new QuadraticEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.QuadraticOut:
+                case AnimationEasing.QuadraticOut:
                     return new QuadraticEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.QuadraticInOut:
+                case AnimationEasing.QuadraticInOut:
                     return new QuadraticEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.QuarticIn:
+                case AnimationEasing.QuarticIn:
                     return new QuarticEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.QuarticOut:
+                case AnimationEasing.QuarticOut:
                     return new QuarticEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.QuarticInOut:
+                case AnimationEasing.QuarticInOut:
                     return new QuarticEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.QuinticIn:
+                case AnimationEasing.QuinticIn:
                     return new QuarticEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.QuinticOut:
+                case AnimationEasing.QuinticOut:
                     return new QuarticEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.QuinticInOut:
+                case AnimationEasing.QuinticInOut:
                     return new QuarticEase() { EasingMode = EasingMode.EaseInOut };
-                case AnimationEase.SineIn:
+                case AnimationEasing.SineIn:
                     return new SineEase() { EasingMode = EasingMode.EaseIn };
-                case AnimationEase.SineOut:
+                case AnimationEasing.SineOut:
                     return new SineEase() { EasingMode = EasingMode.EaseOut };
-                case AnimationEase.SineInOut:
+                case AnimationEasing.SineInOut:
                     return new SineEase() { EasingMode = EasingMode.EaseInOut };
             }
             return null;

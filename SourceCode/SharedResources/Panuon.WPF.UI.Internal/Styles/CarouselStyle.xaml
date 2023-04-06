@@ -93,7 +93,7 @@
                 <ItemsPanelTemplate>
                     <local:CarouselPanel Animation="{Binding Animation, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
                                          AnimationDuration="{Binding AnimationDuration, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
-                                         AnimationEase="{Binding AnimationEase, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
+                                         AnimationEasing="{Binding AnimationEasing, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
                                          Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}"
                                          CurrentIndex="{Binding CurrentIndex, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}" />
                 </ItemsPanelTemplate>

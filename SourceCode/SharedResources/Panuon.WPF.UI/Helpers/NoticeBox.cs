@@ -168,7 +168,7 @@ namespace Panuon.WPF.UI
             return (INoticeHandler)Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
                 setting = setting ?? NoticeBoxSettings.Setting;
-                var animationEase = setting.AnimationEase;
+                var animationEase = setting.AnimationEasing;
                 var animationDuration = setting.AnimationDuration;
                 var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
                 var createOnNewThread = setting.CreateOnNewThread;

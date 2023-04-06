@@ -99,7 +99,7 @@
                 Value="1" />
         <Setter Property="Animation"
                 Value="Fade,Scale" />
-        <Setter Property="AnimationEase"
+        <Setter Property="AnimationEasing"
                 Value="CubicOut" />
         <Setter Property="AnimationDuration"
                 Value="0:0:0.3" />

@@ -106,19 +106,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("InvertedForeground", typeof(Brush), typeof(ProgressBarHelper));
         #endregion
 
-        #region AnimationEase
-        public static AnimationEase GetAnimationEase(ProgressBar progressBar)
+        #region AnimationEasing
+        public static AnimationEasing GetAnimationEasing(ProgressBar progressBar)
         {
-            return (AnimationEase)progressBar.GetValue(AnimationEaseProperty);
+            return (AnimationEasing)progressBar.GetValue(AnimationEasingProperty);
         }
 
-        public static void SetAnimationEase(ProgressBar progressBar, AnimationEase value)
+        public static void SetAnimationEasing(ProgressBar progressBar, AnimationEasing value)
         {
-            progressBar.SetValue(AnimationEaseProperty, value);
+            progressBar.SetValue(AnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ProgressBarHelper));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.RegisterAttached("AnimationEasing", typeof(AnimationEasing), typeof(ProgressBarHelper));
         #endregion
 
         #region AnimationDuration
@@ -256,7 +256,7 @@ namespace Panuon.WPF.UI
             var progressBar = (ProgressBar)sender;
             var newValue = e.NewValue;
             var animationDuration = GetAnimationDuration(progressBar);
-            var animationEase = GetAnimationEase(progressBar);
+            var animationEase = GetAnimationEasing(progressBar);
 
             if (progressBar.IsLoaded)
             {

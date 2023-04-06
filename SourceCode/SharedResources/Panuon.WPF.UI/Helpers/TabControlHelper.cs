@@ -233,6 +233,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderPanelBackground", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region HeaderPanelShadowColor
+        public static Color? GetHeaderPanelShadowColor(TabControl tabControl)
+        {
+            return (Color?)tabControl.GetValue(HeaderPanelShadowColorProperty);
+        }
+
+        public static void SetHeaderPanelShadowColor(TabControl tabControl, Color? value)
+        {
+            tabControl.SetValue(HeaderPanelShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelShadowColorProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelShadowColor", typeof(Color?), typeof(TabControlHelper));
+        #endregion
+
         #region HeaderPanelCornerRadius
         public static CornerRadius GetHeaderPanelCornerRadius(TabControl tabControl)
         {
@@ -338,6 +353,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderPanelRibbonLineCornerRadius", typeof(CornerRadius), typeof(TabControlHelper));
         #endregion
 
+        #region HeaderPanelRibbonLineStrategy
+        public static HeaderPanelRibbonLineStrategy GetHeaderPanelRibbonLineStrategy(TabControl tabControl)
+        {
+            return (HeaderPanelRibbonLineStrategy)tabControl.GetValue(HeaderPanelRibbonLineStrategyProperty);
+        }
+
+        public static void SetHeaderPanelRibbonLineStrategy(TabControl tabControl, HeaderPanelRibbonLineStrategy value)
+        {
+            tabControl.SetValue(HeaderPanelRibbonLineStrategyProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelRibbonLineStrategyProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelRibbonLineStrategy", typeof(HeaderPanelRibbonLineStrategy), typeof(TabControlHelper));
+        #endregion
+
         #region HeaderPanelHorizontalAlignment
         public static TabPanelHorizontalAlignment GetHeaderPanelHorizontalAlignment(TabControl tabControl)
         {
@@ -383,19 +413,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RemovingAnimationDuration", typeof(TimeSpan?), typeof(TabControlHelper));
         #endregion
 
-        #region RemovingAnimationEase
-        public static AnimationEase GetRemovingAnimationEase(TabControl tabControl)
+        #region RemovingAnimationEasing
+        public static AnimationEasing GetRemovingAnimationEasing(TabControl tabControl)
         {
-            return (AnimationEase)tabControl.GetValue(RemovingAnimationEaseProperty);
+            return (AnimationEasing)tabControl.GetValue(RemovingAnimationEasingProperty);
         }
 
-        public static void SetRemovingAnimationEase(TabControl tabControl, AnimationEase value)
+        public static void SetRemovingAnimationEasing(TabControl tabControl, AnimationEasing value)
         {
-            tabControl.SetValue(RemovingAnimationEaseProperty, value);
+            tabControl.SetValue(RemovingAnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty RemovingAnimationEaseProperty =
-            DependencyProperty.RegisterAttached("RemovingAnimationEase", typeof(AnimationEase), typeof(TabControlHelper));
+        public static readonly DependencyProperty RemovingAnimationEasingProperty =
+            DependencyProperty.RegisterAttached("RemovingAnimationEasing", typeof(AnimationEasing), typeof(TabControlHelper));
         #endregion
 
         #region Items Properties
@@ -792,6 +822,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(TabControlHelper));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public static Thickness? GetItemsHoverBorderThickness(TabControl tabControl)
+        {
+            return (Thickness?)tabControl.GetValue(ItemsHoverBorderThicknessProperty);
+        }
+
+        public static void SetItemsHoverBorderThickness(TabControl tabControl, Thickness? value)
+        {
+            tabControl.SetValue(ItemsHoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverBorderThickness", typeof(Thickness?), typeof(TabControlHelper));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public static CornerRadius? GetItemsHoverCornerRadius(TabControl tabControl)
+        {
+            return (CornerRadius?)tabControl.GetValue(ItemsHoverCornerRadiusProperty);
+        }
+
+        public static void SetItemsHoverCornerRadius(TabControl tabControl, CornerRadius? value)
+        {
+            tabControl.SetValue(ItemsHoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(TabControlHelper));
+        #endregion
+
         #region ItemsHoverRibbonLineBrush
         public static Brush GetItemsHoverRibbonLineBrush(TabControl tabControl)
         {
@@ -1071,7 +1131,7 @@ namespace Panuon.WPF.UI
             var tabItem = (TabItem)obj;
             var tabControl = (TabControl)ItemsControl.ItemsControlFromItemContainer(tabItem);
             var animationDuration = GetRemovingAnimationDuration(tabControl);
-            var animationEase = GetRemovingAnimationEase(tabControl);
+            var animationEase = GetRemovingAnimationEasing(tabControl);
             var dataItem = tabControl.ItemContainerGenerator.ItemFromContainer(tabItem);
 
             var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);

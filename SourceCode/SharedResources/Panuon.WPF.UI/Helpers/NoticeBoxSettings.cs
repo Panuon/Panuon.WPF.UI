@@ -62,16 +62,16 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
             get
             {
-                return Setting.AnimationEase;
+                return Setting.AnimationEasing;
             }
             set
             {
-                Setting.AnimationEase = value;
+                Setting.AnimationEasing = value;
             }
         }
         #endregion

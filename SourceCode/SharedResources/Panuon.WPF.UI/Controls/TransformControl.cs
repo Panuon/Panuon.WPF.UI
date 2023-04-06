@@ -84,15 +84,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(TransformControl));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(TransformControl));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(TransformControl));
         #endregion 
 
         #endregion
@@ -140,7 +140,7 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            AnimationUtil.BeginDoubleAnimation(_scaleTransform, ScaleTransform.ScaleXProperty, null, ScaleX, AnimationDuration, null, AnimationEase);
+            AnimationUtil.BeginDoubleAnimation(_scaleTransform, ScaleTransform.ScaleXProperty, null, ScaleX, AnimationDuration, null, AnimationEasing);
         }
 
         private void OnScaleYChanged()
@@ -149,7 +149,7 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            AnimationUtil.BeginDoubleAnimation(_scaleTransform, ScaleTransform.ScaleYProperty, null, ScaleY, AnimationDuration, null, AnimationEase);
+            AnimationUtil.BeginDoubleAnimation(_scaleTransform, ScaleTransform.ScaleYProperty, null, ScaleY, AnimationDuration, null, AnimationEasing);
         }
 
         private void OnRotateAngleChanged()
@@ -158,7 +158,7 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            AnimationUtil.BeginDoubleAnimation(_rotateTransform, RotateTransform.AngleProperty, null, RotateAngle, AnimationDuration, null, AnimationEase);
+            AnimationUtil.BeginDoubleAnimation(_rotateTransform, RotateTransform.AngleProperty, null, RotateAngle, AnimationDuration, null, AnimationEasing);
         }
         #endregion
     }

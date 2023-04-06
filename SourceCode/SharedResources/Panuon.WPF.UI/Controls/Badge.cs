@@ -38,7 +38,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Badge));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(Badge));
         #endregion
 
         #region ShadowColor
@@ -129,6 +129,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(Badge));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(Badge));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(Badge));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -138,6 +160,61 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HoverShadowColorProperty =
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(Badge));
+        #endregion
+
+        #region ClickBackground
+        public Brush ClickBackground
+        {
+            get { return (Brush)GetValue(ClickBackgroundProperty); }
+            set { SetValue(ClickBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBackgroundProperty =
+            DependencyProperty.Register("ClickBackground", typeof(Brush), typeof(Badge));
+        #endregion
+
+        #region ClickForeground
+        public Brush ClickForeground
+        {
+            get { return (Brush)GetValue(ClickForegroundProperty); }
+            set { SetValue(ClickForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickForegroundProperty =
+            DependencyProperty.Register("ClickForeground", typeof(Brush), typeof(Badge));
+        #endregion
+
+        #region ClickBorderBrush
+        public Brush ClickBorderBrush
+        {
+            get { return (Brush)GetValue(ClickBorderBrushProperty); }
+            set { SetValue(ClickBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBorderBrushProperty =
+            DependencyProperty.Register("ClickBorderBrush", typeof(Brush), typeof(Badge));
+        #endregion
+
+        #region ClickBorderThickness
+        public Thickness? ClickBorderThickness
+        {
+            get { return (Thickness?)GetValue(ClickBorderThicknessProperty); }
+            set { SetValue(ClickBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickBorderThicknessProperty =
+            DependencyProperty.Register("ClickBorderThickness", typeof(Thickness?), typeof(Badge));
+        #endregion
+
+        #region ClickCornerRadius
+        public CornerRadius? ClickCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ClickCornerRadiusProperty); }
+            set { SetValue(ClickCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.Register("ClickCornerRadius", typeof(CornerRadius?), typeof(Badge));
         #endregion
 
         #region ClickEffect
@@ -151,15 +228,15 @@ namespace Panuon.WPF.UI
             VisualStateHelper.ClickEffectProperty.AddOwner(typeof(Badge));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(Badge), new PropertyMetadata(OnAnimationEaseChanged));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(Badge), new PropertyMetadata(OnAnimationEasingChanged));
 
         #endregion
 
@@ -171,7 +248,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Badge), new PropertyMetadata(TimeSpan.FromSeconds(0.7), OnAnimationEaseChanged));
+            DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Badge), new PropertyMetadata(TimeSpan.FromSeconds(0.7), OnAnimationEasingChanged));
         #endregion
 
         #endregion
@@ -199,7 +276,7 @@ namespace Panuon.WPF.UI
             badge.OnScaleChanged();
         }
 
-        private static void OnAnimationEaseChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnAnimationEasingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var badge = (Badge)d;
             badge.OnScaleChanged();
@@ -226,7 +303,7 @@ namespace Panuon.WPF.UI
                     From = 1,
                     To = 1.5,
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 Storyboard.SetTarget(scaleXAnimation, _boundingBorder);
                 Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath("RenderTransform.ScaleX"));
@@ -237,7 +314,7 @@ namespace Panuon.WPF.UI
                     From = 1,
                     To = 1.5,
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 Storyboard.SetTarget(scaleYAnimation, _boundingBorder);
                 Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath("RenderTransform.ScaleY"));
@@ -248,7 +325,7 @@ namespace Panuon.WPF.UI
                     From = 1,
                     To = 0,
                     Duration = AnimationDuration,
-                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEase),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
                 Storyboard.SetTarget(opacityAnimation, _boundingBorder);
                 Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(Border.OpacityProperty));
