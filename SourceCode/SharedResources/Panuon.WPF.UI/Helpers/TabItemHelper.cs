@@ -191,7 +191,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RibbonLineCornerRadius", typeof(CornerRadius), typeof(TabItemHelper));
         #endregion
 
-
         #region RibbonLineMargin
         public static Thickness GetRibbonLineMargin(TabItem tabItem)
         {
@@ -280,6 +279,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HoverBorderBrushProperty =
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(TabItemHelper));
+        #endregion
+
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(TabItem tabItem)
+        {
+            return (Thickness?)tabItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(TabItem tabItem, Thickness? value)
+        {
+            tabItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(TabItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(TabItem tabItem)
+        {
+            return (CornerRadius?)tabItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(TabItem tabItem, CornerRadius? value)
+        {
+            tabItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(TabItemHelper));
         #endregion
 
         #region HoverRibbonLineBrush

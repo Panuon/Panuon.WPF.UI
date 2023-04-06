@@ -1,14 +1,15 @@
 ﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Panuon.WPF.UI
 {
     public static class ExpanderHelper
     {
-        
         #region ComponentResourceKeys
         public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
             new ComponentResourceKey(typeof(ExpanderHelper), nameof(ToggleArrowTransformControlStyle));
@@ -166,6 +167,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderHelper));
         #endregion
 
+        #region HeaderCornerRadius
+        public static CornerRadius GetHeaderCornerRadius(Expander expander)
+        {
+            return (CornerRadius)expander.GetValue(HeaderCornerRadiusProperty);
+        }
+
+        public static void SetHeaderCornerRadius(Expander expander, CornerRadius value)
+        {
+            expander.SetValue(HeaderCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("HeaderCornerRadius", typeof(CornerRadius), typeof(ExpanderHelper));
+        #endregion
+
+        #region HeaderShadowColor
+        public static Color? GetHeaderShadowColor(Expander expander)
+        {
+            return (Color?)expander.GetValue(HeaderShadowColorProperty);
+        }
+
+        public static void SetHeaderShadowColor(Expander expander, Color? value)
+        {
+            expander.SetValue(HeaderShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderShadowColorProperty =
+            DependencyProperty.RegisterAttached("HeaderShadowColor", typeof(Color?), typeof(ExpanderHelper));
+        #endregion
+
         #region HeaderFontSize
         public static double GetHeaderFontSize(Expander expander)
         {
@@ -316,6 +347,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ExpandedHeaderBorderThickness", typeof(Thickness?), typeof(ExpanderHelper));
         #endregion
 
+        #region ExpandedHeaderCornerRadius
+        public static CornerRadius GetExpandedHeaderCornerRadius(Expander expander)
+        {
+            return (CornerRadius)expander.GetValue(ExpandedHeaderCornerRadiusProperty);
+        }
+
+        public static void SetExpandedHeaderCornerRadius(Expander expander, CornerRadius value)
+        {
+            expander.SetValue(ExpandedHeaderCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderCornerRadius", typeof(CornerRadius), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedHeaderShadowColor
+        public static Color? GetExpandedHeaderShadowColor(Expander expander)
+        {
+            return (Color?)expander.GetValue(ExpandedHeaderShadowColorProperty);
+        }
+
+        public static void SetExpandedHeaderShadowColor(Expander expander, Color? value)
+        {
+            expander.SetValue(ExpandedHeaderShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedHeaderShadowColorProperty =
+            DependencyProperty.RegisterAttached("ExpandedHeaderShadowColor", typeof(Color?), typeof(ExpanderHelper));
+        #endregion
+
         #region ExpandedBackground
         public static Brush GetExpandedBackground(Expander expander)
         {
@@ -344,6 +405,51 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ExpandedBorderBrushProperty =
             DependencyProperty.RegisterAttached("ExpandedBorderBrush", typeof(Brush), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedBorderThickness
+        public static Thickness? GetExpandedBorderThickness(Expander expander)
+        {
+            return (Thickness?)expander.GetValue(ExpandedBorderThicknessProperty);
+        }
+
+        public static void SetExpandedBorderThickness(Expander expander, Thickness? value)
+        {
+            expander.SetValue(ExpandedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ExpandedBorderThickness", typeof(Thickness?), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedCornerRadius
+        public static CornerRadius? GetExpandedCornerRadius(Expander expander)
+        {
+            return (CornerRadius?)expander.GetValue(ExpandedCornerRadiusProperty);
+        }
+
+        public static void SetExpandedCornerRadius(Expander expander, CornerRadius? value)
+        {
+            expander.SetValue(ExpandedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ExpandedCornerRadius", typeof(CornerRadius?), typeof(ExpanderHelper));
+        #endregion
+
+        #region ExpandedShadowColor
+        public static Color? GetExpandedShadowColor(Expander expander)
+        {
+            return (Color?)expander.GetValue(ExpandedShadowColorProperty);
+        }
+
+        public static void SetExpandedShadowColor(Expander expander, Color? value)
+        {
+            expander.SetValue(ExpandedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedShadowColorProperty =
+            DependencyProperty.RegisterAttached("ExpandedShadowColor", typeof(Color?), typeof(ExpanderHelper));
         #endregion
 
         #region HeaderSeparatorVisibility
@@ -420,6 +526,181 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty ExtendControlProperty =
             DependencyProperty.RegisterAttached("ExtendControl", typeof(object), typeof(ExpanderHelper));
         #endregion
+
+        #region AnimationEasing
+        public static AnimationEasing GetAnimationEasing(Expander expander)
+        {
+            return (AnimationEasing)expander.GetValue(AnimationEasingProperty);
+        }
+
+        public static void SetAnimationEasing(Expander expander, AnimationEasing value)
+        {
+            expander.SetValue(AnimationEasingProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.RegisterAttached("AnimationEasing", typeof(AnimationEasing), typeof(ExpanderHelper));
+        #endregion
+
+        #region AnimationDuration
+        public static TimeSpan GetAnimationDuration(Expander expander)
+        {
+            return (TimeSpan)expander.GetValue(AnimationDurationProperty);
+        }
+
+        public static void SetAnimationDuration(Expander expander, TimeSpan value)
+        {
+            expander.SetValue(AnimationDurationProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimationDurationProperty =
+            DependencyProperty.RegisterAttached("AnimationDuration", typeof(TimeSpan), typeof(ExpanderHelper));
+        #endregion
+
+        #endregion
+
+        #region Internal Properties
+
+        #region RegistContentPresenter
+        internal static ContentPresenterX GetRegistContentPresenter(DependencyObject obj)
+        {
+            return (ContentPresenterX)obj.GetValue(RegistContentPresenterProperty);
+        }
+
+        internal static void SetRegistContentPresenter(DependencyObject obj, ContentPresenterX value)
+        {
+            obj.SetValue(RegistContentPresenterProperty, value);
+        }
+
+        internal static readonly DependencyProperty RegistContentPresenterProperty =
+            DependencyProperty.RegisterAttached("RegistContentPresenter", typeof(ContentPresenterX), typeof(ExpanderHelper), new PropertyMetadata(OnRegistContentPresenter));
+        #endregion
+
+        #region ChildSize
+        internal static Size GetChildSize(DependencyObject obj)
+        {
+            return (Size)obj.GetValue(ChildSizeProperty);
+        }
+
+        internal static void SetChildSize(DependencyObject obj, Size value)
+        {
+            obj.SetValue(ChildSizeProperty, value);
+        }
+
+        internal static readonly DependencyProperty ChildSizeProperty =
+            DependencyProperty.RegisterAttached("ChildSize", typeof(Size), typeof(ExpanderHelper), new PropertyMetadata(OnChildSizeChanged));
+        #endregion
+
+        #endregion
+
+        #region Evemt Handlers
+
+        private static void OnRegistContentPresenter(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is ContentPresenterX contentPresenter)
+            {
+                var expander = contentPresenter.TemplatedParent as Expander;
+
+                expander.Expanded -= Expander_ExpandedOrCollapsed;
+                expander.Expanded += Expander_ExpandedOrCollapsed;
+                expander.Collapsed -= Expander_ExpandedOrCollapsed;
+                expander.Collapsed += Expander_ExpandedOrCollapsed;
+
+                SetRegistContentPresenter(expander, contentPresenter);
+                contentPresenter.Arranged += (s, args) =>
+                {
+                    SetChildSize(expander, args.NewValue);
+                };
+            }
+        }
+
+        private static void Expander_ExpandedOrCollapsed(object sender, RoutedEventArgs e)
+        {
+            var expander = sender as Expander;
+            var contentPresenterX = GetRegistContentPresenter(expander);
+            var containerBorder = contentPresenterX.Parent as Border;
+            var childSize = GetChildSize(expander);
+            var isVertical = expander.ExpandDirection == ExpandDirection.Up
+                || expander.ExpandDirection == ExpandDirection.Down;
+            var property = isVertical
+                ? ContentPresenterX.HeightProperty
+                : ContentPresenterX.WidthProperty;
+            var from = isVertical
+                ? (double.IsNaN(containerBorder.Height)
+                    ? containerBorder.ActualHeight
+                    : (double?)null)
+                : (double.IsNaN(containerBorder.Width)
+                    ? containerBorder.ActualWidth
+                    : (double?)null);
+
+            if (expander.IsExpanded)
+            {
+                var to = isVertical
+                    ? childSize.Height
+                    : childSize.Width;
+
+                contentPresenterX.HandleArranged = true;
+                var animation = new DoubleAnimation()
+                {
+                    From = from,
+                    To = to,
+                    Duration = GetAnimationDuration(expander),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEasing(expander)),
+                };
+                animation.Completed += delegate
+                {
+                    contentPresenterX.HandleArranged = false;
+                };
+                containerBorder.BeginAnimation(property, animation);
+            }
+            else
+            {
+                contentPresenterX.HandleArranged = true;
+                var animation = new DoubleAnimation()
+                {
+                    From = from,
+                    To = 0,
+                    Duration = GetAnimationDuration(expander),
+                    EasingFunction = AnimationUtil.CreateEasingFunction(GetAnimationEasing(expander)),
+                };
+                animation.Completed += delegate
+                {
+                    contentPresenterX.HandleArranged = false;
+                };
+                containerBorder.BeginAnimation(property, animation);
+            }
+        }
+
+        private static void OnChildSizeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var expander = (Expander)d;
+            var childSize = (Size)e.NewValue;
+            var contentPresenterX = GetRegistContentPresenter(expander);
+            var containerBorder = contentPresenterX.Parent as Border;
+
+            containerBorder.BeginAnimation(Border.WidthProperty, null);
+            containerBorder.BeginAnimation(Border.HeightProperty, null);
+
+            if (expander.IsExpanded)
+            {
+                containerBorder.Width = childSize.Width;
+                containerBorder.Height = childSize.Height;
+            }
+            else
+            {
+                if (expander.ExpandDirection == ExpandDirection.Up
+                    || expander.ExpandDirection == ExpandDirection.Down)
+                {
+                    containerBorder.Width = childSize.Width;
+                    containerBorder.Height = 0;
+                }
+                else
+                {
+                    containerBorder.Width = 0;
+                    containerBorder.Height = childSize.Height;
+                }
+            }
+        }
 
         #endregion
     }

@@ -47,15 +47,15 @@ namespace Panuon.WPF.UI.Configurations
             DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(NoticeBoxSetting), new PropertyMetadata(TimeSpan.FromSeconds(0.5)));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(NoticeBoxSetting), new PropertyMetadata(AnimationEase.CircleOut));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(NoticeBoxSetting), new PropertyMetadata(AnimationEasing.CircleOut));
         #endregion
 
         #endregion

@@ -21,7 +21,7 @@
         <Setter Property="Content"
                 Value="&#xe903;" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
+                Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}" />
         <Setter Property="Margin"
                 Value="2,0" />
         <Setter Property="AnimationDuration"
@@ -114,6 +114,8 @@
                 Value="Stretch" />
         <Setter Property="local:ExpanderHelper.HeaderPadding"
                 Value="10,0" />
+        <Setter Property="local:ExpanderHelper.HeaderCornerRadius"
+                Value="{Binding Path=(local:ExpanderHelper.CornerRadius), Converter={StaticResource {x:Static irs:ConverterKeys.GroupBoxHeaderCornerRadiusConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ExpanderHelper.HeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ExpanderHelper.HeaderFontSize"

@@ -46,12 +46,84 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ToggleButton">
-                                        <Border BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                Background="{TemplateBinding Background}">
+                                        <Grid>
+                                            <Border x:Name="BdrContainer"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    CornerRadius="{Binding Path=(local:ExpanderHelper.HeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}">
+                                                <Border.Effect>
+                                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                                        <Binding Path="(local:ExpanderHelper.HeaderShadowColor)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                        <Binding Path="(local:ShadowHelper.Direction)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                        <Binding Path="(local:ShadowHelper.Opacity)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                        <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                 Mode="OneWay" />
+                                                    </MultiBinding>
+                                                </Border.Effect>
+                                            </Border>
                                             <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                                        </Border>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                                               Value="True" />
+                                                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                               Value="True" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter TargetName="BdrContainer"
+                                                        Property="CornerRadius"
+                                                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                                               Value="True" />
+                                                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                               Value="True" />
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter TargetName="BdrContainer"
+                                                        Property="Effect">
+                                                    <Setter.Value>
+                                                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                                            <Binding Path="(local:ExpanderHelper.ExpandedHeaderShadowColor)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                            <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                            <Binding Path="(local:ShadowHelper.Direction)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                            <Binding Path="(local:ShadowHelper.Opacity)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                            <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                     Mode="OneWay" />
+                                                        </MultiBinding>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </MultiDataTrigger>
+                                        </ControlTemplate.Triggers>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
@@ -87,9 +159,11 @@
                            Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Visibility="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="PART_ContentBorder"
-                        Grid.Row="2"
-                        Visibility="Collapsed">
-                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        Grid.Row="2">
+                    <i:ContentPresenterX x:Name="CpChild"
+                                         IsVertical="True"
+                                         local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
+                                         Margin="{TemplateBinding Padding}" />
                 </Border>
             </Grid>
         </local:ContentControlX>
@@ -133,6 +207,61 @@
                 <Setter TargetName="CcMain"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="CornerRadius"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="Effect">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                            <Binding Path="(local:ExpanderHelper.ExpandedShadowColor)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.Direction)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.Opacity)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                     RelativeSource="{RelativeSource AncestorType=Expander}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -198,9 +327,6 @@
                 <Setter TargetName="RectSeparator"
                         Property="Visibility"
                         Value="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter  TargetName="PART_ContentBorder"
-                         Property="Visibility"
-                         Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -281,9 +407,11 @@
                            Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Visibility="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="PART_ContentBorder"
-                        Grid.Column="2"
-                        Visibility="Collapsed">
-                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                        Grid.Column="2">
+                    <i:ContentPresenterX x:Name="CpChild"
+                                         IsVertical="False"
+                                         local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
+                                         Margin="{TemplateBinding Padding}" />
                 </Border>
             </Grid>
         </local:ContentControlX>

@@ -62,15 +62,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(Drawer), new PropertyMetadata(TimeSpan.FromSeconds(0.2)));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(Drawer));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(Drawer));
         #endregion
 
         #region Placement
@@ -166,14 +166,14 @@ namespace Panuon.WPF.UI
                         {
                             throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
                         }
-                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MaxWidth - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
+                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MaxWidth - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEasing);
                         break;
                     default:
                         if (double.IsPositiveInfinity(MaxHeight))
                         {
                             throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
                         }
-                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MaxHeight - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
+                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MaxHeight - ShadowHelper.GetBlurRadius(this), IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEasing); ;
                         break;
                 }
             }
@@ -195,7 +195,7 @@ namespace Panuon.WPF.UI
                         {
                             throw new Exception("Drawer : a specific value must be specified for MaxWidth.");
                         }
-                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase);
+                        AnimationUtil.BeginDoubleAnimation(this, WidthProperty, double.IsNaN(Width) ? 0 : Width, MinWidth, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEasing);
                         break;
                     default:
                         if (double.IsInfinity(MaxHeight)
@@ -203,7 +203,7 @@ namespace Panuon.WPF.UI
                         {
                             throw new Exception("Drawer : a specific value must be specified for MaxHeight.");
                         }
-                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEase); ;
+                        AnimationUtil.BeginDoubleAnimation(this, HeightProperty, double.IsNaN(Height) ? 0 : Height, MinHeight, IsLoaded ? AnimationDuration : TimeSpan.Zero, null, AnimationEasing); ;
                         break;
                 }
             }

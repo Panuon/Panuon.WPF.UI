@@ -12,15 +12,15 @@ namespace Panuon.WPF.UI
     {
         #region Properties
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(AnimationStackPanel));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(AnimationStackPanel));
         #endregion
 
         #region AnimationDuration
@@ -103,12 +103,12 @@ namespace Panuon.WPF.UI
                 if (isVertical)
                 {
                     SetMultiplierX(elementAdded, 1);
-                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEasing);
                 }
                 else
                 {
                     SetMultiplierY(elementAdded, -1);
-                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEasing);
                 }
             }
             if (visualRemoved is UIElement elementRemoved)
@@ -122,13 +122,13 @@ namespace Panuon.WPF.UI
                         {
                             SetMultiplierY(child, 1);
                             child.BeginAnimation(MultiplierYProperty, null);
-                            AnimationUtil.BeginDoubleAnimation(child, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                            AnimationUtil.BeginDoubleAnimation(child, MultiplierYProperty, null, 0, AnimationDuration, ease: AnimationEasing);
                         }
                         else
                         {
                             SetMultiplierX(child, 1);
                             child.BeginAnimation(MultiplierXProperty, null);
-                            AnimationUtil.BeginDoubleAnimation(child, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEase);
+                            AnimationUtil.BeginDoubleAnimation(child, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEasing);
                         }
 
                     }

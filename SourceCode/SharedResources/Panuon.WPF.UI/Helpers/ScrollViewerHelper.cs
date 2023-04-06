@@ -72,19 +72,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ContentSpacing", typeof(double), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region AnimationEase
-        public static AnimationEase GetAnimationEase(DependencyObject obj)
+        #region AnimationEasing
+        public static AnimationEasing GetAnimationEasing(DependencyObject obj)
         {
-            return (AnimationEase)obj.GetValue(AnimationEaseProperty);
+            return (AnimationEasing)obj.GetValue(AnimationEasingProperty);
         }
 
-        public static void SetAnimationEase(DependencyObject obj, AnimationEase value)
+        public static void SetAnimationEasing(DependencyObject obj, AnimationEasing value)
         {
-            obj.SetValue(AnimationEaseProperty, value);
+            obj.SetValue(AnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.RegisterAttached("AnimationEase", typeof(AnimationEase), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(AnimationEase.None, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.RegisterAttached("AnimationEasing", typeof(AnimationEasing), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(AnimationEasing.None, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region AnimationDuration
@@ -133,7 +133,7 @@ namespace Panuon.WPF.UI
                 && !scrollViewer.CanContentScroll)
             {
                 var animationDuration = GetAnimationDuration(scrollViewer);
-                var animationEase = GetAnimationEase(scrollViewer);
+                var animationEase = GetAnimationEasing(scrollViewer);
                 AnimationUtil.BeginDoubleAnimation(scrollViewer, VerticalOffsetProperty, null, value, animationDuration, null, animationEase);
             }
             else
@@ -162,7 +162,7 @@ namespace Panuon.WPF.UI
                 && !scrollViewer.CanContentScroll)
             {
                 var animationDuration = GetAnimationDuration(scrollViewer);
-                var animationEase = GetAnimationEase(scrollViewer);
+                var animationEase = GetAnimationEasing(scrollViewer);
                 AnimationUtil.BeginDoubleAnimation(scrollViewer, HorizontalOffsetProperty, null, value, animationDuration, null, animationEase);
             }
             else

@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CalendarXItemPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ContentPresenterX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\InternalItemsControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NoticeBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ClippingBorder.cs" />

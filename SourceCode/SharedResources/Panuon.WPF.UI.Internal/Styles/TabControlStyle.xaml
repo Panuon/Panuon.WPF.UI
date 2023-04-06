@@ -50,6 +50,8 @@
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsSelected"
                 Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:TabControlHelper.HeaderPanelBackground"
+                Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TabControlHelper.HeaderPanelRibbonLineThickness"

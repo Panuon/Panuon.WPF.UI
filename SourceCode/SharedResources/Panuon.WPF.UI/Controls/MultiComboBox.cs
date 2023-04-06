@@ -349,15 +349,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("RemovingAnimationDuration", typeof(TimeSpan?), typeof(MultiComboBox));
         #endregion
 
-        #region RemovingAnimationEase
-        public AnimationEase RemovingAnimationEase
+        #region RemovingAnimationEasing
+        public AnimationEasing RemovingAnimationEasing
         {
-            get { return (AnimationEase)GetValue(RemovingAnimationEaseProperty); }
-            set { SetValue(RemovingAnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(RemovingAnimationEasingProperty); }
+            set { SetValue(RemovingAnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty RemovingAnimationEaseProperty =
-            DependencyProperty.Register("RemovingAnimationEase", typeof(AnimationEase), typeof(MultiComboBox));
+        public static readonly DependencyProperty RemovingAnimationEasingProperty =
+            DependencyProperty.Register("RemovingAnimationEasing", typeof(AnimationEasing), typeof(MultiComboBox));
         #endregion
 
         #region CheckBoxStyle
@@ -770,7 +770,7 @@ namespace Panuon.WPF.UI
             var comboBoxItem = (MultiComboBoxItem)obj;
             var comboBox = (MultiComboBox)ItemsControl.ItemsControlFromItemContainer(comboBoxItem);
             var animationDuration = comboBox.RemovingAnimationDuration;
-            var animationEase = comboBox.RemovingAnimationEase;
+            var animationEase = comboBox.RemovingAnimationEasing;
             var dataItem = comboBox.ItemContainerGenerator.ItemFromContainer(comboBoxItem);
 
             var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);

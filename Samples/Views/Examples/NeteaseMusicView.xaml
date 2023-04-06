@@ -201,7 +201,7 @@
                TargetType="pu:Carousel">
             <Setter Property="Animation"
                     Value="Flow,Fade" />
-            <Setter Property="AnimationEase"
+            <Setter Property="AnimationEasing"
                     Value="CubicOut" />
             <Setter Property="IndicatorVisibility"
                     Value="Visible" />

@@ -15,6 +15,8 @@
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="UseLayoutRounding"
+                Value="True" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContentControlXTemplate}}"/>
     </Style>

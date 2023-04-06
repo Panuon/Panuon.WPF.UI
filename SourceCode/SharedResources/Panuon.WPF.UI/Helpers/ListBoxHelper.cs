@@ -128,19 +128,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RemovingAnimationDuration", typeof(TimeSpan?), typeof(ListBoxHelper));
         #endregion
 
-        #region RemovingAnimationEase
-        public static AnimationEase GetRemovingAnimationEase(ListBox listBox)
+        #region RemovingAnimationEasing
+        public static AnimationEasing GetRemovingAnimationEasing(ListBox listBox)
         {
-            return (AnimationEase)listBox.GetValue(RemovingAnimationEaseProperty);
+            return (AnimationEasing)listBox.GetValue(RemovingAnimationEasingProperty);
         }
 
-        public static void SetRemovingAnimationEase(ListBox listBox, AnimationEase value)
+        public static void SetRemovingAnimationEasing(ListBox listBox, AnimationEasing value)
         {
-            listBox.SetValue(RemovingAnimationEaseProperty, value);
+            listBox.SetValue(RemovingAnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty RemovingAnimationEaseProperty =
-            DependencyProperty.RegisterAttached("RemovingAnimationEase", typeof(AnimationEase), typeof(ListBoxHelper));
+        public static readonly DependencyProperty RemovingAnimationEasingProperty =
+            DependencyProperty.RegisterAttached("RemovingAnimationEasing", typeof(AnimationEasing), typeof(ListBoxHelper));
         #endregion
 
         #region AutoScrollIntoView
@@ -492,6 +492,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ItemsHoverBorderBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public static Thickness? GetItemsHoverBorderThickness(ListBox listBox)
+        {
+            return (Thickness?)listBox.GetValue(ItemsHoverBorderThicknessProperty);
+        }
+
+        public static void SetItemsHoverBorderThickness(ListBox listBox, Thickness? value)
+        {
+            listBox.SetValue(ItemsHoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverBorderThickness", typeof(Thickness?), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public static CornerRadius? GetItemsHoverCornerRadius(ListBox listBox)
+        {
+            return (CornerRadius?)listBox.GetValue(ItemsHoverCornerRadiusProperty);
+        }
+
+        public static void SetItemsHoverCornerRadius(ListBox listBox, CornerRadius? value)
+        {
+            listBox.SetValue(ItemsHoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(ListBoxHelper));
+        #endregion
+
         #region ItemsHoverShadowColor
         public static Color? GetItemsHoverShadowColor(ListBox listBox)
         {
@@ -552,21 +582,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ItemsSelectedBorderBrush", typeof(Brush), typeof(ListBoxHelper));
         #endregion
 
-        #region ItemsSelectedShadowColor
-        public static Color? GetItemsSelectedShadowColor(ListBox listBox)
-        {
-            return (Color?)listBox.GetValue(ItemsSelectedShadowColorProperty);
-        }
-
-        public static void SetItemsSelectedShadowColor(ListBox listBox, Color? value)
-        {
-            listBox.SetValue(ItemsSelectedShadowColorProperty, value);
-        }
-
-        public static readonly DependencyProperty ItemsSelectedShadowColorProperty =
-            DependencyProperty.RegisterAttached("ItemsSelectedShadowColor", typeof(Color?), typeof(ListBoxHelper));
-        #endregion
-
         #region ItemsSelectedBorderThickness
         public static Thickness? GetItemsSelectedBorderThickness(ListBox listBox)
         {
@@ -580,6 +595,36 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsSelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ItemsSelectedBorderThickness", typeof(Thickness?), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsSelectedCornerRadius
+        public static CornerRadius? GetItemsSelectedCornerRadius(ListBox listBox)
+        {
+            return (CornerRadius?)listBox.GetValue(ItemsSelectedCornerRadiusProperty);
+        }
+
+        public static void SetItemsSelectedCornerRadius(ListBox listBox, CornerRadius? value)
+        {
+            listBox.SetValue(ItemsSelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedCornerRadius", typeof(CornerRadius?), typeof(ListBoxHelper));
+        #endregion
+
+        #region ItemsSelectedShadowColor
+        public static Color? GetItemsSelectedShadowColor(ListBox listBox)
+        {
+            return (Color?)listBox.GetValue(ItemsSelectedShadowColorProperty);
+        }
+
+        public static void SetItemsSelectedShadowColor(ListBox listBox, Color? value)
+        {
+            listBox.SetValue(ItemsSelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ItemsSelectedShadowColorProperty =
+            DependencyProperty.RegisterAttached("ItemsSelectedShadowColor", typeof(Color?), typeof(ListBoxHelper));
         #endregion
 
         #region ItemsRemoveButtonVisibility
@@ -725,7 +770,7 @@ namespace Panuon.WPF.UI
             var listBoxItem = (ListBoxItem)obj;
             var listBox = (ListBox)ItemsControl.ItemsControlFromItemContainer(listBoxItem);
             var animationDuration = GetRemovingAnimationDuration(listBox);
-            var animationEase = GetRemovingAnimationEase(listBox);
+            var animationEase = GetRemovingAnimationEasing(listBox);
             var dataItem = listBox.ItemContainerGenerator.ItemFromContainer(listBoxItem);
 
             var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);

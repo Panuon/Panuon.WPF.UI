@@ -30,6 +30,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="PART_InputTextBox"
+                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                          local:TextBoxHelper.Hook="True"
                          local:TextBoxHelper.InputLimit="Digit,Point">
                     <TextBox.Style>

@@ -16,7 +16,6 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{TemplateBinding Foreground}"
-                               Padding="{TemplateBinding Padding}"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                CornerRadius="{Binding Path=(local:TabControlHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -37,6 +36,29 @@
                                            CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                            Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                            Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <local:ContentControlX.Effect>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <Binding Path="(local:TabControlHelper.HeaderPanelShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:ContentControlX.Effect>
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="CdFrontBlank" />
@@ -49,11 +71,11 @@
                                             Grid.Column="1"
                                             Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <Border x:Name="BdrFront"
-                                       Grid.ColumnSpan="2"
-                                       Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                    Grid.ColumnSpan="2"
+                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                             <ScrollViewer x:Name="PART_ScrollViewer"
                                           Grid.Column="2"
                                           HorizontalScrollBarVisibility="Disabled"
@@ -81,17 +103,19 @@
                             <ContentControl x:Name="CcEnd"
                                             Grid.Column="3"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Rectangle x:Name="SprtEnd"
-                                       Grid.Column="3"
-                                       Grid.ColumnSpan="2"
-                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Border x:Name="BdrEnd"
+                                    Grid.Column="3"
+                                    Grid.ColumnSpan="2"
+                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
                     </local:ContentControlX>
                 </Grid>
                 <ContentPresenter x:Name="PART_SelectedContentHost"
                                   Grid.Row="1"
+                                  Margin="{TemplateBinding Padding}"
                                   ContentSource="SelectedContent" />
             </Grid>
         </local:ContentControlX>
@@ -100,7 +124,7 @@
                      Value="True">
                 <Setter TargetName="PART_ScrollViewer"
                         Property="HorizontalScrollBarVisibility"
-                        Value="Hidden"/>
+                        Value="Hidden" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Top">
@@ -110,7 +134,7 @@
                 <Setter TargetName="BdrFront"
                         Property="VerticalAlignment"
                         Value="Bottom" />
-                <Setter TargetName="SprtEnd"
+                <Setter TargetName="BdrEnd"
                         Property="VerticalAlignment"
                         Value="Bottom" />
             </Trigger>
@@ -122,9 +146,21 @@
                 <Setter TargetName="BdrFront"
                         Property="VerticalAlignment"
                         Value="Top" />
-                <Setter TargetName="SprtEnd"
+                <Setter TargetName="BdrEnd"
                         Property="VerticalAlignment"
                         Value="Top" />
+            </Trigger>
+            <Trigger Property="local:TabControlHelper.HeaderPanelRibbonLineStrategy"
+                     Value="Stretch">
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.ColumnSpan"
+                        Value="5" />
             </Trigger>
             <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
                      Value="Front">
@@ -185,7 +221,6 @@
                                BorderBrush="{TemplateBinding BorderBrush}"
                                BorderThickness="{TemplateBinding BorderThickness}"
                                Foreground="{TemplateBinding Foreground}"
-                               Padding="{TemplateBinding Padding}"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
                                CornerRadius="{Binding Path=(local:TabControlHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -249,12 +284,13 @@
                             <ContentControl x:Name="CcEnd"
                                             Grid.Row="3"
                                             Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Rectangle x:Name="SprtEnd"
-                                       Grid.Row="3"
-                                       Grid.RowSpan="2"
-                                       Fill="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Border x:Name="BdrEnd"
+                                    Grid.Row="3"
+                                    Grid.RowSpan="2"
+                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Grid>
                     </local:ContentControlX>
                 </Grid>
@@ -282,7 +318,7 @@
                 <Setter TargetName="BdrFront"
                         Property="HorizontalAlignment"
                         Value="Right" />
-                <Setter TargetName="SprtEnd"
+                <Setter TargetName="BdrEnd"
                         Property="HorizontalAlignment"
                         Value="Right" />
             </Trigger>
@@ -294,9 +330,21 @@
                 <Setter TargetName="BdrFront"
                         Property="HorizontalAlignment"
                         Value="Left" />
-                <Setter TargetName="SprtEnd"
+                <Setter TargetName="BdrEnd"
                         Property="HorizontalAlignment"
                         Value="Left" />
+            </Trigger>
+            <Trigger Property="local:TabControlHelper.HeaderPanelRibbonLineStrategy"
+                     Value="Stretch">
+                <Setter TargetName="BdrEnd"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.Row"
+                        Value="0" />
+                <Setter TargetName="BdrFront"
+                        Property="Grid.RowSpan"
+                        Value="5" />
             </Trigger>
             <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
                      Value="Front">

@@ -21,19 +21,19 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <local:ContentControlX x:Name="CcMain"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{Binding Path=(local:ListBoxItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Icon="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               IconPlacement="{Binding Path=(local:ListBoxItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               IconWidth="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                               Padding="{TemplateBinding Padding}">
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   CornerRadius="{Binding Path=(local:ListBoxItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   Icon="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   IconPlacement="{Binding Path=(local:ListBoxItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                   IconWidth="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                   Padding="{TemplateBinding Padding}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -57,6 +57,11 @@
                        Visibility="{Binding Path=(local:ListBoxItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="IsSelected"
+                     Value="True">
+                <Setter Property="Panel.ZIndex"
+                        Value="1" />
+            </Trigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -103,6 +108,17 @@
                 <Setter TargetName="CcMain"
                         Property="BorderThickness"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcMain"
+                        Property="CornerRadius"
+                        Value="{Binding Path=(local:ListBoxItemHelper.SelectedCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
@@ -216,5 +232,5 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    
+
 </ResourceDictionary>

@@ -67,15 +67,15 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("PercentStringFormat", typeof(string), typeof(RingProgressBar), new PropertyMetadata("P0", OnPercentStringFormatChanged));
         #endregion
 
-        #region AnimationEase
-        public AnimationEase AnimationEase
+        #region AnimationEasing
+        public AnimationEasing AnimationEasing
         {
-            get { return (AnimationEase)GetValue(AnimationEaseProperty); }
-            set { SetValue(AnimationEaseProperty, value); }
+            get { return (AnimationEasing)GetValue(AnimationEasingProperty); }
+            set { SetValue(AnimationEasingProperty, value); }
         }
 
-        public static readonly DependencyProperty AnimationEaseProperty =
-            DependencyProperty.Register("AnimationEase", typeof(AnimationEase), typeof(RingProgressBar));
+        public static readonly DependencyProperty AnimationEasingProperty =
+            DependencyProperty.Register("AnimationEasing", typeof(AnimationEasing), typeof(RingProgressBar));
         #endregion
 
         #region AnimationDuration
@@ -107,7 +107,7 @@ namespace Panuon.WPF.UI
         {
             if (IsLoaded)
             {
-                AnimationUtil.BeginDoubleAnimation(this, InternalValueProperty, null, newValue, AnimationDuration, null, AnimationEase);
+                AnimationUtil.BeginDoubleAnimation(this, InternalValueProperty, null, newValue, AnimationDuration, null, AnimationEasing);
             }
             else
             {

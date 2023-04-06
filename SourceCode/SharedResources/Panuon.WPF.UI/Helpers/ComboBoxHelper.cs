@@ -421,19 +421,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RemovingAnimationDuration", typeof(TimeSpan?), typeof(ComboBoxHelper));
         #endregion
 
-        #region RemovingAnimationEase
-        public static AnimationEase GetRemovingAnimationEase(ComboBox comboBox)
+        #region RemovingAnimationEasing
+        public static AnimationEasing GetRemovingAnimationEasing(ComboBox comboBox)
         {
-            return (AnimationEase)comboBox.GetValue(RemovingAnimationEaseProperty);
+            return (AnimationEasing)comboBox.GetValue(RemovingAnimationEasingProperty);
         }
 
-        public static void SetRemovingAnimationEase(ComboBox comboBox, AnimationEase value)
+        public static void SetRemovingAnimationEasing(ComboBox comboBox, AnimationEasing value)
         {
-            comboBox.SetValue(RemovingAnimationEaseProperty, value);
+            comboBox.SetValue(RemovingAnimationEasingProperty, value);
         }
 
-        public static readonly DependencyProperty RemovingAnimationEaseProperty =
-            DependencyProperty.RegisterAttached("RemovingAnimationEase", typeof(AnimationEase), typeof(ComboBoxHelper));
+        public static readonly DependencyProperty RemovingAnimationEasingProperty =
+            DependencyProperty.RegisterAttached("RemovingAnimationEasing", typeof(AnimationEasing), typeof(ComboBoxHelper));
         #endregion
 
         #region StaysOpenOnEdit
@@ -1039,7 +1039,7 @@ namespace Panuon.WPF.UI
             var comboBoxItem = (ComboBoxItem)obj;
             var comboBox = (ComboBox)ItemsControl.ItemsControlFromItemContainer(comboBoxItem);
             var animationDuration = GetRemovingAnimationDuration(comboBox);
-            var animationEase = GetRemovingAnimationEase(comboBox);
+            var animationEase = GetRemovingAnimationEasing(comboBox);
             var dataItem = comboBox.ItemContainerGenerator.ItemFromContainer(comboBoxItem);
 
             var removingArgs = new ItemRemovingRoutedEventArgs(ItemRemovingEvent, dataItem);
