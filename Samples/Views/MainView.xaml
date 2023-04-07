@@ -33,8 +33,7 @@
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid>
-        <Grid Margin="20,10,20,20"
-              Visibility="Collapsed">
+        <Grid Margin="20,10,20,20">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -125,28 +124,5 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <TabControl Width="200"
-                    Height="200"
-                    Background="Blue"
-                    pu:TabControlHelper.HeaderPanelBackground="White"
-                    pu:TabControlHelper.HeaderPanelShadowColor="Red">
-            <TabItem Header="标签1" />
-            <TabItem Header="标签2" />
-            <TabItem Header="标签3" />
-        </TabControl>
-        <!--<pu:Drawer IsOpen="False"
-                   Placement="Left"
-                   MaxWidth="300"
-                   MinWidth="50"
-                   Background="White"
-                   ShadowColor="Black"
-                   AnimationEase="CubicOut"
-                   AnimationDuration="0:0:0.4">
-            <ToggleButton Content="OP"
-                          Width="50"
-                          Height="50"
-                          HorizontalAlignment="Left"
-                          IsChecked="{Binding IsOpen, RelativeSource={RelativeSource AncestorType=pu:Drawer}, Mode=TwoWay}" />
-        </pu:Drawer>-->
     </Grid>
 </pu:WindowX>

@@ -601,6 +601,8 @@ namespace Panuon.WPF.UI
             {
                 var expander = contentPresenter.TemplatedParent as Expander;
 
+                expander.SizeChanged -= Expander_SizeChanged;
+                expander.SizeChanged += Expander_SizeChanged;
                 expander.Expanded -= Expander_ExpandedOrCollapsed;
                 expander.Expanded += Expander_ExpandedOrCollapsed;
                 expander.Collapsed -= Expander_ExpandedOrCollapsed;
@@ -611,6 +613,27 @@ namespace Panuon.WPF.UI
                 {
                     SetChildSize(expander, args.NewValue);
                 };
+            }
+        }
+
+        private static void Expander_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var expander = (Expander)sender;
+            if ((expander.ExpandDirection == ExpandDirection.Up || expander.ExpandDirection == ExpandDirection.Down)
+                && e.WidthChanged)
+            {
+                var childSize = GetChildSize(expander);
+                SetChildSize(expander, new Size(double.NaN, childSize.Height));
+                var contentPresenter = GetRegistContentPresenter(expander);
+                contentPresenter.InvalidateArrange();
+            }
+            else if((expander.ExpandDirection == ExpandDirection.Left || expander.ExpandDirection == ExpandDirection.Right)
+                && e.HeightChanged)
+            {
+                var childSize = GetChildSize(expander);
+                SetChildSize(expander, new Size(childSize.Width, double.NaN));
+                var contentPresenter = GetRegistContentPresenter(expander);
+                contentPresenter.InvalidateArrange();
             }
         }
 
