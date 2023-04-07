@@ -124,7 +124,5 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <pu:NumberInput Maximum="20"
-                        Interval="4" />
     </Grid>
 </pu:WindowX>
