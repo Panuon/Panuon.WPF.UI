@@ -428,12 +428,12 @@ namespace Panuon.WPF.UI
         #region Methods
         public void Up()
         {
-            SetValue(ValueProperty, Value + Interval);
+            SetValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, Value + Interval)));
         }
 
         public void Down()
         {
-            SetValue(ValueProperty, Value - Interval);
+            SetValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, Value - Interval)));
         }
         #endregion
 
