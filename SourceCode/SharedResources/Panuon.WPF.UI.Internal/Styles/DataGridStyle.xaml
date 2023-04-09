@@ -169,6 +169,10 @@
                 Value="True" />
         <Setter Property="Background"
                 Value="{Binding RowBackground, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.RowBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:DataGridHelper.RowBorderThickness), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="Margin"
@@ -242,6 +246,10 @@
                 Value="{Binding Path=(local:DataGridHelper.ColumnHeaderFontSize), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="FontWeight"
                 Value="{Binding Path=(local:DataGridHelper.ColumnHeaderFontWeight), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderBorderBrush), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:DataGridHelper.ColumnHeaderBorderThickness), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding Path=(local:DataGridHelper.ColumnHeaderBackground), RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}" />
         <Setter Property="Padding"
@@ -346,6 +354,8 @@
                 Value="Stretch" />
         <Setter Property="RowStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.DataGridRowStyle}}" />
+        <Setter Property="RowHeaderStyle"
+                Value="{StaticResource {x:Static rs:StyleKeys.DataGridRowHeaderStyle}}" />
         <Setter Property="ColumnHeaderStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.DataGridColumnHeaderStyle}}" />
         <Setter Property="CellStyle"

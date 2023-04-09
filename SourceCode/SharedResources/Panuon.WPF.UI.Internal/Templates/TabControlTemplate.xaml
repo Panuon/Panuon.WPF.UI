@@ -58,7 +58,6 @@
                                          Mode="OneWay" />
                             </MultiBinding>
                         </local:ContentControlX.Effect>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="CdFrontBlank" />
@@ -241,6 +240,28 @@
                                            CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                            Margin="{Binding Path=(local:TabControlHelper.HeaderPanelMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                            Padding="{Binding Path=(local:TabControlHelper.HeaderPanelPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <local:ContentControlX.Effect>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <Binding Path="(local:TabControlHelper.HeaderPanelShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=TabControl}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:ContentControlX.Effect>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition x:Name="RdFrontBlank" />

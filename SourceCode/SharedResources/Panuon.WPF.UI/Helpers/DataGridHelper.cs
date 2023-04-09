@@ -82,8 +82,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SingleClickToEdit", typeof(bool), typeof(DataGridHelper), new PropertyMetadata(false, OnSingleClickToEditChanged));
         #endregion
 
-        
-
         #region ScrollToBottomOnAdded
         public static bool GetScrollToBottomOnAdded(DataGrid dataGrid)
         {
@@ -324,6 +322,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ColumnHeaderFontWeight", typeof(FontWeight), typeof(DataGridHelper), new PropertyMetadata(SystemFonts.MessageFontWeight));
         #endregion
 
+        #region ColumnHeaderBorderBrush
+        public static Brush GetColumnHeaderBorderBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(ColumnHeaderBorderBrushProperty);
+        }
+
+        public static void SetColumnHeaderBorderBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(ColumnHeaderBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderBorderBrush", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region ColumnHeaderBorderThickness
+        public static Thickness GetColumnHeaderBorderThickness(DataGrid dataGrid)
+        {
+            return (Thickness)dataGrid.GetValue(ColumnHeaderBorderThicknessProperty);
+        }
+
+        public static void SetColumnHeaderBorderThickness(DataGrid dataGrid, Thickness value)
+        {
+            dataGrid.SetValue(ColumnHeaderBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderBorderThickness", typeof(Thickness), typeof(DataGridHelper));
+        #endregion
+
         #region ColumnHeaderCornerRadius
         public static CornerRadius GetColumnHeaderCornerRadius(DataGrid dataGrid)
         {
@@ -508,6 +536,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ColumnHeaderHoverBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
         #endregion
 
+        #region ColumnHeaderHoverCornerRadius
+        public static CornerRadius? GetColumnHeaderHoverCornerRadius(DataGrid dataGrid)
+        {
+            return (CornerRadius?)dataGrid.GetValue(ColumnHeaderHoverCornerRadiusProperty);
+        }
+
+        public static void SetColumnHeaderHoverCornerRadius(DataGrid dataGrid, CornerRadius? value)
+        {
+            dataGrid.SetValue(ColumnHeaderHoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderHoverCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderHoverCornerRadius", typeof(CornerRadius?), typeof(DataGridHelper));
+        #endregion
+
         #region ColumnHeaderClickBackground
         public static Brush GetColumnHeaderClickBackground(DataGrid dataGrid)
         {
@@ -568,6 +611,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ColumnHeaderClickBorderThicknessProperty =
             DependencyProperty.RegisterAttached("ColumnHeaderClickBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
+        #endregion
+
+        #region ColumnHeaderClickCornerRadius
+        public static CornerRadius? GetColumnHeaderClickCornerRadius(DataGrid dataGrid)
+        {
+            return (CornerRadius?)dataGrid.GetValue(ColumnHeaderClickCornerRadiusProperty);
+        }
+
+        public static void SetColumnHeaderClickCornerRadius(DataGrid dataGrid, CornerRadius? value)
+        {
+            dataGrid.SetValue(ColumnHeaderClickCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ColumnHeaderClickCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ColumnHeaderClickCornerRadius", typeof(CornerRadius?), typeof(DataGridHelper));
         #endregion
 
         #region ColumnHeaderPanelCornerRadius
@@ -818,6 +876,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RowShadowColor", typeof(Color?), typeof(DataGridHelper));
         #endregion
 
+        #region RowBorderBrush
+        public static Brush GetRowBorderBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(RowBorderBrushProperty);
+        }
+
+        public static void SetRowBorderBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(RowBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty RowBorderBrushProperty =
+            DependencyProperty.RegisterAttached("RowBorderBrush", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region RowBorderThickness
+        public static Thickness GetRowBorderThickness(DataGrid dataGrid)
+        {
+            return (Thickness)dataGrid.GetValue(RowBorderThicknessProperty);
+        }
+
+        public static void SetRowBorderThickness(DataGrid dataGrid, Thickness value)
+        {
+            dataGrid.SetValue(RowBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty RowBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("RowBorderThickness", typeof(Thickness), typeof(DataGridHelper));
+        #endregion
+
         #region RowCornerRadius
         public static CornerRadius GetRowCornerRadius(DataGrid dataGrid)
         {
@@ -848,6 +936,51 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("RowHoverBackground", typeof(Brush), typeof(DataGridHelper));
 
 
+        #endregion
+
+        #region RowHoverBorderBrush
+        public static Brush GetRowHoverBorderBrush(DataGrid dataGrid)
+        {
+            return (Brush)dataGrid.GetValue(RowHoverBorderBrushProperty);
+        }
+
+        public static void SetRowHoverBorderBrush(DataGrid dataGrid, Brush value)
+        {
+            dataGrid.SetValue(RowHoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty RowHoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("RowHoverBorderBrush", typeof(Brush), typeof(DataGridHelper));
+        #endregion
+
+        #region RowHoverBorderThickness
+        public static Thickness? GetRowHoverBorderThickness(DataGrid dataGrid)
+        {
+            return (Thickness?)dataGrid.GetValue(RowHoverBorderThicknessProperty);
+        }
+
+        public static void SetRowHoverBorderThickness(DataGrid dataGrid, Thickness? value)
+        {
+            dataGrid.SetValue(RowHoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty RowHoverBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("RowHoverBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
+        #endregion
+
+        #region RowHoverCornerRadius
+        public static CornerRadius? GetRowHoverCornerRadius(DataGrid dataGrid)
+        {
+            return (CornerRadius?)dataGrid.GetValue(RowHoverCornerRadiusProperty);
+        }
+
+        public static void SetRowHoverCornerRadius(DataGrid dataGrid, CornerRadius? value)
+        {
+            dataGrid.SetValue(RowHoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty RowHoverCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("RowHoverCornerRadius", typeof(CornerRadius?), typeof(DataGridHelper));
         #endregion
 
         #region RowHoverForeground
@@ -927,6 +1060,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty RowSelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("RowSelectedBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
+        #endregion
+
+        #region RowSelectedCornerRadius
+        public static CornerRadius? GetRowSelectedCornerRadius(DataGrid dataGrid)
+        {
+            return (CornerRadius?)dataGrid.GetValue(RowSelectedCornerRadiusProperty);
+        }
+
+        public static void SetRowSelectedCornerRadius(DataGrid dataGrid, CornerRadius? value)
+        {
+            dataGrid.SetValue(RowSelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty RowSelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("RowSelectedCornerRadius", typeof(CornerRadius?), typeof(DataGridHelper));
         #endregion
 
         #region RowSelectedShadowColor

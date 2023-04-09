@@ -55,6 +55,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(TreeViewItemHelper));
         #endregion
 
+        #region ShadowColor
+        public static Color? GetShadowColor(TreeViewItem treeViewItem)
+        {
+            return (Color?)treeViewItem.GetValue(ShadowColorProperty);
+        }
+
+        public static void SetShadowColor(TreeViewItem treeViewItem, Color? value)
+        {
+            treeViewItem.SetValue(ShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(TreeViewItemHelper));
+        #endregion
+
         #region ToggleBrush
         public static Brush GetToggleBrush(TreeViewItem treeViewItem)
         {
@@ -67,7 +82,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ToggleBrushProperty =
-            DependencyProperty.RegisterAttached("ToggleBrush", typeof(Brush), typeof(TreeViewItemHelper));
+            VisualStateHelper.ToggleBrushProperty.AddOwner(typeof(TreeViewItemHelper));
         #endregion
 
         #region HoverBackground
@@ -115,6 +130,51 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(TreeViewItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(TreeViewItem treeViewItem)
+        {
+            return (Thickness?)treeViewItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(TreeViewItem treeViewItem, Thickness? value)
+        {
+            treeViewItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(TreeViewItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(TreeViewItem treeViewItem)
+        {
+            return (CornerRadius?)treeViewItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(TreeViewItem treeViewItem, CornerRadius? value)
+        {
+            treeViewItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(TreeViewItemHelper));
+        #endregion
+
+        #region HoverShadowColor
+        public static Color? GetHoverShadowColor(TreeViewItem treeViewItem)
+        {
+            return (Color?)treeViewItem.GetValue(HoverShadowColorProperty);
+        }
+
+        public static void SetHoverShadowColor(TreeViewItem treeViewItem, Color? value)
+        {
+            treeViewItem.SetValue(HoverShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverShadowColorProperty =
+            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(TreeViewItemHelper));
+        #endregion
+
         #region HoverToggleBrush
         public static Brush GetHoverToggleBrush(TreeViewItem treeViewItem)
         {
@@ -127,7 +187,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HoverToggleBrushProperty =
-            DependencyProperty.RegisterAttached("HoverToggleBrush", typeof(Brush), typeof(TreeViewItemHelper));
+            VisualStateHelper.HoverToggleBrushProperty.AddOwner(typeof(TreeViewItemHelper));
         #endregion
 
         #region SelectedBackground
@@ -190,6 +250,36 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SelectedBorderThickness", typeof(Thickness?), typeof(TreeViewItemHelper));
         #endregion
 
+        #region SelectedCornerRadius
+        public static CornerRadius? GetSelectedCornerRadius(TreeViewItem treeViewItem)
+        {
+            return (CornerRadius?)treeViewItem.GetValue(SelectedCornerRadiusProperty);
+        }
+
+        public static void SetSelectedCornerRadius(TreeViewItem treeViewItem, CornerRadius? value)
+        {
+            treeViewItem.SetValue(SelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("SelectedCornerRadius", typeof(CornerRadius?), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region SelectedShadowColor
+        public static Color? GetSelectedShadowColor(TreeViewItem treeViewItem)
+        {
+            return (Color?)treeViewItem.GetValue(SelectedShadowColorProperty);
+        }
+
+        public static void SetSelectedShadowColor(TreeViewItem treeViewItem, Color? value)
+        {
+            treeViewItem.SetValue(SelectedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedShadowColorProperty =
+            VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(TreeViewItemHelper));
+        #endregion
+
         #region SelectedToggleBrush
         public static Brush GetSelectedToggleBrush(TreeViewItem treeViewItem)
         {
@@ -203,6 +293,96 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedToggleBrushProperty =
             DependencyProperty.RegisterAttached("SelectedToggleBrush", typeof(Brush), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedBackground
+        public static Brush GetExpandedBackground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ExpandedBackgroundProperty);
+        }
+
+        public static void SetExpandedBackground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ExpandedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedBackgroundProperty =
+            DependencyProperty.RegisterAttached("ExpandedBackground", typeof(Brush), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedForeground
+        public static Brush GetExpandedForeground(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ExpandedForegroundProperty);
+        }
+
+        public static void SetExpandedForeground(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ExpandedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedForegroundProperty =
+            DependencyProperty.RegisterAttached("ExpandedForeground", typeof(Brush), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedBorderBrush
+        public static Brush GetExpandedBorderBrush(TreeViewItem treeViewItem)
+        {
+            return (Brush)treeViewItem.GetValue(ExpandedBorderBrushProperty);
+        }
+
+        public static void SetExpandedBorderBrush(TreeViewItem treeViewItem, Brush value)
+        {
+            treeViewItem.SetValue(ExpandedBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("ExpandedBorderBrush", typeof(Brush), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedBorderThickness
+        public static Thickness? GetExpandedBorderThickness(TreeViewItem treeViewItem)
+        {
+            return (Thickness?)treeViewItem.GetValue(ExpandedBorderThicknessProperty);
+        }
+
+        public static void SetExpandedBorderThickness(TreeViewItem treeViewItem, Thickness? value)
+        {
+            treeViewItem.SetValue(ExpandedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("ExpandedBorderThickness", typeof(Thickness?), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedCornerRadius
+        public static CornerRadius? GetExpandedCornerRadius(TreeViewItem treeViewItem)
+        {
+            return (CornerRadius?)treeViewItem.GetValue(ExpandedCornerRadiusProperty);
+        }
+
+        public static void SetExpandedCornerRadius(TreeViewItem treeViewItem, CornerRadius? value)
+        {
+            treeViewItem.SetValue(ExpandedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ExpandedCornerRadius", typeof(CornerRadius?), typeof(TreeViewItemHelper));
+        #endregion
+
+        #region ExpandedShadowColor
+        public static Color? GetExpandedShadowColor(TreeViewItem treeViewItem)
+        {
+            return (Color?)treeViewItem.GetValue(ExpandedShadowColorProperty);
+        }
+
+        public static void SetExpandedShadowColor(TreeViewItem treeViewItem, Color? value)
+        {
+            treeViewItem.SetValue(ExpandedShadowColorProperty, value);
+        }
+
+        public static readonly DependencyProperty ExpandedShadowColorProperty =
+            VisualStateHelper.ExpandedShadowColorProperty.AddOwner(typeof(TreeViewItemHelper));
         #endregion
 
         #region ExpandedToggleBrush

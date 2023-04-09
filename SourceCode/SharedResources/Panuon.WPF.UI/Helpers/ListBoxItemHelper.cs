@@ -342,7 +342,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SeparatorOrientation", typeof(Orientation), typeof(ListBoxItemHelper));
         #endregion
 
-
         #region IsStyleless
         public static bool GetIsStyleless(ListBoxItem listBoxItem)
         {

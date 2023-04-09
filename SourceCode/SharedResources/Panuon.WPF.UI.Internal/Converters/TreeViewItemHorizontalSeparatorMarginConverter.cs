@@ -18,11 +18,11 @@ namespace Panuon.WPF.UI.Internal.Converters
             
             if (togglePlacement == ToggleArrowPlacement.Left)
             {
-                return new Thickness(borderThickness.Left + internalPadding.Left - padding.Left / 2 + rulerThickness, 0, 0, 0);
+                return new Thickness(borderThickness.Left - toggleWidth / 2 - padding.Left, 0, 0, 0);
             }
             else
             {
-                return new Thickness(borderThickness.Left + internalPadding.Left  - padding.Left / 2 - rulerThickness, 0, 0, 0);
+                return new Thickness(borderThickness.Left - padding.Left * 0.5, 0, 0, 0);
             }
         }
     }

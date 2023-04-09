@@ -90,7 +90,6 @@ namespace Panuon.WPF.UI
             {
                 UpdateActualPlacement();
             }
-
             base.OnOpened(e);
         }
 
@@ -136,13 +135,7 @@ namespace Panuon.WPF.UI
         #region Event Handlers
         private CustomPopupPlacement[] PopupPlacementCallback(Size popupSize, Size targetSize, Point offset)
         {
-            if (_isFirstInit)
-            {
-                var hwndSource = ((HwndSource)PresentationSource.FromVisual(Child));
-                var hwnd = hwndSource.Handle;
-                Win32Util.ShowWindow(hwnd, 1);
-                _isFirstInit = false;
-            }
+            _isFirstInit = false;
 
             var leftBottom = new Point(-popupSize.Width, 0);
             var left = new Point(-popupSize.Width, -(popupSize.Height - targetSize.Height) / 2);

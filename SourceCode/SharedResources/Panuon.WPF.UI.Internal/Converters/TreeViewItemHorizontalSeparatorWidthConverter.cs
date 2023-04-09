@@ -14,11 +14,11 @@ namespace Panuon.WPF.UI.Internal.Converters
             var toggleWidth = values[2] as double? ?? 0;
             if(arrowPlacement == ToggleArrowPlacement.Left)
             {
-                return toggleWidth / 2 + toggleWidth;
+                return toggleWidth ;
             }
             else
             {
-                return padding.Left / 2;
+                return padding.Left / 2 - 1;
             }
         }
     }

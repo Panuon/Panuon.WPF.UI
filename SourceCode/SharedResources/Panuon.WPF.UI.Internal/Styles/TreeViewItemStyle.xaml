@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:StyleKeys.TreeViewItemStyle}"
+    <Style x:Key="{x:Static irs:StyleKeys.InternalTreeViewItemStyle}"
            TargetType="TreeViewItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
@@ -68,22 +68,44 @@
                 Value="{Binding Path=(local:TreeViewHelper.ItemsToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.HoverBackground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
-        <Setter Property="local:TreeViewItemHelper.HoverBorderBrush"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.HoverForeground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHoverForeground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverBorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverBorderThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverBorderThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverCornerRadius"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverCornerRadius), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.HoverShadowColor"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsHoverShadowColor), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.HoverToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsHoverToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.SelectedBackground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
-        <Setter Property="local:TreeViewItemHelper.SelectedBorderBrush"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.SelectedForeground"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedForeground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedBorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.SelectedBorderThickness"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedBorderThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedCornerRadius"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedCornerRadius), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.SelectedShadowColor"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedShadowColor), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.SelectedToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsSelectedToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedBackground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedBackground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedForeground"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedForeground), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedBorderBrush"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedBorderBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedBorderThickness"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedBorderThickness), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedCornerRadius"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedCornerRadius), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="local:TreeViewItemHelper.ExpandedShadowColor"
+                Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedShadowColor), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.ExpandedToggleBrush"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsExpandedToggleBrush), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:TreeViewItemHelper.SeparatorBrush"
@@ -121,6 +143,16 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TreeViewItemTemplate}}" />
         <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="HasItems"
+                               Value="True" />
+                    <Condition Property="IsExpanded"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.IsExpanded"
+                        Value="True" />
+            </MultiTrigger>
             <Trigger Property="local:TreeViewItemHelper.IsStyleless"
                      Value="True">
                 <Setter Property="Template"
@@ -135,4 +167,10 @@
 
     </Style>
 
+    <Style x:Key="{x:Static rs:StyleKeys.TreeViewItemStyle}"
+           TargetType="TreeViewItem"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalTreeViewItemStyle}}">
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static irs:StyleKeys.InternalTreeViewItemStyle}}" />
+    </Style>
 </ResourceDictionary>

@@ -508,6 +508,30 @@ namespace Panuon.WPF.UI.Internal
 
         #endregion
 
+        #region Expanded Properties
+
+        #region ExpandedShadowColor
+        public static readonly DependencyProperty ExpandedShadowColorProperty =
+            DependencyProperty.RegisterAttached("ExpandedShadowColor", typeof(Color?), typeof(VisualStateHelper), new PropertyMetadata(OnExpandedShadowColorChanged));
+        #endregion
+
+        #region IsExpanded
+        public static bool GetIsExpanded(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsExpandedProperty);
+        }
+
+        public static void SetIsExpanded(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsExpandedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsExpandedProperty =
+            DependencyProperty.RegisterAttached("IsExpanded", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsExpandedChanged));
+        #endregion
+
+        #endregion
+
         #region CheckedProperty
 
         public static readonly DependencyProperty CheckedShadowColorProperty =
@@ -624,6 +648,19 @@ namespace Panuon.WPF.UI.Internal
             }
         }
 
+        private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if ((bool)e.NewValue)
+            {
+                Element_Expanded(element, null);
+            }
+            else
+            {
+                Element_Collapsed(element, null);
+            }
+        }
+
         private static void OnIsFocusedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = (FrameworkElement)d;
@@ -714,6 +751,15 @@ namespace Panuon.WPF.UI.Internal
             if (GetIsSelected(element))
             {
                 Element_Selected(element, null);
+            }
+        }
+
+        private static void OnExpandedShadowColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if (GetIsExpanded(element))
+            {
+                Element_Expanded(element, null);
             }
         }
 
@@ -1109,6 +1155,68 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)sender;
 
             if (element.GetValue(SelectedShadowColorProperty) is Color)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+        }
+
+        private static void Element_Expanded(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+
+            if (element.GetValue(ExpandedShadowColorProperty) is Color expandedShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = expandedShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, expandedShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+            else
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+
+                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+            }
+        }
+
+        private static void Element_Collapsed(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+
+            if (element.GetValue(ExpandedShadowColorProperty) is Color)
             {
                 var effect = GetEffect(element);
                 if (effect == null)
