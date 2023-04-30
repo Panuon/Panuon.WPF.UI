@@ -18,6 +18,9 @@ namespace Samples.Views
     {
         #region Fields
         private static readonly List<Type> _viewTypes;
+
+        private int _themeFlag = 0;
+
         #endregion
 
         #region Ctor
@@ -36,7 +39,6 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
-
         }
         #endregion
 
@@ -59,6 +61,21 @@ namespace Samples.Views
             window.ShowDialog();
         }
 
+        private void BtnSwitchTheme_Click(object sender, RoutedEventArgs e)
+        {
+            //关于如何配置主题和资源字典，请查看App.xaml中的pu:GlobalSettings
+            if (_themeFlag == 0)
+            {
+                GlobalSettings.ChangeTheme("Dark");
+                _themeFlag = 1;
+            }
+            else
+            {
+                GlobalSettings.ChangeTheme("Light");
+                _themeFlag = 0;
+            }
+        }
+
         private void BtnTestMessageBoxX_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK, 5);
@@ -75,18 +92,6 @@ namespace Samples.Views
             var handler = PendingBox.Show(this, "PendingBox style configuration is placed in App.xaml.", "Caption", true);
             //handler.Cancelling += ...
             //handler.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true);
-            //handler.Closed += ...
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var handler = NoticeBox.Show("正在执行...", "提示", MessageBoxIcon.Info, true);
-            //handler.Closed += ...
         }
         #endregion
 
@@ -148,5 +153,7 @@ namespace Samples.Views
 
         #endregion
 
+
+       
     }
 }

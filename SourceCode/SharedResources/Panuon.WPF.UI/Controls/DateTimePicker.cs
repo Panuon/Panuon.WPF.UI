@@ -743,10 +743,25 @@ namespace Panuon.WPF.UI
         #region Event Handlers
         private void OnItemPressed(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is CalendarXItem item
-                && item.IsChecked == true)
+            if (e.OriginalSource is CalendarXItem item)
             {
-                SetCurrentValue(IsDropDownOpenProperty, false);
+                var flag = false;
+                switch (Mode)
+                {
+                    case DateTimePickerMode.Year:
+                        flag = (item.Type == "Year");
+                        break;
+                    case DateTimePickerMode.Month:
+                        flag = (item.Type == "Month");
+                        break;
+                    case DateTimePickerMode.Date:
+                        flag = (item.Type == "Day" && !item.IsOutsideThisMonth);
+                        break;
+                }
+                if (flag)
+                {
+                    SetCurrentValue(IsDropDownOpenProperty, false);
+                }
             }
         }
 

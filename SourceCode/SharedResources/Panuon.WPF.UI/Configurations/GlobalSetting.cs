@@ -1,11 +1,20 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Configurations
 {
-    public class GlobalSetting : DependencyObject
+    public class GlobalSetting 
+        : DependencyObject
     {
+        #region Ctor
+        public GlobalSetting()
+        {
+            SetCurrentValue(ThemesProperty, new Collection<ApplicationTheme>());
+        }
+        #endregion
+
         #region DisabledOpacity
         public double DisabledOpacity
         {
@@ -71,5 +80,17 @@ namespace Panuon.WPF.UI.Configurations
         public static readonly DependencyProperty AnimationDurationProperty =
             DependencyProperty.Register("AnimationDuration", typeof(TimeSpan), typeof(GlobalSetting), new PropertyMetadata(TimeSpan.FromSeconds(0.3)));
         #endregion
+
+        #region Themes
+        public Collection<ApplicationTheme> Themes
+        {
+            get { return (Collection<ApplicationTheme>)GetValue(ThemesProperty); }
+            set { SetValue(ThemesProperty, value); }
+        }
+
+        public static readonly DependencyProperty ThemesProperty =
+            DependencyProperty.Register("Themes", typeof(Collection<ApplicationTheme>), typeof(GlobalSetting));
+        #endregion
+
     }
 }

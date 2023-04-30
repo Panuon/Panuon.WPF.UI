@@ -82,6 +82,15 @@
                             </Style>
                         </pu:PendingBoxSettings.CancelButtonStyle>
                     </pu:PendingBoxSettings>
+
+                    <pu:GlobalSettings x:Key="settings">
+                        <pu:GlobalSettings.Themes>
+                            <puconfig:ApplicationTheme Key="Light"
+                                                       ResourceDictionary="/Samples;component/Themes/Light.xaml" />
+                            <puconfig:ApplicationTheme Key="Dark"
+                                                       ResourceDictionary="/Samples;component/Themes/Dark.xaml" />
+                        </pu:GlobalSettings.Themes>
+                    </pu:GlobalSettings>
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
             </ResourceDictionary.MergedDictionaries>

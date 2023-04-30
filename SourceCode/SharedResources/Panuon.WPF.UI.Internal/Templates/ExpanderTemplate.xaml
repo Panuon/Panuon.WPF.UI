@@ -157,7 +157,7 @@
                            Fill="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Height="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Visibility="{Binding Path=(local:ExpanderHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                           Visibility="Collapsed" />
                 <Border x:Name="PART_ContentBorder"
                         Grid.Row="2">
                     <i:ContentPresenterX x:Name="CpChild"

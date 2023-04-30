@@ -11,6 +11,8 @@
             Height="600"
             Width="1000"
             WindowStartupLocation="CenterScreen"
+            Background="{DynamicResource WindowBackground}"
+            Foreground="{DynamicResource BodyForeground}"
             MaskBrush="#AA000000">
     <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
@@ -23,7 +25,14 @@
         </DataTemplate>
     </pu:WindowXCaption.HeaderTemplate>
     <pu:WindowXCaption.ExtendControl>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="BtnSwitchTheme"
+                    FontSize="18"
+                    ToolTip="Light / Dark"
+                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
+                    FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon"
+                    Content="&#xe9c8;"
+                    Click="BtnSwitchTheme_Click" />
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"

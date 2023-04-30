@@ -342,9 +342,17 @@ namespace Panuon.WPF.UI
                 }
 
                 var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
-                mouseWheelDelta = (!scrollViewer.CanContentScroll || scrollViewer.ViewportHeight == scrollViewer.ActualHeight)
-                    ? mouseWheelDelta
-                    : scrollViewer.ViewportHeight;
+                if (scrollViewer.CanContentScroll) 
+                {
+                    if (scrollViewer.ViewportHeight != scrollViewer.ActualHeight) //Excluding WrapPanel
+                    {
+                        mouseWheelDelta = 3;
+                    }
+                }
+                else if (scrollViewer.ViewportHeight != scrollViewer.ActualHeight)
+                {
+                    mouseWheelDelta = scrollViewer.ViewportHeight;
+                }
 
                 switch (GetWheelScrollingDirection(scrollViewer))
                 {

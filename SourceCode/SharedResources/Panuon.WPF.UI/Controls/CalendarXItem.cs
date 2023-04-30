@@ -67,6 +67,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CanSelect", typeof(bool), typeof(CalendarXItem));
         #endregion
 
+        #region Type
+        public string Type
+        {
+            get { return (string)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
+        }
+
+        public static readonly DependencyProperty TypeProperty =
+            DependencyProperty.Register("Type", typeof(string), typeof(CalendarXItem));
+        #endregion
+
         #region IsToday
         public bool IsToday
         {

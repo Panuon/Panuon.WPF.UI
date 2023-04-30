@@ -113,7 +113,10 @@ namespace Panuon.WPF.UI.Internal
             {
                 for (int j = 0; j < column; j++)
                 {
-                    var calendarXItem = new CalendarXItem();
+                    var calendarXItem = new CalendarXItem()
+                    {
+                        Type = Tag.ToString(),
+                    };
                     FrameworkElementUtil.BindingProperty(calendarXItem, CalendarXItem.StyleProperty, this, CalendarXItemStyleProperty);
 
                     AddVisualChild(calendarXItem);
