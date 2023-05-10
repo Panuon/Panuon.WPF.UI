@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/WindowXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
@@ -28,7 +28,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=MinimizeButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:IconHelper.Foreground"
@@ -63,7 +63,7 @@
                 Value="&#xe92a;" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=MaximizeButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:IconHelper.Foreground"
@@ -105,7 +105,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=CloseButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:IconHelper.Foreground"
@@ -140,7 +140,7 @@
                 Value="0" />
     </Style>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=HeaderTemplate, TypeInTargetAssembly={x:Type local:WindowXCaption}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=HeaderTemplateKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}">
         <StackPanel  Orientation="Horizontal"
                      Margin="5,0,0,0"
                      x:Shared="False">
@@ -168,13 +168,13 @@
         <Setter Property="local:WindowXCaption.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.HeaderTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=HeaderTemplate, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=HeaderTemplateKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.MinimizeButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.MaximizeButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.CloseButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.BackstageMinimizeButtonStyle"
                 Value="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXCaption.BackstageMaximizeButtonStyle"
@@ -184,7 +184,7 @@
         <Setter Property="local:WindowXCaption.Background"
                 Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXModalDialog.ButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXModalDialog}}}" />
         <Setter Property="local:WindowXModalDialog.ButtonPanelHorizontalAlignment"
                 Value="Right" />
         <Setter Property="FontFamily"

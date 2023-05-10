@@ -7,7 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
 
 
-    <Style x:Key="{ComponentResourceKey ResourceId=NoticeBoxItemStyle, TypeInTargetAssembly={x:Type local:NoticeBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=NoticeBoxItemStyleKey, TypeInTargetAssembly={x:Type local:NoticeBox}}"
            TargetType="local:NoticeBoxItem">
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />

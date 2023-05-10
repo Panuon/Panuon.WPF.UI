@@ -9,8 +9,8 @@ namespace Panuon.WPF.UI
     public static class ScrollBarHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ScrollButtonStyle { get; } =
-            new ComponentResourceKey(typeof(ScrollBarHelper), nameof(ScrollButtonStyle));
+        public static ComponentResourceKey ScrollButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(ScrollBarHelper), nameof(ScrollButtonStyleKey));
         #endregion
 
         #region Properties

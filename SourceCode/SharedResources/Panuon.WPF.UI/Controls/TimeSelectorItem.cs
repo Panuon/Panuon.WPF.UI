@@ -122,6 +122,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(TimeSelectorItem));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(TimeSelectorItem));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(TimeSelectorItem));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -175,6 +197,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(TimeSelectorItem));
+        #endregion
+
+        #region CheckedCornerRadius
+        public CornerRadius? CheckedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(CheckedCornerRadiusProperty); }
+            set { SetValue(CheckedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.Register("CheckedCornerRadius", typeof(CornerRadius?), typeof(TimeSelectorItem));
         #endregion
 
         #region CheckedShadowColor

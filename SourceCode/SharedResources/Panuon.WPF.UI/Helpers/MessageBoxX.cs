@@ -7,17 +7,17 @@ namespace Panuon.WPF.UI
     public static class MessageBoxX
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ButtonStyle { get; } =
-            new ComponentResourceKey(typeof(MessageBoxX), nameof(ButtonStyle));
+        public static ComponentResourceKey ButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(MessageBoxX), nameof(ButtonStyleKey));
 
-        public static ComponentResourceKey TextBoxStyle { get; } =
-            new ComponentResourceKey(typeof(MessageBoxX), nameof(TextBoxStyle));
+        public static ComponentResourceKey TextBoxStyleKey { get; } =
+            new ComponentResourceKey(typeof(MessageBoxX), nameof(TextBoxStyleKey));
 
-        public static ComponentResourceKey ContentTemplate { get; } =
-           new ComponentResourceKey(typeof(MessageBoxX), nameof(ContentTemplate));
+        public static ComponentResourceKey ContentTemplateKey { get; } =
+           new ComponentResourceKey(typeof(MessageBoxX), nameof(ContentTemplateKey));
         
-        public static ComponentResourceKey WindowXStyle { get; } =
-            new ComponentResourceKey(typeof(MessageBoxX), nameof(WindowXStyle));
+        public static ComponentResourceKey WindowXStyleKey { get; } =
+            new ComponentResourceKey(typeof(MessageBoxX), nameof(WindowXStyleKey));
         #endregion
 
         #region Methods

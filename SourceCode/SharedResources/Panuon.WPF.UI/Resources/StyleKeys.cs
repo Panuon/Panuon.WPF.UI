@@ -5,6 +5,7 @@
         public const string BadgeStyle = nameof(BadgeStyle);
         public const string BreadcrumbStyle = nameof(BreadcrumbStyle);
         public const string BreadcrumbItemStyle = nameof(BreadcrumbItemStyle);
+        public const string BubbleStyle = nameof(BubbleStyle);
         public const string ButtonStyle = nameof(ButtonStyle);
         public const string CalendarXItemStyle = nameof(CalendarXItemStyle);
         public const string CalendarXStyle = nameof(CalendarXStyle);

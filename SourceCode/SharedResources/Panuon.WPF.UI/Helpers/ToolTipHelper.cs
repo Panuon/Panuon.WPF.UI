@@ -117,21 +117,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ToolTipHelper), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region Placement
-        public static PopupXPlacement GetPlacement(DependencyObject obj)
-        {
-            return (PopupXPlacement)obj.GetValue(PlacementProperty);
-        }
-
-        public static void SetPlacement(DependencyObject obj, PopupXPlacement value)
-        {
-            obj.SetValue(PlacementProperty, value);
-        }
-
-        public static readonly DependencyProperty PlacementProperty =
-            DependencyProperty.RegisterAttached("Placement", typeof(PopupXPlacement), typeof(ToolTipHelper), new PropertyMetadata(PopupXPlacement.BottomRight));
-        #endregion
-
         #region ShadowColor
         public static Color? GetShadowColor(DependencyObject obj)
         {

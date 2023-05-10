@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Markup;
 
 [assembly: AssemblyTitle("Panuon.WPF.UI")]
 [assembly: AssemblyDescription("A professional UI engine for customization.")]
@@ -12,6 +13,10 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
+[assembly: XmlnsDefinition("https://opensource.panuon.com/wpf-ui", "Panuon.WPF.UI")]
+[assembly: XmlnsDefinition("https://opensource.panuon.com/wpf-ui", "Panuon.WPF.UI.Resources")]
+[assembly: XmlnsDefinition("https://opensource.panuon.com/wpf-ui", "Panuon.WPF.UI.Configurations")]
+
 [assembly: ComVisible(false)]
 [assembly: InternalsVisibleTo("Panuon.WPF.UI.Themes")]
 
@@ -20,5 +25,5 @@ using System.Windows;
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.1.9.4")]
-[assembly: AssemblyFileVersion("1.1.9.4")]
+[assembly: AssemblyVersion("1.1.10")]
+[assembly: AssemblyFileVersion("1.1.10")]

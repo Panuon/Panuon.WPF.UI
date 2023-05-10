@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ColorPickerTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -33,7 +33,7 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=PreviewTemplate, TypeInTargetAssembly={x:Type local:ColorPicker}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=PreviewTemplateKey, TypeInTargetAssembly={x:Type local:ColorPicker}}">
         <Border Background="{Binding}"
                 BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                 BorderThickness="1"
@@ -41,7 +41,7 @@
                 Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}"
            TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
@@ -66,7 +66,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ColorSelectorStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}"
            TargetType="local:ColorSelector">
         <Setter Property="Width"
                 Value="NaN" />
@@ -115,13 +115,13 @@
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="#EAEAEA" />
         <Setter Property="PreviewTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PreviewTemplate, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=PreviewTemplateKey, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
         <Setter Property="ColorSelectorStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
         <Setter Property="ToggleArrowTransformControlStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}}" />
         <Setter Property="ClearButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ColorPicker}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:ColorPicker}}}"/>
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"

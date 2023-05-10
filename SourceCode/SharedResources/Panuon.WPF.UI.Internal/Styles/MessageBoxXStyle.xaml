@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ButtonStyleKey, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="Height"
@@ -29,7 +29,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyleKey, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
         <Setter Property="BorderThickness"
@@ -44,7 +44,7 @@
                 Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
     </Style>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplateKey, TypeInTargetAssembly={x:Type local:MessageBoxX}}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -83,7 +83,7 @@
         </Grid>
     </DataTemplate>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=WindowXStyle, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowXStyleKey, TypeInTargetAssembly={x:Type local:MessageBoxX}}"
            TargetType="local:WindowX"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.WindowXStyle}}">
         <Setter Property="local:WindowXCaption.Buttons"

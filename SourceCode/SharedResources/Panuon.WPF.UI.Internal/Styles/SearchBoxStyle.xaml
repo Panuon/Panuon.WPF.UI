@@ -12,12 +12,12 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/SearchBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=TextBoxStyleKey, TypeInTargetAssembly={x:Type local:SearchBox}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ListBoxStyle, TypeInTargetAssembly={x:Type local:SearchBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ListBoxStyleKey, TypeInTargetAssembly={x:Type local:SearchBox}}"
            TargetType="ListBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ListBoxStyle}}">
     </Style>

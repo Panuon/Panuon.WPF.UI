@@ -208,7 +208,7 @@
             <Setter Property="IndicatorPaginationStyle">
                 <Setter.Value>
                     <Style TargetType="pu:Pagination"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type pu:Carousel}}}">
+                           BasedOn="{StaticResource {x:Static pu:Carousel.IndicatorPaginationStyleKey}}">
                         <Setter Property="ItemsWidth"
                                 Value="NaN" />
                         <Setter Property="ItemsHeight"
@@ -246,7 +246,7 @@
     </pu:WindowX.Resources>
     <pu:WindowXCaption.MinimizeButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MinimizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
+               BasedOn="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyleKey}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"
@@ -261,7 +261,7 @@
     </pu:WindowXCaption.MinimizeButtonStyle>
     <pu:WindowXCaption.MaximizeButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=MaximizeButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
+               BasedOn="{StaticResource {x:Static pu:WindowXCaption.MaximizeButtonStyleKey}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"
@@ -276,7 +276,7 @@
     </pu:WindowXCaption.MaximizeButtonStyle>
     <pu:WindowXCaption.CloseButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
+               BasedOn="{StaticResource {x:Static pu:WindowXCaption.CloseButtonStyleKey}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"

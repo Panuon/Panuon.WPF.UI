@@ -7,10 +7,10 @@ namespace Panuon.WPF.UI.Configurations
         #region Ctor
         public MessageBoxXSetting()
         {
-            WindowXStyle = (Style)Application.Current.FindResource(MessageBoxX.WindowXStyle);
-            ContentTemplate = (DataTemplate)Application.Current.FindResource(MessageBoxX.ContentTemplate);
-            TextBoxStyle = (Style)Application.Current.FindResource(MessageBoxX.TextBoxStyle);
-            ButtonStyle = (Style)Application.Current.FindResource(MessageBoxX.ButtonStyle);
+            WindowXStyle = (Style)Application.Current.FindResource(MessageBoxX.WindowXStyleKey);
+            ContentTemplate = (DataTemplate)Application.Current.FindResource(MessageBoxX.ContentTemplateKey);
+            TextBoxStyle = (Style)Application.Current.FindResource(MessageBoxX.TextBoxStyleKey);
+            ButtonStyle = (Style)Application.Current.FindResource(MessageBoxX.ButtonStyleKey);
         }
         #endregion
 

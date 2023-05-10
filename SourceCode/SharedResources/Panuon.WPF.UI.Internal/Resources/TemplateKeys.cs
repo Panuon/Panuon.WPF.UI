@@ -3,6 +3,7 @@
     static class TemplateKeys
     {
         public const string BadgeTemplate = nameof(BadgeTemplate);
+        public const string BubbleTemplate = nameof(BubbleTemplate);
         public const string ButtonTemplate = nameof(ButtonTemplate);
         public const string ButtonPendingTemplate = nameof(ButtonPendingTemplate);
         public const string BreadcrumbTemplate = nameof(BreadcrumbTemplate);

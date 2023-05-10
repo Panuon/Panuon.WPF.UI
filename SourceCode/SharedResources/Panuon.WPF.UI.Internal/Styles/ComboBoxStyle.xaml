@@ -12,7 +12,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ComboBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -35,7 +35,7 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -58,7 +58,7 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
@@ -83,13 +83,13 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=SearchTextBoxStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=SearchTextBoxStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
         <Setter Property="local:IconHelper.Margin"
                 Value="10,0,0,0" />
         <Setter Property="local:TextBoxHelper.ClearButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
         <Setter Property="Padding"
                 Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
@@ -167,13 +167,13 @@
         <Setter Property="local:ComboBoxHelper.ItemsSeparatorVisibility"
                 Value="Collapsed" />
         <Setter Property="local:ComboBoxHelper.SearchTextBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=SearchTextBoxStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=SearchTextBoxStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.ClearButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.RemoveButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="local:ComboBoxHelper.ToggleArrowTransformControlStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ComboBoxHelper}}}" />
         <Setter Property="MaxDropDownHeight"
                 Value="150" />
         <Setter Property="Background"

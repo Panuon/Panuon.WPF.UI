@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\INoticeHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Badge.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Bubble.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
@@ -170,6 +171,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Bubble.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

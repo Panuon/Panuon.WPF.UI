@@ -6,23 +6,11 @@
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ButtonTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/BubbleTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinStyleKey, TypeInTargetAssembly={x:Type local:ButtonHelper}}"
-           TargetType="local:Spin">
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
-        <Setter Property="GlyphBrush"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-        <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-    </Style>
-
-    <Style x:Key="{x:Static rs:StyleKeys.ButtonStyle}"
-           TargetType="Button">
+    <Style x:Key="{x:Static rs:StyleKeys.BubbleStyle}"
+           TargetType="local:Bubble">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
@@ -35,22 +23,23 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ButtonHelper.PendingSpinStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyleKey, TypeInTargetAssembly={x:Type local:ButtonHelper}}}" />
+        <Setter Property="UseLayoutRounding"
+                Value="True" />
         <Setter Property="Padding"
-                Value="5,0" />
+                Value="15,10" />
         <Setter Property="Background"
                 Value="#EAEAEA" />
         <Setter Property="BorderThickness"
-                Value="0" />
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="Gray" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ButtonTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.BubbleTemplate}}" />
         <Style.Triggers>
-            <Trigger Property="local:ButtonHelper.IsPending"
-                     Value="True">
-                <Setter Property="Template"
-                        Value="{StaticResource {x:Static irs:TemplateKeys.ButtonPendingTemplate}}" />
-            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

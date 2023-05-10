@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/NumberInputTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=UpDownButtonStyle, TypeInTargetAssembly={x:Type local:NumberInput}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=UpDownButtonStyleKey, TypeInTargetAssembly={x:Type local:NumberInput}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="Padding"
@@ -80,7 +80,7 @@
         <Setter Property="UpDownButtonsOrientation"
                 Value="Vertical" />
         <Setter Property="UpDownButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=UpDownButtonStyle, TypeInTargetAssembly={x:Type local:NumberInput}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=UpDownButtonStyleKey, TypeInTargetAssembly={x:Type local:NumberInput}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.NumberInputTemplate}}" />
         <Style.Triggers>

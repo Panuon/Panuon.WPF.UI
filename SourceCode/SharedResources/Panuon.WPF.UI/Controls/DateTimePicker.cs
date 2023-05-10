@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -46,7 +47,6 @@ namespace Panuon.WPF.UI
             AddHandler(CalendarXItem.PressedEvent, new RoutedEventHandler(OnItemPressed));
             AddHandler(TimeSelectorItem.PressedEvent, new RoutedEventHandler(OnItemPressed));
         }
-
         #endregion
 
         #region Events
@@ -69,17 +69,17 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey CalendarXStyle { get; } =
-            new ComponentResourceKey(typeof(DateTimePicker), nameof(CalendarXStyle));
+        public static ComponentResourceKey CalendarXStyleKey { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(CalendarXStyleKey));
 
-        public static ComponentResourceKey TimeSelectorStyle { get; } =
-            new ComponentResourceKey(typeof(DateTimePicker), nameof(TimeSelectorStyle));
+        public static ComponentResourceKey TimeSelectorStyleKey { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(TimeSelectorStyleKey));
 
-        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
-            new ComponentResourceKey(typeof(DateTimePicker), nameof(ToggleArrowTransformControlStyle));
+        public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(ToggleArrowTransformControlStyleKey));
 
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-            new ComponentResourceKey(typeof(DateTimePicker), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(DateTimePicker), nameof(ClearButtonStyleKey));
         #endregion
             
         #region Properties
@@ -114,7 +114,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(DateTimePicker));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(DateTimePicker));
         #endregion
 
         #region FirstDayOfWeek
@@ -227,6 +227,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(DateTimePicker));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(DateTimePicker));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(DateTimePicker));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -269,6 +291,28 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(DateTimePicker));
+        #endregion
+
+        #region FocusedBorderThickness
+        public Thickness? FocusedBorderThickness
+        {
+            get { return (Thickness?)GetValue(FocusedBorderThicknessProperty); }
+            set { SetValue(FocusedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(DateTimePicker));
+        #endregion
+
+        #region FocusedCornerRadius
+        public CornerRadius? FocusedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(FocusedCornerRadiusProperty); }
+            set { SetValue(FocusedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(DateTimePicker));
         #endregion
 
         #region FocusedShadowColor
@@ -633,6 +677,28 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(DateTimePicker));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public Thickness? ItemsHoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsHoverBorderThicknessProperty); }
+            set { SetValue(ItemsHoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.Register("ItemsHoverBorderThickness", typeof(Thickness?), typeof(DateTimePicker));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public CornerRadius? ItemsHoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsHoverCornerRadiusProperty); }
+            set { SetValue(ItemsHoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(DateTimePicker));
+        #endregion
+
         #region ItemsHoverShadowColor
         public Color? ItemsHoverShadowColor
         {
@@ -688,6 +754,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsCheckedBorderThickness", typeof(Thickness?), typeof(DateTimePicker));
         #endregion
 
+        #region ItemsCheckedCornerRadius
+        public CornerRadius? ItemsCheckedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsCheckedCornerRadiusProperty); }
+            set { SetValue(ItemsCheckedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedCornerRadiusProperty =
+            DependencyProperty.Register("ItemsCheckedCornerRadius", typeof(CornerRadius?), typeof(DateTimePicker));
+        #endregion
+
         #region ItemsCheckedShadowColor
         public Color? ItemsCheckedShadowColor
         {
@@ -737,6 +814,7 @@ namespace Panuon.WPF.UI
             UpdateTimeSelectorTimeLimit();
             UpdateText();
             UpdateMode();
+
         }
         #endregion
 
@@ -1001,6 +1079,7 @@ namespace Panuon.WPF.UI
 
         private void PopupX_Closed(object sender, EventArgs e)
         {
+            _popupX.Opacity = 1;
             Closed?.Invoke(this, EventArgs.Empty);
         }
 

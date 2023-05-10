@@ -4,8 +4,7 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Samples.Views"
-            xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
-            xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+            xmlns:pu="https://opensource.panuon.com/wpf-ui"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
@@ -29,14 +28,14 @@
             <Button x:Name="BtnSwitchTheme"
                     FontSize="18"
                     ToolTip="Light / Dark"
-                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
+                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyleKey}}"
                     FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon"
                     Content="&#xe9c8;"
                     Click="BtnSwitchTheme_Click" />
             <Button x:Name="BtnIconFont"
                     FontSize="18"
                     ToolTip="Panuon IconFont Browser"
-                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyle}}"
+                    Style="{StaticResource {x:Static pu:WindowXCaption.MinimizeButtonStyleKey}}"
                     Content="&#xe99d;"
                     Click="BtnIconFont_Click" />
         </StackPanel>

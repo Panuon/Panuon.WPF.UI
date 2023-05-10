@@ -4,6 +4,7 @@
     {
         public const string BoolOrConverter = nameof(BoolOrConverter);
         public const string BrushToColorConverter = nameof(BrushToColorConverter);
+        public const string BubblePathConverter = nameof(BubblePathConverter);
         public const string ColorToBrushConverter = nameof(ColorToBrushConverter);
         public const string DoubleDivideByConverter = nameof(DoubleDivideByConverter);
         public const string IsAllDoublesEqualConverter = nameof(IsAllDoublesEqualConverter);

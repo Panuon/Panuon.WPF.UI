@@ -33,20 +33,20 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-          new ComponentResourceKey(typeof(MultiComboBox), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+          new ComponentResourceKey(typeof(MultiComboBox), nameof(ClearButtonStyleKey));
 
-        public static ComponentResourceKey RemoveButtonStyle { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(RemoveButtonStyle));
+        public static ComponentResourceKey RemoveButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(RemoveButtonStyleKey));
 
-        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(ToggleArrowTransformControlStyle));
+        public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(ToggleArrowTransformControlStyleKey));
 
-        public static ComponentResourceKey CheckBoxStyle { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(CheckBoxStyle));
+        public static ComponentResourceKey CheckBoxStyleKey { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(CheckBoxStyleKey));
 
-        public static ComponentResourceKey SelectionBoxItemLabelStyle { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(SelectionBoxItemLabelStyle));
+        public static ComponentResourceKey SelectionBoxItemLabelStyleKey { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(SelectionBoxItemLabelStyleKey));
         #endregion
 
         #region Events

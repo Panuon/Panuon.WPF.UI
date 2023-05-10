@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/RateControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=GlyphTemplate, TypeInTargetAssembly={x:Type local:RateControl}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=GlyphTemplateKey, TypeInTargetAssembly={x:Type local:RateControl}}">
         <TextBlock x:Name="TxtGlyph"
                    Cursor="Hand"
                    Text="&#xe968;"
@@ -51,7 +51,7 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
         <Setter Property="GlyphTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=GlyphTemplate, TypeInTargetAssembly={x:Type local:RateControl}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=GlyphTemplateKey, TypeInTargetAssembly={x:Type local:RateControl}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.RateControlTemplate}}" />
         <Style.Triggers>

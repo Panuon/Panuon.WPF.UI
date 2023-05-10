@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/FormGroupTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=MessageTemplateKey, TypeInTargetAssembly={x:Type local:FormGroup}}">
         <TextBlock Foreground="{Binding MessageForeground, RelativeSource={RelativeSource AncestorType=local:FormGroup}, Mode=OneWay}"
                    TextWrapping="Wrap"
                    TextTrimming="CharacterEllipsis"
@@ -73,7 +73,7 @@
         <Setter Property="WarningMessageForeground"
                 Value="Orange" />
         <Setter Property="MessageTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplate, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=MessageTemplateKey, TypeInTargetAssembly={x:Type local:FormGroup}}}" />
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Vertical">

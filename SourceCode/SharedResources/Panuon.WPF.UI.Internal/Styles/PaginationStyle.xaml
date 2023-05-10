@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:Pagination}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="Width"
@@ -53,7 +53,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=OmittingTextBlockStyleKey, TypeInTargetAssembly={x:Type local:Pagination}}"
            TargetType="TextBlock">
         <Setter Property="Margin"
                 Value="2,0,2,0" />
@@ -88,9 +88,9 @@
         <Setter Property="ItemsSelectedBackground"
                 Value="{Binding ItemsBackground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="PageTurnButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:Pagination}}}" />
         <Setter Property="OmittingTextBlockStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=OmittingTextBlockStyle, TypeInTargetAssembly={x:Type local:Pagination}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=OmittingTextBlockStyleKey, TypeInTargetAssembly={x:Type local:Pagination}}}" />
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Horizontal">

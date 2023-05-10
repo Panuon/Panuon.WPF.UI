@@ -10,7 +10,7 @@
     </ResourceDictionary.MergedDictionaries>
 
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=SeparatorTemplate, TypeInTargetAssembly={x:Type local:Breadcrumb}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=SeparatorTemplateKey, TypeInTargetAssembly={x:Type local:Breadcrumb}}">
         <TextBlock Text="/"
                    Opacity="0.2"
                    VerticalAlignment="Center" />
@@ -43,7 +43,7 @@
         <Setter Property="ItemsSeparatorMargin"
                 Value="5,0" />
         <Setter Property="ItemsSeparatorTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=SeparatorTemplate, TypeInTargetAssembly={x:Type local:Breadcrumb}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=SeparatorTemplateKey, TypeInTargetAssembly={x:Type local:Breadcrumb}}}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ScrollableControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type i:ScrollableControl}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type i:ScrollableControl}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.IconRepeatButtonStyle}}">
         <Setter Property="Content"
@@ -45,7 +45,7 @@
 
     <Style TargetType="i:ScrollableControl">
         <Setter Property="ScrollButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type i:ScrollableControl}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type i:ScrollableControl}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ScrollableControlTemplate}}" />
     </Style>

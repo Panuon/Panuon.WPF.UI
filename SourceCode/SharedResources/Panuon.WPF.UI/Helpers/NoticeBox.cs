@@ -12,8 +12,8 @@ namespace Panuon.WPF.UI
     public static class NoticeBox
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey NoticeBoxItemStyle { get; } =
-            new ComponentResourceKey(typeof(NoticeBox), nameof(NoticeBoxItemStyle));
+        public static ComponentResourceKey NoticeBoxItemStyleKey { get; } =
+            new ComponentResourceKey(typeof(NoticeBox), nameof(NoticeBoxItemStyleKey));
         #endregion
 
         #region Fields

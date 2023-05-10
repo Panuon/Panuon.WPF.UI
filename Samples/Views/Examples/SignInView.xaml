@@ -67,7 +67,7 @@
             <Setter Property="pu:ButtonHelper.PendingSpinStyle">
                 <Setter.Value>
                     <Style TargetType="pu:Spin"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
+                           BasedOn="{StaticResource {x:Static pu:ButtonHelper.PendingSpinStyleKey}}">
                         <Setter Property="SpinStyle"
                                 Value="Ring2" />
                     </Style>
@@ -122,7 +122,7 @@
     </Window.Resources>
     <pu:WindowXCaption.CloseButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXCaption}}}">
+               BasedOn="{StaticResource {x:Static pu:WindowXCaption.CloseButtonStyleKey}}">
             <Setter Property="VerticalAlignment"
                     Value="Center" />
             <Setter Property="Background"

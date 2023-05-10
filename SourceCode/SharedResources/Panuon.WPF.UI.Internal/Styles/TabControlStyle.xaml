@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TabControlTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:TabControlHelper}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -95,7 +95,7 @@
         <Setter Property="local:TabControlHelper.ItemsSeparatorVisibility"
                 Value="Collapsed" />
         <Setter Property="local:TabControlHelper.RemoveButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TabControlHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:TabControlHelper}}}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"

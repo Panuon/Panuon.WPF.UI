@@ -10,11 +10,11 @@ namespace Panuon.WPF.UI
     public static class PasswordBoxHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(ClearButtonStyleKey));
 
-        public static ComponentResourceKey PlainButtonStyle { get; } =
-            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(PlainButtonStyle));
+        public static ComponentResourceKey PlainButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(PasswordBoxHelper), nameof(PlainButtonStyleKey));
         #endregion
 
         #region Properties

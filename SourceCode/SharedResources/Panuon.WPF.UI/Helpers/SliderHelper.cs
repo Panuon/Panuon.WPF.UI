@@ -29,8 +29,8 @@ namespace Panuon.WPF.UI
         #endregion
         
         #region ComponentResourceKeys
-        public static ComponentResourceKey ThumbStyle { get; } =
-            new ComponentResourceKey(typeof(SliderHelper), nameof(ThumbStyle));
+        public static ComponentResourceKey ThumbStyleKey { get; } =
+            new ComponentResourceKey(typeof(SliderHelper), nameof(ThumbStyleKey));
         #endregion
 
         #region Properties

@@ -13,8 +13,8 @@ namespace Panuon.WPF.UI
     public static class TextBoxHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-            new ComponentResourceKey(typeof(TextBoxHelper), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(TextBoxHelper), nameof(ClearButtonStyleKey));
         #endregion
 
         #region Properties

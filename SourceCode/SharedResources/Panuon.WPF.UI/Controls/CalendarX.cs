@@ -122,11 +122,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey YearMonthButtonStyle { get; } =
-           new ComponentResourceKey(typeof(WindowXCaption), nameof(YearMonthButtonStyle));
+        public static ComponentResourceKey YearMonthButtonStyleKey { get; } =
+           new ComponentResourceKey(typeof(CalendarX), nameof(YearMonthButtonStyleKey));
 
-        public static ComponentResourceKey PageTurnButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(PageTurnButtonStyle));
+        public static ComponentResourceKey PageTurnButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(CalendarX), nameof(PageTurnButtonStyleKey));
         #endregion
 
         #region Internal Properties
@@ -300,7 +300,18 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SpecialDatesProperty =
-            DependencyProperty.Register("SpecialDates", typeof(IEnumerable<DateTime>), typeof(CalendarX));
+            DependencyProperty.Register("SpecialDates", typeof(IEnumerable<DateTime>), typeof(CalendarX), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSpecialDaysChanged));
+        #endregion
+
+        #region IsTodayHighlighted
+        public bool IsTodayHighlighted
+        {
+            get { return (bool)GetValue(IsTodayHighlightedProperty); }
+            set { SetValue(IsTodayHighlightedProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsTodayHighlightedProperty =
+            DependencyProperty.Register("IsTodayHighlighted", typeof(bool), typeof(CalendarX), new PropertyMetadata(OnSpecialDaysChanged));
         #endregion
 
         #region Mode
@@ -482,6 +493,28 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(CalendarX));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public Thickness? ItemsHoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsHoverBorderThicknessProperty); }
+            set { SetValue(ItemsHoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.Register("ItemsHoverBorderThickness", typeof(Thickness?), typeof(CalendarX));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public CornerRadius? ItemsHoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsHoverCornerRadiusProperty); }
+            set { SetValue(ItemsHoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(CalendarX));
+        #endregion
+
         #region ItemsHoverShadowColor
         public Color? ItemsHoverShadowColor
         {
@@ -535,6 +568,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsCheckedBorderThicknessProperty =
             DependencyProperty.Register("ItemsCheckedBorderThickness", typeof(Thickness?), typeof(CalendarX));
+        #endregion
+
+        #region ItemsCheckedCornerRadius
+        public CornerRadius? ItemsCheckedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsCheckedCornerRadiusProperty); }
+            set { SetValue(ItemsCheckedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsCheckedCornerRadiusProperty =
+            DependencyProperty.Register("ItemsCheckedCornerRadius", typeof(CornerRadius?), typeof(CalendarX));
         #endregion
 
         #region ItemsCheckedShadowColor
@@ -666,6 +710,16 @@ namespace Panuon.WPF.UI
             {
                 calendar.UpdateCurrentPanel();
                 calendar.SetSelectedDate(calendar.SelectedDate);
+            }
+        }
+
+
+        private static void OnSpecialDaysChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var calendar = (CalendarX)d;
+            if (calendar._dayPresenter != null)
+            {
+                calendar.UpdateDay();
             }
         }
 
@@ -964,9 +1018,12 @@ namespace Panuon.WPF.UI
                 item.SetCurrentValue(CalendarXItem.IsTodayProperty, currentDate != null
                     && DateTime.Now.Date.Equals(currentDate));
 
-                item.SetCurrentValue(CalendarXItem.IsSpecialDayProperty, SpecialDates != null
+                var isSpecialDay = (IsTodayHighlighted && DateTime.Today.Equals(currentDate)) ||
+                    (SpecialDates != null
                     && currentDate != null
                     && SpecialDates.Any(x => x.Date.Equals(currentDate)));
+
+                item.SetCurrentValue(CalendarXItem.IsSpecialDayProperty, isSpecialDay);
                 item.SetCurrentValue(CalendarXItem.IsOutsideThisMonthProperty, prevDays < 0 || prevDays >= dayInMonth);
                 item.SetCurrentValue(CalendarXItem.IsCheckedProperty, item.CanSelect && currentDate != null && selectedDate.Equals(currentDate));
                 item.SetCurrentValue(CalendarXItem.TagProperty, currentDate == null ? (int?)null : prevDays);

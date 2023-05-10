@@ -9,8 +9,8 @@ namespace Panuon.WPF.UI
     public static class RepeatButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinStyle { get; } =
-            new ComponentResourceKey(typeof(RepeatButtonHelper), nameof(PendingSpinStyle));
+        public static ComponentResourceKey PendingSpinStyleKey { get; } =
+            new ComponentResourceKey(typeof(RepeatButtonHelper), nameof(PendingSpinStyleKey));
         #endregion
 
         #region Properties

@@ -50,8 +50,8 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey SeparatorTemplate { get; } =
-            new ComponentResourceKey(typeof(Breadcrumb), nameof(SeparatorTemplate));
+        public static ComponentResourceKey SeparatorTemplateKey { get; } =
+            new ComponentResourceKey(typeof(Breadcrumb), nameof(SeparatorTemplateKey));
         #endregion
         
         #region Properties

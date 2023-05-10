@@ -132,7 +132,7 @@
             <Setter Property="PageTurnButtonStyle">
                 <Setter.Value>
                     <Style TargetType="RepeatButton"
-                           BasedOn="{StaticResource {x:Static pu:Pagination.PageTurnButtonStyle}}">
+                           BasedOn="{StaticResource {x:Static pu:Pagination.PageTurnButtonStyleKey}}">
                         <Setter Property="Background"
                                 Value="Transparent" />
                         <Setter Property="pu:RepeatButtonHelper.HoverForeground"

@@ -9,8 +9,8 @@ namespace Panuon.WPF.UI
     public static class ToggleButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinStyle { get; } =
-            new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinStyle));
+        public static ComponentResourceKey PendingSpinStyleKey { get; } =
+            new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinStyleKey));
         #endregion
 
         #region Properties

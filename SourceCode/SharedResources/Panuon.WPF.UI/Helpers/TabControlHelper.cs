@@ -12,8 +12,8 @@ namespace Panuon.WPF.UI
     public static class TabControlHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey RemoveButtonStyle { get; } =
-            new ComponentResourceKey(typeof(TabControlHelper), nameof(RemoveButtonStyle));
+        public static ComponentResourceKey RemoveButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(TabControlHelper), nameof(RemoveButtonStyleKey));
         #endregion
 
         #region Routed Event

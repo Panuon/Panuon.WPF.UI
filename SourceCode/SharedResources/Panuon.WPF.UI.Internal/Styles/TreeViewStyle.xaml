@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyle, TypeInTargetAssembly={x:Type local:TreeViewHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyleKey, TypeInTargetAssembly={x:Type local:TreeViewHelper}}"
            TargetType="ToggleButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ToggleButtonStyle}}">
         <Setter Property="Foreground"
@@ -69,7 +69,7 @@
         <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
                 Value="#F1F1F1" />
         <Setter Property="local:TreeViewHelper.ToggleArrowToggleButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyle, TypeInTargetAssembly={x:Type local:TreeViewHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyleKey, TypeInTargetAssembly={x:Type local:TreeViewHelper}}}" />
         <Setter Property="local:TreeViewHelper.ItemsSeparatorBrush"
                 Value="LightGray" />
         <Setter Property="local:TreeViewHelper.ItemsSeparatorThickness"

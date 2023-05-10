@@ -1,4 +1,7 @@
-﻿using Panuon.WPF.UI.Internal;
+﻿using Microsoft.Win32;
+using Panuon.WPF.UI.Internal;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -8,11 +11,43 @@ namespace Panuon.WPF.UI
     public static class ButtonHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey PendingSpinStyle { get; } =
-            new ComponentResourceKey(typeof(ButtonHelper), nameof(PendingSpinStyle));
+        public static ComponentResourceKey PendingSpinStyleKey { get; } =
+            new ComponentResourceKey(typeof(ButtonHelper), nameof(PendingSpinStyleKey));
+        #endregion
+
+        #region Ctor
+        static ButtonHelper()
+        {
+            var classAbbrs = new string[]
+            {
+                "w", "width", "h", "height", "i", "icon",
+                "corner", "corner-hover", "corner-click", "corner-pressed",
+                "shadow", "shadow-blur", "shadow-direction", "shadow-bias",
+                "click-effect",
+                "bg", "background", "bg-hover", "background-hover", "bg-click", "background-click", "bg-pressed", "background-pressed",
+                "bd", "border", "bd-hover", "border-hover", "bd-click", "border-click", "bd-pressed", "border-pressed",
+                "fg", "foreground", "fg-hover", "foreground-hover", "fg-click", "foreground-click", "fg-press", "foreground-pressed",
+            };
+            ClassNameHelper.Regist(typeof(Button), classAbbrs, OnClassNameChangedCallback);
+        }
         #endregion
 
         #region Properties
+
+        #region ClassName
+        public static string GetClassName(DependencyObject obj)
+        {
+            return (string)obj.GetValue(ClassNameProperty);
+        }
+
+        public static void SetClassName(DependencyObject obj, string value)
+        {
+            obj.SetValue(ClassNameProperty, value);
+        }
+
+        public static readonly DependencyProperty ClassNameProperty =
+            ClassNameHelper.ClassNameProperty.AddOwner(typeof(ButtonHelper));
+        #endregion
 
         #region Icon
         public static object GetIcon(Button button)
@@ -283,6 +318,118 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(ButtonHelper));
         #endregion
 
+        #endregion
+
+        #region Event Handlers
+        private static void OnClassNameChangedCallback(FrameworkElement control,
+            Dictionary<string, string> propertyValues)
+        {
+            var button = control as Button;
+            foreach (var propertyValue in propertyValues)
+            {
+                switch(propertyValue.Key)
+                {
+                    case "w":
+                    case "width":
+                        if(ClassNameHelper.TryToDouble(propertyValue.Value, out double? width)
+                            && width != null)
+                        {
+                            button.Width = (double)width;
+                        }
+                        break;
+                    case "h":
+                    case "height":
+                        if (ClassNameHelper.TryToDouble(propertyValue.Value, out double? height)
+                            && height != null)
+                        {
+                            button.Height = (double)height;
+                        }
+                        break;
+                    case "i":
+                    case "icon":
+                        if (ClassNameHelper.TryToIcon(propertyValue.Value, out string icon, out IconPlacement? placement))
+                        {
+                            ButtonHelper.SetIcon(button, icon);
+                            if (placement != null)
+                            {
+                                ButtonHelper.SetIconPlacement(button, (IconPlacement)placement);
+                            }
+                        }
+                        break;
+                    case "bg":
+                    case "background":
+                        if(ClassNameHelper.TryToBrush(propertyValue.Value, out Brush background))
+                        {
+                            button.Background = background;
+                        }
+                        break;
+                    case "bg-hover":
+                    case "hover-background":
+                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush hoverBackground))
+                        {
+                            ButtonHelper.SetHoverBackground(button, hoverBackground);
+                        }
+                        break;
+                    case "bg-click":
+                    case "bg-pressed":
+                    case "click-background":
+                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush clickBackground))
+                        {
+                            ButtonHelper.SetClickBackground(button, clickBackground);
+                        }
+                        break;
+                    case "fg":
+                    case "foreground":
+                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush foreground))
+                        {
+                            button.Foreground = foreground;
+                        }
+                        break;
+                    case "fg-hover":
+                    case "hover-foreground":
+                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush hoverForeground))
+                        {
+                            ButtonHelper.SetHoverForeground(button, hoverForeground);
+                        }
+                        break;
+                    case "fg-click":
+                    case "fg-pressed":
+                    case "click-foreground":
+                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush clickForeground))
+                        {
+                            ButtonHelper.SetClickForeground(button, clickForeground);
+                        }
+                        break;
+                    case "padding":
+                        if (ClassNameHelper.TryToThickness(propertyValue.Value, out Thickness? padding)
+                            && padding != null)
+                        {
+                            button.Padding = (Thickness)padding;
+                        }
+                        break;
+                    case "corner":
+                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? cornerRadius)
+                            && cornerRadius != null)
+                        {
+                            ButtonHelper.SetCornerRadius(button, (CornerRadius)cornerRadius);
+                        }
+                        break;
+                    case "corner-hover":
+                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? hoverCornerRadius))
+                        {
+                            ButtonHelper.SetHoverCornerRadius(button, hoverCornerRadius);
+                        }
+                        break;
+                    case "corner-click":
+                    case "corner-pressed":
+                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? clickCornerRadius))
+                        {
+                            ButtonHelper.SetClickCornerRadius(button, clickCornerRadius);
+                        }
+                        break;
+                }
+            }
+        }
         #endregion
     }
 }

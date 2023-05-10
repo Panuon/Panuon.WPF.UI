@@ -2,6 +2,7 @@
 using Samples.Views.Tools;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -75,7 +76,7 @@ namespace Samples.Views
                 _themeFlag = 0;
             }
         }
-
+       
         private void BtnTestMessageBoxX_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxX.Show(this, "MessageBoxX style configuration is placed in App.xaml. ", "Tips", MessageBoxIcon.Info, DefaultButton.YesOK, 5);
@@ -149,11 +150,6 @@ namespace Samples.Views
             };
             return border;
         }
-
-
         #endregion
-
-
-       
     }
 }

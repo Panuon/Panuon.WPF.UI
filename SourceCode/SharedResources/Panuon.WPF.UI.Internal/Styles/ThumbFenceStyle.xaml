@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ThumbStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:ThumbFence}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:ThumbFence}}"
            TargetType="Thumb"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
         <Setter Property="Width"
@@ -28,7 +28,7 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="ThumbStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:ThumbFence}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:ThumbFence}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ThumbFenceTemplate}}" />
         <Style.Triggers>

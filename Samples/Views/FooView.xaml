@@ -3,8 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
-            xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+            xmlns:pu="https://opensource.panuon.com/wpf-ui"
             xmlns:local="clr-namespace:Samples.Views"
             mc:Ignorable="d"
             Title="FooView"
@@ -29,7 +28,7 @@
                      pu:PasswordBoxHelper.PlainButtonVisibility="VisibleOnFocused">
             <pu:PasswordBoxHelper.ClearButtonStyle>
                 <Style TargetType="Button"
-                       BasedOn="{StaticResource {x:Static pu:PasswordBoxHelper.ClearButtonStyle}}">
+                       BasedOn="{StaticResource {x:Static pu:PasswordBoxHelper.ClearButtonStyleKey}}">
                     <Setter Property="Content"
                             Value="&#xe933;" />
                     <Setter Property="FontSize"
@@ -38,7 +37,7 @@
             </pu:PasswordBoxHelper.ClearButtonStyle>
             <pu:PasswordBoxHelper.PlainButtonStyle>
                 <Style TargetType="Button"
-                       BasedOn="{StaticResource {x:Static pu:PasswordBoxHelper.PlainButtonStyle}}">
+                       BasedOn="{StaticResource {x:Static pu:PasswordBoxHelper.PlainButtonStyleKey}}">
                     <Setter Property="FontSize"
                             Value="16" />
                 </Style>

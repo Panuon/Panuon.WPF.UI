@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/DateTimePickerTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -32,8 +32,8 @@
         <Setter Property="Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
-    
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
            TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
@@ -58,7 +58,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=CalendarXStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
            TargetType="local:CalendarX">
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
@@ -86,6 +86,10 @@
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsHoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsHoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedBackground"
@@ -96,13 +100,15 @@
                 Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedBorderThickness"
                 Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedCornerRadius"
+                Value="{Binding ItemsCheckedCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedShadowColor"
                 Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsSpecialDayHighlightTemplate"
                 Value="{Binding ItemsSpecialDayHighlightTemplate, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=TimeSelectorStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}"
            TargetType="local:TimeSelector">
         <Setter Property="Width"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
@@ -130,6 +136,10 @@
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsHoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsHoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsHoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedBackground"
@@ -140,6 +150,8 @@
                 Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedBorderThickness"
                 Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
+        <Setter Property="ItemsCheckedCornerRadius"
+                Value="{Binding ItemsCheckedCornerRadius, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
         <Setter Property="ItemsCheckedShadowColor"
                 Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}" />
     </Style>
@@ -181,13 +193,13 @@
         <Setter Property="local:DropDownHelper.ShadowColor"
                 Value="#EAEAEA" />
         <Setter Property="CalendarXStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CalendarXStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=CalendarXStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="TimeSelectorStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=TimeSelectorStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=TimeSelectorStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="ToggleArrowTransformControlStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="ClearButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyle, TypeInTargetAssembly={x:Type local:DateTimePicker}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:DateTimePicker}}}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
@@ -240,6 +252,16 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding FocusedBorderThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverBorderThicknessLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
                     <Condition Binding="{Binding FocusedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
@@ -254,6 +276,16 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverForegroundLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding FocusedCornerRadius, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverCornerRadiusLock"
                         Value="True" />
             </MultiDataTrigger>
             <MultiDataTrigger>

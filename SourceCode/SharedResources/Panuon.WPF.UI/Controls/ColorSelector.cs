@@ -95,20 +95,20 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey DropperThumbStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(DropperThumbStyle));
+        public static ComponentResourceKey DropperThumbStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(DropperThumbStyleKey));
 
-        public static ComponentResourceKey ThumbFenceStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(ThumbFenceStyle));
+        public static ComponentResourceKey ThumbFenceStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(ThumbFenceStyleKey));
 
-        public static ComponentResourceKey AccentColorSliderStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(AccentColorSliderStyle));
+        public static ComponentResourceKey AccentColorSliderStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(AccentColorSliderStyleKey));
 
-        public static ComponentResourceKey OpacitySliderStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(OpacitySliderStyle));
+        public static ComponentResourceKey OpacitySliderStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(OpacitySliderStyleKey));
 
-        public static ComponentResourceKey EditorTextBoxStyle { get; } =
-            new ComponentResourceKey(typeof(ColorSelector), nameof(EditorTextBoxStyle));
+        public static ComponentResourceKey EditorTextBoxStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorSelector), nameof(EditorTextBoxStyleKey));
         #endregion
 
 

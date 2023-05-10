@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TagItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TagItem}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:TagItem}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -54,7 +54,7 @@
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="RemoveButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:TagItem}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:TagItem}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TagItemTemplate}}" />
         <Style.Triggers>

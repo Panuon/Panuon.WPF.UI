@@ -7,14 +7,14 @@ namespace Panuon.WPF.UI
     public static class WindowXCaption
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey MinimizeButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(MinimizeButtonStyle));
+        public static ComponentResourceKey MinimizeButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MinimizeButtonStyleKey));
 
-        public static ComponentResourceKey MaximizeButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(MaximizeButtonStyle));
+        public static ComponentResourceKey MaximizeButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(MaximizeButtonStyleKey));
 
-        public static ComponentResourceKey CloseButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXCaption), nameof(CloseButtonStyle));
+        public static ComponentResourceKey CloseButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(WindowXCaption), nameof(CloseButtonStyleKey));
         #endregion
 
         #region Properties

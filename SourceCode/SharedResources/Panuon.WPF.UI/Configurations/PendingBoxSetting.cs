@@ -7,10 +7,10 @@ namespace Panuon.WPF.UI.Configurations
         #region Ctor
         public PendingBoxSetting()
         {
-            WindowStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "WindowStyle"));
-            CancelButtonStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "CancelButtonStyle"));
-            SpinStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "SpinStyle"));
-            ContentTemplate = (DataTemplate)Application.Current.FindResource(new ComponentResourceKey(typeof(PendingBox), "ContentTemplate"));
+            WindowStyle = (Style)Application.Current.FindResource(PendingBox.WindowStyleKey);
+            CancelButtonStyle = (Style)Application.Current.FindResource(PendingBox.CancelButtonStyleKey);
+            SpinStyle = (Style)Application.Current.FindResource(PendingBox.SpinStyleKey);
+            ContentTemplate = (DataTemplate)Application.Current.FindResource(PendingBox.ContentTemplateKey);
         }
         #endregion
 

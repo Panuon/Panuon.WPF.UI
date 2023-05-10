@@ -166,6 +166,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(CalendarXItem));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(CalendarXItem));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(CalendarXItem));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -219,6 +241,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty CheckedBorderThicknessProperty =
             DependencyProperty.Register("CheckedBorderThickness", typeof(Thickness?), typeof(CalendarXItem));
+        #endregion
+
+        #region CheckedCornerRadius
+        public CornerRadius? CheckedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(CheckedCornerRadiusProperty); }
+            set { SetValue(CheckedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CheckedCornerRadiusProperty =
+            DependencyProperty.Register("CheckedCornerRadius", typeof(CornerRadius?), typeof(CalendarXItem));
         #endregion
 
         #region CheckedShadowColor

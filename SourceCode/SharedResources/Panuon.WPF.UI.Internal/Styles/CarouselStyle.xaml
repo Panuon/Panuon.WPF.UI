@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Carousel}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:Carousel}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="Width"
@@ -57,7 +57,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type local:Carousel}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=IndicatorPaginationStyleKey, TypeInTargetAssembly={x:Type local:Carousel}}"
            TargetType="local:Pagination">
         <Setter Property="Margin"
                 Value="15" />
@@ -100,9 +100,9 @@
             </Setter.Value>
         </Setter>
         <Setter Property="PageTurnButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:Carousel}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:Carousel}}}" />
         <Setter Property="IndicatorPaginationStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyle, TypeInTargetAssembly={x:Type local:Carousel}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=IndicatorPaginationStyleKey, TypeInTargetAssembly={x:Type local:Carousel}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.CarouselTemplate}}" />
         <Style.Triggers>

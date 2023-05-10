@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ListBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ListBoxHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:ListBoxHelper}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -53,7 +53,7 @@
         <Setter Property="local:ListBoxHelper.ItemsSelectedBackground"
                 Value="#F1F1F1" />
         <Setter Property="local:ListBoxHelper.RemoveButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyle, TypeInTargetAssembly={x:Type local:ListBoxHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=RemoveButtonStyleKey, TypeInTargetAssembly={x:Type local:ListBoxHelper}}}" />
         <Setter Property="local:ListBoxHelper.ItemsPadding"
                 Value="5" />
         <Setter Property="VerticalContentAlignment"

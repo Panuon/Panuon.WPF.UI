@@ -14,17 +14,17 @@ namespace Panuon.WPF.UI
     public static class ComboBoxHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(ClearButtonStyleKey));
      
-        public static ComponentResourceKey RemoveButtonStyle { get; } =
-            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(RemoveButtonStyle));
+        public static ComponentResourceKey RemoveButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(RemoveButtonStyleKey));
 
-        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
-            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(ToggleArrowTransformControlStyle));
+        public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
+            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(ToggleArrowTransformControlStyleKey));
 
-        public static ComponentResourceKey SearchTextBoxStyle { get; } =
-            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(SearchTextBoxStyle));
+        public static ComponentResourceKey SearchTextBoxStyleKey { get; } =
+            new ComponentResourceKey(typeof(ComboBoxHelper), nameof(SearchTextBoxStyleKey));
         #endregion
 
         #region Routed Event

@@ -12,7 +12,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/SliderStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=DropperThumbStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Thumb"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
         <Setter Property="Width"
@@ -35,7 +35,7 @@
                 Value="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=OpacitySliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=OpacitySliderStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Slider"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
         <Setter Property="Margin"
@@ -58,7 +58,7 @@
                 Value="LightGray" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=AccentColorSliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=AccentColorSliderStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="Slider"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.SliderStyle}}">
         <Setter Property="Height"
@@ -83,7 +83,7 @@
                 Value="LightGray" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbFenceStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="local:ThumbFence">
         <Setter Property="MinHeight"
                 Value="30" />
@@ -114,7 +114,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=EditorTextBoxStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
            TargetType="TextBox"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.TextBoxStyle}}">
         <Setter Property="Height"
@@ -151,15 +151,15 @@
         <Setter Property="Height"
                 Value="300" />
         <Setter Property="DropperThumbStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="ThumbFenceStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbFenceStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="EditorTextBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=EditorTextBoxStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="OpacitySliderStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=OpacitySliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=OpacitySliderStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="AccentColorSliderStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=AccentColorSliderStyle, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=AccentColorSliderStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ColorSelectorTemplate}}" />
     </Style>

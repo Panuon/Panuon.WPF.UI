@@ -13,14 +13,17 @@ namespace Panuon.WPF.UI
     public static class PendingBox
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey CancelButtonStyle { get; } =
-            new ComponentResourceKey(typeof(PendingBox), nameof(CancelButtonStyle));
+        public static ComponentResourceKey CancelButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(CancelButtonStyleKey));
 
-        public static ComponentResourceKey SpinStyle { get; } =
-            new ComponentResourceKey(typeof(PendingBox), nameof(SpinStyle));
+        public static ComponentResourceKey SpinStyleKey { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(SpinStyleKey));
 
-        public static ComponentResourceKey WindowStyle { get; } =
-            new ComponentResourceKey(typeof(PendingBox), nameof(WindowStyle));
+        public static ComponentResourceKey WindowStyleKey { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(WindowStyleKey));
+
+        public static ComponentResourceKey ContentTemplateKey { get; } =
+            new ComponentResourceKey(typeof(PendingBox), nameof(ContentTemplateKey));
         #endregion
 
         #region Methods

@@ -16,8 +16,8 @@ namespace Panuon.WPF.UI
     public class ThumbFence : Control
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ThumbStyle { get; } =
-            new ComponentResourceKey(typeof(ThumbFence), nameof(ThumbStyle));
+        public static ComponentResourceKey ThumbStyleKey { get; } =
+            new ComponentResourceKey(typeof(ThumbFence), nameof(ThumbStyleKey));
         #endregion
 
         #region Fields

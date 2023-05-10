@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BubblePathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GroupBoxHeaderCornerRadiusConverter.cs" />
@@ -120,9 +121,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupSizeDeterminedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ClassNameHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VisualStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\NoticeHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHandlerImpl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ClassNameInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
@@ -145,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\BubbleStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -424,6 +431,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Templates\BubbleTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Templates\CarouselTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -688,5 +699,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Attributes\" />
   </ItemGroup>
 </Project>

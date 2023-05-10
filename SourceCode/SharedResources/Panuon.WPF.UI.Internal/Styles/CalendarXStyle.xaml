@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/CalendarXTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=YearMonthButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=YearMonthButtonStyleKey, TypeInTargetAssembly={x:Type local:CalendarX}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
         <Setter Property="local:ButtonHelper.HoverForeground"
@@ -30,7 +30,7 @@
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:CalendarX}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="local:RepeatButtonHelper.HoverForeground"
@@ -88,9 +88,9 @@
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="PageTurnButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
         <Setter Property="YearMonthButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=YearMonthButtonStyle, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=YearMonthButtonStyleKey, TypeInTargetAssembly={x:Type local:CalendarX}}}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"

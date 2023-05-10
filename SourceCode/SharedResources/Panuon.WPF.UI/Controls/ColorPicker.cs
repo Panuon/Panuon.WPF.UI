@@ -55,14 +55,14 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey ClearButtonStyle { get; } =
-            new ComponentResourceKey(typeof(ColorPicker), nameof(ClearButtonStyle));
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ClearButtonStyleKey));
 
-        public static ComponentResourceKey ColorSelectorStyle { get; } =
-            new ComponentResourceKey(typeof(ColorPicker), nameof(ColorSelectorStyle));
+        public static ComponentResourceKey ColorSelectorStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ColorSelectorStyleKey));
         
-        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
-            new ComponentResourceKey(typeof(ColorPicker), nameof(ToggleArrowTransformControlStyle));
+        public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
+            new ComponentResourceKey(typeof(ColorPicker), nameof(ToggleArrowTransformControlStyleKey));
         #endregion
 
         #region Properties

@@ -21,11 +21,11 @@
             pu:WindowXModalDialog.ButtonPanelMargin="0,30,10,10">
     <pu:WindowXModalDialog.ButtonStyle>
         <Style TargetType="Button"
-               BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyle, TypeInTargetAssembly={x:Type pu:WindowXModalDialog}}}">
+               BasedOn="{StaticResource {x:Static pu:WindowXModalDialog.ButtonStyleKey}}">
             <Setter Property="pu:ButtonHelper.PendingSpinStyle">
                 <Setter.Value>
                     <Style TargetType="pu:Spin"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyle, TypeInTargetAssembly={x:Type pu:ButtonHelper}}}">
+                           BasedOn="{StaticResource {x:Static pu:ButtonHelper.PendingSpinStyleKey}}">
                         <Setter Property="SpinStyle"
                                 Value="Ring2" />
                     </Style>
@@ -215,7 +215,7 @@
             <Setter Property="pu:SliderHelper.ThumbStyle">
                 <Setter.Value>
                     <Style TargetType="Thumb"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type pu:SliderHelper}}}">
+                           BasedOn="{StaticResource {x:Static pu:SliderHelper.ThumbStyleKey}}">
                         <Setter Property="Width"
                                 Value="NaN" />
                         <Setter Property="Height"
@@ -279,7 +279,7 @@
             <Setter Property="ColorSelectorStyle">
                 <Setter.Value>
                     <Style TargetType="pu:ColorSelector"
-                           BasedOn="{StaticResource {ComponentResourceKey ResourceId=ColorSelectorStyle, TypeInTargetAssembly={x:Type pu:ColorPicker}}}">
+                           BasedOn="{StaticResource {x:Static pu:ColorPicker.ColorSelectorStyleKey}}">
                         <Setter Property="Foreground"
                                 Value="White" />
                       
@@ -290,7 +290,7 @@
                         <Setter Property="EditorTextBoxStyle">
                             <Setter.Value>
                                 <Style TargetType="TextBox"
-                                       BasedOn="{StaticResource {ComponentResourceKey ResourceId=EditorTextBoxStyle, TypeInTargetAssembly={x:Type pu:ColorSelector}}}">
+                                       BasedOn="{StaticResource {x:Static pu:ColorSelector.EditorTextBoxStyleKey}}">
                                     <Setter Property="Background"
                                             Value="#4A4650" />
                                     <Setter Property="BorderThickness"

@@ -57,11 +57,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey PageTurnButtonStyle { get; } =
-            new ComponentResourceKey(typeof(Pagination), nameof(PageTurnButtonStyle));
+        public static ComponentResourceKey PageTurnButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(Pagination), nameof(PageTurnButtonStyleKey));
 
-        public static ComponentResourceKey OmittingTextBlockStyle { get; } =
-          new ComponentResourceKey(typeof(Pagination), nameof(OmittingTextBlockStyle));
+        public static ComponentResourceKey OmittingTextBlockStyleKey { get; } =
+          new ComponentResourceKey(typeof(Pagination), nameof(OmittingTextBlockStyleKey));
         #endregion
 
         #region Properties

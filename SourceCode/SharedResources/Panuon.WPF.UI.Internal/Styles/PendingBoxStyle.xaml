@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/WindowXStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=CancelButtonStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=CancelButtonStyleKey, TypeInTargetAssembly={x:Type local:PendingBox}}"
            TargetType="Button">
         <Setter Property="BorderThickness"
                 Value="0" />
@@ -39,7 +39,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=SpinStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=SpinStyleKey, TypeInTargetAssembly={x:Type local:PendingBox}}"
            TargetType="local:Spin">
         <Setter Property="Width"
                 Value="50" />
@@ -47,7 +47,7 @@
                 Value="50" />
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=WindowStyle, TypeInTargetAssembly={x:Type local:PendingBox}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=WindowStyleKey, TypeInTargetAssembly={x:Type local:PendingBox}}"
            TargetType="Window">
         <Setter Property="MinWidth"
                 Value="300" />
@@ -73,7 +73,7 @@
                 Value="True" />
     </Style>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplate, TypeInTargetAssembly={x:Type local:PendingBox}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplateKey, TypeInTargetAssembly={x:Type local:PendingBox}}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

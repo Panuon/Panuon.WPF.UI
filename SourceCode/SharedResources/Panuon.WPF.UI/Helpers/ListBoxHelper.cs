@@ -13,8 +13,8 @@ namespace Panuon.WPF.UI
     public static class ListBoxHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey RemoveButtonStyle { get; } =
-            new ComponentResourceKey(typeof(ListBoxHelper), nameof(RemoveButtonStyle));
+        public static ComponentResourceKey RemoveButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(ListBoxHelper), nameof(RemoveButtonStyleKey));
         #endregion
 
         #region Routed Event

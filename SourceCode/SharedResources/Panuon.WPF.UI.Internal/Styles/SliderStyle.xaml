@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ThumbStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:SliderHelper}}"
            TargetType="Thumb"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
         <Setter Property="Width"
@@ -67,7 +67,7 @@
         <Setter Property="local:SliderHelper.TickBarForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:SliderHelper.ThumbStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyle, TypeInTargetAssembly={x:Type local:SliderHelper}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:SliderHelper}}}"/>
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Horizontal">

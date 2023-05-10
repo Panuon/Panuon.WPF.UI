@@ -17,14 +17,14 @@
         </ControlTemplate.Resources>
         <Grid>
             <local:ContentControlX x:Name="CcMain"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{TemplateBinding CornerRadius}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
-                               Icon="{TemplateBinding Icon}">
+                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                   Icon="{TemplateBinding Icon}">
                 <ToggleButton Focusable="False"
                               IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}">
                     <ToggleButton.Style>

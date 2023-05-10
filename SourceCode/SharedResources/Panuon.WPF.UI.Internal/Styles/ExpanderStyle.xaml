@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ExpanderTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ExpanderHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ExpanderHelper}}"
            TargetType="local:TransformControl">
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
@@ -125,7 +125,7 @@
         <Setter Property="local:ExpanderHelper.HeaderFontFamily"
                 Value="{Binding FontFamily, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ExpanderHelper.ToggleArrowTransformControlStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyle, TypeInTargetAssembly={x:Type local:ExpanderHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleArrowTransformControlStyleKey, TypeInTargetAssembly={x:Type local:ExpanderHelper}}}" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="local:ExpanderHelper.HeaderPadding"

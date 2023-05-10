@@ -338,8 +338,8 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey UpDownButtonStyle { get; }
-            = new ComponentResourceKey(typeof(NumberInput), nameof(UpDownButtonStyle));
+        public static ComponentResourceKey UpDownButtonStyleKey { get; }
+            = new ComponentResourceKey(typeof(NumberInput), nameof(UpDownButtonStyleKey));
         #endregion
 
         #region Event

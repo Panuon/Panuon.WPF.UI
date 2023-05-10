@@ -8,8 +8,8 @@ namespace Panuon.WPF.UI
     public static class TreeViewHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ToggleArrowToggleButtonStyle { get; } =
-            new ComponentResourceKey(typeof(TreeViewHelper), nameof(ToggleArrowToggleButtonStyle));
+        public static ComponentResourceKey ToggleArrowToggleButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(TreeViewHelper), nameof(ToggleArrowToggleButtonStyleKey));
         #endregion
 
         #region Properties

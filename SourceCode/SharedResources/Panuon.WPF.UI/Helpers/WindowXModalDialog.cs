@@ -7,8 +7,8 @@ namespace Panuon.WPF.UI
     public static class WindowXModalDialog
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ButtonStyle { get; } =
-            new ComponentResourceKey(typeof(WindowXModalDialog), nameof(ButtonStyle));
+        public static ComponentResourceKey ButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(WindowXModalDialog), nameof(ButtonStyleKey));
         #endregion
 
         #region Properties

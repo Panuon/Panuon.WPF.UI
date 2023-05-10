@@ -8,7 +8,7 @@ namespace Panuon.WPF.UI.Configurations
         #region Ctor
         public NoticeBoxSetting()
         {
-            NoticeBoxItemStyle = (Style)Application.Current.FindResource(new ComponentResourceKey(typeof(NoticeBox), "NoticeBoxItemStyle"));
+            NoticeBoxItemStyle = (Style)Application.Current.FindResource(NoticeBox.NoticeBoxItemStyleKey);
         }
         #endregion
 

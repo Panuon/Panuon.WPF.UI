@@ -10,7 +10,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ContextMenuItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ArrowIconTemplate, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
         <TextBlock Text="&#xe902;"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
@@ -20,7 +20,7 @@
                    Margin="0,0,5,0" />
     </DataTemplate>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplate, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
         <TextBlock Text="&#xe92e;"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
@@ -136,7 +136,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=MenuItemStyle, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=MenuItemStyleKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}"
            TargetType="MenuItem"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalContextMenuItemStyle}}">
         <Setter Property="ItemContainerStyle"
@@ -148,7 +148,7 @@
         TargetType="{x:Type ContextMenu}">
         <Style.Resources>
             <Style TargetType="MenuItem"
-                   BasedOn="{StaticResource {x:Static local:ContextMenuHelper.MenuItemStyle}}" />
+                   BasedOn="{StaticResource {x:Static local:ContextMenuHelper.MenuItemStyleKey}}" />
         </Style.Resources>
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
@@ -237,9 +237,9 @@
         <Setter Property="HorizontalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ContextMenuHelper.ArrowIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ArrowIconTemplate, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
         <Setter Property="local:ContextMenuHelper.CheckedIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplate, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
+                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="BorderBrush"

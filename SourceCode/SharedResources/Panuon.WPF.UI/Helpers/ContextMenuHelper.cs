@@ -7,8 +7,8 @@ namespace Panuon.WPF.UI
     public static class ContextMenuHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey MenuItemStyle { get; } =
-            new ComponentResourceKey(typeof(ContextMenuHelper), nameof(MenuItemStyle));
+        public static ComponentResourceKey MenuItemStyleKey { get; } =
+            new ComponentResourceKey(typeof(ContextMenuHelper), nameof(MenuItemStyleKey));
         #endregion
 
         #region Properties

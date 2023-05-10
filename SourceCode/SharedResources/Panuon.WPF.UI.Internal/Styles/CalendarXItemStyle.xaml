@@ -43,6 +43,10 @@
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="HoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="HoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="HoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="CheckedBackground"
@@ -53,6 +57,8 @@
                 Value="{Binding ItemsCheckedBorderBrush, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="CheckedBorderThickness"
                 Value="{Binding ItemsCheckedBorderThickness, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+        <Setter Property="CheckedCornerRadius"
+                Value="{Binding ItemsCheckedCornerRadius, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="CheckedShadowColor"
                 Value="{Binding ItemsCheckedShadowColor, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
         <Setter Property="SpecialDayHighlightTemplate"

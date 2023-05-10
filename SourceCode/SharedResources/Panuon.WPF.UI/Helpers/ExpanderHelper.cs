@@ -11,8 +11,8 @@ namespace Panuon.WPF.UI
     public static class ExpanderHelper
     {
         #region ComponentResourceKeys
-        public static ComponentResourceKey ToggleArrowTransformControlStyle { get; } =
-            new ComponentResourceKey(typeof(ExpanderHelper), nameof(ToggleArrowTransformControlStyle));
+        public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
+            new ComponentResourceKey(typeof(ExpanderHelper), nameof(ToggleArrowTransformControlStyleKey));
         #endregion
 
         #region Properties

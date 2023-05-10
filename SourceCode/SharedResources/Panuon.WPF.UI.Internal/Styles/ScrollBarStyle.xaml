@@ -11,7 +11,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ScrollBarTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}"
+    <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="local:RepeatButtonHelper.HoverForeground"
@@ -79,7 +79,7 @@
         <Setter Property="local:ScrollBarHelper.IsTrackHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.ScrollButtonStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyle, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}}"/>
+                Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}}"/>
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ScrollBarTemplate}}" />
         <Style.Triggers>

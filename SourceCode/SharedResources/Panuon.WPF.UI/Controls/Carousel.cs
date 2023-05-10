@@ -195,11 +195,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ComponentResourceKeys
-        public static ComponentResourceKey PageTurnButtonStyle { get; }
-            = new ComponentResourceKey(typeof(Carousel), nameof(PageTurnButtonStyle));
+        public static ComponentResourceKey PageTurnButtonStyleKey { get; }
+            = new ComponentResourceKey(typeof(Carousel), nameof(PageTurnButtonStyleKey));
 
-        public static ComponentResourceKey IndicatorPaginationStyle { get; }
-            = new ComponentResourceKey(typeof(Carousel), nameof(IndicatorPaginationStyle));
+        public static ComponentResourceKey IndicatorPaginationStyleKey { get; }
+            = new ComponentResourceKey(typeof(Carousel), nameof(IndicatorPaginationStyleKey));
         #endregion
 
         #region Overrides
