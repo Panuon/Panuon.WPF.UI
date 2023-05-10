@@ -43,7 +43,7 @@ Only Chinese documentation is now available.
 ### 2. Use attached properties like Material Design does, although there is no relationship between the two libraries
 
 ```
-xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ...
 
 <Button Width="150"

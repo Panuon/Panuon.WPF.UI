@@ -43,7 +43,7 @@
 ### 2. 像Material Design那样使用附加属性，尽管这两个库之间没有任何关系
 
 ```
-xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ...
 
 <Button Width="150"
