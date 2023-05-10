@@ -123,6 +123,18 @@
                 Value="Center" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
+        <Setter Property="ItemsSpecialDayHighlightTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Ellipse Width="4"
+                             Height="4"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top" 
+                             Margin="3"
+                             Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=local:CalendarX}, Mode=OneWay}" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.CalendarXTemplate}}"/>
         <Style.Triggers>

@@ -9,11 +9,6 @@
             Title="FooView"
             Height="250"
             Width="400">
-    <Window.Resources>
-        <Style x:Key="MyButtonStyle"
-               BasedOn="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}">
-        </Style>
-    </Window.Resources>
     <Grid>
         <PasswordBox Height="40"
                      Width="200"
