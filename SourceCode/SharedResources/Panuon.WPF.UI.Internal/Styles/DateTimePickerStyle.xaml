@@ -171,7 +171,7 @@
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"
-                Value="10,0,0,0" />
+                Value="7,0,0,0" />
         <Setter Property="local:IconHelper.VerticalAlignment"
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
@@ -207,7 +207,7 @@
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"
-                Value="LightGray" />
+                Value="Gray" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="DateTimeSeparatorBrush"
@@ -217,7 +217,7 @@
         <Setter Property="DateTimeSeparatorVisibility"
                 Value="Visible" />
         <Setter Property="Padding"
-                Value="5,0,0,0" />
+                Value="5,0" />
         <Setter Property="WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsForeground"

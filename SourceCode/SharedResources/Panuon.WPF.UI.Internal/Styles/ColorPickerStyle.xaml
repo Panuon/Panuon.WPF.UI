@@ -129,7 +129,7 @@
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"
-                Value="LightGray" />
+                Value="Gray" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="DefaultColor"

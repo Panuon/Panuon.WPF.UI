@@ -33,81 +33,93 @@
                         local:DropDownHelper.VerticalOffset="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         local:DropDownHelper.Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <local:DropDown.Content>
-                <local:ContentControlX x:Name="CcMain"
-                                       Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                       Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       BorderThickness="{TemplateBinding BorderThickness}"
-                                       CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                       Icon="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <ToggleButton Focusable="False"
-                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
-                        <ToggleButton.Style>
-                            <Style TargetType="ToggleButton">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="ToggleButton">
-                                            <Border Background="Transparent">
-                                                <ContentPresenter />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ToggleButton.Style>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <ContentControl x:Name="CcWatermark"
-                                            Margin="2,0,0,0"
-                                            IsHitTestVisible="False"
-                                            Visibility="Collapsed"
-                                            Focusable="False"
-                                            Padding="{TemplateBinding Padding}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            Content="{Binding Watermark, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                            ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
-                                            Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <ItemsControl x:Name="IcSelection"
-                                          AlternationCount="2"
-                                          ItemsSource="{Binding SelectionBoxItems, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          Margin="{TemplateBinding Padding}"
-                                          VerticalAlignment="Stretch"
-                                          HorizontalAlignment="Stretch">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Label x:Name="TagItem"
-                                                       Style="{Binding SelectionBoxItemLabelStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
-                                                       Content="{Binding}"
-                                                       ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
-                                                       ContentTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
-                                                       ContentStringFormat="{Binding SelectionBoxItemStringFormat, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                            <Button x:Name="BtnClear"
-                                    Grid.Column="1"
-                                    Visibility="Collapsed"
-                                    Style="{Binding ClearButtonStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
-                            <local:TransformControl Grid.Column="2"
-                                                    Style="{Binding ToggleArrowTransformControlStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        </Grid>
-                    </ToggleButton>
-                </local:ContentControlX>
+                <Border x:Name="BdrContainer"
+                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <i:IconPresenter x:Name="IpIcon"
+                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Content="{TemplateBinding Icon}"
+                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <ToggleButton Grid.Column="1"
+                                      Focusable="False"
+                                      Padding="{TemplateBinding Padding}"
+                                      IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <ToggleButton.Style>
+                                <Style TargetType="ToggleButton">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ToggleButton">
+                                                <Border Background="Transparent">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ToggleButton.Style>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentControl x:Name="CcWatermark"
+                                                Margin="2,0,0,0"
+                                                IsHitTestVisible="False"
+                                                Visibility="Collapsed"
+                                                Focusable="False"
+                                                Padding="{TemplateBinding Padding}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                Content="{Binding Watermark, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                                Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ItemsControl x:Name="IcSelection"
+                                              AlternationCount="2"
+                                              ItemsSource="{Binding SelectionBoxItems, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                              Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Stretch">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label x:Name="TagItem"
+                                                   Style="{Binding SelectionBoxItemLabelStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                   Content="{Binding}"
+                                                   ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                   ContentTemplateSelector="{Binding ItemTemplateSelector, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                                   ContentStringFormat="{Binding SelectionBoxItemStringFormat, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Button x:Name="BtnClear"
+                                        Grid.Column="1"
+                                        Visibility="Collapsed"
+                                        Style="{Binding ClearButtonStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Command="{Binding ClearCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                                <local:TransformControl Grid.Column="2"
+                                                        Style="{Binding ToggleArrowTransformControlStyle, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            </Grid>
+                        </ToggleButton>
+                    </Grid>
+                </Border>
             </local:DropDown.Content>
             <local:DropDown.Child>
                 <ScrollViewer Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">

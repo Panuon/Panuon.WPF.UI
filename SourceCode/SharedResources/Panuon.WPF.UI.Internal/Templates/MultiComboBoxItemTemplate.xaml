@@ -16,28 +16,48 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <local:ContentControlX x:Name="CcMain"
-                                   Grid.Column="1"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Padding="{TemplateBinding Padding}"
-                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid x:Name="DockContainer"
+                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <CheckBox IsChecked="{Binding IsSelected, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              Style="{Binding CheckBoxStyle, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" 
-                              Visibility="{TemplateBinding CheckBoxVisibility}" />
-                    <ContentPresenter Grid.Column="1" />
+                    <Grid Width="{Binding ItemsIconWidth, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}">
+                        <Border x:Name="BdrIcon">
+                            <i:IconPresenter x:Name="IpIcon"
+                                             Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                             Content="{TemplateBinding Icon}"
+                                             Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                        <ContentControl x:Name="CcChecked"
+                                        Visibility="Collapsed"
+                                        Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        MinWidth="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        MinHeight="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        MaxWidth="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        MaxHeight="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        VerticalContentAlignment="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        HorizontalContentAlignment="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        FontFamily="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                                        ContentTemplate="{Binding CheckedIconTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+                    </Grid>
+                    <ContentPresenter Grid.Column="1"
+                                      Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                     <Button x:Name="BtnRemove"
                             Grid.Column="2"
                             Visibility="Hidden"
@@ -45,7 +65,7 @@
                             Command="{Binding RemoveCommand, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                             CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
-            </local:ContentControlX>
+            </Border>
             <Rectangle x:Name="RectSeparator"
                        Grid.Row="1"
                        Fill="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -69,14 +89,50 @@
             </DataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding CheckedIconTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcChecked"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="BdrIcon"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding SelectedBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderBrush"
                         Value="{Binding SelectedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding SelectedBorderThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="BorderThickness"
+                        Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding SelectedCornerRadius, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="CornerRadius"
+                        Value="{Binding SelectedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -85,7 +141,7 @@
                     <Condition Binding="{Binding SelectedBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Background"
                         Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -96,20 +152,18 @@
                     <Condition Binding="{Binding SelectedForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
+                        Property="TextElement.Foreground"
+                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="BdrContainer"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                    <Condition Binding="{Binding SelectedBorderThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="BorderThickness"
-                        Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="CcChecked"
+                        Property="Foreground"
+                        Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <Trigger Property="RemoveButtonVisibility"
                      Value="Visible">

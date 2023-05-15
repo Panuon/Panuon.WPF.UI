@@ -41,7 +41,8 @@
         </StackPanel>
     </pu:WindowXCaption.ExtendControl>
     <Grid>
-        <Grid Margin="20,10,20,20">
+        <Grid Margin="20,10,20,20"
+              Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -132,5 +133,15 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
+        <ListView x:Name="soure">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name"
+                                    DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Key"
+                                    DisplayMemberBinding="{Binding Key}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </pu:WindowX>

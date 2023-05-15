@@ -45,6 +45,8 @@
                 Value="{Binding ItemsHorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="VerticalContentAlignment"
                 Value="{Binding ItemsVerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="Icon"
+                Value="{Binding ItemsIcon, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="CornerRadius"
                 Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="CheckBoxVisibility"

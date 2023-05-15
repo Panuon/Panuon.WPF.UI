@@ -17,7 +17,6 @@ namespace Samples.Views.Examples
         public SignInView()
         {
             InitializeComponent();
-            ValidatePassword();
         }
         #endregion
 
@@ -28,7 +27,8 @@ namespace Samples.Views.Examples
             {
                 return;
             }
-            if (!ValidatePassword())
+            if (!ValidateAccount()
+                || !ValidatePassword())
             {
                 return;
             }
@@ -38,6 +38,11 @@ namespace Samples.Views.Examples
             FrmPassword.Message = null;
         }
 
+        private void TbAccount_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            ValidateAccount();
+        }
+
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ValidatePassword();
@@ -45,12 +50,28 @@ namespace Samples.Views.Examples
         #endregion
 
         #region Functions
-        private bool ValidatePassword()
+        private bool ValidateAccount()
         {
-            if (PwdPassword.Password == null || PwdPassword.Password == "")
+            if (TbAccount.Text == null 
+                || TbAccount.Text == "")
             {
-                FrmPassword.ValidateResult = ValidateResult.Info;
-                FrmPassword.Message = "Try to input password";
+                FrmAccount.ValidateResult = ValidateResult.Error;
+                FrmAccount.Message = "Try to input account.";
+                return false;
+            }
+            FrmAccount.ValidateResult = ValidateResult.Success;
+            FrmAccount.Message = "Account valid.";
+
+            return true;
+        }
+
+            private bool ValidatePassword()
+        {
+            if (PwdPassword.Password == null 
+                || PwdPassword.Password == "")
+            {
+                FrmPassword.ValidateResult = ValidateResult.Error;
+                FrmPassword.Message = "Try to input password.";
                 return false;
             }
             else if (PwdPassword.Password.Length < 6)
@@ -68,10 +89,11 @@ namespace Samples.Views.Examples
             else
             {
                 FrmPassword.ValidateResult = ValidateResult.Success;
-                FrmPassword.Message = "Nice work.";
+                FrmPassword.Message = "Password valid.";
                 return true;
             }
         }
         #endregion
+
     }
 }

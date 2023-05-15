@@ -94,6 +94,11 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ListViewItemTemplate}}" />
         <Style.Triggers>
+            <DataTrigger Binding="{Binding View, RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}"
+                     Value="{x:Null}">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ListViewItemNullViewTemplate}}" />
+            </DataTrigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

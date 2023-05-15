@@ -959,12 +959,13 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DataGridTemplate}"
                      TargetType="DataGrid">
-        <local:ContentControlX Background="{TemplateBinding Background}"
-                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                               BorderBrush="{TemplateBinding BorderBrush}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               CornerRadius="{Binding Path=(local:DataGridHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+        <Border x:Name="BdrContainer"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                CornerRadius="{Binding Path=(local:DataGridHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <ScrollViewer Template="{StaticResource {x:Static irs:TemplateKeys.DataGridScrollViewerTemplate}}"
                           Focusable="False"
                           Padding="{TemplateBinding Padding}"
@@ -973,7 +974,7 @@
                           CanContentScroll="{Binding Path=(ScrollViewer.CanContentScroll),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <ItemsPresenter />
             </ScrollViewer>
-        </local:ContentControlX>
+        </Border>
     </ControlTemplate>
 
 </ResourceDictionary>

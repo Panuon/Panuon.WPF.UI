@@ -32,7 +32,9 @@
         <Setter Property="local:ListViewHelper.Hook"
                 Value="True" />
         <Setter Property="local:ListViewHelper.ColumnHeaderHorizontalContentAlignment"
-                Value="Left" />
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ListViewHelper.ColumnHeaderVerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderVerticalContentAlignment"
                 Value="Center" />
         <Setter Property="local:ListViewHelper.ColumnHeaderPadding"
@@ -42,7 +44,7 @@
         <Setter Property="local:ListViewHelper.ColumnHeaderForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderHeight"
-                Value="35" />
+                Value="NaN" />
         <Setter Property="local:ListViewHelper.ColumnHeaderSeparatorVisibility"
                 Value="Visible" />
         <Setter Property="local:ListViewHelper.ColumnHeaderSeparatorBrush"
@@ -55,6 +57,8 @@
                 Value="#FCFCFC" />
         <Setter Property="local:ListViewHelper.ColumnHeaderClickBackground"
                 Value="#FAFAFA" />
+        <Setter Property="local:ListViewHelper.ColumnHeaderPadding"
+                Value="10, 8" />
         <Setter Property="local:ListViewHelper.ResizeThumbThickness"
                 Value="3" />
         <Setter Property="local:ListViewHelper.ItemsHoverBackground"
@@ -69,6 +73,8 @@
                 Value="0" />
         <Setter Property="local:ListViewHelper.ItemsHeight"
                 Value="35" />
+        <Setter Property="local:ListViewHelper.ItemsPadding"
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListBoxHelper.ItemsSeparatorBrush"
                 Value="#F1F1F1" />
         <Setter Property="local:ListViewHelper.ItemsSeparatorThickness"

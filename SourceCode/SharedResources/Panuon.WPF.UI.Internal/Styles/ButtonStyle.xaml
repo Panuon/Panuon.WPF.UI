@@ -35,6 +35,10 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.HoverBackground"
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ButtonHelper.ClickBackground"
+                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ButtonHelper.PendingSpinStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyleKey, TypeInTargetAssembly={x:Type local:ButtonHelper}}}" />
         <Setter Property="Padding"

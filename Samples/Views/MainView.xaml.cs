@@ -40,6 +40,17 @@ namespace Samples.Views
             {
                 InitExampleItems();
             }));
+
+            soure.ItemsSource = new object[]
+            {
+                new
+                {
+                    Name = "1",
+                    Key = "2",
+                }
+            };
+           
+
         }
         #endregion
 
@@ -151,5 +162,7 @@ namespace Samples.Views
             return border;
         }
         #endregion
+
+       
     }
 }

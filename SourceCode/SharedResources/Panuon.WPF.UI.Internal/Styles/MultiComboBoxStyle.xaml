@@ -14,12 +14,14 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MultiComboBoxTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{ComponentResourceKey ResourceId=CheckBoxStyleKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}"
-           TargetType="CheckBox"
-           BasedOn="{StaticResource {x:Static rs:StyleKeys.CheckBoxStyle}}">
-        <Setter Property="Margin"
-                Value="0,0,5,0" />
-    </Style>
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}">
+        <TextBlock Text="&#xe92e;"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ContentControl}, Mode=OneWay}"
+                   FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=local:MultiComboBoxItem}, Mode=OneWay}"
+                   FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+    </DataTemplate>
 
     <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}"
            TargetType="Button"
@@ -120,7 +122,7 @@
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"
-                Value="10,0,0,0" />
+                Value="7,0,0,0" />
         <Setter Property="local:IconHelper.VerticalAlignment"
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
@@ -152,7 +154,7 @@
         <Setter Property="ItemsHeight"
                 Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsPadding"
-                Value="10,0" />
+                Value="5,0" />
         <Setter Property="ItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsBackground"
@@ -169,8 +171,8 @@
                 Value="Collapsed" />
         <Setter Property="SelectionBoxItemLabelStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SelectionBoxItemLabelStyleKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
-        <Setter Property="CheckBoxStyle"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CheckBoxStyleKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
+        <Setter Property="CheckedIconTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
         <Setter Property="ClearButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:MultiComboBox}}}" />
         <Setter Property="RemoveButtonStyle"

@@ -21,6 +21,17 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
+        #region Icon
+        public object Icon
+        {
+            get { return (object)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(object), typeof(MultiComboBoxItem));
+        #endregion
+
         #region CheckBoxVisibility
         public Visibility CheckBoxVisibility
         {
@@ -98,6 +109,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(MultiComboBoxItem));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(MultiComboBoxItem));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(MultiComboBoxItem));
+        #endregion
+
         #region SelectedBackground
         public Brush SelectedBackground
         {
@@ -140,6 +173,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedBorderThicknessProperty =
             DependencyProperty.Register("SelectedBorderThickness", typeof(Thickness?), typeof(MultiComboBoxItem));
+        #endregion
+
+        #region SelectedCornerRadius
+        public CornerRadius? SelectedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(SelectedCornerRadiusProperty); }
+            set { SetValue(SelectedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.Register("SelectedCornerRadius", typeof(CornerRadius?), typeof(MultiComboBoxItem));
         #endregion
 
         #region SeparatorBrush

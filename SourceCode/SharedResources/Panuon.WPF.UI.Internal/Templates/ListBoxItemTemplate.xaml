@@ -20,35 +20,48 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <local:ContentControlX x:Name="CcMain"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   CornerRadius="{Binding Path=(local:ListBoxItemHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Icon="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   IconPlacement="{Binding Path=(local:ListBoxItemHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   IconWidth="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                   Padding="{TemplateBinding Padding}">
-                <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid x:Name="GrdContainer"
+                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    <Button x:Name="BtnRemove"
-                            Grid.Column="1"
-                            Visibility="Hidden"
-                            Style="{Binding Path=(local:ListBoxHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
-                            Command="{Binding Path=(local:ListBoxHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <Border Width="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}">
+                        <i:IconPresenter x:Name="IpIcon"
+                                         DockPanel.Dock="{Binding Path=(local:ListBoxItemHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Content="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    </Border>
+                    <Grid Grid.Column="1"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          Margin="{TemplateBinding Padding}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                        <Button x:Name="BtnRemove"
+                                Grid.Column="1"
+                                Visibility="Hidden"
+                                Style="{Binding Path=(local:ListBoxHelper.RemoveButtonStyle), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                                Command="{Binding Path=(local:ListBoxHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    </Grid>
                 </Grid>
-            </local:ContentControlX>
+            </Border>
             <Rectangle x:Name="RectSeparator"
                        Grid.Row="1"
                        Fill="{Binding Path=(local:ListBoxItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -69,7 +82,7 @@
                     <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -80,7 +93,7 @@
                     <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Background"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -91,11 +104,14 @@
                     <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="Foreground"
+                <Setter TargetName="GrdContainer"
+                        Property="TextElement.Foreground"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="CcMain"
-                        Property="IconForeground"
+                <Setter TargetName="GrdContainer"
+                        Property="TextBlock.Foreground"
+                        Value="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IpIcon"
+                        Property="Foreground"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
@@ -105,7 +121,7 @@
                     <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderThickness"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -116,7 +132,7 @@
                     <Condition Binding="{Binding Path=(local:ListBoxItemHelper.SelectedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="CornerRadius"
                         Value="{Binding Path=(local:ListBoxItemHelper.SelectedCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

@@ -155,6 +155,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ColorPicker));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ColorPicker));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -197,6 +219,28 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty FocusedBorderBrushProperty =
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(ColorPicker));
+        #endregion
+
+        #region FocusedBorderThickness
+        public Thickness? FocusedBorderThickness
+        {
+            get { return (Thickness?)GetValue(FocusedBorderThicknessProperty); }
+            set { SetValue(FocusedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(ColorPicker));
+        #endregion
+
+        #region FocusedCornerRadius
+        public CornerRadius? FocusedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(FocusedCornerRadiusProperty); }
+            set { SetValue(FocusedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
         #region FocusedShadowColor

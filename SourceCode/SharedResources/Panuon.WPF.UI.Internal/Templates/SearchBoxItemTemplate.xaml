@@ -27,10 +27,11 @@
                                    Padding="{TemplateBinding Padding}"
                                    CornerRadius="{TemplateBinding CornerRadius}"
                                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+                                   >
                 <ContentPresenter Focusable="False"
-                                  RecognizesAccessKey="True" />
+                                  RecognizesAccessKey="True"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
             </local:ContentControlX>
             <Rectangle x:Name="RectSeparator"
                        Grid.Row="1"

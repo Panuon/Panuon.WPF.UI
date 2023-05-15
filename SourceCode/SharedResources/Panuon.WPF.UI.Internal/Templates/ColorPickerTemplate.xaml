@@ -16,111 +16,121 @@
             <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
         </ControlTemplate.Resources>
         <Grid>
-            <local:ContentControlX x:Name="CcMain"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Padding="{TemplateBinding Padding}"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   CornerRadius="{TemplateBinding CornerRadius}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                   Icon="{TemplateBinding Icon}">
-                <ToggleButton Focusable="False"
-                              IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=TwoWay}">
-                    <ToggleButton.Style>
-                        <Style TargetType="ToggleButton">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ToggleButton">
-                                        <Border Background="Transparent">
-                                            <ContentPresenter />
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ToggleButton.Style>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <ContentControl ContentTemplate="{TemplateBinding PreviewTemplate}">
-                            <ContentControl.Content>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TransparentColorToBrushConverter}}">
-                                    <Binding Path="ActualWidth"
-                                             RelativeSource="{RelativeSource Self}"
-                                             Mode="OneWay" />
-                                    <Binding Path="ActualHeight"
-                                             RelativeSource="{RelativeSource Self}"
-                                             Mode="OneWay" />
-                                    <Binding Path="SelectedColor"
-                                             RelativeSource="{RelativeSource AncestorType=local:ColorPicker}"
-                                             Mode="OneWay" />
-                                    <Binding Path="BorderBrush"
-                                             RelativeSource="{RelativeSource AncestorType=local:ColorPicker}"
-                                             Mode="OneWay" />
-                                </MultiBinding>
-                            </ContentControl.Content>
-                        </ContentControl>
-                        <Grid Grid.Column="1"
-                              Margin="{TemplateBinding Padding}">
-                            <TextBlock IsHitTestVisible="False"
-                                       Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                       Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                       Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                            <ContentControl Margin="2,0,0,0"
-                                            IsHitTestVisible="False"
-                                            Focusable="False"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                            Content="{TemplateBinding Watermark}"
-                                            ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
-                                            Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <TextBox x:Name="PART_EditableTextBox"
-                                     Focusable="True"
-                                     CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
-                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                     Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="TextBox">
-                                                    <Border x:Name="PART_ContentHost"
-                                                            Focusable="False"
-                                                            Margin="{TemplateBinding Padding}" />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid x:Name="DockContainer"
+                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <i:IconPresenter x:Name="IpIcon"
+                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ToggleButton Grid.Column="1"
+                                  Focusable="False"
+                                  Padding="{TemplateBinding Padding}"
+                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=TwoWay}">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ContentControl ContentTemplate="{TemplateBinding PreviewTemplate}">
+                                <ContentControl.Content>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TransparentColorToBrushConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource Self}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource Self}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="SelectedColor"
+                                                 RelativeSource="{RelativeSource AncestorType=local:ColorPicker}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="BorderBrush"
+                                                 RelativeSource="{RelativeSource AncestorType=local:ColorPicker}"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </ContentControl.Content>
+                            </ContentControl>
+                            <Grid Grid.Column="1"
+                                  Margin="{TemplateBinding Padding}">
+                                <TextBlock IsHitTestVisible="False"
+                                           Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
+                                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
+                                           Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                <ContentControl Margin="2,0,0,0"
+                                                IsHitTestVisible="False"
+                                                Focusable="False"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                Visibility="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.StringNonnullAndNotEmptyToCollapseConverter}},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                Content="{TemplateBinding Watermark}"
+                                                ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                                Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Focusable="True"
+                                         CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
+                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="TextBox">
+                                                        <Border x:Name="PART_ContentHost"
+                                                                Focusable="False"
+                                                                Margin="{TemplateBinding Padding}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button x:Name="BtnClear"
+                                    Grid.Column="2"
+                                    Visibility="Collapsed"
+                                    Style="{TemplateBinding ClearButtonStyle}"
+                                    Command="{TemplateBinding ClearCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:ColorPicker}}" />
+                            <local:TransformControl Grid.Column="3"
+                                                    Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
                         </Grid>
-                        <Button x:Name="BtnClear"
-                                Grid.Column="2"
-                                Visibility="Collapsed"
-                                Style="{TemplateBinding ClearButtonStyle}"
-                                Command="{TemplateBinding ClearCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:ColorPicker}}" />
-                        <local:TransformControl Grid.Column="3"
-                                                Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
-                    </Grid>
-                </ToggleButton>
-            </local:ContentControlX>
+                    </ToggleButton>
+                </Grid>
+            </Border>
             <local:PopupX x:Name="PART_Popup"
                           Focusable="False"
                           AllowsTransparency="True"
                           IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=TwoWay}"
-                          PlacementTarget="{Binding ElementName=CcMain}"
+                          PlacementTarget="{Binding ElementName=BdrContainer}"
                           Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                           PopupAnimation="Fade"
                           StaysOpen="False">

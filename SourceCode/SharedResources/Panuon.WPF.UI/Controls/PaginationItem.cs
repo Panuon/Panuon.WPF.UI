@@ -93,6 +93,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(PaginationItem));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(PaginationItem));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {
@@ -147,6 +169,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedBorderThicknessProperty =
             DependencyProperty.Register("SelectedBorderThickness", typeof(Thickness?), typeof(PaginationItem));
+        #endregion
+
+        #region SelectedCornerRadius
+        public CornerRadius? SelectedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(SelectedCornerRadiusProperty); }
+            set { SetValue(SelectedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.Register("SelectedCornerRadius", typeof(CornerRadius?), typeof(PaginationItem));
         #endregion
 
         #region SelectedShadowColor

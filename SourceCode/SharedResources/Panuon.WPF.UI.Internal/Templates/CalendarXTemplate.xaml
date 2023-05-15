@@ -11,15 +11,13 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
                      TargetType="local:CalendarX">
-        <local:ContentControlX x:Name="CcMain"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Padding="{TemplateBinding Padding}"
-                               CornerRadius="{TemplateBinding CornerRadius}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+        <Border x:Name="BdrContainer"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding ItemsBorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}"
+                Padding="{TemplateBinding Padding}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -96,7 +94,7 @@
                                               CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
                 </local:CarouselPanel>
             </Grid>
-        </local:ContentControlX>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="CurrentPanel"
                      Value="2">

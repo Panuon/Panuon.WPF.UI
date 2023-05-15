@@ -21,15 +21,15 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Border x:Name="CcBox"
-                              Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              CornerRadius="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             </Border>
             <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                  Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Ellipse x:Name="EllToggle"
                          SnapsToDevicePixels="False"
                          VerticalAlignment="Center"

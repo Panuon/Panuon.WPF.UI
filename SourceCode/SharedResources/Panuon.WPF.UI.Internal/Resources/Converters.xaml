@@ -25,7 +25,6 @@
     <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />
     <icv:DoubleDivideByConverter x:Key="{x:Static rs:ConverterKeys.DoubleDivideByConverter}" />
     <icv:DoubleIsConverter x:Key="{x:Static rs:ConverterKeys.DoubleIsConverter}" />
-    <icv:IsAllDoublesEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}" />
     <icv:DoubleToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}" />
     <icv:DoubleHalfToCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.DoubleHalfToCornerRadiusConverter}" />
     <icv:DoubleToGridLengthConverter x:Key="{x:Static rs:ConverterKeys.DoubleToGridLengthConverter}" />
@@ -46,7 +45,9 @@
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GetEnumDescriptionConverter x:Key="{x:Static rs:ConverterKeys.GetEnumDescriptionConverter}" />
     <icv:GroupBoxHeaderCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.GroupBoxHeaderCornerRadiusConverter}" />
+    <icv:IconPlacementToDockConverter x:Key="{x:Static irs:ConverterKeys.IconPlacementToDockConverter}" />
     <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
+    <icv:IsAllDoublesEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}" />
     <icv:IsDoubleEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleEqualToConverter}" />
     <icv:IsDoubleGreaterThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}" />
     <icv:IsDoubleLessThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleLessThanConverter}" />
