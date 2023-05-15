@@ -110,7 +110,7 @@
             <Setter Property="pu:IconHelper.VerticalAlignment"
                     Value="Top" />
             <Setter Property="pu:IconHelper.Margin"
-                    Value="0,10,7,0" />
+                    Value="0,-15,7,0" />
             <Setter Property="pu:ListBoxHelper.ItemsHeight"
                     Value="65" />
             <Setter Property="pu:ListBoxHelper.ItemsPadding"

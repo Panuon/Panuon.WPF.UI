@@ -50,7 +50,7 @@
         <Setter Property="InputMethod.IsInputMethodEnabled"
                 Value="False" />
         <Setter Property="local:IconHelper.Margin"
-                Value="10,0,0,0" />
+                Value="7,0,0,0" />
         <Setter Property="local:IconHelper.VerticalAlignment"
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"

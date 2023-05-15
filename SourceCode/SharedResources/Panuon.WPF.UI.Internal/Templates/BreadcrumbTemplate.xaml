@@ -11,20 +11,16 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.BreadcrumbTemplate}"
                      TargetType="local:Breadcrumb">
-        <local:ContentControlX x:Name="CcMain"
-                               Background="{TemplateBinding Background}"
-                               BorderBrush="{TemplateBinding BorderBrush}"
-                               BorderThickness="{TemplateBinding BorderThickness}"
-                               Foreground="{TemplateBinding Foreground}"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Padding="{TemplateBinding Padding}"
-                               CornerRadius="{TemplateBinding CornerRadius}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
+        <Border x:Name="BdrContainer"
+                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Padding="{TemplateBinding Padding}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <ItemsPresenter />
-        </local:ContentControlX>
-     
+        </Border>
+
     </ControlTemplate>
 
 </ResourceDictionary>

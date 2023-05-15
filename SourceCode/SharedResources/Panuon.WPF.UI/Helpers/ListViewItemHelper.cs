@@ -67,6 +67,36 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ListViewItemHelper));
         #endregion
 
+        #region HoverBorderThickness
+        public static Thickness? GetHoverBorderThickness(ComboBoxItem comboBoxItem)
+        {
+            return (Thickness?)comboBoxItem.GetValue(HoverBorderThicknessProperty);
+        }
+
+        public static void SetHoverBorderThickness(ComboBoxItem comboBoxItem, Thickness? value)
+        {
+            comboBoxItem.SetValue(HoverBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ListViewItemHelper));
+        #endregion
+
+        #region HoverCornerRadius
+        public static CornerRadius? GetHoverCornerRadius(ComboBoxItem comboBoxItem)
+        {
+            return (CornerRadius?)comboBoxItem.GetValue(HoverCornerRadiusProperty);
+        }
+
+        public static void SetHoverCornerRadius(ComboBoxItem comboBoxItem, CornerRadius? value)
+        {
+            comboBoxItem.SetValue(HoverCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ListViewItemHelper));
+        #endregion
+
         #region SelectedBackground
         public static Brush GetSelectedBackground(ListViewItem listViewItem)
         {
@@ -125,6 +155,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedBorderThicknessProperty =
             DependencyProperty.RegisterAttached("SelectedBorderThickness", typeof(Thickness?), typeof(ListViewItemHelper));
+        #endregion
+
+        #region SelectedCornerRadius
+        public static CornerRadius? GetSelectedCornerRadius(ListViewItem listViewItem)
+        {
+            return (CornerRadius?)listViewItem.GetValue(SelectedCornerRadiusProperty);
+        }
+
+        public static void SetSelectedCornerRadius(ListViewItem listViewItem, CornerRadius? value)
+        {
+            listViewItem.SetValue(SelectedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty SelectedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("SelectedCornerRadius", typeof(CornerRadius?), typeof(ListViewItemHelper));
         #endregion
 
         #region SeparatorBrush

@@ -44,10 +44,10 @@ namespace Samples.Views
         #endregion
 
         #region Event Handlers
-        private void BtnExample_Click(object sender, RoutedEventArgs e)
+        private void CrdExample_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var exampleItem = button.DataContext as ExampleItem;
+            var card = sender as Card;
+            var exampleItem = card.DataContext as ExampleItem;
             var window = (Window)Activator.CreateInstance(exampleItem.ViewType);
             window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             window.Owner = this;
@@ -151,5 +151,7 @@ namespace Samples.Views
             return border;
         }
         #endregion
+
+       
     }
 }

@@ -19,7 +19,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(MenuItemHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(MenuItemHelper));
         #endregion
 
         #region RemoveButtonVisibility

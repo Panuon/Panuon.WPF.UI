@@ -42,8 +42,8 @@ namespace Panuon.WPF.UI
         public static ComponentResourceKey ToggleArrowTransformControlStyleKey { get; } =
             new ComponentResourceKey(typeof(MultiComboBox), nameof(ToggleArrowTransformControlStyleKey));
 
-        public static ComponentResourceKey CheckBoxStyleKey { get; } =
-            new ComponentResourceKey(typeof(MultiComboBox), nameof(CheckBoxStyleKey));
+        public static ComponentResourceKey CheckedIconTemplateKey { get; } =
+            new ComponentResourceKey(typeof(MultiComboBox), nameof(CheckedIconTemplateKey));
 
         public static ComponentResourceKey SelectionBoxItemLabelStyleKey { get; } =
             new ComponentResourceKey(typeof(MultiComboBox), nameof(SelectionBoxItemLabelStyleKey));
@@ -360,49 +360,37 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("RemovingAnimationEasing", typeof(AnimationEasing), typeof(MultiComboBox));
         #endregion
 
-        #region CheckBoxStyle
-        public static Style GetCheckBoxStyle(MultiComboBox multiComboBox)
+        #region CheckedIconTemplate
+        public DataTemplate CheckedIconTemplate
         {
-            return (Style)multiComboBox.GetValue(CheckBoxStyleProperty);
+            get { return (DataTemplate)GetValue(CheckedIconTemplateProperty); }
+            set { SetValue(CheckedIconTemplateProperty, value); }
         }
 
-        public static void SetCheckBoxStyle(MultiComboBox multiComboBox, Style value)
-        {
-            multiComboBox.SetValue(CheckBoxStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty CheckBoxStyleProperty =
-            DependencyProperty.RegisterAttached("CheckBoxStyle", typeof(Style), typeof(MultiComboBox));
+        public static readonly DependencyProperty CheckedIconTemplateProperty =
+            DependencyProperty.Register("CheckedIconTemplate", typeof(DataTemplate), typeof(MultiComboBox));
         #endregion
 
         #region ToggleArrowTransformControlStyle
-        public static Style GetToggleArrowTransformControlStyle(MultiComboBox multiComboBox)
+        public Style ToggleArrowTransformControlStyle
         {
-            return (Style)multiComboBox.GetValue(ToggleArrowTransformControlStyleProperty);
-        }
-
-        public static void SetToggleArrowTransformControlStyle(MultiComboBox multiComboBox, Style value)
-        {
-            multiComboBox.SetValue(ToggleArrowTransformControlStyleProperty, value);
+            get { return (Style)GetValue(ToggleArrowTransformControlStyleProperty); }
+            set { SetValue(ToggleArrowTransformControlStyleProperty, value); }
         }
 
         public static readonly DependencyProperty ToggleArrowTransformControlStyleProperty =
-            DependencyProperty.RegisterAttached("ToggleArrowTransformControlStyle", typeof(Style), typeof(MultiComboBox));
+            DependencyProperty.Register("ToggleArrowTransformControlStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
 
         #region SelectionBoxItemLabelStyle
-        public static Style GetSelectionBoxItemLabelStyle(MultiComboBox multiComboBox)
+        public Style SelectionBoxItemLabelStyle
         {
-            return (Style)multiComboBox.GetValue(SelectionBoxItemLabelStyleProperty);
-        }
-
-        public static void SetSelectionBoxItemLabelStyle(MultiComboBox objmultiComboBox, Style value)
-        {
-            objmultiComboBox.SetValue(SelectionBoxItemLabelStyleProperty, value);
+            get { return (Style)GetValue(SelectionBoxItemLabelStyleProperty); }
+            set { SetValue(SelectionBoxItemLabelStyleProperty, value); }
         }
 
         public static readonly DependencyProperty SelectionBoxItemLabelStyleProperty =
-            DependencyProperty.RegisterAttached("SelectionBoxItemLabelStyle", typeof(Style), typeof(MultiComboBox));
+            DependencyProperty.Register("SelectionBoxItemLabelStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
 
         #region Items Properties
@@ -427,6 +415,28 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsHeightProperty =
             DependencyProperty.Register("ItemsHeight", typeof(double), typeof(MultiComboBox), new PropertyMetadata(30d));
+        #endregion
+
+        #region ItemsIcon
+        public object ItemsIcon
+        {
+            get { return (object)GetValue(ItemsIconProperty); }
+            set { SetValue(ItemsIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsIconProperty =
+            DependencyProperty.Register("ItemsIcon", typeof(object), typeof(MultiComboBox));
+        #endregion
+
+        #region ItemsIconWidth
+        public double ItemsIconWidth
+        {
+            get { return (double)GetValue(ItemsIconWidthProperty); }
+            set { SetValue(ItemsIconWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsIconWidthProperty =
+            DependencyProperty.Register("ItemsIconWidth", typeof(double), typeof(MultiComboBox), new PropertyMetadata(double.NaN));
         #endregion
 
         #region ItemsFontSize

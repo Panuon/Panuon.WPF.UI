@@ -45,6 +45,7 @@
         public const string ListViewScrollViewerTemplate = nameof(ListViewScrollViewerTemplate);
         public const string ListViewTemplate = nameof(ListViewTemplate);
         public const string ListViewItemTemplate = nameof(ListViewItemTemplate);
+        public const string ListViewItemNullViewTemplate = nameof(ListViewItemNullViewTemplate);
         public const string MenuTemplate = nameof(MenuTemplate);
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
@@ -57,7 +58,7 @@
         public const string PaginationItemTemplate = nameof(PaginationItemTemplate);
         public const string PaginationItemOmittingTemplate = nameof(PaginationItemOmittingTemplate);
         public const string PasswordBoxTemplate = nameof(PasswordBoxTemplate);
-        public const string PasswordBoxClearableTemplate = nameof(PasswordBoxClearableTemplate);
+        public const string PasswordBoxClearableAndPlainableTemplate = nameof(PasswordBoxClearableAndPlainableTemplate);
         public const string ProgressBarTemplate = nameof(ProgressBarTemplate);
         public const string ProgressBarIndeterminateTemplate = nameof(ProgressBarIndeterminateTemplate);
         public const string RadioButtonTemplate = nameof(RadioButtonTemplate);

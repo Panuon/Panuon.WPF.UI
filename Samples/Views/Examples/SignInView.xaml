@@ -169,12 +169,15 @@
                HorizontalAlignment="Left"
                Source="/Samples;component/Resources/Logo.png"
                RenderOptions.BitmapScalingMode="HighQuality" />
-        <pu:FormGroup Grid.Row="1"
+        <pu:FormGroup x:Name="FrmAccount"
+                      Grid.Row="1"
                       Margin="0,50,0,0"
                       Style="{StaticResource InputFormGroupStyle}">
-            <TextBox Style="{StaticResource SignInTextBoxStyle}"
+            <TextBox x:Name="TbAccount"
+                     Style="{StaticResource SignInTextBoxStyle}"
                      pu:TextBoxHelper.InputLimit="UpperCaseLetters,LowerCaseLetters,Digit"
-                     pu:TextBoxHelper.Watermark="UserName / Email / Phone" />
+                     pu:TextBoxHelper.Watermark="UserName / Email / Phone" 
+                     TextChanged="TbAccount_TextChanged"/>
         </pu:FormGroup>
         <pu:FormGroup x:Name="FrmPassword"
                       Grid.Row="2"

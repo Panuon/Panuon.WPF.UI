@@ -47,7 +47,7 @@
         <Setter Property="local:MenuHelper.TopLevelItemsPadding"
                 Value="10,0" />
         <Setter Property="local:MenuHelper.TopLevelItemsHeight"
-                Value="{Binding Height, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="30" />
         <Setter Property="local:MenuHelper.TopLevelItemsWidth"
                 Value="NaN" />
         <Setter Property="local:MenuHelper.TopLevelItemsBackground"
