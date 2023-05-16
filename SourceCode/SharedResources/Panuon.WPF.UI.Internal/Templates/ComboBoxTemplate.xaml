@@ -312,7 +312,6 @@
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Padding="{TemplateBinding Padding}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <DockPanel x:Name="DockContainer"
                            TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -323,7 +322,8 @@
                                      Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Content="{Binding Path=(local:ComboBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <ToggleButton Focusable="False"
+                    <ToggleButton Padding="{TemplateBinding Padding}"
+                                  Focusable="False"
                                   IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}">
                         <ToggleButton.Style>
                             <Style TargetType="ToggleButton">

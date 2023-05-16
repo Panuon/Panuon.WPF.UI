@@ -18,6 +18,7 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Border x:Name="BdrContainer"
+                        Padding="{TemplateBinding Padding}"
                         TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -55,7 +56,6 @@
                         <ContentPresenter x:Name="CpHeader"
                                           Grid.Column="1"
                                           RecognizesAccessKey="True"
-                                          Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           ContentSource="Header" />

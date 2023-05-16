@@ -281,18 +281,13 @@ namespace Panuon.WPF.UI
         #region Overrides
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)
         {
-            base.OnPreviewMouseDown(e);
-            RaiseEvent(new RoutedEventArgs(PressedEvent));
-        }
-
-        protected override void OnMouseDown(MouseButtonEventArgs e)
-        {
             e.Handled = true;
-            base.OnMouseDown(e);
+            base.OnPreviewMouseDown(e);
             if (CanSelect)
             {
                 RaiseEvent(new RoutedEventArgs(SelectedEvent));
             }
+            RaiseEvent(new RoutedEventArgs(PressedEvent));
         }
         #endregion
 

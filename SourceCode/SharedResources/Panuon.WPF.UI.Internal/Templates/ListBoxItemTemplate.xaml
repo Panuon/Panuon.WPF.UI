@@ -21,11 +21,11 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Border x:Name="BdrContainer"
+                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Padding="{TemplateBinding Padding}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid x:Name="GrdContainer"
                       TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -45,8 +45,7 @@
                     </Border>
                     <Grid Grid.Column="1"
                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                          Margin="{TemplateBinding Padding}">
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />

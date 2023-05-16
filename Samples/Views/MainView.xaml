@@ -126,6 +126,13 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
+                <ComboBox Height="35"
+                          Width="200"
+                          Foreground="CadetBlue">
+                    <ComboBoxItem Content="Item 1" />
+                    <ComboBoxItem Content="Item 2" />
+                    <ComboBoxItem Content="Item 3" />
+                </ComboBox>
                 <TextBlock Grid.Row="2"
                            FontSize="14"
                            Foreground="Gray"
@@ -133,5 +140,9 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
+        <Button Width="250"
+                Height="35" 
+                Content="Heek"
+                pu:ButtonHelper.Icon="&#xe900;" />
     </Grid>
 </pu:WindowX>

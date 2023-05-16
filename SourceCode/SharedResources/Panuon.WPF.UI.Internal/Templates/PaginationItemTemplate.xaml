@@ -21,6 +21,7 @@
                 Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <ContentPresenter Focusable="False"
                               RecognizesAccessKey="True"
+                              Margin="{TemplateBinding Padding}"
                               VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                               HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Border>

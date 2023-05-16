@@ -75,7 +75,8 @@
                                                     </MultiBinding>
                                                 </Border.Effect>
                                             </Border>
-                                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                                         </Grid>
                                         <ControlTemplate.Triggers>
