@@ -140,9 +140,5 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
-        <Button Width="250"
-                Height="35" 
-                Content="Heek"
-                pu:ButtonHelper.Icon="&#xe900;" />
     </Grid>
 </pu:WindowX>

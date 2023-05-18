@@ -11,18 +11,15 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TagItemTemplate}"
                      TargetType="local:TagItem">
-        <local:ContentControlX x:Name="CcMain"
-                               Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               Padding="{TemplateBinding Padding}"
-                               Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}">
-            <Grid>
+        <Border x:Name="BdrContainer"
+                Padding="{TemplateBinding Padding}"
+                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
@@ -37,7 +34,7 @@
                         Command="{Binding RemoveCommand, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
-        </local:ContentControlX>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="RemoveButtonVisibility"
                      Value="Collapsed">

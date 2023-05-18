@@ -13,8 +13,8 @@ namespace Panuon.WPF.UI.Internal.Converters
         {
             var cornerRadius = (CornerRadius)value;
 
-            return new CornerRadius(Math.Max(0, cornerRadius.TopLeft / 2 - 1),
-                Math.Max(0, cornerRadius.TopRight / 2 - 1),
+            return new CornerRadius(Math.Max(0, cornerRadius.TopLeft),
+                Math.Max(0, cornerRadius.TopRight),
                 0,
                 0);
         }

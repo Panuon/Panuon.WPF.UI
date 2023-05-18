@@ -32,15 +32,15 @@
                     </MultiBinding>
                 </Path.Data>
             </Path>
-            <local:ContentControlX Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Padding="{TemplateBinding Padding}">
+            <Border TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}">
                 <ContentPresenter Grid.Column="1"
                                   Focusable="False"
                                   RecognizesAccessKey="True"
                                   VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </local:ContentControlX>
+            </Border>
         </Grid>
     </ControlTemplate>
 

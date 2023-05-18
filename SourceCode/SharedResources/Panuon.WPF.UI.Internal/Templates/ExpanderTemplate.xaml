@@ -11,16 +11,13 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ExpanderUpDownTemplate}"
                      TargetType="Expander">
-        <local:ContentControlX x:Name="CcMain"
-                           Background="{TemplateBinding Background}"
-                           BorderBrush="{TemplateBinding BorderBrush}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Foreground="{TemplateBinding Foreground}"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalContentAlignment="Stretch"
-                           HorizontalContentAlignment="Stretch">
+        <Border x:Name="BdrContainer"
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -134,7 +131,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <local:TransformControl x:Name="TcTransform"
                                                 Margin="8,0,0,0"
@@ -167,7 +164,7 @@
                                          Margin="{TemplateBinding Padding}" />
                 </Border>
             </Grid>
-        </local:ContentControlX>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="ExpandDirection"
                      Value="Down">
@@ -194,7 +191,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Background"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -205,7 +202,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -216,7 +213,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderThickness"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -227,7 +224,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="CornerRadius"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -238,7 +235,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Effect">
                     <Setter.Value>
                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
@@ -334,13 +331,13 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ExpanderLeftRightTemplate}"
                      TargetType="Expander">
-        <local:ContentControlX x:Name="CcMain"
+        <local:ContentControlX x:Name="BdrContainer"
                            Background="{TemplateBinding Background}"
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Foreground="{TemplateBinding Foreground}"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           CornerRadius="{Binding Path=(local:ExpanderHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="Stretch"
                            HorizontalContentAlignment="Stretch">
@@ -442,7 +439,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Background"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -453,7 +450,7 @@
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderBrush"
                         Value="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

@@ -51,7 +51,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(TabItemHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(TabItemHelper));
         #endregion
 
         #region FontFamily

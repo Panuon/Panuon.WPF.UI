@@ -1,4 +1,5 @@
-﻿using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,7 +58,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ProgressBarHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ProgressBarHelper));
         #endregion
 
         #region IsPercentVisible

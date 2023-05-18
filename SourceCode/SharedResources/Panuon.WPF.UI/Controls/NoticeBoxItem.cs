@@ -172,6 +172,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(NoticeBoxItem));
         #endregion
 
+        #region HoverBorderThickness
+        public Thickness? HoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(NoticeBoxItem));
+        #endregion
+
+        #region HoverCornerRadius
+        public CornerRadius? HoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(HoverCornerRadiusProperty); }
+            set { SetValue(HoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty HoverCornerRadiusProperty =
+            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(NoticeBoxItem));
+        #endregion
+
         #region HoverShadowColor
         public Color? HoverShadowColor
         {

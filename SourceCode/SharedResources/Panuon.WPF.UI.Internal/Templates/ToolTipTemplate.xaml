@@ -11,22 +11,15 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ToolTipTemplate}"
                      TargetType="ToolTip">
-        <local:ContentControlX x:Name="CcMain"
-                           Background="{TemplateBinding Background}"
-                           BorderBrush="{TemplateBinding BorderBrush}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Foreground="{TemplateBinding Foreground}"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Padding="{TemplateBinding Padding}"
-                           CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                           Content="{TemplateBinding Content}"
-                           ContentTemplate="{TemplateBinding ContentTemplate}"
-                           ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                           ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                           Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <local:ContentControlX.Effect>
+        <Border x:Name="BdrContainer"
+                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Border.Effect>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                     <Binding Path="(local:ToolTipHelper.ShadowColor)"
                              RelativeSource="{RelativeSource TemplatedParent}"
@@ -47,8 +40,10 @@
                              RelativeSource="{RelativeSource TemplatedParent}"
                              Mode="OneWay" />
                 </MultiBinding>
-            </local:ContentControlX.Effect>
-        </local:ContentControlX>
+            </Border.Effect>
+            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+        </Border>
     </ControlTemplate>
     
 </ResourceDictionary>

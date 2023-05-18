@@ -16,23 +16,24 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <local:ContentControlX x:Name="CcMain"
-                                   i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   BorderThickness="{TemplateBinding BorderThickness}"
-                                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                   Icon="{TemplateBinding Icon}"
-                                   Padding="{TemplateBinding Padding}"
-                                   CornerRadius="{TemplateBinding CornerRadius}"
-                                   Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   >
-                <ContentPresenter Focusable="False"
-                                  RecognizesAccessKey="True"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-            </local:ContentControlX>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <DockPanel x:Name="DockContainer"
+                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <i:IconPresenter x:Name="IpIcon"
+                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Content="{Binding Path=(local:ComboBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter Margin="{TemplateBinding Padding}" />
+                </DockPanel>
+            </Border>
             <Rectangle x:Name="RectSeparator"
                        Grid.Row="1"
                        Fill="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -48,7 +49,7 @@
                     <Condition Binding="{Binding ClickBackground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="Background"
                         Value="{Binding ClickBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -59,7 +60,7 @@
                     <Condition Binding="{Binding ClickBorderBrush, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
                         Property="BorderBrush"
                         Value="{Binding ClickBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -70,10 +71,13 @@
                     <Condition Binding="{Binding ClickForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcMain"
-                        Property="IconForeground"
+                <Setter TargetName="BdrContainer"
+                        Property="TextBlock.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="CcMain"
+                <Setter TargetName="BdrContainer"
+                        Property="TextElement.Foreground"
+                        Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Setter TargetName="IpIcon"
                         Property="Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

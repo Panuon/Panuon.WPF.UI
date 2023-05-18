@@ -11,23 +11,26 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.LabelTemplate}"
                      TargetType="Label">
-        <local:ContentControlX x:Name="CcMain"
-                           Background="{TemplateBinding Background}"
-                           BorderBrush="{TemplateBinding BorderBrush}"
-                           BorderThickness="{TemplateBinding BorderThickness}"
-                           Foreground="{TemplateBinding Foreground}"
-                           Padding="{TemplateBinding Padding}"
-                           Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                           Icon="{Binding Path=(local:LabelHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           IconPlacement="{Binding Path=(local:LabelHelper.IconPlacement), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                           Content="{TemplateBinding Content}"
-                           ContentTemplate="{TemplateBinding ContentTemplate}"
-                           ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
-                           ContentStringFormat="{TemplateBinding ContentStringFormat}" />
-
+        <Border x:Name="BdrContainer"
+                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <DockPanel x:Name="DockContainer"
+                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                <i:IconPresenter x:Name="IpIcon"
+                                 DockPanel.Dock="{Binding Path=(local:LabelHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                 Content="{Binding Path=(local:LabelHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                 Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  Focusable="False"
+                                  RecognizesAccessKey="True" />
+            </DockPanel>
+        </Border>
     </ControlTemplate>
 </ResourceDictionary>

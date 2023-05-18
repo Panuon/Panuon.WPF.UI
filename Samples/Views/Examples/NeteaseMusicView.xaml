@@ -140,8 +140,6 @@
                     Value="{StaticResource PanuonIconFont}" />
             <Setter Property="pu:IconHelper.FontSize"
                     Value="20" />
-            <Setter Property="pu:IconHelper.Margin"
-                    Value="8,0" />
             <Setter Property="pu:TreeViewHelper.ItemsBorderBrush"
                     Value="Transparent" />
             <Setter Property="pu:TreeViewHelper.ItemsSelectedBorderBrush"
@@ -150,13 +148,9 @@
                     Value="#E8E8E8" />
             <Setter Property="pu:TreeViewHelper.ItemsBorderThickness"
                     Value="3,0,0,0" />
-            <Setter Property="pu:TreeViewHelper.ItemsPadding"
-                    Value="0" />
             <Setter Property="pu:TreeViewHelper.ItemsHeight"
                     Value="35" />
             <Setter Property="BorderThickness"
-                    Value="0" />
-            <Setter Property="Padding"
                     Value="0" />
             <Setter Property="pu:TreeViewHelper.ToggleArrowToggleButtonStyle"
                     Value="{x:Null}" />

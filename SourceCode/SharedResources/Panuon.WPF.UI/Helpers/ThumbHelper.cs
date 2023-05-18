@@ -67,7 +67,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ThumbHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ThumbHelper));
         #endregion
 
         #region ShadowColor

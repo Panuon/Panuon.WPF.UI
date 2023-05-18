@@ -57,11 +57,11 @@
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.Margin"
-                Value="0,0,5,0" />
+                Value="0,0,8,0" />
         <Setter Property="local:TreeViewItemHelper.InternalPadding"
                 Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TreeViewHelper.ItemsPadding"
-                Value="15,0,0,0" />
+                Value="10,0" />
         <Setter Property="local:TreeViewHelper.ItemsBackground"
                 Value="Transparent" />
         <Setter Property="local:TreeViewHelper.ItemsHoverBackground"

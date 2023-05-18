@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Panuon.WPF.UI.Internal;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -80,7 +81,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(MenuHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(MenuHelper));
         #endregion
 
         #region TopLevel Item

@@ -109,7 +109,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(DataGridHelper));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(DataGridHelper));
         #endregion
 
         #region ClickToEdit
