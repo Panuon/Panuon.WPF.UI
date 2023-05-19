@@ -73,10 +73,10 @@
                     <Condition Binding="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -196,10 +196,10 @@
                     <Condition Binding="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:ComboBoxItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"

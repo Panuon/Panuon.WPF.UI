@@ -12,7 +12,6 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ExpanderUpDownTemplate}"
                      TargetType="Expander">
         <Border x:Name="BdrContainer"
-                Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
