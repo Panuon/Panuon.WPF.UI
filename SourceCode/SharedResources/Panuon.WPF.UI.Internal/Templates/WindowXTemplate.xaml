@@ -153,6 +153,12 @@
                         Property="IsEnabled"
                         Value="False" />
             </Trigger>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter TargetName="GrdMain"
+                        Property="Margin"
+                        Value="8" />
+            </Trigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
                 <Setter TargetName="BtnMinimize"
@@ -478,6 +484,12 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter TargetName="GrdMain"
+                        Property="Margin"
+                        Value="8" />
+            </Trigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>
@@ -785,6 +797,12 @@
                         Property="IsEnabled"
                         Value="False" />
             </Trigger>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter TargetName="GrdMain"
+                        Property="Margin"
+                        Value="8" />
+            </Trigger>
             <Trigger Property="local:WindowXCaption.Buttons"
                      Value="None">
                 <Setter TargetName="BtnMinimize"
@@ -925,6 +943,12 @@
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
+            <Trigger Property="WindowState"
+                     Value="Maximized">
+                <Setter TargetName="GrdMain"
+                        Property="Margin"
+                        Value="8" />
+            </Trigger>
             <Trigger Property="IsMaskVisible"
                      Value="True">
                 <Trigger.EnterActions>
