@@ -151,7 +151,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(MultiComboBox));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(MultiComboBox));
         #endregion
 
         #region IsDropDownOpen
