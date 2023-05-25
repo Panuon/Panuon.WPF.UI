@@ -12,7 +12,6 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.LabelTemplate}"
                      TargetType="Label">
         <Border x:Name="BdrContainer"
-                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                 Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"

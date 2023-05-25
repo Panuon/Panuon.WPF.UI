@@ -194,3 +194,8 @@
 
 </ResourceDictionary>
 
+<DataTrigger Binding="{Binding Path=(local:ButtonHelper.ClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+             Value="True" />
+    <Setter Property="Background"
+            Value="{Binding Path=(local:ButtonHelper.ClickBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+</DataTrigger>

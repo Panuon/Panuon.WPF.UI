@@ -65,13 +65,12 @@ xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ```
 
 ```
-xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
-xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ...
 
 <Button Width="150"
         Height="35"
-        Style="{StaticResource {x:Static purs:StyleKeys.ButtonStyle}}"
+        Style="{StaticResource {x:Static pu:StyleKeys.ButtonStyle}}"
         Background="#6CBCEA"
         pu:ButtonHelper.CornerRadius="5"
         pu:ButtonHelper.HoverBackground="#6CA3EA"
