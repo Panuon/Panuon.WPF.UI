@@ -140,7 +140,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(MultiComboBox));
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(MultiComboBox));
         #endregion
 
         #region CornerRadius

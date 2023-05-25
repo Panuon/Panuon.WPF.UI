@@ -9,7 +9,7 @@ using System.Windows.Markup;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Panuon.WPF.UI")]
-[assembly: AssemblyCopyright("Copyright ©2018-2022 Panuon Group (open source orgnization).")]
+[assembly: AssemblyCopyright("Copyright ©2018-2023 Panuon Group (open source orgnization).")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -25,5 +25,5 @@ using System.Windows.Markup;
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.1.11.7")]
-[assembly: AssemblyFileVersion("1.1.11.7")]
+[assembly: AssemblyVersion("1.1.11.8")]
+[assembly: AssemblyFileVersion("1.1.11.8")]
