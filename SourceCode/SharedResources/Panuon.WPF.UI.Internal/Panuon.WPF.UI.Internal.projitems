@@ -143,6 +143,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GeometryUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\GridLengthUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\LocalizationUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\NumberUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Win32Util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WindowChromeUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\XamlUtil.cs" />

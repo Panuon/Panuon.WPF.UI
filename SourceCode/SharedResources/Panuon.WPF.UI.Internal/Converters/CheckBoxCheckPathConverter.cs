@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.WPF.UI.Internal.Utils;
+using System;
 using System.Globalization;
 using System.Windows.Media;
 
@@ -15,7 +16,7 @@ namespace Panuon.WPF.UI.Internal.Converters
             {
                 return null;
             }
-            var path = $"M {actualWidth / 6},{actualHeight * 7 / 12 - 1} L{actualWidth / 2 - 1},{actualHeight * 5 / 6 - 1} L{actualWidth * 5 / 6},{actualHeight * 3 / 12 - 1}";
+            var path = $"M {NumberUtil.Format(actualWidth / 6)},{NumberUtil.Format(actualHeight * 7 / 12 - 1)} L{NumberUtil.Format(actualWidth / 2 - 1)},{NumberUtil.Format(actualHeight * 5 / 6 - 1)} L{NumberUtil.Format(actualWidth * 5 / 6)},{NumberUtil.Format(actualHeight * 3 / 12 - 1)}";
             return Geometry.Parse(path);
         }
     }

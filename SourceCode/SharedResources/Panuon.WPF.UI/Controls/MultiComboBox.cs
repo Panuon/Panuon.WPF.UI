@@ -360,6 +360,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("RemovingAnimationEasing", typeof(AnimationEasing), typeof(MultiComboBox));
         #endregion
 
+        #region UncheckedIconTemplate
+        public DataTemplate UncheckedIconTemplate
+        {
+            get { return (DataTemplate)GetValue(UncheckedIconTemplateProperty); }
+            set { SetValue(UncheckedIconTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty UncheckedIconTemplateProperty =
+            DependencyProperty.Register("UncheckedIconTemplate", typeof(DataTemplate), typeof(MultiComboBox));
+        #endregion
+
         #region CheckedIconTemplate
         public DataTemplate CheckedIconTemplate
         {

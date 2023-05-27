@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.WPF.UI.Internal.Utils;
+using System;
 using System.Globalization;
 using System.Text;
 using System.Windows.Media;
@@ -33,11 +34,11 @@ namespace Panuon.WPF.UI.Internal.Converters
             if (percent > 0
                 && radius > 0)
             {
-                pathBuilder.Append($"M{startX},{startY} A{radius / 2},{radius / 2} 0 0 1 ");
+                pathBuilder.Append($"M{NumberUtil.Format(startX)},{NumberUtil.Format(startY)} A{NumberUtil.Format(radius / 2)},{NumberUtil.Format(radius / 2)} 0 0 1 ");
                 if (percent <= 0.5)
-                    pathBuilder.Append($"{endX},{endY}");
+                    pathBuilder.Append($"{NumberUtil.Format(endX)},{NumberUtil.Format(endY)}");
                 else
-                    pathBuilder.Append($"{center},{radius + thickness / 2} A{radius / 2},{radius / 2} 0 0 1 {endX},{endY}");
+                    pathBuilder.Append($"{NumberUtil.Format(center)},{NumberUtil.Format(radius + thickness / 2)} A{NumberUtil.Format(radius / 2)},{NumberUtil.Format(radius / 2)} 0 0 1 {NumberUtil.Format(endX)},{NumberUtil.Format(endY)}");
             }
 
             return Geometry.Parse(pathBuilder.ToString());

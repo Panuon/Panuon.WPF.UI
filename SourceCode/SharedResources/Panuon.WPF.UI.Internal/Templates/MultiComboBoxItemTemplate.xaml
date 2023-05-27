@@ -52,7 +52,7 @@
                                         Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                         FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                         ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
-                                        ContentTemplate="{Binding CheckedIconTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+                                        ContentTemplate="{Binding UncheckedIconTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
                     </Grid>
                     <ContentPresenter Grid.Column="1"
                                       Margin="{TemplateBinding Padding}"
@@ -74,6 +74,7 @@
                        Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
+            
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
@@ -89,6 +90,20 @@
             </DataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding UncheckedIconTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcChecked"
+                        Property="Visibility"
+                        Value="Visible" />
+                <Setter TargetName="BdrIcon"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding CheckedIconTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -97,6 +112,9 @@
                 <Setter TargetName="CcChecked"
                         Property="Visibility"
                         Value="Visible" />
+                <Setter TargetName="CcChecked"
+                        Property="ContentTemplate"
+                        Value="{Binding CheckedIconTemplate, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
                 <Setter TargetName="BdrIcon"
                         Property="Visibility"
                         Value="Collapsed" />

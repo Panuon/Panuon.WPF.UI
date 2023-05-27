@@ -4,7 +4,7 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Samples.Views"
-            xmlns:pui="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+            xmlns:pu="https://opensource.panuon.com/wpf-ui"
             mc:Ignorable="d"
             Title="MainView"
             Height="600"
@@ -126,13 +126,6 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </ScrollViewer>
-                <ComboBox Height="35"
-                          Width="200"
-                          Foreground="CadetBlue">
-                    <ComboBoxItem Content="Item 1" />
-                    <ComboBoxItem Content="Item 2" />
-                    <ComboBoxItem Content="Item 3" />
-                </ComboBox>
                 <TextBlock Grid.Row="2"
                            FontSize="14"
                            Foreground="Gray"
