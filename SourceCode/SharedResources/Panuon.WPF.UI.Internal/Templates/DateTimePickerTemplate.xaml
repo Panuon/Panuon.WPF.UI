@@ -30,7 +30,6 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <i:IconPresenter x:Name="IpIcon"
-                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <ToggleButton Grid.Column="1"

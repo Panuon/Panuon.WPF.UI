@@ -39,7 +39,6 @@
                     <Border Width="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}">
                         <i:IconPresenter x:Name="IpIcon"
                                          DockPanel.Dock="{Binding Path=(local:ListBoxItemHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Content="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Border>

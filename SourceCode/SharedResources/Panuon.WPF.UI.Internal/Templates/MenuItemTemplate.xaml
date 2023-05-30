@@ -34,7 +34,6 @@
                         </Grid.ColumnDefinitions>
                         <Grid Width="{Binding Path=(local:MenuHelper.TopLevelItemsIconWidth), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                             <i:IconPresenter x:Name="IpIcon"
-                                             Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                              Content="{TemplateBinding Icon}"
                                              Source="{Binding RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                             <ContentControl x:Name="CcChecked"

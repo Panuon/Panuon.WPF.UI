@@ -33,7 +33,6 @@
                     <Grid Width="{Binding ItemsIconWidth, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}">
                         <Border x:Name="BdrIcon">
                             <i:IconPresenter x:Name="IpIcon"
-                                             Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                              Content="{TemplateBinding Icon}"
                                              Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                         </Border>

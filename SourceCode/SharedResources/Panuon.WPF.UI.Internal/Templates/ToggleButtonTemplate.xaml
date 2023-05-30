@@ -168,7 +168,6 @@
                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <i:IconPresenter x:Name="IpIcon"
                                  DockPanel.Dock="{Binding Path=(local:ButtonHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                 Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Content="{Binding Path=(local:ButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter x:Name="CpContent"

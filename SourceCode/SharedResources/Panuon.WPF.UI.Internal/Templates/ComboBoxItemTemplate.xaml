@@ -28,7 +28,6 @@
                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <i:IconPresenter x:Name="IpIcon"
-                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Content="{Binding Path=(local:ComboBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <ContentPresenter Margin="{TemplateBinding Padding}" />
@@ -138,7 +137,6 @@
                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                     <i:IconPresenter x:Name="IpIcon"
-                                     Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Content="{Binding Path=(local:ComboBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Grid Margin="{TemplateBinding Padding}">

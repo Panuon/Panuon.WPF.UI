@@ -27,7 +27,6 @@
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <i:IconPresenter x:Name="IpIcon"
-                                 Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Content="{Binding Path=(local:TextBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Grid>
@@ -69,7 +68,6 @@
                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
                 <i:IconPresenter x:Name="IpIcon"
-                                 Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Content="{Binding Path=(local:TextBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                  Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 
