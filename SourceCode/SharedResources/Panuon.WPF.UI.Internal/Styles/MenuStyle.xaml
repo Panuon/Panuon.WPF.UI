@@ -47,7 +47,7 @@
         <Setter Property="local:MenuHelper.TopLevelItemsPadding"
                 Value="10,0" />
         <Setter Property="local:MenuHelper.TopLevelItemsHeight"
-                Value="30" />
+                Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.TopLevelItemsWidth"
                 Value="NaN" />
         <Setter Property="local:MenuHelper.TopLevelItemsBackground"
@@ -91,7 +91,7 @@
         <Setter Property="local:MenuHelper.TopLevelItemsVerticalContentAlignment"
                 Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuDropDownPlacement"
-                Value="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="RightBottom" />
         <Setter Property="local:MenuHelper.SubmenuDropDownVerticalOffset"
                 Value="{Binding Path=(local:DropDownHelper.VerticalOffset), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.SubmenuDropDownHorizontalOffset"
