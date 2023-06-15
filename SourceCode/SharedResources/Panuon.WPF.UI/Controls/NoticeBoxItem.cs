@@ -125,7 +125,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(NoticeBoxItem));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(NoticeBoxItem));
         #endregion
 
         #region ShadowColor

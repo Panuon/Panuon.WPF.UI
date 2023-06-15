@@ -51,7 +51,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(MultiComboBoxItem));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(MultiComboBoxItem));
         #endregion
 
         #region RemoveButtonVisibility
