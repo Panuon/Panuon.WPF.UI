@@ -135,6 +135,8 @@
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
                                 Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                <Canvas x:Name="PART_ToastCanvas" 
+                        IsHitTestVisible="False" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -481,6 +483,8 @@
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
                                 Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                <Canvas x:Name="PART_ToastCanvas"
+                        IsHitTestVisible="False" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -779,6 +783,8 @@
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
                                 Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                <Canvas x:Name="PART_ToastCanvas"
+                        IsHitTestVisible="False" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -940,6 +946,8 @@
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
                                 Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                <Canvas x:Name="PART_ToastCanvas"
+                        IsHitTestVisible="False" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>

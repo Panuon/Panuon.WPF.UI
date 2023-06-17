@@ -109,38 +109,38 @@ namespace Panuon.WPF.UI
           string caption,
           MessageBoxIcon icon,
           bool canClose,
-          int? duration)
+          int? durationMs)
         {
-            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: duration, imageIcon: null, setting: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: durationMs, imageIcon: null, setting: null);
         }
 
         public static INoticeHandler Show(string message,
            string caption,
            MessageBoxIcon icon,
            bool canClose,
-           int? duration,
+           int? durationMs,
            NoticeBoxSetting setting)
         {
-            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: duration, imageIcon: null, setting: setting);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: icon, timeout: durationMs, imageIcon: null, setting: setting);
         }
 
         public static INoticeHandler Show(string message,
            string caption,
            ImageSource imageIcon,
            bool canClose,
-           int? duration)
+           int? durationMs)
         {
-            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: duration, imageIcon: imageIcon, setting: null);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: durationMs, imageIcon: imageIcon, setting: null);
         }
 
         public static INoticeHandler Show(string message,
            string caption,
            ImageSource imageIcon,
            bool canClose,
-           int? duration,
+           int? durationMs,
            NoticeBoxSetting setting)
         {
-            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: duration, imageIcon: imageIcon, setting: setting);
+            return CallNoticeBox(message: message, caption: caption, canClose: canClose, icon: MessageBoxIcon.None, timeout: durationMs, imageIcon: imageIcon, setting: setting);
         }
 
         public static void DestroyInstance()

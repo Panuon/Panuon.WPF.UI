@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\GlobalSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\ApplicationTheme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\MessageBoxXSetting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Configurations\ToastSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\NoticeBoxSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Configurations\PendingBoxSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Contracts\IPendingHandler.cs" />
@@ -67,6 +68,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UIElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ZoomViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\HeaderPanelRibbonLineStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToastSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Toast.cs" />
     <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Enums\AnimationEasing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InputLimits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TimeSelectorMode.cs" />
@@ -84,7 +89,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\IndicatorPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\MessageBoxIcon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ProgressDirection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToggleArrowPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\RibbonLinePlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TabPanelAlignment.cs" />

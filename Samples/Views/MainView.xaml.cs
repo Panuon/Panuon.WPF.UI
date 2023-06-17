@@ -94,6 +94,11 @@ namespace Samples.Views
             //handler.Cancelling += ...
             //handler.Close();
         }
+        private void BtnToast_Click(object sender, RoutedEventArgs e)
+        {
+            Toast("Toast style configuration is placed in App.xaml.", 2000);
+            //Panuon.WPF.UI.Toast.Show(this, "Toast style configuration is placed in App.xaml.", 2000);
+        }
         #endregion
 
         #region Functions
@@ -150,8 +155,8 @@ namespace Samples.Views
             };
             return border;
         }
+
         #endregion
 
-       
     }
 }

@@ -54,7 +54,10 @@
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Height="30">
-                    <Button Content="MessageBoxX"
+                    <Button Content="Toast"
+                            Click="BtnToast_Click" />
+                    <Button Margin="10,0,0,0"
+                            Content="MessageBoxX"
                             Click="BtnTestMessageBoxX_Click" />
                     <Button Margin="10,0,0,0"
                             Content="NoticeBox"

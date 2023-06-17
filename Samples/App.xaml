@@ -12,7 +12,7 @@
                     <pu:MessageBoxXSettings x:Key="messageSetting">
                         <pu:MessageBoxXSettings.WindowXStyle>
                             <Style TargetType="pu:WindowX"
-                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=WindowXStyleKey, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                   BasedOn="{StaticResource {x:Static pu:MessageBoxX.WindowXStyleKey}}">
                                 <Setter Property="SizeToContent"
                                         Value="Manual" />
                                 <Setter Property="Width"
@@ -27,7 +27,7 @@
                         </pu:MessageBoxXSettings.WindowXStyle>
                         <pu:MessageBoxXSettings.ButtonStyle>
                             <Style TargetType="Button"
-                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=ButtonStyleKey, TypeInTargetAssembly={x:Type pu:MessageBoxX}}}">
+                                   BasedOn="{StaticResource {x:Static pu:MessageBoxX.ButtonStyleKey}}">
                                 <Setter Property="pu:ButtonHelper.CornerRadius"
                                         Value="4" />
                                 <Style.Triggers>
@@ -46,7 +46,7 @@
                     <pu:NoticeBoxSettings x:Key="noticeSetting">
                         <pu:NoticeBoxSettings.NoticeBoxItemStyle>
                             <Style TargetType="pu:NoticeBoxItem"
-                                   BasedOn="{StaticResource {ComponentResourceKey ResourceId=NoticeBoxItemStyleKey, TypeInTargetAssembly={x:Type pu:NoticeBox}}}">
+                                   BasedOn="{StaticResource {x:Static pu:NoticeBox.NoticeBoxItemStyleKey}}">
                                 <Setter Property="Background"
                                         Value="{DynamicResource WindowBackground}" />
                                 <Setter Property="BorderBrush"
@@ -102,6 +102,19 @@
                             </Style>
                         </pu:PendingBoxSettings.CancelButtonStyle>
                     </pu:PendingBoxSettings>
+
+                    <pu:ToastSettings x:Key="toastSetting"
+                                      Spacing="25">
+                        <pu:ToastSettings.LabelStyle>
+                            <Style TargetType="Label"
+                                   BasedOn="{StaticResource {x:Static pu:Toast.LabelStyleKey}}">
+                                <Setter Property="Background"
+                                        Value="{DynamicResource ToastBackground}" />
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource ToastForeground}" />
+                            </Style>
+                        </pu:ToastSettings.LabelStyle>
+                    </pu:ToastSettings>
 
                     <pu:GlobalSettings x:Key="settings">
                         <pu:GlobalSettings.Themes>

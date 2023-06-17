@@ -4,5 +4,8 @@
     <SolidColorBrush x:Key="WindowBackground">#FFFFFF</SolidColorBrush>
     <SolidColorBrush x:Key="BodyForeground">#1E1E1E</SolidColorBrush>
     <SolidColorBrush x:Key="DescriptionForeground">#8E8E8E</SolidColorBrush>
-    
+
+    <SolidColorBrush x:Key="ToastBackground">#1E1E1E</SolidColorBrush>
+    <SolidColorBrush x:Key="ToastForeground">#FFFFFF</SolidColorBrush>
+
 </ResourceDictionary>
