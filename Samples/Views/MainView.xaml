@@ -136,5 +136,12 @@
                            Text="{Binding Now, Source={x:Static pu:Tools.DateTime}, StringFormat='MM/dd/yyyy HH:mm:ss'}" />
             </Grid>
         </Grid>
+        <TreeView pu:TreeViewHelper.ToggleArrowPlacement="Right">
+            <TreeViewItem Header="Item 1">
+                <TreeViewItem Header="Item 1-1" />
+                <TreeViewItem Header="Item 1-2" />
+                <TreeViewItem Header="Item 1-3" />
+            </TreeViewItem>
+        </TreeView>
     </Grid>
 </pu:WindowX>

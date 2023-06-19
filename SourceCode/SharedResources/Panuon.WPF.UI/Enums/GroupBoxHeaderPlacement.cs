@@ -1,6 +1,6 @@
 ﻿namespace Panuon.WPF.UI
 {
-    public enum GroupBoxHeaderPlacement
+    public enum HeaderPlacement
     {
         Top,
         Bottom,

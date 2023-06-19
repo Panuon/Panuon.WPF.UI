@@ -63,6 +63,8 @@
         public const string TextBoxStyle = nameof(TextBoxStyle);
         public const string ThumbStyle = nameof(ThumbStyle);
         public const string ThumbFenceStyle = nameof(ThumbFenceStyle);
+        public const string TimelineStyle = nameof(TimelineStyle);
+        public const string TimelineItemStyle = nameof(TimelineItemStyle);
         public const string TimeSelectorItemStyle = nameof(TimeSelectorItemStyle);
         public const string TimeSelectorStyle = nameof(TimeSelectorStyle);
         public const string ToolTipStyle = nameof(ToolTipStyle);

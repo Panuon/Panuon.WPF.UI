@@ -55,8 +55,8 @@
                         </MultiBinding>
                     </Border.Effect>
                     <Grid x:Name="GrdHeader"
-                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                          VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                          HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition />

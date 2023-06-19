@@ -78,6 +78,9 @@
         public const string InternalSpinRingTemplate = nameof(InternalSpinRingTemplate);
         public const string InternalSpinRing2Template = nameof(InternalSpinRing2Template);
         public const string InternalSpinClassicTemplate = nameof(InternalSpinClassicTemplate);
+        public const string TimelineTemplate = nameof(TimelineTemplate);
+        public const string TimelineNonScrollableTemplate = nameof(TimelineNonScrollableTemplate);
+        public const string TimelineItemTemplate = nameof(TimelineItemTemplate);
         public const string SwitchTemplate = nameof(SwitchTemplate);
         public const string StateControlTemplate = nameof(StateControlTemplate);
         public const string TabControlTopBottomTemplate = nameof(TabControlTopBottomTemplate);

@@ -203,18 +203,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region HeaderPlacement
-        public static GroupBoxHeaderPlacement GetHeaderPlacement(GroupBox groupBox)
+        public static HeaderPlacement GetHeaderPlacement(GroupBox groupBox)
         {
-            return (GroupBoxHeaderPlacement)groupBox.GetValue(HeaderPlacementProperty);
+            return (HeaderPlacement)groupBox.GetValue(HeaderPlacementProperty);
         }
 
-        public static void SetHeaderPlacement(GroupBox groupBox, GroupBoxHeaderPlacement value)
+        public static void SetHeaderPlacement(GroupBox groupBox, HeaderPlacement value)
         {
             groupBox.SetValue(HeaderPlacementProperty, value);
         }
 
         public static readonly DependencyProperty HeaderPlacementProperty =
-            DependencyProperty.RegisterAttached("HeaderPlacement", typeof(GroupBoxHeaderPlacement), typeof(GroupBoxHelper));
+            DependencyProperty.RegisterAttached("HeaderPlacement", typeof(HeaderPlacement), typeof(GroupBoxHelper));
         #endregion
 
         #region HeaderHorizontalContentAlignment

@@ -40,6 +40,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\SearchBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\BreadcrumbItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TagItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Timeline.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TimelineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CarouselPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\AnimationStackPanel.cs" />
