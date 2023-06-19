@@ -151,7 +151,7 @@
             </Trigger>
             <DataTrigger Binding="{Binding Path=(local:TreeViewHelper.ToggleArrowPlacement), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                          Value="Right">
-                <Setter TargetName="BdrHeader"
+                <Setter TargetName="TgbToggle"
                         Property="Grid.Column"
                         Value="3" />
             </DataTrigger>
