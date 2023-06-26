@@ -166,8 +166,8 @@
                         Property="Visibility"
                         Value="Visible" />
             </Trigger>
-            <DataTrigger  Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                          Value="True">
+            <DataTrigger Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                         Value="True">
                 <Setter TargetName="CcWatermark"
                         Property="Visibility"
                         Value="Visible" />
