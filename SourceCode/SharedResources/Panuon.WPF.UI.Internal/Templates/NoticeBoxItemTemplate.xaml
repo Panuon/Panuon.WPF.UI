@@ -11,105 +11,109 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.NoticeBoxItemTemplate}"
                      TargetType="local:NoticeBoxItem">
-        <Border x:Name="BdrContainer"
-                TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Padding="{TemplateBinding Padding}"
-                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid Height="{TemplateBinding CaptionHeight}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Margin="10,0,0,0"
-                               Text="{TemplateBinding Caption}"
-                               VerticalAlignment="Center" />
-                    <Button x:Name="PART_CloseButton"
-                            Grid.Column="2"
-                            Foreground="{TemplateBinding Foreground}">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border Background="Transparent">
-                                                <TextBlock VerticalAlignment="Center"
-                                                           HorizontalAlignment="Center"
-                                                           Margin="10,0"
-                                                           Text="&#xe92d;"
-                                                           Foreground="{TemplateBinding Foreground}"
-                                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border x:Name="BdrContent"
+                    Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}"
+                    TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid Height="{TemplateBinding CaptionHeight}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="10,0,0,0"
+                                   Text="{TemplateBinding Caption}"
+                                   VerticalAlignment="Center" />
+                        <Button x:Name="PART_CloseButton"
+                                Grid.Column="2"
+                                Foreground="{TemplateBinding Foreground}">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border Background="Transparent">
+                                                    <TextBlock VerticalAlignment="Center"
+                                                               HorizontalAlignment="Center"
+                                                               Margin="10,0"
+                                                               Text="&#xe92d;"
+                                                               Foreground="{TemplateBinding Foreground}"
+                                                               FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Margin="15,5,15,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <local:StateControl CurrentState="{TemplateBinding Icon}"
+                                            VerticalAlignment="Center">
+                            <local:StateItem State="Info">
+                                <TextBlock Margin="10,0,20,0"
+                                           FontSize="40"
+                                           Foreground="#80BEE8"
+                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                                           Text="&#xe92f;" />
+                            </local:StateItem>
+                            <local:StateItem State="Question">
+                                <TextBlock Margin="10,0,20,0"
+                                           FontSize="50"
+                                           Foreground="#80BEE8"
+                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                                           Text="&#xe937;" />
+                            </local:StateItem>
+                            <local:StateItem State="Warning">
+                                <TextBlock Margin="10,0,20,0"
+                                           FontSize="50"
+                                           Foreground="#F9D01A"
+                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                                           Text="&#xe931;" />
+                            </local:StateItem>
+                            <local:StateItem State="Error">
+                                <TextBlock Margin="10,0,20,0"
+                                           FontSize="50"
+                                           Foreground="#FF5656"
+                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                                           Text="&#xe933;" />
+                            </local:StateItem>
+                            <local:StateItem State="Success">
+                                <TextBlock Margin="10,0,20,0"
+                                           FontSize="50"
+                                           Foreground="#75CD43"
+                                           FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                                           Text="&#xe935;" />
+                            </local:StateItem>
+                        </local:StateControl>
+                        <TextBlock Grid.Column="1"
+                                   Text="{TemplateBinding Message}"
+                                   TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis" />
+                    </Grid>
                 </Grid>
-                <Grid Grid.Row="1"
-                      Margin="15,5,15,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <local:StateControl CurrentState="{TemplateBinding Icon}"
-                                        VerticalAlignment="Center">
-                        <local:StateItem State="Info">
-                            <TextBlock Margin="10,0,20,0"
-                                       FontSize="40"
-                                       Foreground="#80BEE8"
-                                       FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                                       Text="&#xe92f;" />
-                        </local:StateItem>
-                        <local:StateItem State="Question">
-                            <TextBlock Margin="10,0,20,0"
-                                       FontSize="50"
-                                       Foreground="#80BEE8"
-                                       FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                                       Text="&#xe937;" />
-                        </local:StateItem>
-                        <local:StateItem State="Warning">
-                            <TextBlock Margin="10,0,20,0"
-                                       FontSize="50"
-                                       Foreground="#F9D01A"
-                                       FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                                       Text="&#xe931;" />
-                        </local:StateItem>
-                        <local:StateItem State="Error">
-                            <TextBlock Margin="10,0,20,0"
-                                       FontSize="50"
-                                       Foreground="#FF5656"
-                                       FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                                       Text="&#xe933;" />
-                        </local:StateItem>
-                        <local:StateItem State="Success">
-                            <TextBlock Margin="10,0,20,0"
-                                       FontSize="50"
-                                       Foreground="#75CD43"
-                                       FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                                       Text="&#xe935;" />
-                        </local:StateItem>
-                    </local:StateControl>
-                    <TextBlock Grid.Column="1"
-                               Text="{TemplateBinding Message}"
-                               TextWrapping="Wrap"
-                               VerticalAlignment="Center"
-                               TextTrimming="CharacterEllipsis" />
-                </Grid>
-            </Grid>
-        </Border>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -151,10 +155,10 @@
                     <Condition Binding="{Binding ClickForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

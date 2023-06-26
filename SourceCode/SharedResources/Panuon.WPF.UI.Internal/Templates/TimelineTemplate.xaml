@@ -9,75 +9,45 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxTemplate}"
-                     TargetType="ListBox">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineTemplate}"
+                     TargetType="local:Timeline">
         <Grid>
             <Border x:Name="BdrContainer"
+                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid>
                 <ScrollViewer x:Name="SvContent"
                               Focusable="False">
                     <ItemsPresenter />
                 </ScrollViewer>
                 <ContentControl x:Name="CcEmpty"
                                 Visibility="Collapsed"
-                                Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                Content="{Binding EmptyContent, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
         </Grid>
-        <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding HasItems, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="False" />
-                    <Condition Binding="{Binding Path=(local:ListBoxHelper.EmptyContent), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcEmpty"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="SvContent"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ListBoxNonScrollableTemplate}"
-                     TargetType="ListBox">
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineNonScrollableTemplate}"
+                     TargetType="local:Timeline">
         <Grid>
             <Border x:Name="BdrContainer"
+                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Margin="{TemplateBinding Padding}">
-                <ItemsPresenter x:Name="IpItems" />
+            <Grid>
+                <ItemsPresenter />
                 <ContentControl x:Name="CcEmpty"
                                 Visibility="Collapsed"
-                                Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                Content="{Binding EmptyContent, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid>
         </Grid>
-        <ControlTemplate.Triggers>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding HasItems, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="False" />
-                    <Condition Binding="{Binding Path=(local:ListBoxHelper.EmptyContent), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="CcEmpty"
-                        Property="Visibility"
-                        Value="Visible" />
-                <Setter TargetName="IpItems"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </MultiDataTrigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
-
+    
 </ResourceDictionary>

@@ -255,14 +255,25 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Value
-        public double Value
+        public double? Value
         {
-            get { return (double)GetValue(ValueProperty); }
+            get { return (double?)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(NumberInput), new PropertyMetadata(0d, OnValueChanged, OnValueCoerceValue));
+            DependencyProperty.Register("Value", typeof(double?), typeof(NumberInput), new PropertyMetadata(0d, OnValueChanged, OnValueCoerceValue));
+        #endregion
+
+        #region DefaultValue
+        public double? DefaultValue
+        {
+            get { return (double?)GetValue(DefaultValueProperty); }
+            set { SetValue(DefaultValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty DefaultValueProperty =
+            DependencyProperty.Register("DefaultValue", typeof(double?), typeof(NumberInput), new PropertyMetadata(0d));
         #endregion
 
         #region Maximum
@@ -309,6 +320,57 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("IsSnapToIntervalEnabled", typeof(bool), typeof(NumberInput));
         #endregion
 
+        #region IsReadOnly
+        public bool IsReadOnly
+        {
+            get { return (bool)GetValue(IsReadOnlyProperty); }
+            set { SetValue(IsReadOnlyProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(NumberInput));
+        #endregion
+
+
+        #region ClearButtonStyle
+        public static Style GetClearButtonStyle(NumberInput dateTimePicker)
+        {
+            return (Style)dateTimePicker.GetValue(ClearButtonStyleProperty);
+        }
+
+        public static void SetClearButtonStyle(NumberInput dateTimePicker, Style value)
+        {
+            dateTimePicker.SetValue(ClearButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty ClearButtonStyleProperty =
+            DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(NumberInput));
+        #endregion
+
+        #region ClearButtonVisibility
+        public AuxiliaryButtonVisibility ClearButtonVisibility
+        {
+            get { return (AuxiliaryButtonVisibility)GetValue(ClearButtonVisibilityProperty); }
+            set { SetValue(ClearButtonVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClearButtonVisibilityProperty =
+            DependencyProperty.Register("ClearButtonVisibility", typeof(AuxiliaryButtonVisibility), typeof(NumberInput));
+        #endregion
+
+        #region ClearCommand
+        internal ICommand ClearCommand
+        {
+            get { return (ICommand)GetValue(ClearCommandProperty); }
+        }
+
+        internal static readonly DependencyPropertyKey ClearCommandPropertyKey =
+            DependencyProperty.RegisterReadOnly("ClearCommand", typeof(ICommand), typeof(NumberInput), new PropertyMetadata(new RelayCommand<NumberInput>(OnClearCommandExecute)));
+
+        public static readonly DependencyProperty ClearCommandProperty =
+            ClearCommandPropertyKey.DependencyProperty;
+        #endregion
+
         #region UpCommand
         internal ICommand UpCommand
         {
@@ -340,6 +402,9 @@ namespace Panuon.WPF.UI
         #region ComponentResourceKeys
         public static ComponentResourceKey UpDownButtonStyleKey { get; }
             = new ComponentResourceKey(typeof(NumberInput), nameof(UpDownButtonStyleKey));
+
+        public static ComponentResourceKey ClearButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(NumberInput), nameof(ClearButtonStyleKey));
         #endregion
 
         #region Event
@@ -412,6 +477,12 @@ namespace Panuon.WPF.UI
             UpdateTextFromValue();
         }
 
+
+        private static void OnClearCommandExecute(NumberInput numberInput)
+        {
+            numberInput.Reset();
+        }
+
         private static void OnUpCommandExecute(NumberInput numberInput)
         {
             numberInput.Up();
@@ -426,14 +497,20 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Methods
+        public void Reset()
+        {
+            SetCurrentValue(ValueProperty, DefaultValue);
+        }
         public void Up()
         {
-            SetValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, Value + Interval)));
+            var value = Value ?? 0;
+            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value + Interval)));
         }
 
         public void Down()
         {
-            SetValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, Value - Interval)));
+            var value = Value ?? 0;
+            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value - Interval)));
         }
         #endregion
 
@@ -451,8 +528,18 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
+            if (_isInternalSet)
+            {
+                return;
+            }
 
-            _inputTextBox.Text = Value.ToString();
+            _isInternalSet = true;
+
+            _inputTextBox.Text = Value == null 
+                ? null 
+                : Value.ToString();
+
+            _isInternalSet = false;
 
         }
 
@@ -463,7 +550,18 @@ namespace Panuon.WPF.UI
                 return;
             }
 
-            if (double.TryParse(_inputTextBox.Text, out double doubleValue))
+            if (_isInternalSet)
+            {
+                return;
+            }
+
+            _isInternalSet = true;
+
+            if (string.IsNullOrWhiteSpace(_inputTextBox.Text))
+            {
+                SetCurrentValue(ValueProperty, DefaultValue);
+            }
+            else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
             {
                 SetCurrentValue(ValueProperty, doubleValue);
                 if(Value != doubleValue)
@@ -471,6 +569,8 @@ namespace Panuon.WPF.UI
                     UpdateTextFromValue();
                 }
             }
+
+            _isInternalSet = false;
         }
         #endregion
     }

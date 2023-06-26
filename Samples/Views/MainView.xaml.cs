@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF.UI;
+using Panuon.WPF.UI.Configurations;
 using Samples.Views.Tools;
 using System;
 using System.Collections.Generic;

@@ -11,56 +11,59 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.RadioButtonTemplate}"
                      TargetType="RadioButton">
-        <Grid Background="Transparent"
-              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-              Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Border x:Name="CcBox"
-                    Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    CornerRadius="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            </Border>
-            <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                  Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Ellipse x:Name="EllToggle"
-                         SnapsToDevicePixels="False"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Width="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         Height="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         Fill="{Binding Path=(i:VisualStateHelper.ToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         RenderTransformOrigin="0.5,0.5">
-                </Ellipse>
-                <Ellipse x:Name="EllCheckedToggle"
-                         SnapsToDevicePixels="False"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         Width="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         Height="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         Fill="{Binding Path=(local:RadioButtonHelper.CheckedToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                         RenderTransformOrigin="0.5,0.5">
-                    <Ellipse.RenderTransform>
-                        <ScaleTransform x:Name="sclToggle"
-                                        ScaleX="{Binding Path=(i:VisualStateHelper.Percent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                        ScaleY="{Binding Path=(i:VisualStateHelper.Percent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    </Ellipse.RenderTransform>
-                </Ellipse>
+        <Grid>
+            <Border Background="Transparent"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Grid Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="CcBox"
+                        Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DoubleToCornerRadiusConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                </Border>
+                <Grid Height="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Width="{Binding Path=(local:RadioButtonHelper.BoxRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Ellipse x:Name="EllToggle"
+                             SnapsToDevicePixels="False"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Width="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             Height="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             Fill="{Binding Path=(i:VisualStateHelper.ToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             RenderTransformOrigin="0.5,0.5">
+                    </Ellipse>
+                    <Ellipse x:Name="EllCheckedToggle"
+                             SnapsToDevicePixels="False"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Width="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             Height="{Binding Path=(local:RadioButtonHelper.ToggleRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             Fill="{Binding Path=(local:RadioButtonHelper.CheckedToggleBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                             RenderTransformOrigin="0.5,0.5">
+                        <Ellipse.RenderTransform>
+                            <ScaleTransform x:Name="sclToggle"
+                                            ScaleX="{Binding Path=(i:VisualStateHelper.Percent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            ScaleY="{Binding Path=(i:VisualStateHelper.Percent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Ellipse.RenderTransform>
+                    </Ellipse>
+                </Grid>
+                <ContentPresenter x:Name="CpContent"
+                                  Grid.Column="1"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Margin="{TemplateBinding Padding}" />
             </Grid>
-            <ContentPresenter x:Name="CpContent"
-                              Grid.Column="1"
-                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                              TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{TemplateBinding Padding}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="local:CheckBoxHelper.ContentPlacement"

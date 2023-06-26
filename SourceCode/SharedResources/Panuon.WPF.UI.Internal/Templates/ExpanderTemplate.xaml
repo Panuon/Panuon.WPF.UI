@@ -11,94 +11,49 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ExpanderUpDownTemplate}"
                      TargetType="Expander">
-        <Border x:Name="BdrContainer"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <ToggleButton x:Name="TgbHeader"
-                              Focusable="{TemplateBinding Focusable}"
-                              Height="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              BorderBrush="{Binding Path=(local:ExpanderHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              BorderThickness="{Binding Path=(local:ExpanderHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                              VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <ToggleButton.Style>
-                        <Style TargetType="ToggleButton">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ToggleButton">
-                                        <Grid>
-                                            <Border x:Name="BdrContainer"
-                                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                                    Background="{TemplateBinding Background}"
-                                                    CornerRadius="{Binding Path=(local:ExpanderHelper.HeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}">
-                                                <Border.Effect>
-                                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                                                        <Binding Path="(local:ExpanderHelper.HeaderShadowColor)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                        <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                        <Binding Path="(local:ShadowHelper.Direction)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                        <Binding Path="(local:ShadowHelper.Opacity)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                        <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                                                 RelativeSource="{RelativeSource AncestorType=Expander}"
-                                                                 Mode="OneWay" />
-                                                    </MultiBinding>
-                                                </Border.Effect>
-                                            </Border>
-                                            <ContentPresenter Margin="{TemplateBinding Padding}"
-                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                                        </Grid>
-                                        <ControlTemplate.Triggers>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                                                               Value="True" />
-                                                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                                               Value="True" />
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter TargetName="BdrContainer"
-                                                        Property="CornerRadius"
-                                                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                                            </MultiDataTrigger>
-                                            <MultiDataTrigger>
-                                                <MultiDataTrigger.Conditions>
-                                                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                                                               Value="True" />
-                                                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                                               Value="True" />
-                                                </MultiDataTrigger.Conditions>
-                                                <Setter TargetName="BdrContainer"
-                                                        Property="Effect">
-                                                    <Setter.Value>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ToggleButton x:Name="TgbHeader"
+                                  Focusable="{TemplateBinding Focusable}"
+                                  Height="{Binding Path=(local:ExpanderHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  BorderBrush="{Binding Path=(local:ExpanderHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  BorderThickness="{Binding Path=(local:ExpanderHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Background="{Binding Path=(local:ExpanderHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Foreground="{Binding Path=(local:ExpanderHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  FontSize="{Binding Path=(local:ExpanderHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  FontWeight="{Binding Path=(local:ExpanderHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  FontFamily="{Binding Path=(local:ExpanderHelper.HeaderFontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                  VerticalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalContentAlignment="{Binding Path=(local:ExpanderHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Grid>
+                                                <Border x:Name="BdrContainer"
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        Background="{TemplateBinding Background}"
+                                                        CornerRadius="{Binding Path=(local:ExpanderHelper.HeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}">
+                                                    <Border.Effect>
                                                         <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                                                            <Binding Path="(local:ExpanderHelper.ExpandedHeaderShadowColor)"
+                                                            <Binding Path="(local:ExpanderHelper.HeaderShadowColor)"
                                                                      RelativeSource="{RelativeSource AncestorType=Expander}"
                                                                      Mode="OneWay" />
                                                             <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -117,53 +72,102 @@
                                                                      RelativeSource="{RelativeSource AncestorType=Expander}"
                                                                      Mode="OneWay" />
                                                         </MultiBinding>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </MultiDataTrigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </ToggleButton.Style>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <local:TransformControl x:Name="TcTransform"
-                                                Margin="8,0,0,0"
-                                                Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
-                        <local:ContentControlX x:Name="CcHeader"
-                                               Grid.Column="1"
-                                               Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                               Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                               Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
-                                               Content="{TemplateBinding Header}"
-                                               ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                               ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                               ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
-                        <ContentControl Grid.Column="2"
-                                        Focusable="False"
-                                        Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    </Grid>
-                </ToggleButton>
-                <Rectangle x:Name="RectSeparator"
-                           Grid.Row="1"
-                           Fill="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Height="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Visibility="Collapsed" />
-                <Border x:Name="PART_ContentBorder"
-                        Grid.Row="2">
-                    <i:ContentPresenterX x:Name="CpChild"
-                                         IsVertical="True"
-                                         local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
-                                         Margin="{TemplateBinding Padding}" />
-                </Border>
-            </Grid>
-        </Border>
+                                                    </Border.Effect>
+                                                </Border>
+                                                <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                                                   Value="True" />
+                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                                   Value="True" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter TargetName="BdrContainer"
+                                                            Property="CornerRadius"
+                                                            Value="{Binding Path=(local:ExpanderHelper.ExpandedHeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                                                   Value="True" />
+                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                                   Value="True" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter TargetName="BdrContainer"
+                                                            Property="Effect">
+                                                        <Setter.Value>
+                                                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                                                <Binding Path="(local:ExpanderHelper.ExpandedHeaderShadowColor)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                                <Binding Path="(local:ShadowHelper.Direction)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                                                         RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                                         Mode="OneWay" />
+                                                            </MultiBinding>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </MultiDataTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <local:TransformControl x:Name="TcTransform"
+                                                    Margin="8,0,0,0"
+                                                    Style="{Binding Path=(local:ExpanderHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}" />
+                            <local:ContentControlX x:Name="CcHeader"
+                                                   Grid.Column="1"
+                                                   Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Icon="{Binding Path=(local:ExpanderHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                   Padding="{Binding Path=(local:ExpanderHelper.HeaderPadding), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                   Content="{TemplateBinding Header}"
+                                                   ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                   ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                                   ContentStringFormat="{TemplateBinding HeaderStringFormat}" />
+                            <ContentControl Grid.Column="2"
+                                            Focusable="False"
+                                            Content="{Binding Path=(local:ExpanderHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Grid>
+                    </ToggleButton>
+                    <Rectangle x:Name="RectSeparator"
+                               Grid.Row="1"
+                               Fill="{Binding Path=(local:ExpanderHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Height="{Binding Path=(local:ExpanderHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Margin="{Binding Path=(local:ExpanderHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Visibility="Collapsed" />
+                    <Border x:Name="PART_ContentBorder"
+                            Grid.Row="2">
+                        <i:ContentPresenterX x:Name="CpChild"
+                                             IsVertical="True"
+                                             local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
+                                             Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="ExpandDirection"
                      Value="Down">

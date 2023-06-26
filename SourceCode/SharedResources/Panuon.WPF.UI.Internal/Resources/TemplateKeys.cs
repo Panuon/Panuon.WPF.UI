@@ -73,6 +73,10 @@
         public const string ScrollViewerTemplate = nameof(ScrollViewerTemplate);
         public const string SliderHorizontalTemplate = nameof(SliderHorizontalTemplate);
         public const string SliderVerticalTemplate = nameof(SliderVerticalTemplate);
+        public const string TimelineTemplate = nameof(TimelineTemplate);
+        public const string TimelineNonScrollableTemplate = nameof(TimelineNonScrollableTemplate);
+        public const string TimelineItemHorizontalTemplate = nameof(TimelineItemHorizontalTemplate);
+        public const string TimelineItemVerticalTemplate = nameof(TimelineItemVerticalTemplate);
         public const string InternalSpinStandardTemplate = nameof(InternalSpinStandardTemplate);
         public const string InternalSpinWaveTemplate = nameof(InternalSpinWaveTemplate);
         public const string InternalSpinRingTemplate = nameof(InternalSpinRingTemplate);

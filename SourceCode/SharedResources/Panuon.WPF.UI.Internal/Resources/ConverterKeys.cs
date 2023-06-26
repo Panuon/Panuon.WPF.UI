@@ -25,6 +25,7 @@
         public const string DropDownOffsetConverter = nameof(DropDownOffsetConverter);
         public const string DropShadowEffectWithDepthConverter = nameof(DropShadowEffectWithDepthConverter);
         public const string FontSizeMinusConverter = nameof(FontSizeMinusConverter);
+        public const string GetIndexOfItemsControlConverter = nameof(GetIndexOfItemsControlConverter);
         public const string GetTypeConverter = nameof(GetTypeConverter);
         public const string GroupBoxHeaderCornerRadiusConverter = nameof(GroupBoxHeaderCornerRadiusConverter);
         public const string IconPlacementToDockConverter = nameof(IconPlacementToDockConverter);
@@ -43,6 +44,7 @@
         public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
+        public const string ThicknessLeftRightOnlyConverter = nameof(ThicknessLeftRightOnlyConverter);
         public const string TransparentColorToBrushConverter = nameof(TransparentColorToBrushConverter);
         public const string TreeViewInternalPaddingConverter = nameof(TreeViewInternalPaddingConverter);
         public const string TreeViewItemHorizontalSeparatorWidthConverter = nameof(TreeViewItemHorizontalSeparatorWidthConverter);

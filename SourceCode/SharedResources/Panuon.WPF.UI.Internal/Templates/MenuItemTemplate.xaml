@@ -18,13 +18,15 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Border x:Name="BdrContainer"
-                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BdrContent"
+                        Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -210,10 +212,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -277,10 +279,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -344,10 +346,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -416,13 +418,15 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Border x:Name="BdrContainer"
-                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BdrContent"
+                        Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -447,7 +451,6 @@
                                           ContentSource="Header" />
                         <ContentControl x:Name="CcArrow"
                                         Grid.Column="2"
-                                        
                                         Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                                         ContentTemplate="{Binding Path=(local:MenuHelper.SubmenuArrowIconTemplate), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
@@ -598,10 +601,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.CheckedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -654,10 +657,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.ClickForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -699,10 +702,10 @@
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:MenuItemHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"

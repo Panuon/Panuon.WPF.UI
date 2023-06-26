@@ -814,7 +814,6 @@ namespace Panuon.WPF.UI
             UpdateTimeSelectorTimeLimit();
             UpdateText();
             UpdateMode();
-
         }
         #endregion
 

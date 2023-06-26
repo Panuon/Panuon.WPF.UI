@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF;
+using Panuon.WPF.UI.Internal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,7 +86,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ThumbFence));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ThumbFence));
         #endregion
 
         #region ThumbStyle

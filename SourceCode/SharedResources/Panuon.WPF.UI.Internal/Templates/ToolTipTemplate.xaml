@@ -11,38 +11,43 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ToolTipTemplate}"
                      TargetType="ToolTip">
-        <Border x:Name="BdrContainer"
-                Padding="{TemplateBinding Padding}"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Border.Effect>
-                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                    <Binding Path="(local:ToolTipHelper.ShadowColor)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.BlurRadius)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Direction)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.Opacity)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.RenderingBias)"
-                             RelativeSource="{RelativeSource TemplatedParent}"
-                             Mode="OneWay" />
-                </MultiBinding>
-            </Border.Effect>
-            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-        </Border>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:ToolTipHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border.Effect>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <Binding Path="(local:ToolTipHelper.ShadowColor)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Direction)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.Opacity)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </Border.Effect>
+            </Border>
+            <Border Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding BorderThickness}">
+                <ContentPresenter Margin="{TemplateBinding Padding}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+            </Border>
+        </Grid>
     </ControlTemplate>
     
 </ResourceDictionary>
