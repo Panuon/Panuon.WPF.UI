@@ -83,8 +83,8 @@
                                          ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                             <i:IconPresenter.Visibility>
                                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
-                                    <Binding Path="Icon"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                    <Binding Path="Content"
+                                             RelativeSource="{RelativeSource Self}"
                                              Mode="OneWay" />
                                     <Binding Path="(local:IconHelper.HiddenOnNull)"
                                              RelativeSource="{RelativeSource TemplatedParent}"
