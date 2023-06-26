@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class IsLastItemInItemsControlConverter
+    class IsFirstItemInItemsControlConverter
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -17,7 +17,7 @@ namespace Panuon.WPF.UI.Internal.Converters
             if (item != null
                 && itemsControl != null)
             {
-                return itemsControl.ItemContainerGenerator.IndexFromContainer(item) == itemsControl.Items.Count - 1;
+                return itemsControl.ItemContainerGenerator.IndexFromContainer(item) == 0;
             }
 
             return false;

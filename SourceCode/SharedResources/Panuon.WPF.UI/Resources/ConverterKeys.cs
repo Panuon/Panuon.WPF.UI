@@ -29,6 +29,8 @@
         public const string IsAllEqualConverter = nameof(IsAllEqualConverter);
         public const string IsDoubleGreaterThanConverter = nameof(IsDoubleGreaterThanConverter);
         public const string IsDoubleLessThanConverter = nameof(IsDoubleLessThanConverter);
+        public const string IsFirstItemInItemsControlConverter = nameof(IsFirstItemInItemsControlConverter);
+        public const string IsLastItemInItemsControlConverter = nameof(IsLastItemInItemsControlConverter);
         public const string IsNullConverter = nameof(IsNullConverter);
         public const string IsNonnullConverter = nameof(IsNonnullConverter);
         public const string IsStringEqualToConverter = nameof(IsStringEqualToConverter);

@@ -54,10 +54,12 @@
     <icv:IsDoubleGreaterThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleGreaterThanConverter}" />
     <icv:IsDoubleLessThanConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleLessThanConverter}" />
     <icv:IsDoubleNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleNotEqualToConverter}" />
+    <icv:IsFirstItemInItemsControlConverter x:Key="{x:Static rs:ConverterKeys.IsFirstItemInItemsControlConverter}" />
     <icv:IsIntEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntEqualToConverter}" />
     <icv:IsIntGreaterThanConverter x:Key="{x:Static rs:ConverterKeys.IsIntGreaterThanConverter}" />
     <icv:IsIntLessThanConverter x:Key="{x:Static rs:ConverterKeys.IsIntLessThanConverter}" />
     <icv:IsIntNotEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsIntNotEqualToConverter}" />
+    <icv:IsLastItemInItemsControlConverter x:Key="{x:Static rs:ConverterKeys.IsLastItemInItemsControlConverter}" />
     <icv:IntMinusConverter x:Key="{x:Static rs:ConverterKeys.IntMinusConverter}" />
     <icv:IntMultiplyByConverter x:Key="{x:Static rs:ConverterKeys.IntMultiplyByConverter}" />
     <icv:IntPlusConverter x:Key="{x:Static rs:ConverterKeys.IntPlusConverter}" />

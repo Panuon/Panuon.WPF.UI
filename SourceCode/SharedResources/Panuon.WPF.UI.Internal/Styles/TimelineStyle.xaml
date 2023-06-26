@@ -140,6 +140,8 @@
         <Style.Triggers>
             <Trigger Property="Orientation"
                      Value="Horizontal">
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Center" />
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>

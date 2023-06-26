@@ -26,6 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BubblePathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsFirstItemInItemsControlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IsLastItemInItemsControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GroupBoxHeaderCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IconPlacementToDockConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IconVisibilityConverter.cs" />
@@ -47,7 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleNotEqualToConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntNotEqualToConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntEqualToConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\ItemInedxInItemsControlConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GetIndexOfItemsControlConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NonnullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeBrushConverter.cs" />
