@@ -9,20 +9,203 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineItemTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineItemVerticalTemplate}"
                      TargetType="local:TimelineItem">
         <Grid>
             <Border x:Name="BdrContainer"
-                    i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <StackPanel Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Grid Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border x:Name="BdrHeader"
+                        Grid.ColumnSpan="2"
+                        Height="{Binding HeaderHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderBrush="{Binding HeaderBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding HeaderBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Border.Effect>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                            <Binding Path="HeaderShadowColor"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.Direction)"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.Opacity)"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Border.Effect>
+                </Border>
+                <Grid>
+                    <ContentControl x:Name="CcToggle"
+                                    Focusable="False"
+                                    Content=" "
+                                    ContentTemplate="{TemplateBinding ToggleTemplate}" />
+                    <Border x:Name="BdrIcon"
+                            Grid.Row="1"
+                            Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <i:IconPresenter x:Name="IpIcon"
+                                         Foreground="{Binding Path=(local:IconHelper.Foreground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    </Border>
+                    <ContentControl x:Name="CcComplatedGlyph"
+                                    Content=" "
+                                    ContentTemplate="{TemplateBinding CompletedGlyphTemplate}"
+                                    Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </Grid>
+                <ContentPresenter Grid.Column="1"
+                                  ContentSource="Header"
+                                  Focusable="False"
+                                  Margin="{Binding HeaderPadding, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextElement.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextElement.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  VerticalAlignment="{Binding HeaderVerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalAlignment="{Binding HeaderHorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextElement.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Rectangle x:Name="RectStick"
+                           Grid.Row="1"
+                           HorizontalAlignment="Center"
+                           Width="{Binding StickThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Stroke="{Binding StickStroke, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           StrokeThickness="{Binding StickStrokeThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Fill="{Binding StickFill, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <ContentPresenter Grid.Row="1"
+                                  Grid.Column="1"
+                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Margin="{TemplateBinding Padding}" />
+                <Rectangle x:Name="RectSeparator"
+                           Grid.Row="2"
+                           Grid.ColumnSpan="2"
+                           Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Margin="{Binding SeparatorMargin, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Fill="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           Height="{Binding SeparatorThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </Grid>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPending, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding PendingToggleTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcToggle"
+                        Property="ContentTemplate"
+                        Value="{Binding PendingToggleTemplate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <DataTrigger Value="False">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                        <Binding Path="."
+                                 RelativeSource="{RelativeSource Self}" />
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter TargetName="RectSeparator"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedStickFill, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectStick"
+                        Property="Fill"
+                        Value="{Binding CompletedStickFill, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedStickStroke, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectStick"
+                        Property="Stroke"
+                        Value="{Binding CompletedStickStroke, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedStickStrokeThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="RectStick"
+                        Property="StrokeThickness"
+                        Value="{Binding CompletedStickStrokeThickness, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding ShowIndex, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="IpIcon"
+                        Property="Content">
+                    <Setter.Value>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.GetIndexOfItemsControlConverter}}"
+                                      ConverterParameter="1">
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=local:TimelineItem}" />
+                            <Binding Path="."
+                                     RelativeSource="{RelativeSource AncestorType=local:Timeline}" />
+                        </MultiBinding>
+                    </Setter.Value>
+                </Setter>
+            </MultiDataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineItemHorizontalTemplate}"
+                     TargetType="local:TimelineItem">
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <StackPanel Orientation="Horizontal"
+                        Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
@@ -31,6 +214,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Border x:Name="BdrHeader"
+                            Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Height="{Binding HeaderHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -60,54 +244,61 @@
                             </MultiBinding>
                         </Border.Effect>
                     </Border>
-                    <Grid x:Name="GrdHeader"
-                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <ContentControl x:Name="CcToggle"
-                                        Visibility="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.NonnullToHiddenConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentControl x:Name="CcToggle"
+                                    Content=" "
+                                    ContentTemplate="{TemplateBinding ToggleTemplate}" />
+                    <Rectangle x:Name="RectLine"
+                               Grid.Column="1"
+                               VerticalAlignment="Center"
+                               Visibility="{Binding LineVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Margin="{Binding LineMargin, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Height="{Binding LineThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Fill="{Binding LineBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <Border x:Name="BdrIcon"
+                            Grid.Row="1"
+                            Visibility="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter x:Name="IpIcon"
-                                         Visibility="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        <ContentPresenter Grid.Column="1"
-                                          ContentSource="Header"
-                                          Focusable="False"
-                                          Margin="{Binding HeaderPadding, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextBlock.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextElement.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextBlock.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextElement.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          VerticalAlignment="{Binding HeaderVerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          HorizontalAlignment="{Binding HeaderHorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextBlock.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextElement.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    </Grid>
-                    <Rectangle x:Name="RectLine"
-                               Grid.Row="1"
-                               HorizontalAlignment="Center"
-                               Visibility="{Binding LineVisibility, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
-                               Margin="{Binding LineMargin, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
-                               Width="{Binding LineThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}"
-                               Fill="{Binding LineBrush, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
-                    <Border Grid.Row="1"
-                            Grid.Column="1"
-                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                        <ContentPresenter />
                     </Border>
+                    <ContentPresenter Grid.Row="1"
+                                      Grid.ColumnSpan="2"
+                                      ContentSource="Header"
+                                      Focusable="False"
+                                      Margin="{Binding HeaderPadding, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextBlock.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextElement.FontSize="{Binding HeaderFontSize, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextBlock.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextElement.FontWeight="{Binding HeaderFontWeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      VerticalAlignment="{Binding HeaderVerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalAlignment="{Binding HeaderHorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextBlock.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextElement.Foreground="{Binding HeaderForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter Grid.Row="2"
+                                      Grid.ColumnSpan="2"
+                                      VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      Margin="{TemplateBinding Padding}" />
                 </Grid>
                 <Rectangle x:Name="RectSeparator"
                            Visibility="{Binding SeparatorVisibility, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Margin="{Binding SeparatorMargin, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Fill="{Binding SeparatorBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Height="{Binding SeparatorThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                           Width="{Binding SeparatorThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </StackPanel>
         </Grid>
         <ControlTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPending, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding PendingToggleTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcToggle"
+                        Property="ContentTemplate"
+                        Value="{Binding PendingToggleTemplate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
@@ -123,5 +314,5 @@
             </DataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
 </ResourceDictionary>

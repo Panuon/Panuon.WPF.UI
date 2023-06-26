@@ -11,25 +11,28 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.LabelTemplate}"
                      TargetType="Label">
-        <Border x:Name="BdrContainer"
-                Padding="{TemplateBinding Padding}"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <DockPanel x:Name="DockContainer"
-                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <i:IconPresenter x:Name="IpIcon"
-                                 DockPanel.Dock="{Binding Path=(local:LabelHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                 Content="{Binding Path=(local:LabelHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                 Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  Focusable="False"
-                                  RecognizesAccessKey="True" />
-            </DockPanel>
-        </Border>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{Binding Path=(local:LabelHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}">
+                <DockPanel x:Name="DockContainer"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <i:IconPresenter x:Name="IpIcon"
+                                     DockPanel.Dock="{Binding Path=(local:LabelHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Content="{Binding Path=(local:LabelHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Focusable="False"
+                                      RecognizesAccessKey="True" />
+                </DockPanel>
+            </Border>
+        </Grid>
     </ControlTemplate>
 </ResourceDictionary>

@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
+
                     <pu:MessageBoxXSettings x:Key="messageSetting">
                         <pu:MessageBoxXSettings.WindowXStyle>
                             <Style TargetType="pu:WindowX"
@@ -119,9 +120,9 @@
                     <pu:GlobalSettings x:Key="settings">
                         <pu:GlobalSettings.Themes>
                             <pu:ApplicationTheme Key="Light"
-                                                       ResourceDictionary="/Samples;component/Themes/Light.xaml" />
+                                                 ResourceDictionary="/Samples;component/Themes/Light.xaml" />
                             <pu:ApplicationTheme Key="Dark"
-                                                       ResourceDictionary="/Samples;component/Themes/Dark.xaml" />
+                                                 ResourceDictionary="/Samples;component/Themes/Dark.xaml" />
                         </pu:GlobalSettings.Themes>
                     </pu:GlobalSettings>
                 </ResourceDictionary>

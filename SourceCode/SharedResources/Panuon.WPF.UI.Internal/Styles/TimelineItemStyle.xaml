@@ -4,13 +4,17 @@
                     xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
-                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
+                    xmlns:ts="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TimelineItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static rs:StyleKeys.TimelineItemStyle}"
            TargetType="local:TimelineItem">
+        <Style.Resources>
+            <ts:TextBlockFirstTemplateSelector x:Key="TextBlockFirstTemplateSelector" />
+        </Style.Resources>
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="local:IconHelper.Foreground"
@@ -47,7 +51,51 @@
                 Value="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="local:ShadowHelper.ShadowDepth"
                 Value="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
-        <Setter Property="HeaderCornerRadius"
+        <Setter Property="ShowIndex"
+                Value="{Binding ShowIndex, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="Orientation"
+                Value="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ToggleTemplate"
+                Value="{Binding ItemsToggleTemplate, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ToggleSize"
+                Value="{Binding ItemsToggleSize, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ToggleFill"
+                Value="{Binding ItemsToggleFill, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ToggleStroke"
+                Value="{Binding ItemsToggleStroke, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ToggleStrokeThickness"
+                Value="{Binding ItemsToggleStrokeThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="StickThickness"
+                Value="{Binding ItemsStickThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="StickFill"
+                Value="{Binding ItemsStickFill, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="StickStroke"
+                Value="{Binding ItemsStickStroke, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="StickStrokeThickness"
+                Value="{Binding ItemsStickStrokeThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="PendingToggleTemplate"
+                Value="{Binding ItemsPendingToggleTemplate, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="PendingSpinGlyphBrush"
+                Value="{Binding ItemsPendingSpinGlyphBrush, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="PendingSpinGlyphThickness"
+                Value="{Binding ItemsPendingSpinGlyphThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedToggleFill"
+                Value="{Binding ItemsCompletedToggleFill, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedToggleStroke"
+                Value="{Binding ItemsCompletedToggleStroke, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedToggleStrokeThickness"
+                Value="{Binding ItemsCompletedToggleStrokeThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedStickFill"
+                Value="{Binding ItemsCompletedStickFill, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedStickStroke"
+                Value="{Binding ItemsCompletedStickStroke, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedStickStrokeThickness"
+                Value="{Binding ItemsCompletedStickStrokeThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedGlyphTemplate"
+                Value="{Binding ItemsCompletedGlyphTemplate, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CompletedGlyphBrush"
+                Value="{Binding ItemsCompletedGlyphBrush, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
                 Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="ShadowColor"
                 Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
@@ -74,7 +122,9 @@
         <Setter Property="Margin"
                 Value="{Binding ItemsMargin, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="Padding"
-                Value="{Binding ItemsPadding, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+                Value="{Binding Padding, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="Foreground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="BorderBrush"
@@ -85,9 +135,28 @@
                 Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="HorizontalContentAlignment"
                 Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderVerticalContentAlignment"
+                Value="{Binding ItemsHeaderVerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderHorizontalContentAlignment"
+                Value="{Binding ItemsHeaderHorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderPadding"
+                Value="{Binding ItemsHeaderPadding, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderFontSize"
+                Value="{Binding ItemsHeaderFontSize, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderFontWeight"
+                Value="{Binding ItemsHeaderFontWeight, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderForeground"
+                Value="{Binding ItemsHeaderForeground, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="ContentTemplateSelector"
+                Value="{StaticResource TextBlockFirstTemplateSelector}" />
         <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.TimelineItemTemplate}}" />
+                Value="{StaticResource {x:Static irs:TemplateKeys.TimelineItemVerticalTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.TimelineItemHorizontalTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

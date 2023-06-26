@@ -11,95 +11,98 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.GroupBoxTemplate}"
                      TargetType="GroupBox">
-        <Border x:Name="BdrContainer"
-                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Border x:Name="BdrHeader"
-                        Height="{Binding Path=(local:GroupBoxHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        CornerRadius="{Binding Path=(local:GroupBoxHelper.HeaderCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        BorderBrush="{Binding Path=(local:GroupBoxHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        BorderThickness="{Binding Path=(local:GroupBoxHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                        Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <Border.Effect>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
-                            <Binding Path="(local:GroupBoxHelper.HeaderShadowColor)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                            <Binding Path="(local:ShadowHelper.BlurRadius)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                            <Binding Path="(local:ShadowHelper.ShadowDepth)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                            <Binding Path="(local:ShadowHelper.Direction)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                            <Binding Path="(local:ShadowHelper.Opacity)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                            <Binding Path="(local:ShadowHelper.RenderingBias)"
-                                     RelativeSource="{RelativeSource AncestorType=GroupBox}"
-                                     Mode="OneWay" />
-                        </MultiBinding>
-                    </Border.Effect>
-                    <Grid x:Name="GrdHeader"
-                          VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                          HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <i:IconPresenter x:Name="IpIcon"
-                                         Content="{Binding Path=(local:GroupBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                        <Grid Grid.Column="1"
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border x:Name="BdrHeader"
+                            Height="{Binding Path=(local:GroupBoxHelper.HeaderHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            CornerRadius="{Binding Path=(local:GroupBoxHelper.HeaderCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            BorderBrush="{Binding Path=(local:GroupBoxHelper.HeaderBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            BorderThickness="{Binding Path=(local:GroupBoxHelper.HeaderBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                            Background="{Binding Path=(local:GroupBoxHelper.HeaderBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <Border.Effect>
+                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <Binding Path="(local:GroupBoxHelper.HeaderShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=GroupBox}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </Border.Effect>
+                        <Grid x:Name="GrdHeader"
                               VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                              Margin="{Binding Path=(local:GroupBoxHelper.HeaderPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                              HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <ContentPresenter ContentSource="Header"
-                                              Focusable="False"
-                                              TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              TextElement.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              TextBlock.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              TextElement.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              TextElement.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <ContentControl Grid.Column="1"
-                                            Focusable="False"
-                                            Content="{Binding Path=(local:GroupBoxHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <i:IconPresenter x:Name="IpIcon"
+                                             Content="{Binding Path=(local:GroupBoxHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                             Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            <Grid Grid.Column="1"
+                                  VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  Margin="{Binding Path=(local:GroupBoxHelper.HeaderPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter ContentSource="Header"
+                                                  Focusable="False"
+                                                  TextBlock.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  TextElement.FontSize="{Binding Path=(local:GroupBoxHelper.HeaderFontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  TextBlock.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  TextElement.FontWeight="{Binding Path=(local:GroupBoxHelper.HeaderFontWeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  VerticalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderVerticalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  HorizontalAlignment="{Binding Path=(local:GroupBoxHelper.HeaderHorizontalContentAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  TextBlock.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                  TextElement.Foreground="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ContentControl Grid.Column="1"
+                                                Focusable="False"
+                                                Content="{Binding Path=(local:GroupBoxHelper.ExtendControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Border>
-                <Rectangle x:Name="RectSeparator"
-                           Grid.Row="1"
-                           Fill="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Height="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Margin="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           Visibility="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter Grid.Row="2"
-                                  Margin="{TemplateBinding Padding}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-            </Grid>
-        </Border>
+                    </Border>
+                    <Rectangle x:Name="RectSeparator"
+                               Grid.Row="1"
+                               Fill="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Height="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Margin="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                               Visibility="{Binding Path=(local:GroupBoxHelper.HeaderSeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter Grid.Row="2"
+                                      Margin="{TemplateBinding Padding}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                </Grid>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="local:GroupBoxHelper.HeaderPlacement"
                      Value="Bottom">

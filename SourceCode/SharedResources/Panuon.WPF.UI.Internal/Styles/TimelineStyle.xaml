@@ -4,32 +4,148 @@
                     xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
-                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
+                    xmlns:ts="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
     <ResourceDictionary.MergedDictionaries>
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TimelineItemStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TimelineTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="local:Timeline">
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ToggleDataTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}">
+        <Ellipse x:Name="EllToggle"
+                 Stroke="{Binding ToggleStroke, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                 StrokeThickness="{Binding ToggleStrokeThickness, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                 Fill="{Binding ToggleFill, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                 Width="{Binding ToggleSize, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                 Height="{Binding ToggleSize, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+        <DataTemplate.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedToggleFill, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="EllToggle"
+                        Property="Fill"
+                        Value="{Binding CompletedToggleFill, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedToggleStroke, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="EllToggle"
+                        Property="Stroke"
+                        Value="{Binding CompletedToggleStroke, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CompletedToggleStrokeThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="EllToggle"
+                        Property="StrokeThickness"
+                        Value="{Binding CompletedToggleStrokeThickness, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+            </MultiDataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=PendingToggleDataTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}">
+        <local:Spin SpinStyle="Ring"
+                    GlyphBrush="{Binding PendingSpinGlyphBrush, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    GlyphSize="{Binding PendingSpinGlyphThickness, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    Width="{Binding ToggleSize, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    Height="{Binding ToggleSize, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CompletedGlyphTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}">
+        <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="{Binding CompletedGlyphBrush, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                   FontFamily="/Panuon.WPF.UI;component/Resources/#PanuonIcon"
+                   Text="&#xe939;" />
+    </DataTemplate>
+
+    <Style x:Key="{x:Static rs:StyleKeys.TimelineStyle}"
+           TargetType="local:Timeline">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
-        <Setter Property="local:IconHelper.Margin"
-                Value="0,0,5,0" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
-        <Setter Property="ItemsBackground"
-                Value="Transparent" />
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
+        <Setter Property="Padding"
+                Value="7" />
+        <Setter Property="ItemsToggleTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ToggleDataTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}}" />
+        <Setter Property="ItemsPendingToggleTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=PendingToggleDataTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}}" />
+        <Setter Property="ItemsBackground"
+                Value="Transparent" />
+        <Setter Property="ItemsForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderVerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderHorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderPadding"
+                Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderFontSize"
+                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderFontWeight"
+                Value="Bold" />
+        <Setter Property="ItemsHeaderForeground"
+                Value="{Binding ItemsForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsHeaderPadding"
+                Value="{Binding Padding, Converter={StaticResource {x:Static irs:ConverterKeys.ThicknessLeftRightOnlyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"/>
+        <Setter Property="ItemsToggleSize"
+                Value="18" />
+        <Setter Property="ItemsToggleStroke"
+                Value="Gray" />
+        <Setter Property="ItemsToggleStrokeThickness"
+                Value="1.5" />
+        <Setter Property="ItemsPendingSpinGlyphBrush"
+                Value="{Binding ItemsToggleStroke, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsPendingSpinGlyphThickness"
+                Value="{Binding ItemsToggleStrokeThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ItemsStickFill"
+                Value="Gray" />
+        <Setter Property="ItemsStickThickness"
+                Value="1.5" />
+        <Setter Property="ItemsCompletedToggleFill"
+                Value="#56b352" />
+        <Setter Property="ItemsCompletedToggleStrokeThickness"
+                Value="0" />
+        <Setter Property="ItemsCompletedStickFill"
+                Value="#56b352" />
+        <Setter Property="ItemsCompletedGlyphBrush"
+                Value="White" />
+        <Setter Property="ItemsCompletedGlyphTemplate"
+                Value="{StaticResource {ComponentResourceKey ResourceId=CompletedGlyphTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}}" />
         <Setter Property="ItemContainerStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.TimelineItemStyle}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TimelineTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
             <Trigger Property="Scrollable"
                      Value="False">
                 <Setter Property="Template"

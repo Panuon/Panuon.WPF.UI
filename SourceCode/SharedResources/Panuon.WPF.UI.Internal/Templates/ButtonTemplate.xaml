@@ -11,32 +11,35 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonPendingTemplate}"
                      TargetType="Button">
-        <Border x:Name="BdrContainer"
-                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Padding="{TemplateBinding Padding}"
-                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <DockPanel x:Name="DockContainer"
-                       Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <local:Spin x:Name="SprPending"
-                            DockPanel.Dock="{Binding Path=(local:ButtonHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            IsSpinning="True"
-                            Style="{Binding Path=(local:ButtonHelper.PendingSpinStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter Focusable="False"
-                                  RecognizesAccessKey="True"
-                                  VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                  HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </DockPanel>
-        </Border>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}">
+                <DockPanel x:Name="DockContainer"
+                           Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <local:Spin x:Name="SprPending"
+                                DockPanel.Dock="{Binding Path=(local:ButtonHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                IsSpinning="True"
+                                Style="{Binding Path=(local:ButtonHelper.PendingSpinStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter Focusable="False"
+                                      RecognizesAccessKey="True"
+                                      VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </DockPanel>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
@@ -104,29 +107,32 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonTemplate}"
                      TargetType="Button">
-        <Border x:Name="BdrContainer"
-                i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Padding="{TemplateBinding Padding}"
-                Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <DockPanel x:Name="DockContainer"
-                       TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                <i:IconPresenter x:Name="IpIcon"
-                                 DockPanel.Dock="{Binding Path=(local:ButtonHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                 Content="{Binding Path=(local:ButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                 Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  Focusable="False"
-                                  RecognizesAccessKey="True" />
-            </DockPanel>
-        </Border>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}">
+                <DockPanel x:Name="DockContainer"
+                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <i:IconPresenter x:Name="IpIcon"
+                                     DockPanel.Dock="{Binding Path=(local:ButtonHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Content="{Binding Path=(local:ButtonHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Focusable="False"
+                                      RecognizesAccessKey="True" />
+                </DockPanel>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>

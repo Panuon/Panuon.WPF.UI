@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF;
+using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections.Generic;
@@ -137,7 +138,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ColorSelector));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ColorSelector));
         #endregion
 
         #region EditorPanelMargin

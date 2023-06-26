@@ -56,6 +56,8 @@
         public const string SliderStyle = nameof(SliderStyle);
         public const string SpinStyle = nameof(SpinStyle);
         public const string StateControlStyle = nameof(StateControlStyle);
+        public const string TimelineStyle = nameof(TimelineStyle);
+        public const string TimelineItemStyle = nameof(TimelineItemStyle);
         public const string SwitchStyle = nameof(SwitchStyle);
         public const string TabControlStyle = nameof(TabControlStyle);
         public const string TabItemStyle = nameof(TabItemStyle);
@@ -63,8 +65,6 @@
         public const string TextBoxStyle = nameof(TextBoxStyle);
         public const string ThumbStyle = nameof(ThumbStyle);
         public const string ThumbFenceStyle = nameof(ThumbFenceStyle);
-        public const string TimelineStyle = nameof(TimelineStyle);
-        public const string TimelineItemStyle = nameof(TimelineItemStyle);
         public const string TimeSelectorItemStyle = nameof(TimeSelectorItemStyle);
         public const string TimeSelectorStyle = nameof(TimeSelectorStyle);
         public const string ToolTipStyle = nameof(ToolTipStyle);

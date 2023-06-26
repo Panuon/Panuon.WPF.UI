@@ -13,13 +13,12 @@
                      TargetType="ListBox">
         <Grid>
             <Border x:Name="BdrContainer"
-                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <ScrollViewer x:Name="SvContent"
                               Focusable="False">
                     <ItemsPresenter />
@@ -51,14 +50,12 @@
                      TargetType="ListBox">
         <Grid>
             <Border x:Name="BdrContainer"
-                    i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Padding="{TemplateBinding Padding}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <ItemsPresenter x:Name="IpItems" />
                 <ContentControl x:Name="CcEmpty"
                                 Visibility="Collapsed"

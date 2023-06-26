@@ -46,6 +46,17 @@ namespace Panuon.WPF.UI
         /// </summary>
         /// <param name="owner">The owner of message box.</param>
         /// <param name="message">Text to display.</param>
+        public static MessageBoxResult Show(string message,
+            MessageBoxXSetting setting)
+        {
+            return CallMessageBoxXWindow(null, message, null, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
+        }
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="message">Text to display.</param>
         public static MessageBoxResult Show(Window owner,
             string message,
             MessageBoxXSetting setting)
@@ -89,6 +100,13 @@ namespace Panuon.WPF.UI
             MessageBoxXSetting setting)
         {
             return CallMessageBoxXWindow(owner, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
+        }
+
+        public static MessageBoxResult Show(string message,
+            string caption,
+            MessageBoxXSetting setting)
+        {
+            return CallMessageBoxXWindow(null, message, caption, MessageBoxButton.OK, MessageBoxIcon.None, DefaultButton.Unset, setting, null);
         }
 
         /// <summary>

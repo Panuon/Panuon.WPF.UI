@@ -42,8 +42,9 @@
     <icv:FalseToCollapseConverter x:Key="{x:Static rs:ConverterKeys.FalseToCollapseConverter}" />
     <icv:FalseToHiddenConverter x:Key="{x:Static rs:ConverterKeys.FalseToHiddenConverter}" />
     <icv:FontSizeMinusConverter x:Key="{x:Static irs:ConverterKeys.FontSizeMinusConverter}" />
-    <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GetEnumDescriptionConverter x:Key="{x:Static rs:ConverterKeys.GetEnumDescriptionConverter}" />
+    <icv:GetIndexOfItemsControlConverter x:Key="{x:Static irs:ConverterKeys.GetIndexOfItemsControlConverter}" />
+    <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GroupBoxHeaderCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.GroupBoxHeaderCornerRadiusConverter}" />
     <icv:IconPlacementToDockConverter x:Key="{x:Static irs:ConverterKeys.IconPlacementToDockConverter}" />
     <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
@@ -92,6 +93,7 @@
     <icv:SwitchToggleMarginConverter x:Key="{x:Static irs:ConverterKeys.SwitchToggleMarginConverter}" />
     <icv:TabPanelMaxHeightConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}" />
     <icv:TabPanelMaxWidthConverter x:Key="{x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}" />
+    <icv:ThicknessLeftRightOnlyConverter x:Key="{x:Static irs:ConverterKeys.ThicknessLeftRightOnlyConverter}" />
     <icv:TreeViewInternalPaddingConverter x:Key="{x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}" />
     <icv:TreeViewItemHorizontalSeparatorMarginConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}" />
     <icv:TreeViewItemHorizontalSeparatorWidthConverter x:Key="{x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorWidthConverter}" />

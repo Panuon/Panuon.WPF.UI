@@ -11,90 +11,93 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.CalendarXTemplate}"
                      TargetType="local:CalendarX">
-        <Border x:Name="BdrContainer"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding ItemsBorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{TemplateBinding CornerRadius}"
-                Padding="{TemplateBinding Padding}"
-                Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="7*" />
-                </Grid.RowDefinitions>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding ItemsBorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="{TemplateBinding Padding}">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <RepeatButton x:Name="PART_BackwardButton"
-                                  Tag="Backward"
-                                  Style="{TemplateBinding PageTurnButtonStyle}" />
-                    <RepeatButton x:Name="PART_PreviousButton"
-                                  Grid.Column="1"
-                                  Tag="Previous"
-                                  Style="{TemplateBinding PageTurnButtonStyle}" />
-                    <Button x:Name="PART_YearButton"
-                            Grid.Column="3"
-                            Style="{TemplateBinding YearMonthButtonStyle}"
-                            ContentStringFormat="{TemplateBinding YearStringFormat}" />
-                    <TextBlock x:Name="PART_YearPeriodTextBlock"
-                               Grid.Column="4"
-                               Visibility="Collapsed"
-                               VerticalAlignment="Center" />
-                    <Button x:Name="PART_MonthButton"
-                            Grid.Column="5"
-                            Style="{TemplateBinding YearMonthButtonStyle}" />
-                    <RepeatButton x:Name="PART_NextButton"
-                                  Grid.Column="7"
-                                  Tag="Next"
-                                  Style="{TemplateBinding PageTurnButtonStyle}" />
-                    <RepeatButton x:Name="PART_ForwardButton"
-                                  Grid.Column="8"
-                                  Tag="Forward"
-                                  Style="{TemplateBinding PageTurnButtonStyle}" />
-                </Grid>
-                <Rectangle x:Name="RectSeparator"
-                           Grid.Row="1"
-                           Fill="{TemplateBinding HeaderSeparatorBrush}"
-                           Height="{TemplateBinding HeaderSeparatorThickness}"
-                           Margin="{TemplateBinding HeaderSeparatorMargin}"
-                           Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
-                <local:CarouselPanel Grid.Row="2"
-                                     Animation="{TemplateBinding Animation}"
-                                     AnimationEasing="{TemplateBinding AnimationEasing}"
-                                     AnimationDuration="{TemplateBinding AnimationDuration}"
-                                     CurrentIndex="{TemplateBinding CurrentPanel}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{Binding HeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="7*" />
+                    </Grid.RowDefinitions>
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="6*" />
-                        </Grid.RowDefinitions>
-                        <UniformGrid x:Name="PART_WeekNameUniformGrid"
-                                     Columns="7" />
-                        <i:CalendarXItemPresenter x:Name="PART_CalendarXDayPresenter"
-                                                  Grid.Row="1"
-                                                  Tag="Day"
-                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <RepeatButton x:Name="PART_BackwardButton"
+                                      Tag="Backward"
+                                      Style="{TemplateBinding PageTurnButtonStyle}" />
+                        <RepeatButton x:Name="PART_PreviousButton"
+                                      Grid.Column="1"
+                                      Tag="Previous"
+                                      Style="{TemplateBinding PageTurnButtonStyle}" />
+                        <Button x:Name="PART_YearButton"
+                                Grid.Column="3"
+                                Style="{TemplateBinding YearMonthButtonStyle}"
+                                ContentStringFormat="{TemplateBinding YearStringFormat}" />
+                        <TextBlock x:Name="PART_YearPeriodTextBlock"
+                                   Grid.Column="4"
+                                   Visibility="Collapsed"
+                                   VerticalAlignment="Center" />
+                        <Button x:Name="PART_MonthButton"
+                                Grid.Column="5"
+                                Style="{TemplateBinding YearMonthButtonStyle}" />
+                        <RepeatButton x:Name="PART_NextButton"
+                                      Grid.Column="7"
+                                      Tag="Next"
+                                      Style="{TemplateBinding PageTurnButtonStyle}" />
+                        <RepeatButton x:Name="PART_ForwardButton"
+                                      Grid.Column="8"
+                                      Tag="Forward"
+                                      Style="{TemplateBinding PageTurnButtonStyle}" />
                     </Grid>
-                    <i:CalendarXItemPresenter x:Name="PART_CalendarXMonthPresenter"
-                                              Tag="Month"
-                                              CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
-                    <i:CalendarXItemPresenter x:Name="PART_CalendarXYearPresenter"
-                                              Tag="Year"
-                                              CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
-                </local:CarouselPanel>
-            </Grid>
-        </Border>
+                    <Rectangle x:Name="RectSeparator"
+                               Grid.Row="1"
+                               Fill="{TemplateBinding HeaderSeparatorBrush}"
+                               Height="{TemplateBinding HeaderSeparatorThickness}"
+                               Margin="{TemplateBinding HeaderSeparatorMargin}"
+                               Visibility="{TemplateBinding HeaderSeparatorVisibility}" />
+                    <local:CarouselPanel Grid.Row="2"
+                                         Animation="{TemplateBinding Animation}"
+                                         AnimationEasing="{TemplateBinding AnimationEasing}"
+                                         AnimationDuration="{TemplateBinding AnimationDuration}"
+                                         CurrentIndex="{TemplateBinding CurrentPanel}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="6*" />
+                            </Grid.RowDefinitions>
+                            <UniformGrid x:Name="PART_WeekNameUniformGrid"
+                                         Columns="7" />
+                            <i:CalendarXItemPresenter x:Name="PART_CalendarXDayPresenter"
+                                                      Grid.Row="1"
+                                                      Tag="Day"
+                                                      CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                        </Grid>
+                        <i:CalendarXItemPresenter x:Name="PART_CalendarXMonthPresenter"
+                                                  Tag="Month"
+                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                        <i:CalendarXItemPresenter x:Name="PART_CalendarXYearPresenter"
+                                                  Tag="Year"
+                                                  CalendarXItemStyle="{TemplateBinding ItemContainerStyle}" />
+                    </local:CarouselPanel>
+                </Grid>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="CurrentPanel"
                      Value="2">

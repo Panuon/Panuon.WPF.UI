@@ -54,7 +54,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ContentControlX));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ContentControlX));
         #endregion
 
         #region Effect

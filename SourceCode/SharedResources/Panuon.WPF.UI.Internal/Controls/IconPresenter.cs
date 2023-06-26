@@ -4,6 +4,8 @@ using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal
@@ -40,7 +42,6 @@ namespace Panuon.WPF.UI.Internal
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            UpdateBinding();
         }
         #endregion
 
@@ -48,15 +49,16 @@ namespace Panuon.WPF.UI.Internal
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var presenter = d as IconPresenter;
-            presenter.UpdateBinding();
+                presenter.UpdateBinding();
         }
         #endregion
 
         #region Functions
         private void UpdateBinding()
         {
-            if (Source != null && IsInitialized)
+            if (Source != null)
             {
+
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, HeightProperty, Source, IconHelper.HeightProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, WidthProperty, Source, IconHelper.WidthProperty);
                 FrameworkElementUtil.BindingPropertyIfUndefaultAndUninherited(this, VerticalContentAlignmentProperty, Source, IconHelper.VerticalAlignmentProperty);

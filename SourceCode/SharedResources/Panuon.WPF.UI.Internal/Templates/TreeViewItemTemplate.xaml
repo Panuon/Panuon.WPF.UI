@@ -12,84 +12,88 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewItemTemplate}"
                      TargetType="TreeViewItem">
         <StackPanel>
-            <Border x:Name="BdrHeader"
-                    Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Grid Margin="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <ToggleButton x:Name="TgbToggle"
-                                  IsChecked="True"
-                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
-                                  Visibility="Hidden" />
-                    <Border Grid.Column="1"
-                            Width="{Binding Path=(local:TreeViewHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
-                        <i:IconPresenter x:Name="IpIcon"
-                                         Content="{Binding Path=(local:TreeViewItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                         Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    </Border>
-                    <Grid Grid.Column="2">
-                        <ContentPresenter x:Name="CpHeader"
-                                          ContentSource="Header"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                        <Rectangle x:Name="SprtHorizontal"
-                                   Visibility="Collapsed"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                   StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                            <Rectangle.Width>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorWidthConverter}}">
-                                    <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
-                                             RelativeSource="{RelativeSource AncestorType=TreeView}"
-                                             Mode="OneWay" />
-                                    <Binding Path="Padding"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="ActualWidth"
-                                             ElementName="TgbToggle"
-                                             Mode="OneWay" />
-                                </MultiBinding>
-                            </Rectangle.Width>
-                            <Rectangle.Margin>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}}">
-                                    <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
-                                             RelativeSource="{RelativeSource AncestorType=TreeView}"
-                                             Mode="OneWay" />
-                                    <Binding Path="BorderThickness"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:TreeViewItemHelper.InternalPadding)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                    <Binding Path="Padding"
-                                             RelativeSource="{RelativeSource AncestorType=TreeViewItem}"
-                                             Mode="OneWay" />
-                                    <Binding Path="ActualWidth"
-                                             ElementName="TgbToggle"
-                                             Mode="OneWay" />
-                                    <Binding Path="(local:TreeViewItemHelper.RulerLineThickness)"
-                                             RelativeSource="{RelativeSource TemplatedParent}"
-                                             Mode="OneWay" />
-                                </MultiBinding>
-                            </Rectangle.Margin>
-                        </Rectangle>
+            <Grid x:Name="GrdContainer">
+                <Border x:Name="BdrHeader"
+                        Height="{Binding Path=(local:TreeViewItemHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <Border x:Name="BdrContent"
+                        Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Grid Margin="{Binding Path=(local:TreeViewItemHelper.InternalPadding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton x:Name="TgbToggle"
+                                      IsChecked="True"
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
+                                      Visibility="Hidden" />
+                        <Border Grid.Column="1"
+                                Width="{Binding Path=(local:TreeViewHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}">
+                            <i:IconPresenter x:Name="IpIcon"
+                                             Content="{Binding Path=(local:TreeViewItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                             Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        </Border>
+                        <Grid Grid.Column="2">
+                            <ContentPresenter x:Name="CpHeader"
+                                              ContentSource="Header"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                            <Rectangle x:Name="SprtHorizontal"
+                                       Visibility="Collapsed"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Stroke="{Binding Path=(local:TreeViewItemHelper.RulerLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       StrokeThickness="{Binding Path=(local:TreeViewItemHelper.RulerLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                       StrokeDashArray="{Binding Path=(local:TreeViewItemHelper.RulerLineDashArray), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                <Rectangle.Width>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorWidthConverter}}">
+                                        <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
+                                                 RelativeSource="{RelativeSource AncestorType=TreeView}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="Padding"
+                                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TgbToggle"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Rectangle.Width>
+                                <Rectangle.Margin>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemHorizontalSeparatorMarginConverter}}">
+                                        <Binding Path="(local:TreeViewHelper.ToggleArrowPlacement)"
+                                                 RelativeSource="{RelativeSource AncestorType=TreeView}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="BorderThickness"
+                                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="(local:TreeViewItemHelper.InternalPadding)"
+                                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="Padding"
+                                                 RelativeSource="{RelativeSource AncestorType=TreeViewItem}"
+                                                 Mode="OneWay" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="TgbToggle"
+                                                 Mode="OneWay" />
+                                        <Binding Path="(local:TreeViewItemHelper.RulerLineThickness)"
+                                                 RelativeSource="{RelativeSource TemplatedParent}"
+                                                 Mode="OneWay" />
+                                    </MultiBinding>
+                                </Rectangle.Margin>
+                            </Rectangle>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Border>
+                </Border>
+            </Grid>
             <Rectangle x:Name="RectSeparator"
                        VerticalAlignment="Center"
                        Fill="{Binding Path=(local:TreeViewItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -131,7 +135,7 @@
             </Grid>
         </StackPanel>
         <ControlTemplate.Triggers>
-            <Trigger SourceName="BdrHeader"
+            <Trigger SourceName="GrdContainer"
                      Property="IsMouseOver"
                      Value="True">
                 <Setter Property="local:TreeViewItemHelper.IsMouseDirectlyOver"
@@ -240,10 +244,10 @@
                     <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrHeader"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:TreeViewItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrHeader"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:TreeViewItemHelper.SelectedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
@@ -305,10 +309,10 @@
                     <Condition Binding="{Binding Path=(local:TreeViewItemHelper.ExpandedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrHeader"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding Path=(local:TreeViewItemHelper.ExpandedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrHeader"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding Path=(local:TreeViewItemHelper.ExpandedForeground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"

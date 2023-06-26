@@ -21,7 +21,9 @@
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border x:Name="BdrContent"
+                    Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <DockPanel x:Name="DockContainer"
                            TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -70,10 +72,10 @@
                     <Condition Binding="{Binding ClickForeground, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextBlock.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrContent"
                         Property="TextElement.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"

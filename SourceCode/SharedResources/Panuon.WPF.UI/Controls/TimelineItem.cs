@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Panuon.WPF.UI.Internal;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -27,6 +28,249 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("Icon", typeof(object), typeof(TimelineItem));
         #endregion
 
+        #region Orientation
+        public Orientation Orientation
+        {
+            get { return (Orientation)GetValue(OrientationProperty); }
+            set { SetValue(OrientationProperty, value); }
+        }
+
+        public static readonly DependencyProperty OrientationProperty =
+            DependencyProperty.Register("Orientation", typeof(Orientation), typeof(TimelineItem), new PropertyMetadata(Orientation.Vertical));
+        #endregion
+
+        #region ShowIndex
+        public bool ShowIndex
+        {
+            get { return (bool)GetValue(ShowIndexProperty); }
+            set { SetValue(ShowIndexProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowIndexProperty =
+            DependencyProperty.Register("ShowIndex", typeof(bool), typeof(TimelineItem));
+        #endregion
+
+        #region ToggleTemplate
+        public DataTemplate ToggleTemplate
+        {
+            get { return (DataTemplate)GetValue(ToggleTemplateProperty); }
+            set { SetValue(ToggleTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleTemplateProperty =
+            DependencyProperty.Register("ToggleTemplate", typeof(DataTemplate), typeof(TimelineItem));
+        #endregion
+
+        #region ToggleStroke
+        public Brush ToggleStroke
+        {
+            get { return (Brush)GetValue(ToggleStrokeProperty); }
+            set { SetValue(ToggleStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleStrokeProperty =
+            DependencyProperty.Register("ToggleStroke", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region ToggleStrokeThickness
+        public double ToggleStrokeThickness
+        {
+            get { return (double)GetValue(ToggleStrokeThicknessProperty); }
+            set { SetValue(ToggleStrokeThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleStrokeThicknessProperty =
+            DependencyProperty.Register("ToggleStrokeThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region ToggleFill
+        public Brush ToggleFill
+        {
+            get { return (Brush)GetValue(ToggleFillProperty); }
+            set { SetValue(ToggleFillProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleFillProperty =
+            DependencyProperty.Register("ToggleFill", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region ToggleSize
+        public double ToggleSize
+        {
+            get { return (double)GetValue(ToggleSizeProperty); }
+            set { SetValue(ToggleSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty ToggleSizeProperty =
+            DependencyProperty.Register("ToggleSize", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region PendingToggleTemplate
+        public DataTemplate PendingToggleTemplate
+        {
+            get { return (DataTemplate)GetValue(PendingToggleTemplateProperty); }
+            set { SetValue(PendingToggleTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty PendingToggleTemplateProperty =
+            DependencyProperty.Register("PendingToggleTemplate", typeof(DataTemplate), typeof(TimelineItem));
+        #endregion
+
+        #region PendingSpinGlyphBrush
+        public Brush PendingSpinGlyphBrush
+        {
+            get { return (Brush)GetValue(PendingSpinGlyphBrushProperty); }
+            set { SetValue(PendingSpinGlyphBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty PendingSpinGlyphBrushProperty =
+            DependencyProperty.Register("PendingSpinGlyphBrush", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region PendingSpinGlyphThickness
+        public double PendingSpinGlyphThickness
+        {
+            get { return (double)GetValue(PendingSpinGlyphThicknessProperty); }
+            set { SetValue(PendingSpinGlyphThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty PendingSpinGlyphThicknessProperty =
+            DependencyProperty.Register("PendingSpinGlyphThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region StickThickness
+        public double StickThickness
+        {
+            get { return (double)GetValue(StickThicknessProperty); }
+            set { SetValue(StickThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty StickThicknessProperty =
+            DependencyProperty.Register("StickThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region StickStroke
+        public Brush StickStroke
+        {
+            get { return (Brush)GetValue(StickStrokeProperty); }
+            set { SetValue(StickStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty StickStrokeProperty =
+            DependencyProperty.Register("StickStroke", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region StickStrokeThickness
+        public double StickStrokeThickness
+        {
+            get { return (double)GetValue(StickStrokeThicknessProperty); }
+            set { SetValue(StickStrokeThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty StickStrokeThicknessProperty =
+            DependencyProperty.Register("StickStrokeThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region StickFill
+        public Brush StickFill
+        {
+            get { return (Brush)GetValue(StickFillProperty); }
+            set { SetValue(StickFillProperty, value); }
+        }
+
+        public static readonly DependencyProperty StickFillProperty =
+            DependencyProperty.Register("StickFill", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedToggleStroke
+        public Brush CompletedToggleStroke
+        {
+            get { return (Brush)GetValue(CompletedToggleStrokeProperty); }
+            set { SetValue(CompletedToggleStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedToggleStrokeProperty =
+            DependencyProperty.Register("CompletedToggleStroke", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedToggleStrokeThickness
+        public double CompletedToggleStrokeThickness
+        {
+            get { return (double)GetValue(CompletedToggleStrokeThicknessProperty); }
+            set { SetValue(CompletedToggleStrokeThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedToggleStrokeThicknessProperty =
+            DependencyProperty.Register("CompletedToggleStrokeThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedToggleFill
+        public Brush CompletedToggleFill
+        {
+            get { return (Brush)GetValue(CompletedToggleFillProperty); }
+            set { SetValue(CompletedToggleFillProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedToggleFillProperty =
+            DependencyProperty.Register("CompletedToggleFill", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedGlyphTemplate
+        public DataTemplate CompletedGlyphTemplate
+        {
+            get { return (DataTemplate)GetValue(CompletedGlyphTemplateProperty); }
+            set { SetValue(CompletedGlyphTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedGlyphTemplateProperty =
+            DependencyProperty.Register("CompletedGlyphTemplate", typeof(DataTemplate), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedGlyphBrush
+
+        public Brush CompletedGlyphBrush
+        {
+            get { return (Brush)GetValue(CompletedGlyphBrushProperty); }
+            set { SetValue(CompletedGlyphBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedGlyphBrushProperty =
+            DependencyProperty.Register("CompletedGlyphBrush", typeof(Brush), typeof(TimelineItem), new PropertyMetadata(Brushes.Black));
+        #endregion
+
+        #region CompletedStickStroke
+        public Brush CompletedStickStroke
+        {
+            get { return (Brush)GetValue(CompletedStickStrokeProperty); }
+            set { SetValue(CompletedStickStrokeProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedStickStrokeProperty =
+            DependencyProperty.Register("CompletedStickStroke", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedStickStrokeThickness
+        public double CompletedStickStrokeThickness
+        {
+            get { return (double)GetValue(CompletedStickStrokeThicknessProperty); }
+            set { SetValue(CompletedStickStrokeThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedStickStrokeThicknessProperty =
+            DependencyProperty.Register("CompletedStickStrokeThickness", typeof(double), typeof(TimelineItem));
+        #endregion
+
+        #region CompletedStickFill
+        public Brush CompletedStickFill
+        {
+            get { return (Brush)GetValue(CompletedStickFillProperty); }
+            set { SetValue(CompletedStickFillProperty, value); }
+        }
+
+        public static readonly DependencyProperty CompletedStickFillProperty =
+            DependencyProperty.Register("CompletedStickFill", typeof(Brush), typeof(TimelineItem));
+        #endregion
+
         #region CornerRadius
         public CornerRadius CornerRadius
         {
@@ -35,7 +279,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(TimelineItem));
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(TimelineItem));
         #endregion
 
         #region ShadowColor
@@ -46,7 +290,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register("ShadowColor", typeof(Color?), typeof(TimelineItem));
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(TimelineItem));
         #endregion
 
         #region IsPending
@@ -60,10 +304,16 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("IsPending", typeof(bool), typeof(TimelineItem));
         #endregion
 
-        #region PendingSpinStyle
-        #endregion
+        #region IsCompleted
+        public bool IsCompleted
+        {
+            get { return (bool)GetValue(IsCompletedProperty); }
+            set { SetValue(IsCompletedProperty, value); }
+        }
 
-        #region Header Property
+        public static readonly DependencyProperty IsCompletedProperty =
+            DependencyProperty.Register("IsCompleted", typeof(bool), typeof(TimelineItem));
+        #endregion
 
         #region SeparatorVisibility
         public Visibility SeparatorVisibility
@@ -109,6 +359,30 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("SeparatorMargin", typeof(Thickness), typeof(TimelineItem));
         #endregion
 
+        #region Header Property
+
+        #region HeaderHorizontalContentAlignment
+        public HorizontalAlignment HeaderHorizontalContentAlignment
+        {
+            get { return (HorizontalAlignment)GetValue(HeaderHorizontalContentAlignmentProperty); }
+            set { SetValue(HeaderHorizontalContentAlignmentProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderHorizontalContentAlignmentProperty =
+            DependencyProperty.Register("HeaderHorizontalContentAlignment", typeof(HorizontalAlignment), typeof(TimelineItem));
+        #endregion
+
+        #region HeaderVerticalContentAlignment
+        public VerticalAlignment HeaderVerticalContentAlignment
+        {
+            get { return (VerticalAlignment)GetValue(HeaderVerticalContentAlignmentProperty); }
+            set { SetValue(HeaderVerticalContentAlignmentProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderVerticalContentAlignmentProperty =
+            DependencyProperty.Register("HeaderVerticalContentAlignment", typeof(VerticalAlignment), typeof(TimelineItem));
+        #endregion
+
         #region HeaderPadding
         public Thickness HeaderPadding
         {
@@ -128,7 +402,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HeaderFontSizeProperty =
-            DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(TimelineItem));
+            DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(TimelineItem), new PropertyMetadata(SystemFonts.CaptionFontSize));
         #endregion
 
         #region HeaderFontWeight
@@ -232,13 +506,6 @@ namespace Panuon.WPF.UI
 
         #endregion
 
-
-        #endregion
-
-        #region Methods
-        #endregion
-
-        #region Functions
         #endregion
     }
 }
