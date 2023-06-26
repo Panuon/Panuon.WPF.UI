@@ -17,6 +17,12 @@ namespace Panuon.WPF.UI
         #region ComponentResourceKeys
         public static ComponentResourceKey ToggleDataTemplateKey { get; } =
           new ComponentResourceKey(typeof(Timeline), nameof(ToggleDataTemplateKey));
+
+        public static ComponentResourceKey PendingToggleDataTemplateKey { get; } =
+          new ComponentResourceKey(typeof(Timeline), nameof(PendingToggleDataTemplateKey));
+
+        public static ComponentResourceKey CompletedGlyphTemplateKey { get; } =
+          new ComponentResourceKey(typeof(Timeline), nameof(CompletedGlyphTemplateKey));
         #endregion
 
         #region Properties

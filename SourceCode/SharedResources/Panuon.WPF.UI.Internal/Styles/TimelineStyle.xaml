@@ -79,6 +79,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.Foreground"
+                Value="{Binding ItemsToggleStroke, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
         <Setter Property="VerticalContentAlignment"
@@ -118,15 +120,15 @@
         <Setter Property="ItemsPendingSpinGlyphThickness"
                 Value="{Binding ItemsToggleStrokeThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsStickFill"
-                Value="Gray" />
+                Value="{Binding ItemsToggleStroke, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsStickThickness"
-                Value="1.5" />
+                Value="{Binding ItemsToggleStrokeThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsCompletedToggleFill"
                 Value="#56b352" />
         <Setter Property="ItemsCompletedToggleStrokeThickness"
                 Value="0" />
         <Setter Property="ItemsCompletedStickFill"
-                Value="#56b352" />
+                Value="{Binding ItemsCompletedToggleFill, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsCompletedGlyphBrush"
                 Value="White" />
         <Setter Property="ItemsCompletedGlyphTemplate"

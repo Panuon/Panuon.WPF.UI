@@ -48,9 +48,31 @@
                         </Grid.RowDefinitions>
                         <i:IconPresenter x:Name="PART_Icon"
                                          Grid.Row="1"
-                                         Focusable="False"
                                          Content="{TemplateBinding Icon}"
-                                         Source="{TemplateBinding Source}" />
+                                         Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         MinWidth="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         MinHeight="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         MaxWidth="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         MaxHeight="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         HorizontalContentAlignment="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         VerticalContentAlignment="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         Foreground="{Binding Path=(local:IconHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         FontFamily="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                         ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            <i:IconPresenter.Visibility>
+                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                                    <Binding Path="Icon"
+                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                             Mode="OneWay" />
+                                    <Binding Path="(local:IconHelper.HiddenOnNull)"
+                                             RelativeSource="{RelativeSource TemplatedParent}"
+                                             Mode="OneWay" />
+                                </MultiBinding>
+                            </i:IconPresenter.Visibility>
+                        </i:IconPresenter>
                         <ContentPresenter x:Name="cpContent"
                                           Grid.Row="1"
                                           Grid.Column="1"

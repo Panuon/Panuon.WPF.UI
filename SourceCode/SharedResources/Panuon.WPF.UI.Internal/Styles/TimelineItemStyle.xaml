@@ -18,7 +18,7 @@
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
         <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Path=(local:IconHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"
                 Value="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Width"

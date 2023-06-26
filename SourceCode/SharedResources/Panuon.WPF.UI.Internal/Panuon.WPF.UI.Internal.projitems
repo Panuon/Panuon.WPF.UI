@@ -28,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GroupBoxHeaderCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IconPlacementToDockConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IconVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntLessThanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsIntGreaterThanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsDoubleLessThanConverter.cs" />

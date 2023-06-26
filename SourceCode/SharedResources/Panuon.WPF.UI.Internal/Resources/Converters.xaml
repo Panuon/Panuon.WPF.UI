@@ -47,6 +47,7 @@
     <icv:GetTypeConverter x:Key="{x:Static irs:ConverterKeys.GetTypeConverter}" />
     <icv:GroupBoxHeaderCornerRadiusConverter x:Key="{x:Static irs:ConverterKeys.GroupBoxHeaderCornerRadiusConverter}" />
     <icv:IconPlacementToDockConverter x:Key="{x:Static irs:ConverterKeys.IconPlacementToDockConverter}" />
+    <icv:IconVisibilityConverter x:Key="{x:Static irs:ConverterKeys.IconVisibilityConverter}" />
     <icv:IntDivideByConverter x:Key="{x:Static rs:ConverterKeys.IntDivideByConverter}" />
     <icv:IsAllDoublesEqualConverter x:Key="{x:Static rs:ConverterKeys.IsAllDoublesEqualConverter}" />
     <icv:IsDoubleEqualToConverter x:Key="{x:Static rs:ConverterKeys.IsDoubleEqualToConverter}" />
@@ -104,4 +105,5 @@
     <icv:TrueToHiddenConverter x:Key="{x:Static rs:ConverterKeys.TrueToHiddenConverter}" />
     <icv:WindowXCaptionDataContextConverter x:Key="{x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}" />
     <icv:ZoomViewerViewboxScaleConverter x:Key="{x:Static irs:ConverterKeys.ZoomViewerViewboxScaleConverter}" />
+    
 </ResourceDictionary>
