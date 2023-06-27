@@ -31,7 +31,16 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordBoxHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPasswordChanged));
+            DependencyProperty.RegisterAttached(
+                "Password",
+                typeof(string),
+                typeof(PasswordBoxHelper),
+                new FrameworkPropertyMetadata(
+                    null,
+                    FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                    OnPasswordChanged
+                )
+            );
         #endregion
 
         #region PasswordHook
@@ -46,7 +55,12 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty PasswordHookProperty =
-            DependencyProperty.RegisterAttached("PasswordHook", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnPasswordHookChanged));
+            DependencyProperty.RegisterAttached(
+                "PasswordHook",
+                typeof(bool),
+                typeof(PasswordBoxHelper),
+                new PropertyMetadata(OnPasswordHookChanged)
+            );
         #endregion
 
         #region Icon
@@ -76,7 +90,11 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty WatermarkProperty =
-            DependencyProperty.RegisterAttached("Watermark", typeof(object), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached(
+                "Watermark",
+                typeof(object),
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region WatermarkForeground
@@ -119,6 +137,7 @@ namespace Panuon.WPF.UI
         {
             passwordBox.SetValue(ShadowColorProperty, value);
         }
+
         public static readonly DependencyProperty ShadowColorProperty =
             VisualStateHelper.ShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
@@ -208,6 +227,7 @@ namespace Panuon.WPF.UI
         {
             passwordBox.SetValue(HoverShadowColorProperty, value);
         }
+
         public static readonly DependencyProperty HoverShadowColorProperty =
             VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
@@ -297,6 +317,7 @@ namespace Panuon.WPF.UI
         {
             passwordBox.SetValue(FocusedShadowColorProperty, value);
         }
+
         public static readonly DependencyProperty FocusedShadowColorProperty =
             VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(PasswordBoxHelper));
         #endregion
@@ -313,7 +334,9 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty FocusedWatermarkForegroundProperty =
-            VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(PasswordBoxHelper));
+            VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region ClearButtonVisibility
@@ -322,13 +345,20 @@ namespace Panuon.WPF.UI
             return (AuxiliaryButtonVisibility)passwordBox.GetValue(ClearButtonVisibilityProperty);
         }
 
-        public static void SetClearButtonVisibility(PasswordBox passwordBox, AuxiliaryButtonVisibility value)
+        public static void SetClearButtonVisibility(
+            PasswordBox passwordBox,
+            AuxiliaryButtonVisibility value
+        )
         {
             passwordBox.SetValue(ClearButtonVisibilityProperty, value);
         }
 
         public static readonly DependencyProperty ClearButtonVisibilityProperty =
-            DependencyProperty.RegisterAttached("ClearButtonVisibility", typeof(AuxiliaryButtonVisibility), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached(
+                "ClearButtonVisibility",
+                typeof(AuxiliaryButtonVisibility),
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region ClearButtonStyle
@@ -343,7 +373,11 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ClearButtonStyleProperty =
-            DependencyProperty.RegisterAttached("ClearButtonStyle", typeof(Style), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached(
+                "ClearButtonStyle",
+                typeof(Style),
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region PlainButtonVisibility
@@ -352,13 +386,20 @@ namespace Panuon.WPF.UI
             return (AuxiliaryButtonVisibility)passwordBox.GetValue(PlainButtonVisibilityProperty);
         }
 
-        public static void SetPlainButtonVisibility(PasswordBox passwordBox, AuxiliaryButtonVisibility value)
+        public static void SetPlainButtonVisibility(
+            PasswordBox passwordBox,
+            AuxiliaryButtonVisibility value
+        )
         {
             passwordBox.SetValue(PlainButtonVisibilityProperty, value);
         }
 
         public static readonly DependencyProperty PlainButtonVisibilityProperty =
-            DependencyProperty.RegisterAttached("PlainButtonVisibility", typeof(AuxiliaryButtonVisibility), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached(
+                "PlainButtonVisibility",
+                typeof(AuxiliaryButtonVisibility),
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region PlainButtonStyle
@@ -373,7 +414,11 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty PlainButtonStyleProperty =
-            DependencyProperty.RegisterAttached("PlainButtonStyle", typeof(Style), typeof(PasswordBoxHelper));
+            DependencyProperty.RegisterAttached(
+                "PlainButtonStyle",
+                typeof(Style),
+                typeof(PasswordBoxHelper)
+            );
         #endregion
 
         #region SelectAllOnFocus
@@ -388,9 +433,33 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty SelectAllOnFocusProperty =
-            DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnSelectAllOnFocusChanged));
+            DependencyProperty.RegisterAttached(
+                "SelectAllOnFocus",
+                typeof(bool),
+                typeof(PasswordBoxHelper),
+                new PropertyMetadata(OnSelectAllOnFocusChanged)
+            );
         #endregion
 
+        #region IsToggle
+
+        public static bool GetPlainButtonIsToggle(PasswordBox PasswordBox)
+        {
+            return (bool)PasswordBox.GetValue(PlainButtonIsToggleProperty);
+        }
+
+        public static void SetPlainButtonIsToggle(PasswordBox PasswordBox, bool value)
+        {
+            PasswordBox.SetValue(PlainButtonIsToggleProperty, value);
+        }
+
+        public static readonly DependencyProperty PlainButtonIsToggleProperty =
+            DependencyProperty.RegisterAttached(
+                "PlainButtonIsToggle",
+                typeof(bool),
+                typeof(PasswordBoxHelper)
+            );
+        #endregion
         #endregion
 
         #region Commands
@@ -402,7 +471,12 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ClearCommandProperty =
-            DependencyProperty.RegisterAttached("ClearCommand", typeof(ICommand), typeof(PasswordBoxHelper), new PropertyMetadata(new RelayCommand<PasswordBox>(OnClearCommandExecute)));
+            DependencyProperty.RegisterAttached(
+                "ClearCommand",
+                typeof(ICommand),
+                typeof(PasswordBoxHelper),
+                new PropertyMetadata(new RelayCommand<PasswordBox>(OnClearCommandExecute))
+            );
         #endregion
 
         #endregion
@@ -414,7 +488,10 @@ namespace Panuon.WPF.UI
             passwordBox.Focus();
         }
 
-        private static void OnPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnPasswordChanged(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e
+        )
         {
             var passwordBox = d as PasswordBox;
             if (GetPasswordHook(passwordBox))
@@ -427,7 +504,10 @@ namespace Panuon.WPF.UI
             }
         }
 
-        private static void OnPasswordHookChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnPasswordHookChanged(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e
+        )
         {
             var passwordBox = (PasswordBox)d;
             passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
@@ -440,7 +520,6 @@ namespace Panuon.WPF.UI
                     passwordBox.Password = newPassword;
                 }
                 passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
-                
             }
         }
 
@@ -450,7 +529,10 @@ namespace Panuon.WPF.UI
             SetPassword(passwordBox, passwordBox.Password);
         }
 
-        private static void OnSelectAllOnFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnSelectAllOnFocusChanged(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e
+        )
         {
             var passwordBox = (PasswordBox)d;
             passwordBox.PreviewMouseLeftButtonDown -= PasswordBox_PreviewMouseLeftButtonDown;
@@ -465,11 +547,13 @@ namespace Panuon.WPF.UI
             }
         }
 
-        private static void PasswordBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private static void PasswordBox_PreviewMouseLeftButtonDown(
+            object sender,
+            MouseButtonEventArgs e
+        )
         {
             var parent = e.OriginalSource as DependencyObject;
-            while (parent != null
-                && !(parent is PasswordBox))
+            while (parent != null && !(parent is PasswordBox))
             {
                 parent = VisualTreeHelper.GetParent(parent);
             }
@@ -495,6 +579,5 @@ namespace Panuon.WPF.UI
         }
 
         #endregion
-
     }
 }

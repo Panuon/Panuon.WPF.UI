@@ -3,6 +3,10 @@
     public static class ConverterKeys
     {
         public const string BoolOrConverter = nameof(BoolOrConverter);
+        public const string BoolToggleConverter = nameof(BoolToggleConverter);
+        public const string BoolToVisibilityToggleConverter = nameof(
+            BoolToVisibilityToggleConverter
+        );
         public const string BrushToColorConverter = nameof(BrushToColorConverter);
         public const string BubblePathConverter = nameof(BubblePathConverter);
         public const string ColorToBrushConverter = nameof(ColorToBrushConverter);
@@ -29,13 +33,19 @@
         public const string IsAllEqualConverter = nameof(IsAllEqualConverter);
         public const string IsDoubleGreaterThanConverter = nameof(IsDoubleGreaterThanConverter);
         public const string IsDoubleLessThanConverter = nameof(IsDoubleLessThanConverter);
-        public const string IsFirstItemInItemsControlConverter = nameof(IsFirstItemInItemsControlConverter);
-        public const string IsLastItemInItemsControlConverter = nameof(IsLastItemInItemsControlConverter);
+        public const string IsFirstItemInItemsControlConverter = nameof(
+            IsFirstItemInItemsControlConverter
+        );
+        public const string IsLastItemInItemsControlConverter = nameof(
+            IsLastItemInItemsControlConverter
+        );
         public const string IsNullConverter = nameof(IsNullConverter);
         public const string IsNonnullConverter = nameof(IsNonnullConverter);
         public const string IsStringEqualToConverter = nameof(IsStringEqualToConverter);
         public const string IsStringUnequalConverter = nameof(IsStringUnequalConverter);
-        public const string IsStringNonnullAndNotEmptyConverter = nameof(IsStringNonnullAndNotEmptyConverter);
+        public const string IsStringNonnullAndNotEmptyConverter = nameof(
+            IsStringNonnullAndNotEmptyConverter
+        );
         public const string IsIEnumerableHasItemsConverter = nameof(IsIEnumerableHasItemsConverter);
         public const string IsIntGreaterThanConverter = nameof(IsIntGreaterThanConverter);
         public const string IsIntLessThanConverter = nameof(IsIntLessThanConverter);
@@ -46,10 +56,18 @@
         public const string NullToHiddenConverter = nameof(NullToHiddenConverter);
         public const string OppositeColorConverter = nameof(OppositeColorConverter);
         public const string OppositeBrushConverter = nameof(OppositeBrushConverter);
-        public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(StringNonnullAndNotEmptyToCollapseConverter);
-        public const string StringNonnullAndNotEmptyToHiddenConverter = nameof(StringNonnullAndNotEmptyToHiddenConverter);
-        public const string StringNullOrEmptyToCollapseConverter = nameof(StringNullOrEmptyToCollapseConverter);
-        public const string StringNullOrEmptyToHiddenConverter = nameof(StringNullOrEmptyToHiddenConverter);
+        public const string StringNonnullAndNotEmptyToCollapseConverter = nameof(
+            StringNonnullAndNotEmptyToCollapseConverter
+        );
+        public const string StringNonnullAndNotEmptyToHiddenConverter = nameof(
+            StringNonnullAndNotEmptyToHiddenConverter
+        );
+        public const string StringNullOrEmptyToCollapseConverter = nameof(
+            StringNullOrEmptyToCollapseConverter
+        );
+        public const string StringNullOrEmptyToHiddenConverter = nameof(
+            StringNullOrEmptyToHiddenConverter
+        );
         public const string TrueToCollapseConverter = nameof(TrueToCollapseConverter);
         public const string TrueToFalseConverter = nameof(TrueToFalseConverter);
         public const string TrueToHiddenConverter = nameof(TrueToHiddenConverter);
