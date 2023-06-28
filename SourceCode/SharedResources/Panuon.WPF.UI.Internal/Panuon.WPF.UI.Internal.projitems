@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToggleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BubblePathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DropDownOffsetConverter.cs" />

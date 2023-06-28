@@ -3,6 +3,7 @@
     public static class ConverterKeys
     {
         public const string BoolOrConverter = nameof(BoolOrConverter);
+        public const string BoolToggleConverter = nameof(BoolToggleConverter);
         public const string BrushToColorConverter = nameof(BrushToColorConverter);
         public const string BubblePathConverter = nameof(BubblePathConverter);
         public const string ColorToBrushConverter = nameof(ColorToBrushConverter);

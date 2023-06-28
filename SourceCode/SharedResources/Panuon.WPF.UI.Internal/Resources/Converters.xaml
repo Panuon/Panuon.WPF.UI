@@ -8,6 +8,7 @@
     <icv:ArcConverter x:Key="{x:Static irs:ConverterKeys.ArcConverter}" />
     <icv:Arc2Converter x:Key="{x:Static irs:ConverterKeys.Arc2Converter}" />
     <icv:BoolOrConverter x:Key="{x:Static rs:ConverterKeys.BoolOrConverter}" />
+    <icv:BoolToggleConverter x:Key="{x:Static rs:ConverterKeys.BoolToggleConverter}" />
     <icv:BubblePathConverter x:Key="{x:Static irs:ConverterKeys.BubblePathConverter}" />
     <icv:BrushOpacityConverter x:Key="{x:Static irs:ConverterKeys.BrushOpacityConverter}" />
     <icv:CheckBoxCheckPathConverter x:Key="{x:Static irs:ConverterKeys.CheckBoxCheckPathConverter}" />

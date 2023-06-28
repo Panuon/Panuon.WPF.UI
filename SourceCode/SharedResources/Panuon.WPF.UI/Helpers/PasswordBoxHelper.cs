@@ -391,6 +391,26 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnSelectAllOnFocusChanged));
         #endregion
 
+        #region IsToggle
+
+        public static bool GetPlainButtonIsToggle(PasswordBox PasswordBox)
+        {
+            return (bool)PasswordBox.GetValue(PlainButtonIsToggleProperty);
+        }
+
+        public static void SetPlainButtonIsToggle(PasswordBox PasswordBox, bool value)
+        {
+            PasswordBox.SetValue(PlainButtonIsToggleProperty, value);
+        }
+
+        public static readonly DependencyProperty PlainButtonIsToggleProperty =
+            DependencyProperty.RegisterAttached(
+                "PlainButtonIsToggle",
+                typeof(bool),
+                typeof(PasswordBoxHelper)
+            );
+        #endregion
+
         #endregion
 
         #region Commands
