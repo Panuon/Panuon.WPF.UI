@@ -275,6 +275,21 @@ namespace Panuon.WPF.UI.Internal
 
         #endregion
 
+        #region 
+        internal static Thickness GetMargin(DependencyObject obj)
+        {
+            return (Thickness)obj.GetValue(MarginProperty);
+        }
+
+        internal static void SetMargin(DependencyObject obj, Thickness value)
+        {
+            obj.SetValue(MarginProperty, value);
+        }
+
+        internal static readonly DependencyProperty MarginProperty =
+            DependencyProperty.RegisterAttached("Margin", typeof(Thickness), typeof(VisualStateHelper));
+        #endregion
+
         #region ShadowColor Properties
 
         public static readonly DependencyProperty ShadowColorProperty =
@@ -704,7 +719,7 @@ namespace Panuon.WPF.UI.Internal
                         Duration = TimeSpan.Zero,
                     };
                     Storyboard.SetTarget(sinkMarginAnimation, element);
-                    Storyboard.SetTargetProperty(sinkMarginAnimation, new PropertyPath("Margin"));
+                    Storyboard.SetTargetProperty(sinkMarginAnimation, new PropertyPath(MarginProperty));
                     storyboard.Children.Add(sinkMarginAnimation);
                     break;
                 case ClickEffect.Shake:
@@ -717,7 +732,7 @@ namespace Panuon.WPF.UI.Internal
                             Duration = TimeSpan.FromSeconds(thirdPartSeconds),
                         };
                         Storyboard.SetTarget(shakeMarginAnimation1, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation1, new PropertyPath("Margin"));
+                        Storyboard.SetTargetProperty(shakeMarginAnimation1, new PropertyPath(MarginProperty));
                         storyboard.Children.Add(shakeMarginAnimation1);
 
                         var shakeMarginAnimation2 = new ThicknessAnimation()
@@ -727,7 +742,7 @@ namespace Panuon.WPF.UI.Internal
                             BeginTime = TimeSpan.FromSeconds(thirdPartSeconds),
                         };
                         Storyboard.SetTarget(shakeMarginAnimation2, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation2, new PropertyPath("Margin"));
+                        Storyboard.SetTargetProperty(shakeMarginAnimation2, new PropertyPath(MarginProperty));
                         storyboard.Children.Add(shakeMarginAnimation2);
 
                         var shakeMarginAnimation3 = new ThicknessAnimation()
@@ -737,7 +752,7 @@ namespace Panuon.WPF.UI.Internal
                             BeginTime = TimeSpan.FromSeconds(thirdPartSeconds * 2),
                         };
                         Storyboard.SetTarget(shakeMarginAnimation3, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation3, new PropertyPath("Margin"));
+                        Storyboard.SetTargetProperty(shakeMarginAnimation3, new PropertyPath(MarginProperty));
                         storyboard.Children.Add(shakeMarginAnimation3);
                     }
                     break;

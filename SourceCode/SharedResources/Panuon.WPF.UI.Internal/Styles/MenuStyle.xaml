@@ -116,6 +116,8 @@
                 Value="0" />
         <Setter Property="Background"
                 Value="White" />
+        <Setter Property="Height"
+                Value="35" />
         <Setter Property="FontFamily"
                 Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="FontSize"

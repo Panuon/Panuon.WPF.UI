@@ -11,11 +11,10 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.SwitchTemplate}"
                      TargetType="local:Switch">
-        <Grid Background="Transparent">
-            <Border VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+        <Border Background="Transparent">
+            <Grid VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                  Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                  Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
@@ -78,7 +77,7 @@
                                   TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{TemplateBinding Padding}" />
             </Grid>
-        </Grid>
+        </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="ContentPlacement"
                      Value="Left">

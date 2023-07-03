@@ -107,7 +107,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonTemplate}"
                      TargetType="Button">
-        <Grid>
+        <Grid x:Name="GrdContainer">
             <Border x:Name="BdrContainer"
                     i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
