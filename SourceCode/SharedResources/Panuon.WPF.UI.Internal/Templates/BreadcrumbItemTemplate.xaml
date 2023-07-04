@@ -25,9 +25,7 @@
             <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <DockPanel x:Name="DockContainer"
                            TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <i:IconPresenter x:Name="IpIcon"
                                      Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
