@@ -19,6 +19,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MessageBoxXWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PendingBoxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ScrollableControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TabControlPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItemPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderTextLeftConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToHiddenConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNullOrEmptyToHiddenConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\TabControlScrollButtonVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ThicknessLeftRightOnlyConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TransparentColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorOpacitySliderBackgroundConverter.cs" />

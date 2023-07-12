@@ -1,6 +1,6 @@
 ﻿namespace Panuon.WPF.UI
 {
-    public enum TabPanelHorizontalAlignment
+    public enum TabControlHeaderPanelAlignment
     {
         Front,
         Stretch,

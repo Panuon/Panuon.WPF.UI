@@ -60,55 +60,74 @@
                         </local:ContentControlX.Effect>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="CdFrontBlank" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition x:Name="CdPanel" />
+                                <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition x:Name="CdEndBlank" />
                             </Grid.ColumnDefinitions>
-                            <ContentControl x:Name="CcFront"
-                                            Grid.Column="1"
-                                            Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrFront"
-                                    Grid.ColumnSpan="2"
-                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <ScrollViewer x:Name="PART_ScrollViewer"
-                                          Grid.Column="2"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          VerticalScrollBarVisibility="Disabled"
-                                          local:ScrollViewerHelper.WheelScrollingDirection="Horizontal">
-                                <ScrollViewer.MaxWidth>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabPanelMaxWidthConverter}}">
-                                        <Binding Path="Width"
-                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
-                                        <Binding Path="VerticalAlignment"
-                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                            <RepeatButton x:Name="PART_BackwardButton"
+                                          Tag="Left"
+                                          Style="{Binding Path=(local:TabControlHelper.HeaderPanelScrollButtonStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Command="{Binding Path=(local:TabControlHelper.ScrollBackwardCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          CommandParameter="{Binding ElementName=PART_ScrollViewer}">
+                                <RepeatButton.Visibility>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabControlScrollButtonVisibilityConverter}}">
                                         <Binding Path="ActualWidth"
                                                  RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                        <Binding Path="ContentWidthOrHeight"
+                                                 ElementName="TcPanel" />
                                         <Binding Path="ActualWidth"
                                                  ElementName="CcFront" />
                                         <Binding Path="ActualWidth"
                                                  ElementName="CcEnd" />
                                     </MultiBinding>
-                                </ScrollViewer.MaxWidth>
-                                <TabPanel x:Name="TpPanel"
-                                          IsItemsHost="True"
-                                          KeyboardNavigation.IsTabStop="True">
-                                </TabPanel>
-                            </ScrollViewer>
-                            <ContentControl x:Name="CcEnd"
-                                            Grid.Column="3"
-                                            Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrEnd"
-                                    Grid.Column="3"
-                                    Grid.ColumnSpan="2"
-                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                </RepeatButton.Visibility>
+                            </RepeatButton>
+                            <i:TabControlPanel x:Name="TcPanel"
+                                               Grid.Column="1"
+                                               Orientation="Horizontal"
+                                               HeaderPanelAlignment="{Binding Path=(local:TabControlHelper.HeaderPanelAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                <ContentControl x:Name="CcFront"
+                                                Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <Border x:Name="BdrFront"
+                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ScrollViewer x:Name="PART_ScrollViewer"
+                                              Grid.Column="2"
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Disabled">
+                                    <TabPanel x:Name="TpPanel"
+                                              IsItemsHost="True"
+                                              KeyboardNavigation.IsTabStop="True" />
+                                </ScrollViewer>
+                                <Border x:Name="BdrEnd"
+                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Height="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ContentControl x:Name="CcEnd"
+                                                Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            </i:TabControlPanel>
+                            <RepeatButton x:Name="PART_ForewardButton"
+                                          Grid.Column="2"
+                                          Tag="Right"
+                                          Style="{Binding Path=(local:TabControlHelper.HeaderPanelScrollButtonStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Command="{Binding Path=(local:TabControlHelper.ScrollForwardCommand), RelativeSource={RelativeSource TemplatedParent}}"
+                                          CommandParameter="{Binding ElementName=PART_ScrollViewer}">
+                                <RepeatButton.Visibility>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabControlScrollButtonVisibilityConverter}}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                        <Binding Path="ContentWidthOrHeight"
+                                                 ElementName="TcPanel" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="CcFront" />
+                                        <Binding Path="ActualWidth"
+                                                 ElementName="CcEnd" />
+                                    </MultiBinding>
+                                </RepeatButton.Visibility>
+                            </RepeatButton>
                         </Grid>
                     </local:ContentControlX>
                 </Grid>
@@ -124,6 +143,18 @@
                 <Setter TargetName="PART_ScrollViewer"
                         Property="HorizontalScrollBarVisibility"
                         Value="Hidden" />
+            </Trigger>
+            <Trigger Property="local:TabControlHelper.CanHeaderPanelScroll"
+                     Value="False">
+                <Setter TargetName="PART_ScrollViewer"
+                        Property="HorizontalScrollBarVisibility"
+                        Value="Disabled" />
+                <Setter TargetName="PART_BackwardButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_ForewardButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Top">
@@ -161,55 +192,6 @@
                         Property="Grid.ColumnSpan"
                         Value="5" />
             </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Front">
-                <Setter TargetName="CdFrontBlank"
-                        Property="Width"
-                        Value="Auto" />
-                <Setter TargetName="CdPanel"
-                        Property="Width"
-                        Value="Auto" />
-                <Setter TargetName="CdEndBlank"
-                        Property="Width"
-                        Value="*" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Stretch">
-                <Setter TargetName="CdFrontBlank"
-                        Property="Width"
-                        Value="Auto" />
-                <Setter TargetName="CdPanel"
-                        Property="Width"
-                        Value="*" />
-                <Setter TargetName="CdEndBlank"
-                        Property="Width"
-                        Value="Auto" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Center">
-                <Setter TargetName="CdFrontBlank"
-                        Property="Width"
-                        Value="*" />
-                <Setter TargetName="CdPanel"
-                        Property="Width"
-                        Value="Auto" />
-                <Setter TargetName="CdEndBlank"
-                        Property="Width"
-                        Value="*" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="End">
-                <Setter TargetName="CdFrontBlank"
-                        Property="Width"
-                        Value="*" />
-                <Setter TargetName="CdPanel"
-                        Property="Width"
-                        Value="Auto" />
-                <Setter TargetName="CdEndBlank"
-                        Property="Width"
-                        Value="Auto" />
-            </Trigger>
-
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -262,56 +244,76 @@
                                          Mode="OneWay" />
                             </MultiBinding>
                         </local:ContentControlX.Effect>
-                        <Grid>
+                        <Grid >
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="RdFrontBlank" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition x:Name="RdPanel" />
+                                <RowDefinition />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition x:Name="RdEndBlank" />
                             </Grid.RowDefinitions>
-                            <ContentControl x:Name="CcFront"
-                                            Grid.Row="1"
-                                            Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrFront"
-                                    Grid.RowSpan="2"
-                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <ScrollViewer x:Name="PART_ScrollViewer"
-                                          Grid.Row="2"
-                                          HorizontalScrollBarVisibility="Disabled"
-                                          VerticalScrollBarVisibility="Disabled">
-                                <ScrollViewer.MaxHeight>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabPanelMaxHeightConverter}}">
-                                        <Binding Path="Height"
-                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
-                                        <Binding Path="HorizontalAlignment"
-                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                            <RepeatButton x:Name="PART_BackwardButton"
+                                          Tag="Up"
+                                          Style="{Binding Path=(local:TabControlHelper.HeaderPanelScrollButtonStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Command="{Binding Path=(local:TabControlHelper.ScrollBackwardCommand), RelativeSource={RelativeSource TemplatedParent}}"
+                                          CommandParameter="{Binding ElementName=PART_ScrollViewer}">
+                                <RepeatButton.Visibility>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabControlScrollButtonVisibilityConverter}}">
                                         <Binding Path="ActualHeight"
                                                  RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                        <Binding Path="ContentWidthOrHeight"
+                                                 ElementName="TcPanel" />
                                         <Binding Path="ActualHeight"
                                                  ElementName="CcFront" />
                                         <Binding Path="ActualHeight"
                                                  ElementName="CcEnd" />
                                     </MultiBinding>
-                                </ScrollViewer.MaxHeight>
-                                <TabPanel x:Name="TpPanel"
-                                          IsItemsHost="True"
-                                          KeyboardNavigation.IsTabStop="True">
-                                </TabPanel>
-                            </ScrollViewer>
-                            <ContentControl x:Name="CcEnd"
-                                            Grid.Row="3"
-                                            Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                            <Border x:Name="BdrEnd"
-                                    Grid.Row="3"
-                                    Grid.RowSpan="2"
-                                    Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                    Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                </RepeatButton.Visibility>
+                            </RepeatButton>
+                            <i:TabControlPanel x:Name="TcPanel"
+                                               Grid.Row="1"
+                                               Orientation="Vertical"
+                                               HeaderPanelAlignment="{Binding Path=(local:TabControlHelper.HeaderPanelAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                <ContentControl x:Name="CcFront"
+                                                Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <Border x:Name="BdrFront"
+                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ScrollViewer x:Name="PART_ScrollViewer"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Disabled">
+                                    <TabPanel x:Name="TpPanel"
+                                              IsItemsHost="True"
+                                              KeyboardNavigation.IsTabStop="True">
+                                    </TabPanel>
+                                </ScrollViewer>
+                                <Border x:Name="BdrEnd"
+                                        Background="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Width="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <ContentControl x:Name="CcEnd"
+                                                Content="{Binding Path=(local:TabControlHelper.EndControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            </i:TabControlPanel>
+                            <RepeatButton x:Name="PART_ForewardButton"
+                                          Grid.Row="2"
+                                          Tag="Bottom"
+                                          Style="{Binding Path=(local:TabControlHelper.HeaderPanelScrollButtonStyle), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                          Command="{Binding Path=(local:TabControlHelper.ScrollForwardCommand), RelativeSource={RelativeSource TemplatedParent}}"
+                                          CommandParameter="{Binding ElementName=PART_ScrollViewer}">
+                                <RepeatButton.Visibility>
+                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TabControlScrollButtonVisibilityConverter}}">
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource AncestorType=TabControl}" />
+                                        <Binding Path="ContentWidthOrHeight"
+                                                 ElementName="TcPanel" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="CcFront" />
+                                        <Binding Path="ActualHeight"
+                                                 ElementName="CcEnd" />
+                                    </MultiBinding>
+                                </RepeatButton.Visibility>
+                            </RepeatButton>
                         </Grid>
                     </local:ContentControlX>
                 </Grid>
@@ -327,6 +329,18 @@
                 <Setter TargetName="PART_ScrollViewer"
                         Property="VerticalScrollBarVisibility"
                         Value="Hidden" />
+            </Trigger>
+            <Trigger Property="local:TabControlHelper.CanHeaderPanelScroll"
+                     Value="False">
+                <Setter TargetName="PART_ScrollViewer"
+                        Property="VerticalScrollBarVisibility"
+                        Value="Disabled" />
+                <Setter TargetName="PART_BackwardButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_ForewardButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Left">
@@ -367,55 +381,6 @@
                         Property="Grid.RowSpan"
                         Value="5" />
             </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Front">
-                <Setter TargetName="RdFrontBlank"
-                        Property="Height"
-                        Value="Auto" />
-                <Setter TargetName="RdPanel"
-                        Property="Height"
-                        Value="Auto" />
-                <Setter TargetName="RdEndBlank"
-                        Property="Height"
-                        Value="*" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Stretch">
-                <Setter TargetName="RdFrontBlank"
-                        Property="Height"
-                        Value="Auto" />
-                <Setter TargetName="RdPanel"
-                        Property="Height"
-                        Value="*" />
-                <Setter TargetName="RdEndBlank"
-                        Property="Height"
-                        Value="Auto" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="Center">
-                <Setter TargetName="RdFrontBlank"
-                        Property="Height"
-                        Value="*" />
-                <Setter TargetName="RdPanel"
-                        Property="Height"
-                        Value="Auto" />
-                <Setter TargetName="RdEndBlank"
-                        Property="Height"
-                        Value="*" />
-            </Trigger>
-            <Trigger Property="local:TabControlHelper.HeaderPanelHorizontalAlignment"
-                     Value="End">
-                <Setter TargetName="RdFrontBlank"
-                        Property="Height"
-                        Value="*" />
-                <Setter TargetName="RdPanel"
-                        Property="Height"
-                        Value="Auto" />
-                <Setter TargetName="RdEndBlank"
-                        Property="Height"
-                        Value="Auto" />
-            </Trigger>
-
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

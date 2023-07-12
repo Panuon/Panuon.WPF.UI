@@ -43,6 +43,7 @@
         public const string SliderTextLeftConverter = nameof(SliderTextLeftConverter);
         public const string SliderTextTopConverter = nameof(SliderTextTopConverter);
         public const string SwitchToggleMarginConverter = nameof(SwitchToggleMarginConverter);
+        public const string TabControlScrollButtonVisibilityConverter = nameof(TabControlScrollButtonVisibilityConverter);
         public const string TabPanelMaxHeightConverter = nameof(TabPanelMaxHeightConverter);
         public const string TabPanelMaxWidthConverter = nameof(TabPanelMaxWidthConverter);
         public const string ThicknessLeftRightOnlyConverter = nameof(ThicknessLeftRightOnlyConverter);

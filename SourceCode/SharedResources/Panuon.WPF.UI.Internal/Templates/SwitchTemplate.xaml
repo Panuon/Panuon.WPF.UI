@@ -46,6 +46,7 @@
                             BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
                 <Border x:Name="BdrContainer"
+                        Height="{TemplateBinding BoxHeight}"
                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                         HorizontalAlignment="Right">
                     <Border.Margin>

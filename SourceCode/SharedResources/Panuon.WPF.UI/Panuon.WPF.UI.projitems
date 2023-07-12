@@ -93,7 +93,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ProgressDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToggleArrowPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\RibbonLinePlacement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Enums\TabPanelAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\TabControlHeaderPanelAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ValidateResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\WindowXHeaderAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CaptionButtons.cs" />

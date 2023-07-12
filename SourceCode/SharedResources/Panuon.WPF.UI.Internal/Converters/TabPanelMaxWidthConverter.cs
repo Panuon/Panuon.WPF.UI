@@ -4,14 +4,14 @@ using System.Windows;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class TabPanelMaxWidthConverter 
+    class TabPanelMaxWidthConverter
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var width = (double)values[0];
+            var height = (double)values[0];
             var alignment = (HorizontalAlignment)values[1];
-            if(double.IsNaN(width) || alignment != HorizontalAlignment.Stretch)
+            if (double.IsNaN(height) || alignment != HorizontalAlignment.Stretch)
             {
                 return double.PositiveInfinity;
             }
@@ -22,7 +22,9 @@ namespace Panuon.WPF.UI.Internal.Converters
             }
             var frontWidth = (double)values[3];
             var endWidth = (double)values[4];
-            return tabActualWidth - frontWidth - endWidth;
+            var backWidth = (double)values[5];
+            var foreWidth = (double)values[6];
+            return Math.Max(0, tabActualWidth - frontWidth - endWidth - backWidth - foreWidth);
         }
     }
 }

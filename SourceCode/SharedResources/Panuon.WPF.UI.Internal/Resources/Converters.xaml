@@ -20,6 +20,7 @@
     <icv:ComboBoxDropDownHorizontalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}" />
     <icv:ComboBoxDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}" />
     <icv:ComboBoxDropDownVerticalOffsetConverter x:Key="{x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}" />
+    <icv:TabControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.TabControlScrollButtonVisibilityConverter}" />
     <icv:ContextMenuDropDownMarginConverter x:Key="{x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}" />
     <icv:DataGridSelectionUnitIsNotFullRowConverter x:Key="{x:Static irs:ConverterKeys.DataGridSelectionUnitIsNotFullRowConverter}" />
     <icv:DisplayMemberPathPropertyValueConverter x:Key="{x:Static irs:ConverterKeys.DisplayMemberPathPropertyValueConverter}" />

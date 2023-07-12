@@ -14,6 +14,9 @@ namespace Panuon.WPF.UI
         #region ComponentResourceKeys
         public static ComponentResourceKey RemoveButtonStyleKey { get; } =
             new ComponentResourceKey(typeof(TabControlHelper), nameof(RemoveButtonStyleKey));
+
+        public static ComponentResourceKey HeaderPanelScrollButtonStyleKey { get; } =
+            new ComponentResourceKey(typeof(TabControlHelper), nameof(HeaderPanelScrollButtonStyleKey));
         #endregion
 
         #region Routed Event
@@ -67,6 +70,21 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region HeaderPanelScrollButtonStyle
+        public static Style GetHeaderPanelScrollButtonStyle(TabControl tabControl)
+        {
+            return (Style)tabControl.GetValue(HeaderPanelScrollButtonStyleProperty);
+        }
+
+        public static void SetHeaderPanelScrollButtonStyle(TabControl tabControl, Style value)
+        {
+            tabControl.SetValue(HeaderPanelScrollButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelScrollButtonStyleProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelScrollButtonStyle", typeof(Style), typeof(TabControlHelper));
+        #endregion
 
         #region CornerRadius
         public static CornerRadius GetCornerRadius(TabControl tabControl)
@@ -368,19 +386,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("HeaderPanelRibbonLineStrategy", typeof(HeaderPanelRibbonLineStrategy), typeof(TabControlHelper));
         #endregion
 
-        #region HeaderPanelHorizontalAlignment
-        public static TabPanelHorizontalAlignment GetHeaderPanelHorizontalAlignment(TabControl tabControl)
+        #region HeaderPanelAlignment
+        public static TabControlHeaderPanelAlignment GetHeaderPanelAlignment(TabControl tabControl)
         {
-            return (TabPanelHorizontalAlignment)tabControl.GetValue(HeaderPanelHorizontalAlignmentProperty);
+            return (TabControlHeaderPanelAlignment)tabControl.GetValue(HeaderPanelAlignmentProperty);
         }
 
-        public static void SetHeaderPanelHorizontalAlignment(TabControl tabControl, TabPanelHorizontalAlignment value)
+        public static void SetHeaderPanelAlignment(TabControl tabControl, TabControlHeaderPanelAlignment value)
         {
-            tabControl.SetValue(HeaderPanelHorizontalAlignmentProperty, value);
+            tabControl.SetValue(HeaderPanelAlignmentProperty, value);
         }
 
-        public static readonly DependencyProperty HeaderPanelHorizontalAlignmentProperty =
-            DependencyProperty.RegisterAttached("HeaderPanelHorizontalAlignment", typeof(TabPanelHorizontalAlignment), typeof(TabControlHelper));
+        public static readonly DependencyProperty HeaderPanelAlignmentProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelAlignment", typeof(TabControlHeaderPanelAlignment), typeof(TabControlHelper));
         #endregion
 
         #region RemoveButtonStyle
@@ -1113,6 +1131,26 @@ namespace Panuon.WPF.UI
 
         #region Commands
 
+        #region ScrollForwardCommand
+        internal static ICommand GetScrollForwardCommand(TabControl tabControl)
+        {
+            return (ICommand)tabControl.GetValue(ScrollForwardCommandProperty);
+        }
+
+        internal static readonly DependencyProperty ScrollForwardCommandProperty =
+            DependencyProperty.RegisterAttached("ScrollForwardCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RelayCommand(OnScrollForwardCommandExecute)));
+        #endregion
+
+        #region ScrollBackwardCommand
+        internal static ICommand GetScrollBackwardCommand(TabControl tabControl)
+        {
+            return (ICommand)tabControl.GetValue(ScrollBackwardCommandProperty);
+        }
+
+        internal static readonly DependencyProperty ScrollBackwardCommandProperty =
+            DependencyProperty.RegisterAttached("ScrollBackwardCommand", typeof(ICommand), typeof(TabControlHelper), new PropertyMetadata(new RelayCommand(OnScrollBackwardCommandExecute)));
+        #endregion
+
         #region RemoveCommand
         public static ICommand GetRemoveCommand(TabItem tabItem)
         {
@@ -1126,6 +1164,39 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
+        private static void OnScrollBackwardCommandExecute(object obj)
+        {
+            var scrollViewer = (ScrollViewer)obj;
+            var tabControl = scrollViewer.TemplatedParent as TabControl;
+
+            switch (tabControl.TabStripPlacement)
+            {
+                case Dock.Top:
+                case Dock.Bottom:
+                    scrollViewer.LineLeft();
+                    break;
+                default:
+                    scrollViewer.LineUp();
+                    break;
+            }
+        }
+
+        private static void OnScrollForwardCommandExecute(object obj)
+        {
+            var scrollViewer = (ScrollViewer)obj;
+            var tabControl = scrollViewer.TemplatedParent as TabControl;
+
+            switch (tabControl.TabStripPlacement)
+            {
+                case Dock.Top:
+                case Dock.Bottom:
+                    scrollViewer.LineRight();
+                    break;
+                default:
+                    scrollViewer.LineDown();
+                    break;
+            }
+        }
         private static void OnRemoveCommandExecute(object obj)
         {
             var tabItem = (TabItem)obj;
