@@ -71,21 +71,6 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
-        #region HeaderPanelScrollButtonStyle
-        public static Style GetHeaderPanelScrollButtonStyle(TabControl tabControl)
-        {
-            return (Style)tabControl.GetValue(HeaderPanelScrollButtonStyleProperty);
-        }
-
-        public static void SetHeaderPanelScrollButtonStyle(TabControl tabControl, Style value)
-        {
-            tabControl.SetValue(HeaderPanelScrollButtonStyleProperty, value);
-        }
-
-        public static readonly DependencyProperty HeaderPanelScrollButtonStyleProperty =
-            DependencyProperty.RegisterAttached("HeaderPanelScrollButtonStyle", typeof(Style), typeof(TabControlHelper));
-        #endregion
-
         #region CornerRadius
         public static CornerRadius GetCornerRadius(TabControl tabControl)
         {
@@ -399,6 +384,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HeaderPanelAlignmentProperty =
             DependencyProperty.RegisterAttached("HeaderPanelAlignment", typeof(TabControlHeaderPanelAlignment), typeof(TabControlHelper));
+        #endregion
+
+        #region HeaderPanelScrollButtonStyle
+        public static Style GetHeaderPanelScrollButtonStyle(TabControl tabControl)
+        {
+            return (Style)tabControl.GetValue(HeaderPanelScrollButtonStyleProperty);
+        }
+
+        public static void SetHeaderPanelScrollButtonStyle(TabControl tabControl, Style value)
+        {
+            tabControl.SetValue(HeaderPanelScrollButtonStyleProperty, value);
+        }
+
+        public static readonly DependencyProperty HeaderPanelScrollButtonStyleProperty =
+            DependencyProperty.RegisterAttached("HeaderPanelScrollButtonStyle", typeof(Style), typeof(TabControlHelper));
         #endregion
 
         #region RemoveButtonStyle

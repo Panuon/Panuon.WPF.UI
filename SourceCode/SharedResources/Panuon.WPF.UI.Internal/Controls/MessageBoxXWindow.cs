@@ -137,18 +137,22 @@ namespace Panuon.WPF.UI.Internal.Controls
             {
                 if (ModalOKButton.IsDefault)
                 {
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.OK);
                     DialogResult = true;
                 }
                 if (ModalCancelButton.IsDefault)
                 {
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.Cancel);
                     DialogResult = null;
                 }
                 if (ModalYesButton.IsDefault)
                 {
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.Yes);
                     DialogResult = true;
                 }
                 if (ModalNoButton.IsDefault)
                 {
+                    WindowXModalDialog.SetDialogResult(this, MessageBoxResult.No);
                     DialogResult = false;
                 }
             }

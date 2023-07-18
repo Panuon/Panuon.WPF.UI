@@ -159,7 +159,7 @@
         <Style x:Key="SubMenuTabControlStyle"
                TargetType="TabControl"
                BasedOn="{StaticResource {x:Type TabControl}}">
-            <Setter Property="pu:TabControlHelper.HeaderPanelHorizontalAlignment"
+            <Setter Property="pu:TabControlHelper.HeaderPanelAlignment"
                     Value="Center" />
             <Setter Property="pu:TabControlHelper.ItemsHeight"
                     Value="45" />
