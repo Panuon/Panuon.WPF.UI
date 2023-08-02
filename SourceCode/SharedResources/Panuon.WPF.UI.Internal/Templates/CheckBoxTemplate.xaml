@@ -25,7 +25,8 @@
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Border Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+            <Border x:Name="BdrBoxInner"
+                    Height="{Binding Path=(local:CheckBoxHelper.BoxHeight),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Width="{Binding Path=(local:CheckBoxHelper.BoxWidth),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Grid>
@@ -80,10 +81,16 @@
                 <Setter TargetName="BdrBox"
                         Property="Grid.Column"
                         Value="2" />
+                <Setter TargetName="BdrBoxInner"
+                        Property="Grid.Column"
+                        Value="2" />
             </Trigger>
             <Trigger Property="local:CheckBoxHelper.ContentPlacement"
                      Value="Right">
                 <Setter TargetName="BdrBox"
+                        Property="Grid.Column"
+                        Value="0" />
+                <Setter TargetName="BdrBoxInner"
                         Property="Grid.Column"
                         Value="0" />
             </Trigger>
