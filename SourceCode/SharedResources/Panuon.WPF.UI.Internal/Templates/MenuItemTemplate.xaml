@@ -78,6 +78,7 @@
                                             ContentTemplate="{Binding Path=(local:MenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                         </Grid>
                         <ContentPresenter Grid.Column="1"
+                                          Grid.ColumnSpan="2"
                                           Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -488,6 +489,7 @@
                                             ContentTemplate="{Binding Path=(local:MenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                         </Grid>
                         <ContentPresenter Grid.Column="1"
+                                          Grid.ColumnSpan="2"
                                           Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

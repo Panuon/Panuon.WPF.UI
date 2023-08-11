@@ -410,14 +410,14 @@ namespace Panuon.WPF.UI
         #region Event
 
         #region ValueChanged
-        public event SelectedValueChangedRoutedEventHandler<double> ValueChanged
+        public event SelectedValueChangedRoutedEventHandler<double?> ValueChanged
         {
             add { AddHandler(ValueChangedEvent, value); }
             remove { RemoveHandler(ValueChangedEvent, value); }
         }
 
         public static readonly RoutedEvent ValueChangedEvent =
-            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedRoutedEventHandler<double>), typeof(NumberInput));
+            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedRoutedEventHandler<double?>), typeof(NumberInput));
         #endregion
 
         #endregion
@@ -437,27 +437,29 @@ namespace Panuon.WPF.UI
         private static object OnValueCoerceValue(DependencyObject d, object baseValue)
         {
             var numberInput = (NumberInput)d;
-            var value = (double)baseValue;
-            if(value < numberInput.Minimum)
+            if (baseValue is double value)
             {
-                return numberInput.Minimum;
+                if (value < numberInput.Minimum)
+                {
+                    return numberInput.Minimum;
+                }
+                if (value > numberInput.Maximum)
+                {
+                    return numberInput.Maximum;
+                }
+                if (numberInput.IsSnapToIntervalEnabled)
+                {
+                    var newValue = Math.Ceiling(value / numberInput.Interval) * numberInput.Interval;
+                    return newValue;
+                }
             }
-            if(value > numberInput.Maximum)
-            {
-                return numberInput.Maximum;
-            }
-            if (numberInput.IsSnapToIntervalEnabled)
-            {
-                var newValue = Math.Ceiling(value / numberInput.Interval) * numberInput.Interval;
-                return newValue;
-            }
-            return value;
+            return baseValue;
         }
 
         private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var numberInput = (NumberInput)d;
-            numberInput.OnValueChanged((double)e.OldValue, (double)e.NewValue);
+            numberInput.OnValueChanged((double?)e.OldValue, (double?)e.NewValue);
         }
 
         private static void OnMaximumOrMinimumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -515,11 +517,11 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Functions
-        private void OnValueChanged(double oldValue,
-            double newValue)
+        private void OnValueChanged(double? oldValue,
+            double? newValue)
         {
             UpdateTextFromValue();
-            RaiseEvent(new SelectedValueChangedRoutedEventArgs<double>(ValueChangedEvent, oldValue, newValue));
+            RaiseEvent(new SelectedValueChangedRoutedEventArgs<double?>(ValueChangedEvent, oldValue, newValue));
         }
 
         private void UpdateTextFromValue()

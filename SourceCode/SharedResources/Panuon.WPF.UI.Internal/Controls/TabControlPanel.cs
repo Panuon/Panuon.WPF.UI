@@ -45,7 +45,7 @@ namespace Panuon.WPF.UI.Internal
                 child.Measure(constraint);
                 if (child is ScrollViewer scrollViewer)
                 {
-                    var tabPanel = scrollViewer.Content as TabPanel;
+                    var tabPanel = scrollViewer.Content as StackPanel;
                     tabPanel.Measure(constraint);
                     switch (Orientation)
                     {
@@ -104,7 +104,7 @@ namespace Panuon.WPF.UI.Internal
             switch (Orientation)
             {
                 case Orientation.Vertical:
-                    var contentHeight = (scrollViewer.Content as TabPanel).DesiredSize.Height;
+                    var contentHeight = (scrollViewer.Content as StackPanel).ActualHeight;
                     SetCurrentValue(ContentWidthOrHeightProperty, contentHeight);
 
                     var top = 0d;
@@ -141,7 +141,7 @@ namespace Panuon.WPF.UI.Internal
                     ccEnd.Arrange(new Rect(0, top, arrangeSize.Width, ccEnd.DesiredSize.Height));
                     break;
                 default:
-                    var contentWidth = (scrollViewer.Content as TabPanel).DesiredSize.Width;
+                    var contentWidth = (scrollViewer.Content as StackPanel).ActualWidth;
                     SetCurrentValue(ContentWidthOrHeightProperty, contentWidth);
 
                     var left = 0d;
