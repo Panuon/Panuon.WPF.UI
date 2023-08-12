@@ -85,7 +85,7 @@
                             <i:TabControlPanel x:Name="TcPanel"
                                                Grid.Column="1"
                                                Orientation="Horizontal"
-                                               HeaderPanelAlignment="{Binding Path=(local:TabControlHelper.HeaderPanelAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                               >
                                 <ContentControl x:Name="CcFront"
                                                 Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <Border x:Name="BdrFront"
@@ -288,7 +288,7 @@
                                 <ScrollViewer x:Name="PART_ScrollViewer"
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollBarVisibility="Disabled">
-                                    <StackPanel x:Name="TpPanel"
+                                    <TabPanel x:Name="TpPanel"
                                                 IsItemsHost="True"
                                                 KeyboardNavigation.IsTabStop="True" />
                                 </ScrollViewer>

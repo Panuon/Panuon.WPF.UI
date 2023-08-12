@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
 namespace Panuon.WPF.UI.Internal
@@ -141,11 +142,10 @@ namespace Panuon.WPF.UI.Internal
                     ccEnd.Arrange(new Rect(0, top, arrangeSize.Width, ccEnd.DesiredSize.Height));
                     break;
                 default:
-                    var contentWidth = (scrollViewer.Content as StackPanel).ActualWidth;
-                    SetCurrentValue(ContentWidthOrHeightProperty, contentWidth);
-
+                    var stackPanel = scrollViewer.Content as StackPanel;
                     var left = 0d;
-                    var scrollViewerWidth = Math.Max(0, arrangeSize.Width - ccFront.DesiredSize.Width - ccEnd.DesiredSize.Width);
+                    var contentWidth = Math.Max(0, Math.Min(stackPanel.DesiredSize.Width, arrangeSize.Width - ccFront.DesiredSize.Width - ccEnd.DesiredSize.Width));
+                    SetCurrentValue(ContentWidthOrHeightProperty, Math.Max(contentWidth, stackPanel.ActualWidth));
 
                     if (contentWidth + ccFront.DesiredSize.Width + ccFront.DesiredSize.Width < arrangeSize.Width)
                     {
@@ -154,15 +154,15 @@ namespace Panuon.WPF.UI.Internal
                             case TabControlHeaderPanelAlignment.Stretch:
                                 break;
                             case TabControlHeaderPanelAlignment.Front:
-                                scrollViewerWidth = Math.Min(scrollViewerWidth, contentWidth);
+                                contentWidth = Math.Min(contentWidth, contentWidth);
                                 break;
                             case TabControlHeaderPanelAlignment.Center:
-                                scrollViewerWidth = Math.Min(scrollViewerWidth, contentWidth);
-                                left = (arrangeSize.Width - ccFront.DesiredSize.Width - scrollViewerWidth - ccEnd.DesiredSize.Width) / 2;
+                                contentWidth = Math.Min(contentWidth, contentWidth);
+                                left = (arrangeSize.Width - ccFront.DesiredSize.Width - contentWidth - ccEnd.DesiredSize.Width) / 2;
                                 break;
                             case TabControlHeaderPanelAlignment.End:
-                                scrollViewerWidth = Math.Min(scrollViewerWidth, contentWidth);
-                                left = arrangeSize.Width - ccFront.DesiredSize.Width - scrollViewerWidth - ccEnd.DesiredSize.Width;
+                                contentWidth = Math.Min(contentWidth, contentWidth);
+                                left = arrangeSize.Width - ccFront.DesiredSize.Width - contentWidth - ccEnd.DesiredSize.Width;
                                 break;
                         }
                     }
@@ -171,10 +171,9 @@ namespace Panuon.WPF.UI.Internal
                     bdrFront.Arrange(new Rect(left, 0, ccFront.DesiredSize.Width, arrangeSize.Height));
                     left += ccFront.DesiredSize.Width;
 
-                    scrollViewer.Width = scrollViewerWidth;
-                    scrollViewer.Arrange(new Rect(left, 0, scrollViewerWidth, arrangeSize.Height));
+                    scrollViewer.Arrange(new Rect(left, 0, contentWidth, arrangeSize.Height));
 
-                    left += scrollViewerWidth;
+                    left += contentWidth;
                     bdrEnd.Arrange(new Rect(left, 0, ccEnd.DesiredSize.Width, arrangeSize.Height));
                     ccEnd.Arrange(new Rect(left, 0, ccEnd.DesiredSize.Width, arrangeSize.Height));
                     break;
