@@ -399,7 +399,6 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty HoverForegroundLockProperty =
             DependencyProperty.RegisterAttached("HoverForegroundLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
-
         #endregion
 
         #region HoverShadowColorLock

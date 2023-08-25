@@ -701,6 +701,13 @@ namespace Panuon.WPF.UI
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 var element = (UIElement)sender;
+                var window = Window.GetWindow(element) as WindowX;
+                if (window != null
+                    && window.DisableDragMove)
+                {
+                    return;
+                }
+
                 if (GetLastPosition(element) is Point position)
                 {
                     var newPosition = Mouse.GetPosition(element);
@@ -712,7 +719,6 @@ namespace Panuon.WPF.UI
                     {
                         SetLastPosition(element, null);
                     }
-                    var window = GetWindow(element);
                     window.DragMove();
                     e.Handled = true;
                 }

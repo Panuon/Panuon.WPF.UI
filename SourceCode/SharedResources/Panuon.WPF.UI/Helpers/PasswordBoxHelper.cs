@@ -1,5 +1,6 @@
 ﻿using Panuon.WPF;
 using Panuon.WPF.UI.Internal;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,6 +19,21 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region IsReadOnly
+        public static bool GetIsReadOnly(PasswordBox passwordBox)
+        {
+            return (bool)passwordBox.GetValue(IsReadOnlyProperty);
+        }
+
+        public static void SetIsReadOnly(PasswordBox passwordBox, bool value)
+        {
+            passwordBox.SetValue(IsReadOnlyProperty, value);
+        }
+
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.RegisterAttached("IsReadOnly", typeof(bool), typeof(PasswordBoxHelper), new PropertyMetadata(OnIsReadOnlyChanged));
+        #endregion
 
         #region Password
         public static string GetPassword(PasswordBox passwordBox)
@@ -424,6 +440,27 @@ namespace Panuon.WPF.UI
                 {
                     passwordBox.Password = newPassword;
                 }
+            }
+        }
+
+        private static void OnIsReadOnlyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = (PasswordBox)d;
+            passwordBox.PreviewTextInput -= PasswordBox_PreviewTextInput;
+
+            if ((bool)e.NewValue)
+            {
+                passwordBox.PreviewTextInput += PasswordBox_PreviewTextInput;
+
+            }
+        }
+
+        private static void PasswordBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var passwordBox = sender as PasswordBox;
+            if (GetIsReadOnly(passwordBox))
+            {
+                e.Handled = true;
             }
         }
 

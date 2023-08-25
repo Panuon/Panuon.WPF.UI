@@ -98,6 +98,7 @@
                                               HorizontalScrollBarVisibility="Disabled"
                                               VerticalScrollBarVisibility="Disabled">
                                     <StackPanel x:Name="TpPanel"
+                                                Orientation="Horizontal"
                                                 IsItemsHost="True"
                                                 KeyboardNavigation.IsTabStop="True" />
                                 </ScrollViewer>
@@ -167,9 +168,6 @@
                 <Setter TargetName="BdrEnd"
                         Property="VerticalAlignment"
                         Value="Bottom" />
-                <Setter TargetName="TpPanel"
-                        Property="Orientation"
-                        Value="Horizontal" />
             </Trigger>
             <Trigger Property="TabStripPlacement"
                      Value="Bottom">
@@ -182,9 +180,6 @@
                 <Setter TargetName="BdrEnd"
                         Property="VerticalAlignment"
                         Value="Top" />
-                <Setter TargetName="TpPanel"
-                        Property="Orientation"
-                        Value="Horizontal" />
             </Trigger>
             <Trigger Property="local:TabControlHelper.HeaderPanelRibbonLineStrategy"
                      Value="Stretch">
@@ -276,8 +271,7 @@
                             </RepeatButton>
                             <i:TabControlPanel x:Name="TcPanel"
                                                Grid.Row="1"
-                                               Orientation="Vertical"
-                                               HeaderPanelAlignment="{Binding Path=(local:TabControlHelper.HeaderPanelAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                                               Orientation="Vertical">
                                 <ContentControl x:Name="CcFront"
                                                 Content="{Binding Path=(local:TabControlHelper.FrontControl), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <Border x:Name="BdrFront"
@@ -286,9 +280,10 @@
                                         CornerRadius="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         Visibility="{Binding Path=(local:TabControlHelper.HeaderPanelRibbonLineVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <ScrollViewer x:Name="PART_ScrollViewer"
-                                              HorizontalScrollBarVisibility="Hidden"
+                                              HorizontalScrollBarVisibility="Disabled"
                                               VerticalScrollBarVisibility="Disabled">
-                                    <TabPanel x:Name="TpPanel"
+                                    <StackPanel x:Name="TpPanel"
+                                                Orientation="Vertical"
                                                 IsItemsHost="True"
                                                 KeyboardNavigation.IsTabStop="True" />
                                 </ScrollViewer>
