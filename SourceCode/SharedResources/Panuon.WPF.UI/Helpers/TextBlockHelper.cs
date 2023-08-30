@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -23,6 +24,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty HighlightTextProperty =
             DependencyProperty.RegisterAttached("HighlightText", typeof(string), typeof(TextBlockHelper), new PropertyMetadata(OnHighlightTextChanged));
+        #endregion
+
+        #region HighlightRegex
+        public static string GetHighlightRegex(TextBlock textBlock)
+        {
+            return (string)textBlock.GetValue(HighlightRegexProperty);
+        }
+
+        public static void SetHighlightRegex(TextBlock textBlock, string value)
+        {
+            textBlock.SetValue(HighlightRegexProperty, value);
+        }
+
+        public static readonly DependencyProperty HighlightRegexProperty =
+            DependencyProperty.RegisterAttached("HighlightRegex", typeof(string), typeof(TextBlockHelper), new PropertyMetadata(OnHighlightTextChanged));
         #endregion
 
         #region HighlightRule
@@ -82,47 +98,91 @@ namespace Panuon.WPF.UI
                 return;
             }
             var text = textBlock.Text;
+            var regex = GetHighlightRegex(textBlock);
             var highlightText = GetHighlightText(textBlock);
             var foreground = GetHighlightForeground(textBlock);
             var background = GetHighlightBackground(textBlock);
             var rule = GetHighlightRule(textBlock);
 
-            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(highlightText))
+            if (string.IsNullOrEmpty(text)
+                || (string.IsNullOrEmpty(highlightText) && string.IsNullOrEmpty(regex)))
             {
                 textBlock.Inlines.Clear();
                 textBlock.Inlines.Add(new Run(text));
                 return;
             }
 
-            var index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
-            if (index < 0)
+            if (!string.IsNullOrEmpty(regex))
             {
+                var match = Regex.Match(text, regex);
+                var index = match.Index;
+                var matchText = match.Value;
+                if (string.IsNullOrEmpty(matchText))
+                {
+                    textBlock.Inlines.Clear();
+                    textBlock.Inlines.Add(new Run(text));
+                    return;
+                }
+
                 textBlock.Inlines.Clear();
-                textBlock.Inlines.Add(new Run(text));
-                return;
+
+                while (true)
+                {
+                    textBlock.Inlines.AddRange(new Inline[]
+                    {
+                        new Run(text.Substring(0, index)),
+                        new Run(text.Substring(index, matchText.Length))
+                        {
+                            Background = background ?? null,
+                            Foreground = foreground ?? textBlock.Foreground
+                        }
+                    });
+
+                    text = text.Substring(index + matchText.Length);
+                    match = Regex.Match(text, regex);
+                    index = match.Index;
+                    matchText = match.Value;
+
+                    if (string.IsNullOrEmpty(matchText) 
+                        || rule == HighlightRule.FirstOnly)
+                    {
+                        textBlock.Inlines.Add(new Run(text));
+                        break;
+                    }
+                }
             }
-
-            textBlock.Inlines.Clear();
-
-            while (true)
+            else if (!string.IsNullOrEmpty(text))
             {
-                textBlock.Inlines.AddRange(new Inline[]
+                var index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
+                if (index < 0)
+                {
+                    textBlock.Inlines.Clear();
+                    textBlock.Inlines.Add(new Run(text));
+                    return;
+                }
+
+                textBlock.Inlines.Clear();
+
+                while (true)
+                {
+                    textBlock.Inlines.AddRange(new Inline[]
                     {
                         new Run(text.Substring(0, index)),
                         new Run(text.Substring(index, highlightText.Length))
                         {
-                            Background = background,
-                            Foreground = foreground
+                            Background = background ?? null,
+                            Foreground = foreground ?? textBlock.Foreground
                         }
                     });
 
-                text = text.Substring(index + highlightText.Length);
-                index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
+                    text = text.Substring(index + highlightText.Length);
+                    index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
 
-                if (index < 0 || rule == HighlightRule.FirstOnly)
-                {
-                    textBlock.Inlines.Add(new Run(text));
-                    break;
+                    if (index < 0 || rule == HighlightRule.FirstOnly)
+                    {
+                        textBlock.Inlines.Add(new Run(text));
+                        break;
+                    }
                 }
             }
         }
