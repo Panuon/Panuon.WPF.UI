@@ -17,6 +17,8 @@
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsChecked"
                 Value="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ShadowHelper.BlurRadius"
                 Value="3" />
         <Setter Property="local:ShadowHelper.Direction"

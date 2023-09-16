@@ -160,6 +160,8 @@
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Center" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="FontFamily"
                 Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="FontSize"

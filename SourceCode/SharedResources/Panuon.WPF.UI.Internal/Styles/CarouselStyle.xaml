@@ -88,6 +88,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.CarouselStyle}"
            TargetType="local:Carousel">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

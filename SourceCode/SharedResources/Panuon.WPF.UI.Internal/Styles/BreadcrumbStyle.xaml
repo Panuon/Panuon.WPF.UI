@@ -30,6 +30,8 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="ItemsHoverForeground"
                 Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHoverForeground"

@@ -707,7 +707,10 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)d;
             var parent = element.TemplatedParent;
             var clickEffect = GetClickEffect(parent);
-
+            if (!isPressed)
+            {
+                return;
+            }
             var storyboard = new Storyboard();
             switch (clickEffect)
             {
@@ -717,43 +720,40 @@ namespace Panuon.WPF.UI.Internal
                         To = isPressed ? new Thickness(0, 1, 0, -1) : new Thickness(),
                         Duration = TimeSpan.Zero,
                     };
-                    Storyboard.SetTarget(sinkMarginAnimation, element);
+                    Storyboard.SetTarget(sinkMarginAnimation, parent);
                     Storyboard.SetTargetProperty(sinkMarginAnimation, new PropertyPath(MarginProperty));
                     storyboard.Children.Add(sinkMarginAnimation);
                     break;
                 case ClickEffect.Shake:
-                    if (isPressed)
+                    var thirdPartSeconds = GlobalSettings.Setting.AnimationDuration.TotalSeconds / 3;
+                    var shakeMarginAnimation1 = new ThicknessAnimation()
                     {
-                        var thirdPartSeconds = GlobalSettings.Setting.AnimationDuration.TotalSeconds / 3;
-                        var shakeMarginAnimation1 = new ThicknessAnimation()
-                        {
-                            To = new Thickness(3, 0, -3, 0),
-                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
-                        };
-                        Storyboard.SetTarget(shakeMarginAnimation1, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation1, new PropertyPath(MarginProperty));
-                        storyboard.Children.Add(shakeMarginAnimation1);
+                        To = new Thickness(3, 0, -3, 0),
+                        Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                    };
+                    Storyboard.SetTarget(shakeMarginAnimation1, parent);
+                    Storyboard.SetTargetProperty(shakeMarginAnimation1, new PropertyPath(MarginProperty));
+                    storyboard.Children.Add(shakeMarginAnimation1);
 
-                        var shakeMarginAnimation2 = new ThicknessAnimation()
-                        {
-                            To = new Thickness(-3, 0, 3, 0),
-                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
-                            BeginTime = TimeSpan.FromSeconds(thirdPartSeconds),
-                        };
-                        Storyboard.SetTarget(shakeMarginAnimation2, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation2, new PropertyPath(MarginProperty));
-                        storyboard.Children.Add(shakeMarginAnimation2);
+                    var shakeMarginAnimation2 = new ThicknessAnimation()
+                    {
+                        To = new Thickness(-3, 0, 3, 0),
+                        Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                        BeginTime = TimeSpan.FromSeconds(thirdPartSeconds),
+                    };
+                    Storyboard.SetTarget(shakeMarginAnimation2, parent);
+                    Storyboard.SetTargetProperty(shakeMarginAnimation2, new PropertyPath(MarginProperty));
+                    storyboard.Children.Add(shakeMarginAnimation2);
 
-                        var shakeMarginAnimation3 = new ThicknessAnimation()
-                        {
-                            To = new Thickness(),
-                            Duration = TimeSpan.FromSeconds(thirdPartSeconds),
-                            BeginTime = TimeSpan.FromSeconds(thirdPartSeconds * 2),
-                        };
-                        Storyboard.SetTarget(shakeMarginAnimation3, element);
-                        Storyboard.SetTargetProperty(shakeMarginAnimation3, new PropertyPath(MarginProperty));
-                        storyboard.Children.Add(shakeMarginAnimation3);
-                    }
+                    var shakeMarginAnimation3 = new ThicknessAnimation()
+                    {
+                        To = new Thickness(),
+                        Duration = TimeSpan.FromSeconds(thirdPartSeconds),
+                        BeginTime = TimeSpan.FromSeconds(thirdPartSeconds * 2),
+                    };
+                    Storyboard.SetTarget(shakeMarginAnimation3, parent);
+                    Storyboard.SetTargetProperty(shakeMarginAnimation3, new PropertyPath(MarginProperty));
+                    storyboard.Children.Add(shakeMarginAnimation3);
                     break;
             }
             storyboard.Begin();

@@ -50,6 +50,8 @@
            TargetType="Slider">
         <Setter Property="local:SliderHelper.Hook"
                 Value="True" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Background"
                 Value="#EAEAEA" />
         <Setter Property="local:SliderHelper.ThumbBackground"

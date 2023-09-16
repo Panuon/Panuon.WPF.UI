@@ -87,6 +87,8 @@
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsSelected"
                 Value="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:TabControlHelper.CanHeaderPanelScroll"
                 Value="True" />
         <Setter Property="local:TabControlHelper.HeaderPanelBackground"

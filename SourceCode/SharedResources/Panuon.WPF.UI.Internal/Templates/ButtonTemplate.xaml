@@ -11,7 +11,7 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonPendingTemplate}"
                      TargetType="Button">
-        <Grid>
+        <Grid Margin="{Binding Path=(i:VisualStateHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border x:Name="BdrContainer"
                     i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -107,7 +107,8 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ButtonTemplate}"
                      TargetType="Button">
-        <Grid x:Name="GrdContainer">
+        <Grid x:Name="GrdContainer"
+              Margin="{Binding Path=(i:VisualStateHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Border x:Name="BdrContainer"
                     i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

@@ -434,22 +434,47 @@ namespace Panuon.WPF.UI
         public void Toast(string message,
             int durationMs = 1000)
         {
-            Toast(message, ToastSettings.Setting.DefaultPosition, 0, durationMs, null);
+            CallToast(message, null, ToastSettings.Setting.DefaultPosition, 0, durationMs, null);
+        }
+
+        public void Toast(string message,
+            MessageBoxIcon icon,
+            int durationMs = 1000)
+        {
+            CallToast(message, icon, ToastSettings.Setting.DefaultPosition, 0, durationMs, null);
         }
 
         public void Toast(string message,
             ToastPosition position,
             int durationMs = 1000)
         {
-            Toast(message, position, 0, durationMs, null);
+            CallToast(message, null, position, 0, durationMs, null);
         }
+
+        public void Toast(string message,
+            MessageBoxIcon icon,
+            ToastPosition position,
+            int durationMs = 1000)
+        {
+            CallToast(message, icon, position, 0, durationMs, null);
+        }
+
 
         public void Toast(string message,
             ToastPosition position,
             double offset,
-            int durationMs)
+            int durationMs = 1000)
         {
-            Toast(message, position, offset, durationMs, null);
+            CallToast(message, null, position, offset, durationMs, null);
+        }
+
+        public void Toast(string message,
+            MessageBoxIcon icon,
+            ToastPosition position,
+            double offset,
+            int durationMs = 1000)
+        {
+            CallToast(message, icon, position, offset, durationMs, null);
         }
 
         public void Toast(string message,
@@ -458,104 +483,17 @@ namespace Panuon.WPF.UI
             int durationMs,
             ToastSetting setting)
         {
-            setting = setting ?? ToastSettings.Setting;
-            var spacing = setting.Spacing;
+            CallToast(message, null, position, offset, durationMs, setting);
+        }
 
-            var label = new Label()
-            {
-                Content = message,
-                Style = setting.LabelStyle,
-            };
-            _toastCanvas.Children.Add(label);
-
-            label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-
-            var isHorizontal = position == ToastPosition.Left || position == ToastPosition.Right;
-            var isFromES = position == ToastPosition.Right || position == ToastPosition.Bottom || position == ToastPosition.Center;
-            var top = 0d;
-            var left = 0d;
-
-            switch (position)
-            {
-                case ToastPosition.Left:
-                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
-                    left = spacing;
-                    break;
-                case ToastPosition.Right:
-                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
-                    left = _toastCanvas.ActualWidth - label.DesiredSize.Width - spacing;
-                    break;
-                case ToastPosition.Top:
-                    top = spacing;
-                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
-                    break;
-                case ToastPosition.Bottom:
-                    top = _toastCanvas.ActualHeight - label.DesiredSize.Height - spacing;
-                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
-                    break;
-                case ToastPosition.Center:
-                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
-                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
-                    break;
-            }
-            Canvas.SetTop(label, top);
-            Canvas.SetLeft(label, left);
-
-            var duration = TimeSpan.FromMilliseconds(durationMs);
-            var animationDuration = setting.AnimationDuration;
-            var animationEasing = setting.AnimationEasing;
-            var easingFunction = AnimationUtil.CreateEasingFunction(animationEasing);
-
-            var storyboard = new Storyboard();
-            var startOpacityAnimation = new DoubleAnimation()
-            {
-                Duration = animationDuration,
-                From = 0,
-                To = 1,
-                EasingFunction = easingFunction
-            };
-            Storyboard.SetTarget(startOpacityAnimation, label);
-            Storyboard.SetTargetProperty(startOpacityAnimation, new PropertyPath(Label.OpacityProperty));
-            storyboard.Children.Add(startOpacityAnimation);
-
-            var endOpacityAnimation = new DoubleAnimation()
-            {
-                Duration = animationDuration,
-                BeginTime = animationDuration + duration,
-                To = 0,
-                EasingFunction = easingFunction
-            };
-            Storyboard.SetTarget(endOpacityAnimation, label);
-            Storyboard.SetTargetProperty(endOpacityAnimation, new PropertyPath(Label.OpacityProperty));
-            storyboard.Children.Add(endOpacityAnimation);
-
-            var startOffsetAnimation = new DoubleAnimation()
-            {
-                Duration = animationDuration,
-                From = (isHorizontal ? left : top) + (isFromES ? 10 : -10) + offset,
-                To = (isHorizontal ? left : top) + (isFromES ? -10 : 10) + offset,
-                EasingFunction = easingFunction
-            };
-            Storyboard.SetTarget(startOffsetAnimation, label);
-            Storyboard.SetTargetProperty(startOffsetAnimation, isHorizontal ? new PropertyPath(Canvas.LeftProperty) : new PropertyPath(Canvas.TopProperty));
-            storyboard.Children.Add(startOffsetAnimation);
-
-            var endOffsetAnimation = new DoubleAnimation()
-            {
-                Duration = animationDuration,
-                BeginTime = animationDuration + duration,
-                To = (isHorizontal ? left : top) + (isFromES ? 10 : -10) + offset,
-                EasingFunction = easingFunction
-            };
-            Storyboard.SetTarget(endOffsetAnimation, label);
-            Storyboard.SetTargetProperty(endOffsetAnimation, isHorizontal ? new PropertyPath(Canvas.LeftProperty) : new PropertyPath(Canvas.TopProperty));
-            storyboard.Children.Add(endOffsetAnimation);
-
-            storyboard.Completed += delegate
-            {
-                _toastCanvas.Children.Remove(label);
-            };
-            storyboard.Begin();
+        public void Toast(string message,
+            MessageBoxIcon icon,
+            ToastPosition position,
+            double offset,
+            int durationMs,
+            ToastSetting setting)
+        {
+            CallToast(message, icon, position, offset, durationMs, setting);
         }
         #endregion
 
@@ -783,6 +721,117 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Functions
+        internal void CallToast(string message,
+            MessageBoxIcon? icon,
+            ToastPosition position,
+            double offset,
+            int durationMs,
+            ToastSetting setting)
+        {
+            setting = setting ?? ToastSettings.Setting;
+            var spacing = setting.Spacing;
+
+            var label = new Label()
+            {
+                Style = setting.LabelStyle,
+                Content = new
+                {
+                    Icon = icon,
+                    Message = message,
+                }
+            };
+            _toastCanvas.Children.Add(label);
+
+            label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+
+            var isHorizontal = position == ToastPosition.Left || position == ToastPosition.Right;
+            var isFromES = position == ToastPosition.Right || position == ToastPosition.Bottom || position == ToastPosition.Center;
+            var top = 0d;
+            var left = 0d;
+
+            switch (position)
+            {
+                case ToastPosition.Left:
+                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
+                    left = spacing;
+                    break;
+                case ToastPosition.Right:
+                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
+                    left = _toastCanvas.ActualWidth - label.DesiredSize.Width - spacing;
+                    break;
+                case ToastPosition.Top:
+                    top = spacing;
+                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
+                    break;
+                case ToastPosition.Bottom:
+                    top = _toastCanvas.ActualHeight - label.DesiredSize.Height - spacing;
+                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
+                    break;
+                case ToastPosition.Center:
+                    top = (_toastCanvas.ActualHeight - label.DesiredSize.Height) / 2;
+                    left = (_toastCanvas.ActualWidth - label.DesiredSize.Width) / 2;
+                    break;
+            }
+            Canvas.SetTop(label, top);
+            Canvas.SetLeft(label, left);
+
+            var duration = TimeSpan.FromMilliseconds(durationMs);
+            var animationDuration = setting.AnimationDuration;
+            var animationEasing = setting.AnimationEasing;
+            var easingFunction = AnimationUtil.CreateEasingFunction(animationEasing);
+
+            var storyboard = new Storyboard();
+            var startOpacityAnimation = new DoubleAnimation()
+            {
+                Duration = animationDuration,
+                From = 0,
+                To = 1,
+                EasingFunction = easingFunction
+            };
+            Storyboard.SetTarget(startOpacityAnimation, label);
+            Storyboard.SetTargetProperty(startOpacityAnimation, new PropertyPath(Label.OpacityProperty));
+            storyboard.Children.Add(startOpacityAnimation);
+
+            var endOpacityAnimation = new DoubleAnimation()
+            {
+                Duration = animationDuration,
+                BeginTime = animationDuration + duration,
+                To = 0,
+                EasingFunction = easingFunction
+            };
+            Storyboard.SetTarget(endOpacityAnimation, label);
+            Storyboard.SetTargetProperty(endOpacityAnimation, new PropertyPath(Label.OpacityProperty));
+            storyboard.Children.Add(endOpacityAnimation);
+
+            var startOffsetAnimation = new DoubleAnimation()
+            {
+                Duration = animationDuration,
+                From = (isHorizontal ? left : top) + (isFromES ? 10 : -10) + offset,
+                To = (isHorizontal ? left : top) + (isFromES ? -10 : 10) + offset,
+                EasingFunction = easingFunction
+            };
+            Storyboard.SetTarget(startOffsetAnimation, label);
+            Storyboard.SetTargetProperty(startOffsetAnimation, isHorizontal ? new PropertyPath(Canvas.LeftProperty) : new PropertyPath(Canvas.TopProperty));
+            storyboard.Children.Add(startOffsetAnimation);
+
+            var endOffsetAnimation = new DoubleAnimation()
+            {
+                Duration = animationDuration,
+                BeginTime = animationDuration + duration,
+                To = (isHorizontal ? left : top) + (isFromES ? 10 : -10) + offset,
+                EasingFunction = easingFunction
+            };
+            Storyboard.SetTarget(endOffsetAnimation, label);
+            Storyboard.SetTargetProperty(endOffsetAnimation, isHorizontal ? new PropertyPath(Canvas.LeftProperty) : new PropertyPath(Canvas.TopProperty));
+            storyboard.Children.Add(endOffsetAnimation);
+
+            storyboard.Completed += delegate
+            {
+                _toastCanvas.Children.Remove(label);
+            };
+            storyboard.Begin();
+        }
+
         private void OnIsMaskVisibleChanged()
         {
             WindowChromeUtil.SetCaptionHeight(this, IsMaskVisible ? 0 : (DisableDragMove ? 0 : WindowXCaption.GetHeight(this)));

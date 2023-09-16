@@ -367,6 +367,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CheckedCornerRadius", typeof(CornerRadius?), typeof(Switch));
         #endregion
 
+        #region BoxTemplate
+        public DataTemplate BoxTemplate
+        {
+            get { return (DataTemplate)GetValue(BoxTemplateProperty); }
+            set { SetValue(BoxTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty BoxTemplateProperty =
+            DependencyProperty.Register("BoxTemplate", typeof(DataTemplate), typeof(Switch));
+        #endregion
+
         #endregion
 
         #region Event Handlers

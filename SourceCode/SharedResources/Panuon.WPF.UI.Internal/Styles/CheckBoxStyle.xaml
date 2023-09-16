@@ -21,6 +21,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:CheckBoxHelper.GlyphThickness"
                 Value="1" />
         <Setter Property="local:CheckBoxHelper.CheckedGlyphBrush"

@@ -21,6 +21,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:RadioButtonHelper.ToggleRadius"
                 Value="{Binding Path=(local:RadioButtonHelper.BoxRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:RadioButtonHelper.CheckedToggleBrush"

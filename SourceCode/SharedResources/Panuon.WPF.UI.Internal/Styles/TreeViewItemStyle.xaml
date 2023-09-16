@@ -53,6 +53,8 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:TreeViewItemHelper.InternalPadding">
             <Setter.Value>
                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TreeViewItemInternalPaddingConverter}}">

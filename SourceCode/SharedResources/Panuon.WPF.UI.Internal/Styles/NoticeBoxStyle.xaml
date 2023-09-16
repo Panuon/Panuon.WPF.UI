@@ -17,6 +17,8 @@
                 Value="{Binding FontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="FontSize"
                 Value="{Binding FontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Width"
                 Value="350" />
         <Setter Property="Height"

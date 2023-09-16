@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ProgressBarStyle}"
            TargetType="ProgressBar">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ProgressBarHelper.Hook"
                 Value="True" />
         <Setter Property="local:ProgressBarHelper.InvertedForeground"

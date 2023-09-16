@@ -41,6 +41,8 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ShadowHelper.BlurRadius"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="local:ShadowHelper.Direction"

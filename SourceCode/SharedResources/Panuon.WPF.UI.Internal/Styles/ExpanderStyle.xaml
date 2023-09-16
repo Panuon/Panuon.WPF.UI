@@ -102,6 +102,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ExpanderHelper.HeaderSeparatorBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ExpanderHelper.HeaderSeparatorThickness"

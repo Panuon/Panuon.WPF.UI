@@ -21,6 +21,8 @@
                 Value="10,0,0,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(local:GroupBoxHelper.HeaderForeground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:GroupBoxHelper.HeaderSeparatorBrush"
                 Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:GroupBoxHelper.HeaderSeparatorThickness"

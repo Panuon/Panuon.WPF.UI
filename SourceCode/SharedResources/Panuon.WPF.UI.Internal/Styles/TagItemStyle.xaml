@@ -39,6 +39,8 @@
                 Value="True" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Padding"
                 Value="5" />
         <Setter Property="Background"

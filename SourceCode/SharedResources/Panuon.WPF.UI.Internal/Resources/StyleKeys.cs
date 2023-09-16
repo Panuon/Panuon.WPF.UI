@@ -1,7 +1,12 @@
-﻿namespace Panuon.WPF.UI.Internal.Resources
+﻿using System.Windows;
+
+namespace Panuon.WPF.UI.Internal.Resources
 {
     static class StyleKeys
     {
+        public static ComponentResourceKey DefaultFocusStyleKey { get; } =
+            new ComponentResourceKey(typeof(StyleKeys), nameof(DefaultFocusStyleKey));
+
         public const string DataGridComboBoxStyle = nameof(DataGridComboBoxStyle);
         public const string IconButtonStyle = nameof(IconButtonStyle);
         public const string IconRepeatButtonStyle = nameof(IconRepeatButtonStyle);

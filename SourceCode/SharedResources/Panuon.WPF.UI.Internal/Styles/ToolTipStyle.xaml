@@ -13,6 +13,8 @@
            TargetType="ToolTip">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:ToolTipHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"

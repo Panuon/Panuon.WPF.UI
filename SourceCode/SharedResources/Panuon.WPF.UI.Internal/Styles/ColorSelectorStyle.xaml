@@ -140,6 +140,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ColorSelectorStyle}"
            TargetType="local:ColorSelector">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="BorderBrush"

@@ -14,6 +14,8 @@
            TargetType="ScrollViewer">
         <Setter Property="local:ScrollViewerHelper.Regist"
                 Value="True" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ScrollViewerTemplate}}" />
     </Style>

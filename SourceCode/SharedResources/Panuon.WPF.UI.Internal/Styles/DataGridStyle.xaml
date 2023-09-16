@@ -98,6 +98,8 @@
 
     <Style x:Key="{x:Static irs:StyleKeys.DataGridComboBoxStyle}"
            TargetType="ComboBox">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="Background"
@@ -132,6 +134,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DataGridCellStyle}"
            TargetType="DataGridCell">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="Background"
@@ -165,6 +169,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DataGridRowStyle}"
            TargetType="DataGridRow">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:DataGridHelper.RowHook"
                 Value="True" />
         <Setter Property="Background"
@@ -209,6 +215,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DataGridRowHeaderStyle}"
            TargetType="DataGridRowHeader">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:DataGridHelper.RowHeaderHook"
                 Value="True" />
         <Setter Property="SnapsToDevicePixels"
@@ -234,6 +242,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DataGridColumnHeaderStyle}"
            TargetType="DataGridColumnHeader">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="VerticalContentAlignment"
@@ -266,10 +276,8 @@
            TargetType="DataGrid">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
-        <Setter Property="local:IconHelper.FontFamily"
-                Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
-        <Setter Property="local:IconHelper.FontSize"
-                Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="RenderOptions.EdgeMode"
                 Value="Aliased" />
         <Setter Property="local:DataGridHelper.Hook"

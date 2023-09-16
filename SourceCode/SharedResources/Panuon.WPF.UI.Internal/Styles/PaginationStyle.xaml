@@ -69,6 +69,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.PaginationStyle}"
            TargetType="local:Pagination">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="ItemsPadding"
                 Value="5,0" />
         <Setter Property="ItemsBackground"

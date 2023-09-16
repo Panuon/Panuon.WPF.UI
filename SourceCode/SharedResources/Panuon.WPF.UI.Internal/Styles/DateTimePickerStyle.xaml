@@ -176,6 +176,8 @@
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Left" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:DropDownHelper.CornerRadius"
                 Value="{Binding CornerRadius, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Background"

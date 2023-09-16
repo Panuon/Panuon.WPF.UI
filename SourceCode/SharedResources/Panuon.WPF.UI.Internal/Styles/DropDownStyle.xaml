@@ -12,6 +12,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.DropDownStyle}"
            TargetType="local:DropDown">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:DropDownHelper.Placement"
                 Value="BottomRight" />
         <Setter Property="local:DropDownHelper.Background"

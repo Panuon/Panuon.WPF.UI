@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Type GridViewColumnHeader}"
            TargetType="GridViewColumnHeader">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Padding"
                 Value="{Binding Path=(local:ListViewHelper.ColumnHeaderPadding),RelativeSource={RelativeSource AncestorType=ListView}, Mode=OneWay}" />
         <Setter Property="Background"
@@ -31,6 +33,8 @@
            TargetType="ListView">
         <Setter Property="local:ListViewHelper.Hook"
                 Value="True" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderHorizontalContentAlignment"
                 Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ListViewHelper.ColumnHeaderVerticalContentAlignment"

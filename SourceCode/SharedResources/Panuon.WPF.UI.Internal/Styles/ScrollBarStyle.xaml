@@ -67,7 +67,9 @@
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.ScrollBarStyle}"
-           TargetType="ScrollBar">   
+           TargetType="ScrollBar">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ScrollBarHelper.InternalThumbBackground"
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.InternalThumbBorderBrush"

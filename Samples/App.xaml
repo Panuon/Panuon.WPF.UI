@@ -9,7 +9,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
-
                     <pu:MessageBoxXSettings x:Key="messageSetting">
                         <pu:MessageBoxXSettings.WindowXStyle>
                             <Style TargetType="pu:WindowX"
@@ -126,7 +125,8 @@
                         </pu:GlobalSettings.Themes>
                     </pu:GlobalSettings>
                 </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />-->
+                <ResourceDictionary Source="{x:Static pu:ResourceDictionaryUris.All}" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

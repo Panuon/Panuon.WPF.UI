@@ -601,6 +601,8 @@
         <ControlTemplate.Resources>
             <Style x:Key="RowHeaderGripperStyle"
                    TargetType="{x:Type Thumb}">
+                <Setter Property="FocusVisualStyle"
+                        Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
                 <Setter Property="Height"
                         Value="8" />
                 <Setter Property="Background"

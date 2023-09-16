@@ -24,6 +24,7 @@
         public const string DataGridRowStyle = nameof(DataGridRowStyle);
         public const string DataGridStyle = nameof(DataGridStyle);
         public const string DateTimePickerStyle = nameof(DateTimePickerStyle);
+        public const string DefaultFocusStyle = nameof(DefaultFocusStyle);
         public const string DrawerStyle = nameof(DrawerStyle);
         public const string DropDownStyle = nameof(DropDownStyle);
         public const string ExpanderStyle = nameof(ExpanderStyle);

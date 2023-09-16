@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.StateControlStyle}"
            TargetType="local:StateControl">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Template"
                  Value="{StaticResource {x:Static irs:TemplateKeys.StateControlTemplate}}" />
     </Style>

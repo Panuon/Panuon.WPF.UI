@@ -81,6 +81,8 @@
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding ItemsToggleStroke, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
         <Setter Property="VerticalContentAlignment"

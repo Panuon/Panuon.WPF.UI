@@ -21,6 +21,8 @@
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="ShadowColor"

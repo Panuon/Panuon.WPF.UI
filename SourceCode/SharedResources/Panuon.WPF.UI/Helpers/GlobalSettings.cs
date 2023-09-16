@@ -106,6 +106,20 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region FocusVisualStyle
+        public Style FocusVisualStyle
+        {
+            get
+            {
+                return Setting.FocusVisualStyle;
+            }
+            set
+            {
+                Setting.FocusVisualStyle = value;
+            }
+        }
+        #endregion
+
         #region AnimationDuration
         public TimeSpan AnimationDuration
         {
@@ -120,7 +134,7 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
-        #region AnimationDuration
+        #region Themes
         public Collection<ApplicationTheme> Themes
         {
             get

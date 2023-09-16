@@ -74,6 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToastSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Toast.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceDictionaryUris.cs" />
     <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Enums\AnimationEasing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InputLimits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TimeSelectorMode.cs" />

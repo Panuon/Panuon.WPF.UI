@@ -47,6 +47,8 @@
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="InputMethod.IsInputMethodEnabled"
                 Value="False" />
         <Setter Property="local:IconHelper.Margin"

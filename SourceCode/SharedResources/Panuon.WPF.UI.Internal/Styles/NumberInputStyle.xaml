@@ -14,6 +14,8 @@
     <Style x:Key="{ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:NumberInput}}"
            TargetType="Button"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.ButtonStyle}}">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ButtonHelper.HoverForeground"
                 Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
@@ -37,6 +39,8 @@
     <Style x:Key="{ComponentResourceKey ResourceId=UpDownButtonStyleKey, TypeInTargetAssembly={x:Type local:NumberInput}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Padding"
                 Value="5,0" />
         <Setter Property="FontSize"
@@ -87,6 +91,8 @@
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"
                 Value="Left" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Padding"

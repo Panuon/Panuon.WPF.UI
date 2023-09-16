@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.RingProgressBarStyle}"
            TargetType="local:RingProgressBar">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Minimum"
                 Value="0" />
         <Setter Property="Maximum"

@@ -39,6 +39,8 @@
                 Value="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Style.Triggers>
             <Trigger Property="Role"
                      Value="TopLevelHeader">

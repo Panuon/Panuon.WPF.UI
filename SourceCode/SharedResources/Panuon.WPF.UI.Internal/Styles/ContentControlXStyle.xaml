@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ContentControlXStyle}"
            TargetType="local:ContentControlX">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HorizontalContentAlignment"

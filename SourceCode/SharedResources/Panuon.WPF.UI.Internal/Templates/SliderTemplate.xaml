@@ -11,6 +11,8 @@
 
     <Style x:Key="{x:Static irs:StyleKeys.SliderRepeatButtonStyle}"
            TargetType="{x:Type RepeatButton}">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
         <Setter Property="OverridesDefaultStyle"
