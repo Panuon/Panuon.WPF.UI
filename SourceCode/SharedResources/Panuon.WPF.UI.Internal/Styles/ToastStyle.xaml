@@ -42,38 +42,33 @@
             <Setter.Value>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <ContentControl Content="{Binding Icon}">
-                            <ContentControl.ContentTemplate>
-                                <DataTemplate>
-                                    <local:StateControl Margin="0,0,7,0"
-                                                        CurrentState="{Binding}"
-                                                        VerticalAlignment="Center"
-                                                        FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Label}, Mode=OneWay}"
-                                                        FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon">
-                                        <local:StateItem State="Info">
-                                            <TextBlock Foreground="#80BEE8"
-                                                       Text="&#xe92f;" />
-                                        </local:StateItem>
-                                        <local:StateItem State="Question">
-                                            <TextBlock Foreground="#80BEE8"
-                                                       Text="&#xe937;" />
-                                        </local:StateItem>
-                                        <local:StateItem State="Warning">
-                                            <TextBlock Foreground="#F9D01A"
-                                                       Text="&#xe931;" />
-                                        </local:StateItem>
-                                        <local:StateItem State="Error">
-                                            <TextBlock Foreground="#FF5656"
-                                                       Text="&#xe933;" />
-                                        </local:StateItem>
-                                        <local:StateItem State="Success">
-                                            <TextBlock Foreground="#75CD43"
-                                                       Text="&#xe935;" />
-                                        </local:StateItem>
-                                    </local:StateControl>
-                                </DataTemplate>
-                            </ContentControl.ContentTemplate>
-                        </ContentControl>
+                        <local:StateControl Margin="0,0,7,0"
+                                            Visibility="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}}"
+                                            CurrentState="{Binding Icon}"
+                                            VerticalAlignment="Center"
+                                            FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=Label}, Mode=OneWay}"
+                                            FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon">
+                            <local:StateItem State="Info">
+                                <TextBlock Foreground="#80BEE8"
+                                           Text="&#xe92f;" />
+                            </local:StateItem>
+                            <local:StateItem State="Question">
+                                <TextBlock Foreground="#80BEE8"
+                                           Text="&#xe937;" />
+                            </local:StateItem>
+                            <local:StateItem State="Warning">
+                                <TextBlock Foreground="#F9D01A"
+                                           Text="&#xe931;" />
+                            </local:StateItem>
+                            <local:StateItem State="Error">
+                                <TextBlock Foreground="#FF5656"
+                                           Text="&#xe933;" />
+                            </local:StateItem>
+                            <local:StateItem State="Success">
+                                <TextBlock Foreground="#75CD43"
+                                           Text="&#xe935;" />
+                            </local:StateItem>
+                        </local:StateControl>
                         <TextBlock Text="{Binding Message}"
                                    VerticalAlignment="Center" />
                     </StackPanel>

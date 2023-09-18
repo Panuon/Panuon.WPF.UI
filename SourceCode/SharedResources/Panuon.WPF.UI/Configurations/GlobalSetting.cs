@@ -2,7 +2,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Panuon.WPF.UI.Configurations
 {
@@ -12,8 +14,23 @@ namespace Panuon.WPF.UI.Configurations
         #region Ctor
         public GlobalSetting()
         {
-            SetCurrentValue(ThemesProperty, new Collection<ApplicationTheme>());
-            SetCurrentValue(FocusVisualStyleProperty, (Style)Application.Current.FindResource(StyleKeys.DefaultFocusStyleKey));
+            SetValue(ThemesProperty, new Collection<ApplicationTheme>());
+
+            var rectangle = new FrameworkElementFactory(typeof(Rectangle));
+            rectangle.SetValue(Rectangle.StrokeDashArrayProperty, new DoubleCollection(new double[] { 1.5, 1.5 }));
+            rectangle.SetValue(Rectangle.StrokeThicknessProperty, 1d);
+            rectangle.SetValue(Rectangle.StrokeProperty, Brushes.DimGray);
+            var visualStyle = new Style();
+            visualStyle.Setters.Add(new Setter()
+            {
+                Property = Control.TemplateProperty,
+                Value = new ControlTemplate()
+                {
+                    VisualTree = rectangle
+                }
+            });
+            visualStyle.Seal();
+            SetValue(FocusVisualStyleProperty, visualStyle);
         }
         #endregion
 

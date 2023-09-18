@@ -16,43 +16,86 @@ namespace Panuon.WPF.UI
         #region Methods
         public static void Show(string message,
             int durationMs = 1000,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, null, ToastSettings.Setting.DefaultPosition, 0, durationMs, null, targetWindow);
         }
 
+        public static void Show(WindowX window,
+            string message,
+            int durationMs = 1000)
+        {
+            CallToast(window, message, null, ToastSettings.Setting.DefaultPosition, 0, durationMs, null, ToastWindow.ActiveWindow);
+        }
+
         public static void Show(string message,
             MessageBoxIcon icon,
             int durationMs = 1000,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, icon, ToastSettings.Setting.DefaultPosition, 0, durationMs, null, targetWindow);
         }
 
+        public static void Show(WindowX window, 
+            string message,
+            MessageBoxIcon icon,
+            int durationMs = 1000)
+        {
+            CallToast(window, message, icon, ToastSettings.Setting.DefaultPosition, 0, durationMs, null, ToastWindow.ActiveWindow);
+        }
+
+
         public static void Show(string message,
             ToastPosition position,
             int durationMs = 1000,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, null, position, 0, durationMs, null, targetWindow);
         }
 
+        public static void Show(WindowX window,
+            string message,
+            ToastPosition position,
+            int durationMs = 1000)
+        {
+            CallToast(window, message, null, position, 0, durationMs, null, ToastWindow.ActiveWindow);
+        }
+
+
         public static void Show(string message,
             MessageBoxIcon icon,
             ToastPosition position,
             int durationMs = 1000,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, icon, position, 0, durationMs, null, targetWindow);
+        }
+
+        public static void Show(WindowX window,
+            string message,
+            MessageBoxIcon icon,
+            ToastPosition position,
+            int durationMs = 1000)
+        {
+            CallToast(window, message, icon, position, 0, durationMs, null, ToastWindow.ActiveWindow);
         }
 
         public static void Show(string message,
             ToastPosition position,
             double offset,
             int durationMs,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, null, position, offset, durationMs, null, targetWindow);
+        }
+
+        public static void Show(WindowX window, 
+            string message,
+            ToastPosition position,
+            double offset,
+            int durationMs)
+        {
+            CallToast(window, message, null, position, offset, durationMs, null, ToastWindow.ActiveWindow);
         }
 
         public static void Show(string message,
@@ -60,7 +103,7 @@ namespace Panuon.WPF.UI
             ToastPosition position,
             double offset,
             int durationMs,
-            ToastWindow targetWindow = ToastWindow.MainWindow)
+            ToastWindow targetWindow = ToastWindow.ActiveWindow)
         {
             CallToast(null, message, icon, position, offset, durationMs, null, targetWindow);
         }
@@ -72,7 +115,7 @@ namespace Panuon.WPF.UI
             int durationMs,
             ToastSetting setting)
         {
-            CallToast(window, message, null, position, offset, durationMs, setting, ToastWindow.MainWindow);
+            CallToast(window, message, null, position, offset, durationMs, setting, ToastWindow.ActiveWindow);
         }
 
         public static void Show(WindowX window,
@@ -83,7 +126,7 @@ namespace Panuon.WPF.UI
             int durationMs,
             ToastSetting setting)
         {
-            CallToast(window, message, icon, position, offset, durationMs, setting, ToastWindow.MainWindow);
+            CallToast(window, message, icon, position, offset, durationMs, setting, ToastWindow.ActiveWindow);
         }
 
         #endregion
@@ -106,7 +149,7 @@ namespace Panuon.WPF.UI
         {
             switch(window)
             {
-                case ToastWindow.MainWindow:
+                case ToastWindow.ActiveWindow:
                     if(Application.Current.MainWindow is WindowX windowX)
                     {
                         return windowX;

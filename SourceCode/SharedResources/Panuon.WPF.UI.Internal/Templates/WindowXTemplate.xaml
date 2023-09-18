@@ -263,16 +263,40 @@
                 <Setter TargetName="CcExtendControl"
                         Property="Visibility"
                         Value="Collapsed" />
-                <Setter TargetName="BtnMinimize"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                <Setter TargetName="BtnMinimize"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                <Setter TargetName="BtnClose"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
             <Trigger Property="local:WindowXModalDialog.InverseButtonsSequence"
                      Value="True">
                 <Setter TargetName="StkModalButtons"
@@ -911,16 +935,40 @@
                 <Setter TargetName="CcExtendControl"
                         Property="Visibility"
                         Value="Collapsed" />
-                <Setter TargetName="BtnMinimize"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                <Setter TargetName="BtnMinimize"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
-                <Setter TargetName="BtnClose"
-                        Property="Style"
-                        Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
             </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnMinimize"
+                        Property="Style"
+                        Value="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 

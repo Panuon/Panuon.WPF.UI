@@ -163,8 +163,6 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
-        <Setter Property="FocusVisualStyle"
-                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:WindowXCaption.Height"
                 Value="35" />
         <Setter Property="local:WindowXCaption.Foreground"
@@ -178,11 +176,11 @@
         <Setter Property="local:WindowXCaption.CloseButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=CloseButtonStyleKey, TypeInTargetAssembly={x:Type local:WindowXCaption}}}" />
         <Setter Property="local:WindowXCaption.BackstageMinimizeButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.MinimizeButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{x:Null}" />
         <Setter Property="local:WindowXCaption.BackstageMaximizeButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.MaximizeButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{x:Null}" />
         <Setter Property="local:WindowXCaption.BackstageCloseButtonStyle"
-                Value="{Binding Path=(local:WindowXCaption.CloseButtonStyle), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{x:Null}" />
         <Setter Property="local:WindowXCaption.Background"
                 Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WindowXModalDialog.ButtonStyle"

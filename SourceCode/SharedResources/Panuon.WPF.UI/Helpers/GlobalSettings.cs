@@ -10,9 +10,18 @@ using System.Windows.Media;
 
 namespace Panuon.WPF.UI
 {
+    public static class GlobalSettingsKeys
+    {
+        #region ComponentResourceKeys
+        public static ComponentResourceKey DefaultFocusStyleKey { get; } =
+            new ComponentResourceKey(typeof(GlobalSettingsKeys), nameof(DefaultFocusStyleKey));
+        #endregion
+    }
+
     public class GlobalSettings
         : DependencyObject
     {
+
         #region Static Properties
         public static GlobalSetting Setting { get; } = new GlobalSetting();
         #endregion
