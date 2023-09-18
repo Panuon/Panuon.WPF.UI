@@ -707,10 +707,7 @@ namespace Panuon.WPF.UI.Internal
             var element = (FrameworkElement)d;
             var parent = element.TemplatedParent;
             var clickEffect = GetClickEffect(parent);
-            if (!isPressed)
-            {
-                return;
-            }
+            
             var storyboard = new Storyboard();
             switch (clickEffect)
             {
@@ -725,6 +722,10 @@ namespace Panuon.WPF.UI.Internal
                     storyboard.Children.Add(sinkMarginAnimation);
                     break;
                 case ClickEffect.Shake:
+                    if (!isPressed)
+                    {
+                        return;
+                    }
                     var thirdPartSeconds = GlobalSettings.Setting.AnimationDuration.TotalSeconds / 3;
                     var shakeMarginAnimation1 = new ThicknessAnimation()
                     {
