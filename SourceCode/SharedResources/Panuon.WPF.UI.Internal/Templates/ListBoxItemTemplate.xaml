@@ -28,18 +28,14 @@
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Padding="{TemplateBinding Padding}">
-                <Grid x:Name="GrdContainer"
-                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Border Width="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}">
+                <DockPanel x:Name="GrdContainer"
+                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}">
+                    <Border Width="{Binding Path=(local:ListBoxHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ListBox}, Mode=OneWay}"
+                            DockPanel.Dock="{Binding Path=(local:ListBoxItemHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter x:Name="IpIcon"
-                                         DockPanel.Dock="{Binding Path=(local:ListBoxItemHelper.IconPlacement), Converter={StaticResource {x:Static irs:ConverterKeys.IconPlacementToDockConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Content="{Binding Path=(local:ListBoxItemHelper.Icon), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -82,7 +78,7 @@
                                 Command="{Binding Path=(local:ListBoxHelper.RemoveCommand), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     </Grid>
-                </Grid>
+                </DockPanel>
             </Border>
             <Rectangle x:Name="RectSeparator"
                        Grid.Row="1"
