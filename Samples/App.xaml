@@ -43,7 +43,8 @@
                         </pu:MessageBoxXSettings.ButtonStyle>
                     </pu:MessageBoxXSettings>
 
-                    <pu:NoticeBoxSettings x:Key="noticeSetting">
+                    <pu:NoticeBoxSettings x:Key="noticeSetting"
+                                          Position="TopRight">
                         <pu:NoticeBoxSettings.NoticeBoxItemStyle>
                             <Style TargetType="pu:NoticeBoxItem"
                                    BasedOn="{StaticResource {x:Static pu:NoticeBox.NoticeBoxItemStyleKey}}">

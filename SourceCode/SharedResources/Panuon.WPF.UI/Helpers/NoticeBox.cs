@@ -168,12 +168,13 @@ namespace Panuon.WPF.UI
             return (INoticeHandler)Application.Current.Dispatcher.Invoke(new Func<INoticeHandler>(() =>
             {
                 setting = setting ?? NoticeBoxSettings.Setting;
-                var animationEase = setting.AnimationEasing;
                 var animationDuration = setting.AnimationDuration;
                 var noticeBoxItemStyle = XamlUtil.ToXaml(setting.NoticeBoxItemStyle);
                 var createOnNewThread = setting.CreateOnNewThread;
-                var defaultDuration = GlobalSettings.Setting.AnimationDuration;
-                
+                var animationEase = setting.AnimationEasing;
+                var defaultDuration = setting.AnimationDuration;
+                var position = NoticeBoxSettings.Setting.Position;
+
                 if (_noticeWindow == null)
                 {
                     if (createOnNewThread)
@@ -181,7 +182,7 @@ namespace Panuon.WPF.UI
                         var autoReset = new AutoResetEvent(false);
                         _thread = new Thread(() =>
                         {
-                            _noticeWindow = new NoticeBoxWindow(animationEase, animationDuration);
+                            _noticeWindow = new NoticeBoxWindow(position, animationEase, animationDuration);
                             _noticeWindow.Closed += delegate
                             {
                                 _noticeWindow.Dispatcher.InvokeShutdown();
@@ -197,7 +198,7 @@ namespace Panuon.WPF.UI
                     }
                     else
                     {
-                        _noticeWindow = new NoticeBoxWindow(animationEase, animationDuration);
+                        _noticeWindow = new NoticeBoxWindow(position, animationEase, animationDuration);
                         _noticeWindow.Show();
                     }
                 }

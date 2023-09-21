@@ -15,14 +15,20 @@ namespace Panuon.WPF.UI.Internal.Controls
         : Window
     {
         #region Fields
+        private NoticeBoxPosition _position;
+
         private AnimationStackPanel _astkItems;
 
         private NoticeHandlerImpl _noticeHandler;
         #endregion
 
         #region Ctor
-        public NoticeBoxWindow(AnimationEasing animationEase, TimeSpan animationDuration)
+        public NoticeBoxWindow(NoticeBoxPosition position,
+            AnimationEasing animationEase,
+            TimeSpan animationDuration)
         {
+            _position = position;
+
             SizeToContent = SizeToContent.Width;
             ShowInTaskbar = false;
             WindowStyle = WindowStyle.None;
@@ -33,8 +39,13 @@ namespace Panuon.WPF.UI.Internal.Controls
             {
                 AnimationEasing = animationEase,
                 AnimationDuration = animationDuration,
-                ArrangeDirection = ArrangeDirection.Reverse,
                 HorizontalAlignment = HorizontalAlignment.Right,
+                AnimationDirection = (position == NoticeBoxPosition.TopRight || position == NoticeBoxPosition.BottomRight)
+                    ? FlowDirection.RightToLeft
+                    : FlowDirection.LeftToRight,
+                ArrangeDirection = (_position == NoticeBoxPosition.BottomLeft || _position == NoticeBoxPosition.BottomRight)
+                    ? ArrangeDirection.Reverse
+                    : ArrangeDirection.Normal,
                 Spacing = 15,
             };
             Content = _astkItems;
@@ -76,7 +87,9 @@ namespace Panuon.WPF.UI.Internal.Controls
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             Top = 0;
-            Left = SystemParameters.MaximizedPrimaryScreenWidth - RenderSize.Width - 15;
+            Left = (_position == NoticeBoxPosition.TopRight || _position == NoticeBoxPosition.BottomRight)
+                ? SystemParameters.MaximizedPrimaryScreenWidth - RenderSize.Width - 15
+                : 0;
 
             base.OnRenderSizeChanged(sizeInfo);
         }

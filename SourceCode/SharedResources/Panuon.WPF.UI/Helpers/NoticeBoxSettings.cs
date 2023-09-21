@@ -20,6 +20,20 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
+        #region Position
+        public NoticeBoxPosition Position
+        {
+            get
+            {
+                return Setting.Position;
+            }
+            set
+            {
+                Setting.Position = value;
+            }
+        }
+        #endregion
+
         #region CreateOnNewThread
         public bool CreateOnNewThread
         {

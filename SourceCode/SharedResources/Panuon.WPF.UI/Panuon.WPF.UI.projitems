@@ -70,6 +70,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UIElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ZoomViewer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\HeaderPanelRibbonLineStrategy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\NoticeBoxPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToastSettings.cs" />

@@ -45,6 +45,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("Spacing", typeof(double), typeof(AnimationStackPanel), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsArrange));
         #endregion
 
+        #region AnimationDirection
+        public FlowDirection AnimationDirection
+        {
+            get { return (FlowDirection)GetValue(AnimationDirectionProperty); }
+            set { SetValue(AnimationDirectionProperty, value); }
+        }
+
+        public static readonly DependencyProperty AnimationDirectionProperty =
+            DependencyProperty.Register("AnimationDirection", typeof(FlowDirection), typeof(AnimationStackPanel), new PropertyMetadata(FlowDirection.RightToLeft));
+        #endregion
+
         #region ArrangeDirection
         public ArrangeDirection ArrangeDirection
         {
@@ -98,12 +109,14 @@ namespace Panuon.WPF.UI
         protected override void OnVisualChildrenChanged(DependencyObject visualAdded, DependencyObject visualRemoved)
         {
             var isVertical = Orientation == Orientation.Vertical;
+
+            var start = AnimationDirection == FlowDirection.RightToLeft ? 1 : -1;
             if (visualAdded is UIElement elementAdded)
             {
                 if (isVertical)
                 {
                     SetMultiplierX(elementAdded, 1);
-                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEasing);
+                    AnimationUtil.BeginDoubleAnimation(elementAdded, MultiplierXProperty, start, 0, AnimationDuration, ease: AnimationEasing);
                 }
                 else
                 {
@@ -128,7 +141,7 @@ namespace Panuon.WPF.UI
                         {
                             SetMultiplierX(child, 1);
                             child.BeginAnimation(MultiplierXProperty, null);
-                            AnimationUtil.BeginDoubleAnimation(child, MultiplierXProperty, null, 0, AnimationDuration, ease: AnimationEasing);
+                            AnimationUtil.BeginDoubleAnimation(child, MultiplierXProperty, start, 0, AnimationDuration, ease: AnimationEasing);
                         }
 
                     }
@@ -149,6 +162,7 @@ namespace Panuon.WPF.UI
             var reverse = ArrangeDirection == ArrangeDirection.Reverse;
 
             var offset = 0d;
+
 
             foreach (UIElement child in InternalChildren)
             {

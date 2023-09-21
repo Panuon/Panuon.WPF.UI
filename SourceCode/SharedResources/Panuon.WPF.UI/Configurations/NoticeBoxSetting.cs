@@ -14,6 +14,17 @@ namespace Panuon.WPF.UI.Configurations
 
         #region Properties
 
+        #region Position
+        internal NoticeBoxPosition Position
+        {
+            get { return (NoticeBoxPosition)GetValue(PositionProperty); }
+            set { SetValue(PositionProperty, value); }
+        }
+
+        internal static readonly DependencyProperty PositionProperty =
+            DependencyProperty.Register("Position", typeof(NoticeBoxPosition), typeof(NoticeBoxSetting), new PropertyMetadata(NoticeBoxPosition.BottomRight));
+        #endregion
+
         #region NoticeBoxItemStyle
         public Style NoticeBoxItemStyle
         {
