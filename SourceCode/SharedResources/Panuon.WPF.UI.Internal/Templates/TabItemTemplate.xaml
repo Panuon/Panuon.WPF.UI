@@ -22,6 +22,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <local:ContentControlX x:Name="CcMain"
+                                   Padding="{TemplateBinding Padding}"
                                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -40,8 +41,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <ContentPresenter Margin="{TemplateBinding Padding}"
-                                      ContentSource="Header"
+                    <ContentPresenter ContentSource="Header"
                                       VerticalAlignment="{Binding Path=(local:TabItemHelper.VerticalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       HorizontalAlignment="{Binding Path=(local:TabItemHelper.HorizontalHeaderAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Button x:Name="BtnRemove"

@@ -59,6 +59,8 @@
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineBrush), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLineThickness"
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineThickness), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
+        <Setter Property="local:TabItemHelper.RibbonLineCornerRadius"
+                Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineCornerRadius), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLineMargin"
                 Value="{Binding Path=(local:TabControlHelper.ItemsRibbonLineMargin), RelativeSource={RelativeSource AncestorType=TabControl}, Mode=OneWay}" />
         <Setter Property="local:TabItemHelper.RibbonLineVisibility"

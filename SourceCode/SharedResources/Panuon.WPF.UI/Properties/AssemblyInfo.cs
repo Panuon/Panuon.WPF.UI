@@ -25,5 +25,5 @@ using System.Windows.Markup;
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.1.16")]
-[assembly: AssemblyFileVersion("1.1.16")]
+[assembly: AssemblyVersion("1.1.16.1")]
+[assembly: AssemblyFileVersion("1.1.16.1")]
