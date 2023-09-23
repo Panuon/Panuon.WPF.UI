@@ -112,14 +112,10 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ItemContainerStyle
-        public static Style GetItemContainerStyle(Pagination pagination)
+        public Style ItemContainerStyle
         {
-            return (Style)pagination.GetValue(ItemContainerStyleProperty);
-        }
-
-        public static void SetItemContainerStyle(Pagination pagination, Style value)
-        {
-            pagination.SetValue(ItemContainerStyleProperty, value);
+            get { return (Style)GetValue(ItemContainerStyleProperty); }
+            set { SetValue(ItemContainerStyleProperty, value); }
         }
 
         public static readonly DependencyProperty ItemContainerStyleProperty =

@@ -1770,8 +1770,14 @@ namespace Panuon.WPF.UI
 
         private static void OnDataGridCellSelectedChanged(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is DataGridCell)
+            if (e.OriginalSource is DataGridCell cell)
             {
+                if(cell.Column is DataGridTemplateColumn templateColumn
+                    && templateColumn.CellTemplate != null
+                    && templateColumn.CellEditingTemplate == null)
+                {
+                    return;
+                }
                 var dataGrid = (DataGrid)sender;
                 dataGrid.BeginEdit(e);
             }

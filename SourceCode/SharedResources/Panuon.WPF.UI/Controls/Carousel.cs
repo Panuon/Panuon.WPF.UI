@@ -38,6 +38,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("PageDownCommand", typeof(ICommand), typeof(Carousel), new PropertyMetadata(new RelayCommand(OnPageDownCommandExecute, OnPageDownCommandCanExecute)));
         #endregion
 
+        #region Events
+
+        #region CurrentIndexChanged
+        public event SelectedValueChangedRoutedEventHandler<int> CurrentIndexChanged
+        {
+            add { AddHandler(CurrentIndexChangedEvent, value); }
+            remove { RemoveHandler(CurrentIndexChangedEvent, value); }
+        }
+
+        public static readonly RoutedEvent CurrentIndexChangedEvent =
+            EventManager.RegisterRoutedEvent("CurrentIndexChanged", RoutingStrategy.Bubble, typeof(SelectedValueChangedRoutedEventHandler<int>), typeof(Carousel));
+        #endregion
+
+        #endregion
+
         #region Properties
 
         #region Animation
@@ -274,15 +289,17 @@ namespace Panuon.WPF.UI
         }
 
 
-        private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs baseValue)
+        private static void OnCurrentIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var carousel = (Carousel)d;
-            carousel.OnCurrentIndexChanged();
+            carousel.OnCurrentIndexChanged((int)e.OldValue, (int)e.NewValue);
         }
 
-        private void OnCurrentIndexChanged()
+        private void OnCurrentIndexChanged(int oldIndex,
+            int newIndex)
         {
             UpdateAutoPlayTimer();
+            RaiseEvent(new SelectedValueChangedRoutedEventArgs<int>(CurrentIndexChangedEvent, oldIndex, newIndex));
         }
 
         private static object OnCurrentIndexCoerceValue(DependencyObject d, object baseValue)
