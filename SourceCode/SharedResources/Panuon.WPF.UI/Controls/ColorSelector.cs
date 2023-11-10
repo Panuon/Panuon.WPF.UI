@@ -18,59 +18,29 @@ namespace Panuon.WPF.UI
     [TemplatePart(Name = AccentColorSliderTemplateName, Type = typeof(Slider))]
     [TemplatePart(Name = OpacitySliderTemplateName, Type = typeof(Slider))]
     [TemplatePart(Name = HEXTextBoxTemplateName, Type = typeof(TextBox))]
-    [TemplatePart(Name = ATextBoxTemplateName, Type = typeof(TextBox))]
-    [TemplatePart(Name = RTextBoxTemplateName, Type = typeof(TextBox))]
-    [TemplatePart(Name = GTextBoxTemplateName, Type = typeof(TextBox))]
-    [TemplatePart(Name = BTextBoxTemplateName, Type = typeof(TextBox))]
+    [TemplatePart(Name = ARGBTextBoxTemplateName, Type = typeof(TextBox))]
     public class ColorSelector : Control
     {
         #region Fields
         private const string ThumbFenceTemplateName = "PART_ThumbFence";
-
         private const string DropperThumbTemplateName = "PART_DropperThumb";
-
         private const string AccentColorSliderTemplateName = "PART_AccentColorSlider";
-
         private const string OpacitySliderTemplateName = "PART_OpacitySlider";
-
         private const string HEXTextBoxTemplateName = "PART_HEXTextBox";
-
-        private const string ATextBoxTemplateName = "PART_ATextBox";
-
-        private const string RTextBoxTemplateName = "PART_RTextBox";
-
-        private const string GTextBoxTemplateName = "PART_GTextBox";
-
-        private const string BTextBoxTemplateName = "PART_BTextBox";
+        private const string ARGBTextBoxTemplateName = "PART_ARGBTextBox";
 
         internal ThumbFence _thumbFence;
-
         private Thumb _dropperThumb;
-
         private Slider _accentColorSlider;
-
         private Slider _opacitySlider;
-
         private TextBox _hexTextBox;
-
-        private TextBox _aTextBox;
-
-        private TextBox _rTextBox;
-
-        private TextBox _gTextBox;
-
-        private TextBox _bTextBox;
+        private TextBox _argbTextBox;
 
         private static List<Color> _gradientColors;
-
         private static GradientStop[] _gradientStops;
-
         private bool _isInternalSetHEXTextBox;
-
         private bool _isInternalSetARGBTextBox;
-
         private bool _isInternalSetOpacitySlider;
-
         private bool _isInternalUpdateSelector;
         #endregion
 
@@ -111,7 +81,6 @@ namespace Panuon.WPF.UI
         public static ComponentResourceKey EditorTextBoxStyleKey { get; } =
             new ComponentResourceKey(typeof(ColorSelector), nameof(EditorTextBoxStyleKey));
         #endregion
-
 
         #region Events
 
@@ -161,7 +130,6 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ColorChannelsProperty =
             DependencyProperty.Register("ColorChannels", typeof(ColorChannels), typeof(ColorSelector), new PropertyMetadata(ColorChannels.ARGB, OnColorChannelsChanged));
-
         #endregion
 
         #region ColorEditors
@@ -172,7 +140,18 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ColorEditorsProperty =
-            DependencyProperty.Register("ColorEditors", typeof(ColorEditors), typeof(ColorSelector));
+            DependencyProperty.Register("ColorEditors", typeof(ColorEditors), typeof(ColorSelector), new PropertyMetadata(ColorEditors.HEX));
+        #endregion
+
+        #region ColorEditorTagVisibility
+        public Visibility ColorEditorTagVisibility
+        {
+            get { return (Visibility)GetValue(ColorEditorTagVisibilityProperty); }
+            set { SetValue(ColorEditorTagVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty ColorEditorTagVisibilityProperty =
+            DependencyProperty.Register("ColorEditorTagVisibility", typeof(Visibility), typeof(ColorSelector));
         #endregion
 
         #region AccentColor
@@ -315,17 +294,8 @@ namespace Panuon.WPF.UI
             _hexTextBox = GetTemplateChild(HEXTextBoxTemplateName) as TextBox;
             _hexTextBox.TextChanged += TextBox_TextChanged;
 
-            _aTextBox = GetTemplateChild(ATextBoxTemplateName) as TextBox;
-            _aTextBox.TextChanged += TextBox_TextChanged;
-
-            _rTextBox = GetTemplateChild(RTextBoxTemplateName) as TextBox;
-            _rTextBox.TextChanged += TextBox_TextChanged;
-
-            _gTextBox = GetTemplateChild(GTextBoxTemplateName) as TextBox;
-            _gTextBox.TextChanged += TextBox_TextChanged;
-
-            _bTextBox = GetTemplateChild(BTextBoxTemplateName) as TextBox;
-            _bTextBox.TextChanged += TextBox_TextChanged;
+            _argbTextBox = GetTemplateChild(ARGBTextBoxTemplateName) as TextBox;
+            _argbTextBox.TextChanged += TextBox_TextChanged;
 
             UpdateSelectedOpaqueColor();
             UpdateHEXTextBoxText();
@@ -423,7 +393,7 @@ namespace Panuon.WPF.UI
             var textBox = sender as TextBox;
             var selectedColor = SelectedColor;
 
-            if (textBox.Tag is string tag && tag == "HEX")
+            if (textBox == _hexTextBox)
             {
                 if (!_isInternalSetHEXTextBox)
                 {
@@ -437,7 +407,6 @@ namespace Panuon.WPF.UI
                         }
                         selectedColor = newColor;
                     }
-
                     SetCurrentValue(SelectedColorProperty, selectedColor);
 
                     _isInternalSetHEXTextBox = false;
@@ -449,42 +418,15 @@ namespace Panuon.WPF.UI
                 {
                     _isInternalSetARGBTextBox = true;
 
-                    switch (textBox.Tag)
+                    if (ColorChannels == ColorChannels.ARGB
+                        && ColorUtil.FromARGBString(textBox.Text) is Color argbColor)
                     {
-                        case "HEX":
-
-                            break;
-                        case "A":
-                            if (!_isInternalSetOpacitySlider)
-                            {
-                                if (int.TryParse(textBox.Text, out int a))
-                                {
-                                    var byteA = (byte)Math.Min(255, Math.Max(0, a));
-                                    selectedColor.A = byteA;
-                                }
-                            }
-                            break;
-                        case "R":
-                            if (int.TryParse(textBox.Text, out int r))
-                            {
-                                var byteR = (byte)Math.Min(255, Math.Max(0, r));
-                                selectedColor.R = byteR;
-                            }
-                            break;
-                        case "G":
-                            if (int.TryParse(textBox.Text, out int g))
-                            {
-                                var byteG = (byte)Math.Min(255, Math.Max(0, g));
-                                selectedColor.G = byteG;
-                            }
-                            break;
-                        case "B":
-                            if (int.TryParse(textBox.Text, out int b))
-                            {
-                                var byteB = (byte)Math.Min(255, Math.Max(0, b));
-                                selectedColor.B = byteB;
-                            }
-                            break;
+                        selectedColor = argbColor;
+                    }
+                    else if (ColorChannels == ColorChannels.RGB
+                        && ColorUtil.FromARGBString(textBox.Text) is Color rgbColor)
+                    {
+                        selectedColor = rgbColor;
                     }
                     SetCurrentValue(SelectedColorProperty, selectedColor);
 
@@ -566,10 +508,7 @@ namespace Panuon.WPF.UI
 
         private void UpdateARGBTextBoxText()
         {
-            if (_aTextBox == null
-                || _rTextBox == null
-                || _gTextBox == null
-                || _bTextBox == null
+            if (_argbTextBox == null
                 || _isInternalSetARGBTextBox)
             {
                 return;
@@ -579,10 +518,9 @@ namespace Panuon.WPF.UI
 
             var selectedColor = SelectedColor;
 
-            _aTextBox.Text = selectedColor.A.ToString();
-            _rTextBox.Text = selectedColor.R.ToString();
-            _gTextBox.Text = selectedColor.G.ToString();
-            _bTextBox.Text = selectedColor.B.ToString();
+            _argbTextBox.Text = ColorChannels == ColorChannels.ARGB
+                ? ColorUtil.ToARGBString(selectedColor)
+                : ColorUtil.ToRGBString(selectedColor);
 
             _isInternalSetARGBTextBox = false;
         }

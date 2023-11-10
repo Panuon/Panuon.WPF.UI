@@ -15,7 +15,9 @@
         <ControlTemplate.Resources>
             <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
         </ControlTemplate.Resources>
-        <local:DropDown IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+        <local:DropDown x:Name="PART_DropDown"
+                        InitBeforeOpen="True"
+                        IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                         local:DropDownHelper.Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         local:DropDownHelper.BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         local:DropDownHelper.BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -145,7 +147,8 @@
             </local:DropDown.Content>
             <local:DropDown.Child>
                 <ScrollViewer Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
-                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                    <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                    KeyboardNavigation.DirectionalNavigation="Contained" />
                 </ScrollViewer>
             </local:DropDown.Child>
         </local:DropDown>

@@ -34,7 +34,8 @@
                          IsReadOnly="{TemplateBinding IsReadOnly}"
                          Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                          local:TextBoxHelper.Hook="True"
-                         local:TextBoxHelper.InputLimit="Digit,Point">
+                         local:TextBoxHelper.InputLimit="Digit,Point"
+                         local:TextBoxHelper.SelectAllOnFocus="{TemplateBinding SelectAllOnFocus}">
                     <TextBox.Style>
                         <Style TargetType="TextBox">
                             <Setter Property="InputMethod.IsInputMethodEnabled"

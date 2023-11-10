@@ -47,6 +47,7 @@
         public const string PasswordBoxStyle = nameof(PasswordBoxStyle);
         public const string ProgressBarStyle = nameof(ProgressBarStyle);
         public const string RadioButtonStyle = nameof(RadioButtonStyle);
+        public const string RangeSliderStyle = nameof(RangeSliderStyle);
         public const string RateControlStyle = nameof(RateControlStyle);
         public const string RepeatButtonStyle = nameof(RepeatButtonStyle);
         public const string RingProgressBarStyle = nameof(RingProgressBarStyle);

@@ -5,5 +5,6 @@
         Both,
         HEX,
         ARGB,
+        None,
     }
 }

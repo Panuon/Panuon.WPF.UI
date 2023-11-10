@@ -44,11 +44,15 @@ namespace Panuon.WPF.UI.Internal.Utils
             }
         }
 
-        internal static string ToARGBString(Color color, bool includeAlpha)
+        internal static string ToARGBString(Color color)
         {
-            var colorString = includeAlpha
-                ? string.Format("{0}, {1}, {2}, {3}", color.A, color.R, color.G, color.B)
-                : string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
+            var colorString = string.Format("{0}, {1}, {2}, {3}", color.A, color.R, color.G, color.B);
+            return colorString;
+        }
+
+        internal static string ToRGBString(Color color)
+        {
+            var colorString = string.Format("{0}, {1}, {2}", color.R, color.G, color.B);
             return colorString;
         }
 

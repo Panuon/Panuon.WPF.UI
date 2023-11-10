@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.RangeSliderHorizontalTemplate}"
+                     TargetType="local:RangeSlider">
+        <Grid>
+            <Canvas x:Name="PART_Canvas"
+                    VerticalAlignment="Center">
+                <Thumb x:Name="PART_Thumb1"
+                       Style="{TemplateBinding ThumbStyle}"
+                       Canvas.Top="0">
+                    <Canvas.Left>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.RangeSliderCanvasOffsetConverter}}">
+                            <Binding Path="Thumb1Offset"
+                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}" />
+                        </MultiBinding>
+                    </Canvas.Left>
+                </Thumb>
+                <Thumb x:Name="PART_Thumb2"
+                       Style="{TemplateBinding ThumbStyle}"
+                       Canvas.Top="0">
+                    <Canvas.Left>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.RangeSliderCanvasOffsetConverter}}">
+                            <Binding Path="Thumb2Offset"
+                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource TemplatedParent}" />
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource Self}" />
+                        </MultiBinding>
+                    </Canvas.Left>
+                </Thumb>
+            </Canvas>
+        </Grid>
+    </ControlTemplate>
+
+</ResourceDictionary>

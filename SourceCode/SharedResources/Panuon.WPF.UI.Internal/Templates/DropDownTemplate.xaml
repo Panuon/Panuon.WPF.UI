@@ -22,7 +22,6 @@
                 <local:PopupX x:Name="PART_Popup"
                               PlacementTarget="{Binding ElementName=CpContent, Mode=OneWay}"
                               Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
-                              IsOpen="{Binding IsOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                               AllowsTransparency="True"
                               StaysOpen="{TemplateBinding StaysOpen}"
                               Focusable="False"

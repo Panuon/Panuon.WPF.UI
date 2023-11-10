@@ -57,6 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\OppositeColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IsAllEqualConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgressBarIndeterminateMarginConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\RangeSliderCanvasOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderTextTopConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SliderTextLeftConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringNonnullAndNotEmptyToHiddenConverter.cs" />

@@ -1,0 +1,92 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Panuon.WPF.UI"
+                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
+                    xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
+                    xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
+    <ResourceDictionary.MergedDictionaries>
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/RangeSliderTemplate.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ThumbStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style x:Key="{ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:RangeSlider}}"
+           TargetType="Thumb"
+           BasedOn="{StaticResource {x:Static rs:StyleKeys.ThumbStyle}}">
+        <Setter Property="Width"
+                Value="{Binding ThumbWidth, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding ThumbHeight, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="Background"
+                Value="{Binding ThumbBackground, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding ThumbBorderBrush, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding ThumbBorderThickness, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ThumbHelper.CornerRadius"
+                Value="{Binding ThumbCornerRadius, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ThumbHelper.ShadowColor"
+                Value="{Binding ThumbShadowColor, RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.BlurRadius"
+                Value="{Binding Path=(local:ShadowHelper.BlurRadius), RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Direction"
+                Value="{Binding Path=(local:ShadowHelper.Direction), RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.Opacity"
+                Value="{Binding Path=(local:ShadowHelper.Opacity), RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.RenderingBias"
+                Value="{Binding Path=(local:ShadowHelper.RenderingBias), RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Setter Property="local:ShadowHelper.ShadowDepth"
+                Value="{Binding Path=(local:ShadowHelper.ShadowDepth), RelativeSource={RelativeSource AncestorType=local:RangeSlider}, Mode=OneWay}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="1" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.RangeSliderStyle}"
+           TargetType="local:RangeSlider">
+        <Setter Property="FocusVisualStyle"
+                Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="Background"
+                Value="#EAEAEA" />
+        <Setter Property="ThumbBackground"
+                Value="#FFFFFF" />
+        <Setter Property="ThumbBorderThickness"
+                Value="0" />
+        <Setter Property="ThumbCornerRadius"
+                Value="10" />
+        <Setter Property="ThumbShadowColor"
+                Value="LightGray" />
+        <Setter Property="CoveredBackground"
+                Value="Gray" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="TickBarForeground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="ThumbStyle"
+                Value="{StaticResource {ComponentResourceKey ResourceId=ThumbStyleKey, TypeInTargetAssembly={x:Type local:RangeSlider}}}" />
+        <Setter Property="Template"
+                Value="{StaticResource {x:Static irs:TemplateKeys.RangeSliderHorizontalTemplate}}" />
+        <!--<Style.Triggers>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.RangeSliderHorizontalTemplate}}" />
+            </Trigger>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.RangeSliderVerticalTemplate}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Opacity"
+                        Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+
+</ResourceDictionary>

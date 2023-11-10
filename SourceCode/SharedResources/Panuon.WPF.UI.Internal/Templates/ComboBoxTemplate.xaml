@@ -227,7 +227,8 @@
                                      Style="{Binding Path=(local:ComboBoxHelper.SearchTextBoxStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                      Visibility="{Binding Path=(local:ComboBoxHelper.SearchTextBoxVisibility), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                             <ScrollViewer Grid.Row="1">
-                                <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                <ItemsPresenter x:Name="PART_ItemsPresenter"
+                                                KeyboardNavigation.DirectionalNavigation="Contained" />
                             </ScrollViewer>
                         </Grid>
                     </local:ContentControlX>

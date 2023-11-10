@@ -331,6 +331,16 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("IsReadOnly", typeof(bool), typeof(NumberInput));
         #endregion
 
+        #region SelectAllOnFocus
+        public bool SelectAllOnFocus
+        {
+            get { return (bool)GetValue(SelectAllOnFocusProperty); }
+            set { SetValue(SelectAllOnFocusProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectAllOnFocusProperty =
+            DependencyProperty.Register("SelectAllOnFocus", typeof(bool), typeof(NumberInput));
+        #endregion
 
         #region ClearButtonStyle
         public static Style GetClearButtonStyle(NumberInput dateTimePicker)
@@ -430,6 +440,23 @@ namespace Panuon.WPF.UI
             _inputTextBox.LostKeyboardFocus += InputTextBox_LostKeyboardFocus;
 
             UpdateTextFromValue();
+        }
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            if (!e.Handled)
+            {
+                if (e.OriginalSource == this)
+                {
+                    _inputTextBox?.Focus();
+                    e.Handled = true;
+                }
+                else if (e.OriginalSource == _inputTextBox)
+                {
+                    _inputTextBox.SelectAll();
+                }
+            }
+            base.OnGotFocus(e);
         }
         #endregion
 

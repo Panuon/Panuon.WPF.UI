@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Threading;
 
 namespace Panuon.WPF.UI
@@ -138,8 +139,10 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
+            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+            var source = hwndSource.CompositionTarget.TransformToDevice;
             var mousePosition = e.GetPosition(_canvas);
-            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
+            var position = new Point(mousePosition.X / source.M11 / renderWidth, mousePosition.Y / source.M22 / renderHeight);
 
             var args = new PositionChangingRoutedEventArgs(ThumbPositionChangingEvent, position);
             RaiseEvent(args);
@@ -205,8 +208,10 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
+            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+            var source = hwndSource.CompositionTarget.TransformToDevice;
             var mousePosition = Mouse.GetPosition(this);
-            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
+            var position = new Point(mousePosition.X / source.M11 / renderWidth, mousePosition.Y / source.M22 / renderHeight);
 
             var args = new PositionChangingRoutedEventArgs(ThumbPositionChangingEvent, position);
             RaiseEvent(args);
@@ -234,11 +239,11 @@ namespace Panuon.WPF.UI
             var renderHeight = _canvas.RenderSize.Height;
 
             var left = AllowCross
-                 ? ThumbPosition.X * renderWidth - halfThumbWidth
-                 : ThumbPosition.X * (renderWidth - thumbWidth) + halfThumbWidth;
+                 ? (ThumbPosition.X * renderWidth - halfThumbWidth)
+                 : (ThumbPosition.X * (renderWidth - thumbWidth));
             var top = AllowCross
-                    ? ThumbPosition.Y * renderHeight - halfThumbHeight
-                    : ThumbPosition.Y * (renderHeight - thumbHeight) + halfThumbHeight;
+                    ? (ThumbPosition.Y * renderHeight - halfThumbHeight)
+                    : (ThumbPosition.Y * (renderHeight - thumbHeight));
             Canvas.SetLeft(_thumb, left);
             Canvas.SetTop(_thumb, top);
 

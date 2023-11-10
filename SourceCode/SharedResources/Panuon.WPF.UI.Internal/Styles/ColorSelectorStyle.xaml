@@ -150,8 +150,6 @@
                 Value="1" />
         <Setter Property="Padding"
                 Value="0" />
-        <Setter Property="Height"
-                Value="300" />
         <Setter Property="DropperThumbStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=DropperThumbStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}}" />
         <Setter Property="ThumbFenceStyle"

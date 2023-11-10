@@ -654,7 +654,9 @@ namespace Panuon.WPF.UI
                         text = ColorUtil.ToHEXString(selectedColor, ColorChannels == ColorChannels.ARGB, true);
                         break;
                     case ColorTextFormats.ARGB:
-                        text = ColorUtil.ToARGBString(selectedColor, ColorChannels == ColorChannels.ARGB);
+                        text = ColorChannels == ColorChannels.ARGB 
+                            ? ColorUtil.ToARGBString(selectedColor)
+                            : ColorUtil.ToRGBString(selectedColor);
                         break;
 
                 }

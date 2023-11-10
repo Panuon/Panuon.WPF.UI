@@ -85,6 +85,7 @@
     <icv:ProgressBarBorderClipConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarBorderClipConverter}" />
     <icv:ProgressBarTextForegroundConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarTextForegroundConverter}" />
     <icv:ProgressBarIndeterminateMarginConverter x:Key="{x:Static irs:ConverterKeys.ProgressBarIndeterminateMarginConverter}" />
+    <icv:RangeSliderCanvasOffsetConverter x:Key="{x:Static irs:ConverterKeys.RangeSliderCanvasOffsetConverter}" />
     <icv:ScrollableControlScrollButtonVisibilityConverter x:Key="{x:Static irs:ConverterKeys.ScrollableControlScrollButtonVisibilityConverter}" />
     <icv:SliderBorderClipConverter x:Key="{x:Static irs:ConverterKeys.SliderBorderClipConverter}" />
     <icv:SliderTextLeftConverter x:Key="{x:Static irs:ConverterKeys.SliderTextLeftConverter}" />
