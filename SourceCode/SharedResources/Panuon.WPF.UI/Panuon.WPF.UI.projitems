@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Breadcrumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Bubble.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Carousel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\GridX.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MultiComboBoxItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumberInput.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\UIElementHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ZoomViewer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\GridXGridLinesVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\HeaderPanelRibbonLineStrategy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\NoticeBoxPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPosition.cs" />

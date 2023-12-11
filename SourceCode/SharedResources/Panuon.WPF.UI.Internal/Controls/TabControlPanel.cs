@@ -115,6 +115,7 @@ namespace Panuon.WPF.UI.Internal
                         switch (HeaderPanelAlignment)
                         {
                             case TabControlHeaderPanelAlignment.Stretch:
+                                scrollViewerHeight = arrangeSize.Height - ccFront.DesiredSize.Height - ccEnd.DesiredSize.Height;
                                 break;
                             case TabControlHeaderPanelAlignment.Front:
                                 scrollViewerHeight = Math.Min(scrollViewerHeight, contentHeight);
@@ -152,6 +153,7 @@ namespace Panuon.WPF.UI.Internal
                         switch (HeaderPanelAlignment)
                         {
                             case TabControlHeaderPanelAlignment.Stretch:
+                                contentWidth = arrangeSize.Width - ccFront.DesiredSize.Width - ccEnd.DesiredSize.Width;
                                 break;
                             case TabControlHeaderPanelAlignment.Front:
                                 contentWidth = Math.Min(contentWidth, contentWidth);
