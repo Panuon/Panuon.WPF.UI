@@ -75,6 +75,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\NoticeBoxPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\WatermarkHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToastSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Toast.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceDictionaryUris.cs" />

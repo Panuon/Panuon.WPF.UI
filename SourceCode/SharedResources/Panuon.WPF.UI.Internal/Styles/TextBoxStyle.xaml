@@ -61,6 +61,12 @@
                 Value="True" />
         <Setter Property="local:TextBoxHelper.WatermarkForeground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), Converter={StaticResource {x:Static irs:ConverterKeys.BrushOpacityConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:WatermarkHelper.FontFamily"
+                Value="{Binding FontFamily, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:WatermarkHelper.FontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:WatermarkHelper.Margin"
+                Value="{Binding Margin, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TextBoxHelper.ClearButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ClearButtonStyleKey, TypeInTargetAssembly={x:Type local:TextBoxHelper}}}" />
         <Setter Property="VerticalContentAlignment"
