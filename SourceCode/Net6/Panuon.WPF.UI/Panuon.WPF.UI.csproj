@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
+	<Nullable>disable</Nullable>
+	<UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 

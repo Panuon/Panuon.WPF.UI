@@ -148,8 +148,6 @@
                 Value="{Binding FontFamily, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:WatermarkHelper.FontSize"
                 Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:WatermarkHelper.Margin"
-                Value="{Binding Margin, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsFontSize"
                 Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ComboBoxHelper.ItemsHorizontalContentAlignment"
