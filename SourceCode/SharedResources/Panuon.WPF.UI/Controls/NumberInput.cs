@@ -275,7 +275,7 @@ namespace Panuon.WPF.UI
         public static readonly DependencyProperty DefaultValueProperty =
             DependencyProperty.Register("DefaultValue", typeof(double?), typeof(NumberInput), new PropertyMetadata(0d));
         #endregion
-
+                                                
         #region Maximum
         public double Maximum
         {
@@ -317,7 +317,8 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty IsSnapToIntervalEnabledProperty =
-            DependencyProperty.Register("IsSnapToIntervalEnabled", typeof(bool), typeof(NumberInput));
+            DependencyProperty.Register("IsSnapToIntervalEnabled", typeof(bool), typeof(NumberInput), new PropertyMetadata(true
+                ));
         #endregion
 
         #region IsReadOnly
@@ -437,7 +438,6 @@ namespace Panuon.WPF.UI
         {
             _inputTextBox = GetTemplateChild(InputTextBoxTemplateName) as TextBox;
             _inputTextBox.TextChanged += InputTextBox_TextChanged;
-            _inputTextBox.LostKeyboardFocus += InputTextBox_LostKeyboardFocus;
 
             UpdateTextFromValue();
         }
@@ -458,6 +458,14 @@ namespace Panuon.WPF.UI
             }
             base.OnGotFocus(e);
         }
+
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            CoerceValue(ValueProperty);
+            UpdateTextFromValue();
+
+            base.OnLostFocus(e);
+        }
         #endregion
 
         #region Event Handlers
@@ -475,10 +483,12 @@ namespace Panuon.WPF.UI
                     return numberInput.Maximum;
                 }
                 if (numberInput.IsSnapToIntervalEnabled)
-                {
-                    var newValue = Math.Ceiling(value / numberInput.Interval) * numberInput.Interval;
+                { 
+                    var interval = (decimal)numberInput.Interval;
+                    var newValue = (double)(((decimal)Math.Ceiling((decimal)value / interval)) * (decimal)interval);
                     return newValue;
                 }
+                return value;
             }
             return baseValue;
         }
@@ -499,13 +509,6 @@ namespace Panuon.WPF.UI
         {
             UpdateValueFromText();
         }
-
-        private void InputTextBox_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
-        {
-            CoerceValue(ValueProperty);
-            UpdateTextFromValue();
-        }
-
 
         private static void OnClearCommandExecute(NumberInput numberInput)
         {
@@ -566,7 +569,7 @@ namespace Panuon.WPF.UI
 
             _inputTextBox.Text = Value == null 
                 ? null 
-                : Value.ToString();
+                : FormatValueText();
 
             _isInternalSet = false;
 
@@ -590,6 +593,15 @@ namespace Panuon.WPF.UI
             {
                 SetCurrentValue(ValueProperty, DefaultValue);
             }
+            else if (decimal.TryParse(_inputTextBox.Text, out decimal decimalValue))
+            {
+                var doubleValue = (double)decimalValue;
+                SetCurrentValue(ValueProperty, doubleValue);
+                if (Value != doubleValue)
+                {
+                    UpdateTextFromValue();
+                }
+            }
             else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
             {
                 SetCurrentValue(ValueProperty, doubleValue);
@@ -600,6 +612,40 @@ namespace Panuon.WPF.UI
             }
 
             _isInternalSet = false;
+        }
+
+        private string FormatValueText()
+        {
+            var stringFormat = "0";
+            var digits = GetRoundDigits();
+            if(digits > 0)
+            {
+                stringFormat = stringFormat + '.' + new string('0', digits);
+            }
+            return ((double)Value).ToString(stringFormat);
+        }
+
+        private int GetRoundDigits()
+        {
+            if (IsSnapToIntervalEnabled
+                || Value == null || double.IsNaN((double)Value) || double.IsInfinity((double)Value))
+            {
+                return GetNumberRoundDigits(Interval);
+            }
+            else
+            {
+                return Math.Max(GetNumberRoundDigits(Interval),
+                    GetNumberRoundDigits((double)Value));
+            }
+        }
+
+        private int GetNumberRoundDigits(double number)
+        {
+            var text = number.ToString();
+            var index = text.IndexOf('.');
+            return index != -1
+                ? text.Length - index - 1
+                : 0;
         }
         #endregion
     }

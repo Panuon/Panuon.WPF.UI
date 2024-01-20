@@ -9,7 +9,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static irs:StyleKeys.InternalTreeViewItemStyle}"
+    <Style x:Key="{x:Static rs:StyleKeys.TreeViewItemStyle}"
            TargetType="TreeViewItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
@@ -175,10 +175,4 @@
 
     </Style>
 
-    <Style x:Key="{x:Static rs:StyleKeys.TreeViewItemStyle}"
-           TargetType="TreeViewItem"
-           BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalTreeViewItemStyle}}">
-        <Setter Property="ItemContainerStyle"
-                Value="{StaticResource {x:Static irs:StyleKeys.InternalTreeViewItemStyle}}" />
-    </Style>
 </ResourceDictionary>

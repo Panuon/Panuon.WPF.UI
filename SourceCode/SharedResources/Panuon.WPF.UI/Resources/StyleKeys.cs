@@ -18,6 +18,7 @@
         public const string ComboBoxItemStyle = nameof(ComboBoxItemStyle);
         public const string ComboBoxStyle = nameof(ComboBoxStyle);
         public const string ContextMenuStyle = nameof(ContextMenuStyle);
+        public const string ContextMenuItemStyle = nameof(ContextMenuItemStyle);
         public const string DataGridCellStyle = nameof(DataGridCellStyle);
         public const string DataGridColumnHeaderStyle = nameof(DataGridColumnHeaderStyle);
         public const string DataGridRowHeaderStyle = nameof(DataGridRowHeaderStyle);

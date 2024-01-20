@@ -563,10 +563,10 @@
                                          Mode="OneWay" />
                             </MultiBinding>
                         </Grid.Margin>
-                        <Border  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                 Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                 BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                 CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
+                        <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
+                                CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                             <Border.Effect>
                                 <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
                                     <Binding Path="(local:DropDownHelper.ShadowColor)"

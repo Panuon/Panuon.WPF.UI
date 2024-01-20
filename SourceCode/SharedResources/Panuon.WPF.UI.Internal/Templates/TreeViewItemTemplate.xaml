@@ -32,7 +32,9 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <ToggleButton x:Name="TgbToggle"
-                                      IsChecked="True"
+                                      Focusable="False"
+                                      ClickMode="Press"
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                                       VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                       Style="{Binding Path=(local:TreeViewHelper.ToggleArrowToggleButtonStyle), RelativeSource={RelativeSource AncestorType=TreeView}, Mode=OneWay}"
                                       Visibility="Hidden" />
@@ -383,9 +385,6 @@
             </MultiDataTrigger>
             <Trigger Property="HasItems"
                      Value="True">
-                <Setter TargetName="TgbToggle"
-                        Property="IsChecked"
-                        Value="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" />
                 <Setter TargetName="TgbToggle"
                         Property="Visibility"
                         Value="Visible" />

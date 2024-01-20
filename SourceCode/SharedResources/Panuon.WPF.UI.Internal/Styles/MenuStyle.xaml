@@ -73,7 +73,7 @@
         <Setter Property="local:MenuHelper.SubmenuItemsForeground"
                 Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Background"
-                Value="White" />
+                Value="{Binding Background, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.BorderBrush"
                 Value="LightGray" />
         <Setter Property="local:DropDownHelper.BorderThickness"
