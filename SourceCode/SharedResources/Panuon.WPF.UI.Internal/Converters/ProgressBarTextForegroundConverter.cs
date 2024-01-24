@@ -42,11 +42,11 @@ namespace Panuon.WPF.UI.Internal.Converters
             if (orientation == Orientation.Horizontal)
             {
                 switch (direction)
-                {
+                {    
                     case ProgressDirection.Normal:
-                        return BrushUtil.GetStackedVisualBrush(invertedForeground, foreground, Orientation.Horizontal, innerPercent);
-                    case ProgressDirection.Inverse:
                         return BrushUtil.GetStackedVisualBrush(foreground, invertedForeground, Orientation.Horizontal, 1 - innerPercent);
+                    case ProgressDirection.Inverse:
+                        return BrushUtil.GetStackedVisualBrush(invertedForeground, foreground, Orientation.Horizontal, innerPercent);
                 }
             }
             else
