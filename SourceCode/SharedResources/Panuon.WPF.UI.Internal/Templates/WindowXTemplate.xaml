@@ -32,26 +32,31 @@
                                         Grid.Row="1"
                                         Orientation="Horizontal"
                                         Visibility="Collapsed"
+                                        FlowDirection="LeftToRight"
                                         Margin="{Binding Path=(local:WindowXModalDialog.ButtonPanelMargin), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                                         HorizontalAlignment="{Binding Path=(local:WindowXModalDialog.ButtonPanelHorizontalAlignment), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}">
                                 <Button x:Name="PART_CancelButton"
                                         Tag="Cancel"
                                         Visibility="Collapsed"
+                                        FlowDirection="LeftToRight"
                                         Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                                         Content="{Binding Path=(local:WindowXModalDialog.CancelButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_NoButton"
                                         Tag="No"
                                         Visibility="Collapsed"
+                                        FlowDirection="LeftToRight"
                                         Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                                         Content="{Binding Path=(local:WindowXModalDialog.NoButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_YesButton"
                                         Tag="Yes"
                                         Visibility="Collapsed"
+                                        FlowDirection="LeftToRight"
                                         Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                                         Content="{Binding Path=(local:WindowXModalDialog.YesButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                                 <Button x:Name="PART_OKButton"
                                         Tag="OK"
                                         Visibility="Collapsed"
+                                        FlowDirection="LeftToRight"
                                         Style="{Binding Path=(local:WindowXModalDialog.ButtonStyle), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}"
                                         Content="{Binding Path=(local:WindowXModalDialog.OKButtonContent), RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                             </StackPanel>
