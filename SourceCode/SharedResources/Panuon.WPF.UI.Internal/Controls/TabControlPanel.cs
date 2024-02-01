@@ -57,6 +57,9 @@ namespace Panuon.WPF.UI.Internal
                             width += tabPanel.DesiredSize.Width;
                             break;
                     }
+
+                    tabPanel.SizeChanged -= TabPanel_SizeChanged;
+                    tabPanel.SizeChanged += TabPanel_SizeChanged;
                 }
                 else
                 {
@@ -92,6 +95,12 @@ namespace Panuon.WPF.UI.Internal
                         ? width
                         : constraint.Width, height);
             }
+        }
+
+        private void TabPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            InvalidateMeasure();
+            InvalidateArrange();
         }
 
         protected override Size ArrangeOverride(Size arrangeSize)
