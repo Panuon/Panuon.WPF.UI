@@ -7,8 +7,9 @@
 ![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
 ![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
 
-[切换到简体中文](https://github.com/PanuonGroup/Panuon.WPF.UI/blob/master/readme.zh-CN.md)  
+[#切换到简体中文](https://github.com/Panuon/Panuon.WPF.UI/blob/master/readme.cn.md)  
 <br/>  
+QQ频道：https://pd.qq.com/s/fpap7qj2y
 
 # Panuon.WPF.UI
 

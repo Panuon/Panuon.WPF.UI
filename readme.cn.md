@@ -7,16 +7,19 @@
 ![](https://img.shields.io/nuget/dt/Panuon.WPF.UI)
 ![](https://img.shields.io/badge/Visual%20Studio-2019+-813dbf)
 
-[切换到简体中文](https://github.com/PanuonGroup/Panuon.WPF.UI)  
+[切换到英文](https://github.com/Panuon/Panuon.WPF.UI)  
 <br/>  
 
-# Panuon.WPF.UI v2.2
+## 欢迎加入Panuon开发者社区！
+QQ频道：https://pd.qq.com/s/fpap7qj2y
+
+# Panuon.WPF.UI
 
 
 一个专业的定制化UI引擎。  
 `Panuon.WPF.UI` 能让你用最少的代码来实现期望的UI效果。  
 
-`请勿从Panuon.UI.Silver 1.x 版本直接升级到 Panuon.UI.Silver 2.2 或 Panuon.WPF.UI 1.x 版本。这些个版本之间的使用方式有很大的差异。`  
+`请勿从Panuon.UI.Silver 1.x 版本直接升级到 Panuon.UI.Silver 2.2 或 Panuon.WPF.UI 1.x 版本。这些版本之间的使用方式有很大的差异。`  
   
 # 升级
 
@@ -31,6 +34,7 @@
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/23360265?v=4"></img>](https://github.com/Mochengvia)
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/1386803?v=4"></img>](https://github.com/SquallATF)
 [<img width="40" height="40" src="https://avatars.githubusercontent.com/u/30036652?v=4"></img>](https://github.com/rdscfh)
+[<img width="40" height="40" src="https://avatars.githubusercontent.com/u/103859536?v=4"></img>](https://github.com/Lilyltt)
   
 # 如何使用
   
