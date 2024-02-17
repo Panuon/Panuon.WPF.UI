@@ -253,6 +253,28 @@ namespace Panuon.WPF.UI
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(MultiComboBox));
         #endregion
 
+        #region FocusedBorderThickness
+        public Thickness? FocusedBorderThickness
+        {
+            get { return (Thickness?)GetValue(FocusedBorderThicknessProperty); }
+            set { SetValue(FocusedBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedBorderThicknessProperty =
+            VisualStateHelper.FocusedBorderThicknessProperty.AddOwner(typeof(MultiComboBox));
+        #endregion
+
+        #region FocusedCornerRadius
+        public CornerRadius? FocusedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(FocusedCornerRadiusProperty); }
+            set { SetValue(FocusedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty FocusedCornerRadiusProperty =
+            VisualStateHelper.FocusedCornerRadiusProperty.AddOwner(typeof(MultiComboBox));
+        #endregion
+
         #region FocusedShadowColor
         public Color? FocusedShadowColor
         {
@@ -782,6 +804,13 @@ namespace Panuon.WPF.UI
         {
             UpdateSelectionBoxItems();
             base.OnSelectionChanged(e);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            UpdateSelectionBoxItems();
         }
         #endregion
 

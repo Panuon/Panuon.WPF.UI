@@ -231,7 +231,6 @@ namespace Panuon.WPF.UI
             VisualStateHelper.FocusedBorderBrushProperty.AddOwner(typeof(SearchBox));
         #endregion
 
-
         #region FocusedBorderThickness
         public Thickness? FocusedBorderThickness
         {
