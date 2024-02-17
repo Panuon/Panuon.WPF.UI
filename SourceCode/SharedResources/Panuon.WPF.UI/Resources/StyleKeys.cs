@@ -70,6 +70,7 @@
         public const string ThumbFenceStyle = nameof(ThumbFenceStyle);
         public const string TimeSelectorItemStyle = nameof(TimeSelectorItemStyle);
         public const string TimeSelectorStyle = nameof(TimeSelectorStyle);
+        public const string ToggleButtonGroupStyle = nameof(ToggleButtonGroupStyle);
         public const string ToolTipStyle = nameof(ToolTipStyle);
         public const string TransformControlStyle = nameof(TransformControlStyle);
         public const string TreeViewStyle = nameof(TreeViewStyle);

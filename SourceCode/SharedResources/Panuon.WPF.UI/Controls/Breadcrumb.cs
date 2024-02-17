@@ -201,6 +201,28 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(Breadcrumb));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public Thickness? ItemsHoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsHoverBorderThicknessProperty); }
+            set { SetValue(ItemsHoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.Register("ItemsHoverBorderThickness", typeof(Thickness?), typeof(Breadcrumb));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public CornerRadius? ItemsHoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsHoverCornerRadiusProperty); }
+            set { SetValue(ItemsHoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(Breadcrumb));
+        #endregion
+
         #region ItemsHoverShadowColor
         public Color? ItemsHoverShadowColor
         {

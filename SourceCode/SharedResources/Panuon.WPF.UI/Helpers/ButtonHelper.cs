@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-using Panuon.WPF.UI.Internal;
-using System;
+﻿using Panuon.WPF.UI.Internal;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
