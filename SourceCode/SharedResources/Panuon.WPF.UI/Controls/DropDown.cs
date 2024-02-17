@@ -126,17 +126,23 @@ namespace Panuon.WPF.UI
                 {
                     _popupHeight = _popup.Height;
                     _popup.Height = 0d;
+
+                    _popup.IsOpen = true;
                 }));
                 Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
                 {
                     _popup.Closed += Popup_Closed;
                     if (!_isInited)
                     {
-                        SetCurrentValue(IsOpenProperty, true);
-                        _popup.SetCurrentValue(Popup.IsOpenProperty, true);
-
-                        SetCurrentValue(IsOpenProperty, false);
-                        _popup.SetCurrentValue(Popup.IsOpenProperty, false);
+                    _popup.IsOpen = false;
+                    }
+                    if (!_isInited)
+                    {
+                        _popup.IsOpen = true;
+                        Dispatcher.BeginInvoke(DispatcherPriority.Send, new Action(() =>
+                        {
+                            _popup.IsOpen = false;
+                        }));
                     }
                     _popup.Opened += Popup_Opened;
                 }));
