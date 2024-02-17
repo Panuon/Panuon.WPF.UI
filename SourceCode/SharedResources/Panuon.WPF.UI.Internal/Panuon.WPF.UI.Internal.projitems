@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TimeSelectorItemPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\Arc2Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ArcConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AutoCornerRadiusConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolOrConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BubblePathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
@@ -171,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\BadgeStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\ToggleButtonGroupStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

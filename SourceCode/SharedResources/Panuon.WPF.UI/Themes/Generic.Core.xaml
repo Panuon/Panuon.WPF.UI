@@ -46,6 +46,7 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TimeSelector.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TimeSelectorItem.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToastStyle.xaml" />
+        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButtonGroup.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TransformControl.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/WindowXStyle.xaml" />
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ZoomViewer.xaml" />

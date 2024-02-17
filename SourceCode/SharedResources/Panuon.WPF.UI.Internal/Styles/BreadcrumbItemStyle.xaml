@@ -61,6 +61,10 @@
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="HoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="HoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="HoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="HoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="ClickBackground"

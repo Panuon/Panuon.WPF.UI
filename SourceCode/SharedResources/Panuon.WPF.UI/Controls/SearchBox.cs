@@ -1,8 +1,5 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal;
-using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal;
 using System;
-using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -468,6 +465,28 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsHoverBorderBrushProperty =
             DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(SearchBox));
+        #endregion
+
+        #region ItemsHoverBorderThickness
+        public Thickness? ItemsHoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsHoverBorderThicknessProperty); }
+            set { SetValue(ItemsHoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.Register("ItemsHoverBorderThickness", typeof(Thickness?), typeof(SearchBox));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public CornerRadius? ItemsHoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsHoverCornerRadiusProperty); }
+            set { SetValue(ItemsHoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(SearchBox));
         #endregion
 
         #region ItemsHoverShadowColor

@@ -79,6 +79,7 @@
         public const string TimelineNonScrollableTemplate = nameof(TimelineNonScrollableTemplate);
         public const string TimelineItemHorizontalTemplate = nameof(TimelineItemHorizontalTemplate);
         public const string TimelineItemVerticalTemplate = nameof(TimelineItemVerticalTemplate);
+        public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string InternalSpinStandardTemplate = nameof(InternalSpinStandardTemplate);
         public const string InternalSpinWaveTemplate = nameof(InternalSpinWaveTemplate);
         public const string InternalSpinRingTemplate = nameof(InternalSpinRingTemplate);
@@ -97,7 +98,6 @@
         public const string ThumbFenceTemplate = nameof(ThumbFenceTemplate);
         public const string TimeSelectorTemplate = nameof(TimeSelectorTemplate);
         public const string TimeSelectorItemTemplate = nameof(TimeSelectorItemTemplate);
-        public const string ToggleButtonTemplate = nameof(ToggleButtonTemplate);
         public const string ToggleButtonPendingTemplate = nameof(ToggleButtonPendingTemplate);
         public const string ToolTipTemplate = nameof(ToolTipTemplate);
         public const string TransformControlTemplate = nameof(TransformControlTemplate);
