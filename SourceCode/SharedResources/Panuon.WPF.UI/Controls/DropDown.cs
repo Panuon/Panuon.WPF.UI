@@ -115,6 +115,8 @@ namespace Panuon.WPF.UI
 
         public override void OnApplyTemplate()
         {
+            base.OnApplyTemplate();
+
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
 
             if (InitBeforeOpen)
@@ -125,7 +127,6 @@ namespace Panuon.WPF.UI
                     _popupHeight = _popup.Height;
                     _popup.Height = 0d;
                     _popup.IsOpen = true;
-                    
                 }));
                 Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() =>
                 {
@@ -134,6 +135,7 @@ namespace Panuon.WPF.UI
                     if (!_isInited)
                     {
                         _popup.IsOpen = false;
+                        Initialize();
                     }
                 }));
             }
@@ -167,6 +169,12 @@ namespace Panuon.WPF.UI
         #region Functions
         private void Popup_Closed(object sender, EventArgs e)
         {
+            Initialize();
+            Closed?.Invoke(this, e);
+        }
+
+        private void Initialize()
+        {
             if (!_isInited)
             {
                 _popup.Height = _popupHeight;
@@ -183,7 +191,6 @@ namespace Panuon.WPF.UI
                 }));
                 return;
             }
-            Closed?.Invoke(this, e);
         }
 
         private void Popup_Opened(object sender, EventArgs e)
