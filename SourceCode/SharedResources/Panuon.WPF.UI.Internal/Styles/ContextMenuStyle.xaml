@@ -132,7 +132,7 @@
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.Margin"
-                Value="0,0,0,0" />
+                Value="0,0,5,0" />
         <Setter Property="local:IconHelper.VerticalAlignment"
                 Value="Center" />
         <Setter Property="local:IconHelper.HorizontalAlignment"

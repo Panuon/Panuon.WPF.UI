@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid x:Name="GrdIcon"
-                              Width="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
+                              Width="{Binding Path=(local:ContextMenuHelper.ItemsHeight), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMinusConverter}},ConverterParameter=5, RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
                             <i:IconPresenter x:Name="IpIcon"
                                              Content="{TemplateBinding Icon}"
                                              Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

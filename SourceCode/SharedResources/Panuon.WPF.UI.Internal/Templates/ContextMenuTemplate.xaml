@@ -41,7 +41,8 @@
                     </MultiBinding>
                 </Border.Effect>
             </Border>
-            <Border Margin="{Binding Path=(local:ContextMenuHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            <Border Margin="{Binding Path=(local:ContextMenuHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Padding="1">
                 <Border Padding="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <ScrollViewer>
