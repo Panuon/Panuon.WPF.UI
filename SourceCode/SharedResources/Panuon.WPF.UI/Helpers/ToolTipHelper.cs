@@ -7,6 +7,96 @@ namespace Panuon.WPF.UI
     {
         #region Properties
 
+        #region Width
+        public static double GetWidth(DependencyObject obj)
+        {
+            return (double)obj.GetValue(WidthProperty);
+        }
+
+        public static void SetWidth(DependencyObject obj, double value)
+        {
+            obj.SetValue(WidthProperty, value);
+        }
+
+        public static readonly DependencyProperty WidthProperty =
+            DependencyProperty.RegisterAttached("Width", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MinWidth
+        public static double GetMinWidth(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MinWidthProperty);
+        }
+
+        public static void SetMinWidth(DependencyObject obj, double value)
+        {
+            obj.SetValue(MinWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty MinWidthProperty =
+            DependencyProperty.RegisterAttached("MinWidth", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MaxWidth
+        public static double GetMaxWidth(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MaxWidthProperty);
+        }
+
+        public static void SetMaxWidth(DependencyObject obj, double value)
+        {
+            obj.SetValue(MaxWidthProperty, value);
+        }
+
+        public static readonly DependencyProperty MaxWidthProperty =
+            DependencyProperty.RegisterAttached("MaxWidth", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(double.MaxValue, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region Height
+        public static double GetHeight(DependencyObject obj)
+        {
+            return (double)obj.GetValue(HeightProperty);
+        }
+
+        public static void SetHeight(DependencyObject obj, double value)
+        {
+            obj.SetValue(HeightProperty, value);
+        }
+
+        public static readonly DependencyProperty HeightProperty =
+            DependencyProperty.RegisterAttached("Height", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(double.NaN, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MinHeight
+        public static double GetMinHeight(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MinHeightProperty);
+        }
+
+        public static void SetMinHeight(DependencyObject obj, double value)
+        {
+            obj.SetValue(MinHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty MinHeightProperty =
+            DependencyProperty.RegisterAttached("MinHeight", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MaxHeight
+        public static double GetMaxHeight(DependencyObject obj)
+        {
+            return (double)obj.GetValue(MaxHeightProperty);
+        }
+
+        public static void SetMaxHeight(DependencyObject obj, double value)
+        {
+            obj.SetValue(MaxHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty MaxHeightProperty =
+            DependencyProperty.RegisterAttached("MaxHeight", typeof(double), typeof(ToolTipHelper), new FrameworkPropertyMetadata(double.MaxValue, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
         #region Foreground
         public static Brush GetForeground(DependencyObject obj)
         {

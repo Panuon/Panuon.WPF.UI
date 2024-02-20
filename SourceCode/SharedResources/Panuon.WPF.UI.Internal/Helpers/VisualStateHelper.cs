@@ -104,7 +104,7 @@ namespace Panuon.WPF.UI.Internal
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(VisualStateHelper));
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(VisualStateHelper), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region WatermarkForeground

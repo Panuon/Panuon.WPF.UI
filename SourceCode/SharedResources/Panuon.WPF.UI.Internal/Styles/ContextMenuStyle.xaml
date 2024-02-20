@@ -10,25 +10,6 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ContextMenuItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
-        <TextBlock Text="&#xe902;"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                   FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
-                   Margin="0,0,5,0" />
-    </DataTemplate>
-
-    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
-        <TextBlock Text="&#xe92e;"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ContentControl}, Mode=OneWay}"
-                   FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                   FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
-    </DataTemplate>
-
     <Style x:Key="{x:Static rs:StyleKeys.ContextMenuItemStyle}"
            TargetType="MenuItem">
         <Setter Property="i:VisualStateHelper.Regist"
@@ -170,34 +151,6 @@
                 Value="Auto" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Disabled" />
-        <Setter Property="local:ContextMenuHelper.ItemsPadding"
-                Value="5,0" />
-        <Setter Property="local:ContextMenuHelper.ItemsHeight"
-                Value="30" />
-        <Setter Property="local:ContextMenuHelper.ItemsWidth">
-            <Setter.Value>
-                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropDownMinWidthConverter}}">
-                    <Binding Path="ActualWidth"
-                             RelativeSource="{RelativeSource Self}"
-                             Mode="OneWay" />
-                    <Binding Path="(local:ShadowHelper.BlurRadius)"
-                             RelativeSource="{RelativeSource Self}"
-                             Mode="OneWay" />
-                </MultiBinding>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="local:ContextMenuHelper.ItemsSeparatorBrush"
-                Value="#E6E6E6" />
-        <Setter Property="local:ContextMenuHelper.ItemsSeparatorThickness"
-                Value="1" />
-        <Setter Property="local:ContextMenuHelper.ItemsSeparatorVisibility"
-                Value="Collapsed" />
-        <Setter Property="local:ContextMenuHelper.ItemsBackground"
-                Value="Transparent" />
-        <Setter Property="local:ContextMenuHelper.ItemsHoverBackground"
-                Value="#F1F1F1" />
-        <Setter Property="local:ContextMenuHelper.ItemsIconWidth"
-                Value="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.CornerRadius"
                 Value="{Binding Path=(local:ContextMenuHelper.CornerRadius), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Background"
@@ -228,22 +181,28 @@
                 Value="{Binding Path=(local:ContextMenuHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding Path=(local:ContextMenuHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:ContextMenuHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="BorderThickness"
                 Value="{Binding Path=(local:ContextMenuHelper.BorderThickness), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="VerticalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="HorizontalOffset"
                 Value="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static rs:ConverterKeys.DoubleMultiplyByConverter}}, ConverterParameter=-1, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ContextMenuHelper.ArrowIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
-        <Setter Property="local:ContextMenuHelper.CheckedIconTemplate"
-                Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
         <Setter Property="Padding"
-                Value="0" />
-        <Setter Property="BorderBrush"
-                Value="{Binding Path=(local:ContextMenuHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Path=(local:ContextMenuHelper.Padding), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Width"
-                Value="200" />
+                Value="{Binding Path=(local:ContextMenuHelper.Width), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MinWidth"
+                Value="{Binding Path=(local:ContextMenuHelper.MinWidth), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MaxWidth"
+                Value="{Binding Path=(local:ContextMenuHelper.MaxWidth), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:ContextMenuHelper.Height), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MinHeight"
+                Value="{Binding Path=(local:ContextMenuHelper.MinHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MaxHeight"
+                Value="{Binding Path=(local:ContextMenuHelper.MaxHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ContextMenuTemplate}}" />
         <Style.Triggers>

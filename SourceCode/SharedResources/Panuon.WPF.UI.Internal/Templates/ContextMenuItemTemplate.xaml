@@ -9,6 +9,25 @@
         <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
+        <TextBlock Text="&#xe902;"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                   Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                   FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon"
+                   Margin="0,0,5,0" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="{ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}">
+        <TextBlock Text="&#xe92e;"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=ContentControl}, Mode=OneWay}"
+                   FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
+                   FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+    </DataTemplate>
+
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ContextMenuItemTemplate}"
                      TargetType="MenuItem">
         <Grid>
@@ -34,7 +53,8 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Grid Width="{Binding Path=(local:ContextMenuHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
+                        <Grid x:Name="GrdIcon"
+                              Width="{Binding Path=(local:ContextMenuHelper.ItemsHeight), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
                             <i:IconPresenter x:Name="IpIcon"
                                              Content="{TemplateBinding Icon}"
                                              Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -76,7 +96,7 @@
                                             FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                             Foreground="{Binding Path=(local:IconHelper.Foreground), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                             ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                            ContentTemplate="{Binding Path=(local:ContextMenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                            ContentTemplate="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
                         </Grid>
                         <ContentPresenter x:Name="CpHeader"
                                           Grid.Column="1"
@@ -84,10 +104,11 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           ContentSource="Header" />
-                        <ContentControl Grid.Column="2"
+                        <ContentControl x:Name="CcArrow"
+                                        Grid.Column="2"
                                         Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
-                                        ContentTemplate="{Binding Path=(local:ContextMenuHelper.ArrowIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+                                        ContentTemplate="{StaticResource {ComponentResourceKey ResourceId=ArrowIconTemplateKey, TypeInTargetAssembly={x:Type local:ContextMenuHelper}}}" />
                     </Grid>
                 </Border>
                 <local:PopupX x:Name="popDropDown"
@@ -198,9 +219,27 @@
                        Fill="{Binding Path=(local:MenuItemHelper.SeparatorBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Height="{Binding Path=(local:MenuItemHelper.SeparatorThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Margin="{Binding Path=(local:MenuItemHelper.SeparatorMargin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                       Visibility="{Binding Path=(local:MenuItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                       Visibility="{Binding Path=( local:MenuItemHelper.SeparatorVisibility), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         </Grid>
         <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.ItemsIconWidth), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="GrdIcon"
+                        Property="Width"
+                        Value="{Binding Path=(local:ContextMenuHelper.ItemsIconWidth), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.ArrowIconTemplate), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcArrow"
+                        Property="ContentTemplate"
+                        Value="{Binding Path=(local:ContextMenuHelper.ArrowIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(local:ContextMenuHelper.CheckedIconTemplate), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
+                         Value="True">
+                <Setter TargetName="CcChecked"
+                        Property="ContentTemplate"
+                        Value="{Binding Path=(local:ContextMenuHelper.CheckedIconTemplate), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}" />
+            </DataTrigger>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">

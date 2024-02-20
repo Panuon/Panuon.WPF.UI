@@ -41,11 +41,13 @@
                     </MultiBinding>
                 </Border.Effect>
             </Border>
-            <Border Padding="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <ScrollViewer>
-                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
-                </ScrollViewer>
+            <Border Margin="{Binding Path=(local:ContextMenuHelper.Padding), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Border Padding="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Margin="{Binding Path=(local:ShadowHelper.BlurRadius), Converter={StaticResource {x:Static irs:ConverterKeys.DropDownMarginConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <ScrollViewer>
+                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </ScrollViewer>
+                </Border>
             </Border>
         </Grid>
     </ControlTemplate>

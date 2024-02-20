@@ -15,6 +15,18 @@
                 Value="True" />
         <Setter Property="FocusVisualStyle"
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="Width"
+                Value="{Binding Path=(local:ToolTipHelper.Width), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MinWidth"
+                Value="{Binding Path=(local:ToolTipHelper.MinWidth), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MaxWidth"
+                Value="{Binding Path=(local:ToolTipHelper.MaxWidth), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="Height"
+                Value="{Binding Path=(local:ToolTipHelper.Height), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MinHeight"
+                Value="{Binding Path=(local:ToolTipHelper.MinHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="MaxHeight"
+                Value="{Binding Path=(local:ToolTipHelper.MaxHeight), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:ToolTipHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Background"
