@@ -12,25 +12,27 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.BubbleTemplate}"
                      TargetType="local:Bubble">
         <Grid Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-            <Path x:Name="CcMain"
-                  Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                  Stroke="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                  StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Path.Data>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.BubblePathConverter}}">
-                        <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
-                        <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
-                        <Binding Path="CornerRadius"
-                                 RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
-                        <Binding Path="ArrowSize"
-                                 RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
-                        <Binding Path="BorderThickness"
-                                 RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
-                    </MultiBinding>
-                </Path.Data>
-            </Path>
+            <Canvas>
+                <Path x:Name="CcMain"
+                      Fill="{Binding Background, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      Stroke="{Binding BorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      StrokeThickness="{Binding BorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Path.Data>
+                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.BubblePathConverter}}">
+                            <Binding Path="ActualWidth"
+                                     RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
+                            <Binding Path="ActualHeight"
+                                     RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
+                            <Binding Path="CornerRadius"
+                                     RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
+                            <Binding Path="ArrowSize"
+                                     RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
+                            <Binding Path="BorderThickness"
+                                     RelativeSource="{RelativeSource AncestorType=local:Bubble}" />
+                        </MultiBinding>
+                    </Path.Data>
+                </Path>
+            </Canvas>
             <Border TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Padding="{TemplateBinding Padding}">

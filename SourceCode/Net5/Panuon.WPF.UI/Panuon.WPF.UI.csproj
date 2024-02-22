@@ -4,6 +4,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,7 +28,7 @@
 
   <ItemGroup>
     <Reference Include="Panuon.WPF">
-      <HintPath>..\..\References\Net5\net5.0-windows\Panuon.WPF.dll</HintPath>
+      <HintPath>..\..\References\Net5\Panuon.WPF.dll</HintPath>
     </Reference>
   </ItemGroup>
 
