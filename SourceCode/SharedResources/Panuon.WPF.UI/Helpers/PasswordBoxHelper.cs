@@ -472,7 +472,8 @@ namespace Panuon.WPF.UI
             if ((bool)e.NewValue)
             {
                 var newPassword = GetPassword(passwordBox);
-                if (newPassword != passwordBox.Password)
+                if (!string.IsNullOrEmpty(newPassword)
+                    && newPassword != passwordBox.Password)
                 {
                     passwordBox.Password = newPassword;
                 }
