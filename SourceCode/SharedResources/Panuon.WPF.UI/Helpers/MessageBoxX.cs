@@ -21,6 +21,30 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Open a message box and return the result selected by the user.
+        /// Overload method with all parameters optional.
+        /// </summary>
+        /// <param name="owner">The owner of message box.</param>
+        /// <param name="message">Text to display.</param>
+        /// <param name="caption">The title of message box.</param>
+        /// <param name="button">The group of buttons to display in the message box.</param>
+        /// <param name="icon">Large icon displayed on the left side of the message box.</param>
+        /// <param name="defaultButton">The default button. Buttons set as default will be highlighted.</param>
+        /// <param name="countdown">The Countdown for default button. Unit Is Second. </param>
+        public static MessageBoxResult Show(Window owner = null,
+            string message = "", 
+            string caption = null,
+            MessageBoxButton button = MessageBoxButton.OK,
+            MessageBoxIcon icon = MessageBoxIcon.None,
+            DefaultButton defaultButton = DefaultButton.Unset,
+            MessageBoxXSetting setting = null,
+            int? countdown = null)
+        {
+            return CallMessageBoxXWindow(owner, message, caption, button, icon, defaultButton, setting, countdown);
+        }
+        
         /// <summary>
         /// Open a message box .
         /// </summary>
