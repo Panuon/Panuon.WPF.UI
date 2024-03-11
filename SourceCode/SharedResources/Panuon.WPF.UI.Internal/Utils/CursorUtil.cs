@@ -13,7 +13,7 @@ namespace Panuon.WPF.UI.Internal.Utils
             {
                 if(_dropperCursor == null)
                 {
-                    var info = Application.GetResourceStream(new Uri("/Panuon.WPF.UI;component/Resources/dropper.cur", UriKind.Relative));
+                    var info = Application.GetResourceStream(new Uri("/Panuon.WPF;component/Resources/dropper.cur", UriKind.Relative));
 #if NET452
                     _dropperCursor = new Cursor(info.Stream);
 #else

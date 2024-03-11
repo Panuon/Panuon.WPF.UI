@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TreeViewItemStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ToggleButtonStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TreeViewItemStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TreeViewTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=ToggleArrowToggleButtonStyleKey, TypeInTargetAssembly={x:Type local:TreeViewHelper}}"
@@ -41,7 +41,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedToggleBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:TreeViewItemHelper.SelectedToggleBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=TreeViewItem}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
@@ -61,7 +61,7 @@
         <Setter Property="FocusVisualStyle"
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:TreeViewItemHelper.InternalPadding"
-                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), Converter={StaticResource {x:Static irs:ConverterKeys.TreeViewInternalPaddingConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Path=(local:TreeViewHelper.ItemsPadding), Converter={x:Static irs:Converters.TreeViewInternalPaddingConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:TreeViewHelper.ItemsPadding"
                 Value="10,0" />
         <Setter Property="local:TreeViewHelper.ItemsBackground"

@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.MenuItemTopLevelTemplate}"
                      TargetType="MenuItem">
@@ -50,7 +47,7 @@
                                              FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                              ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                 <i:IconPresenter.Visibility>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                                    <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                         <Binding Path="Icon"
                                                  RelativeSource="{RelativeSource TemplatedParent}"
                                                  Mode="OneWay" />
@@ -86,7 +83,7 @@
                                           ContentSource="Header" />
                         <ContentControl x:Name="CcArrow"
                                         Grid.Column="2"
-                                        Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding HasItems, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                                         ContentTemplate="{Binding Path=(local:MenuHelper.TopLevelArrowIconTemplate), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                     </Grid>
@@ -99,7 +96,7 @@
                               Placement="{Binding Path=(local:MenuHelper.TopLevelDropDownPlacement), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                               PopupAnimation="Fade">
                     <local:PopupX.HorizontalOffset>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=Menu}"
                                      Mode="OneWay" />
@@ -115,7 +112,7 @@
                         </MultiBinding>
                     </local:PopupX.HorizontalOffset>
                     <local:PopupX.VerticalOffset>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=Menu}"
                                      Mode="OneWay" />
@@ -138,7 +135,7 @@
                           MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                           MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                         <Grid.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.ContextMenuDropDownMarginConverter}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"
                                          RelativeSource="{RelativeSource AncestorType=Menu}"
                                          Mode="OneWay" />
@@ -155,7 +152,7 @@
                                  BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                                  CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                             <Border.Effect>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                     <Binding Path="(local:DropDownHelper.ShadowColor)"
                                              RelativeSource="{RelativeSource AncestorType=Menu}"
                                              Mode="OneWay" />
@@ -204,7 +201,7 @@
         <ControlTemplate.Triggers>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
                         <Binding Path="."
@@ -233,7 +230,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -256,7 +253,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -267,7 +264,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -278,7 +275,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -289,7 +286,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -300,7 +297,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -323,7 +320,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -334,7 +331,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -345,7 +342,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -356,7 +353,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -367,7 +364,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -390,7 +387,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -401,7 +398,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -412,7 +409,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -423,7 +420,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -474,7 +471,7 @@
                                              FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                              ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                 <i:IconPresenter.Visibility>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                                    <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                         <Binding Path="Icon"
                                                  RelativeSource="{RelativeSource TemplatedParent}"
                                                  Mode="OneWay" />
@@ -499,7 +496,7 @@
                                           ContentSource="Header" />
                         <ContentControl x:Name="CcArrow"
                                         Grid.Column="2"
-                                        Visibility="{Binding HasItems, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                        Visibility="{Binding HasItems, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground) ,RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                                         ContentTemplate="{Binding Path=(local:MenuHelper.SubmenuArrowIconTemplate), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}" />
                     </Grid>
@@ -512,7 +509,7 @@
                               Focusable="False"
                               PopupAnimation="Fade">
                     <local:PopupX.HorizontalOffset>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=Menu}"
                                      Mode="OneWay" />
@@ -528,7 +525,7 @@
                         </MultiBinding>
                     </local:PopupX.HorizontalOffset>
                     <local:PopupX.VerticalOffset>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=Menu}"
                                      Mode="OneWay" />
@@ -551,7 +548,7 @@
                           MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                           MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                         <Grid.Margin>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ContextMenuDropDownMarginConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.ContextMenuDropDownMarginConverter}">
                                 <Binding Path="(local:ShadowHelper.BlurRadius)"
                                          RelativeSource="{RelativeSource AncestorType=Menu}"
                                          Mode="OneWay" />
@@ -568,7 +565,7 @@
                                 BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                                 CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                             <Border.Effect>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                     <Binding Path="(local:DropDownHelper.ShadowColor)"
                                              RelativeSource="{RelativeSource AncestorType=Menu}"
                                              Mode="OneWay" />
@@ -617,7 +614,7 @@
         <ControlTemplate.Triggers>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
                         <Binding Path="."
@@ -646,7 +643,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -669,7 +666,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -680,7 +677,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -691,7 +688,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -702,7 +699,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -725,7 +722,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -736,7 +733,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -747,7 +744,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContent"
@@ -770,7 +767,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -781,7 +778,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:MenuItemHelper.OpenedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"

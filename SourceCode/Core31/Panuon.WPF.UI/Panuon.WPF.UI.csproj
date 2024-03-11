@@ -1,40 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Nullable>disable</Nullable>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningLevel>5</WarningLevel>
-    <OutputPath>..\..\Outputs\Debug\Core31\</OutputPath>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<WarningLevel>5</WarningLevel>
+		<OutputPath>..\..\outputs\Debug\core31\</OutputPath>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Outputs\Release\Core31\</OutputPath>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>..\..\outputs\Release\core31\</OutputPath>
+	</PropertyGroup>
 
-  <Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
+	<Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
 
-  <Import Project="..\..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems" Label="Shared" />
+	<Import Project="..\..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems" Label="Shared" />
 
-  <ItemGroup>
-    <None Remove="Resources\dropper.cur" />
-    <None Remove="Resources\Fonts\PanuonIcon.ttf" />
-    <None Remove="Resources\PanuonIcon.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\dropper.cur" />
+		<None Remove="Resources\Fonts\PanuonIcon.ttf" />
+		<None Remove="Resources\PanuonIcon.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Panuon.WPF">
-      <HintPath>..\..\References\Core31\netcoreapp3.1\Panuon.WPF.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Panuon.WPF">
+			<HintPath>..\..\references\core31\Panuon.WPF.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\dropper.cur" />
-    <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
-    <Resource Include="Resources\PanuonIcon.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\dropper.cur" />
+		<Resource Include="Resources\Fonts\PanuonIcon.ttf" />
+		<Resource Include="Resources\PanuonIcon.ttf" />
+	</ItemGroup>
 
 </Project>

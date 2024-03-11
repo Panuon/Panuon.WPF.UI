@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TagItemTemplate}"
                      TargetType="local:TagItem">
@@ -66,7 +63,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding RemoveButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnNonnull" />
-                    <Condition Binding="{Binding Content, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Content, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="PART_RemoveButton"
@@ -77,7 +74,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding RemoveButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnHoverAndNonnull" />
-                    <Condition Binding="{Binding Content, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Content, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />

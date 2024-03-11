@@ -1,7 +1,5 @@
 ﻿using Panuon.WPF.UI.Internal.Utils;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Media;
 

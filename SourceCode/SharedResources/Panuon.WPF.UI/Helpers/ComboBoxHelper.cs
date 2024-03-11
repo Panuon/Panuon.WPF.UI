@@ -1,5 +1,4 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal;
+﻿using Panuon.WPF.UI.Internal;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections;

@@ -4,8 +4,8 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:local="clr-namespace:Samples.Views.Examples"
-            xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
-            xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+            xmlns:pw="https://opensource.panuon.com/wpf"
+            xmlns:pu="https://opensource.panuon.com/wpf-ui"
             mc:Ignorable="d"
             Title="Form"
             SizeToContent="Height"
@@ -229,7 +229,7 @@
                                 <DataTemplate>
                                     <Grid RenderTransformOrigin="0.5,0.5">
                                         <Grid.RenderTransform>
-                                            <RotateTransform Angle="{Binding Value, Converter={StaticResource {x:Static purs:ConverterKeys.DoublePowConverter}}, ConverterParameter=1.3, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
+                                            <RotateTransform Angle="{Binding Value, Converter={x:Static pw:Converters.DoublePowConverter}, ConverterParameter=1.3, RelativeSource={RelativeSource AncestorType=Slider}, Mode=OneWay}" />
                                         </Grid.RenderTransform>
                                         <TextBlock Text="&#xe958;"
                                                    FontSize="20"

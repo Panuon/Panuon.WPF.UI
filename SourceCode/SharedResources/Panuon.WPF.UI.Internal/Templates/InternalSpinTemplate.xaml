@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.InternalSpinStandardTemplate}"
                      TargetType="i:InternalSpin">
@@ -17,7 +14,7 @@
                 <Setter Property="Width"
                         Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="Height"
-                        Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=4, Mode=OneWay}" />
+                        Value="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Converter={x:Static pw:Converters.DoubleDivideByConverter}, ConverterParameter=4, Mode=OneWay}" />
                 <Setter Property="RadiusX"
                         Value="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="RadiusY"
@@ -383,7 +380,7 @@
                                      Angle="0" />
                 </Path.RenderTransform>
                 <Path.Data>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ArcConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ArcConverter}">
                         <Binding Path="ActualWidth"
                                  RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="ActualHeight"
@@ -436,7 +433,7 @@
                                      Angle="0" />
                 </Path.RenderTransform>
                 <Path.Data>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ArcConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ArcConverter}">
                         <Binding Path="ActualWidth"
                                  RelativeSource="{RelativeSource AncestorType=i:InternalSpin}"></Binding>
                         <Binding Path="ActualHeight"
@@ -495,7 +492,7 @@
                         Value="{Binding Thickness, RelativeSource={RelativeSource AncestorType=i:InternalSpin}, Mode=OneWay}" />
                 <Setter Property="RenderTransformOrigin">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.InternalSpinClassicRenderTransformOriginConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.InternalSpinClassicRenderTransformOriginConverter}">
                             <Binding Path="ActualHeight"
                                      RelativeSource="{RelativeSource AncestorType=i:InternalSpin}" />
                             <Binding Path="Thickness"

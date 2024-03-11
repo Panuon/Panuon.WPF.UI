@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
                     xmlns:ts="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TimelineItemStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TimelineTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TimelineItemStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/TimelineTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ToggleDataTemplateKey, TypeInTargetAssembly={x:Type local:Timeline}}">
@@ -23,7 +23,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedToggleFill, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedToggleFill, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="EllToggle"
@@ -34,7 +34,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedToggleStroke, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedToggleStroke, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="EllToggle"
@@ -45,7 +45,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedToggleStrokeThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedToggleStrokeThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=local:TimelineItem}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="EllToggle"
@@ -104,13 +104,13 @@
         <Setter Property="ItemsHeaderPadding"
                 Value="{Binding Padding, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHeaderFontSize"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={x:Static pw:Converters.DoublePlusConverter}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHeaderFontWeight"
                 Value="Bold" />
         <Setter Property="ItemsHeaderForeground"
                 Value="{Binding ItemsForeground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHeaderPadding"
-                Value="{Binding Padding, Converter={StaticResource {x:Static irs:ConverterKeys.ThicknessLeftRightOnlyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"/>
+                Value="{Binding Padding, Converter={x:Static irs:Converters.ThicknessLeftRightOnlyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"/>
         <Setter Property="ItemsToggleSize"
                 Value="18" />
         <Setter Property="ItemsToggleStroke"

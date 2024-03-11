@@ -1,21 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.FormGroupVerticalTemplate}"
                      TargetType="local:FormGroup">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="{Binding InternalHeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <RowDefinition Height="{Binding InternalHeaderHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <RowDefinition />
-                <RowDefinition Height="{Binding MessageHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                <RowDefinition Height="{Binding MessageHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MinHeight="{Binding MinMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid.RowDefinitions>
@@ -55,13 +52,13 @@
                             ContentTemplate="{TemplateBinding MessageTemplate}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Message, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding Message, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="CcMessage"
                         Property="Visibility"
                         Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ValidateResult, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringUnequalConverter}}, ConverterParameter=None, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding ValidateResult, Converter={x:Static pw:Converters.IsStringUnequalConverter}, ConverterParameter=None, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="CcMessage"
                         Property="Visibility"
@@ -75,18 +72,18 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition Height="{Binding MessageHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                <RowDefinition Height="{Binding MessageHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MinHeight="{Binding MinMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="{Binding InternalHeaderHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <RowDefinition Height="{Binding InternalHeaderHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{Binding InternalHeaderWidth, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleToGridLengthConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                    <ColumnDefinition Width="{Binding InternalHeaderWidth, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <ContentControl x:Name="PART_HeaderControl"
@@ -118,13 +115,13 @@
                             ContentTemplate="{TemplateBinding MessageTemplate}" />
         </Grid>
         <ControlTemplate.Triggers>
-            <DataTrigger Binding="{Binding Message, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding Message, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="CcMessage"
                         Property="Visibility"
                         Value="Visible" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding ValidateResult, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringUnequalConverter}}, ConverterParameter=None, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+            <DataTrigger Binding="{Binding ValidateResult, Converter={x:Static pw:Converters.IsStringUnequalConverter}, ConverterParameter=None, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                          Value="True">
                 <Setter TargetName="CcMessage"
                         Property="Visibility"

@@ -1,13 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/CarouselTemplate.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/CarouselTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=PageTurnButtonStyleKey, TypeInTargetAssembly={x:Type local:Carousel}}"
@@ -30,7 +30,7 @@
         <Setter Property="Foreground"
                 Value="#FFFFFF" />
         <Setter Property="local:RepeatButtonHelper.CornerRadius"
-                Value="{Binding ActualHeight, Converter={StaticResource {x:Static rs:ConverterKeys.DoubleDivideByConverter}}, ConverterParameter=2, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}" />
+                Value="{Binding ActualHeight, Converter={x:Static pw:Converters.DoubleDivideByConverter}, ConverterParameter=2, RelativeSource={RelativeSource AncestorType=local:Carousel}, Mode=OneWay}" />
         <Setter Property="FontFamily"
                 Value="/Panuon.WPF.UI;component/Resources/#PanuonIcon" />
         <Style.Triggers>

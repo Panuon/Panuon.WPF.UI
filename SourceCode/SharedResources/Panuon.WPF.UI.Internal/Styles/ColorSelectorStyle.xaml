@@ -1,15 +1,15 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ColorSelectorTemplate.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/SliderStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ColorSelectorTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/ButtonStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/TextBoxStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/SliderStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=DropperThumbStyleKey, TypeInTargetAssembly={x:Type local:ColorSelector}}"
@@ -26,7 +26,7 @@
         <Setter Property="HorizontalAlignment"
                 Value="Center" />
         <Setter Property="Foreground"
-                Value="{Binding SelectedColor, Converter={StaticResource {x:Static rs:ConverterKeys.OppositeColorConverter}}, ConverterParameter=Brush, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+                Value="{Binding SelectedColor, Converter={x:Static pw:Converters.OppositeColorConverter}, ConverterParameter=Brush, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
         <Setter Property="FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Background"
@@ -76,7 +76,7 @@
         <Setter Property="local:SliderHelper.ThumbBorderThickness"
                 Value="2" />
         <Setter Property="local:SliderHelper.ThumbBackground"
-                Value="{Binding AccentColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+                Value="{Binding AccentColor, Converter={x:Static pw:Converters.ColorToBrushConverter}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
         <Setter Property="local:SliderHelper.ThumbCornerRadius"
                 Value="2" />
         <Setter Property="local:SliderHelper.ThumbShadowColor"
@@ -102,7 +102,7 @@
                     <Setter Property="BorderBrush"
                             Value="White" />
                     <Setter Property="Background"
-                            Value="{Binding SelectedOpaqueColor, Converter={StaticResource {x:Static rs:ConverterKeys.ColorToBrushConverter}}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
+                            Value="{Binding SelectedOpaqueColor, Converter={x:Static pw:Converters.ColorToBrushConverter}, RelativeSource={RelativeSource AncestorType=local:ColorSelector}, Mode=OneWay}" />
                     <Setter Property="BorderThickness"
                             Value="2" />
                     <Setter Property="local:ThumbHelper.CornerRadius"

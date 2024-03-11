@@ -1,14 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.WindowXTemplate}"
                      TargetType="local:WindowX">
@@ -72,7 +69,7 @@
                                 BorderBrush="{Binding Path=(local:WindowXCaption.BorderBrush),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 BorderThickness="{Binding Path=(local:WindowXCaption.BorderThickness),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                             <Border.Effect>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                     <Binding Path="(local:WindowXCaption.ShadowColor)"
                                              RelativeSource="{RelativeSource AncestorType=local:WindowX}"
                                              Mode="OneWay" />
@@ -105,7 +102,7 @@
                             <ContentControl x:Name="CcHeader"
                                             Focusable="False"
                                             Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                            Content="{Binding DataContext, Converter={StaticResource {x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            Content="{Binding DataContext, Converter={x:Static irs:Converters.WindowXCaptionDataContextConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                             ContentTemplate="{Binding Path=(local:WindowXCaption.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
                             <ContentControl x:Name="CcExtendControl"
                                             Grid.Column="1"
@@ -139,7 +136,7 @@
                            Opacity="0"
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
-                                Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                Visibility="{Binding IsOverlayerVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                 <Canvas x:Name="PART_ToastCanvas" 
                         IsHitTestVisible="False" />
             </Grid>
@@ -273,7 +270,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -284,7 +281,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -295,7 +292,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -511,7 +508,7 @@
                            Opacity="0"
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
-                                Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                Visibility="{Binding IsOverlayerVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                 <Canvas x:Name="PART_ToastCanvas"
                         IsHitTestVisible="False" />
             </Grid>
@@ -744,7 +741,7 @@
                                 BorderBrush="{Binding Path=(local:WindowXCaption.BorderBrush),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                 BorderThickness="{Binding Path=(local:WindowXCaption.BorderThickness),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
                             <Border.Effect>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                     <Binding Path="(local:WindowXCaption.ShadowColor)"
                                              RelativeSource="{RelativeSource AncestorType=local:WindowX}"
                                              Mode="OneWay" />
@@ -777,7 +774,7 @@
                             <ContentControl x:Name="CcHeader"
                                             Focusable="False"
                                             Foreground="{Binding Path=(local:WindowXCaption.Foreground),RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
-                                            Content="{Binding DataContext, Converter={StaticResource {x:Static irs:ConverterKeys.WindowXCaptionDataContextConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                            Content="{Binding DataContext, Converter={x:Static irs:Converters.WindowXCaptionDataContextConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                             ContentTemplate="{Binding Path=(local:WindowXCaption.HeaderTemplate), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" />
                             <ContentControl x:Name="CcExtendControl"
                                             Grid.Column="1"
@@ -811,7 +808,7 @@
                            Opacity="0"
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
-                                Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                Visibility="{Binding IsOverlayerVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                 <Canvas x:Name="PART_ToastCanvas"
                         IsHitTestVisible="False" />
             </Grid>
@@ -945,7 +942,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -956,7 +953,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageMinimizeButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -967,7 +964,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsBackstageVisible, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:WindowXCaption.BackstageCloseButtonStyle), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnMinimize"
@@ -998,7 +995,7 @@
                            Opacity="0"
                            Visibility="Collapsed" />
                 <ContentControl Content="{TemplateBinding Overlayer}"
-                                Visibility="{Binding IsOverlayerVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
+                                Visibility="{Binding IsOverlayerVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:WindowX}, Mode=OneWay}" />
                 <Canvas x:Name="PART_ToastCanvas"
                         IsHitTestVisible="False" />
             </Grid>

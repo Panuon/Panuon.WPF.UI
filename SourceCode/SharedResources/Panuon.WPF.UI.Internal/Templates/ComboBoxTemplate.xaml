@@ -1,14 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
                     xmlns:its="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ComboBoxTemplate}"
                      TargetType="ComboBox">
@@ -42,7 +39,7 @@
                                      FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter.Visibility>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                 <Binding Path="(local:ComboBoxHelper.Icon)"
                                          RelativeSource="{RelativeSource TemplatedParent}"
                                          Mode="OneWay" />
@@ -107,7 +104,7 @@
                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                      IsReadOnly="{TemplateBinding IsReadOnly}"
-                                     Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                     Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
                                         <Setter Property="Template">
@@ -143,7 +140,7 @@
                            PopupAnimation="Fade"
                            StaysOpen="False">
                 <local:PopupX.HorizontalOffset>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
@@ -159,7 +156,7 @@
                     </MultiBinding>
                 </local:PopupX.HorizontalOffset>
                 <local:PopupX.VerticalOffset>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
@@ -182,7 +179,7 @@
                       MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                       MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                     <Grid.Margin>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownMarginConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                      Mode="OneWay" />
@@ -200,7 +197,7 @@
                                        BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                        CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                         <local:ContentControlX.Effect>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                          Mode="OneWay" />
@@ -250,7 +247,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNullOrEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcWatermark"
@@ -261,7 +258,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding SelectedItem, Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding SelectedItem, Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcWatermark"
@@ -272,7 +269,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnClear"
@@ -294,7 +291,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnHoverAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -318,7 +315,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnFocusedAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -358,7 +355,7 @@
                                      FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter.Visibility>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                 <Binding Path="(local:ComboBoxHelper.Icon)"
                                          RelativeSource="{RelativeSource TemplatedParent}"
                                          Mode="OneWay" />
@@ -420,7 +417,7 @@
                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                      IsReadOnly="{TemplateBinding IsReadOnly}"
-                                     Visibility="{Binding IsEditable, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                     Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
                                         <Setter Property="Template">
@@ -455,7 +452,7 @@
                           PopupAnimation="Fade"
                           StaysOpen="False">
                 <local:PopupX.HorizontalOffset>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownHorizontalOffsetConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
@@ -471,7 +468,7 @@
                     </MultiBinding>
                 </local:PopupX.HorizontalOffset>
                 <local:PopupX.VerticalOffset>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownVerticalOffsetConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
                                  RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                  Mode="OneWay" />
@@ -494,7 +491,7 @@
                       MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                       MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                     <Grid.Margin>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ComboBoxDropDownMarginConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownMarginConverter}">
                             <Binding Path="(local:ShadowHelper.BlurRadius)"
                                      RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                      Mode="OneWay" />
@@ -512,7 +509,7 @@
                                            BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                            CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                         <local:ContentControlX.Effect>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
                                          RelativeSource="{RelativeSource AncestorType=ComboBox}"
                                          Mode="OneWay" />
@@ -562,7 +559,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNullOrEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNullOrEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions> 
                 <Setter TargetName="CcWatermark"
@@ -573,7 +570,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding SelectedItem, Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding SelectedItem, Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcWatermark"
@@ -585,7 +582,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnClear"
@@ -607,7 +604,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnHoverAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -631,7 +628,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.ClearButtonVisibility), RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnFocusedAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={StaticResource {x:Static rs:ConverterKeys.IsStringNonnullAndNotEmptyConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />

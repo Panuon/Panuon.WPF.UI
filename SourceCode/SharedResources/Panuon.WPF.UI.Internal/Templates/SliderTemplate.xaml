@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{x:Static irs:StyleKeys.SliderRepeatButtonStyle}"
            TargetType="{x:Type RepeatButton}">
@@ -58,7 +55,7 @@
                     Height="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Border.Clip>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderBorderClipConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.SliderBorderClipConverter}">
                         <Binding Path="ActualWidth"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="ActualHeight"
@@ -108,11 +105,11 @@
                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                      Visibility="Collapsed" />
             <Canvas Grid.Row="2"
-                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Canvas.Top="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Canvas.Left>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderTextLeftConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.SliderTextLeftConverter}">
                             <Binding Path="Minimum"
                                      RelativeSource="{RelativeSource AncestorType=Slider}" />
                             <Binding Path="Value"
@@ -182,7 +179,7 @@
                     Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Border.Clip>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderBorderClipConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.SliderBorderClipConverter}">
                         <Binding Path="ActualWidth"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="ActualHeight"
@@ -232,11 +229,11 @@
                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                      Visibility="Collapsed" />
             <Canvas Grid.Column="2"
-                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Canvas.Left="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Canvas.Top>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.SliderTextTopConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.SliderTextTopConverter}">
                             <Binding Path="Minimum"
                                      RelativeSource="{RelativeSource AncestorType=Slider}" />
                             <Binding Path="Value"

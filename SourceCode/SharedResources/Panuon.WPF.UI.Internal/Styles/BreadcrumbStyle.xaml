@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/BreadcrumbTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/BreadcrumbTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 
@@ -33,9 +33,9 @@
         <Setter Property="FocusVisualStyle"
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="ItemsHoverForeground"
-                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Foreground, Converter={x:Static pw:Converters.LightenSolidColorBrushConverter}, ConverterParameter=0.8, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsHoverForeground"
-                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Foreground, Converter={x:Static pw:Converters.LightenSolidColorBrushConverter}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="ItemsPadding"
                 Value="5,0" />
         <Setter Property="ItemsBackground"

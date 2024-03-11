@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DataGridCellTemplate}"
                      TargetType="DataGridCell">
@@ -26,7 +23,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -37,7 +34,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
@@ -47,7 +44,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBackground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -58,7 +55,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderThickness), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -69,9 +66,9 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBackground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBackground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -82,9 +79,9 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderBrush), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBorderBrush), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -95,9 +92,9 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedBorderThickness), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedBorderThickness), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -108,9 +105,9 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedForeground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
@@ -120,9 +117,9 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellFocusedForeground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellSelectedForeground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
@@ -132,7 +129,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -143,7 +140,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="Foreground"
@@ -153,7 +150,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBackground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -164,7 +161,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsReadOnly, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellReadOnlyBorderThickness), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -173,7 +170,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellHoverBackground),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellHoverBackground),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -186,7 +183,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellHoverForeground),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.CellHoverForeground),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -237,7 +234,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBackground), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -248,7 +245,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBorderBrush), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -259,7 +256,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedBorderThickness), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -270,7 +267,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedCornerRadius), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -281,13 +278,13 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowSelectedShadowColor), Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="False" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
                         Property="Effect">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                             <Binding Path="(local:DataGridHelper.RowSelectedShadowColor)"
                                      RelativeSource="{RelativeSource AncestorType=DataGrid}"
                                      Mode="OneWay" />
@@ -312,7 +309,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBackground),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBackground),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -325,7 +322,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBorderBrush),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBorderBrush),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -338,7 +335,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBorderThickness),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverBorderThickness),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -351,7 +348,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverCornerRadius),Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHoverCornerRadius),Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
@@ -439,7 +436,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBackground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -452,7 +449,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -465,7 +462,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -478,7 +475,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -491,7 +488,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderHoverForeground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
@@ -511,7 +508,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBackground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -522,7 +519,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -533,7 +530,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -544,7 +541,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrBack"
@@ -555,7 +552,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed,RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.ColumnHeaderClickForeground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
@@ -636,7 +633,7 @@
                         <Control Grid.Column="1"
                                  SnapsToDevicePixels="false"
                                  Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"
-                                 Visibility="{Binding (Validation.HasError), Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
+                                 Visibility="{Binding (Validation.HasError), Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
                     </Grid>
                     <Thumb x:Name="PART_TopHeaderGripper"
                            Style="{StaticResource RowHeaderGripperStyle}"
@@ -664,7 +661,7 @@
                                Value="False" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBackground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrMain"
@@ -679,7 +676,7 @@
                                Value="False" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrMain"
@@ -696,7 +693,7 @@
                                Value="False" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderHoverBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
@@ -712,7 +709,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBackground), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrMain"
@@ -725,7 +722,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrMain"
@@ -738,7 +735,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:DataGridHelper.RowHeaderClickBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter},RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CpContent"
@@ -781,7 +778,7 @@
                                    BorderThickness="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelBorderThickness),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                                    CornerRadius="{Binding Path=(local:DataGridHelper.ColumnHeaderPanelCornerRadius),RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}">
                 <local:ContentControlX.Effect>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                         <Binding Path="(local:DataGridHelper.ColumnHeaderPanelShadowColor)"
                                  RelativeSource="{RelativeSource AncestorType=DataGrid}"
                                  Mode="OneWay" />

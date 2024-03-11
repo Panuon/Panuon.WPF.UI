@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ZoomViewerTemplate}"
                      TargetType="local:ZoomViewer">
@@ -30,7 +27,7 @@
                              HorizontalAlignment="Center"
                              Stretch="UniformToFill">
                         <Viewbox.Width>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ZoomViewerViewboxScaleConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.ZoomViewerViewboxScaleConverter}">
                                 <Binding Path="ActualWidth"
                                          ElementName="BdrViewBox" />
                                 <Binding Path="ZoomLevel"
@@ -38,7 +35,7 @@
                             </MultiBinding>
                         </Viewbox.Width>
                         <Viewbox.Height>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ZoomViewerViewboxScaleConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.ZoomViewerViewboxScaleConverter}">
                                 <Binding Path="ActualHeight"
                                          ElementName="BdrViewBox" />
                                 <Binding Path="ZoomLevel"

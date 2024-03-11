@@ -1,12 +1,9 @@
-﻿using Panuon.WPF.UI.Internal.Converters;
-using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI

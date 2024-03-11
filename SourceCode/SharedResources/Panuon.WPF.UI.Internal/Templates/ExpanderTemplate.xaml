@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ExpanderUpDownTemplate}"
                      TargetType="Expander">
@@ -52,7 +49,7 @@
                                                         Background="{TemplateBinding Background}"
                                                         CornerRadius="{Binding Path=(local:ExpanderHelper.HeaderCornerRadius), RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}">
                                                     <Border.Effect>
-                                                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                                        <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                                             <Binding Path="(local:ExpanderHelper.HeaderShadowColor)"
                                                                      RelativeSource="{RelativeSource AncestorType=Expander}"
                                                                      Mode="OneWay" />
@@ -83,7 +80,7 @@
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                                                    Value="True" />
-                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                                    Value="True" />
                                                     </MultiDataTrigger.Conditions>
                                                     <Setter TargetName="BdrContainer"
@@ -94,13 +91,13 @@
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                                                    Value="True" />
-                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderShadowColor), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                                    Value="True" />
                                                     </MultiDataTrigger.Conditions>
                                                     <Setter TargetName="BdrContainer"
                                                             Property="Effect">
                                                         <Setter.Value>
-                                                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                                                            <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                                                 <Binding Path="(local:ExpanderHelper.ExpandedHeaderShadowColor)"
                                                                          RelativeSource="{RelativeSource AncestorType=Expander}"
                                                                          Mode="OneWay" />
@@ -191,7 +188,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -202,7 +199,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -213,7 +210,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -224,7 +221,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -235,13 +232,13 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedShadowColor), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
                         Property="Effect">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                             <Binding Path="(local:ExpanderHelper.ExpandedShadowColor)"
                                      RelativeSource="{RelativeSource AncestorType=Expander}"
                                      Mode="OneWay" />
@@ -268,7 +265,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"
@@ -279,7 +276,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"
@@ -296,7 +293,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"
@@ -307,7 +304,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"
@@ -439,7 +436,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -450,7 +447,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
@@ -461,7 +458,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"
@@ -472,7 +469,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="TgbHeader"

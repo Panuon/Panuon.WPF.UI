@@ -1,4 +1,4 @@
-﻿using Panuon.WPF.UI.Utils;
+﻿using Panuon.WPF.UI.Internal.Utils;
 using System.Windows;
 using System.Windows.Media;
 

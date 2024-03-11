@@ -1,4 +1,5 @@
-﻿using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.Internal.Utils;
+using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Globalization;
 using System.Windows.Controls;

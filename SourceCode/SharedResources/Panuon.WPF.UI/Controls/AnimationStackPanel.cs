@@ -1,10 +1,7 @@
-﻿using Panuon.WPF.UI.Configurations;
-using Panuon.WPF.UI.Internal.Utils;
+﻿using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Linq;
 
 namespace Panuon.WPF.UI
 {

@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ToggleButtonTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ToggleButtonTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=PendingSpinStyleKey, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}"
@@ -16,9 +16,9 @@
         <Setter Property="GlyphBrush"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={x:Static pw:Converters.DoublePlusConverter}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
-                Value="{Binding FontSize, Converter={StaticResource {x:Static rs:ConverterKeys.DoublePlusConverter}}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding FontSize, Converter={x:Static pw:Converters.DoublePlusConverter}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
     </Style>
 
     <Style x:Key="{x:Static rs:StyleKeys.ToggleButtonStyle}"
@@ -40,9 +40,9 @@
         <Setter Property="FocusVisualStyle"
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ToggleButtonHelper.HoverBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Background, Converter={x:Static pw:Converters.LightenSolidColorBrushConverter}, ConverterParameter=0.5, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.CheckedBackground"
-                Value="{Binding Background, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Background, Converter={x:Static pw:Converters.LightenSolidColorBrushConverter}, ConverterParameter=2, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ToggleButtonHelper.PendingSpinStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=PendingSpinStyleKey, TypeInTargetAssembly={x:Type local:ToggleButtonHelper}}}" />
         <Setter Property="Padding"
@@ -68,7 +68,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBorderBrushLock"
@@ -78,7 +78,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderThickness), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBorderThicknessLock"
@@ -88,7 +88,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedCornerRadius), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverCornerRadiusLock"
@@ -98,7 +98,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverBackgroundLock"
@@ -108,7 +108,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverForegroundLock"
@@ -118,7 +118,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedShadowColor), Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Path=(local:ToggleButtonHelper.CheckedShadowColor), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter Property="i:VisualStateHelper.HoverShadowColorLock"

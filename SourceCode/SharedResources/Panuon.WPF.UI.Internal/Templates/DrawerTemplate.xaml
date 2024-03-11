@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DrawerTemplate}"
                      TargetType="local:Drawer">
@@ -28,7 +25,7 @@
                                    ContentStringFormat="{TemplateBinding ContentStringFormat}"
                                    RenderTransformOrigin="0.5,0.5">
                 <local:ContentControlX.Margin>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DrawerContentMarginConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.DrawerContentMarginConverter}">
                         <Binding Path="ShadowColor"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -39,7 +36,7 @@
                 </local:ContentControlX.Margin>
             </local:ContentControlX>
             <Border.Margin>
-                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DrawerBorderMarginConverter}}">
+                <MultiBinding Converter="{x:Static irs:Converters.DrawerBorderMarginConverter}">
                     <Binding Path="ShadowColor"
                              RelativeSource="{RelativeSource TemplatedParent}" />
                     <Binding Path="(local:ShadowHelper.BlurRadius)"

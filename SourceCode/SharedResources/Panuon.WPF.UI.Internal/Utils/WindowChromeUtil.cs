@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Shell;
 
-namespace Panuon.WPF.UI.Utils
+namespace Panuon.WPF.UI.Internal.Utils
 {
     static class WindowChromeUtil
     {

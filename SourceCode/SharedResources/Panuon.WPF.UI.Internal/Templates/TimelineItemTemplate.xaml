@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimelineItemVerticalTemplate}"
                      TargetType="local:TimelineItem">
@@ -36,7 +33,7 @@
                         BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding HeaderBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Border.Effect>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                             <Binding Path="HeaderShadowColor"
                                      RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
                                      Mode="OneWay" />
@@ -65,7 +62,7 @@
                                     ContentTemplate="{TemplateBinding ToggleTemplate}" />
                     <Border x:Name="BdrIcon"
                             Grid.Row="1"
-                            Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                            Visibility="{Binding IsCompleted, Converter={x:Static pw:Converters.TrueToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter x:Name="IpIcon"
                                          Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -82,7 +79,7 @@
                                          FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                          ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                             <i:IconPresenter.Visibility>
-                                <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                                <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                     <Binding Path="Content"
                                              RelativeSource="{RelativeSource Self}"
                                              Mode="OneWay" />
@@ -96,7 +93,7 @@
                     <ContentControl x:Name="CcComplatedGlyph"
                                     Content=" "
                                     ContentTemplate="{TemplateBinding CompletedGlyphTemplate}"
-                                    Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                    Visibility="{Binding IsCompleted, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
                 <ContentPresenter Grid.Column="1"
                                   ContentSource="Header"
@@ -138,7 +135,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding PendingToggleTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding PendingToggleTemplate, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcToggle"
@@ -147,7 +144,7 @@
             </MultiDataTrigger>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
                         <Binding Path="."
@@ -162,7 +159,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickFill, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickFill, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectStick"
@@ -173,7 +170,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickStroke, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickStroke, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectStick"
@@ -184,7 +181,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickStrokeThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickStrokeThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectStick"
@@ -193,7 +190,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Icon, Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding ShowIndex, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -201,7 +198,7 @@
                 <Setter TargetName="IpIcon"
                         Property="Content">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.GetIndexOfItemsControlConverter}}"
+                        <MultiBinding Converter="{x:Static irs:Converters.GetIndexOfItemsControlConverter}"
                                       ConverterParameter="1">
                             <Binding Path="."
                                      RelativeSource="{RelativeSource AncestorType=local:TimelineItem}" />
@@ -243,7 +240,7 @@
                         BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         Background="{Binding HeaderBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Border.Effect>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                        <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                             <Binding Path="HeaderShadowColor"
                                      RelativeSource="{RelativeSource AncestorType=local:TimelineItem}"
                                      Mode="OneWay" />
@@ -285,7 +282,7 @@
                            Fill="{Binding StickFill, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrIcon"
                         Grid.Column="1"
-                        Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.TrueToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        Visibility="{Binding IsCompleted, Converter={x:Static pw:Converters.TrueToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <i:IconPresenter x:Name="IpIcon"
                                      Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -302,7 +299,7 @@
                                      FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                      ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <i:IconPresenter.Visibility>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IconVisibilityConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
                                 <Binding Path="Content"
                                          RelativeSource="{RelativeSource Self}"
                                          Mode="OneWay" />
@@ -317,7 +314,7 @@
                                 Grid.Column="1"
                                 Content=" "
                                 ContentTemplate="{TemplateBinding CompletedGlyphTemplate}"
-                                Visibility="{Binding IsCompleted, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                Visibility="{Binding IsCompleted, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <ContentPresenter Grid.Row="1"
                                   Grid.ColumnSpan="3"
                                   ContentSource="Header"
@@ -352,7 +349,7 @@
                                Value="True" />
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="False" />
-                    <Condition Binding="{Binding PendingToggleTemplate, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding PendingToggleTemplate, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcToggle"
@@ -361,7 +358,7 @@
             </MultiDataTrigger>
             <DataTrigger Value="False">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.IsItemSeparatorShallVisibleControlConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
                         <Binding Path="."
@@ -376,7 +373,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickFill, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickFill, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectLeftStick"
@@ -390,7 +387,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickStroke, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickStroke, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectLeftStick"
@@ -404,7 +401,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCompleted, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                    <Condition Binding="{Binding CompletedStickStrokeThickness, Converter={StaticResource {x:Static rs:ConverterKeys.IsNonnullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding CompletedStickStrokeThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="RectLeftStick"
@@ -416,7 +413,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.IsNullConverter}}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Icon, Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding ShowIndex, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -424,7 +421,7 @@
                 <Setter TargetName="IpIcon"
                         Property="Content">
                     <Setter.Value>
-                        <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.GetIndexOfItemsControlConverter}}"
+                        <MultiBinding Converter="{x:Static irs:Converters.GetIndexOfItemsControlConverter}"
                                       ConverterParameter="1">
                             <Binding Path="."
                                      RelativeSource="{RelativeSource AncestorType=local:TimelineItem}" />
@@ -436,7 +433,7 @@
             </MultiDataTrigger>
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.IsFirstItemInItemsControlConverter}}">
+                    <MultiBinding Converter="{x:Static pw:Converters.IsFirstItemInItemsControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource Self}" />
                         <Binding Path="."
@@ -449,7 +446,7 @@
             </DataTrigger>
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
-                    <MultiBinding Converter="{StaticResource {x:Static rs:ConverterKeys.IsLastItemInItemsControlConverter}}">
+                    <MultiBinding Converter="{x:Static pw:Converters.IsLastItemInItemsControlConverter}">
                         <Binding Path="."
                                  RelativeSource="{RelativeSource Self}" />
                         <Binding Path="."

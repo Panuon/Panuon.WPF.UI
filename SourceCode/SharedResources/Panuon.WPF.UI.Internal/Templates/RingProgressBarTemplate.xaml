@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.RingProgressBarTemplate}"
                      TargetType="local:RingProgressBar">
@@ -21,7 +18,7 @@
                   StrokeStartLineCap="Round"
                   StrokeEndLineCap="Round">
                 <Path.Effect>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.DropShadowEffectWithDepthConverter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                         <Binding Path="ShadowColor"
                                  RelativeSource="{RelativeSource TemplatedParent}"
                                  Mode="OneWay" />
@@ -43,7 +40,7 @@
                     </MultiBinding>
                 </Path.Effect>
                 <Path.Data>
-                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.Arc2Converter}}">
+                    <MultiBinding Converter="{x:Static irs:Converters.Arc2Converter}">
                         <Binding Path="ActualWidth"
                                  RelativeSource="{RelativeSource TemplatedParent}"></Binding>
                         <Binding Path="ActualHeight"
@@ -60,7 +57,7 @@
                 </Path.Data>
             </Path>
             <TextBlock Foreground="{TemplateBinding Foreground}"
-                       Visibility="{Binding IsPercentVisible, Converter={StaticResource {x:Static rs:ConverterKeys.FalseToCollapseConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                       Visibility="{Binding IsPercentVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center" />

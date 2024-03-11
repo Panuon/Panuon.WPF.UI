@@ -74,13 +74,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enums\GridXGridLinesVisibility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\HeaderPanelRibbonLineStrategy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\NoticeBoxPosition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\StyleDictionaryFlags.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastPosition.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\ToastWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\WatermarkHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ToastSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Toast.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceDictionaryUris.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\KeyOnlyStyleDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleDictionaryBase.cs" />
+    <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Resources\StyleDictionary.cs" />
     <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Enums\AnimationEasing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InputLimits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TimeSelectorMode.cs" />
@@ -179,14 +182,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\AcrylicWindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WindowEffect\WindowXEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Resources\ConverterKeys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="$(MSBuildThisFileDirectory)Control.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Bubble.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

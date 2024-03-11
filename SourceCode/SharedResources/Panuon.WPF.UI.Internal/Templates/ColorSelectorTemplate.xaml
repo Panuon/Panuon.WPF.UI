@@ -1,13 +1,10 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
-    <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Resources/Converters.xaml" />
-    </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ColorSelectorTemplate}"
                      TargetType="local:ColorSelector">
@@ -33,7 +30,7 @@
                                       Grid.ColumnSpan="2"
                                       Style="{TemplateBinding ThumbFenceStyle}"
                                       AllowCross="True"
-                                      Background="{Binding AccentColor, Converter={StaticResource {x:Static irs:ConverterKeys.ColorSelectorThumbFenceBackgroundConverter}}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                      Background="{Binding AccentColor, Converter={x:Static irs:Converters.ColorSelectorThumbFenceBackgroundConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <Slider x:Name="PART_AccentColorSlider"
                             Grid.Row="1"
                             Grid.ColumnSpan="2"
@@ -75,7 +72,7 @@
                             Maximum="100"
                             local:SliderHelper.CoveredBackground="Transparent">
                         <Slider.Background>
-                            <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.ColorSelectorOpacitySliderBackgroundConverter}}">
+                            <MultiBinding Converter="{x:Static irs:Converters.ColorSelectorOpacitySliderBackgroundConverter}">
                                 <Binding Path="ActualWidth"
                                          RelativeSource="{RelativeSource Self}"
                                          Mode="OneWay" />
@@ -96,7 +93,7 @@
                                     Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                     CornerRadius="{TemplateBinding CornerRadius}">
                                 <Border.Background>
-                                    <MultiBinding Converter="{StaticResource {x:Static irs:ConverterKeys.TransparentColorToBrushConverter}}">
+                                    <MultiBinding Converter="{x:Static irs:Converters.TransparentColorToBrushConverter}">
                                         <Binding Path="ActualWidth"
                                                  RelativeSource="{RelativeSource Self}"
                                                  Mode="OneWay" />

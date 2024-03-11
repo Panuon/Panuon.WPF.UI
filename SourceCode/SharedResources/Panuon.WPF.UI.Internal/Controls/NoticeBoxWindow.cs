@@ -1,11 +1,7 @@
-﻿using Panuon.WPF.UI.Configurations;
-using Panuon.WPF.UI.Internal.Implements;
+﻿using Panuon.WPF.UI.Internal.Implements;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 

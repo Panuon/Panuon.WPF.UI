@@ -126,8 +126,9 @@
                         </pu:GlobalSettings.Themes>
                     </pu:GlobalSettings>
                 </ResourceDictionary>
-                <!--<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />-->
-                <ResourceDictionary Source="{x:Static pu:ResourceDictionaryUris.All}" />
+                
+                <pu:StyleDictionary Includes="All" />
+                
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

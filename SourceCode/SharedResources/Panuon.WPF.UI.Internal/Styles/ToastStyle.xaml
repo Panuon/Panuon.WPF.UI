@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/LabelStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/LabelStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=LabelStyleKey, TypeInTargetAssembly={x:Type local:Toast}}"
@@ -43,7 +43,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <local:StateControl Margin="0,0,7,0"
-                                            Visibility="{Binding Icon, Converter={StaticResource {x:Static rs:ConverterKeys.NullToCollapseConverter}}}"
+                                            Visibility="{Binding Icon, Converter={x:Static pw:Converters.NullToCollapseConverter}}"
                                             CurrentState="{Binding Icon}"
                                             VerticalAlignment="Center"
                                             FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource AncestorType=Label}, Mode=OneWay}"

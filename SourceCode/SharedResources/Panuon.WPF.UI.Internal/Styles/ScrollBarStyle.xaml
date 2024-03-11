@@ -1,21 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Panuon.WPF.UI"
-                    xmlns:core="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
+                    xmlns:pw="https://opensource.panuon.com/wpf"
                     xmlns:i="clr-namespace:Panuon.WPF.UI.Internal"
                     xmlns:rs="clr-namespace:Panuon.WPF.UI.Resources"
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
-        <core:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ScrollBarTemplate.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Styles/RepeatButtonStyle.xaml" />
+        <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/ScrollBarTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="{ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}"
            TargetType="RepeatButton"
            BasedOn="{StaticResource {x:Static rs:StyleKeys.RepeatButtonStyle}}">
         <Setter Property="local:RepeatButtonHelper.HoverForeground"
-                Value="{Binding Foreground, Converter={StaticResource {x:Static irs:ConverterKeys.LightenSolidColorBrushConverter}}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Foreground, Converter={x:Static pw:Converters.LightenSolidColorBrushConverter}, ConverterParameter=0.6, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:RepeatButtonHelper.HoverBackground"
                 Value="{x:Null}" />
         <Setter Property="local:RepeatButtonHelper.ClickBackground"
@@ -34,7 +34,7 @@
                 <Setter Property="Command"
                         Value="{x:Static ScrollBar.LineLeftCommand}" />
                 <Setter Property="FontSize"
-                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding ActualHeight, Converter={x:Static irs:Converters.FontSizeMinusConverter}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="Tag"
                      Value="Up">
@@ -43,7 +43,7 @@
                 <Setter Property="Command"
                         Value="{x:Static ScrollBar.LineUpCommand}" />
                 <Setter Property="FontSize"
-                        Value="{Binding ActualWidth, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding ActualWidth, Converter={x:Static irs:Converters.FontSizeMinusConverter}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="Tag"
                      Value="Right">
@@ -52,7 +52,7 @@
                 <Setter Property="Command"
                         Value="{x:Static ScrollBar.LineRightCommand}" />
                 <Setter Property="FontSize"
-                        Value="{Binding ActualHeight, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding ActualHeight, Converter={x:Static irs:Converters.FontSizeMinusConverter}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
             <Trigger Property="Tag"
                      Value="Down">
@@ -61,7 +61,7 @@
                 <Setter Property="Command"
                         Value="{x:Static ScrollBar.LineDownCommand}" />
                 <Setter Property="FontSize"
-                        Value="{Binding ActualWidth, Converter={StaticResource {x:Static irs:ConverterKeys.FontSizeMinusConverter}}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                        Value="{Binding ActualWidth, Converter={x:Static irs:Converters.FontSizeMinusConverter}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Trigger>
         </Style.Triggers>
     </Style>
