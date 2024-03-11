@@ -47,6 +47,20 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region ClearBeforeShow
+        public bool ClearBeforeShow
+        {
+            get
+            {
+                return Setting.ClearBeforeShow;
+            }
+            set
+            {
+                Setting.ClearBeforeShow = value;
+            }
+        }
+        #endregion
+
         #region DefaultPosition
         public ToastPosition DefaultPosition
         {

@@ -48,6 +48,17 @@ namespace Panuon.WPF.UI.Configurations
             DependencyProperty.Register("Spacing", typeof(double), typeof(ToastSetting), new PropertyMetadata(20d));
         #endregion
 
+        #region ClearBeforeShow
+        public bool ClearBeforeShow
+        {
+            get { return (bool)GetValue(ClearBeforeShowProperty); }
+            set { SetValue(ClearBeforeShowProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClearBeforeShowProperty =
+            DependencyProperty.Register("ClearBeforeShow", typeof(bool), typeof(ToastSetting), new PropertyMetadata(false));
+        #endregion
+
         #region AnimationDuration
         public TimeSpan AnimationDuration
         {
