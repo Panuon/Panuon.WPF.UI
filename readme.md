@@ -39,7 +39,10 @@ Only Chinese documentation is now available.
 ### 1. Add resource dictionary to your App.xaml
 
 ```
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
+···
+
+<pu:StyleDictionary Includes="All" />
 ```
 
 ### 2. Use attached properties like Material Design does, although there is no relationship between the two libraries
@@ -58,12 +61,11 @@ xmlns:pu="https://opensource.panuon.com/wpf-ui"
 
 ### 3. Or, use styles without affecting other controls
 ```
-<!--Don't add Control.xaml-->
-
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/ButtonStyle.xaml" />
-
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/TextBoxStyle.xaml" />
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ...
+
+<!--Don't add <pu:StyleDictionary Includes="All" />-->
+<pu:KeyOnlyStyleDictionary Includes="Button,TextBox" />
 ```
 
 ```

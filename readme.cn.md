@@ -41,7 +41,10 @@ QQ频道：https://pd.qq.com/s/fpap7qj2y
 ### 1. 将资源字典添加到 App.xaml 中
 
 ```
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Control.xaml" />
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
+...
+
+<pu:StyleDictionary Includes="All" />
 ```
 
 ### 2. 像Material Design那样使用附加属性，尽管这两个库之间没有任何关系
@@ -60,12 +63,11 @@ xmlns:pu="https://opensource.panuon.com/wpf-ui"
 
 ### 3. 又或者，在不影响其他控件的情况下使用样式
 ```
-<!--不要添加 Control.xaml-->
-
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/ButtonStyle.xaml" />
-
-<ResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/TextBoxStyle.xaml" />
+xmlns:pu="https://opensource.panuon.com/wpf-ui"
 ...
+
+<!--不要添加 <pu:StyleDictionary Includes="All" />-->
+<pu:KeyOnlyStyleDictionary Includes="Button,TextBox" />
 ```
 
 ```
