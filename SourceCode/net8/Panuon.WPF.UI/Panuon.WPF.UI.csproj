@@ -13,9 +13,21 @@
   <Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
 
   <ItemGroup>
+    <None Remove="Resources\dropper.cur" />
+    <None Remove="Resources\Fonts\PanuonIcon.ttf" />
+    <None Remove="Resources\PanuonIcon.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Panuon.WPF">
       <HintPath>..\..\references\net8\Panuon.WPF.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\dropper.cur" />
+    <Resource Include="Resources\Fonts\PanuonIcon.ttf" />
+    <Resource Include="Resources\PanuonIcon.ttf" />
   </ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
