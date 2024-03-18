@@ -228,6 +228,17 @@ namespace Panuon.WPF.UI
             VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(NumberInput));
         #endregion
 
+        #region UpDownButtonVisibility
+        public AuxiliaryButtonVisibility UpDownButtonVisibility
+        {
+            get { return (AuxiliaryButtonVisibility)GetValue(UpDownButtonVisibilityProperty); }
+            set { SetValue(UpDownButtonVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty UpDownButtonVisibilityProperty =
+            DependencyProperty.Register("UpDownButtonVisibility", typeof(AuxiliaryButtonVisibility), typeof(NumberInput), new PropertyMetadata(AuxiliaryButtonVisibility.Visible));
+        #endregion
+
         #region UpDownButtonStyle
         public static Style GetUpDownButtonStyle(NumberInput numberInput)
         {
@@ -383,12 +394,12 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region UpCommand
-        internal ICommand UpCommand
+        public ICommand UpCommand
         {
             get { return (ICommand)GetValue(UpCommandProperty); }
         }
 
-        internal static readonly DependencyPropertyKey UpCommandPropertyKey =
+        public static readonly DependencyPropertyKey UpCommandPropertyKey =
             DependencyProperty.RegisterReadOnly("UpCommand", typeof(ICommand), typeof(NumberInput), new PropertyMetadata(new RelayCommand<NumberInput>(OnUpCommandExecute)));
 
         public static readonly DependencyProperty UpCommandProperty =
@@ -396,12 +407,12 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region DownCommand
-        internal ICommand DownCommand
+        public ICommand DownCommand
         {
             get { return (ICommand)GetValue(DownCommandProperty); }
         }
 
-        internal static readonly DependencyPropertyKey DownCommandPropertyKey =
+        public static readonly DependencyPropertyKey DownCommandPropertyKey =
             DependencyProperty.RegisterReadOnly("DownCommand", typeof(ICommand), typeof(NumberInput), new PropertyMetadata(new RelayCommand<NumberInput>(OnDownCommandExecute)));
 
         public static readonly DependencyProperty DownCommandProperty =

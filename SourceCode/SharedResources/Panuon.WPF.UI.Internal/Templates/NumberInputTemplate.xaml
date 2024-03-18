@@ -74,7 +74,9 @@
                         Style="{TemplateBinding ClearButtonStyle}"
                         Command="{TemplateBinding ClearCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:NumberInput}}" />
-                <Grid Grid.Column="2">
+                <Grid x:Name="GrdUpDown"
+                      Grid.Column="2"
+                      Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -195,6 +197,71 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <Trigger  Property="UpDownButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="GrdUpDown"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="GrdUpDown"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="UpDownButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="GrdUpDown"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="GrdUpDown"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="UpDownButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="GrdUpDown"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="GrdUpDown"
                         Property="Visibility"
                         Value="Visible" />
             </MultiDataTrigger>

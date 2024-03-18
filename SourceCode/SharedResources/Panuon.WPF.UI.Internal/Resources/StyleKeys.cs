@@ -7,6 +7,7 @@ namespace Panuon.WPF.UI.Internal.Resources
         public const string DataGridComboBoxStyle = nameof(DataGridComboBoxStyle);
         public const string IconButtonStyle = nameof(IconButtonStyle);
         public const string IconRepeatButtonStyle = nameof(IconRepeatButtonStyle);
+        public const string InternalMenuItemStyle = nameof(InternalMenuItemStyle);
         public const string SpinStyle = nameof(SpinStyle);
         public const string WindowXButtonStyle = nameof(WindowXButtonStyle);
         public const string WindowXStyle = nameof(WindowXStyle);

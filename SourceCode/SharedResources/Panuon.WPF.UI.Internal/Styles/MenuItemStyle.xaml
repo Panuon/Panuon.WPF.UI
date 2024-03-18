@@ -9,7 +9,7 @@
         <pw:SharedResourceDictionary Source="pack://application:,,,/Panuon.WPF.UI;component/Templates/MenuItemTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="{x:Static rs:StyleKeys.MenuItemStyle}"
+    <Style x:Key="{x:Static irs:StyleKeys.InternalMenuItemStyle}"
            TargetType="MenuItem">
         <Setter Property="i:VisualStateHelper.Regist"
                 Value="True" />
@@ -426,6 +426,13 @@
                         Value="True" />
             </MultiDataTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="{x:Static rs:StyleKeys.MenuItemStyle}"
+           TargetType="MenuItem"
+           BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}">
+        <Setter Property="ItemContainerStyle"
+                Value="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}" />
     </Style>
 
 </ResourceDictionary>
