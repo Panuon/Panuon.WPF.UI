@@ -45,6 +45,14 @@ namespace Panuon.WPF.UI.Resources
 
         #region Methods
         protected abstract void SetIncludeStyles();
+
+        protected void AddToMergedDictionaries(ResourceDictionary dictionary)
+        {
+            if (!MergedDictionaries.Contains(dictionary))
+            {
+                MergedDictionaries.Add(dictionary);
+            }
+        }
         #endregion
     }
 }

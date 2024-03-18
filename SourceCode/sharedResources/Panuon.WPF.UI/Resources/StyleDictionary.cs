@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 namespace Panuon.WPF.UI.Resources
 {
@@ -13,24 +12,31 @@ namespace Panuon.WPF.UI.Resources
 
             foreach (var flag in Flags)
             {
-                if (Includes.HasFlag(StyleDictionaryFlags.All) || Includes.HasFlag(flag))
+                if (Includes.HasFlag(StyleDictionaryFlags.All) 
+                    || Includes.HasFlag(flag))
                 {
-                    MergedDictionaries.Add(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/{flag}.xaml") });
+                    AddToMergedDictionaries(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/{flag}.xaml") });
 
-                    switch (flag) 
+                    switch (flag)
                     {
                         case StyleDictionaryFlags.ComboBox:
                         case StyleDictionaryFlags.ListBox:
                         case StyleDictionaryFlags.ListView:
                         case StyleDictionaryFlags.TreeView:
-                            MergedDictionaries.Add(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/{flag}Item.xaml") });
+                        case StyleDictionaryFlags.Menu:
+                            AddToMergedDictionaries(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/{flag}Item.xaml") });
                             break;
                         case StyleDictionaryFlags.TabControl:
-                            MergedDictionaries.Add(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/TabItem.xaml") });
+                            AddToMergedDictionaries(new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/TabItem.xaml") });
+                            break;
+                        case StyleDictionaryFlags.ContextMenu:
+                            var contextMenuItemDic = new SharedResourceDictionary() { Source = new Uri($"pack://application:,,,/Panuon.WPF.UI;component/Styles/MenuItem.xaml") };
+                            AddToMergedDictionaries(contextMenuItemDic);
                             break;
                     }
                 }
             }
         }
+
     }
 }

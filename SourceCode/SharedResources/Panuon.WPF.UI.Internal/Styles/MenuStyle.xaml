@@ -82,6 +82,8 @@
                 Value="BottomRight" />
         <Setter Property="local:DropDownHelper.VerticalOffset"
                 Value="0" />
+        <Setter Property="local:DropDownHelper.Width"
+                Value="150" />
         <Setter Property="local:MenuHelper.TopLevelDropDownPlacement"
                 Value="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:MenuHelper.TopLevelDropDownVerticalOffset"
