@@ -203,7 +203,7 @@
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
-                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                                 RelativeSource="{RelativeSource AncestorType=Menu}" />
                         <Binding Path="."
                                  RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>
@@ -616,7 +616,7 @@
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{x:Static irs:Converters.IsItemSeparatorShallVisibleControlConverter}">
                         <Binding Path="."
-                                 RelativeSource="{RelativeSource AncestorType=ItemsControl}" />
+                                 RelativeSource="{RelativeSource AncestorType=Menu}" />
                         <Binding Path="."
                                  RelativeSource="{RelativeSource Self}" />
                     </MultiBinding>

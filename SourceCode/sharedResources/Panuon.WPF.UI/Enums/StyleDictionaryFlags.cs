@@ -31,6 +31,7 @@ namespace Panuon.WPF.UI
         TextBox = 2097152,
         Thumb = 4194304,
         ToggleButton = 8388608,
-        TreeView = 16777216,
+        ToolTip = 16777216,
+        TreeView = 33554432,
     }
 }

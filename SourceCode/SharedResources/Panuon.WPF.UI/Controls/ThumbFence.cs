@@ -139,10 +139,8 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
-            var source = hwndSource.CompositionTarget.TransformToDevice;
             var mousePosition = e.GetPosition(_canvas);
-            var position = new Point(mousePosition.X / source.M11 / renderWidth, mousePosition.Y / source.M22 / renderHeight);
+            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
 
             var args = new PositionChangingRoutedEventArgs(ThumbPositionChangingEvent, position);
             RaiseEvent(args);
@@ -208,10 +206,8 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
-            var source = hwndSource.CompositionTarget.TransformToDevice;
             var mousePosition = Mouse.GetPosition(this);
-            var position = new Point(mousePosition.X / source.M11 / renderWidth, mousePosition.Y / source.M22 / renderHeight);
+            var position = new Point(mousePosition.X / renderWidth, mousePosition.Y / renderHeight);
 
             var args = new PositionChangingRoutedEventArgs(ThumbPositionChangingEvent, position);
             RaiseEvent(args);
