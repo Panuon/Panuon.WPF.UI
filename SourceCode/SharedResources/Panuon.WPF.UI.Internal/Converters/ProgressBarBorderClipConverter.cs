@@ -19,7 +19,6 @@ namespace Panuon.WPF.UI.Internal.Converters
             var direction = (ProgressDirection)values[5];
             var orientation = (Orientation)values[6];
 
-
             var percent = (value - min) / (max - min);
 
             var rect = new Rect();
@@ -28,10 +27,10 @@ namespace Panuon.WPF.UI.Internal.Converters
                 switch (direction)
                 {
                     case ProgressDirection.Normal:
-                        rect = new Rect(0, 0, width * percent, height);
+                        rect = new Rect(0, 0, Math.Max(0, width * percent), height);
                         break;
                     case ProgressDirection.Inverse:
-                        rect = new Rect(width * (1 - percent), 0, width * percent, height);
+                        rect = new Rect(width * (1 - percent), 0, Math.Max(0, width * percent), height);
                         break;
                 }
             }
@@ -40,10 +39,10 @@ namespace Panuon.WPF.UI.Internal.Converters
                 switch (direction)
                 {
                     case ProgressDirection.Normal:
-                        rect = new Rect(0, height * (1 - percent), width, height * percent);
+                        rect = new Rect(0, height * (1 - percent), width, Math.Max(0, height * percent));
                         break;
                     case ProgressDirection.Inverse:
-                        rect = new Rect(0, 0, width, height * percent);
+                        rect = new Rect(0, 0, width, Math.Max(0, height * percent));
                         break;
                 }
             }
