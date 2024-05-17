@@ -103,18 +103,33 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region MouseWheelDelta
-        public static double GetMouseWheelDelta(DependencyObject obj)
+        public static double? GetMouseWheelDelta(DependencyObject obj)
         {
             return (double)obj.GetValue(MouseWheelDeltaProperty);
         }
 
-        public static void SetMouseWheelDelta(DependencyObject obj, double value)
+        public static void SetMouseWheelDelta(DependencyObject obj, double? value)
         {
             obj.SetValue(MouseWheelDeltaProperty, value);
         }
 
         public static readonly DependencyProperty MouseWheelDeltaProperty =
-            DependencyProperty.RegisterAttached("MouseWheelDelta", typeof(double), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.Inherits));
+            DependencyProperty.RegisterAttached("MouseWheelDelta", typeof(double?), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(48d, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region MouseWheelUnit
+        public static int GetMouseWheelUnit(DependencyObject obj)
+        {
+            return (int)obj.GetValue(MouseWheelUnitProperty);
+        }
+
+        public static void SetMouseWheelUnit(DependencyObject obj, int value)
+        {
+            obj.SetValue(MouseWheelUnitProperty, value);
+        }
+
+        public static readonly DependencyProperty MouseWheelUnitProperty =
+            DependencyProperty.RegisterAttached("MouseWheelUnit", typeof(int), typeof(ScrollViewerHelper), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region VerticalOffset
@@ -341,17 +356,28 @@ namespace Panuon.WPF.UI
                     }
                 }
 
-                var mouseWheelDelta = GetMouseWheelDelta(scrollViewer);
-                if (scrollViewer.CanContentScroll) 
+                var mouseWheelDelta = 48d;
+                if (scrollViewer.CanContentScroll)
                 {
-                    if (scrollViewer.ViewportHeight != scrollViewer.ActualHeight) //Excluding WrapPanel
+                    if (GetMouseWheelUnit(scrollViewer) is int unit)
                     {
-                        mouseWheelDelta = 3;
+                        mouseWheelDelta = unit;
+                    }
+                    else
+                    {
+                        mouseWheelDelta = 1;
                     }
                 }
-                else if (scrollViewer.ViewportHeight != scrollViewer.ActualHeight)
+                else
                 {
-                    mouseWheelDelta = scrollViewer.ViewportHeight;
+                    if (GetMouseWheelDelta(scrollViewer) is double delta)
+                    {
+                        mouseWheelDelta = delta;
+                    }
+                    else if (scrollViewer.ViewportHeight != scrollViewer.ActualHeight)
+                    {
+                        mouseWheelDelta = scrollViewer.ViewportHeight;
+                    }
                 }
 
                 switch (GetWheelScrollingDirection(scrollViewer))

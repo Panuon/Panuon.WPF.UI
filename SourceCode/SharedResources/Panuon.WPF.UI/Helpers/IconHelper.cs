@@ -157,6 +157,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(IconHelper), new PropertyMetadata(12.0));
         #endregion
 
+        #region ToggleArrowFontSize
+        public static double GetToggleArrowFontSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ToggleArrowFontSizeProperty);
+        }
+
+        public static void SetToggleArrowFontSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(ToggleArrowFontSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ToggleArrowFontSizeProperty =
+            DependencyProperty.RegisterAttached("ToggleArrowFontSize", typeof(double), typeof(IconHelper), new PropertyMetadata(12.0));
+        #endregion
+
         #region FontFamily
         public static FontFamily GetFontFamily(DependencyObject obj)
         {

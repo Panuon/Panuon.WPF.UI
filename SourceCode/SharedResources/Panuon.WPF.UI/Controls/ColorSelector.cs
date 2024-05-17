@@ -277,8 +277,8 @@ namespace Panuon.WPF.UI
             _thumbFence.ThumbPositionChanged += ThumbFence_PositionChanged;
 
             _dropperThumb = GetTemplateChild(DropperThumbTemplateName) as Thumb;
-            _dropperThumb.PreviewMouseDown += DropperThumb_PreviewMouseDown;
-            _dropperThumb.PreviewMouseUp += DropperThumb_PreviewMouseUp;
+            _dropperThumb.PreviewMouseLeftButtonDown += DropperThumb_PreviewMouseLeftButtonDown;
+            _dropperThumb.PreviewMouseLeftButtonUp += DropperThumb_PreviewMouseLeftButtonUp;
             _dropperThumb.DragDelta += DropperThumb_DragDelta;
             _dropperThumb.DragStarted += DropperThumb_DragStarted;
             _dropperThumb.DragCompleted += _dropperThumb_DragCompleted;
@@ -313,12 +313,12 @@ namespace Panuon.WPF.UI
             Cursor = Cursors.Arrow;
         }
 
-        private void DropperThumb_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void DropperThumb_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Cursor = CursorUtil.DropperCursor;
         }
 
-        private void DropperThumb_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void DropperThumb_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Cursor = Cursors.Arrow;
         }

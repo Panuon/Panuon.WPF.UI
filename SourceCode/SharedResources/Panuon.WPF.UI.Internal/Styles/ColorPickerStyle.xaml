@@ -49,6 +49,8 @@
                 Value="Center" />
         <Setter Property="FontFamily"
                 Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
+        <Setter Property="FontSize"
+                Value="{Binding Path=(local:IconHelper.ToggleArrowFontSize), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
         <Setter Property="Content"
                 Value="&#xe903;" />
         <Setter Property="Padding"
@@ -88,6 +90,8 @@
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
                 Value="{Binding IconFontSize, Source={x:Static local:GlobalSettings.Setting}}" />
+        <Setter Property="local:IconHelper.ToggleArrowFontSize"
+                Value="{Binding FontSize, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Foreground"
                 Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.Margin"

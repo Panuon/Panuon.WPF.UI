@@ -384,7 +384,7 @@ namespace Panuon.WPF.UI
         private static void OnRegistChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var listBoxItem = d as ListBoxItem;
-            listBoxItem.PreviewMouseDown += ListBoxItem_PreviewMouseDown;
+            listBoxItem.PreviewMouseLeftButtonDown += ListBoxItem_PreviewMouseDown;
         }
 
         private static void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)

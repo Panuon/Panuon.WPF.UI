@@ -549,6 +549,10 @@ namespace Panuon.WPF.UI
 
         private static void OnPreviewMouseButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if(e.LeftButton != MouseButtonState.Pressed)
+            {
+                return;
+            }
             var colorPicker = (ColorPicker)sender;
             if (colorPicker.IsEditable)
             {
