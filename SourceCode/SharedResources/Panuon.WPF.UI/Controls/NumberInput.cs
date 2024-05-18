@@ -419,6 +419,17 @@ namespace Panuon.WPF.UI
             DownCommandPropertyKey.DependencyProperty;
         #endregion
 
+        #region StepFactor
+        public int StepFactor
+        {
+            get { return (int)GetValue(StepFactorProperty); }
+            set { SetValue(StepFactorProperty, value); }
+        }
+
+        public static readonly DependencyProperty StepFactorProperty =
+            DependencyProperty.Register("StepFactor", typeof(int), typeof(NumberInput), new PropertyMetadata(1));
+        #endregion
+
         #endregion
 
         #region ComponentResourceKeys
@@ -547,13 +558,13 @@ namespace Panuon.WPF.UI
         public void Up()
         {
             var value = Value ?? 0;
-            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value + Interval)));
+            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value + Interval * StepFactor)));
         }
 
         public void Down()
         {
             var value = Value ?? 0;
-            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value - Interval)));
+            SetCurrentValue(ValueProperty, Math.Max(Minimum, Math.Min(Maximum, value - Interval * StepFactor)));
         }
         #endregion
 

@@ -438,9 +438,9 @@ namespace Panuon.WPF.UI
             {
                 if ((inputLimit.HasFlag(InputLimits.Digit)
                      && inputChar >= 48 && inputChar <= 57) ||
-                   (inputLimit.HasFlag(InputLimits.UpperCaseLetters)
+                   (inputLimit.HasFlag(InputLimits.Letters) || inputLimit.HasFlag(InputLimits.UpperCaseLetters)
                      && inputChar >= 97 && inputChar <= 122) ||
-                   (inputLimit.HasFlag(InputLimits.LowerCaseLetters)
+                   (inputLimit.HasFlag(InputLimits.Letters) || inputLimit.HasFlag(InputLimits.LowerCaseLetters)
                      && inputChar >= 65 && inputChar <= 90) ||
                    (inputLimit.HasFlag(InputLimits.Point)
                      && inputChar == '.' && !text.Contains(".")) ||
@@ -449,7 +449,11 @@ namespace Panuon.WPF.UI
                    (inputLimit.HasFlag(InputLimits.MultiplePoints)
                      && inputChar == '.') ||
                    (inputLimit.HasFlag(InputLimits.MultipleAts)
-                     && inputChar == '@'))
+                     && inputChar == '@') ||
+                     (inputLimit.HasFlag(InputLimits.Dash)
+                     && inputChar == '-') ||
+                     (inputLimit.HasFlag(InputLimits.Underline)
+                     && inputChar == '_'))
                 {
                     text += inputChar;
                 }
