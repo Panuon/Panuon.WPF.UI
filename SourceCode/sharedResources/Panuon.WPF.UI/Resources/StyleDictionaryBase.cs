@@ -36,15 +36,36 @@ namespace Panuon.WPF.UI.Resources
             get => _inclues;
             set
             {
+                if(_excludes != StyleDictionaryFlags.None)
+                {
+                    throw new InvalidOperationException("Cannot set Includes property when Excludes property is not None.");
+                }
                 _inclues = value;
                 SetIncludeStyles();
             }
         }
         private StyleDictionaryFlags _inclues;
+
+        public StyleDictionaryFlags Excludes
+        {
+            get => _excludes;
+            set
+            {
+                if(_inclues != StyleDictionaryFlags.None)
+                {
+                    throw new InvalidOperationException("Cannot set Excludes property when Includes property is not None.");
+                }
+                _excludes = value;
+                SetExcludeStyles();
+            }
+        }
+        private StyleDictionaryFlags _excludes;
         #endregion
 
         #region Methods
         protected abstract void SetIncludeStyles();
+
+        protected abstract void SetExcludeStyles();
 
         protected void AddToMergedDictionaries(ResourceDictionary dictionary)
         {

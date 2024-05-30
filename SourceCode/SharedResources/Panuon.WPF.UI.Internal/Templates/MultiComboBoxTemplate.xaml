@@ -13,7 +13,6 @@
             <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
         </ControlTemplate.Resources>
         <local:DropDown x:Name="PART_DropDown"
-                        InitBeforeOpen="True"
                         IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
                         local:DropDownHelper.Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         local:DropDownHelper.BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -46,6 +45,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
+                        <Border x:Name="PART_BorderContainer" Grid.ColumnSpan="3" Visibility="Hidden"/>
                         <i:IconPresenter x:Name="IpIcon"
                                          Content="{TemplateBinding Icon}"
                                          Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"

@@ -3,10 +3,7 @@ using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -23,6 +20,10 @@ namespace Panuon.WPF.UI
     {
         #region Fields
         private List<object> _selectionBoxItems;
+        private ItemsPresenter _itemsPresenter;
+        private DropDown _dropDown;
+        private ScrollViewer _itemsScrollViewer;
+        private Border _containerBorder;
         #endregion
 
         #region Ctor
@@ -802,15 +803,37 @@ namespace Panuon.WPF.UI
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
-            UpdateSelectionBoxItems();
             base.OnSelectionChanged(e);
+            UpdateSelectionBoxItems();
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
+            _containerBorder = GetTemplateChild("PART_BorderContainer") as Border;
+            _itemsPresenter = GetTemplateChild("PART_ItemsPresenter") as ItemsPresenter;
+            _itemsScrollViewer = _itemsPresenter.Parent as ScrollViewer;
+
+            _dropDown = GetTemplateChild("PART_DropDown") as DropDown;
+            _dropDown.Opened += DropDown_Opened;
+            _dropDown.Closed += DropDown_Closed;
+
+            DropDown_Closed(null, null);
             UpdateSelectionBoxItems();
+        }
+
+        private void DropDown_Opened(object sender, EventArgs e)
+        {
+            _containerBorder.Child = null;
+            _itemsScrollViewer.Content = _itemsPresenter;
+            
+        }
+
+        private void DropDown_Closed(object sender, EventArgs e)
+        {
+            _itemsScrollViewer.Content = null;
+            _containerBorder.Child = _itemsPresenter;
         }
         #endregion
 
@@ -873,6 +896,7 @@ namespace Panuon.WPF.UI
 
         private void UpdateSelectionBoxItems()
         {
+
             _selectionBoxItems = new List<object>();
             foreach (var selectedItem in SelectedItems)
             {
