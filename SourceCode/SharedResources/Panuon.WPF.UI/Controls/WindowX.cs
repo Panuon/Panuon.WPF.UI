@@ -737,7 +737,8 @@ namespace Panuon.WPF.UI
                 {
                     Icon = icon,
                     Message = message,
-                }
+                },
+                ContentTemplate = setting.ContentTemplate,
             };
             _toastCanvas.Children.Add(label);
 

@@ -89,7 +89,6 @@ namespace Panuon.WPF.UI
 
         #endregion
 
-
         #region ContentTemplate
         public DataTemplate ContentTemplate
         {

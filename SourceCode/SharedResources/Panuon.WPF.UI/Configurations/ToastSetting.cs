@@ -9,7 +9,8 @@ namespace Panuon.WPF.UI.Configurations
         #region Ctor
         public ToastSetting()
         {
-            LabelStyle = (Style)Application.Current.FindResource(Toast.LabelStyleKey);
+            SetCurrentValue(LabelStyleProperty, (Style)Application.Current.FindResource(Toast.LabelStyleKey));
+            SetCurrentValue(ContentTemplateProperty, (DataTemplate)Application.Current.FindResource(Toast.ContentTemplateKey));
         }
         #endregion
 
@@ -24,6 +25,17 @@ namespace Panuon.WPF.UI.Configurations
 
         public static readonly DependencyProperty LabelStyleProperty =
             DependencyProperty.Register("LabelStyle", typeof(Style), typeof(ToastSetting));
+        #endregion
+
+        #region ContentTemplate
+        public DataTemplate ContentTemplate
+        {
+            get { return (DataTemplate)GetValue(ContentTemplateProperty); }
+            set { SetValue(ContentTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentTemplateProperty =
+            DependencyProperty.Register("ContentTemplate", typeof(DataTemplate), typeof(ToastSetting));
         #endregion
 
         #region DefaultPosition

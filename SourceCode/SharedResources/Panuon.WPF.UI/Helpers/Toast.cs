@@ -11,6 +11,9 @@ namespace Panuon.WPF.UI
         #region ComponentResourceKeys
         public static ComponentResourceKey LabelStyleKey { get; } =
             new ComponentResourceKey(typeof(Toast), nameof(LabelStyleKey));
+
+        public static ComponentResourceKey ContentTemplateKey { get; } =
+            new ComponentResourceKey(typeof(Toast), nameof(ContentTemplateKey));
         #endregion
 
         #region Methods
@@ -154,24 +157,17 @@ namespace Panuon.WPF.UI
                     {
                         return windowX;
                     }
-                    throw new ArgumentException("Toast : The main window in Application.Current is null, or the window is not of type Panuon.WPF.UI.WindowX. Please try to specify window parameter for Toast method.");
+                    throw new InvalidOperationException("Toast can only be displayed on a window of type 'Panuon.WPF.UI.WindowX'. The value of 'Application.Current.MainWindow' is null, or its type is not 'WindowX'. To specify a different window for the Toast, use the overloaded methods that include a 'window' or 'targetWindow' parameter.");
                 default:
                     foreach (var loopObj in Application.Current.Windows)
                     {
-                        if (loopObj is Window loopWindow
-                            && loopWindow.IsActive)
+                        if (loopObj is WindowX loopWindowX
+                            && loopWindowX.IsActive)
                         {
-                            if (loopWindow is WindowX)
-                            {
-                                return loopWindow as WindowX;
-                            }
-                            else
-                            {
-                                break;
-                            }
+                            return loopWindowX;
                         }
                     }
-                    throw new ArgumentException("Toast : The activated window cannot be found in Application.Current, or the window is not of type Panuon.WPF.UI.WindowX. Please try to specify window parameter for Toast method.");
+                    throw new InvalidOperationException("Toast can only be displayed on a window of type 'Panuon.WPF.UI.WindowX'. There is no active window, or the active window is not of type 'WindowX'. To specify a different window for the Toast, use the overloaded methods that include a 'window' or 'targetWindow' parameter.");
             }
         }
         #endregion

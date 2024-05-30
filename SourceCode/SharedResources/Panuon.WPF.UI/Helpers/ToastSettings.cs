@@ -33,6 +33,20 @@ namespace Panuon.WPF.UI
         }
         #endregion
 
+        #region ContentTemplate
+        public DataTemplate ContentTemplate
+        {
+            get
+            {
+                return Setting.ContentTemplate;
+            }
+            set
+            {
+                Setting.ContentTemplate = value;
+            }
+        }
+        #endregion
+
         #region Spacing
         public double Spacing
         {
