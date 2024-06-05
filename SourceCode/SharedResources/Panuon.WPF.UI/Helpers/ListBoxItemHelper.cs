@@ -390,7 +390,15 @@ namespace Panuon.WPF.UI
         private static void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             var listBoxItem = sender as ListBoxItem;
-            var listBox = FrameworkElementUtil.FindVisualParent<ListBox>(listBoxItem);
+            if(listBoxItem == null)
+            {
+                return;
+            }
+            var listBox = ItemsControl.ItemsControlFromItemContainer(listBoxItem) as ListBox;
+            if (listBox == null)
+            {
+                return;
+            }
             var removedArgs = new RoutedEventArgs(ListBoxHelper.ItemClickEvent, listBoxItem);
             listBox.RaiseEvent(removedArgs);
             if (removedArgs.Handled)

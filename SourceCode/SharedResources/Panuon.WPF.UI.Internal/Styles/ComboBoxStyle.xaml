@@ -67,7 +67,7 @@
         <Setter Property="FontFamily"
                 Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="FontSize"
-                Value="{Binding Path=(local:IconHelper.ToggleArrowFontSize), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                Value="{Binding Path=(local:IconHelper.ToggleArrowFontSize), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}" />
         <Setter Property="Content"
                 Value="&#xe903;" />
         <Setter Property="Padding"
@@ -75,7 +75,7 @@
         <Setter Property="AnimationDuration"
                 Value="0:0:0.15" />
         <Setter Property="Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}, Mode=OneWay}"
                          Value="True">

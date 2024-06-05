@@ -318,8 +318,6 @@ namespace Panuon.WPF.UI
         #region Overrides
         public override void OnApplyTemplate()
         {
-
-
             _headerControl = GetTemplateChild(HeaderContentControlTemplateName) as ContentControl;
             _headerControl.SizeChanged += HeaderControl_SizeChanged;
         }
@@ -383,12 +381,12 @@ namespace Panuon.WPF.UI
                 {
                     if (e.Orientation == Orientation.Horizontal)
                     {
-                        var width = GetComputedWidth(false);
+                        var width = GetComputedWidth();
                         e.Maximuim = Math.Max(e.Maximuim, width);
                     }
                     else
                     {
-                        var height = GetComputedHeight(false);
+                        var height = GetComputedHeight();
                         e.Maximuim = Math.Max(e.Maximuim, height);
                     }
                 }
@@ -423,29 +421,13 @@ namespace Panuon.WPF.UI
             var size = 0d;
             if (Orientation == Orientation.Horizontal)
             {
-                size = GetComputedWidth(false);
-                var internalHeight = GetComputedHeight(true);
-                if (double.IsNaN(internalHeight))
-                {
-                    FrameworkElementUtil.BindingProperty(this, InternalHeaderHeightProperty, this, ActualHeightProperty);
-                }
-                else
-                {
-                    InternalHeaderHeight = internalHeight;
-                }
+                size = GetComputedWidth();
+                InternalHeaderHeight = double.NaN;
             }
             else
             {
-                size = GetComputedHeight(false);
-                var internalWidth = GetComputedWidth(true);
-                if (double.IsNaN(internalWidth))
-                {
-                    FrameworkElementUtil.BindingProperty(this, InternalHeaderWidthProperty, this, ActualWidthProperty);
-                }
-                else
-                {
-                    InternalHeaderWidth = internalWidth;
-                }
+                size = GetComputedHeight();
+                InternalHeaderWidth = double.NaN;
             }
             var collectSizeEventArgs = new FormGroupCollectSizeEventArgs(Orientation, size);
             if (!string.IsNullOrEmpty(GroupName))
@@ -475,26 +457,30 @@ namespace Panuon.WPF.UI
             }
         }
 
-        private double GetComputedWidth(bool allowNaN)
+        private double GetComputedWidth()
         {
-            var size = GridLengthUtil.ComputeValue(RenderSize.Width, HeaderWidth);
-            if (double.IsNaN(size) && !allowNaN)
+            if (HeaderWidth.IsAuto)
             {
                 _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 return _headerControl.DesiredSize.Width;
             }
-            return size;
+            else
+            {
+                return HeaderWidth.Value;
+            }
         }
 
-        private double GetComputedHeight(bool allowNaN)
+        private double GetComputedHeight()
         {
-            var size = GridLengthUtil.ComputeValue(RenderSize.Height, HeaderHeight);
-            if (double.IsNaN(size) && !allowNaN)
+            if (HeaderHeight.IsAuto)
             {
                 _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 return _headerControl.DesiredSize.Height;
             }
-            return size;
+            else
+            {
+                return HeaderHeight.Value;
+            }
         }
         #endregion
     }

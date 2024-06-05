@@ -10,13 +10,15 @@
                      TargetType="local:FormGroup">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="{Binding InternalHeaderHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                <RowDefinition Height="{Binding HeaderHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <RowDefinition />
                 <RowDefinition Height="{Binding MessageHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MinHeight="{Binding MinMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid.RowDefinitions>
-            <Grid>
+            <Grid Margin="{TemplateBinding HeaderPadding}"
+                  VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
+                  HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
@@ -28,10 +30,7 @@
                                 ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
                                 Foreground="{TemplateBinding HeaderForeground}"
                                 FontSize="{TemplateBinding HeaderFontSize}"
-                                FontWeight="{TemplateBinding HeaderFontWeight}"
-                                Margin="{TemplateBinding HeaderPadding}"
-                                VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
-                                HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
+                                FontWeight="{TemplateBinding HeaderFontWeight}"/>
                 <ContentControl Grid.Column="1"
                                 Focusable="False"
                                 Content="{TemplateBinding ExtendControl}" />
@@ -77,27 +76,28 @@
                                MaxHeight="{Binding MaxMessageHeight, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </Grid.RowDefinitions>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="{Binding InternalHeaderHeight, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                    <RowDefinition />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="{Binding InternalHeaderWidth, Converter={x:Static pw:Converters.DoubleToGridLengthConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ContentControl x:Name="PART_HeaderControl"
-                                Focusable="False"
-                                Content="{TemplateBinding Header}"
-                                ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
-                                Foreground="{TemplateBinding HeaderForeground}"
-                                Margin="{TemplateBinding HeaderPadding}"
-                                VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
-                                HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}" />
-                <ContentControl Grid.Row="2"
-                                Focusable="False"
-                                Content="{TemplateBinding ExtendControl}" />
+                <Grid Margin="{TemplateBinding HeaderPadding}"
+                      VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
+                      HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <ContentControl x:Name="PART_HeaderControl"
+                                    Focusable="False"
+                                    Content="{TemplateBinding Header}"
+                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                    Foreground="{TemplateBinding HeaderForeground}" />
+                    <ContentControl Grid.Row="1"
+                                    Focusable="False"
+                                    Content="{TemplateBinding ExtendControl}" />
+                </Grid>
                 <ContentPresenter x:Name="CpContent"
                                   Grid.Column="1"
                                   Grid.RowSpan="3"
