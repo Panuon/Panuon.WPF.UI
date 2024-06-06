@@ -415,6 +415,22 @@ namespace Panuon.WPF.UI.Internal
             DependencyProperty.RegisterAttached("HoverShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
+        #region FocusedShadowColorLock
+        public static bool GetFocusedShadowColorLock(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(FocusedShadowColorLockProperty);
+        }
+
+        public static void SetFocusedShadowColorLock(DependencyObject obj, bool value)
+        {
+            obj.SetValue(FocusedShadowColorLockProperty, value);
+        }
+
+        public static readonly DependencyProperty FocusedShadowColorLockProperty =
+            DependencyProperty.RegisterAttached("FocusedShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnFocusedLockChanged));
+        #endregion
+
+
         #region IsHover
         public static bool GetIsHover(DependencyObject obj)
         {
@@ -493,6 +509,30 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty IsFocusedProperty =
             DependencyProperty.RegisterAttached("IsFocused", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsFocusedChanged));
+        #endregion
+
+        #endregion
+
+        #region Opened Properties
+
+        #region OpenedShadowColor
+        public static readonly DependencyProperty OpenedShadowColorProperty =
+            DependencyProperty.RegisterAttached("OpenedShadowColor", typeof(Color?), typeof(VisualStateHelper));
+        #endregion
+
+        #region IsOpened
+        public static bool GetIsOpened(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsOpenedProperty);
+        }
+
+        public static void SetIsOpened(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsOpenedProperty, value);
+        }
+
+        public static readonly DependencyProperty IsOpenedProperty =
+            DependencyProperty.RegisterAttached("IsOpened", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnIsOpenedChanged));
         #endregion
 
         #endregion
@@ -635,6 +675,15 @@ namespace Panuon.WPF.UI.Internal
             }
         }
 
+        private static void OnFocusedLockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if (!(bool)e.NewValue)
+            {
+                Element_LostFocus(element, null);
+            }
+        }
+
         private static void OnIsHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = (FrameworkElement)d;
@@ -673,6 +722,20 @@ namespace Panuon.WPF.UI.Internal
                 Element_Collapsed(element, null);
             }
         }
+
+        private static void OnIsOpenedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = (FrameworkElement)d;
+            if ((bool)e.NewValue)
+            {
+                Element_Opened(element, null);
+            }
+            else
+            {
+                Element_Closed(element, null);
+            }
+        }
+        
 
         private static void OnIsFocusedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -996,6 +1059,69 @@ namespace Panuon.WPF.UI.Internal
                 }
             }
         }
+        private static void Element_Opened(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+
+            var propertyBrushes = new Dictionary<DependencyProperty, object>();
+            if (element.GetValue(OpenedShadowColorProperty) is Color focusedShadowColor)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = focusedShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, focusedShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+            else
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+
+                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+            }
+        }
+
+        private static void Element_Closed(object sender, RoutedEventArgs e)
+        {
+            var element = (FrameworkElement)sender;
+
+            var properties = new List<DependencyProperty>();
+            if (element.GetValue(OpenedShadowColorProperty) is Color)
+            {
+                var effect = GetEffect(element);
+                if (effect == null)
+                {
+                    return;
+                }
+                var shadowColor = element.GetValue(ShadowColorProperty);
+                if (shadowColor == null)
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
+                }
+                else
+                {
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
+            }
+        }
 
         private static void Element_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -1034,7 +1160,8 @@ namespace Panuon.WPF.UI.Internal
             {
                 AnimationUtil.BeginAnimationStoryboard(element, propertyBrushes);
             }
-            if (element.GetValue(FocusedShadowColorProperty) is Color focusedShadowColor)
+            if (!GetFocusedShadowColorLock((DependencyObject)sender)
+                    && element.GetValue(FocusedShadowColorProperty) is Color focusedShadowColor)
             {
                 var effect = GetEffect(element);
                 if (effect == null)

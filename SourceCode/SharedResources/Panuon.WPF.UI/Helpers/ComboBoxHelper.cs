@@ -344,6 +344,95 @@ namespace Panuon.WPF.UI
             VisualStateHelper.FocusedShadowColorProperty.AddOwner(typeof(ComboBoxHelper));
         #endregion
 
+        #region OpenedBackground
+        public static Brush GetOpenedBackground(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(OpenedBackgroundProperty);
+        }
+
+        public static void SetOpenedBackground(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(OpenedBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBackgroundProperty =
+            DependencyProperty.RegisterAttached("OpenedBackground", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region OpenedForeground
+        public static Brush GetOpenedForeground(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(OpenedForegroundProperty);
+        }
+
+        public static void SetOpenedForeground(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(OpenedForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedForegroundProperty =
+            DependencyProperty.RegisterAttached("OpenedForeground", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region OpenedBorderBrush
+        public static Brush GetOpenedBorderBrush(ComboBox comboBox)
+        {
+            return (Brush)comboBox.GetValue(OpenedBorderBrushProperty);
+        }
+
+        public static void SetOpenedBorderBrush(ComboBox comboBox, Brush value)
+        {
+            comboBox.SetValue(OpenedBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBorderBrushProperty =
+            DependencyProperty.RegisterAttached("OpenedBorderBrush", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region OpenedBorderThickness
+        public static Thickness? GetOpenedBorderThickness(ComboBox comboBox)
+        {
+            return (Thickness?)comboBox.GetValue(OpenedBorderThicknessProperty);
+        }
+
+        public static void SetOpenedBorderThickness(ComboBox comboBox, Thickness? value)
+        {
+            comboBox.SetValue(OpenedBorderThicknessProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedBorderThicknessProperty =
+            DependencyProperty.RegisterAttached("OpenedBorderThickness", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region OpenedCornerRadius
+        public static CornerRadius? GetOpenedCornerRadius(ComboBox comboBox)
+        {
+            return (CornerRadius)comboBox.GetValue(OpenedCornerRadiusProperty);
+        }
+
+        public static void SetOpenedCornerRadius(ComboBox comboBox, CornerRadius? value)
+        {
+            comboBox.SetValue(OpenedCornerRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty OpenedCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("OpenedCornerRadius", typeof(Brush), typeof(ComboBoxHelper));
+        #endregion
+
+        #region OpenedShadowColor
+        public static Color? GetOpenedShadowColor(ComboBox comboBox)
+        {
+            return (Color?)comboBox.GetValue(OpenedShadowColorProperty);
+        }
+
+        public static void SetOpenedShadowColor(ComboBox comboBox, Color? value)
+        {
+            comboBox.SetValue(OpenedShadowColorProperty, value);
+        }
+        public static readonly DependencyProperty OpenedShadowColorProperty =
+            VisualStateHelper.OpenedShadowColorProperty.AddOwner(typeof(ComboBoxHelper));
+        #endregion
+
         #region FocusedWatermarkForeground
 
         public static Brush GetFocusedWatermarkForeground(ComboBox comboBox)
