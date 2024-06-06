@@ -401,7 +401,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty OpenedBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("OpenedBorderThickness", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("OpenedBorderThickness", typeof(Thickness?), typeof(ComboBoxHelper));
         #endregion
 
         #region OpenedCornerRadius
@@ -416,7 +416,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty OpenedCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("OpenedCornerRadius", typeof(Brush), typeof(ComboBoxHelper));
+            DependencyProperty.RegisterAttached("OpenedCornerRadius", typeof(CornerRadius?), typeof(ComboBoxHelper));
         #endregion
 
         #region OpenedShadowColor

@@ -133,13 +133,13 @@
                 </DockPanel>
             </Border>
             <local:PopupX x:Name="PART_Popup"
-                           Focusable="False"
-                           AllowsTransparency="True"
-                           IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}"
-                           PlacementTarget="{Binding ElementName=BdrContainer}"
-                           Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                           PopupAnimation="Fade"
-                           StaysOpen="False">
+                          Focusable="False"
+                          AllowsTransparency="True"
+                          IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=TwoWay}"
+                          PlacementTarget="{Binding ElementName=BdrContainer}"
+                          Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                          PopupAnimation="Fade"
+                          StaysOpen="False">
                 <local:PopupX.HorizontalOffset>
                     <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
                         <Binding Path="(local:ShadowHelper.BlurRadius)"
@@ -193,10 +193,10 @@
                         </MultiBinding>
                     </Grid.Margin>
                     <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                                       Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                       BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
-                                       BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
-                                       CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
+                                           Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=ComboBox},Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}">
                         <local:ContentControlX.Effect>
                             <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
                                 <Binding Path="(local:DropDownHelper.ShadowColor)"
@@ -327,7 +327,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -344,7 +344,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -355,7 +355,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -366,7 +366,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -377,7 +377,7 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsSubmenuOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -499,7 +499,8 @@
                                     Style="{Binding Path=(local:ComboBoxHelper.ClearButtonStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                     Command="{Binding Path=(local:ComboBoxHelper.ClearCommand), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}"
                                     CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}}" />
-                            <local:TransformControl Grid.Column="2"
+                            <local:TransformControl x:Name="TcArrow"
+                                                    Grid.Column="2"
                                                     Style="{Binding Path=(local:ComboBoxHelper.ToggleArrowTransformControlStyle), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
                         </Grid>
                     </ToggleButton>
@@ -623,7 +624,7 @@
                                Value="True" />
                     <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNullOrEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
-                </MultiDataTrigger.Conditions> 
+                </MultiDataTrigger.Conditions>
                 <Setter TargetName="CcWatermark"
                         Property="Visibility"
                         Value="Visible" />
@@ -698,6 +699,67 @@
                 <Setter TargetName="BtnClear"
                         Property="Visibility"
                         Value="Visible" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="ContentSite"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                <Setter TargetName="IpIcon"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+                <Setter TargetName="TcArrow"
+                        Property="Foreground"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedForeground), RelativeSource={RelativeSource AncestorType=ComboBox}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="Background"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBorderBrush), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="BorderBrush"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedBorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedBorderThickness), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="BorderThickness"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedBorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Path=(local:ComboBoxHelper.OpenedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="CornerRadius"
+                        Value="{Binding Path=(local:ComboBoxHelper.OpenedCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
