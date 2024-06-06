@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,6 +11,21 @@ namespace Panuon.WPF.UI
     public static class TextBlockHelper
     {
         #region Properties
+
+        #region Text
+        public static string GetText(TextBlock textBlock)
+        {
+            return (string)textBlock.GetValue(TextProperty);
+        }
+
+        public static void SetText(TextBlock textBlock, string value)
+        {
+            textBlock.SetValue(TextProperty, value);
+        }
+
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(TextBlockHelper), new PropertyMetadata(OnHighlightTextChanged));
+        #endregion
 
         #region HighlightText
         public static string GetHighlightText(TextBlock textBlock)
@@ -97,7 +113,7 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            var text = textBlock.Text;
+            var text = GetText(textBlock);
             var regex = GetHighlightRegex(textBlock);
             var highlightText = GetHighlightText(textBlock);
             var foreground = GetHighlightForeground(textBlock);
@@ -143,7 +159,7 @@ namespace Panuon.WPF.UI
                     index = match.Index;
                     matchText = match.Value;
 
-                    if (string.IsNullOrEmpty(matchText) 
+                    if (string.IsNullOrEmpty(matchText)
                         || rule == HighlightRule.FirstOnly)
                     {
                         textBlock.Inlines.Add(new Run(text));
