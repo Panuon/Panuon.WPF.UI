@@ -578,8 +578,7 @@ namespace Panuon.WPF.UI
 
         private void UpdateTextFromValue()
         {
-            if (_isInternalSet
-                || _inputTextBox == null)
+            if (_inputTextBox == null)
             {
                 return;
             }
@@ -587,9 +586,15 @@ namespace Panuon.WPF.UI
             try
             {
                 _isInternalSet = true;
+
+                var carentIndex = _inputTextBox.CaretIndex;
                 _inputTextBox.Text = Value == null
                     ? null
                     : FormatValueText();
+                if (carentIndex != -1)
+                {
+                    _inputTextBox.Select(carentIndex, 0);
+                }
             }
             finally
             {
@@ -599,12 +604,8 @@ namespace Panuon.WPF.UI
 
         private void UpdateValueFromText()
         {
-            if (_inputTextBox == null)
-            {
-                return;
-            }
-
-            if (_isInternalSet)
+            if (_isInternalSet
+                || _inputTextBox == null)
             {
                 return;
             }
@@ -621,9 +622,7 @@ namespace Panuon.WPF.UI
                 SetCurrentValue(ValueProperty, doubleValue);
                 if (Value != doubleValue)
                 {
-                    _inputTextBox.Text = Value == null
-                        ? null
-                        : FormatValueText();
+                    UpdateTextFromValue();
                 }
             }
             else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
@@ -631,9 +630,7 @@ namespace Panuon.WPF.UI
                 SetCurrentValue(ValueProperty, doubleValue);
                 if (Value != doubleValue)
                 {
-                    _inputTextBox.Text = Value == null
-                        ? null
-                        : FormatValueText();
+                    UpdateTextFromValue();
                 }
             }
 
