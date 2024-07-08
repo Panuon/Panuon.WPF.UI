@@ -1,4 +1,11 @@
-﻿using System.Windows;
+﻿using Panuon.WPF.UI.Internal.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -7,10 +14,17 @@ namespace Panuon.WPF.UI
     public class ToggleButtonGroup
         : MultiSelector
     {
+        #region Fields
+        private string _groupId = Guid.NewGuid().ToString();
+        #endregion
+
         #region Ctor
         static ToggleButtonGroup()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ToggleButtonGroup), new FrameworkPropertyMetadata(typeof(ToggleButtonGroup)));
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(ToggleButtonGroup), 
+                new FrameworkPropertyMetadata(typeof(ToggleButtonGroup))
+                );
         }
 
         public ToggleButtonGroup()
@@ -23,12 +37,19 @@ namespace Panuon.WPF.UI
         #region Overrides
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
-            return item is ToggleButton;
+            if (item is ToggleButton toggleButton)
+            {
+                ToggleButtonHelper.SetGroupName(toggleButton, AllowMultipleSelection ? null : _groupId);
+                return true;
+            }
+            return false;
         }
 
         protected override DependencyObject GetContainerForItemOverride()
         {
-            return new ToggleButton();
+            var toggleButton = new ToggleButton();
+            ToggleButtonHelper.SetGroupName(toggleButton, AllowMultipleSelection ? null : _groupId);
+            return toggleButton;
         }
         #endregion
 
@@ -38,6 +59,28 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region AllowMultipleSelection
+        public bool AllowMultipleSelection
+        {
+            get { return (bool)GetValue(AllowMultipleSelectionProperty); }
+            set { SetValue(AllowMultipleSelectionProperty, value); }
+        }
+
+        public static readonly DependencyProperty AllowMultipleSelectionProperty =
+            DependencyProperty.Register("AllowMultipleSelection", typeof(bool), typeof(ToggleButtonGroup), new PropertyMetadata(true, OnAllowMultipleSelectionChanged));
+        #endregion
+
+        #region BindToEnum
+        public Enum BindToEnum
+        {
+            get { return (Enum)GetValue(BindToEnumProperty); }
+            set { SetValue(BindToEnumProperty, value); }
+        }
+
+        public static readonly DependencyProperty BindToEnumProperty =
+            DependencyProperty.Register("BindToEnum", typeof(Enum), typeof(ToggleButtonGroup), new PropertyMetadata(OnBindToEnumChanged));
+        #endregion
 
         #region ItemsWidth
         public double ItemsWidth
@@ -306,7 +349,42 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var toggleButtonGroup = d as ToggleButtonGroup;
 
+            var type = e.NewValue?.GetType();
+
+            if (type != null)
+            {
+                var enumList = new List<EnumInfo>();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new EnumInfo(descriptions[0].Description, item));
+                        }
+                        else
+                        {
+                            enumList.Add(new EnumInfo(item.ToString(), item));
+                        }
+                    }
+                }
+                toggleButtonGroup.DisplayMemberPath = nameof(EnumInfo.DisplayName);
+                toggleButtonGroup.SelectedValuePath = nameof(EnumInfo.Value);
+                toggleButtonGroup.ItemsSource = enumList;
+            }
+        }
+
+        private static void OnAllowMultipleSelectionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var toggleButtonGroup = d as ToggleButtonGroup;
+            toggleButtonGroup.OnAllowMultipleSelectionChanged();
+        }
 
         private void OnToggleButtonCheckChanged(object sender, RoutedEventArgs e)
         {
@@ -322,6 +400,16 @@ namespace Panuon.WPF.UI
                 BeginUpdateSelectedItems();
                 SelectedItems.Remove(ItemContainerGenerator.ItemFromContainer(toggleButton));
                 EndUpdateSelectedItems();
+            }
+        }
+        #endregion
+
+        #region Functions
+        private void OnAllowMultipleSelectionChanged()
+        {
+            foreach (ToggleButton toggleButton in ItemContainerGenerator.Items)
+            {
+                ToggleButtonHelper.SetGroupName(toggleButton, AllowMultipleSelection ? null : _groupId);
             }
         }
         #endregion

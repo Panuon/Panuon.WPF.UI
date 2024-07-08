@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Models;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections;
@@ -77,6 +78,17 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Properties
+
+        #region BindToEnum
+        public Enum BindToEnum
+        {
+            get { return (Enum)GetValue(BindToEnumProperty); }
+            set { SetValue(BindToEnumProperty, value); }
+        }
+
+        public static readonly DependencyProperty BindToEnumProperty =
+            DependencyProperty.Register("BindToEnum", typeof(Enum), typeof(MultiComboBox), new PropertyMetadata(OnBindToEnumChanged));
+        #endregion
 
         #region ClearCommand
         public ICommand ClearCommand
@@ -834,6 +846,39 @@ namespace Panuon.WPF.UI
         {
             _itemsScrollViewer.Content = null;
             _containerBorder.Child = _itemsPresenter;
+        }
+        #endregion
+
+        #region Event Handlers
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var comboBox = d as MultiComboBox;
+
+            var type = e.NewValue?.GetType();
+
+            if (type != null)
+            {
+                var enumList = new List<EnumInfo>();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new EnumInfo(descriptions[0].Description, item));
+                        }
+                        else
+                        {
+                            enumList.Add(new EnumInfo(item.ToString(), item));
+                        }
+                    }
+                }
+                comboBox.DisplayMemberPath = nameof(EnumInfo.DisplayName);
+                comboBox.SelectedValuePath = nameof(EnumInfo.Value);
+                comboBox.ItemsSource = enumList;
+            }
         }
         #endregion
 

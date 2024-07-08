@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Models;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections;
@@ -1233,24 +1234,17 @@ namespace Panuon.WPF.UI
                         var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
                         if (descriptions.Length > 0)
                         {
-                            enumList.Add(new
-                            {
-                                Name = descriptions[0].Description,
-                                Enum = item,
-                            });
+                            enumList.Add(new EnumInfo(descriptions[0].Description, item));
                         }
                         else
-                            enumList.Add(new
-                            {
-                                Name = item.ToString(),
-                                Enum = item,
-                            });
+                        {
+                            enumList.Add(new EnumInfo(item.ToString(), item));
+                        }
                     }
                 }
+                comboBox.DisplayMemberPath = nameof(EnumInfo.DisplayName);
+                comboBox.SelectedValuePath = nameof(EnumInfo.Value);
                 comboBox.ItemsSource = enumList;
-                comboBox.DisplayMemberPath = "Name";
-                comboBox.SelectedValuePath = "Enum";
-                comboBox.SetCurrentValue(ComboBox.SelectedValueProperty, comboBox.SelectedValue ?? e.NewValue);
             }
         }
 

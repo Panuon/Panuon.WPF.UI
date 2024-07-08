@@ -1230,18 +1230,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region RowHeaderHoverBorderThickness
-        public static Thickness GetRowHeaderHoverBorderThickness(DataGrid dataGrid)
+        public static Thickness? GetRowHeaderHoverBorderThickness(DataGrid dataGrid)
         {
             return (Thickness)dataGrid.GetValue(RowHeaderHoverBorderThicknessProperty);
         }
 
-        public static void SetRowHeaderHoverBorderThickness(DataGrid dataGrid, Thickness value)
+        public static void SetRowHeaderHoverBorderThickness(DataGrid dataGrid, Thickness? value)
         {
             dataGrid.SetValue(RowHeaderHoverBorderThicknessProperty, value);
         }
 
         public static readonly DependencyProperty RowHeaderHoverBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("RowHeaderHoverBorderThickness", typeof(Thickness), typeof(DataGridHelper));
+            DependencyProperty.RegisterAttached("RowHeaderHoverBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
         #endregion
 
         #region RowHeaderClickForeground
@@ -1290,18 +1290,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region RowHeaderClickBorderThickness
-        public static Thickness GetRowHeaderClickBorderThickness(DataGrid dataGrid)
+        public static Thickness? GetRowHeaderClickBorderThickness(DataGrid dataGrid)
         {
-            return (Thickness)dataGrid.GetValue(RowHeaderClickBorderThicknessProperty);
+            return (Thickness?)dataGrid.GetValue(RowHeaderClickBorderThicknessProperty);
         }
 
-        public static void SetRowHeaderClickBorderThickness(DataGrid dataGrid, Thickness value)
+        public static void SetRowHeaderClickBorderThickness(DataGrid dataGrid, Thickness? value)
         {
             dataGrid.SetValue(RowHeaderClickBorderThicknessProperty, value);
         }
 
         public static readonly DependencyProperty RowHeaderClickBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("RowHeaderClickBorderThickness", typeof(Thickness), typeof(DataGridHelper));
+            DependencyProperty.RegisterAttached("RowHeaderClickBorderThickness", typeof(Thickness?), typeof(DataGridHelper));
         #endregion
 
         #endregion

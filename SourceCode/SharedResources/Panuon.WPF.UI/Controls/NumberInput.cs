@@ -582,29 +582,30 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            if (_isInternalSet)
+
+            try
             {
-                return;
+                _isInternalSet = true;
+
+                var carentIndex = _inputTextBox.CaretIndex;
+                _inputTextBox.Text = Value == null
+                    ? null
+                    : FormatValueText();
+                if (carentIndex != -1)
+                {
+                    _inputTextBox.Select(carentIndex, 0);
+                }
             }
-
-            _isInternalSet = true;
-
-            _inputTextBox.Text = Value == null 
-                ? null 
-                : FormatValueText();
-
-            _isInternalSet = false;
-
+            finally
+            {
+                _isInternalSet = false;
+            }
         }
 
         private void UpdateValueFromText()
         {
-            if (_inputTextBox == null)
-            {
-                return;
-            }
-
-            if (_isInternalSet)
+            if (_isInternalSet
+                || _inputTextBox == null)
             {
                 return;
             }
@@ -627,7 +628,7 @@ namespace Panuon.WPF.UI
             else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
             {
                 SetCurrentValue(ValueProperty, doubleValue);
-                if(Value != doubleValue)
+                if (Value != doubleValue)
                 {
                     UpdateTextFromValue();
                 }

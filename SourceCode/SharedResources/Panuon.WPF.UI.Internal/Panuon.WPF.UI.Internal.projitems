@@ -82,6 +82,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Implements\NoticeHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ClassNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\EnumInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageBoxContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleKeys.cs" />

@@ -19,11 +19,12 @@ using System.Windows.Markup;
 
 [assembly: ComVisible(false)]
 [assembly: InternalsVisibleTo("Panuon.WPF.UI.Themes")]
+[assembly: InternalsVisibleTo("Samples")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None,
     ResourceDictionaryLocation.SourceAssembly
 )]
 
-[assembly: AssemblyVersion("1.2.1.10")]
-[assembly: AssemblyFileVersion("1.2.1.10")]
+[assembly: AssemblyVersion("1.2.2.1")]
+[assembly: AssemblyFileVersion("1.2.2.1")]

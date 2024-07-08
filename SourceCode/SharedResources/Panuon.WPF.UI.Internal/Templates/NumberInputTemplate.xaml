@@ -175,7 +175,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BtnClear"
@@ -197,7 +197,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnHoverAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -221,7 +221,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnFocusedAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -240,7 +240,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="GrdUpDown"
@@ -262,7 +262,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnHoverAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
@@ -286,7 +286,7 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding UpDownButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="VisibleOnFocusedAndNonnull" />
-                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, ElementName=PART_InputTextBox, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
