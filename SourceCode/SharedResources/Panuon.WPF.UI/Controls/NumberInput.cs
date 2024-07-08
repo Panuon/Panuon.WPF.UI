@@ -578,23 +578,23 @@ namespace Panuon.WPF.UI
 
         private void UpdateTextFromValue()
         {
-            if (_inputTextBox == null)
+            if (_isInternalSet
+                || _inputTextBox == null)
             {
                 return;
             }
-            if (_isInternalSet)
+
+            try
             {
-                return;
+                _isInternalSet = true;
+                _inputTextBox.Text = Value == null
+                    ? null
+                    : FormatValueText();
             }
-
-            _isInternalSet = true;
-
-            _inputTextBox.Text = Value == null 
-                ? null 
-                : FormatValueText();
-
-            _isInternalSet = false;
-
+            finally
+            {
+                _isInternalSet = false;
+            }
         }
 
         private void UpdateValueFromText()
@@ -621,15 +621,19 @@ namespace Panuon.WPF.UI
                 SetCurrentValue(ValueProperty, doubleValue);
                 if (Value != doubleValue)
                 {
-                    UpdateTextFromValue();
+                    _inputTextBox.Text = Value == null
+                        ? null
+                        : FormatValueText();
                 }
             }
             else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
             {
                 SetCurrentValue(ValueProperty, doubleValue);
-                if(Value != doubleValue)
+                if (Value != doubleValue)
                 {
-                    UpdateTextFromValue();
+                    _inputTextBox.Text = Value == null
+                        ? null
+                        : FormatValueText();
                 }
             }
 
