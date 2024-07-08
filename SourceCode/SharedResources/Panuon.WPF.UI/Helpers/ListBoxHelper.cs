@@ -1,4 +1,5 @@
 ﻿using Panuon.WPF.UI.Internal;
+using Panuon.WPF.UI.Internal.Models;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
 using System.Collections;
@@ -201,6 +202,21 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.RegisterAttached("SelectedItems", typeof(IList), typeof(ListBoxHelper));
+        #endregion
+
+        #region BindToEnum
+        public static Enum GetBindToEnum(ListBox listBox)
+        {
+            return (Enum)listBox.GetValue(BindToEnumProperty);
+        }
+
+        public static void SetBindToEnum(ListBox listBox, Enum value)
+        {
+            listBox.SetValue(BindToEnumProperty, value);
+        }
+
+        public static readonly DependencyProperty BindToEnumProperty =
+            DependencyProperty.RegisterAttached("BindToEnum", typeof(Enum), typeof(ListBoxHelper), new PropertyMetadata(OnBindToEnumChanged));
         #endregion
 
         #region Items Properties
@@ -817,6 +833,38 @@ namespace Panuon.WPF.UI
                 listBox.SelectionChanged += ListBox_SelectionChanged;
             }
         }
+
+        private static void OnBindToEnumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var listBox = d as ListBox;
+
+            var type = e.NewValue?.GetType();
+
+            if (type != null)
+            {
+                var enumList = new ArrayList();
+                foreach (Enum item in Enum.GetValues(type))
+                {
+                    var field = type.GetField(item.ToString());
+                    if (null != field)
+                    {
+                        var descriptions = field.GetCustomAttributes(typeof(DescriptionAttribute), true) as DescriptionAttribute[];
+                        if (descriptions.Length > 0)
+                        {
+                            enumList.Add(new EnumInfo(descriptions[0].Description, item));
+                        }
+                        else
+                        {
+                            enumList.Add(new EnumInfo(item.ToString(), item));
+                        }
+                    }
+                }
+                listBox.DisplayMemberPath = nameof(EnumInfo.DisplayName);
+                listBox.SelectedValuePath = nameof(EnumInfo.Value);
+                listBox.ItemsSource = enumList;
+            }
+        }
+
 
         private static void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

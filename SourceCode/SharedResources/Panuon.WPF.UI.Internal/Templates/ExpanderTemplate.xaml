@@ -80,7 +80,7 @@
                                                     <MultiDataTrigger.Conditions>
                                                         <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                                                    Value="True" />
-                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
+                                                        <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeaderCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource AncestorType=Expander}, Mode=OneWay}"
                                                                    Value="True" />
                                                     </MultiDataTrigger.Conditions>
                                                     <Setter TargetName="BdrContainer"

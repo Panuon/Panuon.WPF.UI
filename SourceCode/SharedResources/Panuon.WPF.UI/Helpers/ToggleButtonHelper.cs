@@ -1,6 +1,8 @@
 ﻿using Panuon.WPF.UI.Internal;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -8,6 +10,13 @@ namespace Panuon.WPF.UI
 {
     public static class ToggleButtonHelper
     {
+        #region Fields
+        private static readonly Dictionary<string, List<WeakReference<ToggleButton>>> _groupedToggleButtons =
+            new Dictionary<string, List<WeakReference<ToggleButton>>>();
+
+        private static bool _isInternalSet = false;
+        #endregion
+
         #region ComponentResourceKeys
         public static ComponentResourceKey PendingSpinStyleKey { get; } =
             new ComponentResourceKey(typeof(ToggleButtonHelper), nameof(PendingSpinStyleKey));
@@ -388,7 +397,133 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(ToggleButtonHelper));
         #endregion
 
+        #region GroupName
+        public static string GetGroupName(ToggleButton toggleButton)
+        {
+            return (string)toggleButton.GetValue(GroupNameProperty);
+        }
 
+        public static void SetGroupName(ToggleButton toggleButton, string value)
+        {
+            toggleButton.SetValue(GroupNameProperty, value);
+        }
+
+        public static readonly DependencyProperty GroupNameProperty =
+            DependencyProperty.RegisterAttached("GroupName", typeof(string), typeof(ToggleButtonHelper), new PropertyMetadata(OnGroupNameChanged));
+
+        #endregion
+
+        #endregion
+
+        #region Event Handlers
+        private static void OnGroupNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var toggleButton = d as ToggleButton;
+
+            toggleButton.Checked -= ToggleButton_CheckChanged;
+            toggleButton.Unchecked -= ToggleButton_CheckChanged;
+            toggleButton.Indeterminate -= ToggleButton_CheckChanged;
+            toggleButton.PreviewMouseLeftButtonDown -= ToggleButton_PreviewMouseLeftButtonDown;
+
+            var oldGroupName = (string)e.OldValue;
+            var groupName = (string)e.NewValue;
+            if (!string.IsNullOrEmpty(oldGroupName))
+            {
+                if (_groupedToggleButtons.ContainsKey(oldGroupName))
+                {
+                    var list = _groupedToggleButtons[oldGroupName];
+                    for (int i = list.Count - 1; i >= 0; i--)
+                    {
+                        if (!list[i].TryGetTarget(out var target)
+                            || target == toggleButton)
+                        {
+                            list.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            if (!string.IsNullOrEmpty(groupName))
+            {
+                toggleButton.Checked += ToggleButton_CheckChanged;
+                toggleButton.Unchecked += ToggleButton_CheckChanged;
+                toggleButton.Indeterminate += ToggleButton_CheckChanged;
+                toggleButton.PreviewMouseLeftButtonDown += ToggleButton_PreviewMouseLeftButtonDown;
+
+                if (!_groupedToggleButtons.ContainsKey(groupName))
+                {
+                    _groupedToggleButtons.Add(groupName, new List<WeakReference<ToggleButton>>());
+                }
+                _groupedToggleButtons[groupName].Add(new WeakReference<ToggleButton>(toggleButton));
+            }
+        }
+
+        private static void ToggleButton_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var toggleButton = sender as ToggleButton;
+            var groupName = GetGroupName(toggleButton);
+            var isChecked = toggleButton.IsChecked == true;
+            if (isChecked)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private static void ToggleButton_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (_isInternalSet)
+            {
+                return;
+            }
+            var toggleButton = sender as ToggleButton;
+            var groupName = GetGroupName(toggleButton);
+            var isChecked = toggleButton.IsChecked == true;
+            if (string.IsNullOrEmpty(groupName))
+            {
+                return;
+            }
+
+            try
+            {
+                _isInternalSet = true;
+                var toggleButtons = new List<ToggleButton>();
+                if (_groupedToggleButtons.ContainsKey(groupName))
+                {
+                    var list = _groupedToggleButtons[groupName];
+                    for (int i = list.Count - 1; i >= 0; i--)
+                    {
+                        if (list[i].TryGetTarget(out var target))
+                        {
+                            toggleButtons.Add(target);
+                        }
+                        else
+                        {
+                            list.RemoveAt(i);
+                        }
+                    }
+                    if (isChecked)
+                    {
+                        foreach (var target in toggleButtons)
+                        {
+                            if (target != toggleButton)
+                            {
+                                target.IsChecked = false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (toggleButtons.All(t => t.IsChecked != true))
+                        {
+                            toggleButton.IsChecked = true;
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                _isInternalSet = false;
+            }
+        }
         #endregion
     }
 }
