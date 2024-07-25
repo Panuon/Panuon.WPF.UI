@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Panuon.WPF.UI.Internal.Converters
 {
-    class SliderBorderClipConverter 
+    class SliderBorderClipConverter
         : OneWayMultiValueConverterBase
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -18,6 +18,7 @@ namespace Panuon.WPF.UI.Internal.Converters
             var orientation = (Orientation)values[4];
             var toggleWidth = (double)values[5];
             var toggleHeight = (double)values[6];
+            var cornerRadius = (double)values[7];
 
             var rect = new Rect();
             if (orientation == Orientation.Horizontal)
@@ -29,7 +30,7 @@ namespace Panuon.WPF.UI.Internal.Converters
                 rect = new Rect(0, height - rptHeight - toggleHeight / 2, width, rptHeight + toggleHeight / 2);
             }
 
-            var geometry = new RectangleGeometry(rect);
+            var geometry = new RectangleGeometry(rect, cornerRadius, cornerRadius);
             geometry.Freeze();
             return geometry;
         }

@@ -45,7 +45,7 @@
                     SnapsToDevicePixels="True"
                     VerticalAlignment="Center"
                     Height="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                    CornerRadius="{Binding Path=(local:SliderHelper.TrackCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:SliderHelper.TrackCornerRadius), Converter={x:Static rs:Converters.DoubleToCornerRadiusConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}" />
@@ -57,19 +57,21 @@
                 <Border.Clip>
                     <MultiBinding Converter="{x:Static irs:Converters.SliderBorderClipConverter}">
                         <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                 RelativeSource="{RelativeSource Self}" />
                         <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                 RelativeSource="{RelativeSource Self}" />
                         <Binding Path="ActualWidth"
                                  ElementName="RptDec" />
-                        <Binding Path="ActualHeight"
-                                 ElementName="RptDec" />
+                        <Binding Path="(local:SliderHelper.TrackThickness)"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="Orientation"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
                         <Binding Path="ActualWidth"
                                  ElementName="ThbToggle" />
                         <Binding Path="ActualHeight"
                                  ElementName="ThbToggle" />
+                        <Binding Path="(local:SliderHelper.TrackCornerRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Border.Clip>
 
@@ -105,6 +107,7 @@
                      Height="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                      Visibility="Collapsed" />
             <Canvas Grid.Row="2"
+                    IsHitTestVisible="False"
                     Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Canvas.Top="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
@@ -170,6 +173,7 @@
                     SnapsToDevicePixels="True"
                     HorizontalAlignment="Center"
                     Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:SliderHelper.TrackCornerRadius), Converter={x:Static rs:Converters.DoubleToCornerRadiusConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}" />
@@ -177,15 +181,16 @@
                     SnapsToDevicePixels="True"
                     HorizontalAlignment="Center"
                     Width="{Binding Path=(local:SliderHelper.TrackThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(local:SliderHelper.TrackCornerRadius), Converter={x:Static rs:Converters.DoubleToCornerRadiusConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(local:SliderHelper.CoveredBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <Border.Clip>
                     <MultiBinding Converter="{x:Static irs:Converters.SliderBorderClipConverter}">
                         <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource TemplatedParent}" />
+                                 RelativeSource="{RelativeSource Self}" />
                         <Binding Path="ActualHeight"
+                                 RelativeSource="{RelativeSource Self}" />
+                        <Binding Path="(local:SliderHelper.TrackThickness)"
                                  RelativeSource="{RelativeSource TemplatedParent}" />
-                        <Binding Path="ActualWidth"
-                                 ElementName="RptDec" />
                         <Binding Path="ActualHeight"
                                  ElementName="RptDec" />
                         <Binding Path="Orientation"
@@ -194,6 +199,8 @@
                                  ElementName="ThbToggle" />
                         <Binding Path="ActualHeight"
                                  ElementName="ThbToggle" />
+                        <Binding Path="(local:SliderHelper.TrackCornerRadius)"
+                                 RelativeSource="{RelativeSource TemplatedParent}" />
                     </MultiBinding>
                 </Border.Clip>
 
@@ -229,6 +236,7 @@
                      Width="{Binding Path=(local:SliderHelper.TickBarThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                      Visibility="Collapsed" />
             <Canvas Grid.Column="2"
+                    IsHitTestVisible="False"
                     Visibility="{Binding Path=(local:SliderHelper.IsTextVisible), Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                 <TextBlock Text="{Binding Path=(local:SliderHelper.Text), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Canvas.Left="{Binding Path=(local:SliderHelper.TextSpacing), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">

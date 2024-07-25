@@ -81,18 +81,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region TrackCornerRadius
-        public static CornerRadius GetTrackCornerRadius(Slider slider)
+        public static double GetTrackCornerRadius(Slider slider)
         {
-            return (CornerRadius)slider.GetValue(TrackCornerRadiusProperty);
+            return (double)slider.GetValue(TrackCornerRadiusProperty);
         }
 
-        public static void SetTrackCornerRadius(Slider slider, CornerRadius value)
+        public static void SetTrackCornerRadius(Slider slider, double value)
         {
             slider.SetValue(TrackCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty TrackCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("TrackCornerRadius", typeof(CornerRadius), typeof(SliderHelper));
+            DependencyProperty.RegisterAttached("TrackCornerRadius", typeof(double), typeof(SliderHelper), new PropertyMetadata(0d));
         #endregion
 
         #region CoveredBackground

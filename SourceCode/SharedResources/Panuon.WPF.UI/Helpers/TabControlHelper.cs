@@ -161,21 +161,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("ScrollButtonStyle", typeof(Style), typeof(TabControlHelper));
         #endregion
 
-        #region ScrollButtonVisibility
-        public static Visibility GetScrollButtonVisibility(TabControl tabControl)
-        {
-            return (Visibility)tabControl.GetValue(ScrollButtonVisibilityProperty);
-        }
-
-        public static void SetScrollButtonVisibility(TabControl tabControl, Visibility value)
-        {
-            tabControl.SetValue(ScrollButtonVisibilityProperty, value);
-        }
-
-        public static readonly DependencyProperty ScrollButtonVisibilityProperty =
-            DependencyProperty.RegisterAttached("ScrollButtonVisibility", typeof(Visibility), typeof(TabControlHelper));
-        #endregion
-
         #region HeaderPanelHeight
         public static double GetHeaderPanelHeight(TabControl tabControl)
         {
