@@ -62,13 +62,16 @@
                 Value="Center" />
         <Setter Property="ItemContainerStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.ListBoxItemStyle}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxTemplate}}" />
         <Style.Triggers>
             <Trigger Property="local:ListBoxHelper.Scrollable"
                      Value="False">
                 <Setter Property="Template"
                         Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxNonScrollableTemplate}}" />
+            </Trigger>
+            <Trigger Property="local:ListBoxHelper.Scrollable"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.ListBoxTemplate}}" />
             </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">

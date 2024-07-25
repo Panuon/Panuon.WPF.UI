@@ -15,15 +15,17 @@
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Margin="{TemplateBinding Padding}">
-                <ScrollViewer x:Name="SvContent"
-                              Focusable="False">
-                    <ItemsPresenter />
-                </ScrollViewer>
-                <ContentControl x:Name="CcEmpty"
-                                Visibility="Collapsed"
-                                Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Grid>
+            <Border BorderThickness="{TemplateBinding BorderThickness}">
+                <Grid Margin="{TemplateBinding Padding}">
+                    <ScrollViewer x:Name="SvContent"
+                                  Focusable="False">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                    <ContentControl x:Name="CcEmpty"
+                                    Visibility="Collapsed"
+                                    Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </Grid>
+            </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
@@ -52,12 +54,14 @@
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            <Grid Margin="{TemplateBinding Padding}">
-                <ItemsPresenter x:Name="IpItems" />
-                <ContentControl x:Name="CcEmpty"
-                                Visibility="Collapsed"
-                                Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-            </Grid>
+            <Border Margin="{TemplateBinding BorderThickness}">
+                <Grid Margin="{TemplateBinding Padding}">
+                    <ItemsPresenter x:Name="IpItems" />
+                    <ContentControl x:Name="CcEmpty"
+                                    Visibility="Collapsed"
+                                    Content="{Binding Path=(local:ListBoxHelper.EmptyContent), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                </Grid>
+            </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
