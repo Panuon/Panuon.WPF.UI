@@ -43,6 +43,10 @@
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="Icon"
                 Value="{Binding ItemsIcon, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="ShadowColor"
                 Value="{Binding ItemsShadowColor, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="Margin"

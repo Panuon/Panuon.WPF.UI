@@ -163,6 +163,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ClickBorderThickness", typeof(Thickness?), typeof(BreadcrumbItem));
         #endregion
 
+        #region ClickCornerRadius
+        public CornerRadius? ClickCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ClickCornerRadiusProperty); }
+            set { SetValue(ClickCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClickCornerRadiusProperty =
+            DependencyProperty.Register("ClickCornerRadius", typeof(CornerRadius?), typeof(BreadcrumbItem));
+        #endregion
+
         #region ClickEffect
         public ClickEffect ClickEffect
         {

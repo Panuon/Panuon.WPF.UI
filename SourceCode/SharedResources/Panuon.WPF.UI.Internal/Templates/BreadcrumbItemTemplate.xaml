@@ -89,6 +89,28 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding ClickBorderThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="BorderThickness"
+                        Value="{Binding ClickBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding ClickCornerRadius, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BdrContainer"
+                        Property="BorderThickness"
+                        Value="{Binding ClickCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
                     <Condition Binding="{Binding ClickForeground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>

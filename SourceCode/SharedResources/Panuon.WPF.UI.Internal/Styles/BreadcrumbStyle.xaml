@@ -12,7 +12,7 @@
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=SeparatorTemplateKey, TypeInTargetAssembly={x:Type local:Breadcrumb}}">
         <TextBlock Text="/"
-                   Opacity="0.2"
+                   Opacity="0.7"
                    VerticalAlignment="Center" />
     </DataTemplate>
 
