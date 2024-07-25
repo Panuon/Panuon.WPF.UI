@@ -225,7 +225,8 @@
                                              Culture="{TemplateBinding Culture}"
                                              MinDate="{TemplateBinding MinDateTime}"
                                              MaxDate="{TemplateBinding MaxDateTime}"
-                                             YearStringFormat="{TemplateBinding YearStringFormat}" />
+                                             YearStringFormat="{TemplateBinding YearStringFormat}"
+                                             FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}" />
                             <Rectangle x:Name="SprDateTime"
                                        Grid.Column="1"
                                        Fill="{TemplateBinding DateTimeSeparatorBrush}"
