@@ -22,6 +22,8 @@
                                     ContentTemplate="{TemplateBinding SpecialDayHighlightTemplate}" />
                     <ContentPresenter Focusable="False"
                                       RecognizesAccessKey="True"
+                                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                       Margin="{TemplateBinding Padding}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
