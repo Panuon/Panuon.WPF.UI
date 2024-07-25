@@ -55,18 +55,26 @@
                 Value="{Binding ItemsCheckBoxVisibility, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="RemoveButtonVisibility"
                 Value="{Binding ItemsRemoveButtonVisibility, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HoverBackground"
+                Value="{Binding ItemsHoverBackground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="HoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="HoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="HoverForeground"
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="SelectedBackground"
                 Value="{Binding ItemsSelectedBackground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="SelectedBorderBrush"
                 Value="{Binding ItemsSelectedBorderBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
-        <Setter Property="SelectedForeground"
-                Value="{Binding ItemsSelectedForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="SelectedBorderThickness"
                 Value="{Binding ItemsSelectedBorderThickness, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedCornerRadius"
+                Value="{Binding ItemsSelectedCornerRadius, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
+        <Setter Property="SelectedForeground"
+                Value="{Binding ItemsSelectedForeground, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="SeparatorBrush"
                 Value="{Binding ItemsSeparatorBrush, RelativeSource={RelativeSource AncestorType=local:MultiComboBox}, Mode=OneWay}" />
         <Setter Property="SeparatorThickness"
