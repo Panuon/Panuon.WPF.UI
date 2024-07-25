@@ -9,10 +9,10 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.ScrollBarTemplate}"
                      TargetType="ScrollBar">
         <Border SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                BorderBrush="{Binding Path=(local:ScrollBarHelper.InternalTrackBorderBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                BorderThickness="{Binding Path=(local:ScrollBarHelper.TrackBorderThickness),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                Background="{Binding Path=(local:ScrollBarHelper.InternalTrackBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                CornerRadius="{Binding Path=(local:ScrollBarHelper.TrackCornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                BorderBrush="{Binding Path=(local:ScrollBarHelper.InternalBorderBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                BorderThickness="{Binding Path=(local:ScrollBarHelper.BorderThickness),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                Background="{Binding Path=(local:ScrollBarHelper.InternalBackground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                CornerRadius="{Binding Path=(local:ScrollBarHelper.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -78,7 +78,7 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="Thumb">
-                                                <Border local:ScrollBarHelper.IsTrackHover="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                                                <Border local:ScrollBarHelper.IsHover="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                         BorderBrush="{Binding Path=(local:ScrollBarHelper.InternalThumbBorderBrush),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"
                                                         BorderThickness="{Binding Path=(local:ScrollBarHelper.ThumbBorderThickness),RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}"

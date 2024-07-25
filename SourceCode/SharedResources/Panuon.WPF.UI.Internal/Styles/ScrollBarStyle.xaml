@@ -22,6 +22,10 @@
                 Value="{x:Null}" />
         <Setter Property="Background"
                 Value="Transparent" />
+        <Setter Property="BorderBrush"
+                Value="{Binding Path=(local:ScrollBarHelper.BorderBrush),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+        <Setter Property="BorderThickness"
+                Value="{Binding Path=(local:ScrollBarHelper.BorderThickness),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBackground), RelativeSource={RelativeSource AncestorType=ScrollBar}, Mode=OneWay}" />
         <Setter Property="FontFamily"
@@ -74,11 +78,11 @@
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.InternalThumbBorderBrush"
                 Value="{Binding Path=(local:ScrollBarHelper.ThumbBorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ScrollBarHelper.InternalTrackBackground"
-                Value="{Binding Path=(local:ScrollBarHelper.TrackBackground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ScrollBarHelper.InternalTrackBorderBrush"
-                Value="{Binding Path=(local:ScrollBarHelper.TrackBorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="local:ScrollBarHelper.IsTrackHover"
+        <Setter Property="local:ScrollBarHelper.InternalBackground"
+                Value="{Binding Path=(local:ScrollBarHelper.Background), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ScrollBarHelper.InternalBorderBrush"
+                Value="{Binding Path=(local:ScrollBarHelper.BorderBrush), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ScrollBarHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:ScrollBarHelper.ScrollButtonStyle"
                 Value="{StaticResource {ComponentResourceKey ResourceId=ScrollButtonStyleKey, TypeInTargetAssembly={x:Type local:ScrollBarHelper}}}"/>

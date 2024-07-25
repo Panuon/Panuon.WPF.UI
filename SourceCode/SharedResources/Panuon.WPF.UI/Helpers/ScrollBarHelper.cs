@@ -15,64 +15,109 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
-        #region TrackBackground
-        public static Brush GetTrackBackground(DependencyObject obj)
+        #region Background
+        public static Brush GetBackground(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(TrackBackgroundProperty);
+            return (Brush)obj.GetValue(BackgroundProperty);
         }
 
-        public static void SetTrackBackground(DependencyObject obj, Brush value)
+        public static void SetBackground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(TrackBackgroundProperty, value);
+            obj.SetValue(BackgroundProperty, value);
         }
 
-        public static readonly DependencyProperty TrackBackgroundProperty =
-            DependencyProperty.RegisterAttached("TrackBackground", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(Brushes.Transparent, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty BackgroundProperty =
+            DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(Brushes.Transparent, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region TrackBorderBrush
-        public static Brush GetTrackBorderBrush(DependencyObject obj)
+        #region BorderBrush
+        public static Brush GetBorderBrush(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(TrackBorderBrushProperty);
+            return (Brush)obj.GetValue(BorderBrushProperty);
         }
 
-        public static void SetTrackBorderBrush(DependencyObject obj, Brush value)
+        public static void SetBorderBrush(DependencyObject obj, Brush value)
         {
-            obj.SetValue(TrackBorderBrushProperty, value);
+            obj.SetValue(BorderBrushProperty, value);
         }
 
-        public static readonly DependencyProperty TrackBorderBrushProperty =
-            DependencyProperty.RegisterAttached("TrackBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty BorderBrushProperty =
+            DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region TrackBorderThickness
-        public static Thickness GetTrackBorderThickness(DependencyObject obj)
+        #region BorderThickness
+        public static Thickness GetBorderThickness(DependencyObject obj)
         {
-            return (Thickness)obj.GetValue(TrackBorderThicknessProperty);
+            return (Thickness)obj.GetValue(BorderThicknessProperty);
         }
 
-        public static void SetTrackBorderThickness(DependencyObject obj, Thickness value)
+        public static void SetBorderThickness(DependencyObject obj, Thickness value)
         {
-            obj.SetValue(TrackBorderThicknessProperty, value);
+            obj.SetValue(BorderThicknessProperty, value);
         }
 
-        public static readonly DependencyProperty TrackBorderThicknessProperty =
-            DependencyProperty.RegisterAttached("TrackBorderThickness", typeof(Thickness), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty BorderThicknessProperty =
+            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region TrackCornerRadius
-        public static CornerRadius GetTrackCornerRadius(DependencyObject obj)
+        #region CornerRadius
+        public static CornerRadius GetCornerRadius(DependencyObject obj)
         {
-            return (CornerRadius)obj.GetValue(TrackCornerRadiusProperty);
+            return (CornerRadius)obj.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetTrackCornerRadius(DependencyObject obj, CornerRadius value)
+        public static void SetCornerRadius(DependencyObject obj, CornerRadius value)
         {
-            obj.SetValue(TrackCornerRadiusProperty, value);
+            obj.SetValue(CornerRadiusProperty, value);
         }
 
-        public static readonly DependencyProperty TrackCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("TrackCornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region HoverBackground
+        public static Brush GetHoverBackground(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HoverBackgroundProperty);
+        }
+
+        public static void SetHoverBackground(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HoverBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBackgroundProperty =
+            DependencyProperty.RegisterAttached("HoverBackground", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region HoverBorderBrush
+        public static Brush GetHoverBorderBrush(DependencyObject obj)
+        {
+            return (Brush)obj.GetValue(HoverBorderBrushProperty);
+        }
+
+        public static void SetHoverBorderBrush(DependencyObject obj, Brush value)
+        {
+            obj.SetValue(HoverBorderBrushProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.RegisterAttached("HoverBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        #endregion
+
+        #region ThumbMinSize
+        public static double GetThumbMinSize(DependencyObject obj)
+        {
+            return (double)obj.GetValue(ThumbMinSizeProperty);
+        }
+
+        public static void SetThumbMinSize(DependencyObject obj, double value)
+        {
+            obj.SetValue(ThumbMinSizeProperty, value);
+        }
+
+        public static readonly DependencyProperty ThumbMinSizeProperty =
+            DependencyProperty.RegisterAttached("ThumbMinSize", typeof(double), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region ThumbBackground
@@ -133,51 +178,6 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ThumbCornerRadiusProperty =
             DependencyProperty.RegisterAttached("ThumbCornerRadius", typeof(CornerRadius), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(new CornerRadius(1), FrameworkPropertyMetadataOptions.Inherits));
-        #endregion
-
-        #region ThumbMinSize
-        public static double GetThumbMinSize(DependencyObject obj)
-        {
-            return (double)obj.GetValue(ThumbMinSizeProperty);
-        }
-
-        public static void SetThumbMinSize(DependencyObject obj, double value)
-        {
-            obj.SetValue(ThumbMinSizeProperty, value);
-        }
-
-        public static readonly DependencyProperty ThumbMinSizeProperty =
-            DependencyProperty.RegisterAttached("ThumbMinSize", typeof(double), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
-        #endregion
-
-        #region HoverTrackBackground
-        public static Brush GetHoverTrackBackground(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(HoverTrackBackgroundProperty);
-        }
-
-        public static void SetHoverTrackBackground(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(HoverTrackBackgroundProperty, value);
-        }
-
-        public static readonly DependencyProperty HoverTrackBackgroundProperty =
-            DependencyProperty.RegisterAttached("HoverTrackBackground", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
-        #endregion
-
-        #region HoverTrackBorderBrush
-        public static Brush GetHoverTrackBorderBrush(DependencyObject obj)
-        {
-            return (Brush)obj.GetValue(HoverTrackBorderBrushProperty);
-        }
-
-        public static void SetHoverTrackBorderBrush(DependencyObject obj, Brush value)
-        {
-            obj.SetValue(HoverTrackBorderBrushProperty, value);
-        }
-
-        public static readonly DependencyProperty HoverTrackBorderBrushProperty =
-            DependencyProperty.RegisterAttached("HoverTrackBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region HoverThumbBackground
@@ -244,34 +244,34 @@ namespace Panuon.WPF.UI
 
         #region Internal Properties
 
-        #region InternalTrackBackground
-        internal static Brush GetInternalTrackBackground(DependencyObject obj)
+        #region InternalBackground
+        internal static Brush GetInternalBackground(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(InternalTrackBackgroundProperty);
+            return (Brush)obj.GetValue(InternalBackgroundProperty);
         }
 
-        internal static void SetInternalTrackBackground(DependencyObject obj, Brush value)
+        internal static void SetInternalBackground(DependencyObject obj, Brush value)
         {
-            obj.SetValue(InternalTrackBackgroundProperty, value);
+            obj.SetValue(InternalBackgroundProperty, value);
         }
 
-        internal static readonly DependencyProperty InternalTrackBackgroundProperty =
-            DependencyProperty.RegisterAttached("InternalTrackBackground", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        internal static readonly DependencyProperty InternalBackgroundProperty =
+            DependencyProperty.RegisterAttached("InternalBackground", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region InternalTrackBorderBrush
-        internal static Brush GetInternalTrackBorderBrush(DependencyObject obj)
+        #region InternalBorderBrush
+        internal static Brush GetInternalBorderBrush(DependencyObject obj)
         {
-            return (Brush)obj.GetValue(InternalTrackBorderBrushProperty);
+            return (Brush)obj.GetValue(InternalBorderBrushProperty);
         }
 
-        internal static void SetInternalTrackBorderBrush(DependencyObject obj, Brush value)
+        internal static void SetInternalBorderBrush(DependencyObject obj, Brush value)
         {
-            obj.SetValue(InternalTrackBorderBrushProperty, value);
+            obj.SetValue(InternalBorderBrushProperty, value);
         }
 
-        internal static readonly DependencyProperty InternalTrackBorderBrushProperty =
-            DependencyProperty.RegisterAttached("InternalTrackBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        internal static readonly DependencyProperty InternalBorderBrushProperty =
+            DependencyProperty.RegisterAttached("InternalBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region InternalThumbBackground
@@ -304,19 +304,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("InternalThumbBorderBrush", typeof(Brush), typeof(ScrollBarHelper), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
-        #region IsTrackHover
-        internal static bool GetIsTrackHover(FrameworkElement element)
+        #region IsHover
+        internal static bool GetIsHover(FrameworkElement element)
         {
-            return (bool)element.GetValue(IsTrackHoverProperty);
+            return (bool)element.GetValue(IsHoverProperty);
         }
 
-        internal static void SetIsTrackHover(FrameworkElement element, bool value)
+        internal static void SetIsHover(FrameworkElement element, bool value)
         {
-            element.SetValue(IsTrackHoverProperty, value);
+            element.SetValue(IsHoverProperty, value);
         }
 
-        internal static readonly DependencyProperty IsTrackHoverProperty =
-            DependencyProperty.RegisterAttached("IsTrackHover", typeof(bool), typeof(ScrollBarHelper), new PropertyMetadata(OnIsTrackHoverChanged));
+        internal static readonly DependencyProperty IsHoverProperty =
+            DependencyProperty.RegisterAttached("IsHover", typeof(bool), typeof(ScrollBarHelper), new PropertyMetadata(OnIsHoverChanged));
         #endregion
 
         #region IsThumbHover
@@ -337,20 +337,20 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
-        private static void OnIsTrackHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnIsHoverChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var element = (FrameworkElement)d;
 
              if ((bool)e.NewValue)
             {
                 var propertyBrushes = new Dictionary<DependencyProperty, Brush>();
-                if (element.GetValue(HoverTrackBackgroundProperty) is Brush hoverBackground)
+                if (element.GetValue(HoverBackgroundProperty) is Brush hoverBackground)
                 {
-                    propertyBrushes.Add(InternalTrackBackgroundProperty, hoverBackground);
+                    propertyBrushes.Add(InternalBackgroundProperty, hoverBackground);
                 }
-                 if (element.GetValue(HoverTrackBorderBrushProperty) is Brush hoverBorder)
+                 if (element.GetValue(HoverBorderBrushProperty) is Brush hoverBorder)
                 {
-                    propertyBrushes.Add(InternalTrackBorderBrushProperty, hoverBorder);
+                    propertyBrushes.Add(InternalBorderBrushProperty, hoverBorder);
                 }
                 if (propertyBrushes.Any())
                   {
@@ -360,13 +360,13 @@ namespace Panuon.WPF.UI
             else
             {
                 var propertyBrushes = new List<DependencyProperty>();
-                if (element.GetValue(HoverTrackBackgroundProperty) != null)
+                if (element.GetValue(HoverBackgroundProperty) != null)
                 {
-                    propertyBrushes.Add(InternalTrackBackgroundProperty);
+                    propertyBrushes.Add(InternalBackgroundProperty);
                 }
-                if (element.GetValue(HoverTrackBorderBrushProperty) != null)
+                if (element.GetValue(HoverBorderBrushProperty) != null)
                 {
-                    propertyBrushes.Add(InternalTrackBorderBrushProperty);
+                    propertyBrushes.Add(InternalBorderBrushProperty);
                 }
                 if (propertyBrushes.Any())
                 {
