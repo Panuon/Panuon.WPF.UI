@@ -188,6 +188,17 @@
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
+                    <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedHeader), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcHeader"
+                        Property="Content"
+                        Value="{Binding Path=(local:ExpanderHelper.ExpandedHeader), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsExpanded, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
                     <Condition Binding="{Binding Path=(local:ExpanderHelper.ExpandedBackground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
