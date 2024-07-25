@@ -47,6 +47,7 @@
         public const string ListViewItemTemplate = nameof(ListViewItemTemplate);
         public const string ListViewItemNullViewTemplate = nameof(ListViewItemNullViewTemplate);
         public const string MenuTemplate = nameof(MenuTemplate);
+        public const string MenuNonScrollableTemplate = nameof(MenuNonScrollableTemplate);
         public const string MenuItemTopLevelTemplate = nameof(MenuItemTopLevelTemplate);
         public const string MenuItemSubmenuTemplate = nameof(MenuItemSubmenuTemplate);
         public const string MultiComboBoxTemplate = nameof(MultiComboBoxTemplate);

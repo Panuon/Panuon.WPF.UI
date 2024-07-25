@@ -18,5 +18,17 @@
             </ScrollViewer>
         </local:ContentControlX>
     </ControlTemplate>
+    
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.MenuNonScrollableTemplate}"
+                     TargetType="Menu">
+        <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                               Background="{TemplateBinding Background}"
+                               BorderBrush="{TemplateBinding BorderBrush}"
+                               BorderThickness="{TemplateBinding BorderThickness}"
+                               CornerRadius="{Binding Path=(local:MenuHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
+            <ItemsPresenter Margin="{TemplateBinding Padding}"
+                            KeyboardNavigation.DirectionalNavigation="Cycle" />
+        </local:ContentControlX>
+    </ControlTemplate>
 
 </ResourceDictionary>

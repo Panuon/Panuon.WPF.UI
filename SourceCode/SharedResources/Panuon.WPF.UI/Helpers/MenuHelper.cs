@@ -69,6 +69,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("SubmenuArrowIconTemplate", typeof(DataTemplate), typeof(MenuHelper));
         #endregion
 
+        #region Scrollable
+        public static bool GetScrollable(Menu menu)
+        {
+            return (bool)menu.GetValue(ScrollableProperty);
+        }
+
+        public static void SetScrollable(Menu menu, bool value)
+        {
+            menu.SetValue(ScrollableProperty, value);
+        }
+
+        public static readonly DependencyProperty ScrollableProperty =
+            DependencyProperty.RegisterAttached("Scrollable", typeof(bool), typeof(MenuHelper), new PropertyMetadata(true));
+        #endregion
+
         #region CornerRadius
         public static CornerRadius GetCornerRadius(Menu menu)
         {

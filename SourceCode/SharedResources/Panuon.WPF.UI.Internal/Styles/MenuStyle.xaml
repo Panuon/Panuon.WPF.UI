@@ -132,9 +132,17 @@
                 Value="{StaticResource {ComponentResourceKey ResourceId=CheckedIconTemplateKey, TypeInTargetAssembly={x:Type local:MenuHelper}}}" />
         <Setter Property="ItemContainerStyle"
                 Value="{StaticResource {x:Static rs:StyleKeys.MenuItemStyle}}" />
-        <Setter Property="Template"
-                Value="{StaticResource {x:Static irs:TemplateKeys.MenuTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="local:MenuHelper.Scrollable"
+                     Value="False">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.MenuNonScrollableTemplate}}" />
+            </Trigger>
+            <Trigger Property="local:MenuHelper.Scrollable"
+                     Value="True">
+                <Setter Property="Template"
+                        Value="{StaticResource {x:Static irs:TemplateKeys.MenuTemplate}}" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"
