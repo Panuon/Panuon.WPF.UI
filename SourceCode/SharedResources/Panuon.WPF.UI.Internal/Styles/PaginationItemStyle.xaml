@@ -49,6 +49,10 @@
                 Value="{Binding ItemsHoverForeground, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="HoverBorderBrush"
                 Value="{Binding ItemsHoverBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverBorderThickness"
+                Value="{Binding ItemsHoverBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="HoverCornerRadius"
+                Value="{Binding ItemsHoverCornerRadius, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="HoverShadowColor"
                 Value="{Binding ItemsHoverShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="SelectedBackground"
@@ -59,6 +63,8 @@
                 Value="{Binding ItemsSelectedBorderBrush, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="SelectedBorderThickness"
                 Value="{Binding ItemsSelectedBorderThickness, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
+        <Setter Property="SelectedCornerRadius"
+                Value="{Binding ItemsSelectedCornerRadius, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="SelectedShadowColor"
                 Value="{Binding ItemsSelectedShadowColor, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}" />
         <Setter Property="Template"

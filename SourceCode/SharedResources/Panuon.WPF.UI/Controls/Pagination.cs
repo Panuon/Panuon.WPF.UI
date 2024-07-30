@@ -307,6 +307,28 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsHoverBorderBrush", typeof(Brush), typeof(Pagination));
         #endregion
 
+        #region ItemsHoverBorderThickness
+        public Thickness? ItemsHoverBorderThickness
+        {
+            get { return (Thickness?)GetValue(ItemsHoverBorderThicknessProperty); }
+            set { SetValue(ItemsHoverBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverBorderThicknessProperty =
+            DependencyProperty.Register("ItemsHoverBorderThickness", typeof(Thickness?), typeof(Pagination));
+        #endregion
+
+        #region ItemsHoverCornerRadius
+        public CornerRadius? ItemsHoverCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsHoverCornerRadiusProperty); }
+            set { SetValue(ItemsHoverCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
+            DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(Pagination));
+        #endregion
+
         #region ItemsHoverShadowColor
         public Color? ItemsHoverShadowColor
         {
@@ -361,6 +383,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsSelectedBorderThicknessProperty =
             DependencyProperty.Register("ItemsSelectedBorderThickness", typeof(Thickness?), typeof(Pagination));
+        #endregion
+
+        #region ItemsSelectedCornerRadius
+        public CornerRadius? ItemsSelectedCornerRadius
+        {
+            get { return (CornerRadius?)GetValue(ItemsSelectedCornerRadiusProperty); }
+            set { SetValue(ItemsSelectedCornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty ItemsSelectedCornerRadiusProperty =
+            DependencyProperty.Register("ItemsSelectedCornerRadius", typeof(CornerRadius?), typeof(Pagination));
         #endregion
 
         #region ItemsSelectedShadowColor
