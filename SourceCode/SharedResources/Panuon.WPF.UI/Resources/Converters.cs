@@ -4,7 +4,6 @@ namespace Panuon.WPF.UI.Resources
 {
     public static class Converters
     {
-        public static IMultiValueConverter AutoCornerRadiusConverter = Panuon.WPF.Resources.Converters.AutoCornerRadiusConverter;
         public static IMultiValueConverter BoolOrConverter = Panuon.WPF.Resources.Converters.BoolOrConverter;
         public static IValueConverter BrushToColorConverter = Panuon.WPF.Resources.Converters.BrushToColorConverter;
         public static IValueConverter ColorToBrushConverter = Panuon.WPF.Resources.Converters.ColorToBrushConverter;
