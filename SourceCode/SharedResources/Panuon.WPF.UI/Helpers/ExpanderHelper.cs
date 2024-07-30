@@ -363,18 +363,18 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ExpandedHeaderCornerRadius
-        public static CornerRadius GetExpandedHeaderCornerRadius(Expander expander)
+        public static CornerRadius? GetExpandedHeaderCornerRadius(Expander expander)
         {
-            return (CornerRadius)expander.GetValue(ExpandedHeaderCornerRadiusProperty);
+            return (CornerRadius?)expander.GetValue(ExpandedHeaderCornerRadiusProperty);
         }
 
-        public static void SetExpandedHeaderCornerRadius(Expander expander, CornerRadius value)
+        public static void SetExpandedHeaderCornerRadius(Expander expander, CornerRadius? value)
         {
             expander.SetValue(ExpandedHeaderCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty ExpandedHeaderCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ExpandedHeaderCornerRadius", typeof(CornerRadius), typeof(ExpanderHelper));
+            DependencyProperty.RegisterAttached("ExpandedHeaderCornerRadius", typeof(CornerRadius?), typeof(ExpanderHelper));
         #endregion
 
         #region ExpandedHeaderShadowColor
