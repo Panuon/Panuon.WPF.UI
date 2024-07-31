@@ -444,16 +444,20 @@ namespace Panuon.WPF.UI
                      && inputChar >= 65 && inputChar <= 90) ||
                    (inputLimit.HasFlag(InputLimits.Point)
                      && inputChar == '.' && !text.Contains(".")) ||
-                   (inputLimit.HasFlag(InputLimits.At)
-                     && inputChar == '@' && !text.Contains("@")) ||
                    (inputLimit.HasFlag(InputLimits.MultiplePoints)
                      && inputChar == '.') ||
+                   (inputLimit.HasFlag(InputLimits.At)
+                     && inputChar == '@' && !text.Contains("@")) ||
                    (inputLimit.HasFlag(InputLimits.MultipleAts)
                      && inputChar == '@') ||
-                     (inputLimit.HasFlag(InputLimits.Dash)
+                    (inputLimit.HasFlag(InputLimits.Dash)
                      && inputChar == '-') ||
-                     (inputLimit.HasFlag(InputLimits.Underline)
-                     && inputChar == '_'))
+                    (inputLimit.HasFlag(InputLimits.Underline)
+                     && inputChar == '_') ||
+                    (inputLimit.HasFlag(InputLimits.Comma)
+                     && inputChar == ',' && !text.Contains(",")) ||
+                    (inputLimit.HasFlag(InputLimits.MultipleCommas)
+                     && inputChar == ',') )
                 {
                     text += inputChar;
                 }

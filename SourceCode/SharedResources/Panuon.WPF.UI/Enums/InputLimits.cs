@@ -19,5 +19,7 @@ namespace Panuon.WPF.UI
         MultipleSpaces = 512,
         Dash = 1024,
         Underline = 2048,
+        Comma = 4096,
+        MultipleCommas = 8192,
     }
 }
