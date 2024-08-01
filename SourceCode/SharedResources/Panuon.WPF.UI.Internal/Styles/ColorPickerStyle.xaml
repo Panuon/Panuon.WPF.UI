@@ -46,7 +46,7 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Center" />
         <Setter Property="HorizontalContentAlignment"
-                Value="Center" />
+                Value="Stretch" />
         <Setter Property="FontFamily"
                 Value="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
         <Setter Property="FontSize"

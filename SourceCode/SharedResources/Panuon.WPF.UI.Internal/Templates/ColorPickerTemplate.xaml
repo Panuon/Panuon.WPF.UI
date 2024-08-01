@@ -55,7 +55,6 @@
                     </i:IconPresenter>
                     <ToggleButton Grid.Column="1"
                                   Focusable="False"
-                                  Padding="{TemplateBinding Padding}"
                                   IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=TwoWay}">
                         <ToggleButton.Style>
                             <Style TargetType="ToggleButton">
