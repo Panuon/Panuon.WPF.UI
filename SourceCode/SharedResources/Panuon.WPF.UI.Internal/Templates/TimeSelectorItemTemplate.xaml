@@ -9,15 +9,18 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TimeSelectorItemTemplate}"
                      TargetType="local:TimeSelectorItem">
         <Grid>
-            <Border x:Name="BdrContainer"
+            <Border x:Name="PART_ContainerBorder"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <ContentPresenter Focusable="False"
+                <ContentPresenter x:Name="PART_ContentPresenter"
+                                  Focusable="False"
                                   RecognizesAccessKey="True"
+                                  TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
@@ -31,11 +34,11 @@
                     <Condition Binding="{Binding CheckedBackground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="Background"
                         Value="{Binding CheckedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
-            
+
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -43,7 +46,7 @@
                     <Condition Binding="{Binding CheckedBorderThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="BorderThickness"
                         Value="{Binding CheckedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -54,7 +57,7 @@
                     <Condition Binding="{Binding CheckedBorderBrush, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="BorderBrush"
                         Value="{Binding CheckedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -65,10 +68,10 @@
                     <Condition Binding="{Binding CheckedForeground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContentPresenter"
                         Property="TextElement.Foreground"
                         Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContentPresenter"
                         Property="TextBlock.Foreground"
                         Value="{Binding CheckedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
 
