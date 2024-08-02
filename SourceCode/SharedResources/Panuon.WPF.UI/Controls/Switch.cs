@@ -353,7 +353,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CheckedToggleShadowColorProperty =
-            DependencyProperty.Register("CheckedToggleShadowColor", typeof(Color?), typeof(Switch));
+            VisualStateHelper.CheckedToggleShadowColorProperty.AddOwner(typeof(Switch));
         #endregion
 
         #region CheckedCornerRadius

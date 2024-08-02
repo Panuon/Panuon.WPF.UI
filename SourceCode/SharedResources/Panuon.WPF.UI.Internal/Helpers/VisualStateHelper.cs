@@ -415,6 +415,21 @@ namespace Panuon.WPF.UI.Internal
             DependencyProperty.RegisterAttached("HoverShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
         #endregion
 
+        #region HoverToggleShadowColorLock
+        public static bool GetHoverToggleShadowColorLock(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(HoverToggleShadowColorLockProperty);
+        }
+
+        public static void SetHoverToggleShadowColorLock(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HoverToggleShadowColorLockProperty, value);
+        }
+
+        public static readonly DependencyProperty HoverToggleShadowColorLockProperty =
+            DependencyProperty.RegisterAttached("HoverToggleShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnHoverLockChanged));
+        #endregion
+
         #region FocusedShadowColorLock
         public static bool GetFocusedShadowColorLock(DependencyObject obj)
         {
@@ -429,7 +444,6 @@ namespace Panuon.WPF.UI.Internal
         public static readonly DependencyProperty FocusedShadowColorLockProperty =
             DependencyProperty.RegisterAttached("FocusedShadowColorLock", typeof(bool), typeof(VisualStateHelper), new PropertyMetadata(OnFocusedLockChanged));
         #endregion
-
 
         #region IsHover
         public static bool GetIsHover(DependencyObject obj)
@@ -457,6 +471,9 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty HoverToggleShadowColorProperty =
             DependencyProperty.RegisterAttached("HoverToggleShadowColor", typeof(Color?), typeof(VisualStateHelper));
+
+        public static readonly DependencyProperty CheckedToggleShadowColorProperty =
+            DependencyProperty.RegisterAttached("CheckedToggleShadowColor", typeof(Color?), typeof(VisualStateHelper));
         #endregion
 
         #region Focused Properties
@@ -935,10 +952,10 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, hoverShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
-            if (!GetHoverShadowColorLock((DependencyObject)sender)
+            if (!GetHoverToggleShadowColorLock((DependencyObject)sender)
                 && element.GetValue(HoverToggleShadowColorProperty) is Color hoverToggleShadowColor)
             {
-                var effect = GetEffect(element);
+                var effect = GetToggleEffect(element);
                 if (effect == null)
                 {
                     effect = new DropShadowEffect()
@@ -1040,7 +1057,7 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, (Color)shadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
             }
-            if (!GetHoverShadowColorLock((DependencyObject)sender)
+            if (!GetHoverToggleShadowColorLock((DependencyObject)sender)
                && element.GetValue(HoverToggleShadowColorProperty) is Color)
             {
                 var effect = GetToggleEffect(element);
@@ -1407,12 +1424,10 @@ namespace Panuon.WPF.UI.Internal
             else
             {
                 var effect = GetEffect(element);
-                if (effect == null)
+                if (effect != null)
                 {
-                    return;
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
                 }
-
-                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
             }
 
             var propertyBrushes = new Dictionary<DependencyProperty, object>();
@@ -1423,6 +1438,30 @@ namespace Panuon.WPF.UI.Internal
             if (propertyBrushes.Any())
             {
                 AnimationUtil.BeginAnimationStoryboard(element, propertyBrushes);
+            }
+
+            if (element.GetValue(CheckedToggleShadowColorProperty) is Color checkedToggleShadowColor)
+            {
+                var effect = GetToggleEffect(element);
+                if (effect == null)
+                {
+                    effect = new DropShadowEffect()
+                    {
+                        Color = checkedToggleShadowColor,
+                        ShadowDepth = ShadowHelper.GetShadowDepth(element),
+                        Direction = ShadowHelper.GetDirection(element),
+                        BlurRadius = ShadowHelper.GetBlurRadius(element),
+                        Opacity = 0,
+                        RenderingBias = ShadowHelper.GetRenderingBias(element),
+                    };
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    SetToggleEffect(element, effect);
+                }
+                else
+                {
+                    AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
+                    AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, checkedToggleShadowColor, GlobalSettings.Setting.AnimationDuration);
+                }
             }
         }
 

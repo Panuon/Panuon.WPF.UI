@@ -125,7 +125,26 @@
                 <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
                         Value="True" />
             </MultiDataTrigger>
-
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CheckedShadowColor, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverShadowColorLock"
+                        Value="True" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding CheckedToggleShadowColor, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.HoverToggleShadowColorLock"
+                        Value="True" />
+            </MultiDataTrigger>
         </Style.Triggers>
     </Style>
 
