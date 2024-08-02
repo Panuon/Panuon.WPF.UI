@@ -13,7 +13,7 @@
                            BorderBrush="{TemplateBinding BorderBrush}"
                            BorderThickness="{TemplateBinding BorderThickness}"
                            CornerRadius="{Binding Path=(local:MenuHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}">
-            <ScrollViewer Padding="{TemplateBinding Padding}">
+            <ScrollViewer Margin="{TemplateBinding Padding}">
                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle" />
             </ScrollViewer>
         </local:ContentControlX>
