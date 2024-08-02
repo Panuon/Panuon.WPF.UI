@@ -10,12 +10,12 @@
                      TargetType="local:Badge">
         <Grid>
             <Canvas>
-                <Border x:Name="PART_BoundingBorder"
+                <Border x:Name="PART_WaveBorder"
                         BorderBrush="{TemplateBinding WaveBrush}"
                         BorderThickness="{TemplateBinding WaveThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}"
-                        Width="{Binding ActualWidth, ElementName=BdrContainer}"
-                        Height="{Binding ActualHeight, ElementName=BdrContainer}"
+                        Width="{Binding ActualWidth, ElementName=PART_ContainerBorder}"
+                        Height="{Binding ActualHeight, ElementName=PART_ContainerBorder}"
                         RenderTransformOrigin="0.5,0.5">
                     <Border.RenderTransform>
                         <ScaleTransform ScaleX="1"
@@ -23,7 +23,7 @@
                     </Border.RenderTransform>
                 </Border>
             </Canvas>
-            <Border x:Name="BdrContainer"
+            <Border x:Name="PART_ContainerBorder"
                     i:VisualStateHelper.IsClickEffectPressed="{Binding IsPressed, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -31,9 +31,12 @@
                     CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <ContentPresenter Grid.Column="1"
+                <ContentPresenter x:Name="PART_ContentPresenter"
+                                  Grid.Column="1"
                                   Focusable="False"
                                   RecognizesAccessKey="True"
+                                  TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                  TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                   HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
@@ -48,7 +51,7 @@
                     <Condition Binding="{Binding ClickBackground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="Background"
                         Value="{Binding ClickBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -59,7 +62,7 @@
                     <Condition Binding="{Binding ClickBorderBrush, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="BorderBrush"
                         Value="{Binding ClickBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -70,7 +73,7 @@
                     <Condition Binding="{Binding ClickBorderThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="BorderThickness"
                         Value="{Binding ClickBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -81,10 +84,10 @@
                     <Condition Binding="{Binding ClickForeground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContentPresenter"
                         Property="TextElement.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContentPresenter"
                         Property="TextBlock.Foreground"
                         Value="{Binding ClickForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -95,7 +98,7 @@
                     <Condition Binding="{Binding ClickCornerRadius, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="PART_ContainerBorder"
                         Property="CornerRadius"
                         Value="{Binding ClickCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>

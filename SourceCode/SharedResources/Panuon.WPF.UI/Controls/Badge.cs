@@ -9,14 +9,14 @@ using System.Windows.Media.Animation;
 
 namespace Panuon.WPF.UI
 {
-    [TemplatePart(Name = BoundingBorderTemplateName, Type = typeof(Border))]
+    [TemplatePart(Name = WaveBorderTemplateName, Type = typeof(Border))]
     public class Badge
         : ButtonBase
     {
         #region Fields
-        private const string BoundingBorderTemplateName = "PART_BoundingBorder";
+        private const string WaveBorderTemplateName = "PART_WaveBorder";
 
-        private Border _boundingBorder;
+        private Border _waveBorder;
         private ScaleTransform _scaleTransform;
         #endregion
 
@@ -255,14 +255,14 @@ namespace Panuon.WPF.UI
         #region Overrides
         public override void OnApplyTemplate()
         {
-            _boundingBorder = GetTemplateChild(BoundingBorderTemplateName) as Border;
+            _waveBorder = GetTemplateChild(WaveBorderTemplateName) as Border;
 
             _scaleTransform = new ScaleTransform()
             {
                 ScaleX = 1,
                 ScaleY = 1,
             };
-            _boundingBorder.RenderTransform = _scaleTransform;
+            _waveBorder.RenderTransform = _scaleTransform;
             
             OnScaleChanged();
         }
@@ -285,7 +285,7 @@ namespace Panuon.WPF.UI
         #region Functions
         private void OnScaleChanged()
         {
-            if (_boundingBorder == null)
+            if (_waveBorder == null)
             {
                 return;
             }
@@ -300,22 +300,22 @@ namespace Panuon.WPF.UI
                 var scaleXAnimation = new DoubleAnimation()
                 {
                     From = 1,
-                    To = 1.5,
+                    To = WaveScale,
                     Duration = AnimationDuration,
                     EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
-                Storyboard.SetTarget(scaleXAnimation, _boundingBorder);
+                Storyboard.SetTarget(scaleXAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath("RenderTransform.ScaleX"));
                 storyboard.Children.Add(scaleXAnimation);
 
                 var scaleYAnimation = new DoubleAnimation()
                 {
                     From = 1,
-                    To = 1.5,
+                    To = WaveScale,
                     Duration = AnimationDuration,
                     EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
-                Storyboard.SetTarget(scaleYAnimation, _boundingBorder);
+                Storyboard.SetTarget(scaleYAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath("RenderTransform.ScaleY"));
                 storyboard.Children.Add(scaleYAnimation);
 
@@ -326,7 +326,7 @@ namespace Panuon.WPF.UI
                     Duration = AnimationDuration,
                     EasingFunction = AnimationUtil.CreateEasingFunction(AnimationEasing),
                 };
-                Storyboard.SetTarget(opacityAnimation, _boundingBorder);
+                Storyboard.SetTarget(opacityAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(Border.OpacityProperty));
                 storyboard.Children.Add(opacityAnimation);
 
@@ -343,7 +343,7 @@ namespace Panuon.WPF.UI
                 {
                     Duration = TimeSpan.Zero,
                 };
-                Storyboard.SetTarget(scaleXAnimation, _boundingBorder);
+                Storyboard.SetTarget(scaleXAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(scaleXAnimation, new PropertyPath("RenderTransform.ScaleX"));
                 storyboard.Children.Add(scaleXAnimation);
 
@@ -351,7 +351,7 @@ namespace Panuon.WPF.UI
                 {
                     Duration = TimeSpan.Zero,
                 };
-                Storyboard.SetTarget(scaleYAnimation, _boundingBorder);
+                Storyboard.SetTarget(scaleYAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(scaleYAnimation, new PropertyPath("RenderTransform.ScaleY"));
                 storyboard.Children.Add(scaleYAnimation);
 
@@ -359,7 +359,7 @@ namespace Panuon.WPF.UI
                 {
                     Duration = TimeSpan.Zero,
                 };
-                Storyboard.SetTarget(opacityAnimation, _boundingBorder);
+                Storyboard.SetTarget(opacityAnimation, _waveBorder);
                 Storyboard.SetTargetProperty(opacityAnimation, new PropertyPath(Border.OpacityProperty));
                 storyboard.Children.Add(opacityAnimation);
 
