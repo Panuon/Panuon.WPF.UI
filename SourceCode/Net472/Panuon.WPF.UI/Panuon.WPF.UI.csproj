@@ -39,9 +39,8 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Panuon.WPF, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\References\Net472\Panuon.WPF.dll</HintPath>
+    <Reference Include="Panuon.WPF, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Panuon.WPF.1.1.1\lib\net472\Panuon.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\SharedResources\Panuon.WPF.UI\Panuon.WPF.UI.projitems" Label="Shared" />
   <Import Project="..\..\SharedResources\Panuon.WPF.UI.Internal\Panuon.WPF.UI.Internal.projitems" Label="Shared" />
