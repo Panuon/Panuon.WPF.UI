@@ -53,6 +53,8 @@
                 Value="{Binding ItemsMargin, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="Padding"
                 Value="{Binding ItemsPadding, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="CornerRadius"
+                Value="{Binding ItemsCornerRadius, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="Background"
                 Value="{Binding ItemsBackground, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="BorderBrush"
