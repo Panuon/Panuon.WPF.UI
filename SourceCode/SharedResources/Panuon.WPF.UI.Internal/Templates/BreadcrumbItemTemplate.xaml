@@ -60,7 +60,9 @@
                             Grid.Column="1"
                             Margin="{TemplateBinding SeparatorMargin}"
                             Content=" "
-                            ContentTemplate="{TemplateBinding SeparatorTemplate}" />
+                            ContentTemplate="{TemplateBinding SeparatorTemplate}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
         </Grid>
         <ControlTemplate.Triggers>
             <MultiDataTrigger>
