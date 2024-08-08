@@ -22,6 +22,7 @@
                         Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrContent"
                         Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Padding="{TemplateBinding Padding}"
                         TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
@@ -76,7 +77,6 @@
                         </Grid>
                         <ContentPresenter Grid.Column="1"
                                           Grid.ColumnSpan="2"
-                                          Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -178,7 +178,7 @@
                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                             <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                                           HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
+                                          Margin="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                                 <StackPanel IsItemsHost="True"
                                             KeyboardNavigation.DirectionalNavigation="Cycle" />
                             </ScrollViewer>
@@ -446,6 +446,7 @@
                         Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrContent"
                         Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                        Padding="{TemplateBinding Padding}"
                         TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                         TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Grid>
@@ -487,7 +488,6 @@
                         </Grid>
                         <ContentPresenter Grid.Column="1"
                                           Grid.ColumnSpan="2"
-                                          Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -591,7 +591,7 @@
                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=Menu},Mode=OneWay}">
                             <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
                                           HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}"
-                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
+                                          Margin="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=Menu}, Mode=OneWay}">
                                 <StackPanel IsItemsHost="True"
                                             KeyboardNavigation.DirectionalNavigation="Cycle" />
                             </ScrollViewer>

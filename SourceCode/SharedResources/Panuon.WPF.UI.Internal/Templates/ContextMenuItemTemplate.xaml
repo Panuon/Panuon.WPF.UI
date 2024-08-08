@@ -198,7 +198,7 @@
                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=ContextMenu},Mode=OneWay}">
                             <ScrollViewer VerticalScrollBarVisibility="{Binding Path=(ScrollViewer.VerticalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
                                           HorizontalScrollBarVisibility="{Binding Path=(ScrollViewer.HorizontalScrollBarVisibility), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}"
-                                          Padding="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
+                                          Margin="{Binding Path=(local:DropDownHelper.Padding), RelativeSource={RelativeSource AncestorType=ContextMenu}, Mode=OneWay}">
                                 <StackPanel IsItemsHost="True"
                                             KeyboardNavigation.DirectionalNavigation="Cycle" />
                             </ScrollViewer>
