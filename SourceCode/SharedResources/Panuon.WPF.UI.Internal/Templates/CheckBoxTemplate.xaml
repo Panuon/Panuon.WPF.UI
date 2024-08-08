@@ -62,15 +62,13 @@
                             Height="{Binding Path=(local:CheckBoxHelper.BoxHeight), Converter={x:Static pw:Converters.DoubleDivideByConverter}, ConverterParameter=2, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 </Grid>
             </Border>
-            <ContentControl x:Name="CpContent"
+            <ContentPresenter x:Name="CpContent"
                             Grid.Column="1"
-                            Content="{TemplateBinding Content}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                             TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                            Margin="{TemplateBinding Padding}"
-                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                            Margin="{TemplateBinding Padding}" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="local:CheckBoxHelper.ContentPlacement"
