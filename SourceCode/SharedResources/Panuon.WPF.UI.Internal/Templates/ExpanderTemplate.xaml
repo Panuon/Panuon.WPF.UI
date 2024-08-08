@@ -160,7 +160,9 @@
                         <i:ContentPresenterX x:Name="CpChild"
                                              IsVertical="True"
                                              local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
-                                             Margin="{TemplateBinding Padding}" />
+                                             Margin="{TemplateBinding Padding}"
+                                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     </Border>
                 </Grid>
             </Border>
@@ -348,7 +350,7 @@
                            BorderThickness="{TemplateBinding BorderThickness}"
                            Foreground="{TemplateBinding Foreground}"
                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
-                               CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                           CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                            VerticalContentAlignment="Stretch"
                            HorizontalContentAlignment="Stretch">
@@ -420,7 +422,9 @@
                     <i:ContentPresenterX x:Name="CpChild"
                                          IsVertical="False"
                                          local:ExpanderHelper.RegistContentPresenter="{Binding Path=. ,RelativeSource={RelativeSource Self}}"
-                                         Margin="{TemplateBinding Padding}" />
+                                         Margin="{TemplateBinding Padding}" 
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </Border>
             </Grid>
         </local:ContentControlX>
