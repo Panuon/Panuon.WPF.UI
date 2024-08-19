@@ -729,6 +729,12 @@ namespace Panuon.WPF.UI
         {
             setting = setting ?? ToastSettings.Setting;
             var spacing = setting.Spacing;
+            var clearBeforeShow = setting.ClearBeforeShow;
+
+            if (clearBeforeShow)
+            {
+                _toastCanvas.Children.Clear();
+            }
 
             var label = new Label()
             {
