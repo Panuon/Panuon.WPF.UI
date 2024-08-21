@@ -41,7 +41,11 @@
     </Style>
 
     <DataTemplate x:Key="{ComponentResourceKey ResourceId=ContentTemplateKey, TypeInTargetAssembly={x:Type local:Toast}}">
-        <StackPanel Orientation="Horizontal">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <local:StateControl Margin="0,0,7,0"
                                 Visibility="{Binding Icon, Converter={x:Static pw:Converters.NullToCollapseConverter}}"
                                 CurrentState="{Binding Icon}"
@@ -69,9 +73,11 @@
                                Text="&#xe935;" />
                 </local:StateItem>
             </local:StateControl>
-            <TextBlock Text="{Binding Message}"
-                       VerticalAlignment="Center" />
-        </StackPanel>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Message}"
+                       VerticalAlignment="Center" 
+                       TextWrapping="Wrap" />
+        </Grid>
     </DataTemplate>
 
 </ResourceDictionary>
