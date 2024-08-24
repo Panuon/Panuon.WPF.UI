@@ -32,7 +32,6 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <local:PaginationItem x:Name="PgniPage"
-                                                  GroupName="GROUP_PAGINATION"
                                                   Style="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
                                                   IsOmitting="{Binding ., Converter={x:Static pw:Converters.IsNullConverter}, Mode=OneWay}"
                                                   OmittingTextBlockStyle="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
@@ -90,7 +89,6 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <local:PaginationItem x:Name="PgniPage"
-                                                  GroupName="GROUP_PAGINATION"
                                                   Style="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"
                                                   IsOmitting="{Binding ., Converter={x:Static pw:Converters.IsNullConverter}, Mode=OneWay}"
                                                   OmittingTextBlockStyle="{Binding OmittingTextBlockStyle, RelativeSource={RelativeSource AncestorType=local:Pagination}, Mode=OneWay}"

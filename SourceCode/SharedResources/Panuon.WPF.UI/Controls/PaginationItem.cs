@@ -1,11 +1,13 @@
 ﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI
 {
-    public class PaginationItem : RadioButton
+    public class PaginationItem 
+        : ToggleButton
     {
         #region Ctor
         static PaginationItem()
