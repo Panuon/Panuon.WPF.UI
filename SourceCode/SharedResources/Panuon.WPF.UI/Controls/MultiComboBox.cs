@@ -518,17 +518,6 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("ItemsCornerRadius", typeof(CornerRadius), typeof(MultiComboBox));
         #endregion
 
-        #region ItemsShadowColor
-        public Color? ItemsShadowColor
-        {
-            get { return (Color?)GetValue(ItemsShadowColorProperty); }
-            set { SetValue(ItemsShadowColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty ItemsShadowColorProperty =
-            DependencyProperty.Register("ItemsShadowColor", typeof(Color?), typeof(MultiComboBox));
-        #endregion
-
         #region ItemsMargin
         public Thickness ItemsMargin
         {
@@ -648,17 +637,6 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ItemsHoverCornerRadiusProperty =
             DependencyProperty.Register("ItemsHoverCornerRadius", typeof(CornerRadius?), typeof(MultiComboBox));
-        #endregion
-
-        #region ItemsHoverShadowColor
-        public Color? ItemsHoverShadowColor
-        {
-            get { return (Color?)GetValue(ItemsHoverShadowColorProperty); }
-            set { SetValue(ItemsHoverShadowColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty ItemsHoverShadowColorProperty =
-            DependencyProperty.Register("ItemsHoverShadowColor", typeof(Color?), typeof(MultiComboBox));
         #endregion
 
         #region ItemsSelectedBackground
