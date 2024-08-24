@@ -13,7 +13,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Border x:Name="BdrContainer"
+            <Border x:Name="BdrBounding"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -146,7 +146,7 @@
                     <Condition Binding="{Binding SelectedBorderBrush, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="BorderBrush"
                         Value="{Binding SelectedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -157,7 +157,7 @@
                     <Condition Binding="{Binding SelectedBorderThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="BorderThickness"
                         Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -168,7 +168,7 @@
                     <Condition Binding="{Binding SelectedCornerRadius, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="CornerRadius"
                         Value="{Binding SelectedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -179,7 +179,7 @@
                     <Condition Binding="{Binding SelectedBackground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="Background"
                         Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -190,10 +190,10 @@
                     <Condition Binding="{Binding SelectedForeground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextElement.Foreground"
                         Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="DockContainer"
                         Property="TextBlock.Foreground"
                         Value="{Binding SelectedForeground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Setter TargetName="IpIcon"
