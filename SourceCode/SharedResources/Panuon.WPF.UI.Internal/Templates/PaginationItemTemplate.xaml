@@ -57,7 +57,7 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
-                        Property="BorderBrush"
+                        Property="BorderThickness"
                         Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
@@ -68,7 +68,7 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
-                        Property="BorderBrush"
+                        Property="CornerRadius"
                         Value="{Binding SelectedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>
