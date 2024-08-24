@@ -106,7 +106,7 @@
                                Value="True" />
                 </MultiDataTrigger.Conditions>
                 <Setter TargetName="BdrContainer"
-                        Property="BorderThickness"
+                        Property="CornerRadius"
                         Value="{Binding ClickCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
             <MultiDataTrigger>

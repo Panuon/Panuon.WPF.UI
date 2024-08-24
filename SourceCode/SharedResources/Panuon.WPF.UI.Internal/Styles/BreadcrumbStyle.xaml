@@ -46,6 +46,8 @@
                 Value="5,0" />
         <Setter Property="ItemsSeparatorTemplate"
                 Value="{StaticResource {ComponentResourceKey ResourceId=SeparatorTemplateKey, TypeInTargetAssembly={x:Type local:Breadcrumb}}}" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>

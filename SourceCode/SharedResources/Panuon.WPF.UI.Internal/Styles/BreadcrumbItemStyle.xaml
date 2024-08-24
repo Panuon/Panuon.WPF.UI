@@ -81,6 +81,8 @@
                 Value="{Binding ItemsClickBorderBrush, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="ClickBorderThickness"
                 Value="{Binding ItemsClickBorderThickness, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
+        <Setter Property="ClickCornerRadius"
+                Value="{Binding ItemsClickCornerRadius, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="ClickEffect"
                 Value="{Binding ItemsClickEffect, RelativeSource={RelativeSource AncestorType=local:Breadcrumb}, Mode=OneWay}" />
         <Setter Property="SeparatorTemplate"
