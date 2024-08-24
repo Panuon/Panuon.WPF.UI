@@ -12,7 +12,7 @@
             <Ellipse Fill="{TemplateBinding Background}"
                      Stroke="{TemplateBinding BorderBrush}"
                      StrokeThickness="{TemplateBinding BorderThickness}" />
-            <Path Stroke="{TemplateBinding Foreground}"
+            <Path Stroke="{TemplateBinding FilledBorderBrush}"
                   StrokeThickness="{TemplateBinding BorderThickness}"
                   RenderTransformOrigin="0.5,0.5"
                   StrokeStartLineCap="Round"

@@ -34,6 +34,17 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
+        #region FilledBorderBrush
+        public Brush FilledBorderBrush
+        {
+            get { return (Brush)GetValue(FilledBorderBrushProperty); }
+            set { SetValue(FilledBorderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty FilledBorderBrushProperty =
+            DependencyProperty.Register("FilledBorderBrush", typeof(Brush), typeof(RingProgressBar));
+        #endregion
+
         #region BorderThickness
         public new double BorderThickness
         {

@@ -19,6 +19,8 @@
                 Value="100" />
         <Setter Property="BorderThickness"
                 Value="8" />
+        <Setter Property="FilledBorderBrush"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="BorderBrush"
                 Value="LightGray" />
         <Setter Property="Template"
