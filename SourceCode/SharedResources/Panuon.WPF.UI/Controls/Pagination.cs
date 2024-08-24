@@ -174,6 +174,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Pagination));
         #endregion
 
+        #region ShadowColor
+        public Color? ShadowColor
+        {
+            get { return (Color?)GetValue(ShadowColorProperty); }
+            set { SetValue(ShadowColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShadowColorProperty =
+            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(Pagination));
+        #endregion
+
         #region ItemsWidth
         public double ItemsWidth
         {
