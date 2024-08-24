@@ -815,7 +815,6 @@ namespace Panuon.WPF.UI
         {
             SetCurrentValue(IsDropDownOpenProperty, true);
             _editorTextBox.Focus();
-            e.Handled = true;
         }
 
         private void Popup_Closed(object sender, EventArgs e)
