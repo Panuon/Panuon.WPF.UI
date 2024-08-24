@@ -1,8 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 
@@ -11,21 +11,6 @@ namespace Panuon.WPF.UI
     public static class TextBlockHelper
     {
         #region Properties
-
-        #region Text
-        public static string GetText(TextBlock textBlock)
-        {
-            return (string)textBlock.GetValue(TextProperty);
-        }
-
-        public static void SetText(TextBlock textBlock, string value)
-        {
-            textBlock.SetValue(TextProperty, value);
-        }
-
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(TextBlockHelper), new PropertyMetadata(OnHighlightTextChanged));
-        #endregion
 
         #region HighlightText
         public static string GetHighlightText(TextBlock textBlock)
@@ -105,6 +90,40 @@ namespace Panuon.WPF.UI
 
         #endregion
 
+        #region Internal Properties
+
+        #region Text
+        internal static string GetText(TextBlock textBlock)
+        {
+            return (string)textBlock.GetValue(TextProperty);
+        }
+
+        internal static void SetText(TextBlock textBlock, string value)
+        {
+            textBlock.SetValue(TextProperty, value);
+        }
+
+        internal static readonly DependencyProperty TextProperty =
+            DependencyProperty.RegisterAttached("Text", typeof(string), typeof(TextBlockHelper), new PropertyMetadata(OnHighlightTextChanged));
+        #endregion
+
+        #region IsRegisted
+        internal static bool GetIsRegisted(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsRegistedProperty);
+        }
+
+        internal static void SetIsRegisted(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsRegistedProperty, value);
+        }
+
+        internal static readonly DependencyProperty IsRegistedProperty =
+            DependencyProperty.RegisterAttached("IsRegisted", typeof(bool), typeof(TextBlockHelper));
+        #endregion
+
+        #endregion
+
         #region Event Handler
         private static void OnHighlightTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -113,6 +132,18 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
+            if (!GetIsRegisted(textBlock))
+            {
+                textBlock.SetBinding(TextProperty, new Binding()
+                {
+                    Path = new PropertyPath(TextBlock.TextProperty),
+                    Source = textBlock,
+                    UpdateSourceTrigger = UpdateSourceTrigger.Default,
+                    Mode = BindingMode.OneWay,
+                });
+                SetIsRegisted(textBlock, true);
+            }
+
             var text = GetText(textBlock);
             var regex = GetHighlightRegex(textBlock);
             var highlightText = GetHighlightText(textBlock);
