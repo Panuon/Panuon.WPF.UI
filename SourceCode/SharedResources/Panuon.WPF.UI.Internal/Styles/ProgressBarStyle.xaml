@@ -17,6 +17,8 @@
                 Value="True" />
         <Setter Property="local:ProgressBarHelper.InvertedForeground"
                 Value="{Binding Foreground, Converter={x:Static pw:Converters.OppositeBrushConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+        <Setter Property="local:ProgressBarHelper.FilledBackground"
+                Value="{Binding Foreground, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="Foreground"
                 Value="DimGray" />
         <Setter Property="Background"

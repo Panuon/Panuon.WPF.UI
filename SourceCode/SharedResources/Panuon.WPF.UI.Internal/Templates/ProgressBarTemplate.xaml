@@ -41,7 +41,7 @@
                               CornerRadius="{Binding Path=(local:ProgressBarHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                     <Border x:Name="BdrFilling"
                             SnapsToDevicePixels="True"
-                            Background="{TemplateBinding Foreground}">
+                            Background="{Binding Path=(local:ProgressBarHelper.FilledBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                         <Border.Clip>
                             <MultiBinding Converter="{x:Static irs:Converters.ProgressBarBorderClipConverter}">
                                 <Binding Path="ActualWidth"

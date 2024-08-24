@@ -30,6 +30,21 @@ namespace Panuon.WPF.UI
 
         #region Properties
 
+        #region FilledBackground
+        public static Brush GetFilledBackground(ProgressBar progressBar)
+        {
+            return (Brush)progressBar.GetValue(FilledBackgroundProperty);
+        }
+
+        public static void SetFilledBackground(ProgressBar progressBar, Brush value)
+        {
+            progressBar.SetValue(FilledBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty FilledBackgroundProperty =
+            DependencyProperty.RegisterAttached("FilledBackground", typeof(Brush), typeof(ProgressBarHelper));
+        #endregion
+
         #region Direction
         public static ProgressDirection GetDirection(ProgressBar progressBar)
         {
