@@ -163,6 +163,17 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("OmittingTextBlockStyle", typeof(Style), typeof(Pagination));
         #endregion
 
+        #region CornerRadius
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Pagination));
+        #endregion
+
         #region ItemsWidth
         public double ItemsWidth
         {

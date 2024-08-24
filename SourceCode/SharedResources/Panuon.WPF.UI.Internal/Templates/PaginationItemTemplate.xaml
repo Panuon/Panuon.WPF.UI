@@ -9,7 +9,7 @@
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.PaginationItemTemplate}"
                      TargetType="local:PaginationItem">
         <Grid>
-            <Border x:Name="BdrContainer"
+            <Border x:Name="BdrBounding"
                     Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -34,7 +34,7 @@
                     <Condition Binding="{Binding SelectedBackground, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="Background"
                         Value="{Binding SelectedBackground, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -45,7 +45,7 @@
                     <Condition Binding="{Binding SelectedBorderBrush, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="BorderBrush"
                         Value="{Binding SelectedBorderBrush, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -56,7 +56,7 @@
                     <Condition Binding="{Binding SelectedBorderThickness, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="BorderThickness"
                         Value="{Binding SelectedBorderThickness, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
@@ -67,7 +67,7 @@
                     <Condition Binding="{Binding SelectedCornerRadius, Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
+                <Setter TargetName="BdrBounding"
                         Property="CornerRadius"
                         Value="{Binding SelectedCornerRadius, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
             </MultiDataTrigger>
