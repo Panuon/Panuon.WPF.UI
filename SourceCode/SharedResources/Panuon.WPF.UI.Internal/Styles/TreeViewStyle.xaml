@@ -67,7 +67,7 @@
         <Setter Property="local:TreeViewHelper.ItemsPadding"
                 Value="10,0" />
         <Setter Property="local:TreeViewHelper.ItemsBackground"
-                Value="#FFFFFF" />
+                Value="Transparent" />
         <Setter Property="local:TreeViewHelper.ItemsHoverBackground"
                 Value="#FAFAFA" />
         <Setter Property="local:TreeViewHelper.ItemsSelectedBackground"
