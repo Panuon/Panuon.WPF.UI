@@ -141,6 +141,10 @@
                 Value="{Binding ItemsHeaderVerticalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="HeaderHorizontalContentAlignment"
                 Value="{Binding ItemsHeaderHorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderHeight"
+                Value="{Binding ItemsHeaderHeight, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderPlacement"
+                Value="{Binding ItemsHeaderPlacement, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="HeaderPadding"
                 Value="{Binding ItemsHeaderPadding, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="HeaderFontSize"
@@ -149,6 +153,16 @@
                 Value="{Binding ItemsHeaderFontWeight, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="HeaderForeground"
                 Value="{Binding ItemsHeaderForeground, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderBackground"
+                Value="{Binding ItemsHeaderBackground, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderBorderBrush"
+                Value="{Binding ItemsHeaderBorderBrush, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderBorderThickness"
+                Value="{Binding ItemsHeaderBorderThickness, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderCornerRadius"
+                Value="{Binding ItemsHeaderCornerRadius, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
+        <Setter Property="HeaderShadowColor"
+                Value="{Binding ItemsHeaderShadowColor, RelativeSource={RelativeSource AncestorType=local:Timeline}, Mode=OneWay}" />
         <Setter Property="ContentTemplateSelector"
                 Value="{StaticResource TextBlockFirstTemplateSelector}" />
         <Setter Property="Template"
