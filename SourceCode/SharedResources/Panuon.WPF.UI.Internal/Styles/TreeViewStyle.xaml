@@ -52,6 +52,8 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.TreeViewStyle}"
            TargetType="TreeView">
+        <Setter Property="i:VisualStateHelper.Regist"
+                Value="True" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"

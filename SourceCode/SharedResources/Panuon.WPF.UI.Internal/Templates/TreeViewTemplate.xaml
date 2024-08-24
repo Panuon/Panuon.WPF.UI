@@ -8,23 +8,33 @@
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewTemplate}"
                      TargetType="TreeView">
-        <local:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
-                           Background="{TemplateBinding Background}"
-                           BorderThickness="{TemplateBinding BorderThickness}">
-            <ScrollViewer Margin="{TemplateBinding Padding}"
-                          Focusable="False">
-                <ItemsPresenter />
-            </ScrollViewer>
-        </local:ContentControlX>
+        <Grid>
+            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            </Border>
+            <Border Margin="{TemplateBinding BorderThickness}">
+                <ScrollViewer Margin="{TemplateBinding Padding}"
+                              Focusable="False">
+                    <ItemsPresenter />
+                </ScrollViewer>
+            </Border>
+        </Grid>
     </ControlTemplate>
 
     <ControlTemplate x:Key="{x:Static irs:TemplateKeys.TreeViewNonScrollableTemplate}"
                      TargetType="TreeView">
-        <local:ContentControlX BorderBrush="{TemplateBinding BorderBrush}"
-                           Background="{TemplateBinding Background}"
-                           BorderThickness="{TemplateBinding BorderThickness}">
-            <ItemsPresenter />
-        </local:ContentControlX>
+        <Grid>
+            <Border BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+            </Border>
+            <Border Margin="{TemplateBinding BorderThickness}">
+                <ItemsPresenter Margin="{TemplateBinding Padding}" />
+            </Border>
+        </Grid>
     </ControlTemplate>
 
 </ResourceDictionary>
