@@ -129,6 +129,7 @@ namespace Panuon.WPF.UI
                 {
                     child.Opacity = 0;
                     child.Visibility = Visibility.Hidden;
+                    child.Arrange(new Rect(0, 0, 0, 0));
                 }
 
                 child.Arrange(new Rect(0, 0, finalSize.Width, finalSize.Height));
