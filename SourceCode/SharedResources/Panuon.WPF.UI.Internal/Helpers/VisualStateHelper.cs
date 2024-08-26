@@ -1178,7 +1178,7 @@ namespace Panuon.WPF.UI.Internal
                 AnimationUtil.BeginAnimationStoryboard(element, propertyBrushes);
             }
             if (!GetFocusedShadowColorLock((DependencyObject)sender)
-                    && element.GetValue(FocusedShadowColorProperty) is Color focusedShadowColor)
+                && element.GetValue(FocusedShadowColorProperty) is Color focusedShadowColor)
             {
                 var effect = GetEffect(element);
                 if (effect == null)
@@ -1200,16 +1200,6 @@ namespace Panuon.WPF.UI.Internal
                     AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, ShadowHelper.GetOpacity(element), GlobalSettings.Setting.AnimationDuration);
                     AnimationUtil.BeginColorAnimation(effect, DropShadowEffect.ColorProperty, null, focusedShadowColor, GlobalSettings.Setting.AnimationDuration);
                 }
-            }
-            else
-            {
-                var effect = GetEffect(element);
-                if (effect == null)
-                {
-                    return;
-                }
-
-                AnimationUtil.BeginDoubleAnimation(effect, DropShadowEffect.OpacityProperty, null, 0, GlobalSettings.Setting.AnimationDuration);
             }
         }
 
