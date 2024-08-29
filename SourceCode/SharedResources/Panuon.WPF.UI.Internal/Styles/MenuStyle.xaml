@@ -27,7 +27,7 @@
                    FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=MenuItem}, Mode=OneWay}"
                    FontFamily="/Panuon.WPF.UI;component/Resources/Fonts/#PanuonIcon" />
     </DataTemplate>
-    
+
     <Style x:Key="{x:Static rs:StyleKeys.MenuStyle}"
            TargetType="Menu">
         <Setter Property="local:IconHelper.FontFamily"
@@ -82,7 +82,7 @@
                 Value="BottomRight" />
         <Setter Property="local:DropDownHelper.VerticalOffset"
                 Value="0" />
-        <Setter Property="local:DropDownHelper.Width"
+        <Setter Property="local:DropDownHelper.MinWidth"
                 Value="150" />
         <Setter Property="local:MenuHelper.TopLevelDropDownPlacement"
                 Value="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
