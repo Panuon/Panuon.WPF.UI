@@ -95,7 +95,8 @@
                                 </ContentControl.Content>
                             </ContentControl>
                             <Grid Grid.Column="1"
-                                  Margin="{TemplateBinding Padding}">
+                                  Margin="{TemplateBinding Padding}"
+                                  Visibility="{Binding IsTextVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
                                 <TextBlock IsHitTestVisible="False"
                                            Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.TrueToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                            Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"

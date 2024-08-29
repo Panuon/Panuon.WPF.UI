@@ -264,6 +264,17 @@ namespace Panuon.WPF.UI
             VisualStateHelper.FocusedWatermarkForegroundProperty.AddOwner(typeof(ColorPicker));
         #endregion
 
+        #region IsTextVisible
+        public bool IsTextVisible
+        {
+            get { return (bool)GetValue(IsTextVisibleProperty); }
+            set { SetValue(IsTextVisibleProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsTextVisibleProperty =
+            DependencyProperty.Register("IsTextVisible", typeof(bool), typeof(ColorPicker), new PropertyMetadata(true));
+        #endregion
+
         #region Text
         public string Text
         {
