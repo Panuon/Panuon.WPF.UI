@@ -136,8 +136,8 @@ namespace Panuon.WPF.UI.Internal
                         }
                     }
 
-                    bdrFront.Arrange(new Rect(0, 0, arrangeSize.Width, top));
-                    ccFront.Arrange(new Rect(0, 0, arrangeSize.Width, top));
+                    bdrFront.Arrange(new Rect(0, 0, arrangeSize.Width, ccFront.DesiredSize.Height));
+                    ccFront.Arrange(new Rect(0, 0, arrangeSize.Width, ccFront.DesiredSize.Height));
                     top += ccFront.DesiredSize.Height;
 
                     scrollViewer.Height = scrollViewerHeight;
