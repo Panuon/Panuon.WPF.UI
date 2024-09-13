@@ -75,7 +75,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Panuon.WPF, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Panuon.WPF.1.1.1\lib\net472\Panuon.WPF.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SourceCode\references\net472\Panuon.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,7 +174,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>

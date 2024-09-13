@@ -28,7 +28,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Panuon.WPF" Version="1.1.1" />
+	  <Reference Include="Panuon.WPF">
+	    <HintPath>..\..\references\netcoreapp3.1\Panuon.WPF.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>
