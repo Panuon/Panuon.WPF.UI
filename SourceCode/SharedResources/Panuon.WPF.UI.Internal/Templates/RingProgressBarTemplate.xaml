@@ -56,7 +56,8 @@
                     </MultiBinding>
                 </Path.Data>
             </Path>
-            <TextBlock Foreground="{TemplateBinding Foreground}"
+            <TextBlock Margin="{TemplateBinding Padding}"
+                       Foreground="{TemplateBinding Foreground}"
                        Visibility="{Binding IsPercentVisible, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                        VerticalAlignment="Center"

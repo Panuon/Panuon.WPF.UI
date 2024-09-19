@@ -28,8 +28,6 @@
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="i:VisualStateHelper.IsFocused"
-                Value="{Binding IsKeyboardFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -87,6 +85,16 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.SearchBoxTemplate}}"/>
         <Style.Triggers>
+            <Trigger Property="IsFocused"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled"
                      Value="False">
                 <Setter Property="Opacity"

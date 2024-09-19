@@ -1,7 +1,6 @@
 ﻿using Panuon.WPF.UI.Internal.Implements;
 using Panuon.WPF.UI.Internal.Utils;
 using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;

@@ -112,8 +112,6 @@
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="i:VisualStateHelper.IsFocused"
-                Value="{Binding IsKeyboardFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="i:VisualStateHelper.IsOpened"
                 Value="{Binding IsDropDownOpen, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
@@ -209,6 +207,16 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ComboBoxTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="IsFocused"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
             <Trigger Property="IsEditable"
                           Value="False">
                 <Setter Property="Template"

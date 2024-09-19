@@ -39,8 +39,6 @@
                 Value="True" />
         <Setter Property="i:VisualStateHelper.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-        <Setter Property="i:VisualStateHelper.IsFocused"
-                Value="{Binding IsKeyboardFocused, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:IconHelper.FontSize"
@@ -78,6 +76,16 @@
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.TextBoxClearableTemplate}}" />
         <Style.Triggers>
+            <Trigger Property="IsFocused"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocusWithin"
+                     Value="True">
+                <Setter Property="i:VisualStateHelper.IsFocused"
+                        Value="True" />
+            </Trigger>
             <Trigger Property="local:TextBoxHelper.ClearButtonVisibility"
                      Value="Collapsed">
                 <Setter Property="Template"
