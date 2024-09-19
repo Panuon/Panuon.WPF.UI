@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Panuon.WPF.UI.Internal;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -10,13 +11,16 @@ using System.Windows.Threading;
 namespace Panuon.WPF.UI
 {
     [TemplatePart(Name = PopupTemplateName, Type = typeof(Popup))]
+    [TemplatePart(Name = ContentPresenterName, Type = typeof(ContentPresenter))]
     [ContentProperty(nameof(Child))]
     public class DropDown : ContentControl
     {
         #region Fields
         private const string PopupTemplateName = "PART_Popup";
+        private const string ContentPresenterName = "PART_ContentPresenter";
 
         private Popup _popup;
+        private ContentPresenter _contentPresenter;
 
         private bool _isInited = true;
 
@@ -118,6 +122,7 @@ namespace Panuon.WPF.UI
             base.OnApplyTemplate();
 
             _popup = GetTemplateChild(PopupTemplateName) as Popup;
+            _contentPresenter = GetTemplateChild(ContentPresenterName) as ContentPresenter;
 
             if (InitBeforeOpen)
             {

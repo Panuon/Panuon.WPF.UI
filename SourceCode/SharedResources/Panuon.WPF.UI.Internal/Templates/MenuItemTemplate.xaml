@@ -284,17 +284,6 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                    <Condition Binding="{Binding Path=(local:MenuItemHelper.CheckedCornerRadius), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
-                               Value="True" />
-                </MultiDataTrigger.Conditions>
-                <Setter TargetName="BdrContainer"
-                        Property="CornerRadius"
-                        Value="{Binding Path=(local:MenuItemHelper.CheckedCornerRadius), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
-            </MultiDataTrigger>
-            <MultiDataTrigger>
-                <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                                Value="True" />
                     <Condition Binding="{Binding Path=(local:MenuItemHelper.ClickForeground), Converter={x:Static pw:Converters.IsNonnullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
@@ -489,8 +478,6 @@
                         <ContentPresenter Grid.Column="1"
                                           Grid.ColumnSpan="2"
                                           RecognizesAccessKey="True"
-                                          TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                          TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           ContentSource="Header" />

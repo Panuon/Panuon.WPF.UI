@@ -139,7 +139,7 @@
         <Setter Property="DefaultColor"
                 Value="{Binding SelectedColor, RelativeSource={RelativeSource Self}, Mode=OneTime}" />
         <Setter Property="Padding"
-                Value="0,0" />
+                Value="0, 0" />
         <Setter Property="Template"
                 Value="{StaticResource {x:Static irs:TemplateKeys.ColorPickerTemplate}}" />
         <Style.Triggers>

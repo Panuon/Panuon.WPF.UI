@@ -1,8 +1,4 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal;
-using System;
-using System.ComponentModel;
-using System.Linq;
+﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

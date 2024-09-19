@@ -103,17 +103,19 @@
                                            Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                                <ContentControl Margin="2,0,0,0"
+                                <ContentControl x:Name="CcWatermark"
+                                                Margin="2,0,0,0"
                                                 IsHitTestVisible="False"
                                                 Focusable="False"
                                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                Visibility="{Binding Text, Converter={x:Static pw:Converters.StringNonnullAndNotEmptyToCollapseConverter},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                Visibility="Collapsed"
                                                 Content="{TemplateBinding Watermark}"
                                                 ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
                                                 Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                                 <TextBox x:Name="PART_EditableTextBox"
                                          Focusable="True"
+                                         Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                          CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                          Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:ColorPicker}, Mode=OneWay}"
                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -243,8 +245,30 @@
             </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger  Property="ClearButtonVisibility"
-                      Value="Visible">
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNullOrEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcWatermark"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="False" />
+                    <Condition Binding="{Binding SelectedItem, Converter={x:Static pw:Converters.IsNullConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="CcWatermark"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <Trigger Property="ClearButtonVisibility"
+                     Value="Visible">
                 <Setter TargetName="BtnClear"
                         Property="Visibility"
                         Value="Visible" />

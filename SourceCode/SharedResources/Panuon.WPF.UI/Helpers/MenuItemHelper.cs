@@ -334,7 +334,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty CheckedCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("CheckedCornerRadius", typeof(CornerRadius?), typeof(MenuItemHelper));
+            VisualStateHelper.CheckedCornerRadiusProperty.AddOwner(typeof(MenuItemHelper));
         #endregion
 
         #region SeparatorBrush

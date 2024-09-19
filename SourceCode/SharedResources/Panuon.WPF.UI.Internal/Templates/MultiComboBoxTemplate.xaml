@@ -45,7 +45,7 @@
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="PART_BorderContainer" Grid.ColumnSpan="3" Visibility="Hidden"/>
+                        <Border x:Name="PART_BorderContainer" Grid.ColumnSpan="3" Visibility="Collapsed" />
                         <i:IconPresenter x:Name="IpIcon"
                                          Content="{TemplateBinding Icon}"
                                          Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
@@ -73,7 +73,6 @@
                             </i:IconPresenter.Visibility>
                         </i:IconPresenter>
                         <ToggleButton Grid.Column="1"
-                                      Focusable="False"
                                       Padding="{TemplateBinding Padding}"
                                       IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
                             <ToggleButton.Style>
@@ -110,9 +109,7 @@
                                               AlternationCount="2"
                                               ItemsSource="{Binding SelectionBoxItems, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                                               Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
-                                              Margin="{TemplateBinding Padding}"
-                                              VerticalAlignment="Stretch"
-                                              HorizontalAlignment="Stretch">
+                                              Margin="{TemplateBinding Padding}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel Orientation="Horizontal" />

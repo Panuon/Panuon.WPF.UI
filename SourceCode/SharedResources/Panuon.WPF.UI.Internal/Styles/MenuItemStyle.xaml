@@ -355,6 +355,16 @@
                 <Setter Property="Opacity"
                         Value="{Binding DisabledOpacity, Source={x:Static local:GlobalSettings.Setting}}" />
             </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsCheckable"
+                               Value="True" />
+                    <Condition Property="IsChecked"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter Property="i:VisualStateHelper.IsChecked"
+                        Value="True" />
+            </MultiTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsCheckable, RelativeSource={RelativeSource Self}, Mode=OneWay}"

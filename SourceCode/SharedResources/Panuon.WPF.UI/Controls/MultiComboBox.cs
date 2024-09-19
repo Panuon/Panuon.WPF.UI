@@ -439,6 +439,21 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("SelectionBoxItemLabelStyle", typeof(Style), typeof(MultiComboBox));
         #endregion
 
+        #region Selection Box
+
+        #region SelectionBoxItemLabelBackground
+        public Brush SelectionBoxItemLabelBackground
+        {
+            get { return (Brush)GetValue(SelectionBoxItemLabelBackgroundProperty); }
+            set { SetValue(SelectionBoxItemLabelBackgroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectionBoxItemLabelBackgroundProperty =
+            DependencyProperty.Register("SelectionBoxItemLabelBackground", typeof(Brush), typeof(MultiComboBox));
+        #endregion
+
+        #endregion
+
         #region Items Properties
 
         #region ItemsWidth
@@ -850,7 +865,6 @@ namespace Panuon.WPF.UI
         {
             _containerBorder.Child = null;
             _itemsScrollViewer.Content = _itemsPresenter;
-            
         }
 
         private void DropDown_Closed(object sender, EventArgs e)

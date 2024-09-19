@@ -12,12 +12,12 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Background="{TemplateBinding Background}">
             <Grid>
-                <ContentPresenter x:Name="CpContent"
+                <ContentPresenter x:Name="PART_ContentPresenter"
                                   Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                 <local:PopupX x:Name="PART_Popup"
-                              PlacementTarget="{Binding ElementName=CpContent, Mode=OneWay}"
+                              PlacementTarget="{Binding ElementName=PART_ContentPresenter, Mode=OneWay}"
                               Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DropDown}, Mode=OneWay}"
                               AllowsTransparency="True"
                               StaysOpen="{TemplateBinding StaysOpen}"

@@ -1475,6 +1475,11 @@ namespace Panuon.WPF.UI.Internal
             {
                 properties.Add(CornerRadiusProperty);
             }
+
+            if (properties.Any())
+            {
+                AnimationUtil.BeginBrushAnimationStoryboard(element, properties);
+            }
         }
 
         #endregion
