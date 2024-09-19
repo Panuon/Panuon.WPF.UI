@@ -1,7 +1,7 @@
 ﻿using Panuon.WPF.UI.Internal;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Panuon.WPF.UI
@@ -14,6 +14,21 @@ namespace Panuon.WPF.UI
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PaginationItem), new FrameworkPropertyMetadata(typeof(PaginationItem)));
         }
+        #endregion
+
+        #region Routed Events
+
+        #region Selected
+        public event RoutedEventHandler Selected
+        {
+            add { AddHandler(SelectedEvent, value); }
+            remove { RemoveHandler(SelectedEvent, value); }
+        }
+
+        public static readonly RoutedEvent SelectedEvent =
+            EventManager.RegisterRoutedEvent("Selected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(PaginationItem));
+        #endregion
+
         #endregion
 
         #region Properties
@@ -195,6 +210,15 @@ namespace Panuon.WPF.UI
             VisualStateHelper.SelectedShadowColorProperty.AddOwner(typeof(PaginationItem));
         #endregion
 
+        #endregion
+
+        #region Overrides
+        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            base.OnPreviewMouseLeftButtonDown(e);
+            RaiseEvent(new RoutedEventArgs(SelectedEvent));
+        }
         #endregion
     }
 }

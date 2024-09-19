@@ -23,7 +23,8 @@
                               Visibility="{TemplateBinding PageTurnButtonVisibility}"
                               Command="{x:Static local:Pagination.PageUpCommand}"
                               Style="{TemplateBinding PageTurnButtonStyle}" />
-                <ItemsControl Grid.Column="1"
+                <ItemsControl x:Name="PART_ItemsControl"
+                              Grid.Column="1"
                               ItemsSource="{TemplateBinding PageList}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -81,7 +82,8 @@
                               Visibility="{TemplateBinding PageTurnButtonVisibility}"
                               Command="{x:Static local:Pagination.PageUpCommand}"
                               Style="{TemplateBinding PageTurnButtonStyle}" />
-                <ItemsControl Grid.Row="1"
+                <ItemsControl x:Name="PART_ItemsControl"
+                              Grid.Row="1"
                               ItemsSource="{TemplateBinding PageList}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

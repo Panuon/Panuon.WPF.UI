@@ -1,10 +1,8 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal;
+﻿using Panuon.WPF.UI.Internal;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -15,6 +13,8 @@ namespace Panuon.WPF.UI
     {
         #region Fields
         private object _pageListLock = new object();
+
+        private ItemsControl _itemsControl;
         #endregion
 
         #region Ctor
@@ -31,7 +31,7 @@ namespace Panuon.WPF.UI
 
         public Pagination()
         {
-            AddHandler(PaginationItem.ClickEvent, new RoutedEventHandler(OnPaginationItemClick));
+            AddHandler(PaginationItem.SelectedEvent, new RoutedEventHandler(OnPaginationItemSelected));
         }
         #endregion
 
@@ -438,6 +438,13 @@ namespace Panuon.WPF.UI
             OnEffectivePageValueChanged();
             OnCurrentPageChanged(CurrentPage, 1);
         }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _itemsControl = GetTemplateChild("PART_ItemsControl") as ItemsControl;
+        }
         #endregion
 
         #region Internal Properties
@@ -456,7 +463,7 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region Event Handlers
-        private void OnPaginationItemClick(object sender, RoutedEventArgs e)
+        private void OnPaginationItemSelected(object sender, RoutedEventArgs e)
         {
             if(e.OriginalSource is PaginationItem paginationItem)
             {
