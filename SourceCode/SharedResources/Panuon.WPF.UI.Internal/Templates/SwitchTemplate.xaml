@@ -45,7 +45,6 @@
                 <ContentControl Content=""
                                 ContentTemplate="{Binding BoxTemplate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrContainer"
-                        Height="{TemplateBinding BoxHeight}"
                         Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
                         HorizontalAlignment="Right">
                     <Border.Margin>
