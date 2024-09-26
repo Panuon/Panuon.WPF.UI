@@ -84,7 +84,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\KeyOnlyStyleDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\StyleDictionaryBase.cs" />
     <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Resources\StyleDictionary.cs" />
-    <Compile Include="..\..\SharedResources\Panuon.WPF.UI\Enums\AnimationEasing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\InputLimits.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\TimeSelectorMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\CalendarXMode.cs" />

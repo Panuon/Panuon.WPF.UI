@@ -1,11 +1,9 @@
-﻿using Panuon.WPF;
-using Panuon.WPF.UI.Internal;
+﻿using Panuon.WPF.UI.Internal;
 using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -795,14 +793,22 @@ namespace Panuon.WPF.UI
         public override void OnApplyTemplate()
         {
             _calendarX = GetTemplateChild(CalendarXTemplateName) as CalendarX;
-            _calendarX.ParentDateTimePicker = this;
-            _calendarX.SelectedDateChanged += CalendarX_SelectedDateTimeChanged;
+            if (_calendarX != null)
+            {
+                _calendarX.ParentDateTimePicker = this;
+                _calendarX.SelectedDateChanged -= CalendarX_SelectedDateTimeChanged;
+                _calendarX.SelectedDateChanged += CalendarX_SelectedDateTimeChanged;
+            }
 
             _timeSelector = GetTemplateChild(TimeSelectorCalendarXTemplateName) as TimeSelector;
-            _timeSelector.ParentDateTimePicker = this;
-            _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
+            if (_timeSelector != null)
+            {
+                _timeSelector.ParentDateTimePicker = this;
+                _timeSelector.SelectedTimeChanged += TimeSelector_SelectedTimeChanged;
+            }
 
             _editableTextBox = GetTemplateChild(EditableTextBoxTemplateName) as TextBox;
+            _editableTextBox.TextChanged -= EditableTextBox_TextChanged;
             _editableTextBox.TextChanged += EditableTextBox_TextChanged;
 
             _popupX = GetTemplateChild(PopupXTemplateName) as PopupX;

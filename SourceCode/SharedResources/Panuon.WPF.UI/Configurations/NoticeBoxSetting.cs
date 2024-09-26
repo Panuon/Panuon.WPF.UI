@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Panuon.WPF;
 
 namespace Panuon.WPF.UI.Configurations
 {
