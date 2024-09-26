@@ -7,7 +7,7 @@
                     xmlns:irs="clr-namespace:Panuon.WPF.UI.Internal.Resources"
                     xmlns:its="clr-namespace:Panuon.WPF.UI.Internal.TemplateSelectors">
 
-    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DateTimePickerTemplate}"
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DateTimePickerDateTimeTemplate}"
                      TargetType="local:DateTimePicker">
         <ControlTemplate.Resources>
             <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
@@ -243,60 +243,6 @@
             </local:PopupX>
         </Grid>
         <ControlTemplate.Triggers>
-            <Trigger Property="Mode"
-                     Value="Date">
-                <Setter TargetName="PART_TimeSelector"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Year">
-                <Setter TargetName="PART_TimeSelector"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Month">
-                <Setter TargetName="PART_TimeSelector"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Time">
-                <Setter TargetName="PART_CalendarX"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Hour">
-                <Setter TargetName="PART_CalendarX"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
-            <Trigger Property="Mode"
-                     Value="Minute">
-                <Setter TargetName="PART_CalendarX"
-                        Property="Visibility"
-                        Value="Collapsed" />
-                <Setter TargetName="SprDateTime"
-                        Property="Visibility"
-                        Value="Collapsed" />
-            </Trigger>
             <Trigger  Property="ClearButtonVisibility"
                       Value="Visible">
                 <Setter TargetName="BtnClear"
@@ -366,5 +312,576 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DateTimePickerDateTemplate}"
+                     TargetType="local:DateTimePicker">
+        <ControlTemplate.Resources>
+            <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
+        </ControlTemplate.Resources>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid x:Name="DockContainer"
+                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <i:IconPresenter x:Name="IpIcon"
+                                     Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MinWidth="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MinHeight="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MaxWidth="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MaxHeight="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     HorizontalContentAlignment="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     VerticalContentAlignment="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Foreground="{Binding Path=(local:IconHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     FontFamily="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <i:IconPresenter.Visibility>
+                            <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
+                                <Binding Path="Icon"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:IconHelper.HiddenOnNull)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </i:IconPresenter.Visibility>
+                    </i:IconPresenter>
+                    <ToggleButton Grid.Column="1"
+                                  Focusable="False"
+                                  Padding="{TemplateBinding Padding}"
+                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <TextBlock IsHitTestVisible="False"
+                                           Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.TrueToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                <ContentControl Margin="2,0,0,0"
+                                                IsHitTestVisible="False"
+                                                Focusable="False"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                Visibility="{Binding Text, Converter={x:Static pw:Converters.StringNonnullAndNotEmptyToCollapseConverter},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                Content="{TemplateBinding Watermark}"
+                                                ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                                Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Focusable="True"
+                                         CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="TextBox">
+                                                        <Border x:Name="PART_ContentHost"
+                                                                Focusable="False"
+                                                                Margin="{TemplateBinding Padding}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button x:Name="BtnClear"
+                                    Grid.Column="1"
+                                    Visibility="Collapsed"
+                                    Style="{TemplateBinding ClearButtonStyle}"
+                                    Command="{TemplateBinding ClearCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}" />
+                            <local:TransformControl Grid.Column="2"
+                                                    Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
+                        </Grid>
+                    </ToggleButton>
+                </Grid>
+            </Border>
+            <local:PopupX x:Name="PART_PopupX"
+                          Focusable="False"
+                          AllowsTransparency="True"
+                          IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}"
+                          PlacementTarget="{Binding ElementName=BdrContainer}"
+                          Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                          PopupAnimation="Fade"
+                          StaysOpen="False">
+                <local:PopupX.HorizontalOffset>
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.HorizontalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_PopupX"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.HorizontalOffset>
+                <local:PopupX.VerticalOffset>
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.VerticalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_PopupX"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.VerticalOffset>
+                <Grid x:Name="GrdDropDown"
+                      Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}">
+                    <Grid.Margin>
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownMarginConverter}">
+                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                     RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualPlacement"
+                                     ElementName="PART_PopupX"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                     RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Grid.Margin>
+                    <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                           Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}">
+                        <local:ContentControlX.Effect>
+                            <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
+                                <Binding Path="(local:DropDownHelper.ShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:ContentControlX.Effect>
+                        <local:CalendarX x:Name="PART_CalendarX"
+                                         Style="{TemplateBinding CalendarXStyle}"
+                                         Culture="{TemplateBinding Culture}"
+                                         MinDate="{TemplateBinding MinDateTime}"
+                                         MaxDate="{TemplateBinding MaxDateTime}"
+                                         YearStringFormat="{TemplateBinding YearStringFormat}"
+                                         FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}" />
+                    </local:ContentControlX>
+                </Grid>
+            </local:PopupX>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger  Property="ClearButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static irs:TemplateKeys.DateTimePickerTimeTemplate}"
+                     TargetType="local:DateTimePicker">
+        <ControlTemplate.Resources>
+            <its:WatermarkTemplateSelector x:Key="WatermarkTemplateSelector" />
+        </ControlTemplate.Resources>
+        <Grid>
+            <Border x:Name="BdrContainer"
+                    Background="{Binding Path=(i:VisualStateHelper.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderBrush="{Binding Path=(i:VisualStateHelper.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    BorderThickness="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:VisualStateHelper.CornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    Effect="{Binding Path=(i:VisualStateHelper.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+            <Border Margin="{Binding Path=(i:VisualStateHelper.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                <Grid x:Name="DockContainer"
+                      TextElement.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                      TextBlock.Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <i:IconPresenter x:Name="IpIcon"
+                                     Content="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Margin="{Binding Path=(local:IconHelper.Margin), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Width="{Binding Path=(local:IconHelper.Width), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Height="{Binding Path=(local:IconHelper.Height), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MinWidth="{Binding Path=(local:IconHelper.MinWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MinHeight="{Binding Path=(local:IconHelper.MinHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MaxWidth="{Binding Path=(local:IconHelper.MaxWidth), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     MaxHeight="{Binding Path=(local:IconHelper.MaxHeight), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     HorizontalContentAlignment="{Binding Path=(local:IconHelper.HorizontalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     VerticalContentAlignment="{Binding Path=(local:IconHelper.VerticalAlignment), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     Foreground="{Binding Path=(local:IconHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     FontFamily="{Binding Path=(local:IconHelper.FontFamily), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     FontSize="{Binding Path=(local:IconHelper.FontSize), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                     ToolTip="{Binding Path=(local:IconHelper.ToolTip), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+                        <i:IconPresenter.Visibility>
+                            <MultiBinding Converter="{x:Static irs:Converters.IconVisibilityConverter}">
+                                <Binding Path="Icon"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:IconHelper.HiddenOnNull)"
+                                         RelativeSource="{RelativeSource TemplatedParent}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </i:IconPresenter.Visibility>
+                    </i:IconPresenter>
+                    <ToggleButton Grid.Column="1"
+                                  Focusable="False"
+                                  Padding="{TemplateBinding Padding}"
+                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                            <Border Background="Transparent">
+                                                <ContentPresenter />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ToggleButton.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <TextBlock IsHitTestVisible="False"
+                                           Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.TrueToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Text="{Binding Text, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                <ContentControl Margin="2,0,0,0"
+                                                IsHitTestVisible="False"
+                                                Focusable="False"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                Visibility="{Binding Text, Converter={x:Static pw:Converters.StringNonnullAndNotEmptyToCollapseConverter},RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"
+                                                Content="{TemplateBinding Watermark}"
+                                                ContentTemplateSelector="{StaticResource WatermarkTemplateSelector}"
+                                                Foreground="{Binding Path=(i:VisualStateHelper.WatermarkForeground),RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Focusable="True"
+                                         CaretBrush="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                         Foreground="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Visibility="{Binding IsEditable, Converter={x:Static pw:Converters.FalseToCollapseConverter}, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}">
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="TextBox">
+                                                        <Border x:Name="PART_ContentHost"
+                                                                Focusable="False"
+                                                                Margin="{TemplateBinding Padding}" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+                            </Grid>
+                            <Button x:Name="BtnClear"
+                                    Grid.Column="1"
+                                    Visibility="Collapsed"
+                                    Style="{TemplateBinding ClearButtonStyle}"
+                                    Command="{TemplateBinding ClearCommand}"
+                                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=local:DateTimePicker}}" />
+                            <local:TransformControl Grid.Column="2"
+                                                    Style="{TemplateBinding ToggleArrowTransformControlStyle}" />
+                        </Grid>
+                    </ToggleButton>
+                </Grid>
+            </Border>
+            <local:PopupX x:Name="PART_PopupX"
+                          Focusable="False"
+                          AllowsTransparency="True"
+                          IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=TwoWay}"
+                          PlacementTarget="{Binding ElementName=BdrContainer}"
+                          Placement="{Binding Path=(local:DropDownHelper.Placement), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                          PopupAnimation="Fade"
+                          StaysOpen="False">
+                <local:PopupX.HorizontalOffset>
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownHorizontalOffsetConverter}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.HorizontalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_PopupX"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.HorizontalOffset>
+                <local:PopupX.VerticalOffset>
+                    <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownVerticalOffsetConverter}">
+                        <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.VerticalOffset)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                        <Binding Path="ActualPlacement"
+                                 ElementName="PART_PopupX"
+                                 Mode="OneWay" />
+                        <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                 RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                 Mode="OneWay" />
+                    </MultiBinding>
+                </local:PopupX.VerticalOffset>
+                <Grid x:Name="GrdDropDown"
+                      Height="{Binding Path=(local:DropDownHelper.Height), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      Width="{Binding Path=(local:DropDownHelper.Width), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MinWidth="{Binding Path=(local:DropDownHelper.MinWidth), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MinHeight="{Binding Path=(local:DropDownHelper.MinHeight), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MaxHeight="{Binding Path=(local:DropDownHelper.MaxHeight), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                      MaxWidth="{Binding Path=(local:DropDownHelper.MaxWidth), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}">
+                    <Grid.Margin>
+                        <MultiBinding Converter="{x:Static irs:Converters.ComboBoxDropDownMarginConverter}">
+                            <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                     RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                     Mode="OneWay" />
+                            <Binding Path="ActualPlacement"
+                                     ElementName="PART_PopupX"
+                                     Mode="OneWay" />
+                            <Binding Path="(local:DropDownHelper.ClipDockSideShadow)"
+                                     RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                     Mode="OneWay" />
+                        </MultiBinding>
+                    </Grid.Margin>
+                    <local:ContentControlX Source="{Binding RelativeSource={RelativeSource TemplatedParent}}"
+                                           Background="{Binding Path=(local:DropDownHelper.Background), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           BorderBrush="{Binding Path=(local:DropDownHelper.BorderBrush), RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}"
+                                           BorderThickness="{Binding Path=(local:DropDownHelper.BorderThickness), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           CornerRadius="{Binding Path=(local:DropDownHelper.CornerRadius), RelativeSource={RelativeSource AncestorType=local:DateTimePicker}, Mode=OneWay}"
+                                           Margin="{Binding Path=(local:DropDownHelper.Padding),RelativeSource={RelativeSource AncestorType=local:DateTimePicker},Mode=OneWay}">
+                        <local:ContentControlX.Effect>
+                            <MultiBinding Converter="{x:Static irs:Converters.DropShadowEffectWithDepthConverter}">
+                                <Binding Path="(local:DropDownHelper.ShadowColor)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.BlurRadius)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.ShadowDepth)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Direction)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.Opacity)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                                <Binding Path="(local:ShadowHelper.RenderingBias)"
+                                         RelativeSource="{RelativeSource AncestorType=local:DateTimePicker}"
+                                         Mode="OneWay" />
+                            </MultiBinding>
+                        </local:ContentControlX.Effect>
+                        <local:TimeSelector x:Name="PART_TimeSelector"
+                                            Style="{TemplateBinding TimeSelectorStyle}"
+                                            Culture="{TemplateBinding Culture}" />
+                    </local:ContentControlX>
+                </Grid>
+            </local:PopupX>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger  Property="ClearButtonVisibility"
+                      Value="Visible">
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnHover" />
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnHoverAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="ClearButtonVisibility"
+                               Value="VisibleOnFocused" />
+                    <Condition Property="IsKeyboardFocusWithin"
+                               Value="True" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ClearButtonVisibility, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="VisibleOnFocusedAndNonnull" />
+                    <Condition Binding="{Binding Text, Converter={x:Static pw:Converters.IsStringNonnullAndNotEmptyConverter}, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                    <Condition Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                               Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="BtnClear"
+                        Property="Visibility"
+                        Value="Visible" />
+            </MultiDataTrigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 
 </ResourceDictionary>

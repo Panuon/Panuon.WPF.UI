@@ -28,7 +28,9 @@
         public const string DataGridRowHeaderTemplate = nameof(DataGridRowHeaderTemplate);
         public const string DataGridScrollViewerTemplate = nameof(DataGridScrollViewerTemplate);
         public const string DataGridTemplate = nameof(DataGridTemplate);
-        public const string DateTimePickerTemplate = nameof(DateTimePickerTemplate);
+        public const string DateTimePickerDateTimeTemplate = nameof(DateTimePickerDateTimeTemplate);
+        public const string DateTimePickerDateTemplate = nameof(DateTimePickerDateTemplate);
+        public const string DateTimePickerTimeTemplate = nameof(DateTimePickerTimeTemplate);
         public const string DrawerTemplate = nameof(DrawerTemplate);
         public const string DropDownTemplate = nameof(DropDownTemplate);
         public const string ExpanderUpDownTemplate = nameof(ExpanderUpDownTemplate);
