@@ -872,6 +872,25 @@ namespace Panuon.WPF.UI
             _itemsScrollViewer.Content = null;
             _containerBorder.Child = _itemsPresenter;
         }
+
+        protected override Size MeasureOverride(Size constraint)
+        {
+            if (_dropDown == null)
+            {
+                return base.MeasureOverride(constraint);
+            }
+            _containerBorder.Measure(constraint);
+            _dropDown.Measure(constraint);
+
+            return _dropDown.DesiredSize;
+        }
+
+        protected override Size ArrangeOverride(Size arrangeBounds)
+        {
+            _containerBorder.Arrange(new Rect(arrangeBounds));
+            _dropDown.Arrange(new Rect(arrangeBounds));
+            return arrangeBounds;
+        }
         #endregion
 
         #region Event Handlers
