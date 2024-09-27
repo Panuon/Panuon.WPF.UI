@@ -1,0 +1,59 @@
+name: 错误报告
+description: 在使用Panuon.WPF.UI开发时遇到了非预期行为.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 感谢您向我们反馈Bug!
+
+        ## 下面有一些关于反馈的注意事项,请在提出Issue前仔细阅读
+
+        ### 请您精确,有效的表达问题,[《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md)这篇文章或许对您有帮助
+
+        ### 请确认问题出自Panuon.WPF.UI本身
+
+        ### 请确认该问题并未被重复提出
+
+        ### 请附带您的错误截图,如出现异常的控件截图,或调试器抛出的异常
+
+        ### 请尽自己所能提供详细的错误信息,注意隐去个人隐私
+        ---
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 请确保您已阅读以上注意事项，并勾选下方的确认框。
+      options:
+        - label: "我已经仔细阅读上述内容"
+          required: true
+        - label: "我确认我使用了Panuon.WPF.UI,而不是Panuon.WPF.Silver等先前项目"
+          required: true
+        - label: "我已经附带了相关错误截图,确保问题准确且可复现"
+          required: true
+  # Env | PU Version
+  - type: input
+    id: pu-version
+    attributes:
+      label: 所使用的Panuon.WPF.UI库版本号
+    validations:
+      required: true
+  # Input | What Happened
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 发生了什么
+      description: |
+        发生了什么问题,预期的结果是什么,实际的结果又是什么?
+    validations:
+      required: true
+  # Input | Reproduce
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: 重现步骤
+      description: |
+        如何快速重现这个问题?
+    validations:
+      required: true
