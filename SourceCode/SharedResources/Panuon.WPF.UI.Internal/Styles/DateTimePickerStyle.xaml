@@ -189,7 +189,7 @@
         <Setter Property="local:DropDownHelper.BorderThickness"
                 Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:DropDownHelper.Width"
-                Value="250" />
+                Value="NaN" />
         <Setter Property="local:DropDownHelper.Height"
                 Value="250" />
         <Setter Property="local:DropDownHelper.Placement"
