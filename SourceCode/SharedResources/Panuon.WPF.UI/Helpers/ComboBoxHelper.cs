@@ -1245,6 +1245,7 @@ namespace Panuon.WPF.UI
                 comboBox.DisplayMemberPath = nameof(EnumInfo.DisplayName);
                 comboBox.SelectedValuePath = nameof(EnumInfo.Value);
                 comboBox.ItemsSource = enumList;
+                comboBox.SetCurrentValue(ComboBox.SelectedValueProperty, comboBox.SelectedValue ?? e.NewValue);
             }
         }
 
