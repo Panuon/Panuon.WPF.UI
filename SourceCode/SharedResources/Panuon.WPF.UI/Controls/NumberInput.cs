@@ -496,21 +496,7 @@ namespace Panuon.WPF.UI
             var numberInput = (NumberInput)d;
             if (baseValue is double value)
             {
-                if (value < numberInput.Minimum)
-                {
-                    return numberInput.Minimum;
-                }
-                if (value > numberInput.Maximum)
-                {
-                    return numberInput.Maximum;
-                }
-                if (numberInput.IsSnapToIntervalEnabled)
-                { 
-                    var interval = (decimal)numberInput.Interval;
-                    var newValue = (double)(((decimal)Math.Ceiling((decimal)value / interval)) * (decimal)interval);
-                    return newValue;
-                }
-                return value;
+                return numberInput.CheckValue(value);
             }
             return baseValue;
         }
@@ -618,12 +604,8 @@ namespace Panuon.WPF.UI
             }
             else if (decimal.TryParse(_inputTextBox.Text, out decimal decimalValue))
             {
-                var doubleValue = (double)decimalValue;
-                SetCurrentValue(ValueProperty, doubleValue);
-                if (Value != doubleValue)
-                {
-                    UpdateTextFromValue();
-                }
+                var resultValue = CheckValue((double)decimalValue);
+                SetCurrentValue(ValueProperty, resultValue);
             }
             else if (double.TryParse(_inputTextBox.Text, out double doubleValue))
             {
@@ -669,6 +651,25 @@ namespace Panuon.WPF.UI
             return index != -1
                 ? text.Length - index - 1
                 : 0;
+        }
+
+        private double CheckValue(double value)
+        {
+            if (value < Minimum)
+            {
+                return Minimum;
+            }
+            if (value > Maximum)
+            {
+                return Maximum;
+            }
+            if (IsSnapToIntervalEnabled)
+            {
+                var interval = (decimal)Interval;
+                var newValue = (double)((Math.Ceiling((decimal)value / interval)) * interval);
+                return newValue;
+            }
+            return value;
         }
         #endregion
     }
