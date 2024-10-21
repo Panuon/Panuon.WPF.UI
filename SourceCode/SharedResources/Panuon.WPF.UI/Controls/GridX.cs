@@ -54,7 +54,7 @@ namespace Panuon.WPF.UI
             DependencyProperty.Register("VerticalGridLinesThickness", typeof(double), typeof(GridX), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsRender));
         #endregion
 
-        #region 
+        #region GridLinesVisibility
         public GridXGridLinesVisibility GridLinesVisibility
         {
             get { return (GridXGridLinesVisibility)GetValue(GridLinesVisibilityProperty); }
@@ -81,6 +81,14 @@ namespace Panuon.WPF.UI
         #region OnRender
         protected override void OnRender(DrawingContext context)
         {
+            base.OnRender(context);
+
+            if (ColumnDefinitions.Count == 0
+                && RowDefinitions.Count == 0)
+            {
+                return;
+            }
+
             if (GridLinesVisibility != GridXGridLinesVisibility.None
                 && (VerticalGridLinesThickness > 0 || HorizontalGridLinesThickness > 0))
             {
@@ -89,13 +97,9 @@ namespace Panuon.WPF.UI
                 var vPen = new Pen(VerticalGridLinesBrush, VerticalGridLinesThickness);
                 vPen.Freeze();
 
-                if (ColumnDefinitions.Count == 0
-                    && RowDefinitions.Count == 0)
-                {
-                    return;
-                }
                 var horizontalGrids = new int[RowDefinitions.Count + 1, ColumnDefinitions.Count + 1];
                 var verticalGrids = new int[RowDefinitions.Count + 1, ColumnDefinitions.Count + 1];
+
 
                 foreach (FrameworkElement child in Children)
                 {
@@ -141,6 +145,7 @@ namespace Panuon.WPF.UI
 
                 var offsetX = 0d;
                 var offsetY = 0d;
+
                 for (int row = 0; row <= RowDefinitions.Count; row++)
                 {
                     offsetX = 0d;
@@ -163,12 +168,14 @@ namespace Panuon.WPF.UI
                             continue;
                         }
                         if ((GridLinesVisibility == GridXGridLinesVisibility.Horizontal || GridLinesVisibility == GridXGridLinesVisibility.Both)
-                            && horizontalGrids[row, column] != 0)
+                            && horizontalGrids[row, column] != 0
+                            && row != RowDefinitions.Count)
                         {
                             context.DrawLine(hPen, new Point(offsetX, offsetY + rowHeight), new Point(offsetX + columnWidth, offsetY + rowHeight));
                         }
                         if ((GridLinesVisibility == GridXGridLinesVisibility.Vertical || GridLinesVisibility == GridXGridLinesVisibility.Both)
-                            && verticalGrids[row, column] != 0)
+                            && verticalGrids[row, column] != 0
+                            && column != ColumnDefinitions.Count)
                         {
                             context.DrawLine(vPen, new Point(offsetX + columnWidth, offsetY), new Point(offsetX + columnWidth, offsetY + rowHeight));
                         }
@@ -176,7 +183,20 @@ namespace Panuon.WPF.UI
                     }
                     offsetY += rowHeight;
                 }
-                base.OnRender(context);
+
+                if (GridLinesVisibility == GridXGridLinesVisibility.Both
+                    || GridLinesVisibility == GridXGridLinesVisibility.Horizontal)
+                {
+                    context.DrawLine(hPen, new Point(0d, HorizontalGridLinesThickness / 2), new Point(RenderSize.Width, HorizontalGridLinesThickness / 2));
+                    context.DrawLine(hPen, new Point(0d, RenderSize.Height - HorizontalGridLinesThickness / 2), new Point(RenderSize.Width, RenderSize.Height - HorizontalGridLinesThickness / 2));
+                }
+
+                if (GridLinesVisibility == GridXGridLinesVisibility.Both
+                    || GridLinesVisibility == GridXGridLinesVisibility.Vertical)
+                {
+                    context.DrawLine(vPen, new Point(VerticalGridLinesThickness / 2, 0d), new Point(VerticalGridLinesThickness / 2, RenderSize.Height));
+                    context.DrawLine(vPen, new Point(RenderSize.Width - VerticalGridLinesThickness / 2, 0d), new Point(RenderSize.Width - VerticalGridLinesThickness / 2, RenderSize.Height));
+                }
             }
         }
         #endregion
