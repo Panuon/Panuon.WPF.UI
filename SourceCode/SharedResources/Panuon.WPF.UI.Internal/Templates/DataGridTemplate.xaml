@@ -947,6 +947,18 @@
                         Property="Grid.RowSpan"
                         Value="2" />
             </DataTrigger>
+            <DataTrigger Binding="{Binding HeadersVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                         Value="Column">
+                <Setter TargetName="RectVertical"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding HeadersVisibility, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
+                         Value="None">
+                <Setter TargetName="RectVertical"
+                        Property="Visibility"
+                        Value="Collapsed" />
+            </DataTrigger>
             <DataTrigger Binding="{Binding RowHeaderWidth, RelativeSource={RelativeSource AncestorType=DataGrid}, Mode=OneWay}"
                          Value="0">
                 <Setter TargetName="RectVertical"
