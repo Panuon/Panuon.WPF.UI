@@ -460,6 +460,7 @@ namespace Panuon.WPF.UI
         {
             _inputTextBox = GetTemplateChild(InputTextBoxTemplateName) as TextBox;
             _inputTextBox.TextChanged += InputTextBox_TextChanged;
+            _inputTextBox.LostFocus += InputTextBox_LostFocus;
 
             UpdateTextFromValue();
         }
@@ -479,14 +480,6 @@ namespace Panuon.WPF.UI
                 }
             }
             base.OnGotFocus(e);
-        }
-
-        protected override void OnLostFocus(RoutedEventArgs e)
-        {
-            CoerceValue(ValueProperty);
-            UpdateTextFromValue();
-
-            base.OnLostFocus(e);
         }
         #endregion
 
@@ -511,6 +504,12 @@ namespace Panuon.WPF.UI
         {
             var numberInput = (NumberInput)d;
             numberInput.CoerceValue(ValueProperty);
+        }
+
+        private void InputTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            CoerceValue(ValueProperty);
+            UpdateTextFromValue();
         }
 
         private void InputTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -564,7 +563,8 @@ namespace Panuon.WPF.UI
 
         private void UpdateTextFromValue()
         {
-            if (_inputTextBox == null)
+            if (_isInternalSet 
+                || _inputTextBox == null)
             {
                 return;
             }
