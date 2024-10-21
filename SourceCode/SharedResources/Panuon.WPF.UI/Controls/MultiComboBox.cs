@@ -794,14 +794,14 @@ namespace Panuon.WPF.UI
         #region Internal Properties
 
         #region SelectionBoxItems
-        internal IEnumerable<object> SelectionBoxItems
+        internal IEnumerable SelectionBoxItems
         {
-            get { return (IEnumerable<object>)GetValue(SelectionBoxItemsProperty); }
+            get { return (IEnumerable)GetValue(SelectionBoxItemsProperty); }
             private set { SetValue(SelectionBoxItemsProperty, value); }
         }
 
         internal static readonly DependencyProperty SelectionBoxItemsProperty =
-            DependencyProperty.Register("SelectionBoxItems", typeof(IEnumerable<object>), typeof(MultiComboBox));
+            DependencyProperty.Register("SelectionBoxItems", typeof(IEnumerable), typeof(MultiComboBox));
         #endregion
 
         #region SelectionBoxItemTemplate
@@ -875,20 +875,18 @@ namespace Panuon.WPF.UI
 
         protected override Size MeasureOverride(Size constraint)
         {
+            var desiredSize = base.MeasureOverride(constraint);
+
             if (_dropDown == null)
             {
-                return base.MeasureOverride(constraint);
+                return desiredSize;
             }
-            _containerBorder.Measure(constraint);
-            _dropDown.Measure(constraint);
-
             return _dropDown.DesiredSize;
         }
 
         protected override Size ArrangeOverride(Size arrangeBounds)
         {
-            _containerBorder.Arrange(new Rect(arrangeBounds));
-            _dropDown.Arrange(new Rect(arrangeBounds));
+            base.ArrangeOverride(arrangeBounds);
             return arrangeBounds;
         }
         #endregion
