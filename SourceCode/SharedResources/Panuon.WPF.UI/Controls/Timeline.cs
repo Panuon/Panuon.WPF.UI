@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Panuon.WPF.UI.Internal;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -69,6 +70,17 @@ namespace Panuon.WPF.UI
 
         public static readonly DependencyProperty ShowIndexProperty =
             DependencyProperty.Register("ShowIndex", typeof(bool), typeof(Timeline));
+        #endregion
+
+        #region CornerRadius
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(Timeline));
         #endregion
 
         #region Items Properties
