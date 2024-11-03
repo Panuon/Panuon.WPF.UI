@@ -740,7 +740,9 @@ namespace Panuon.WPF.UI
             var item = e.OriginalSource as CalendarXItem;
             var month = (int)item.Tag;
             var selectedDate = SelectedDate;
-            SetSelectedDate(new DateTime(selectedDate.Year, month, selectedDate.Day));
+            int daysInMonth = DateTime.DaysInMonth(selectedDate.Year, month);
+            int day = Math.Min(selectedDate.Day, daysInMonth);
+            SetSelectedDate(new DateTime(selectedDate.Year, month, day));
             switch (Mode)
             {
                 case CalendarXMode.Date:
