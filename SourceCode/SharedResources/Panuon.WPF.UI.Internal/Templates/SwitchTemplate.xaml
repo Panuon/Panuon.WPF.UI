@@ -45,7 +45,7 @@
                 <ContentControl Content=""
                                 ContentTemplate="{Binding BoxTemplate, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
                 <Border x:Name="BdrContainer"
-                        Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}, Mode=OneWay}"
+                        Width="{Binding ActualHeight, ElementName=GrdBox, Mode=OneWay}"
                         HorizontalAlignment="Right">
                     <Border.Margin>
                         <MultiBinding Converter="{x:Static irs:Converters.SwitchToggleMarginConverter}">
