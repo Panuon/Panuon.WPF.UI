@@ -51,6 +51,27 @@ namespace Panuon.WPF.UI
             ToggleButtonHelper.SetGroupName(toggleButton, AllowMultipleSelection ? null : _groupId);
             return toggleButton;
         }
+
+        protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+        {
+            base.OnSelectionChanged(e);
+            foreach (var item in e.AddedItems)
+            {
+                var button = ItemContainerGenerator.ContainerFromItem(item) as ToggleButton;
+                if (button != null)
+                {
+                    button.IsChecked = true;
+                }
+            }
+            foreach (var item in e.RemovedItems)
+            {
+                var button = ItemContainerGenerator.ContainerFromItem(item) as ToggleButton;
+                if (button != null)
+                {
+                    button.IsChecked = false;
+                }
+            }
+        }
         #endregion
 
         #region ComponentResourceKeys
@@ -377,6 +398,7 @@ namespace Panuon.WPF.UI
                 toggleButtonGroup.DisplayMemberPath = nameof(EnumInfo.DisplayName);
                 toggleButtonGroup.SelectedValuePath = nameof(EnumInfo.Value);
                 toggleButtonGroup.ItemsSource = enumList;
+                toggleButtonGroup.SetCurrentValue(SelectedValueProperty, toggleButtonGroup.SelectedValue ?? e.NewValue);
             }
         }
 
@@ -392,6 +414,10 @@ namespace Panuon.WPF.UI
             if(toggleButton.IsChecked == true)
             {
                 BeginUpdateSelectedItems();
+                if (!AllowMultipleSelection)
+                {
+                    SelectedItems.Clear();
+                }
                 SelectedItems.Add(ItemContainerGenerator.ItemFromContainer(toggleButton));
                 EndUpdateSelectedItems();
             }
