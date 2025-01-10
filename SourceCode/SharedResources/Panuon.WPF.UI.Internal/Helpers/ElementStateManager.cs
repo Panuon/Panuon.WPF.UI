@@ -104,6 +104,12 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.RegisterAttached("CornerRadius", typeof(CornerRadiusX), typeof(ElementStateManager), new FrameworkPropertyMetadata(new CornerRadiusX(), FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
+
+        #region ActualCornerRadius
+        public static readonly DependencyProperty ActualCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ActualCornerRadius", typeof(CornerRadius), typeof(ElementStateManager), new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
         #endregion
 
         #region WatermarkForeground
@@ -164,6 +170,9 @@ namespace Panuon.WPF.UI.Internal
 
         public static readonly DependencyProperty ToggleCornerRadiusProperty =
             DependencyProperty.RegisterAttached("ToggleCornerRadius", typeof(CornerRadiusX), typeof(ElementStateManager));
+
+        public static readonly DependencyProperty ActualToggleCornerRadiusProperty =
+            DependencyProperty.RegisterAttached("ActualToggleCornerRadius", typeof(CornerRadius), typeof(ElementStateManager));
         #endregion
 
         #region ToggleBrush
@@ -681,6 +690,15 @@ namespace Panuon.WPF.UI.Internal
             toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.OpacityProperty));
             toggleEffectBinding.Bindings.Add(CreateBinding(ShadowHelper.RenderingBiasProperty));
             element.SetBinding(ToggleEffectProperty, toggleEffectBinding);
+
+            var radiusBinding = new MultiBinding()
+            {
+                Converter = Panuon.WPF.Resources.Converters.CornerRadiusXToCornerRadiusConverter
+            };
+            radiusBinding.Bindings.Add(CreateBinding(CornerRadiusProperty));
+            radiusBinding.Bindings.Add(CreateBinding(FrameworkElement.ActualWidthProperty));
+            radiusBinding.Bindings.Add(CreateBinding(FrameworkElement.ActualHeightProperty));
+            element.SetBinding(ActualCornerRadiusProperty, radiusBinding);
         }
 
         private static void OnHoverLockChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -902,7 +920,9 @@ namespace Panuon.WPF.UI.Internal
             if (!GetHoverCornerRadiusLock((DependencyObject)sender)
                && element.GetValue(HoverCornerRadiusProperty) is CornerRadiusX hoverCornerRadius)
             {
-                propertyValues.Add(CornerRadiusProperty, hoverCornerRadius);
+                double baseValue = Math.Min((double)element.ActualWidth, (double)element.ActualHeight);
+                var toCornerRadius = hoverCornerRadius.ToCornerRadius(baseValue, baseValue);
+                propertyValues.Add(ActualCornerRadiusProperty, toCornerRadius);
             }
             if (element.GetValue(HoverGlyphBrushProperty) is Brush hoverGlyphBrush)
             {
@@ -910,7 +930,9 @@ namespace Panuon.WPF.UI.Internal
             }
             if (element.GetValue(HoverToggleCornerRadiusProperty) is CornerRadiusX hoverToggleCornerRadius)
             {
-                propertyValues.Add(ToggleCornerRadiusProperty, hoverToggleCornerRadius);
+                double baseValue = Math.Min((double)element.ActualWidth, (double)element.ActualHeight);
+                var toCornerRadius = hoverToggleCornerRadius.ToCornerRadius(baseValue, baseValue);
+                propertyValues.Add(ToggleCornerRadiusProperty, toCornerRadius);
             }
             if (element.GetValue(HoverToggleBrushProperty) is Brush hoverToggleBrush)
             {
@@ -1013,7 +1035,7 @@ namespace Panuon.WPF.UI.Internal
             if (!GetHoverCornerRadiusLock((DependencyObject)sender)
                 && element.GetValue(HoverCornerRadiusProperty) != null)
             {
-                properties.Add(CornerRadiusProperty);
+                properties.Add(ActualCornerRadiusProperty);
             }
             if (element.GetValue(HoverGlyphBrushProperty) != null)
             {
@@ -1029,7 +1051,7 @@ namespace Panuon.WPF.UI.Internal
             }
             if (element.GetValue(HoverToggleCornerRadiusProperty) != null)
             {
-                properties.Add(ToggleCornerRadiusProperty);
+                properties.Add(ActualToggleCornerRadiusProperty);
             }
             if (element.GetValue(HoverRibbonLineBrushProperty) != null)
             {

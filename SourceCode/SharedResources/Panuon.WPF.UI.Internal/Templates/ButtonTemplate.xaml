@@ -14,20 +14,8 @@
                     Background="{Binding Path=(i:ElementStateManager.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:ElementStateManager.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:ElementStateManager.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:ElementStateManager.ActualCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:ElementStateManager.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Border.CornerRadius>
-                    <MultiBinding Converter="{x:Static pw:Converters.CornerRadiusXToCornerRadiusConverter}">
-                        <Binding Path="(i:ElementStateManager.CornerRadius)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                    </MultiBinding>
-                </Border.CornerRadius>
             </Border>
             <Border Margin="{Binding Path=(i:ElementStateManager.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Padding="{TemplateBinding Padding}">
@@ -124,20 +112,8 @@
                     Background="{Binding Path=(i:ElementStateManager.Background), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderBrush="{Binding Path=(i:ElementStateManager.BorderBrush), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     BorderThickness="{Binding Path=(i:ElementStateManager.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                    CornerRadius="{Binding Path=(i:ElementStateManager.ActualCornerRadius), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Effect="{Binding Path=(i:ElementStateManager.Effect), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
-                <Border.CornerRadius>
-                    <MultiBinding Converter="{x:Static pw:Converters.CornerRadiusXToCornerRadiusConverter}">
-                        <Binding Path="(i:ElementStateManager.CornerRadius)"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="ActualWidth"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                        <Binding Path="ActualHeight"
-                                 RelativeSource="{RelativeSource TemplatedParent}"
-                                 Mode="OneWay" />
-                    </MultiBinding>
-                </Border.CornerRadius>
             </Border>
             <Border Margin="{Binding Path=(i:ElementStateManager.BorderThickness), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
                     Padding="{TemplateBinding Padding}">

@@ -122,16 +122,6 @@ namespace Panuon.WPF.UI.Internal.Utils
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
                 }
-                if (propertyValue.Value is CornerRadiusX cornerRadiusXValue)
-                {
-                    double baseValue = Math.Min((double)element.ActualWidth, (double)element.ActualHeight);
-                    var toCornerRadius = cornerRadiusXValue.ToCornerRadius(baseValue, baseValue);
-                    anima = new CornerRadiusXAnimation()
-                    {
-                        To = toCornerRadius,
-                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
-                    };
-                }
                 Storyboard.SetTarget(anima, element);
                 Storyboard.SetTargetProperty(anima, new PropertyPath(propertyValue.Key));
                 storyboard.Children.Add(anima);
@@ -165,13 +155,6 @@ namespace Panuon.WPF.UI.Internal.Utils
                 else if (dp.PropertyType == typeof(CornerRadius))
                 {
                     anima = new CornerRadiusAnimation()
-                    {
-                        Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
-                    };
-                }
-                else if (dp.PropertyType == typeof(CornerRadiusX))
-                {
-                    anima = new CornerRadiusXAnimation()
                     {
                         Duration = duration ?? GlobalSettings.Setting.AnimationDuration,
                     };
