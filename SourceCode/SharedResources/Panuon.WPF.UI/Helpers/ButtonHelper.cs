@@ -16,36 +16,10 @@ namespace Panuon.WPF.UI
         #region Ctor
         static ButtonHelper()
         {
-            var classAbbrs = new string[]
-            {
-                "w", "width", "h", "height", "i", "icon",
-                "corner", "corner-hover", "corner-click", "corner-pressed",
-                "shadow", "shadow-blur", "shadow-direction", "shadow-bias",
-                "click-effect",
-                "bg", "background", "bg-hover", "background-hover", "bg-click", "background-click", "bg-pressed", "background-pressed",
-                "bd", "border", "bd-hover", "border-hover", "bd-click", "border-click", "bd-pressed", "border-pressed",
-                "fg", "foreground", "fg-hover", "foreground-hover", "fg-click", "foreground-click", "fg-press", "foreground-pressed",
-            };
-            ClassNameHelper.Regist(typeof(Button), classAbbrs, OnClassNameChangedCallback);
         }
         #endregion
 
         #region Properties
-
-        #region ClassName
-        public static string GetClassName(DependencyObject obj)
-        {
-            return (string)obj.GetValue(ClassNameProperty);
-        }
-
-        public static void SetClassName(DependencyObject obj, string value)
-        {
-            obj.SetValue(ClassNameProperty, value);
-        }
-
-        public static readonly DependencyProperty ClassNameProperty =
-            ClassNameHelper.ClassNameProperty.AddOwner(typeof(ButtonHelper));
-        #endregion
 
         #region Icon
         public static object GetIcon(Button button)
@@ -77,19 +51,19 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("IconPlacement", typeof(IconPlacement), typeof(ButtonHelper));
         #endregion
 
-        #region CornerRadius
-        public static CornerRadius GetCornerRadius(Button button)
+        #region CornerRadiusX
+        public static CornerRadiusX GetCornerRadius(Button button)
         {
-            return (CornerRadius)button.GetValue(CornerRadiusProperty);
+            return (CornerRadiusX)button.GetValue(CornerRadiusProperty);
         }
 
-        public static void SetCornerRadius(Button button, CornerRadius value)
+        public static void SetCornerRadius(Button button, CornerRadiusX value)
         {
             button.SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            VisualStateHelper.CornerRadiusProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.CornerRadiusProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region IsPending
@@ -134,7 +108,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ShadowColorProperty =
-            VisualStateHelper.ShadowColorProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.ShadowColorProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region ClickEffect
@@ -149,7 +123,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ClickEffectProperty =
-            VisualStateHelper.ClickEffectProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.ClickEffectProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverBackground
@@ -164,7 +138,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HoverBackgroundProperty =
-            VisualStateHelper.HoverBackgroundProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverBackgroundProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverForeground
@@ -179,7 +153,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HoverForegroundProperty =
-            VisualStateHelper.HoverForegroundProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverForegroundProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverBorderBrush
@@ -194,7 +168,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HoverBorderBrushProperty =
-            VisualStateHelper.HoverBorderBrushProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverBorderBrushProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverBorderThickness
@@ -209,22 +183,22 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty HoverBorderThicknessProperty =
-            VisualStateHelper.HoverBorderThicknessProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverBorderThicknessProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverCornerRadius
-        public static CornerRadius? GetHoverCornerRadius(Button button)
+        public static CornerRadiusX? GetHoverCornerRadius(Button button)
         {
-            return (CornerRadius?)button.GetValue(HoverCornerRadiusProperty);
+            return (CornerRadiusX?)button.GetValue(HoverCornerRadiusProperty);
         }
 
-        public static void SetHoverCornerRadius(Button button, CornerRadius? value)
+        public static void SetHoverCornerRadius(Button button, CornerRadiusX? value)
         {
             button.SetValue(HoverCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty HoverCornerRadiusProperty =
-            VisualStateHelper.HoverCornerRadiusProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverCornerRadiusProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region HoverShadowColor
@@ -238,7 +212,7 @@ namespace Panuon.WPF.UI
             button.SetValue(HoverShadowColorProperty, value);
         }
         public static readonly DependencyProperty HoverShadowColorProperty =
-            VisualStateHelper.HoverShadowColorProperty.AddOwner(typeof(ButtonHelper));
+            ElementStateManager.HoverShadowColorProperty.AddOwner(typeof(ButtonHelper));
         #endregion
 
         #region ClickBackground
@@ -302,132 +276,20 @@ namespace Panuon.WPF.UI
         #endregion
 
         #region ClickCornerRadius
-        public static CornerRadius? GetClickCornerRadius(Button button)
+        public static CornerRadiusX? GetClickCornerRadius(Button button)
         {
-            return (CornerRadius?)button.GetValue(ClickCornerRadiusProperty);
+            return (CornerRadiusX?)button.GetValue(ClickCornerRadiusProperty);
         }
 
-        public static void SetClickCornerRadius(Button button, CornerRadius? value)
+        public static void SetClickCornerRadius(Button button, CornerRadiusX? value)
         {
             button.SetValue(ClickCornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty ClickCornerRadiusProperty =
-            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadius?), typeof(ButtonHelper));
+            DependencyProperty.RegisterAttached("ClickCornerRadius", typeof(CornerRadiusX?), typeof(ButtonHelper));
         #endregion
 
-        #endregion
-
-        #region Event Handlers
-        private static void OnClassNameChangedCallback(FrameworkElement control,
-            Dictionary<string, string> propertyValues)
-        {
-            var button = control as Button;
-            foreach (var propertyValue in propertyValues)
-            {
-                switch(propertyValue.Key)
-                {
-                    case "w":
-                    case "width":
-                        if(ClassNameHelper.TryToDouble(propertyValue.Value, out double? width)
-                            && width != null)
-                        {
-                            button.Width = (double)width;
-                        }
-                        break;
-                    case "h":
-                    case "height":
-                        if (ClassNameHelper.TryToDouble(propertyValue.Value, out double? height)
-                            && height != null)
-                        {
-                            button.Height = (double)height;
-                        }
-                        break;
-                    case "i":
-                    case "icon":
-                        if (ClassNameHelper.TryToIcon(propertyValue.Value, out string icon, out IconPlacement? placement))
-                        {
-                            ButtonHelper.SetIcon(button, icon);
-                            if (placement != null)
-                            {
-                                ButtonHelper.SetIconPlacement(button, (IconPlacement)placement);
-                            }
-                        }
-                        break;
-                    case "bg":
-                    case "background":
-                        if(ClassNameHelper.TryToBrush(propertyValue.Value, out Brush background))
-                        {
-                            button.Background = background;
-                        }
-                        break;
-                    case "bg-hover":
-                    case "hover-background":
-                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush hoverBackground))
-                        {
-                            ButtonHelper.SetHoverBackground(button, hoverBackground);
-                        }
-                        break;
-                    case "bg-click":
-                    case "bg-pressed":
-                    case "click-background":
-                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush clickBackground))
-                        {
-                            ButtonHelper.SetClickBackground(button, clickBackground);
-                        }
-                        break;
-                    case "fg":
-                    case "foreground":
-                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush foreground))
-                        {
-                            button.Foreground = foreground;
-                        }
-                        break;
-                    case "fg-hover":
-                    case "hover-foreground":
-                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush hoverForeground))
-                        {
-                            ButtonHelper.SetHoverForeground(button, hoverForeground);
-                        }
-                        break;
-                    case "fg-click":
-                    case "fg-pressed":
-                    case "click-foreground":
-                        if (ClassNameHelper.TryToBrush(propertyValue.Value, out Brush clickForeground))
-                        {
-                            ButtonHelper.SetClickForeground(button, clickForeground);
-                        }
-                        break;
-                    case "padding":
-                        if (ClassNameHelper.TryToThickness(propertyValue.Value, out Thickness? padding)
-                            && padding != null)
-                        {
-                            button.Padding = (Thickness)padding;
-                        }
-                        break;
-                    case "corner":
-                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? cornerRadius)
-                            && cornerRadius != null)
-                        {
-                            ButtonHelper.SetCornerRadius(button, (CornerRadius)cornerRadius);
-                        }
-                        break;
-                    case "corner-hover":
-                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? hoverCornerRadius))
-                        {
-                            ButtonHelper.SetHoverCornerRadius(button, hoverCornerRadius);
-                        }
-                        break;
-                    case "corner-click":
-                    case "corner-pressed":
-                        if (ClassNameHelper.TryToCornerRadius(propertyValue.Value, out CornerRadius? clickCornerRadius))
-                        {
-                            ButtonHelper.SetClickCornerRadius(button, clickCornerRadius);
-                        }
-                        break;
-                }
-            }
-        }
         #endregion
     }
 }

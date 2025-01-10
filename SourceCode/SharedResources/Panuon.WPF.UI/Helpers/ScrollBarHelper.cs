@@ -393,7 +393,7 @@ namespace Panuon.WPF.UI
                 }
                 if (propertyBrushes.Any())
                 {
-                    AnimationUtil.BeginBrushAnimationStoryboard(element.TemplatedParent, propertyBrushes);
+                    AnimationUtil.BeginBrushAnimationStoryboard(element.TemplatedParent as FrameworkElement, propertyBrushes);
                 }
             }
             else
@@ -409,7 +409,7 @@ namespace Panuon.WPF.UI
                 }
                 if (propertyBrushes.Any())
                 {
-                    AnimationUtil.BeginBrushAnimationStoryboard(element.TemplatedParent, propertyBrushes);
+                    AnimationUtil.BeginBrushAnimationStoryboard(element.TemplatedParent as FrameworkElement, propertyBrushes);
                 }
             }
 

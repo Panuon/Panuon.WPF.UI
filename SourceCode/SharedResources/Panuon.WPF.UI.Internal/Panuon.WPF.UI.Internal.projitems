@@ -78,6 +78,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\FormGroupCollectSizeEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ClassNameHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ElementStateManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\VisualStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\NoticeHandlerImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Implements\PendingHandlerImpl.cs" />

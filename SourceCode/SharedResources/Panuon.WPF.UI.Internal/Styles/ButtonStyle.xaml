@@ -14,7 +14,7 @@
         <Setter Property="Margin"
                 Value="0,0,5,0" />
         <Setter Property="GlyphBrush"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+                Value="{Binding Path=(i:ElementStateManager.Foreground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Width"
                 Value="{Binding FontSize, Converter={x:Static pw:Converters.DoublePlusConverter}, ConverterParameter=6, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
         <Setter Property="Height"
@@ -23,9 +23,9 @@
 
     <Style x:Key="{x:Static rs:StyleKeys.ButtonStyle}"
            TargetType="Button">
-        <Setter Property="i:VisualStateHelper.Regist"
+        <Setter Property="i:ElementStateManager.Regist"
                 Value="True" />
-        <Setter Property="i:VisualStateHelper.IsHover"
+        <Setter Property="i:ElementStateManager.IsHover"
                 Value="{Binding IsMouseOver, RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="local:IconHelper.FontFamily"
                 Value="{Binding IconFontFamily, Source={x:Static local:GlobalSettings.Setting}}" />
@@ -34,7 +34,7 @@
         <Setter Property="local:IconHelper.Margin"
                 Value="0,0,5,0" />
         <Setter Property="local:IconHelper.Foreground"
-                Value="{Binding Path=(i:VisualStateHelper.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
+                Value="{Binding Path=(i:ElementStateManager.Foreground), RelativeSource={RelativeSource Self}, Mode=OneWay}" />
         <Setter Property="FocusVisualStyle"
                 Value="{Binding FocusVisualStyle, Source={x:Static local:GlobalSettings.Setting}}" />
         <Setter Property="local:ButtonHelper.HoverBackground"
