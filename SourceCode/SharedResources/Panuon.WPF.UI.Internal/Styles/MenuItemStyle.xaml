@@ -482,7 +482,7 @@
            TargetType="MenuItem"
            BasedOn="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}">
         <Setter Property="ItemContainerStyle"
-                Value="{StaticResource {x:Static irs:StyleKeys.InternalMenuItemStyle}}" />
+                Value="{Binding ItemContainerStyle, RelativeSource={RelativeSource AncestorType=MenuBase}, Mode=OneWay}" />
     </Style>
 
 </ResourceDictionary>
