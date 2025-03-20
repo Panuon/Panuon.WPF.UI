@@ -462,7 +462,7 @@ namespace Panuon.WPF.UI
             if (HeaderWidth.IsAuto)
             {
                 _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                return _headerControl.DesiredSize.Width;
+                return _headerControl.DesiredSize.Width + HeaderPadding.Left + HeaderPadding.Right;
             }
             else
             {
@@ -475,7 +475,7 @@ namespace Panuon.WPF.UI
             if (HeaderHeight.IsAuto)
             {
                 _headerControl.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                return _headerControl.DesiredSize.Height;
+                return _headerControl.DesiredSize.Height + HeaderPadding.Top + HeaderPadding.Bottom;
             }
             else
             {
