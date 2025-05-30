@@ -122,6 +122,22 @@ namespace Panuon.WPF.UI
             DependencyProperty.RegisterAttached("IsRegisted", typeof(bool), typeof(TextBlockHelper));
         #endregion
 
+        #region IsInternalSet
+        internal static bool GetIsInternalSet(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(IsInternalSetProperty);
+        }
+
+        internal static void SetIsInternalSet(DependencyObject obj, bool value)
+        {
+            obj.SetValue(IsInternalSetProperty, value);
+        }
+
+        internal static readonly DependencyProperty IsInternalSetProperty =
+            DependencyProperty.RegisterAttached("IsInternalSet", typeof(bool), typeof(TextBlockHelper), new PropertyMetadata(false));
+        #endregion
+
+
         #endregion
 
         #region Event Handler
@@ -132,105 +148,119 @@ namespace Panuon.WPF.UI
             {
                 return;
             }
-            if (!GetIsRegisted(textBlock))
+            if (GetIsInternalSet(textBlock))
             {
-                textBlock.SetBinding(TextProperty, new Binding()
-                {
-                    Path = new PropertyPath(TextBlock.TextProperty),
-                    Source = textBlock,
-                    UpdateSourceTrigger = UpdateSourceTrigger.Default,
-                    Mode = BindingMode.OneWay,
-                });
-                SetIsRegisted(textBlock, true);
-            }
-
-            var text = GetText(textBlock);
-            var regex = GetHighlightRegex(textBlock);
-            var highlightText = GetHighlightText(textBlock);
-            var foreground = GetHighlightForeground(textBlock);
-            var background = GetHighlightBackground(textBlock);
-            var rule = GetHighlightRule(textBlock);
-
-            if (string.IsNullOrEmpty(text)
-                || (string.IsNullOrEmpty(highlightText) && string.IsNullOrEmpty(regex)))
-            {
-                textBlock.Inlines.Clear();
-                textBlock.Inlines.Add(new Run(text));
                 return;
             }
 
-            if (!string.IsNullOrEmpty(regex))
+            SetIsInternalSet(textBlock, true);
+
+            try
             {
-                var match = Regex.Match(text, regex);
-                var index = match.Index;
-                var matchText = match.Value;
-                if (string.IsNullOrEmpty(matchText))
+                if (!GetIsRegisted(textBlock))
+                {
+                    SetIsRegisted(textBlock, true);
+                    textBlock.SetBinding(TextProperty, new Binding()
+                    {
+                        Path = new PropertyPath(TextBlock.TextProperty),
+                        Source = textBlock,
+                        UpdateSourceTrigger = UpdateSourceTrigger.Default,
+                        Mode = BindingMode.OneWay,
+                    });
+                }
+
+                var text = GetText(textBlock);
+                var regex = GetHighlightRegex(textBlock);
+                var highlightText = GetHighlightText(textBlock);
+                var foreground = GetHighlightForeground(textBlock);
+                var background = GetHighlightBackground(textBlock);
+                var rule = GetHighlightRule(textBlock);
+
+                if (string.IsNullOrEmpty(text)
+                    || (string.IsNullOrEmpty(highlightText) && string.IsNullOrEmpty(regex)))
                 {
                     textBlock.Inlines.Clear();
                     textBlock.Inlines.Add(new Run(text));
                     return;
                 }
 
-                textBlock.Inlines.Clear();
-
-                while (true)
+                if (!string.IsNullOrEmpty(regex))
                 {
-                    textBlock.Inlines.AddRange(new Inline[]
+                    var match = Regex.Match(text, regex);
+                    var index = match.Index;
+                    var matchText = match.Value;
+                    if (string.IsNullOrEmpty(matchText))
                     {
+                        textBlock.Inlines.Clear();
+                        textBlock.Inlines.Add(new Run(text));
+                        return;
+                    }
+
+                    textBlock.Inlines.Clear();
+
+                    while (true)
+                    {
+                        textBlock.Inlines.AddRange(new Inline[]
+                        {
                         new Run(text.Substring(0, index)),
                         new Run(text.Substring(index, matchText.Length))
                         {
                             Background = background ?? null,
                             Foreground = foreground ?? textBlock.Foreground
                         }
-                    });
+                        });
 
-                    text = text.Substring(index + matchText.Length);
-                    match = Regex.Match(text, regex);
-                    index = match.Index;
-                    matchText = match.Value;
+                        text = text.Substring(index + matchText.Length);
+                        match = Regex.Match(text, regex);
+                        index = match.Index;
+                        matchText = match.Value;
 
-                    if (string.IsNullOrEmpty(matchText)
-                        || rule == HighlightRule.FirstOnly)
-                    {
-                        textBlock.Inlines.Add(new Run(text));
-                        break;
+                        if (string.IsNullOrEmpty(matchText)
+                            || rule == HighlightRule.FirstOnly)
+                        {
+                            textBlock.Inlines.Add(new Run(text));
+                            break;
+                        }
                     }
                 }
-            }
-            else if (!string.IsNullOrEmpty(text))
-            {
-                var index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
-                if (index < 0)
+                else if (!string.IsNullOrEmpty(text))
                 {
-                    textBlock.Inlines.Clear();
-                    textBlock.Inlines.Add(new Run(text));
-                    return;
-                }
-
-                textBlock.Inlines.Clear();
-
-                while (true)
-                {
-                    textBlock.Inlines.AddRange(new Inline[]
+                    var index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
+                    if (index < 0)
                     {
+                        textBlock.Inlines.Clear();
+                        textBlock.Inlines.Add(new Run(text));
+                        return;
+                    }
+
+                    textBlock.Inlines.Clear();
+
+                    while (true)
+                    {
+                        textBlock.Inlines.AddRange(new Inline[]
+                        {
                         new Run(text.Substring(0, index)),
                         new Run(text.Substring(index, highlightText.Length))
                         {
                             Background = background ?? null,
                             Foreground = foreground ?? textBlock.Foreground
                         }
-                    });
+                        });
 
-                    text = text.Substring(index + highlightText.Length);
-                    index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
+                        text = text.Substring(index + highlightText.Length);
+                        index = text.IndexOf(highlightText, StringComparison.CurrentCultureIgnoreCase);
 
-                    if (index < 0 || rule == HighlightRule.FirstOnly)
-                    {
-                        textBlock.Inlines.Add(new Run(text));
-                        break;
+                        if (index < 0 || rule == HighlightRule.FirstOnly)
+                        {
+                            textBlock.Inlines.Add(new Run(text));
+                            break;
+                        }
                     }
                 }
+            }
+            finally
+            {
+                SetIsInternalSet(textBlock, false);
             }
         }
         #endregion
