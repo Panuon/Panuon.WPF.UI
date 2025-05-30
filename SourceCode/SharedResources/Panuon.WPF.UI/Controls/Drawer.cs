@@ -123,11 +123,15 @@ namespace Panuon.WPF.UI
             drawer.OnIsOpenChanged();
         }
 
-        private void OnLostMouseCapture(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Mouse.RemovePreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
-            ReleaseMouseCapture();
-            SetCurrentValue(IsOpenProperty, false);
+            if (!IsMouseOver
+                && !StaysOpen)
+            {
+                SetCurrentValue(IsOpenProperty, false);
+                var parentWindow = sender as Window;
+                parentWindow.MouseDown -= Window_MouseDown;
+            }
         }
         #endregion
 
@@ -151,11 +155,11 @@ namespace Panuon.WPF.UI
             if (ActualWidth != 0
                 || ActualHeight != 0)
             {
-
                 if (!StaysOpen)
                 {
-                    Mouse.AddPreviewMouseDownOutsideCapturedElementHandler(this, OnLostMouseCapture);
-                    Mouse.Capture(this, CaptureMode.SubTree);
+                    var parentWindow = Window.GetWindow(this);
+                    parentWindow.MouseDown -= Window_MouseDown;
+                    parentWindow.MouseDown += Window_MouseDown; 
                 }
 
                 switch (Placement)
@@ -208,6 +212,8 @@ namespace Panuon.WPF.UI
                 }
             }
             SetCurrentValue(IsOpenProperty, false);
+            var parentWindow = Window.GetWindow(this);
+            parentWindow.MouseDown -= Window_MouseDown;
         }
         #endregion
     }
