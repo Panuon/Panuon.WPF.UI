@@ -317,7 +317,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty IntervalProperty =
-            DependencyProperty.Register("Interval", typeof(double), typeof(NumberInput), new PropertyMetadata(1d));
+            DependencyProperty.Register("Interval", typeof(double), typeof(NumberInput), new PropertyMetadata(1d, OnIntervalChanged));
         #endregion
 
         #region IsSnapToIntervalEnabled
@@ -501,6 +501,12 @@ namespace Panuon.WPF.UI
         }
 
         private static void OnMaximumOrMinimumChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var numberInput = (NumberInput)d;
+            numberInput.CoerceValue(ValueProperty);
+        }
+
+        private static void OnIntervalChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var numberInput = (NumberInput)d;
             numberInput.CoerceValue(ValueProperty);
