@@ -152,7 +152,7 @@ namespace Panuon.WPF.UI
         {
             switch(window)
             {
-                case ToastWindow.ActiveWindow:
+                case ToastWindow.MainWindow:
                     if(Application.Current.MainWindow is WindowX windowX)
                     {
                         return windowX;
