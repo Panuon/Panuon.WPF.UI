@@ -273,7 +273,7 @@ namespace Panuon.WPF.UI
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double?), typeof(NumberInput), new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueChanged, OnValueCoerceValue));
+            DependencyProperty.Register("Value", typeof(double?), typeof(NumberInput), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueChanged, OnValueCoerceValue));
         #endregion
 
         #region DefaultValue
