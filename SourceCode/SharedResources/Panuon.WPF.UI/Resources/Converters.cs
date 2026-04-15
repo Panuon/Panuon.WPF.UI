@@ -7,8 +7,6 @@ namespace Panuon.WPF.UI.Resources
         public static IMultiValueConverter BoolOrConverter = Panuon.WPF.Resources.Converters.BoolOrConverter;
         public static IValueConverter BrushToColorConverter = Panuon.WPF.Resources.Converters.BrushToColorConverter;
         public static IValueConverter ColorToBrushConverter = Panuon.WPF.Resources.Converters.ColorToBrushConverter;
-        public static IValueConverter CollectionNullOrEmptyToCollapseConverter = Panuon.WPF.UI.Internal.Resources.Converters.CollectionNullOrEmptyToCollapseConverter;
-        public static IValueConverter CollectionNullOrEmptyToVisibleConverter = Panuon.WPF.UI.Internal.Resources.Converters.CollectionNullOrEmptyToVisibleConverter;
         public static IValueConverter DoubleDivideByConverter = Panuon.WPF.Resources.Converters.DoubleDivideByConverter;
         public static IMultiValueConverter IsAllDoublesEqualConverter = Panuon.WPF.Resources.Converters.IsAllDoublesEqualConverter;
         public static IValueConverter DoubleIsConverter = Panuon.WPF.Resources.Converters.DoubleIsConverter;
