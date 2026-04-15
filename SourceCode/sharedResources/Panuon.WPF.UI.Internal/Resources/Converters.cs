@@ -11,6 +11,8 @@ namespace Panuon.WPF.UI.Internal.Resources
         public static IValueConverter BrushOpacityConverter = new BrushOpacityConverter();
         public static IMultiValueConverter CheckBoxCheckPathConverter = new CheckBoxCheckPathConverter();
         public static IMultiValueConverter CheckBoxGlyphPathStrokeConverter = new CheckBoxGlyphPathStrokeConverter();
+        public static IValueConverter CollectionNullOrEmptyToCollapseConverter = new CollectionNullOrEmptyToCollapseConverter();
+        public static IValueConverter CollectionNullOrEmptyToVisibleConverter = new CollectionNullOrEmptyToVisibleConverter();
         public static IMultiValueConverter ColorSelectorOpacitySliderBackgroundConverter = new ColorSelectorOpacitySliderBackgroundConverter();
         public static IValueConverter ColorSelectorThumbFenceBackgroundConverter = new ColorSelectorThumbFenceBackgroundConverter();
         public static IMultiValueConverter ComboBoxDropDownHorizontalOffsetConverter = new ComboBoxDropDownHorizontalOffsetConverter();

@@ -27,6 +27,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BubblePathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxCheckPathConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CheckBoxGlyphPathStrokeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CollectionNullOrEmptyToCollapseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CollectionNullOrEmptyToVisibleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorOpacitySliderBackgroundConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorSelectorThumbFenceBackgroundConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ComboBoxDropDownHorizontalOffsetConverter.cs" />
